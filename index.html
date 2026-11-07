@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MedArena — USMLE Style Practice</title>
+<script src="pdf.min.js" onerror="this.onerror=null;var s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';s.onerror=function(){window.__pdfFail=1;};document.head.appendChild(s);"></script>
+<style>
+:root{
+  --bg:#f1f5f9; --card:#ffffff; --ink:#0f172a; --muted:#64748b;
+  --line:#e2e8f0; --accent:#1d4ed8; --accent2:#3b82f6; --ok:#16a34a;
+  --bad:#dc2626; --flag:#f59e0b; --mark:#fde047;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:#0f172a;color:#fff;padding:10px 20px;display:flex;align-items:center;gap:18px;position:sticky;top:0;z-index:50}
+header .logo{font-weight:800;font-size:18px;letter-spacing:.4px}
+header .logo .cross{color:#3b82f6;display:inline-block;animation:crossPulse 3s ease-in-out infinite;text-shadow:0 0 12px rgba(59,130,246,.55)}
+header .logo .brand{background:linear-gradient(90deg,#3b82f6,#22d3ee,#8b5cf6,#3b82f6);background-size:280% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:brandFlow 5s linear infinite}
+@keyframes brandFlow{0%{background-position:0% 0}100%{background-position:280% 0}}
+@keyframes crossPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+.tabs{display:flex;gap:6px;margin-left:auto}
+.tabs button{background:#1e293b;color:#cbd5e1;border:none;padding:9px 18px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer}
+.tabs button.active{background:var(--accent2);color:#fff}
+.container{max-width:1080px;margin:24px auto;padding:0 16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:0 1px 3px rgba(15,23,42,.06);margin-bottom:18px}
+h1{font-size:22px;margin:0 0 6px}
+.sub{color:var(--muted);font-size:13.5px;margin-bottom:14px}
+.btn{background:var(--accent);color:#fff;border:none;padding:10px 18px;border-radius:9px;font-weight:600;font-size:14px;cursor:pointer}
+.btn:hover{background:#1e40af}
+.btn.sec{background:#e2e8f0;color:#0f172a}
+.btn.sec:hover{background:#cbd5e1}
+.btn.danger{background:#fef2f2;color:var(--bad);border:1px solid #fecaca}
+.btn.danger:hover{background:#fee2e2}
+.btn.small{padding:6px 12px;font-size:12.5px}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.drop{border:2px dashed #93c5fd;border-radius:12px;padding:34px;text-align:center;color:var(--muted);cursor:pointer;transition:.15s;background:#f8fafc}
+.drop.over{background:#eff6ff;border-color:var(--accent2)}
+.drop b{color:var(--accent)}
+.rowflex{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.filebar{height:6px;border-radius:4px;background:#e2e8f0;overflow:hidden;margin-top:8px}
+.filebar>i{display:block;height:100%;background:var(--accent2);width:0%;transition:.2s}
+.uplrow{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-top:10px;font-size:13.5px}
+.uplrow .name{font-weight:700}
+.uplrow .stat{color:var(--muted)}
+.uplrow .stat.ok{color:var(--ok)}
+.uplrow .stat.err{color:var(--bad)}
+.bankgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.bankcard{border:1px solid var(--line);border-radius:12px;padding:16px}
+.bankcard h3{margin:0 0 4px;font-size:15.5px;word-break:break-all}
+.bankcard .meta{color:var(--muted);font-size:12.5px;margin-bottom:12px}
+.mut{color:var(--muted);font-size:12.5px}
+.qcard{border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:10px}
+.qcard .stem{white-space:pre-wrap;line-height:1.6;font-size:14px}
+.qcard .opt{display:flex;gap:8px;margin-top:7px;padding:6px 10px;border-radius:8px;font-size:13.5px}
+.qcard .opt b{min-width:20px}
+.qcard .opt.correct{background:#dcfce7;border:1px solid #86efac}
+.badge{display:inline-block;padding:2px 9px;border-radius:99px;font-size:11.5px;font-weight:700}
+.badge.a{background:#dbeafe;color:#1d4ed8}
+.badge.g{background:#dcfce7;color:#15803d}
+.badge.r{background:#fee2e2;color:#b91c1c}
+.badge.y{background:#fef3c7;color:#b45309}
+mark{background:var(--mark);border-radius:3px;padding:0 1px}
+dialog{border:none;border-radius:14px;padding:0;width:min(860px,94vw);max-height:88vh}
+dialog::backdrop{background:rgba(15,23,42,.55)}
+.dlghead{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff}
+.dlgbody{padding:16px 20px;overflow-y:auto;max-height:calc(88vh - 70px)}
+.formgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+label.f{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#334155}
+label.f select,label.f input[type=number]{padding:9px 10px;border:1px solid #cbd5e1;border-radius:9px;font-size:14px;background:#fff}
+.chkrow{display:flex;flex-direction:column;gap:8px;font-size:13.5px;font-weight:600;color:#334155}
+.chkrow label{display:flex;gap:8px;align-items:center;font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+th{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+.hintbox{background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:12px 14px;font-size:13px;color:#1e3a8a;line-height:1.55}
+.hintbox b{display:block;margin-bottom:4px}
+.exview{display:none}
+.exview.active{display:block}
+.pill{padding:3px 10px;border-radius:99px;background:#e2e8f0;font-size:12px;font-weight:700}
+.pill.tutor{background:#fef3c7;color:#b45309}
+.pill.timed{background:#dbeafe;color:#1d4ed8}
+.timer{font-variant-numeric:tabular-nums;background:#0f172a;color:#fff;padding:7px 14px;border-radius:9px;font-weight:700}
+.timer.low{background:#7f1d1d}
+.qwrap{padding:22px 26px}
+.qnum{color:var(--muted);font-size:13px;font-weight:600;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+.stem{white-space:pre-wrap;line-height:1.7;font-size:15.5px;user-select:text}
+.stem mark{cursor:pointer}
+.optrow{display:flex;align-items:flex-start;gap:12px;border:1px solid var(--line);border-radius:11px;padding:12px 14px;margin-top:10px;cursor:pointer;position:relative;transition:.12s;background:#fff;line-height:1.55;font-size:15px;white-space:pre-wrap}
+.optrow:hover{border-color:#93c5fd;background:#f8fafc}
+.optrow .lt{min-width:24px;height:24px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12.5px;flex-shrink:0}
+.optrow.sel{border-color:var(--accent);background:#eff6ff}
+.optrow.sel .lt{background:var(--accent);color:#fff}
+.optrow.reveal-ok{border-color:#86efac;background:#f0fdf4}
+.optrow.reveal-ok .lt{background:var(--ok);color:#fff}
+.optrow.reveal-bad{border-color:#fca5a5;background:#fef2f2}
+.optrow.reveal-bad .lt{background:var(--bad);color:#fff}
+.strikebtn{margin-left:auto;background:none;border:none;color:#94a3b8;font-size:15px;cursor:pointer;flex-shrink:0;padding:0 2px}
+.strikebtn:hover{color:var(--bad)}
+.optrow s{opacity:.55}
+.explain{display:none;margin-top:16px;border-left:4px solid var(--accent);background:#f8fafc;border-radius:0 10px 10px 0;padding:12px 16px;font-size:14px;line-height:1.6;white-space:pre-wrap}
+.explain.show{display:block}
+.explain .tag{font-weight:800;color:var(--accent);margin-bottom:4px;display:block;font-size:12px;text-transform:uppercase;letter-spacing:.5px}
+.qfoot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:22px;flex-wrap:wrap}
+.palette{display:grid;grid-template-columns:repeat(auto-fill,minmax(34px,1fr));gap:6px}
+.palette button{padding:7px 0;border:1px solid var(--line);border-radius:8px;background:#fff;font-weight:700;font-size:12.5px;cursor:pointer}
+.palette button.ans{background:#dbeafe;border-color:#93c5fd}
+.palette button.flag{background:#fef3c7;border-color:#fcd34d}
+.palette button.cur{outline:3px solid var(--accent2)}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--muted);margin-bottom:10px;flex-wrap:wrap}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:5px;vertical-align:-1px}
+.resultbig{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.scorecirc{width:130px;height:130px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;color:#fff;flex-shrink:0}
+.scorecirc small{font-weight:600;font-size:11px;opacity:.85}
+.minibtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+kbd{background:#f1f5f9;border:1px solid #cbd5e1;border-bottom-width:2px;border-radius:5px;padding:1px 6px;font-size:11.5px;font-family:inherit}
+.reviewbar{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.toast{position:fixed;bottom:20px;right:20px;background:#0f172a;color:#fff;padding:12px 18px;border-radius:10px;font-size:13.5px;z-index:200;display:none;max-width:340px}
+.hlbtn{background:#fffbeb;border:1px solid #fde68a;color:#92400e;font-size:12px;font-weight:700;border-radius:7px;padding:4px 10px;cursor:pointer}
+/* ===== Concept of the Day ===== */
+.concept{position:relative;overflow:hidden;border-radius:16px;padding:20px 22px;background:linear-gradient(135deg,#131c34,#1c294a);border:1px solid #2b3a55;margin-bottom:18px;box-shadow:0 8px 30px rgba(0,0,0,.35)}
+.concept::before{content:"";position:absolute;inset:-60% -30%;background:radial-gradient(600px 220px at 12% 0%,rgba(245,196,81,.16),transparent 60%),radial-gradient(520px 280px at 92% 130%,rgba(59,130,246,.15),transparent 60%);pointer-events:none}
+.concept .crow{display:flex;gap:16px;align-items:flex-start}
+.concept .bulb{flex:0 0 auto;font-size:36px;animation:bulbGlow 3.2s ease-in-out infinite}
+@keyframes bulbGlow{0%,100%{transform:scale(1);filter:drop-shadow(0 0 8px rgba(245,196,81,.5))}50%{transform:scale(1.14);filter:drop-shadow(0 0 20px rgba(245,196,81,.95))}}
+.concept .kicker{font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:#f5c451;font-weight:800;margin-bottom:3px}
+.concept h2{font-size:21px;font-weight:800;color:#fff;margin:0 0 9px}
+.concept .cbody{white-space:pre-wrap;line-height:1.65;color:#d9e2f2;font-size:14.5px}
+.concept .cimg{margin-top:14px;max-width:100%;max-height:380px;border-radius:12px;border:1px solid #2b3a55;display:block;box-shadow:0 6px 22px rgba(0,0,0,.35)}
+.concept .stamp{margin-left:auto;font-size:11.5px;color:#94a3b8;white-space:nowrap}
+
+/* ===== Homepage landing and built-in question banks ===== */
+:root{--ink:#14213b;--muted:#63718a;--bg:#f3f6fc;--line:#e2eaf6}
+body{background:radial-gradient(ellipse at 4% 0%,#e4efff 0,transparent 34%),linear-gradient(180deg,#f7f9fd 0%,#eff4fb 100%);min-height:100vh}
+header{padding:13px max(20px,calc((100vw - 1180px)/2));background:rgba(12,24,48,.96);backdrop-filter:blur(14px);box-shadow:0 8px 30px rgba(15,23,42,.12)}
+header .logo{font-size:21px}.home-brand-link{color:inherit;text-decoration:none}.home-brand-link:focus-visible{outline:2px solid #75c8ff;outline-offset:5px;border-radius:4px}.tabs button{padding:10px 18px;font-size:14px}
+.container{max-width:1180px;margin:30px auto 54px;padding:0 22px}
+.home-hero{min-height:280px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:28px;padding:36px 48px;margin-bottom:27px;border-radius:27px;color:#fff;background:linear-gradient(112deg,#101d3c 0%,#172d56 54%,#264d91 100%);box-shadow:0 22px 54px rgba(30,64,130,.22)}
+.home-hero:before,.home-hero:after{content:"";position:absolute;border-radius:50%;pointer-events:none}.home-hero:before{width:390px;height:390px;right:90px;top:-220px;background:rgba(79,152,255,.16);filter:blur(2px)}.home-hero:after{width:330px;height:330px;right:-130px;bottom:-245px;background:rgba(34,211,238,.15);filter:blur(4px)}
+.hero-copy{position:relative;z-index:2;max-width:650px}.hero-eyebrow,.section-eyebrow{font-size:11px;letter-spacing:2px;font-weight:850;color:#92c5ff}.hero-dot{display:inline-block;width:8px;height:8px;margin-right:7px;border-radius:50%;background:#36dbbb;box-shadow:0 0 0 5px rgba(54,219,187,.14)}
+.home-hero h1{font-size:clamp(34px,4.3vw,54px);line-height:1.08;letter-spacing:-1.8px;margin:16px 0 12px;color:#fff}.home-hero h1 span{color:#75c8ff}.home-hero p{max-width:520px;margin:0 0 23px;color:#d2def0;font-size:16px;line-height:1.65}.hero-cta{display:inline-flex;align-items:center;gap:20px;padding:12px 17px;border-radius:11px;background:#fff;color:#12264a;text-decoration:none;font-size:14px;font-weight:800;box-shadow:0 7px 20px rgba(0,0,0,.16);transition:transform .2s,box-shadow .2s}.hero-cta:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,.2)}
+.hero-orbit{position:relative;z-index:1;width:230px;height:210px;flex:0 0 230px;display:grid;place-items:center}.orbit-ring{position:absolute;width:178px;height:178px;border:1px solid rgba(175,211,255,.4);border-radius:50%;box-shadow:0 0 0 22px rgba(175,211,255,.045),0 0 0 48px rgba(175,211,255,.035);animation:orbitBreath 5s ease-in-out infinite}.orbit-core{width:90px;height:90px;display:grid;place-items:center;border-radius:28px;transform:rotate(-8deg);background:linear-gradient(145deg,#52b7ff,#637bff);box-shadow:0 16px 38px rgba(0,0,0,.27),inset 0 1px 0 rgba(255,255,255,.6);font-size:43px;color:#fff;text-shadow:0 4px 10px rgba(0,0,0,.16)}.orbit-chip{position:absolute;padding:7px 10px;border:1px solid rgba(255,255,255,.25);border-radius:30px;background:rgba(17,38,75,.7);color:#e9f4ff;font-size:9px;font-weight:850;letter-spacing:1.3px;box-shadow:0 8px 18px rgba(0,0,0,.15);animation:chipFloat 4s ease-in-out infinite}.orbit-chip-one{top:12px;left:25px}.orbit-chip-two{right:-2px;top:82px;animation-delay:.8s}.orbit-chip-three{bottom:10px;left:52px;animation-delay:1.4s}@keyframes orbitBreath{50%{transform:scale(1.06);opacity:.72}}@keyframes chipFloat{50%{transform:translateY(-6px)}}
+.home-banks{margin:0 0 27px}.bank-section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:22px;margin:0 2px 16px}.section-eyebrow{color:#4770b2;margin-bottom:7px}.bank-section-head h2{margin:0;color:#172640;font-size:30px;letter-spacing:-.8px}.bank-section-head p{margin:6px 0 0;color:#697891;font-size:14px}.bank-total{display:flex;flex-direction:column;align-items:flex-end;color:#718098;font-size:11px;letter-spacing:.5px;text-transform:uppercase}.bank-total strong{font-size:25px;line-height:1.2;color:#203a68;letter-spacing:-.5px}.embedded-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,475px),1fr));gap:16px}.embedded-group{--tone:#376be4;position:relative;overflow:hidden;padding:20px;border:1px solid #e3eaf5;border-radius:20px;background:rgba(255,255,255,.91);box-shadow:0 8px 25px rgba(31,55,93,.065);transition:transform .22s,box-shadow .22s}.embedded-group:hover{transform:translateY(-3px);box-shadow:0 15px 34px rgba(31,55,93,.12)}.embedded-group:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--tone),color-mix(in srgb,var(--tone),white 38%))}.group-head{display:flex;align-items:center;gap:13px;margin-bottom:15px}.group-icon{display:grid;place-items:center;width:47px;height:47px;flex:0 0 47px;border-radius:15px;background:color-mix(in srgb,var(--tone),white 90%);font-size:22px}.group-head h3{margin:0;font-size:21px;line-height:1.2;color:#172640;letter-spacing:-.4px}.group-head p{margin:4px 0 0;color:#718098;font-size:12.5px}.bank-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}.home-bank-card{min-height:132px;display:flex;flex-direction:column;align-items:flex-start;padding:14px;border:1px solid #e8edf5;border-radius:14px;background:linear-gradient(145deg,#fff,#f8faff);transition:border-color .18s,transform .18s}.home-bank-card:hover{border-color:color-mix(in srgb,var(--tone),white 42%);transform:translateY(-2px)}.home-bank-name{font-size:15.5px;line-height:1.35;font-weight:780;color:#1b2b46;overflow-wrap:anywhere}.home-bank-meta{display:flex;align-items:center;gap:7px;margin-top:8px;color:#687994;font-size:12px}.home-bank-meta b{color:var(--tone);font-size:13px}.home-bank-action{margin-top:auto;padding-top:12px;color:var(--tone);font-size:12px;font-weight:800;text-decoration:none}.practice-lock{display:inline-block;margin-right:3px;font-size:12px;vertical-align:-1px}.home-bank-action span{padding-left:4px;transition:padding .18s}.home-bank-action:hover span{padding-left:9px}.bank-loading{grid-column:1/-1;display:flex;align-items:center;gap:10px;padding:26px;border:1px solid #e4eaf3;border-radius:16px;background:#fff;color:#64748b}.loading-pulse{width:10px;height:10px;border-radius:50%;background:#4779e8;box-shadow:0 0 0 6px #e8efff;animation:loadPulse 1s infinite alternate}@keyframes loadPulse{to{box-shadow:0 0 0 10px #e8efff;opacity:.65}}.bank-load-note{padding:12px 15px;border-radius:12px;background:#fff7e7;color:#8a5a08;font-size:13px}.concept{margin-top:4px}.concept h2{font-size:23px}
+#adminView{margin-top:27px}.card{border-radius:17px;box-shadow:0 8px 25px rgba(31,55,93,.055)}
+@media(max-width:700px){header{padding:11px 14px;gap:10px}.tabs{gap:4px}.tabs button{padding:9px 10px;font-size:12px}.container{margin:17px auto 36px;padding:0 13px}.home-hero{min-height:0;padding:27px 23px;border-radius:21px}.hero-orbit{width:120px;height:140px;flex-basis:120px}.orbit-ring{width:110px;height:110px;box-shadow:0 0 0 14px rgba(175,211,255,.045),0 0 0 30px rgba(175,211,255,.035)}.orbit-core{width:63px;height:63px;border-radius:21px;font-size:30px}.orbit-chip{font-size:7px;padding:6px 7px}.orbit-chip-one{left:0;top:0}.orbit-chip-two{right:-7px;top:59px}.orbit-chip-three{left:7px;bottom:0}.home-hero h1{font-size:35px;letter-spacing:-1px}.home-hero p{font-size:14px}.bank-section-head h2{font-size:25px}.bank-total strong{font-size:21px}.embedded-group{padding:16px}.group-head h3{font-size:19px}}
+@media(max-width:480px){.home-hero{display:block}.hero-orbit{display:none}.home-hero h1{font-size:36px}.bank-section-head{align-items:flex-start}.bank-total{padding-top:10px}.bank-total strong{font-size:19px}.bank-total span{font-size:9px}.bank-tiles{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+@media(max-width:640px){.qwrap{padding:14px}}
+  .site-copyright{padding:18px 16px 22px;text-align:center;color:#8a94a6;font-size:14px;letter-spacing:.02em;border-top:1px solid rgba(148,163,184,.18);margin-top:32px}
+  @media(prefers-color-scheme:dark){.site-copyright{color:#9aa6ba;border-color:rgba(148,163,184,.16)}}
+/* The homepage no longer exposes the legacy PDF upload, saved banks, or parser tools. */
+#adminView,#tabBank{display:none!important}
+</style>
+<style>
+.pedcalc{margin:28px 0 24px;padding:clamp(20px,4vw,32px);border:1px solid #dce6f6;border-radius:22px;background:linear-gradient(135deg,#fff 0%,#f4f8ff 60%,#eef8ff 100%);box-shadow:0 12px 32px rgba(34,67,120,.09)}
+.pedcalc h2{margin:0;color:#172640;font-size:clamp(23px,3vw,30px);letter-spacing:-.5px}.pedcalc .pc-intro{color:#64748b;margin:8px 0 20px;line-height:1.55;font-size:14px}.pc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:13px}.pc-field{display:flex;flex-direction:column;gap:6px;color:#334155;font-size:13px;font-weight:700}.pc-field input,.pc-field select{width:100%;padding:11px 12px;border:1px solid #cbd5e1;border-radius:10px;background:white;color:#0f172a;font:inherit;font-size:14px}.pc-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:16px}.pc-result{display:none;margin-top:17px;border:1px solid #bfdbfe;border-radius:13px;padding:15px 17px;background:#eff6ff;color:#1e3a8a;line-height:1.6}.pc-result.show{display:block}.pc-result b{color:#102e67}.pc-note{margin-top:14px;padding:12px 14px;border-radius:11px;background:#fff7e8;color:#80500a;border:1px solid #f4ddb0;font-size:12.5px;line-height:1.55}.pc-sources{margin-top:12px;color:#64748b;font-size:11.5px;line-height:1.6}.pc-sources a{color:#315db2}.pc-disclaimer{font-size:12px;color:#64748b;margin-top:12px;line-height:1.55}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><a class="home-brand-link" href="index.html" aria-label="MedArena homepage">✚ <span class="brand">MedArena</span></a></div>
+  <div class="tabs">
+    <button id="tabBank" class="active">📚 Question Bank</button>
+    <button id="tabExam">🗂 Practice Session</button>
+  </div>
+</header>
+
+<main class="container">
+
+
+
+
+<section class="home-hero">
+  <div class="hero-copy">
+    <div class="hero-eyebrow"><span class="hero-dot"></span> <span id="homeEyebrow">YOUR NEXT STEP STARTS HERE</span></div>
+    <h1><span id="homeTitleLead">Prepare with</span> <span id="homeTitleAccent">purpose.</span><br><span id="homeTitleSecond">Practice with confidence.</span></h1>
+    <p id="homeSubtitle">Focused question banks for your next medical entrance and Loksewa exam.</p>
+    <a class="hero-cta" href="surgery-practice.html" id="homeCta">Explore practice <span aria-hidden="true">↗</span></a>
+  </div>
+  <div class="hero-orbit" aria-hidden="true"><div class="orbit-ring"></div><div class="orbit-core">✚</div><span class="orbit-chip orbit-chip-one">LEARN</span><span class="orbit-chip orbit-chip-two">PRACTICE</span><span class="orbit-chip orbit-chip-three">GROW</span></div>
+</section>
+<section class="home-banks" aria-labelledby="homeBankTitle">
+  <div class="bank-section-head"><div><div class="section-eyebrow" id="homeBankEyebrow">CHOOSE YOUR TRACK</div><h2 id="homeBankTitle">Your question banks</h2><p id="homeBankSubtitle">Jump into a set and build exam-day confidence.</p></div><div class="bank-total" id="bankTotal"><strong>10,171</strong><span>questions ready</span></div></div>
+  <div id="embeddedBankGroups" class="embedded-groups">
+    <section class="embedded-group" style="--tone:#168a78"><div class="group-head"><div class="group-icon">🏛️</div><div><h3>Loksewa</h3><p>4 question sets · curated for your exam prep</p></div></div><div class="bank-tiles">
+      <article class="home-bank-card" style="--tone:#168a78"><div class="home-bank-name">Federal Loksewa — Medical Officer (2083-01-04)</div><div class="home-bank-meta"><b>88</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=loksewa"> Set up practice <span aria-hidden="true">→</span></a></article>
+      <article class="home-bank-card" style="--tone:#168a78"><div class="home-bank-name">Loksewa Lumbini Province 2083</div><div class="home-bank-meta"><b>100</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=lumbini83"> Set up practice <span aria-hidden="true">→</span></a></article>
+      <article class="home-bank-card" style="--tone:#168a78"><div class="home-bank-name">Gandaki Province Loksewa Set 2083</div><div class="home-bank-meta"><b>100</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=gandaki83"> Set up practice <span aria-hidden="true">→</span></a></article>
+      <article class="home-bank-card" style="--tone:#168a78"><div class="home-bank-name">Loksewa Federal 2070</div><div class="home-bank-meta"><b>100</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=loksewa2070"> Set up practice <span aria-hidden="true">→</span></a></article>
+    </div></section>
+    <section class="embedded-group" style="--tone:#426ce0"><div class="group-head"><div class="group-icon">🩺</div><div><h3>CEE MD/MS</h3><p>9 question sets · curated for your exam prep</p></div></div><div class="bank-tiles">
+      <article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">Surgery 1</div><div class="home-bank-meta"><b>1,598</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=se1"> Set up practice <span aria-hidden="true">→</span></a></article>
+      <article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">Surgery 2</div><div class="home-bank-meta"><b>2,042</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=surgery2"> Set up practice <span aria-hidden="true">→</span></a></article>
+      <article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">Surgery 3</div><div class="home-bank-meta"><b>2,111</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=surgery3"> Set up practice <span aria-hidden="true">→</span></a></article>
+      <article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">CEE Model Exam Set 1</div><div class="home-bank-meta"><b>200</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=cee1"> Set up practice <span aria-hidden="true">→</span></a></article>
+      <article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">CEE Model Exam Set 2</div><div class="home-bank-meta"><b>200</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=cee2"> Set up practice <span aria-hidden="true">→</span></a></article>
+      <article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">Opthalmology</div><div class="home-bank-meta"><b>512</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=ophtho"> Set up practice <span aria-hidden="true">→</span></a></article>
+      <article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">Psychiatry</div><div class="home-bank-meta"><b>1,122</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=psychiatry"> Set up practice <span aria-hidden="true">→</span></a></article>
+      <article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">Orthopedics</div><div class="home-bank-meta"><b>1,424</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=ortho"> Set up practice <span aria-hidden="true">→</span></a></article>
+      <article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">ENT</div><div class="home-bank-meta"><b>1,122</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=ent"> Set up practice <span aria-hidden="true">→</span></a></article>
+    </div></section>
+  </div>
+  <div id="bankLoadNote" class="bank-load-note" hidden></div>
+</section>
+<!-- Concept of the Day (managed by MedArena Admin) -->
+<section class="concept" id="conceptSec" style="display:none">
+  <div class="crow">
+    <div class="bulb">💡</div>
+    <div style="flex:1;min-width:0">
+      <div class="kicker">Concept of the Day</div>
+      <h2 id="conceptTitle"></h2>
+      <div class="cbody" id="conceptBody"></div>
+      <img id="conceptImg" alt="" style="display:none">
+    </div>
+    <div class="stamp" id="conceptStamp"></div>
+  </div>
+</section>
+
+<section class="pedcalc" id="pediatricDoseCalc" aria-labelledby="pcTitle">
+  <div class="section-eyebrow">QUICK REFERENCE</div>
+  <h2 id="pcTitle">Pediatric dose calculator</h2>
+  <p class="pc-intro">Enter the child’s age and current weight, choose a medicine and match the concentration printed on the bottle.</p>
+  <div class="pc-grid">
+    <label class="pc-field">Age (months)<input id="pcAge" type="number" min="0" max="216" step="1" inputmode="numeric" placeholder="e.g. 24"></label>
+    <label class="pc-field">Weight (kg)<input id="pcWeight" type="number" min="0.1" max="100" step="0.1" inputmode="decimal" placeholder="e.g. 12"></label>
+    <label class="pc-field">Medicine<select id="pcDrug"><option value="paracetamol">Paracetamol</option><option value="levocetirizine">Levocetirizine</option><option value="cefixime">Cefixime</option><option value="amoxicillin">Amoxicillin</option><option value="amoxclav">Amoxicillin + clavulanate</option></select></label>
+    <label class="pc-field">Liquid strength<select id="pcStrength"></select></label>
+  </div>
+  <div class="pc-actions"><button class="btn" id="pcCalculate" type="button">Calculate dose</button><span class="mut">Volume is shown per dose unless stated daily.</span></div>
+  <div class="pc-result" id="pcResult" role="status" aria-live="polite"></div>
+  <div class="pc-note"><b>Safety:</b> This is a basic educational calculator, not a prescription. Antibiotics must only be used when prescribed for a diagnosed infection; the correct medicine, dose and duration depend on the child and infection. Do not use for newborns/infants under 3 months, kidney or liver disease, allergies, or severe illness without clinician advice. Check the bottle concentration and measuring device. Do not combine products containing paracetamol.</div>
+  <div class="pc-disclaimer"><b>Strengths documented in Nepal:</b> paracetamol 125 mg/5 mL; levocetirizine 2.5 mg/5 mL; cefixime 50 or 100 mg/5 mL; amoxicillin 125 or 250 mg/5 mL; amoxicillin/clavulanate 200/28.5 or 400/57 mg per 5 mL. A 125/31.25 mg per 5 mL amoxicillin/clavulanate product is also listed locally, but is excluded from this high-dose example because it has a different ratio. Always follow the exact bottle label.<br><br>Levocetirizine doses are age-based label doses, not WHO recommendations. The amoxicillin and amoxicillin/clavulanate values shown are the WHO acute bacterial sinusitis example only (80–90 mg/kg/day of amoxicillin, divided every 12 hours); WHO notes antibiotics are unnecessary in most sinusitis cases. Cefixime is shown as 8 mg/kg/day for children aged 6 months and older, maximum 400 mg/day.</div>
+  <div class="pc-sources">Sources: <a href="https://iris.who.int/bitstream/handle/10665/365237/9789240062382-eng.pdf?sequence=1" target="_blank" rel="noopener">WHO AWaRe antibiotic book</a> · <a href="https://cdn.who.int/media/docs/default-source/essential-medicines/2019-eml-expert-committee/late-papers/abwg_paediatric_dosing_ab.pdf" target="_blank" rel="noopener">WHO pediatric antibiotic dosing table</a> · <a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=068e6edd-a5fe-40d8-8dcf-ac82b78dced4" target="_blank" rel="noopener">Cefixime label (age and maximum)</a> · <a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=dc8adb01-a7ca-490b-b476-8915f1a2e6db" target="_blank" rel="noopener">Levocetirizine label</a> · <a href="https://giwmscdnone.gov.np/media/pdf_upload/National%20List%20of%20Essential%20Medicines%20Nepal%2C%20Sixth%20revision%20%282021%29_21%20Dec.pdf" target="_blank" rel="noopener">Nepal National List of Essential Medicines</a> · <a href="https://giwmscdnone.gov.np/media/pdf_upload/Levocetirizine%20HCl%20Syrup_snqanrx.pdf" target="_blank" rel="noopener">Nepal levocetirizine syrup profile</a> · <a href="https://giwmscdnone.gov.np/media/pdf_upload/List%20of%20Drugs%20available%20in%20Hospital%20Pharmacy%20%281%29%20%282%29_kz831g9.pdf" target="_blank" rel="noopener">Nepal hospital pharmacy list</a></div>
+</section>
+<script>
+(()=>{
+ const drug=document.getElementById('pcDrug'), strength=document.getElementById('pcStrength'), result=document.getElementById('pcResult');
+ const choices={paracetamol:[['125','125 mg/5 mL']],levocetirizine:[['2.5','2.5 mg/5 mL']],cefixime:[['50','50 mg/5 mL'],['100','100 mg/5 mL']],amoxicillin:[['125','125 mg/5 mL'],['250','250 mg/5 mL']],amoxclav:[['200','200 mg + 28.5 mg/5 mL (7:1)'],['400','400 mg + 57 mg/5 mL (7:1)']]};
+ function options(){strength.innerHTML=choices[drug.value].map((x,i)=>'<option value="'+x[0]+'">'+x[1]+'</option>').join('');result.classList.remove('show');}
+ drug.addEventListener('change',options);options();
+ const f=n=>Number(n.toFixed(2)).toString();
+ document.getElementById('pcCalculate').addEventListener('click',()=>{
+  const age=Number(document.getElementById('pcAge').value), kg=Number(document.getElementById('pcWeight').value), s=Number(strength.value); let message='';
+  if(!Number.isFinite(age)||!Number.isFinite(kg)||age<0||kg<=0){message='Enter a valid age and weight to calculate.';}
+  else if(age<3){message='This basic calculator does not provide dosing under 3 months. Please contact a clinician for age-specific advice.';}
+  else if(drug.value==='levocetirizine'){
+   if(age<6){message='Levocetirizine label dosing starts at 6 months. Please consult a clinician.';}
+   else {const mg=age<72?1.25:age<144?2.5:5, ml=mg/(s/5);message='<b>Label dose:</b> '+f(mg)+' mg once daily in the evening = <b>'+f(ml)+' mL per dose</b> ('+choices.levocetirizine.find(x=>x[0]===String(s))[1]+'). Age-based label dose; not a WHO dose. Kidney disease needs clinician review.';}
+  } else if(drug.value==='paracetamol'){
+   if(age<3){message='Paracetamol requires special guidance under 3 months.';} else {const lo=10*kg, hi=15*kg, mlLo=lo/(s/5),mlHi=hi/(s/5),max=60*kg;message='<b>10–15 mg/kg per dose every 6 hours as needed:</b> '+f(lo)+'–'+f(hi)+' mg = <b>'+f(mlLo)+'–'+f(mlHi)+' mL per dose</b>. Maximum: '+f(max)+' mg in 24 hours (all paracetamol sources combined).';}
+  } else if(drug.value==='cefixime'){
+   if(age<6){message='Cefixime dosing in this calculator starts at 6 months. Please consult a clinician.';} else {const day=Math.min(8*kg,400),ml=day/(s/5);message='<b>8 mg/kg/day</b> (maximum 400 mg/day): '+f(day)+' mg/day = <b>'+f(ml)+' mL total per day</b>, given once daily or split into 2 equal doses 12 hours apart. Diagnosis and renal function affect dosing.';}
+  } else {
+   const lo=80*kg,hi=90*kg,maxDose=1000,loDose=Math.min(lo/2,maxDose),hiDose=Math.min(hi/2,maxDose),loMl=loDose/(s/5),hiMl=hiDose/(s/5),drugName=drug.value==='amoxclav'?'amoxicillin component':'amoxicillin';message='<b>WHO acute bacterial sinusitis example only:</b> 80–90 mg/kg/day of '+drugName+', divided every 12 hours. Per dose: '+f(loDose)+'–'+f(hiDose)+' mg = <b>'+f(loMl)+'–'+f(hiMl)+' mL</b> of this liquid. WHO weight-band maximum shown is 1,000 mg per dose. Confirm product ratio and prescribed dose with clinician/pharmacist.';
+   if(drug.value==='amoxclav')message+=' This calculation uses the amoxicillin amount in the 7:1 strength; it also contains clavulanate.';
+  }
+  result.innerHTML=message;result.classList.add('show');
+ });
+})();
+</script>
+<section id="adminView">
+  <div class="card">
+    <h1>Question Bank — Upload &amp; Scan PDFs</h1>
+    <div class="sub">Upload PDFs containing MCQs with answer keys. They are scanned, parsed into exam-format questions and stored locally in your browser. <span class="badge y" id="bootChip">JS not loaded yet…</span></div>
+    <label class="drop" id="dropZone" for="pdfInput">
+      <div style="font-size:30px">📄</div>
+      <div><b>Click to select PDFs</b> or drag &amp; drop files here</div>
+      <div class="mut" style="margin-top:6px">Multiple files supported · parsed fully offline in your browser</div>
+      <input type="file" id="pdfInput" accept=".pdf,application/pdf" multiple style="display:none">
+    </label>
+    <div id="uploadLog"></div>
+    <div class="rowflex" style="margin-top:14px">
+      <button class="btn sec small" id="exportAllBtn">⬇ Export all banks (JSON)</button>
+      <button class="btn sec small" id="importBtn">⬆ Import JSON backup</button>
+      <input type="file" id="jsonInput" accept=".json" hidden>
+    </div>
+  </div>
+
+  <div class="card">
+    <h1 style="font-size:18px">Saved Banks</h1>
+    <div class="sub">Each uploaded PDF becomes a bank. Practice sessions are built from these.</div>
+    <div class="bankgrid" id="bankList"></div>
+    <div id="noBanks" class="mut" style="display:none">No banks yet — upload a PDF above.</div>
+  </div>
+
+  <div class="hintbox card" style="background:#fffbeb;border-color:#fde68a;color:#78350f">
+    <b>⚙ Parser tips (what format works best)</b>
+    The scanner recognises numbered questions (<code>1.</code> / <code>1)</code> / <code>Question 1</code>), options on their own lines (<code>A.</code> <code>(B)</code> <code>C)</code>), and answer keys such as <code>Answer: B</code>, <code>Correct Answer — C</code>, <code>Ans. (D)</code> or a bare <code>(C)</code> line. Text following the answer line is kept as the explanation. Questions where options or the answer key can't be detected are counted as “skipped” — check the upload report. Use text-based (selectable) PDFs, not scanned images.
+  </div>
+</section>
+
+<section id="examView" style="display:none">
+
+  <div id="examConfig" class="exview active">
+    <div class="card">
+      <h1>Create Practice Session</h1>
+      <div class="sub">Choose a bank, a set of questions, mode and options — then start.</div>
+      <div class="formgrid" style="margin-bottom:16px">
+        <label class="f">Question bank
+          <select id="bankSel"><option value="">— select bank —</option></select>
+        </label>
+        <label class="f">Set
+          <select id="setSel"><option value="">—</option></select>
+        </label>
+        <label class="f">Set size
+          <select id="setSizeSel">
+            <option>10</option><option>20</option><option selected>40</option><option>50</option>
+          </select>
+        </label>
+        <label class="f">Mode
+          <select id="modeSel">
+            <option value="timed" selected>⏱ Timed (exam-like)</option>
+            <option value="tutor">🎓 Tutor (instant feedback)</option>
+          </select>
+        </label>
+        <label class="f">Timer (minutes, 0 = none)
+          <input type="number" id="timerMin" min="0" max="360" value="60">
+        </label>
+      </div>
+      <div class="chkrow" style="margin-bottom:18px">
+        <label><input type="checkbox" id="shufQ" checked> 🔀 Shuffle question order</label>
+        <label><input type="checkbox" id="shufO" checked> Shuffle answer options (A–E)</label>
+      </div>
+      <button class="btn" id="startBtn">▶ Start session</button>
+      <div class="mut" style="margin-top:8px">Shortcuts during session: <kbd>←</kbd><kbd>→</kbd> navigate · <kbd>1</kbd>–<kbd>9</kbd> select option · <kbd>F</kbd> flag</div>
+    </div>
+    <div class="card">
+      <h1 style="font-size:18px">Previous sessions</h1>
+      <div class="sub">Resume a paused session or review a completed one.</div>
+      <div id="attemptWrap"></div>
+    </div>
+    <div class="card">
+      <h1 style="font-size:18px">Performance</h1>
+      <div class="sub" id="perfSub">Accuracy across your completed sessions in this bank.</div>
+      <div id="perfWrap"></div>
+    </div>
+  </div>
+
+  <div id="examPlay" class="exview">
+    <div class="card" style="padding:0">
+      <div class="rowflex" style="padding:12px 20px;border-bottom:1px solid var(--line);gap:12px">
+        <b id="examTitle" style="font-size:14px">Session</b>
+        <span id="examModePill" class="pill"></span>
+        <div style="margin-left:auto;display:flex;gap:10px;align-items:center">
+          <div id="timerBox" class="timer">--:--</div>
+          <button class="btn sec small" id="pauseBtn">⏸ Save &amp; exit</button>
+          <button class="btn small" id="submitBtn">Submit block</button>
+        </div>
+      </div>
+      <div class="qwrap" id="qBody"></div>
+      <div class="qfoot" style="padding:0 26px 22px">
+        <button class="btn sec" id="prevBtn">← Previous</button>
+        <div class="mut" id="posLabel"></div>
+        <button class="btn" id="nextBtn">Next →</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="sub" style="margin-bottom:8px">Question palette — click to jump. <span style="color:#b45309">⚑</span> = flagged · blue = answered · dark border = current.</div>
+      <div class="palette" id="palette"></div>
+    </div>
+  </div>
+
+  <div id="examResults" class="exview">
+    <div class="card">
+      <h1>Results</h1>
+      <div class="sub" id="resMeta"></div>
+      <div class="resultbig">
+        <div class="scorecirc" id="scoreCirc"><span id="scorePct" style="font-size:30px">0%</span><small id="scoreFrac"></small></div>
+        <div>
+          <div id="resLines" style="font-size:14px;line-height:1.9"></div>
+          <div class="minibtns">
+            <button class="btn sec small" id="retakeBtn">🔁 Retake same set</button>
+            <button class="btn sec small" id="newBtn2">＋ New session</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="reviewbar" id="revFilters"></div>
+      <div id="reviewList" style="max-height:none"></div>
+    </div>
+  </div>
+
+</section>
+</main>
+
+<dialog id="bankViewer">
+  <div class="dlghead">
+    <b id="dlgTitle" style="font-size:15px">Bank</b>
+    <span class="badge a" id="dlgCount"></span>
+    <button class="btn sec small" style="margin-left:auto" onclick="document.getElementById('bankViewer').close()">Close</button>
+  </div>
+  <div class="dlgbody" id="dlgBody"></div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script>
+"use strict";
+/* Homepage copy managed from the Admin panel. */
+const HOMEPAGE_CONTENT = {"eyebrow":"YOUR NEXT STEP STARTS HERE","titleLead":"Prepare with","titleAccent":"purpose.","titleSecond":"Practice with confidence for Loksewa, CEE-MD/MS exams ","subtitle":"Focused question banks for your next medical entrance and Loksewa exam.","ctaLabel":"Explore practice","banksEyebrow":"CHOOSE YOUR TRACK","banksTitle":"Your question banks","banksSubtitle":"Jump into a set and build exam-day confidence.","footerText":"© Dr. Ram","updated":"07 Nov 2026, 19:13"};
+(function renderHomepageContent(){
+  const c=HOMEPAGE_CONTENT||{};
+  const copyright=document.getElementById("siteCopyright");if(copyright&&typeof c.footerText==="string"&&c.footerText.trim())copyright.textContent=c.footerText;
+  const fields={homeEyebrow:"eyebrow",homeTitleLead:"titleLead",homeTitleAccent:"titleAccent",homeTitleSecond:"titleSecond",homeSubtitle:"subtitle",homeBankEyebrow:"banksEyebrow",homeBankTitle:"banksTitle",homeBankSubtitle:"banksSubtitle"};
+  Object.entries(fields).forEach(([id,key])=>{const el=document.getElementById(id);if(el&&typeof c[key]==="string")el.textContent=c[key];});
+  const cta=document.getElementById("homeCta");if(cta&&c.ctaLabel)cta.firstChild.textContent=c.ctaLabel+" ";
+})();
+/* ===== Concept of the Day (set from MedArena Admin) ===== */
+const CONCEPT = {"title":"Why do patients with chronic liver disease bruise easily?","body":"Because the diseased liver can't synthesise clotting factors well.\n\n• The liver makes nearly all coagulation factors (I, II, V, VII, IX, X…)\n• Vitamin K acts only if the liver is healthy enough to use it\n• Also: low platelets from hypersplenism add to the bleeding risk\n\n\nExam hook: In liver disease, ING coagulopathy responds to FFP, not just vitamin K alone.","img":"","updated":"05 Nov 2026, 20:39"}; // {title, body, img, updated}
+(function renderConcept(){
+  const c = (typeof CONCEPT === "object" && CONCEPT) ? CONCEPT : null;
+  const sec = document.getElementById("conceptSec");
+  if (!c || !(c.title || c.body)) return;               // hidden until admin sets content
+  sec.style.display = "";
+  document.getElementById("conceptTitle").textContent = c.title || "";
+  const b = document.getElementById("conceptBody");
+  b.textContent = c.body || "";
+  b.style.display = c.body ? "" : "none";
+  const im = document.getElementById("conceptImg");
+  if (c.img){ im.src = c.img; im.style.display = ""; } else im.style.display = "none";
+  document.getElementById("conceptStamp").textContent = c.updated ? "updated " + c.updated : "";
+})();
+/* ===== practice lock sign (mirrored from admin; null = no lock) ===== */
+const PLOCK = {"rev":"43c2c0d8-5d637e14","updated":"07 Nov 2026, 19:14"};
+(function showLockIcons(){
+  if (!(typeof PLOCK === "object" && PLOCK)) return;
+  document.querySelectorAll(".home-bank-action").forEach(a => {
+    if (a.querySelector(".lock-ic")) return;
+    const s = document.createElement("span");
+    s.className = "lock-ic";
+    s.textContent = "\u{1F512}";
+    s.setAttribute("aria-label", "Code required");
+    a.prepend(s);
+  });
+})();
+window.addEventListener("error", e => {
+  const t = document.getElementById("bootChip") || document.getElementById("toast");
+  if(t){ t.textContent = "⚠ JS Error: " + e.message; }
+});
+function setupPdf(){ if(window.pdfjsLib && !window.pdfjsLib.GlobalWorkerOptions.workerSrcSet){ try{ pdfjsLib.GlobalWorkerOptions.workerSrc = "pdf.worker.min.js"; }catch(e){} } }
+setupPdf();
+const $ = s => document.querySelector(s);
+const state = { banks: [], exam: null, bank: null, errorPool: [] };
+let DB = null;
+
+function switchTab(id, btn){
+  const tabs = [["adminView", $("tabBank")], ["examView", $("tabExam")]];
+  tabs.forEach(([v, b]) => { $(`#${v}`).style.display = "none"; b.classList.remove("active"); });
+  $(`#${id}`).style.display = ""; btn.classList.add("active");
+}
+
+$("tabBank").onclick = () => switchTab("adminView", $("tabBank"));
+$("tabExam").onclick = () => { window.location.href = "surgery-practice.html"; };
+
+function toast(msg){
+  const t = $("toast"); t.textContent = msg; t.style.display = "block";
+  clearTimeout(t._h); t._h = setTimeout(() => t.style.display = "none", 3500);
+}
+
+function initDB(){
+  return new Promise((res, rej) => {
+    const r = indexedDB.open("mcqTrainerDB", 1);
+    r.onupgradeneeded = e => {
+      const db = e.target.result;
+      if(!db.objectStoreNames.contains("banks")) db.createObjectStore("banks", { keyPath: "id" });
+      if(!db.objectStoreNames.contains("attempts")) db.createObjectStore("attempts", { keyPath: "id" });
+    };
+    r.onsuccess = () => { DB = r.result; res(); };
+    r.onerror = () => rej(r.error);
+  });
+}
+const idbAll = st => new Promise((res, rej) => { const t = DB.transaction(st, "readonly").objectStore(st).getAll(); t.onsuccess = () => res(t.result); t.onerror = () => rej(t.error); });
+const idbPut = (st, v) => new Promise((res, rej) => { const t = DB.transaction(st, "readwrite").objectStore(st).put(v); t.onsuccess = res; t.onerror = () => rej(t.error); });
+const idbDel = (st, k) => new Promise((res, rej) => { const t = DB.transaction(st, "readwrite").objectStore(st).delete(k); t.onsuccess = res; t.onerror = () => rej(t.error); });
+
+const esc = t => (t ?? "").toString().replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+const shuffle = a => { const x = [...a]; for(let i = x.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [x[i], x[j]] = [x[j], x[i]]; } return x; };
+const fmtTime = s => `${String(Math.floor(s / 60)).padStart(2, "0")}:${String(s % 60).padStart(2, "0")}`;
+
+/* ============ PDF text extraction ============ */
+async function extractPdfText(file, onProg){
+  const buf = new Uint8Array(await file.arrayBuffer());
+  const pdf = await pdfjsLib.getDocument({ data: buf }).promise;
+  const pages = [];
+  for(let p = 1; p <= pdf.numPages; p++){
+    if(onProg) onProg(p, pdf.numPages);
+    const page = await pdf.getPage(p);
+    const tc = await page.getTextContent();
+    let out = "", prev = null;
+    for(const it of tc.items){
+      const str = it.str ?? "";
+      const x = it.transform[4], y = it.transform[5];
+      const w = it.width || 0, h = it.height || 9;
+      if(prev){
+        const dy = Math.abs(y - prev.y);
+        if(dy > Math.max(prev.h, h) * 0.55) out += "\n";
+        else if(x > prev.x + prev.w + h * 0.25) out += " ";
+        else if(x < prev.x + prev.w * 0.5 && dy < 0.8 && str && !prev.end) {}
+        else if(x < prev.x && dy < 0.8) out += "\n";
+      }
+      out += str;
+      prev = { x: x + (str && str[str.length - 1] === " " ? 0 : 0), y, w, h };
+    }
+    pages.push(out);
+  }
+  let text = pages.join("\n");
+  text = text.split("\n").map(l => l.replace(/[ \t]+/g, " ").trim())
+    .filter(l => l && !/^(?:page\s*)?\d{1,4}[.)]?\s*(?:of\s*\d{1,4})?$/i.test(l))
+    .join("\n");
+  text = text.replace(/\*\*/g, "").replace(/__/g, "").replace(/\u00a0/g, " ");
+  return text;
+}
+
+/* ============ MCQ parser ============ */
+const LETTERS = "ABCDE";
+function markAll(text, re){
+  re.lastIndex = 0; const out = []; let m;
+  while((m = re.exec(text)) !== null){ out.push({ ...m }); if(m.index === re.lastIndex) re.lastIndex++; }
+  return out;
+}
+function lineMarkers(b){
+  return markAll(b, /(?:^|\n)[ \t]*\((?:([A-Ea-e])\)|([A-Ea-e])[.)])[ \t]*/g).map(m => {
+    const letter = (m[1] ?? m[2]).toUpperCase();
+    const start = m.index + (m[0][0] === "\n" ? 1 : 0);
+    return { letter, li: LETTERS.indexOf(letter), start, pos: m.index + m[0].length };
+  });
+}
+function inlineMarkers(b){
+  const found = markAll(b, /(?:^|[\s>])(?:\(([A-Ea-e])\)|([A-Ea-e])[.)])[ \t]*(?=\S)/g).map(m => {
+    const letter = (m[2] ?? m[3]).toUpperCase();
+    const letterPos = b.indexOf((m[2] ?? m[3]), m.index);
+    const start = m[2] != null ? Math.max(letterPos - 1, m.index) : letterPos;
+    return { letter, li: LETTERS.indexOf(letter), start, pos: m.index + m[0].length };
+  });
+  return found;
+}
+function pickSequence(mks){
+  let exp = 0; const kept = [];
+  for(const mk of mks){ if(mk.li === exp){ kept.push(mk); exp++; } }
+  return kept.length >= 4 ? kept : null;
+}
+function findAnswerAfter(b, from, nOpts){
+  const region = b.slice(from);
+  const kws = markAll(region, /(?:correct\s+(?:answer|choice|option)|(?:answers?|ans)\b)[\s:*\-–—=.{\[]*/gi);
+  for(const k of kws){
+    const after = region.slice(k.index + k[0].length, k.index + k[0].length + 30);
+    const lm = after.match(/^\W{0,4}(?:is|was|=|be)?\W{0,4}\(?\s*([A-Ea-e1-5])\s*[\).:\]]{0,2}(?![A-Za-z])/i);
+    if(lm){
+      const c = lm[1];
+      const idx = /[0-9]/.test(c) ? parseInt(c, 10) - 1 : LETTERS.indexOf(c.toUpperCase());
+      if(idx >= 0 && idx < nOpts) return { idx, at: from + k.index, end: from + k.index + k[0].length + lm[0].length };
+    }
+  }
+  const tail = b.slice(from);
+  let lastLone = null;
+  for(const t of markAll(tail, /(?:^|\n)[ \t]*\(?\s*([A-Ea-e1-5])\s*\)?\s*[.:]?\s*$/gm)){
+    lastLone = t;
+  }
+  if(lastLone){
+    const c = lastLone[1];
+    const idx = /[0-9]/.test(c) ? parseInt(c, 10) - 1 : LETTERS.indexOf(c.toUpperCase());
+    if(idx >= 0 && idx < nOpts) return { idx, at: from + lastLone.index, end: b.length };
+  }
+  return null;
+}
+function parseQuestions(raw){
+  const lines = raw.split("\n");
+  const clean = lines.map(l => l.replace(/\s+$/, "").replace(/^[ \t]+/, "")).join("\n");
+  const qms = markAll(clean, /^(?:Q(?:uestion)?\s*[.\-:]?\s*)?(\d{1,3})\s*[.)\-:]\s+/gm)
+    .map(m => ({ num: parseInt(m[1], 10), idx: m.index + (m[0][0] === "\n" ? 1 : 0), m0len: m[0].length }))
+    .filter((v, i, arr) => i === 0 || true)
+    .filter(v => true);
+  const starts = [];
+  for(const q of qms){
+    const end = starts.length ? starts[starts.length - 1].idx : 0;
+    if(q.idx >= end) starts.push(q);
+  }
+  const blocks = [];
+  if(starts.length){
+    for(let i = 0; i < starts.length; i++){
+      const from = starts[i].idx + starts[i].m0len;
+      const to = i + 1 < starts.length ? starts[i + 1].idx : clean.length;
+      const body = clean.slice(from, to);
+      if(body.replace(/\s/g, "").length >= 40) blocks.push({ num: starts[i].num, body });
+    }
+  } else {
+    blocks.push({ num: 1, body: clean });
+  }
+  const questions = [], skipped = [];
+  for(const blk of blocks){
+    const b = blk.body.replace(/\n{2,}/g, "\n").trim();
+    let mks = pickSequence(lineMarkers(b)) ?? (pickSequence(inlineMarkers(b)) ?? null);
+    if(!mks){ skipped.push({ reason: "no options detected", sample: b.slice(0, 70) }); continue; }
+    const stem = b.slice(0, mks[0].start).replace(/[\n\r]+/g, " ").replace(/\s{2,}/g, " ").trim();
+    if(stem.length < 12){ skipped.push({ reason: "stem too short", sample: b.slice(0, 70) }); continue; }
+    const ans = findAnswerAfter(b, mks[0].start, mks.length);
+    if(!ans){ skipped.push({ reason: "answer key not found", sample: b.slice(0, 70) }); continue; }
+    const options = [];
+    for(let i = 0; i < mks.length; i++){
+      const segFrom = mks[i].pos;
+      let segTo = i + 1 < mks.length ? mks[i + 1].start : (ans.at > mks[i].pos ? ans.at : b.length);
+      if(i === mks.length - 1 && ans.at < mks[i].pos) segTo = ans.at;
+      let txt = b.slice(segFrom, segTo).replace(/[\n\r]+/g, " ").replace(/\s{2,}/g, " ").trim();
+      const cut = txt.search(/\b(?:correct\s+(?:answer|choice|option)|(?:answers?)\b|(?:ans)\b)\b/i);
+      if(cut > 3) txt = txt.slice(0, cut).trim();
+      options.push({ letter: LETTERS[mks[i].li], text: txt });
+    }
+    if(options.some(o => o.text.length < 1)){ skipped.push({ reason: "empty option", sample: stem.slice(0, 60) }); continue; }
+    const explanation = b.slice(Math.min(ans.end, b.length)).replace(/\s{2,}/g, " ").trim();
+    questions.push({
+      n: blk.num, stem,
+      options,
+      answerIdx: ans.idx,
+      answerLetter: LETTERS[ans.idx],
+      answerText: options[ans.idx].text,
+      explanation
+    });
+  }
+  return { questions, skipped };
+}
+
+/* ============ Admin UI ============ */
+$("dropZone").addEventListener("dragover", e => { e.preventDefault(); e.stopPropagation(); $("dropZone").classList.add("over"); });
+$("dropZone").addEventListener("dragleave", () => $("dropZone").classList.remove("over"));
+$("dropZone").addEventListener("drop", e => { e.preventDefault(); e.stopPropagation(); $("dropZone").classList.remove("over"); handlePdfFiles([...e.dataTransfer.files]); });
+$("pdfInput").onchange = e => { handlePdfFiles([...e.target.files]); e.target.value = ""; };
+$("importBtn").onclick = () => $("jsonInput").click();
+$("jsonInput").onchange = e => { handleJsonFiles([...e.target.files]); e.target.value = ""; };
+$("exportAllBtn").onclick = () => {
+  if(!state.banks.length) return toast("No banks to export.");
+  const blob = new Blob([JSON.stringify(state.banks, null, 1)], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `mcq-banks-backup-${new Date().toISOString().slice(0, 10)}.json`;
+  a.click();
+};
+
+async function handlePdfFiles(files){
+  setupPdf();
+  const rowLog = $("uploadLog");
+  let row = null;
+  try{
+    const pdfs = files.filter(f => /\.pdf$/i.test(f.name) || f.type === "application/pdf");
+    if(!pdfs.length){ toast("No PDF files found in selection: " + files.map(f => f.name).join(", ")); return; }
+    for(const f of pdfs){
+      row = document.createElement("div");
+      row.className = "uplrow";
+      row.innerHTML = `<div class="rowflex"><span class="name">${esc(f.name)}</span><span class="stat" id="s_${f.size}">queued… (${(f.size / 1024).toFixed(0)} KB)</span></div><div class="filebar"><i id="b_${f.size}"></i></div>`;
+      rowLog.prepend(row);
+      const stat = row.querySelector(".stat"), bar = row.querySelector("i");
+      const fail = msg => { stat.className = "stat err"; stat.textContent = "✖ " + msg; };
+      if(!window.pdfjsLib){ fail("PDF.js library not loaded"); return; }
+      try{
+        const text = await extractPdfText(f, (p, n) => {
+          stat.textContent = `scanning page ${p}/${n}…`;
+          bar.style.width = `${Math.round(p / n * 70)}%`;
+        });
+        bar.style.width = "85%";
+        stat.textContent = "parsing questions…";
+        await new Promise(r => setTimeout(r, 30));
+        const { questions, skipped } = parseQuestions(text);
+        const bank = { id: "b" + Date.now() + Math.random().toString(36).slice(2, 7), name: f.name, createdAt: Date.now(), questions };
+        await idbPut("banks", bank);
+        bar.style.width = "100%";
+        stat.className = "stat ok";
+        stat.textContent = `✔ ${questions.length} questions parsed${skipped.length ? ` · ${skipped.length} skipped` : ""}`;
+        await loadBanks(); renderConfig();
+      } catch(inner){
+        fail("Parse/scan error: " + (inner && inner.message ? inner.message : inner));
+        console.error(inner);
+      }
+    }
+  } catch(outer){
+    if(row){ const s = row.querySelector(".stat"); s.className = "stat err"; s.textContent = "✖ " + (outer && outer.message ? outer.message : outer); }
+    $("bootChip").textContent = "⚠ Upload error: " + (outer && outer.message ? outer.message : outer);
+    $("bootChip").className = "badge r";
+    console.error(outer);
+  }
+}
+
+async function handleJsonFiles(files){
+  for(const f of files){
+    try{
+      const data = JSON.parse(await f.text());
+      const arr = Array.isArray(data) ? data : [data];
+      let added = 0;
+      for(const bk of arr){
+        if(bk && bk.name && Array.isArray(bk.questions) && bk.questions.length){
+          bk.questions.forEach(q => {
+            if(typeof q.answerIdx !== "number" && q.answerLetter) q.answerIdx = LETTERS.indexOf(q.answerLetter);
+            q.answerText = q.options[q.answerIdx] ? q.options[q.answerIdx].text : "";
+          });
+          await idbPut("banks", { id: "b" + Date.now() + Math.random().toString(36).slice(2, 7), name: bk.name, createdAt: Date.now(), questions: bk.questions });
+          added++;
+        }
+      }
+      toast(`Imported ${added} bank(s).`);
+      await loadBanks(); renderConfig();
+    } catch(err){ toast("Import failed: invalid JSON."); }
+  }
+}
+
+async function loadBanks(){
+  state.banks = (await idbAll("banks")).sort((a, b) => b.createdAt - a.createdAt);
+  renderBanks();
+}
+function renderBanks(){
+  const wrap = $("bankList"); wrap.innerHTML = "";
+  $("noBanks").style.display = state.banks.length ? "none" : "block";
+  for(const b of state.banks){
+    const d = new Date(b.createdAt);
+    const div = document.createElement("div");
+    div.className = "bankcard";
+    div.innerHTML = `<h3>${esc(b.name)}</h3>
+      <div class="meta">${b.questions.length} questions · ${d.toLocaleDateString()} ${d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</div>
+      <div class="rowflex">
+        <button class="btn small">👁 View</button>
+        <button class="btn sec small">⬇ Export</button>
+        <button class="btn danger small">🗑 Delete</button>
+      </div>`;
+    const [viewBtn, expBtn, delBtn] = div.querySelectorAll("button");
+    viewBtn.onclick = () => openBankViewer(b);
+    expBtn.onclick = () => {
+      const blob = new Blob([JSON.stringify({ name: b.name, questions: b.questions }, null, 1)], { type: "application/json" });
+      const a = document.createElement("a"); a.href = URL.createObjectURL(blob);
+      a.download = b.name.replace(/\.pdf$/i, "") + ".json"; a.click();
+    };
+    delBtn.onclick = async () => {
+      if(!confirm(`Delete bank "${b.name}" (${b.questions.length} questions)?`)) return;
+      await idbDel("banks", b.id);
+      await loadBanks(); renderConfig();
+    };
+    wrap.appendChild(div);
+  }
+}
+function openBankViewer(b){
+  $("dlgTitle").textContent = b.name;
+  $("dlgCount").textContent = `${b.questions.length} questions`;
+  const sk = b.questions.filter(q => !q.answerText);
+  const body = $("dlgBody"); body.innerHTML = "";
+  if(sk.length) body.insertAdjacentHTML("beforeend", `<div class="badge r" style="margin-bottom:10px;display:inline-block">${sk.length} question(s) missing answer text</div>`);
+  b.questions.forEach((q, i) => {
+    const card = document.createElement("div");
+    card.className = "qcard";
+    card.innerHTML = `<div class="stem">${esc(`${i + 1}. ${q.stem}`)}</div>` +
+      q.options.map(o => `<div class="opt${o.text === q.answerText ? " correct" : ""}"><b>${esc(o.letter)}.</b><span>${esc(o.text)}</span></div>`).join("") +
+      (q.explanation ? `<div class="mut" style="margin-top:8px;white-space:pre-wrap"><b>Explanation:</b> ${esc(q.explanation)}</div>` : "");
+    body.appendChild(card);
+  });
+  $("bankViewer").showModal();
+}
+
+/* ============ Exam configuration ============ */
+function renderConfig(){
+  const sel = $("bankSel");
+  const prev = sel.value;
+  sel.innerHTML = `<option value="">— select bank —</option>` + state.banks.map(b => `<option value="${b.id}">${esc(b.name)} (${b.questions.length})</option>`).join("");
+  if(prev && state.banks.some(b => b.id === prev)) sel.value = prev;
+  renderSets(); renderAttempts();
+}
+$("bankSel").onchange = () => { state.bank = state.banks.find(b => b.id === $("bankSel").value) || null; renderSets(); renderAttempts(); };
+$("setSizeSel").onchange = () => { localStorage.setItem("mcq.setSize", $("setSizeSel").value); renderSets(); };
+$("shufQ").onchange = () => localStorage.setItem("mcq.shufQ", $("shufQ").checked ? "1" : "0");
+$("shufO").onchange = () => localStorage.setItem("mcq.shufO", $("shufO").checked ? "1" : "0");
+$("modeSel").onchange = () => {
+  const m = $("modeSel").value;
+  $("timerMin").disabled = m === "tutor";
+  $("timerMin").value = m === "tutor" ? 0 : 60;
+};
+function renderSets(){
+  const sel = $("setSel"); sel.innerHTML = "";
+  if(!state.bank){ sel.innerHTML = `<option value="">—</option>`; return; }
+  const size = parseInt($("setSizeSel").value, 10);
+  const n = state.bank.questions.length;
+  const ns = Math.ceil(n / size);
+  let html = "";
+  for(let i = 0; i < ns; i++){
+    const f = i * size + 1, t = Math.min(n, (i + 1) * size);
+    html += `<option value="${i}">Set ${i + 1} (Q${f}–Q${t})</option>`;
+  }
+  html += `<option value="all">All questions (${n})</option>`;
+  sel.innerHTML = html;
+}
+function renderAttempts(){
+  const wrap = $("attemptWrap"); wrap.innerHTML = "";
+  const perf = $("perfWrap"); perf.innerHTML = "";
+  if(!state.bank){ wrap.innerHTML = `<div class="mut">Select a bank to see its sessions.</div>`; return; }
+  idbAll("attempts").then(all => {
+    const rows = all.filter(a => a.bankId === state.bank.id).sort((a, b) => b.startedAt - a.startedAt);
+    const bank = state.bank;
+    const perStem = {};
+    let totQ = 0, totC = 0;
+    rows.filter(a => a.finishedAt && a.snapshot).forEach(a => {
+      a.snapshot.pool.forEach((q, i) => {
+        const k = q.stem;
+        const r = perStem[k] || (perStem[k] = { stem: q.stem, seen: 0, right: 0 });
+        r.seen++; totQ++;
+        if(a.snapshot.sel[i] === q.options.find(o => o.correct === 1).text){ r.right++; totC++; }
+      });
+    });
+    const done = rows.filter(a => a.finishedAt && a.snapshot);
+    const errorKeys = Object.keys(perStem).filter(k => {
+      const r = perStem[k]; return r.seen > 0 && r.right < r.seen;
+    });
+    const errorSet = new Set(errorKeys);
+    state.errorPool = bank.questions.filter(q => errorSet.has(q.stem));
+    const overall = totQ ? Math.round(totC / totQ * 100) : null;
+    if(perf){
+      if(!rows.length){
+        perf.innerHTML = `<div class="mut">Complete a session to unlock performance analytics.</div>`;
+      } else {
+        const weakest = Object.values(perStem)
+          .filter(r => r.right < r.seen)
+          .sort((a, b) => (a.right / a.seen) - (b.right / b.seen) || b.seen - a.seen)
+          .slice(0, 8);
+        let html = `<div class="rowflex" style="gap:26px;align-items:flex-start;flex-wrap:wrap">
+          <div class="rowflex" style="flex-direction:column;gap:4px">
+            <div style="font-size:34px;font-weight:800;color:${overall == null ? "var(--muted)" : overall >= 70 ? "var(--ok)" : overall >= 50 ? "var(--flag)" : "var(--bad)"}">${overall == null ? "—" : overall + "%"}</div>
+            <div class="mut">overall accuracy</div>
+            <div class="mut">${totQ} answers · ${done.length} completed session(s) · ${totQ - totC} incorrect</div>
+          </div>
+          <div style="flex:1;min-width:260px">
+            <div class="mut" style="margin-bottom:6px"><b style="color:var(--bad)">Needs attention</b> — most-missed questions:</div>`;
+        if(!weakest.length) html += `<div class="mut">Nothing weak so far. Keep going 💪</div>`;
+        else {
+          html += `<div>`;
+          weakest.forEach(r => {
+            const acc = Math.round(r.right / r.seen * 100);
+            html += `<div style="margin-bottom:7px">
+              <div class="mut" style="display:flex;justify-content:space-between"><span style="color:var(--ink)">Q: ${esc(r.stem.slice(0, 72))}${r.stem.length > 72 ? "…" : ""}</span><span style="flex-shrink:0">${acc}% (${r.right}/${r.seen})</span></div>
+              <div style="height:5px;border-radius:4px;background:#fee2e2;overflow:hidden"><i style="display:block;height:100%;width:${acc}%;background:var(--bad)"></i></div>
+            </div>`;
+          });
+          html += `</div>`;
+        }
+        html += `</div>`;
+        if(state.errorPool.length){
+          html += `<div class="minibtns">
+            <button class="btn small" id="practiceErrBtn">🔁 Practice my errors (${state.errorPool.length})</button>
+          </div>`;
+        }
+        perf.innerHTML = html;
+        const eb = document.getElementById("practiceErrBtn");
+        if(eb) eb.onclick = () => { $("setSel").value = "errors"; startExam(); };
+      }
+    }
+    const setSel = $("setSel");
+    const cur = setSel.value;
+    let optHtml = "";
+    const size0 = parseInt($("setSizeSel").value, 10), nQ = bank.questions.length;
+    for(let i = 0; i < Math.ceil(nQ / size0); i++){
+      optHtml += `<option value="${i}">Set ${i + 1} (Q${i * size0 + 1}–Q${Math.min(nQ, (i + 1) * size0)})</option>`;
+    }
+    optHtml += `<option value="all">All questions (${nQ})</option>`;
+    optHtml += `<option value="errors" ${state.errorPool.length ? "" : "disabled"}>🔁 My errors (${state.errorPool.length})</option>`;
+    setSel.innerHTML = optHtml;
+    if([...setSel.options].some(o => o.value === cur)) setSel.value = cur;
+    if(!rows.length){ wrap.innerHTML = `<div class="mut">No sessions for this bank yet.</div>`; return; }
+    const tbl = document.createElement("table");
+    tbl.innerHTML = `<thead><tr><th>Started</th><th>Set</th><th>Mode</th><th>Status</th><th>Score</th><th></th></tr></thead>`;
+    const tb = document.createElement("tbody");
+    rows.forEach(a => {
+      const tr = document.createElement("tr");
+      const d = new Date(a.startedAt);
+      tr.innerHTML = `<td>${d.toLocaleDateString()} ${d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</td>
+        <td>${esc(a.setLabel)}</td><td>${a.mode === "tutor" ? "Tutor" : "Timed"}</td>
+        <td>${a.finishedAt ? `<span class="badge g">Completed</span>` : `<span class="badge y">In progress</span>`}</td>
+        <td>${a.finishedAt ? `${a.correct}/${a.total} (${Math.round(a.correct / Math.max(1, a.total) * 100)}%)` : "—"}</td>`;
+      const td = document.createElement("td");
+      if(!a.finishedAt){
+        const rb = document.createElement("button"); rb.className = "btn small"; rb.textContent = "Resume";
+        rb.onclick = () => resumeAttempt(a); td.appendChild(rb);
+      } else {
+        const vb = document.createElement("button"); vb.className = "btn sec small"; vb.textContent = "Review";
+        vb.onclick = () => buildResults(a.snapshot.pool, a.snapshot.sel, a); td.appendChild(vb);
+      }
+      const xb = document.createElement("button"); xb.className = "btn danger small"; xb.textContent = "🗑";
+      xb.style.marginLeft = "6px";
+      xb.onclick = async () => { await idbDel("attempts", a.id); renderAttempts(); };
+      td.appendChild(xb); tr.appendChild(td); tb.appendChild(tr);
+    });
+    tbl.appendChild(tb); wrap.appendChild(tbl);
+  });
+}
+
+/* ============ Exam runtime ============ */
+$("startBtn").onclick = startExam;
+function runtimeQuestion(q, shufO){
+  let opts = q.options.map((o, i) => ({ k: o.letter, text: o.text, correct: i === q.answerIdx ? 1 : 0 }));
+  if(shufO) opts = shuffle(opts);
+  return { stem: q.stem, options: opts, ansOrig: q.answerLetter, explanation: q.explanation, n: q.n };
+}
+async function startExam(){
+  if(!state.bank) return toast("Select a question bank first.");
+  const setVal = $("setSel").value;
+  if(setVal === "") return toast("Select a set.");
+  const size = parseInt($("setSizeSel").value, 10);
+  const n = state.bank.questions.length;
+  let src, label;
+  if(setVal === "all"){ src = [...state.bank.questions]; label = `All (${n})`; }
+  else if(setVal === "errors"){ src = [...state.errorPool]; label = `My errors (${src.length})`; if(!src.length) return toast("No past errors recorded for this bank yet."); }
+  else { const i = parseInt(setVal, 10); src = state.bank.questions.slice(i * size, Math.min(n, (i + 1) * size)); label = `Set ${i + 1} (Q${i * size + 1}–Q${Math.min(n, (i + 1) * size)})`; }
+  const mode = $("modeSel").value;
+  const minutes = mode === "tutor" ? 0 : Math.max(0, parseInt($("timerMin").value, 10) || 0);
+  let pool = $("shufQ").checked ? shuffle([...src]) : [...src];
+  pool = pool.map(q => runtimeQuestion(q, $("shufO").checked));
+  const attempt = {
+    id: "a" + Date.now(), bankId: state.bank.id, bankName: state.bank.name,
+    setLabel: label, mode, minutes, startedAt: Date.now(), finishedAt: null,
+    total: pool.length, correct: 0,
+    snapshot: { pool, sel: pool.map(() => null), flags: pool.map(() => false), marks: {}, timeLeft: minutes * 60 }
+  };
+  await idbPut("attempts", attempt);
+  enterExam(attempt);
+}
+async function resumeAttempt(a){
+  if(!a.snapshot || !a.snapshot.pool){ toast("Snapshot data missing."); return; }
+  enterExam(a);
+}
+function enterExam(attempt){
+  const s = attempt.snapshot;
+  state.exam = {
+    attempt, pool: s.pool, sel: s.sel, flags: s.flags, marks: s.marks || {},
+    mode: attempt.mode, minutes: attempt.minutes,
+    timeLeft: typeof s.timeLeft === "number" ? s.timeLeft : attempt.minutes * 60,
+    cur: 0, timerInt: null
+  };
+  ["examConfig", "examResults"].forEach(id => $(`#${id}`).classList.remove("active"));
+  $("examPlay").classList.add("active");
+  $("examTitle").textContent = `${attempt.bankName} · ${attempt.setLabel}`;
+  const pill = $("examModePill");
+  pill.textContent = attempt.mode === "tutor" ? "🎓 Tutor" : "⏱ Timed";
+  pill.className = "pill " + (attempt.mode === "tutor" ? "tutor" : "timed");
+  $("timerBox").style.display = attempt.mode === "timed" && attempt.minutes > 0 ? "" : "none";
+  clearInterval(state.exam.timerInt);
+  if(attempt.mode === "timed" && attempt.minutes > 0){
+    state.exam.timerInt = setInterval(tick, 1000);
+    updateTimer();
+  }
+  renderQuestion(); renderPalette();
+}
+let persistTimer = 0;
+async function persistExam(){
+  if(!state.exam) return;
+  const a = state.exam.attempt;
+  a.snapshot = { pool: state.exam.pool, sel: state.exam.sel, flags: state.exam.flags, marks: state.exam.marks, timeLeft: state.exam.timeLeft };
+  clearTimeout(persistTimer);
+  persistTimer = setTimeout(async () => { try{ await idbPut("attempts", a); }catch(e){} }, 250);
+}
+function tick(){
+  if(!state.exam || state.exam.mode !== "timed") return;
+  state.exam.timeLeft--;
+  updateTimer();
+  if(state.exam.timeLeft % 5 === 0) persistExam();
+  if(state.exam.timeLeft <= 60) $("timerBox").classList.add("low");
+  if(state.exam.timeLeft <= 0){
+    clearInterval(state.exam.timerInt);
+    finishExam(true);
+  }
+}
+function updateTimer(){
+  if(!state.exam) return;
+  $("timerBox").textContent = fmtTime(Math.max(0, state.exam.timeLeft));
+}
+function renderPalette(){
+  const ex = state.exam;
+  const pal = $("palette"); pal.innerHTML = "";
+  ex.pool.forEach((_, i) => {
+    const b = document.createElement("button");
+    b.textContent = i + 1;
+    if(ex.sel[i] != null) b.classList.add("ans");
+    if(ex.flags[i]) b.classList.add("flag");
+    if(i === ex.cur) b.classList.add("cur");
+    b.onclick = () => { ex.cur = i; renderQuestion(); renderPalette(); persistExam(); };
+    pal.appendChild(b);
+  });
+}
+function baselineOpts(q){
+  return q.options.map(o => `<div class="optrow" data-i="${q.options.indexOf(o)}" data-text="${esc(o.text)}"><span class="lt">${esc(o.k)}</span><span class="ot">${esc(o.text)}</span><button class="strikebtn" title="strike out">⊘</button></div>`);
+}
+function renderQuestion(){
+  const ex = state.exam;
+  if(!ex) return;
+  const i = ex.cur, q = ex.pool[i];
+  const answered = ex.sel[i] != null;
+  const ansed = ex.sel.filter(x => x != null).length;
+  const flag = ex.flags[i];
+  const marks = ex.marks[i];
+  let stemHtml = `<span class="s0">${esc(q.stem).replace(/\n/g, "<br>")}</span>`;
+  if(marks && marks.stem) stemHtml = marks.stem;
+  let optHtml = marks && marks.opts ? marks.opts.slice() : baselineOpts(q);
+  if(answered && ex.mode === "tutor"){
+    optHtml = (marks && marks.opts ? marks.opts.slice() : baselineOpts(q)).map((h, oi) => {
+      const isSel = q.options[oi].text === ex.sel[i];
+      const isCor = q.options[oi].correct === 1;
+      const cls = isCor ? "reveal-ok" : isSel ? "reveal-bad" : (isSel || isCor ? "" : "");
+      return h.replace(/class="optrow/, `class="optrow ${cls}`);
+    });
+  }
+  $("qBody").innerHTML = `
+    <div class="qnum"><span>Question ${i + 1} of ${ex.pool.length} ${flag ? `<span style="color:var(--flag)">⚑</span>` : ""}</span>
+      <span class="rowflex" style="gap:8px">
+        <button class="hlbtn" id="hlBtn">🖍 Highlight</button>
+        <button class="hlbtn" id="clrBtn">↺ Clear marks</button>
+        <button class="hlbtn" style="border-color:#fcd34d" id="flagBtn">${flag ? "🚩 Unflag" : "⚑ Flag"}</button>
+      </span></div>
+    <div class="stem" id="stemEl">${stemHtml}</div>
+    <div id="optsEl">${optHtml.join("")}</div>
+    <div class="explain ${answered && ex.mode === "tutor" ? "show" : ""}" id="explPanel">
+      <span class="tag">Explanation</span>
+      ${esc(q.explanation || "No explanation available in source.")}
+    </div>`;
+  const body = $("qBody");
+  body.querySelectorAll(".optrow").forEach(row => {
+    row.onclick = e => {
+      if(e.target.classList.contains("strikebtn")){ e.stopPropagation(); toggleStrike(row, i); return; }
+      if(ex.mode === "tutor" && ex.sel[i] != null) return;
+      ex.sel[i] = row.dataset.text;
+      renderQuestion(); renderPalette(); persistExam();
+    };
+  });
+  $("prevBtn").onclick = () => { if(ex.cur > 0){ ex.cur--; renderQuestion(); renderPalette(); persistExam(); } };
+  $("nextBtn").onclick = () => { if(ex.cur < ex.pool.length - 1){ ex.cur++; renderQuestion(); renderPalette(); persistExam(); } };
+  $("flagBtn").onclick = () => { ex.flags[i] = !ex.flags[i]; renderQuestion(); renderPalette(); persistExam(); };
+  $("hlBtn").onclick = () => applyHighlight(i);
+  $("clrBtn").onclick = () => { delete ex.marks[i]; renderQuestion(); persistExam(); };
+  $("posLabel").textContent = `Answered ${ansed}/${ex.pool.length} · Flagged ${ex.flags.filter(Boolean).length}`;
+  if(answered && ex.mode !== "tutor"){
+    ex.pool.forEach((qq, oi) => {
+      const r = body.querySelectorAll(".optrow")[oi];
+      if(ex.sel[i] === qq.options[oi].text) r.classList.add("sel");
+    });
+    body.querySelectorAll(".optrow").forEach(row => row.onclick = e => {
+      if(e.target.classList.contains("strikebtn")){ e.stopPropagation(); toggleStrike(row, i); return; }
+      ex.sel[i] = row.dataset.text; renderQuestion(); persistExam();
+    });
+  }
+  document.querySelectorAll(".optrow s .ot, s .ot").forEach(() => {});
+}
+function toggleStrike(row, qi){
+  const ot = row.querySelector(".ot");
+  if(!ot) return;
+  if(ot.parentElement.tagName === "S"){
+    const par = ot.parentElement.parentElement;
+    par.replaceChild(ot, ot.parentElement);
+  } else {
+    const s = document.createElement("s"); s.appendChild(ot.cloneNode(true));
+    ot.replaceWith(s);
+  }
+  saveMarks(qi);
+}
+function applyHighlight(qi){
+  const sel = window.getSelection();
+  const stemEl = $("stemEl");
+  if(!sel || sel.rangeCount === 0 || sel.isCollapsed){ toast("Select some text in the stem first."); return; }
+  const range = sel.getRangeAt(0);
+  if(!stemEl.contains(range.commonAncestorContainer)){ toast("Selection must be inside the question stem."); return; }
+  const mk = document.createElement("mark");
+  try{ range.surroundContents(mk); } catch(e){ try{ mk.appendChild(range.extractContents()); range.insertNode(mk); } catch(e2){ toast("Cannot highlight this selection."); return; } }
+  sel.removeAllRanges();
+  saveMarks(qi);
+}
+function saveMarks(qi){
+  const ex = state.exam;
+  ex.marks[qi] = {
+    stem: $("stemEl").innerHTML,
+    opts: [...$("optsEl").querySelectorAll(".optrow")].map(r => r.outerHTML)
+  };
+  persistExam();
+}
+
+/* keys */
+document.addEventListener("keydown", e => {
+  if(!state.exam || !$("examPlay").classList.contains("active")) return;
+  if(document.querySelector("dialog[open]")) return;
+  if(e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
+  const ex = state.exam, q = ex.pool[ex.cur];
+  if(e.key === "ArrowRight" && ex.cur < ex.pool.length - 1){ ex.cur++; renderQuestion(); renderPalette(); persistExam(); }
+  else if(e.key === "ArrowLeft" && ex.cur > 0){ ex.cur--; renderQuestion(); renderPalette(); persistExam(); }
+  else if(/^[1-9]$/.test(e.key)){
+    const oi = parseInt(e.key, 10) - 1;
+    if(oi < q.options.length){ ex.sel[ex.cur] = q.options[oi].text; renderQuestion(); renderPalette(); persistExam(); }
+  }
+  else if(e.key.toLowerCase() === "f"){ ex.flags[ex.cur] = !ex.flags[ex.cur]; renderQuestion(); renderPalette(); persistExam(); }
+});
+
+window.addEventListener("beforeunload", e => {
+  if(state.exam && !state.exam.attempt.finishedAt){ e.preventDefault(); e.returnValue = ""; }
+});
+
+$("pauseBtn").onclick = () => pauseExam();
+async function pauseExam(){
+  if(!state.exam) return;
+  await persistExam();
+  clearInterval(state.exam.timerInt);
+  state.exam = null;
+  showConfigView();
+}
+$("submitBtn").onclick = () => {
+  if(!state.exam) return;
+  const un = state.exam.sel.filter(x => x == null).length;
+  if(un > 0 && !confirm(`${un} unanswered question(s). Submit anyway?`)) return;
+  finishExam(false);
+};
+async function finishExam(auto){
+  const ex = state.exam;
+  if(!ex) return;
+  clearInterval(ex.timerInt);
+  const correct = ex.pool.reduce((n, q, i) => n + (ex.sel[i] === q.options.find(o => o.correct === 1).text ? 1 : 0), 0);
+  const a = ex.attempt;
+  a.finishedAt = Date.now();
+  a.correct = correct;
+  a.timeUsed = a.minutes * 60 - Math.max(0, ex.timeLeft);
+  a.snapshot = { pool: ex.pool, sel: ex.sel, flags: ex.flags, marks: ex.marks, timeLeft: ex.timeLeft };
+  await idbPut("attempts", a);
+  state.exam = null;
+  buildResults(ex.pool, ex.sel, a);
+  if(auto) toast("⏱ Time's up — session submitted.");
+}
+
+/* ============ Results ============ */
+let revData = null;
+function buildResults(pool, sel, attempt){
+  const total = pool.length;
+  const unanswered = sel.filter(x => x == null).length;
+  let correct = 0, flaggedCount = 0;
+  const items = pool.map((q, i) => {
+    const ua = sel[i], cor = q.options.find(o => o.correct === 1);
+    const ok = ua != null && ua === cor.text;
+    if(ok) correct++;
+    if(attempt && attempt.snapshot && attempt.snapshot.flags && attempt.snapshot.flags[i]) flaggedCount++;
+    return { q, ua, cor: cor.text, ok, flag: attempt && attempt.snapshot && attempt.snapshot.flags ? attempt.snapshot.flags[i] : false };
+  });
+  const pct = Math.round(correct / total * 100);
+  revData = items;
+  ["examConfig", "examPlay"].forEach(id => $(`#${id}`).classList.remove("active"));
+  $("examResults").classList.add("active");
+  const circ = $("scoreCirc");
+  const col = pct >= 70 ? "var(--ok)" : pct >= 50 ? "var(--flag)" : "var(--bad)";
+  circ.style.background = col;
+  $("scorePct").textContent = pct + "%";
+  $("scoreFrac").textContent = `${correct}/${total}`;
+  $("resMeta").textContent = attempt ? `${attempt.bankName} · ${attempt.setLabel} · ${attempt.mode === "tutor" ? "Tutor" : "Timed"} · ${new Date(attempt.startedAt).toLocaleString()}${attempt.timeUsed != null ? ` · time ${fmtTime(attempt.timeUsed)}` : ""}` : "";
+  $("resLines").innerHTML =
+    `<div>✔ Correct: <b style="color:var(--ok)">${correct - 0}</b></div>
+     <div>✘ Incorrect: <b style="color:var(--bad)">${total - correct - unanswered}</b></div>
+     <div>○ Unanswered: <b>${unanswered}</b></div>
+     <div>⚑ Flagged: <b style="color:var(--flag)">${flaggedCount}</b></div>`;
+  $("retakeBtn").textContent = attempt && attempt.snapshot ? "🔁 Retake same set" : "";
+  $("retakeBtn").onclick = () => {
+    if(attempt && attempt.snapshot){ attempt.finishedAt = null; attempt.startedAt = Date.now(); attempt.id = "a" + Date.now(); idbPut("attempts", attempt).then(() => enterExam(attempt)); }
+  };
+  $("newBtn2").onclick = () => { showConfigView(); renderAttempts(); };
+  renderReview("all");
+}
+function renderReview(f){
+  const bar = $("revFilters"); bar.innerHTML = "";
+  const defs = [["all", "All"], ["wrong", "✘ Incorrect"], ["unans", "○ Unanswered"], ["ok", "✔ Correct"], ["flag", "⚑ Flagged"]];
+  defs.forEach(([k, lab]) => {
+    const b = document.createElement("button");
+    b.className = "btn small " + (k === f ? "sec" : "sec");
+    if(k === f) b.style.background = "#1d4ed8", b.style.color = "#fff", b.style.border = "none";
+    b.textContent = lab;
+    b.onclick = () => renderReview(k);
+    bar.appendChild(b);
+  });
+  const wrap = $("reviewList"); wrap.innerHTML = "";
+  const list = revData.filter(it =>
+    f === "all" ? true : f === "wrong" ? it.ua != null && !it.ok : f === "unans" ? it.ua == null : f === "ok" ? it.ok : it.flag
+  );
+  if(!list.length){ wrap.innerHTML = `<div class="mut">No questions in this filter.</div>`; return; }
+  list.forEach(it => {
+    const det = document.createElement("details");
+    det.className = "qcard";
+    const status = it.ua == null ? `<span class="badge y">unanswered</span>` : it.ok ? `<span class="badge g">correct</span>` : `<span class="badge r">incorrect</span>`;
+    det.innerHTML = `<summary style="cursor:pointer;font-weight:600;font-size:14px">Q${it.q.n} — ${esc(it.q.stem.slice(0, 110))}${it.q.stem.length > 110 ? "…" : ""} ${status} ${it.flag ? "<span style='color:var(--flag)'>⚑</span>" : ""}</summary>
+      <div class="stem" style="margin-top:10px">${esc(it.q.stem)}</div>
+      ${it.q.options.map(o => {
+        const isC = o.text === it.cor, isU = o.text === it.ua;
+        let cls = "";
+        if(isC) cls = "reveal-ok"; else if(isU) cls = "reveal-bad";
+        const tagText = isC ? "Correct answer" : isU ? "Your answer" : "";
+        return `<div class="optrow ${cls}" style="cursor:default"><span class="lt" ${cls === "reveal-ok" ? 'style="background:var(--ok);color:#fff"' : cls === "reveal-bad" ? 'style="background:var(--bad);color:#fff"' : ""}>${esc(o.k)}</span><span class="ot">${esc(o.text)}</span>${tagText ? `<span class="pill" style="margin-left:auto;flex-shrink:0;font-size:11px">${tagText}</span>` : ""}</div>`;
+      }).join("")}
+      ${it.q.explanation ? `<div class="explain show" style="margin-top:12px"><span class="tag">Explanation</span>${esc(it.q.explanation)}</div>` : ""}`;
+    wrap.appendChild(det);
+  });
+}
+function showConfigView(){
+  ["examPlay", "examResults"].forEach(id => $(`#examView #${id}`).classList.remove("active"));
+  $("examConfig").classList.add("active");
+}
+
+
+/* Render built-in question banks in the landing page. */
+async function renderEmbeddedBanks(){
+  const wrap=document.getElementById("embeddedBankGroups"), total=document.getElementById("bankTotal");
+  try{
+    const response=await fetch("/api/banks",{cache:"no-store"});
+    if(!response.ok) throw new Error("Bank list is unavailable right now.");
+    const banks=await response.json();
+    if(!Array.isArray(banks)) throw new Error("The bank list returned an unexpected response.");
+    const groups=new Map();
+    banks.forEach(bank=>{const cat=bank.cat||"Question Banks";if(!groups.has(cat))groups.set(cat,[]);groups.get(cat).push(bank);});
+    const icons={"Loksewa":"🏛️","CEE MD/MS":"🩺","USMLE":"🧠"};
+    const colors={"Loksewa":"#168a78","CEE MD/MS":"#426ce0","USMLE":"#8458cf"};
+    const count=banks.reduce((sum,b)=>sum+Math.max(0,Number(b.count)||0),0);
+    total.innerHTML=`<strong>${count.toLocaleString()}</strong><span>questions ready</span>`;
+    wrap.innerHTML=[...groups.entries()].map(([cat,items])=>{
+      const tone=colors[cat]||"#426ce0";
+      const cards=items.map(bank=>`<article class="home-bank-card" style="--tone:${tone}"><div class="home-bank-name">${esc(bank.name)}</div><div class="home-bank-meta"><b>${Number(bank.count)>0?Number(bank.count).toLocaleString():"—"}</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=${encodeURIComponent(bank.id)}" aria-label="Set up ${esc(bank.name)} practice"> Set up practice <span aria-hidden="true">→</span></a></article>`).join("");
+      return `<section class="embedded-group" style="--tone:${tone}"><div class="group-head"><div class="group-icon">${icons[cat]||"📚"}</div><div><h3>${esc(cat)}</h3><p>${items.length} ${items.length===1?"question set":"question sets"} · curated for your exam prep</p></div></div><div class="bank-tiles">${cards}</div></section>`;
+    }).join("");
+    if(!banks.length) wrap.innerHTML='<div class="bank-loading">No built-in question banks are available yet.</div>';
+  }catch(error){
+    /* keep the built-in static bank cards; just surface the note */
+    const note=document.getElementById("bankLoadNote");
+    if(note){ note.textContent=error.message; note.hidden=false; }
+  }
+}
+renderEmbeddedBanks();
+
+/* ============ init ============ */
+const savedSize = localStorage.getItem("mcq.setSize");
+if(savedSize && [...$("setSizeSel").options].some(o => o.value === savedSize)) $("setSizeSel").value = savedSize;
+$("shufQ").checked = localStorage.getItem("mcq.shufQ") !== "0";
+$("shufO").checked = localStorage.getItem("mcq.shufO") !== "0";
+initDB().then(async () => {
+  const chip = $("bootChip");
+  const hasPdf = !!window.pdfjsLib;
+  chip.textContent = hasPdf
+    ? "✅ JavaScript + PDF.js + database loaded — click the PDF area above"
+    : "✅ JS + DB loaded — but PDF.js missing (uploads unavailable)";
+  chip.className = hasPdf ? "badge g" : "badge r";
+  await loadBanks();
+  if(state.banks.length) $("bankSel").value = state.banks[0].id;
+  state.bank = state.banks[0] || null;
+  renderSets(); renderAttempts();
+}).catch(e => { $("bootChip").textContent = "⚠ DB Error: " + e.message; $("bootChip").className = "badge r"; toast("Database error: " + e.message); });
+</script>
+<footer class="site-copyright" id="siteCopyright" aria-label="Copyright">© Dr. Ram</footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

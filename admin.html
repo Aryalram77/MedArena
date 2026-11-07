@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MedArena Admin — Content Editor</title>
+<style>
+:root{
+  --bg:#0f172a; --card:#1e293b; --card2:#172033; --border:#2b3a55;
+  --text:#e2e8f0; --muted:#94a3b8; --accent:#3b82f6; --ok:#22c55e; --bad:#ef4444; --warn:#f59e0b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh}
+header{display:flex;align-items:center;gap:12px;padding:14px 22px;border-bottom:1px solid var(--border);background:var(--card2)}
+header .logo{font-weight:800;font-size:18px;letter-spacing:.4px}
+header .logo .cross{color:#3b82f6;display:inline-block;animation:crossPulse 3s ease-in-out infinite;text-shadow:0 0 12px rgba(59,130,246,.55)}
+header .logo .brand{background:linear-gradient(90deg,#3b82f6,#22d3ee,#8b5cf6,#3b82f6);background-size:280% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:brandFlow 5s linear infinite}
+@keyframes brandFlow{0%{background-position:0% 0}100%{background-position:280% 0}}
+@keyframes crossPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+header .tag{color:var(--muted);font-size:12.5px;margin-left:auto;text-align:right}
+main{display:grid;grid-template-columns:300px 1fr;gap:16px;padding:16px 22px;max-width:1500px}
+@media(max-width:900px){main{grid-template-columns:1fr}}
+.panel{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px}
+.panel h2{font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px}
+select,input[type=text],input[type=password],input[type=number],textarea{
+  width:100%;background:var(--card2);border:1px solid var(--border);color:var(--text);
+  border-radius:8px;padding:8px 10px;font-size:14px;font-family:inherit}
+select:focus,input:focus,textarea:focus{outline:none;border-color:var(--accent)}
+textarea{resize:vertical;min-height:64px;line-height:1.45}
+#qList{display:flex;flex-direction:column;gap:4px;max-height:66vh;overflow-y:auto;margin-top:10px}
+.qitem{display:flex;align-items:center;gap:8px;background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:6px 10px;cursor:pointer;font-size:13px}
+.qitem:hover{border-color:var(--accent)}
+.qitem.active{border-color:var(--accent);background:#1e3a5f}
+.qitem .num{font-weight:700;color:var(--accent);min-width:38px}
+.qitem .preview{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;color:var(--text)}
+.qitem .badge{font-size:11px;padding:2px 6px;border-radius:6px;background:#0f172a;border:1px solid var(--border);color:var(--muted);white-space:nowrap}
+.qitem .badge.key{color:var(--ok);border-color:var(--ok)}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+button{background:var(--accent);color:#fff;border:none;padding:8px 14px;border-radius:8px;font-size:13.5px;font-weight:600;cursor:pointer;font-family:inherit}
+button:hover{filter:brightness(1.12)}
+button.ghost{background:var(--card2);border:1px solid var(--border);color:var(--text)}
+button.danger{background:var(--bad)}
+button.small{padding:5px 10px;font-size:12px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grid4{display:grid;grid-template-columns:64px 1fr 64px 1fr;gap:10px;align-items:center}
+.f{display:flex;flex-direction:column;gap:4px;font-size:12.5px;color:var(--muted)}
+.optrow{display:grid;grid-template-columns:40px 1fr 30px 28px;gap:8px;align-items:start;margin-bottom:8px}
+.optrow .let{width:100%;text-align:center;font-weight:700}
+.chk{width:22px;height:22px;accent-color:var(--ok);margin-top:8px}
+.imgrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.imgrow .thumb{position:relative;width:110px}
+.imgrow img{width:110px;height:80px;object-fit:cover;border-radius:8px;border:1px solid var(--border)}
+.imgrow .thumb button{position:absolute;top:-6px;right:-6px;padding:2px 7px;border-radius:50%;font-size:11px;background:var(--bad)}
+#status{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);background:var(--card2);border:1px solid var(--border);padding:8px 18px;border-radius:20px;font-size:13px;color:var(--muted);display:none;box-shadow:0 4px 18px rgba(0,0,0,.4)}
+.dirty{position:fixed;top:16px;right:22px;background:var(--warn);color:#000;padding:5px 12px;border-radius:14px;font-size:12px;font-weight:700}
+.meta{font-size:12px;color:var(--muted)}
+kbd{background:#0f172a;border:1px solid var(--border);border-radius:4px;padding:1px 6px;font-size:11px}
+a{color:var(--accent)}
+hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
+  .home-brand-link{display:inline-flex;align-items:center;gap:4px;color:inherit;text-decoration:none}
+  .site-copyright{color:var(--muted);font-size:14px;text-align:center;padding:18px 16px 22px;border-top:1px solid var(--border);margin:10px 22px 22px}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><a class="home-brand-link" href="/home" aria-label="MedArena homepage">✚ <span class="brand">MedArena</span></a> <span style="color:var(--muted);font-weight:400;font-size:13px">Admin</span></div>
+  <div class="tag">content editor · edits <b>surgery-practice.html</b> + homepage · backups kept in <b>backups/</b></div>
+</header>
+<div class="dirty" id="dirtyFlag" style="display:none">● UNSAVED CHANGES</div>
+
+<main>
+  <div class="panel">
+    <h2>Bank</h2>
+    <select id="bankSel"></select>
+    <div class="meta" id="bankMeta" style="margin-top:6px"></div>
+    <h2 style="margin-top:14px">Questions</h2>
+    <input type="text" id="searchBox" placeholder="🔍 search stems / options / answers…">
+    <div id="qList"></div>
+    <div class="toolbar">
+      <button id="addBtn">＋ Add question</button>
+      <button class="ghost" id="renameBtn">✎ Bank name</button>
+    </div>
+    <div class="toolbar">
+      <button class="ghost" id="reloadBtn">↻ Reload from disk</button>
+      <a href="/" target="_blank" style="margin-left:auto"><button class="ghost">▶ Open user site</button></a>
+    </div>
+  </div>
+
+  <div class="panel" id="editor">
+    <div style="display:flex;gap:8px;align-items:center;margin-bottom:12px">
+      <h2 style="margin:0">Edit Question <span id="qTitle" style="color:var(--accent)"></span></h2>
+      <span style="flex:1"></span>
+      <button class="small ghost" id="prevBtn">← Prev</button>
+      <button class="small ghost" id="nextBtn">Next →</button>
+    </div>
+
+    <div class="grid4" style="margin-bottom:10px">
+      <div class="f">No.<input type="number" id="fNum" min="1"></div>
+      <div class="f">Source label<input type="text" id="fSrc"></div>
+      <div class="f">PDF page<input type="number" id="fPage" min="0"></div>
+      <div class="f">Chapter<input type="text" id="fChap"></div>
+    </div>
+
+    <div class="f">Stem <textarea id="fStem" style="min-height:90px"></textarea></div>
+
+    <div class="f" style="margin-top:12px">Options — tick the checkbox on the correct one(s)
+      <div id="optList"></div>
+      <div class="toolbar" style="margin-top:2px"><button class="small ghost" id="optAdd">＋ option</button></div>
+    </div>
+
+    <div class="f" style="margin-top:12px">Answer / explanation
+      <textarea id="fExpl" style="min-height:150px"></textarea>
+    </div>
+
+    <div class="f" style="margin-top:10px">Figures
+      <div class="imgrow" id="imgRow"></div>
+      <div class="toolbar"><input type="file" id="imgFile" accept="image/*" style="display:none"><button class="small ghost" id="imgAdd">🖼 Add image…</button></div>
+    </div>
+
+    <hr class="sep">
+    <div class="toolbar">
+      <button id="saveBtn">💾 Save bank (writes to site)</button>
+      <button class="ghost" id="revertBtn">✕ Revert changes</button>
+      <button class="danger" id="delBtn" style="margin-left:auto">🗑 Delete question</button>
+    </div>
+    <div class="meta" style="margin-top:8px"><kbd>Ctrl</kbd>+<kbd>S</kbd> save · <kbd>Ctrl</kbd>+<kbd>←</kbd>/<kbd>→</kbd> navigate questions</div>
+  </div>
+</main>
+
+<div class="panel" id="homepagePanel" style="margin:0 22px 20px;max-width:1456px">
+  <h2>🏠 Homepage</h2>
+  <div class="meta" style="margin:-4px 0 12px">Edit the landing headline and question bank introduction. Your bank cards stay connected to the live question sets.</div>
+  <div class="grid2">
+    <label class="f">Eyebrow<input type="text" id="hEyebrow"></label>
+    <label class="f">Button label<input type="text" id="hCtaLabel"></label>
+    <label class="f">Headline — first part<input type="text" id="hTitleLead"></label>
+    <label class="f">Headline — highlighted words<input type="text" id="hTitleAccent"></label>
+    <label class="f" style="grid-column:1/-1">Headline — second line<input type="text" id="hTitleSecond"></label>
+    <label class="f" style="grid-column:1/-1">Intro text<textarea id="hSubtitle" rows="2"></textarea></label>
+    <label class="f">Bank section eyebrow<input type="text" id="hBanksEyebrow"></label>
+    <label class="f">Bank section title<input type="text" id="hBanksTitle"></label>
+    <label class="f" style="grid-column:1/-1">Bank section description<textarea id="hBanksSubtitle" rows="2"></textarea></label>
+    <label class="f">Copyright footer text<input type="text" id="hFooterText" placeholder="© Dr. Ram" maxlength="120"></label>
+  </div>
+  <div class="toolbar">
+    <button id="hSave">💾 Save homepage</button>
+    <a href="/home" target="_blank" style="margin-left:auto"><button class="ghost">▶ Preview homepage</button></a>
+  </div>
+  <div class="meta" id="hMeta" style="margin-top:6px"></div>
+</div>
+<div class="panel" id="accessPanel" style="margin:0 22px 20px;max-width:1456px">
+  <h2>🔐 Practice access</h2>
+  <div class="meta" style="margin:-4px 0 12px">The lock is embedded into the page itself — works fully offline. Each device remembers the unlock once; changing the code re-locks everyone.</div>
+  <label class="f">Unlock code (min 3 characters)<input type="password" id="accessCode" autocomplete="new-password" placeholder="New code"></label>
+  <div class="toolbar">
+    <button id="saveAccess">🔒 Set / update code</button>
+    <button class="ghost" id="removeAccessLock">🔓 Remove lock</button>
+  </div>
+  <div class="meta" id="accessMeta" style="margin-top:6px"></div>
+</div>
+<div class="panel" id="conceptPanel" style="margin:0 22px 20px;max-width:1456px">
+  <h2>💡 Concept of the Day — homepage + practice page card</h2>
+  <div class="f">Title<input type="text" id="cTitle" placeholder="e.g. Adrenal crisis — the one steroid dose every case needs"></div>
+  <div class="f" style="margin-top:8px">Content (line breaks are kept)
+    <textarea id="cBody" rows="5" placeholder="High-yield pearl, mnemonic, mechanism…"></textarea>
+  </div>
+  <div class="f" style="margin-top:10px">Image (optional)
+    <div class="imgrow" id="cImgRow"></div>
+    <div class="toolbar"><input type="file" id="cImgFile" accept="image/*" style="display:none">
+      <button class="small ghost" id="cImgAdd">🖼 Add image…</button>
+      <button class="small ghost" id="cImgDetach">✕ Detach image</button>
+    </div>
+  </div>
+  <div class="toolbar">
+    <button id="cSave">💾 Save concept (writes to homepage)</button>
+    <button class="ghost" id="cClear">🧹 Clear card</button>
+    <a href="/home" target="_blank" style="margin-left:auto"><button class="ghost">▶ Preview homepage</button></a>
+    <a href="/surgery-practice.html" target="_blank"><button class="ghost">▶ Preview practice page</button></a>
+  </div>
+  <div class="meta" id="cMeta" style="margin-top:6px"></div>
+</div>
+<div id="status"></div>
+
+<script>
+const $ = id => document.getElementById(id);
+let META = null;              // [{id, name, count}]
+let bank = null;              // working copy of current bank
+let bankId = null;
+let dirty = false;
+let curIdx = -1;              // index in bank.questions
+let search = "";
+
+function esc(s){ return (s||"").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function toast(msg, err){
+  const s = $("status");
+  s.textContent = msg;
+  s.style.display = "block";
+  s.style.borderColor = err ? "var(--bad)" : "var(--border)";
+  clearTimeout(s._t); s._t = setTimeout(() => s.style.display = "none", err ? 6000 : 3000);
+}
+function setDirty(v){
+  dirty = v;
+  $("dirtyFlag").style.display = v ? "block" : "none";
+}
+
+async function api(path, opts){
+  const r = await fetch(path, opts);
+  if (!r.ok){ let m = ""; try { m = (await r.json()).error; } catch(e){} throw new Error(m || r.status); }
+  return r.json();
+}
+
+async function loadBanks(){
+  META = await api("/api/banks");
+  $("bankSel").innerHTML = META.map(b => `<option value="${esc(b.id)}">${esc(b.name)} (${b.count})</option>`).join("");
+  if (!bankId || !META.find(b => b.id === bankId)) bankId = META[0].id;
+  $("bankSel").value = bankId;
+  $("bankMeta").textContent = "id: " + bankId + " · " + META.find(b => b.id === bankId).count + " questions";
+  await loadBank(false);
+}
+
+async function loadBank(keepPos){
+  const data = await api("/api/bank/" + bankId + "?t=" + Date.now());
+  bank = data;
+  if (!keepPos) curIdx = -1;
+  curIdx = Math.min(curIdx, bank.questions.length - 1);
+  setDirty(false);
+  renderList();
+  renderEditor();
+  $("bankMeta").textContent = "id: " + bankId + " · " + bank.questions.length + " questions";
+}
+
+function match(q){
+  if (!search) return true;
+  const flat = [q.stem, q.explanation, ...q.options.map(o => o.letter + o.text), q.answerText, q.chapter, q.src].join(" ").toLowerCase();
+  return flat.includes(search.toLowerCase());
+}
+
+function renderList(){
+  const list = $("qList");
+  list.innerHTML = bank.questions.map((q, i) => {
+    if (!match(q)) return "";
+    const imgs = (q.imgs || []).length;
+    return `<div class="qitem ${i === curIdx ? "active" : ""}" data-i="${i}">
+      <span class="num">${q.n}</span>
+      <span class="preview">${esc(q.stem.slice(0, 60))}</span>
+      ${q.answerLetter ? `<span class="badge key">${esc(q.answerLetter)}</span>` : `<span class="badge">no key</span>`}
+      ${imgs ? `<span class="badge">🖼${imgs}</span>` : ""}
+    </div>`;
+  }).join("");
+  list.querySelectorAll(".qitem").forEach(el => el.onclick = () => {
+    curIdx = parseInt(el.dataset.i, 10);
+    renderList(); renderEditor();
+  });
+}
+
+function renderEditor(){
+  const q = bank.questions[curIdx];
+  if (!q){ $("qTitle").textContent = "—"; $("optList").innerHTML = ""; $("imgRow").innerHTML = ""; return; }
+  $("qTitle").textContent = "#" + q.n;
+  $("fNum").value = q.n;
+  $("fSrc").value = q.src || "";
+  $("fPage").value = q.pdfPage ?? 0;
+  $("fChap").value = q.chapter || "";
+  $("fStem").value = q.stem || "";
+  $("fExpl").value = q.explanation || "";
+  // normalize answer fields from correctSet
+  renderOpts();
+  renderImgs();
+}
+
+function renderOpts(){
+  const q = bank.questions[curIdx];
+  const cs = new Set(q.correctSet || []);
+  $("optList").innerHTML = q.options.map((o, i) => `
+    <div class="optrow">
+      <input type="text" class="let" data-i="${i}" data-k="letter" value="${esc(o.letter)}">
+      <textarea data-i="${i}" data-k="text" rows="2">${esc(o.text)}</textarea>
+      <input type="checkbox" class="chk" data-i="${i}" ${cs.has(o.letter) ? "checked" : ""} title="correct answer">
+      <button class="small danger" data-del="${i}" title="remove option">–</button>
+    </div>`).join("");
+  $("optList").querySelectorAll("textarea, input.let").forEach(el => el.oninput = () => setDirty(true));
+  $("optList").querySelectorAll(".chk").forEach(el => el.onchange = () => {
+    const o = bank.questions[curIdx].options[parseInt(el.dataset.i, 10)];
+    if (el.checked) o.correct = true; else delete o.correct;
+    setDirty(true);
+  });
+  $("optList").querySelectorAll("[data-del]").forEach(el => el.onclick = () => {
+    const i = parseInt(el.dataset.del, 10);
+    bank.questions[curIdx].options.splice(i, 1);
+    setDirty(true); renderOpts();
+  });
+}
+
+function renderImgs(){
+  const q = bank.questions[curIdx];
+  $("imgRow").innerHTML = (q.imgs || []).map((im, i) => `
+    <div class="thumb"><img src="/${esc(im.src)}">
+      <button data-img="${i}" title="remove figure">✕</button></div>`).join("");
+  $("imgRow").querySelectorAll("[data-img]").forEach(el => el.onclick = () => {
+    q.imgs.splice(parseInt(el.dataset.img, 10), 1);
+    if (!q.imgs.length) delete q.imgs;
+    setDirty(true); renderImgs();
+  });
+}
+
+function collect(){
+  const q = bank.questions[curIdx];
+  q.n = parseInt($("fNum").value, 10) || q.n;
+  q.src = $("fSrc").value.trim();
+  q.pdfPage = parseInt($("fPage").value, 10) || 0;
+  q.chapter = $("fChap").value.trim() || "Mixed";
+  q.stem = $("fStem").value;
+  q.explanation = $("fExpl").value;
+  // read options + letters from inputs
+  const rows = [...$("optList").querySelectorAll(".optrow")];
+  const cur = bank.questions[curIdx];
+  rows.forEach((row, i) => {
+    if (!cur.options[i]) return;
+    cur.options[i].letter = row.querySelector(".let").value.trim().toUpperCase() || cur.options[i].letter;
+    cur.options[i].text = row.querySelector("textarea").value;
+  });
+  // rebuild correctSet from checkboxes
+  const cs = [...rows.filter(r => r.querySelector(".chk").checked)
+      .map(r => cur.options[rows.indexOf(r)].letter)]
+      .filter(Boolean);
+  q.correctSet = [...new Set(cs)];
+  q.answerLetter = q.correctSet[0] || null;
+  q.answerIdx = q.answerLetter ? q.options.findIndex(o => o.letter === q.answerLetter) : null;
+}
+
+function bindLive(){
+  ["fNum","fSrc","fPage","fChap","fStem","fExpl"].forEach(id => $(id).oninput = () => setDirty(true));
+}
+
+$("searchBox").oninput = e => { search = e.target.value; renderList(); };
+$("bankSel").onchange = async e => { bankId = e.target.value; curIdx = -1; await loadBank(false); };
+$("prevBtn").onclick = () => step(-1);
+$("nextBtn").onclick = () => step(1);
+$("optAdd").onclick = () => {
+  const q = bank.questions[curIdx];
+  const used = q.options.map(o => o.letter);
+  const L = "ABCDE".split("").find(x => !used.includes(x));
+  if (!L) return toast("No free option letter", true);
+  q.options.push({ letter: L, text: "" });
+  if (q.options.length > (q.multi ? 5 : 4)) q.multi = q.multi;
+  setDirty(true); renderOpts();
+};
+$("imgAdd").onclick = () => $("imgFile").click();
+$("imgFile").onchange = async e => {
+  const f = e.target.files[0]; if (!f || curIdx < 0) return;
+  const q = bank.questions[curIdx];
+  const ext = (f.name.split(".").pop() || "png").toLowerCase();
+  const name = `cee-img/cee-img-${Date.now()}.${ext}`;
+  const data = await new Promise(res => { const r = new FileReader(); r.onload = () => res(r.result); r.readAsDataURL(f); });
+  const out = await api("/api/image", { method: "POST", headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({ name, data }) });
+  q.imgs = q.imgs || [];
+  q.imgs.push({ src: out.src });
+  e.target.value = "";
+  setDirty(true); renderImgs();
+  toast("Image uploaded: " + out.src);
+};
+$("addBtn").onclick = () => {
+  const n = Math.max(0, ...bank.questions.map(q => q.n)) + 1;
+  const base = bank.questions[0] || {};
+  const q = {
+    n, chapter: base.chapter || "Mixed", src: base.src ? (base.src.replace(/p\.\d+\s*$/, "p.") + "0") : "",
+    pdfPage: 0, stem: "",
+    options: ["A","B","C","D"].map(l => ({ letter: l, text: "" })),
+    multi: null, correctSet: [], answerIdx: null, answerLetter: null, answerText: "", explanation: ""
+  };
+  bank.questions.push(q); bank.questions.sort((a, b) => a.n - b.n);
+  curIdx = bank.questions.indexOf(q);
+  setDirty(true); renderList(); renderEditor();
+  toast("Question " + n + " added — fill it in, then Save bank");
+};
+$("delBtn").onclick = () => {
+  if (curIdx < 0) return;
+  const q = bank.questions[curIdx];
+  if (!confirm(`Delete question ${q.n} permanently (on next Save)?`)) return;
+  bank.questions.splice(curIdx, 1);
+  if (curIdx >= bank.questions.length) curIdx = bank.questions.length - 1;
+  setDirty(true); renderList(); renderEditor();
+};
+$("renameBtn").onclick = async () => {
+  const nn = prompt("New bank name (shown in the user site dropdown):", bank.name);
+  if (nn === null || nn.trim() === bank.name) return;
+  bank.name = nn.trim(); setDirty(true);
+  toast("Name changed — remember to Save bank");
+};
+$("reloadBtn").onclick = () => { if (!confirm("Discard unsaved edits and reload from disk?")) return; loadBank(true).then(() => toast("Reloaded from disk")); };
+$("revertBtn").onclick = () => loadBank(true).then(() => toast("Editor reset to last saved state"));
+
+$("saveBtn").onclick = saveBank;
+async function saveBank(){
+  try{
+    collect();
+    bank.questions.forEach(q => {
+      // scrub helper fields the user-site doesn't need stale
+      delete q.correct;
+      q.options.forEach(o => { if (o.correct) { delete o.correct; } });
+    });
+    const out = await api("/api/save/" + bankId, {
+      method: "POST", headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({ bank })
+    });
+    setDirty(false);
+    await loadBanks();
+    curIdx = Math.min(curIdx, bank.questions.length - 1);
+    renderList(); renderEditor();
+    toast("Saved ✔ " + out.msg);
+  }catch(e){ toast("Save failed: " + e.message, true); }
+}
+
+function step(d){
+  if (!bank.questions.length) return;
+  const visible = bank.questions.map((q, i) => i).filter(i => match(bank.questions[i]));
+  if (!visible.length) return;
+  let at = visible.indexOf(curIdx);
+  if (!keepVisible(visible)) at = visible.findIndex(i => i >= curIdx);
+  let next;
+  if (at === -1) next = visible[0];
+  else next = visible[(at + d + visible.length) % visible.length];
+  curIdx = next;
+  renderList(); renderEditor();
+}
+function keepVisible(visible){ return visible.includes(curIdx); }
+document.body.onkeydown = e => {
+  if (e.ctrlKey && e.key.toLowerCase() === "s"){ e.preventDefault(); if (dirty) saveBank(); }
+  if (e.ctrlKey && e.altKey && e.key === "ArrowLeft") step(-1);
+  if (e.ctrlKey && e.altKey && e.key === "ArrowRight") step(1);
+};
+
+bindLive();
+loadBanks().then(() => toast("Loaded " + META.length + " banks from surgery-practice.html")).catch(e => toast("Load failed: " + e.message, true));
+
+/* ===== Practice access control ===== */
+let accessSettings=null;
+async function loadAccessSettings(){
+  accessSettings=await api("/api/access-settings");
+  $("accessMeta").textContent = accessSettings.enabled
+    ? ("🔒 Lock active · updated " + accessSettings.updated + " · devices that entered the code stay unlocked until you change it")
+    : "🔓 No lock — practice opens directly";
+  $("accessCode").value = "";
+}
+async function saveLockedAccess(code){
+  try{
+    const out=await api("/api/save-access-settings",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({enabled:!!code,code:code||""})});
+    await loadAccessSettings();toast(out.msg);
+  }catch(e){toast("Save failed: "+e.message,true);}
+}
+$("saveAccess").onclick=()=>{
+  const code=$("accessCode").value.trim();
+  if(!code){toast("Type a new code first",true);return;}
+  if(code.length<3){toast("Code must be at least 3 characters",true);return;}
+  saveLockedAccess(code);
+};
+$("removeAccessLock").onclick=()=>saveLockedAccess("");
+loadAccessSettings().catch(e=>toast("Access settings load failed: "+e.message,true));
+
+/* ===== Homepage editor ===== */
+let homepageContent = null;
+const homepageFields={hEyebrow:"eyebrow",hTitleLead:"titleLead",hTitleAccent:"titleAccent",hTitleSecond:"titleSecond",hSubtitle:"subtitle",hCtaLabel:"ctaLabel",hBanksEyebrow:"banksEyebrow",hBanksTitle:"banksTitle",hBanksSubtitle:"banksSubtitle",hFooterText:"footerText"};
+async function loadHomepageContent(){
+  homepageContent=await api("/api/homepage");
+  const copyright=document.getElementById("siteCopyright");if(copyright)copyright.textContent=(homepageContent.footerText||"© Dr. Ram");
+  Object.entries(homepageFields).forEach(([id,key])=>$(id).value=homepageContent[key]||"");
+  $("hMeta").textContent=homepageContent.updated?"Last updated: "+homepageContent.updated:"Homepage copy is ready to edit.";
+}
+$("hSave").onclick=async()=>{
+  try{
+    const content={};Object.entries(homepageFields).forEach(([id,key])=>content[key]=$(id).value);
+    const out=await api("/api/save-homepage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(content)});
+    await loadHomepageContent();toast("Homepage saved ✔ "+out.msg);
+  }catch(e){toast("Homepage save failed: "+e.message,true);}
+};
+loadHomepageContent().catch(e=>toast("Homepage load failed: "+e.message,true));
+
+/* ===== Concept of the Day ===== */
+let concept = null;
+async function loadConcept(){
+  concept = await api("/api/concept");
+  if (!concept) concept = { title: "", body: "", img: "", updated: "" };
+  $("cTitle").value = concept.title || "";
+  $("cBody").value = concept.body || "";
+  renderCImg();
+  $("cMeta").textContent = concept.updated ? ("Last updated: " + concept.updated) : "Card is hidden on the homepage until you fill a title or content.";
+}
+function renderCImg(){
+  $("cImgRow").innerHTML = (concept && concept.img)
+    ? `<div class="thumb"><img src="/${esc(concept.img)}"><button id="cImgDel" title="detach">✕</button></div>`
+    : "";
+  const d = $("cImgDel"); if (d) d.onclick = () => { concept.img = ""; renderCImg(); };
+}
+$("cImgAdd").onclick = () => $("cImgFile").click();
+$("cImgFile").onchange = async e => {
+  const f = e.target.files[0]; if (!f) return;
+  const ext = (f.name.split(".").pop() || "png").toLowerCase();
+  const data = await new Promise(res => { const r = new FileReader(); r.onload = () => res(r.result); r.readAsDataURL(f); });
+  const out = await api("/api/image", { method: "POST", headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({ name: `cee-img/concept-${Date.now()}.${ext}`, data }) });
+  concept.img = out.src;
+  e.target.value = "";
+  renderCImg();
+  toast("Image uploaded — now press Save concept");
+};
+$("cImgDetach").onclick = () => { if (concept){ concept.img = ""; renderCImg(); toast("Image detached — press Save concept"); } };
+$("cSave").onclick = async () => {
+  try{
+    concept.title = $("cTitle").value.trim();
+    concept.body = $("cBody").value;
+    const out = await api("/api/save-concept", { method: "POST", headers: {"Content-Type":"application/json"}, body: JSON.stringify(concept) });
+    await loadConcept();
+    toast("Saved ✔ " + out.msg);
+  }catch(e){ toast("Save failed: " + e.message, true); }
+};
+$("cClear").onclick = async () => {
+  if (!confirm("Hide the Concept of the Day card on the homepage?")) return;
+  try{
+    const out = await api("/api/save-concept", { method: "POST", headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({ title: "", body: "", img: "" }) });
+    await loadConcept();
+    toast("Card cleared ✔ " + out.msg);
+  }catch(e){ toast("Failed: " + e.message, true); }
+};
+loadConcept().catch(e => toast("Concept load failed: " + e.message, true));
+</script>
+<footer class="site-copyright" id="siteCopyright" aria-label="Copyright">© Dr. Ram</footer>
+</body>
+</html>
+
