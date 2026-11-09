@@ -1,0 +1,78 @@
+/* ---- MedArena accounts: shared styles (injected by auth.js) ---- */
+#maChip{margin-left:auto;flex:none}
+#maChip .auth-btn{display:inline-flex;align-items:center;gap:9px;background:transparent;color:#e8ecf3;border:1px solid rgba(201,169,97,.55);border-radius:3px;padding:8px 16px;font-size:11.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;font-family:inherit;transition:background .15s,border-color .15s,color .15s}
+#maChip .auth-btn:hover{background:rgba(255,255,255,.08);border-color:#c9a961;color:#fff}
+#maChip .av{width:22px;height:22px;border-radius:50%;background:#12233f;color:#fff;border:1px solid rgba(201,169,97,.7);display:inline-flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;flex:none;object-fit:cover}
+#maChip .nm{max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#maOverlay{position:fixed;inset:0;background:rgba(2,6,23,.6);display:none;align-items:flex-start;justify-content:center;z-index:1000;padding:8vh 16px 16px}
+#maOverlay.show{display:flex}
+#maBox{position:relative;background:#fff;color:#0f172a;border-radius:16px;max-width:470px;width:100%;max-height:82vh;overflow:auto;padding:24px;box-shadow:0 24px 64px rgba(2,6,23,.4);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+#maBox h2{margin:0 0 10px;font-size:19px}
+#maBox p{margin:8px 0;font-size:13.5px;line-height:1.6;color:#475569}
+#maBox .ma-x{position:absolute;top:10px;right:12px;border:none;background:none;font-size:17px;cursor:pointer;color:#94a3b8;padding:2px;z-index:2}
+#maBox .ma-x:hover{color:#475569}
+#maBox .ma-user{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid #e2e8f0;border-radius:12px;background:#f8fafc}
+#maBox .ma-user .av{width:40px;height:40px;border-radius:50%;background:#3b82f6;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;flex:none;object-fit:cover;overflow:hidden}
+#maBox .ma-user b{font-size:14.5px;display:block}
+#maBox .ma-user span{font-size:12.5px;color:#64748b;display:block}
+#maBox .ma-user .ma-prov{font-size:11px;color:#94a3b8;text-transform:uppercase;letter-spacing:.4px;margin-top:2px}
+#maBox .ma-note{margin-top:12px;padding:11px 13px;border-radius:11px;background:#fff7e8;color:#80500a;border:1px solid #f4ddb0;font-size:12.5px;line-height:1.6}
+#maBox .ma-err{margin:10px 0;padding:10px 13px;border-radius:11px;background:#fef2f2;color:#b91c1c;border:1px solid #fecaca;font-size:13px;line-height:1.5}
+#maBox .ma-act{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
+#maBox .ma-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid #cbd5e1;background:#fff;color:#0f172a;border-radius:10px;padding:9px 15px;font-size:13.5px;font-weight:600;cursor:pointer;font-family:inherit}
+#maBox .ma-btn:hover{background:#f1f5f9}
+#maBox .ma-btn.primary{background:#1d4ed8;border-color:#1d4ed8;color:#fff}
+#maBox .ma-btn.primary:hover{background:#1e40af}
+#maBox .ma-btn.primary:disabled{opacity:.65;cursor:default}
+#maBox .ma-wide{width:100%;margin-top:4px}
+#maBox .ma-gwrap{margin:14px 0 4px;padding:10px;border:1px solid #e2e8f0;border-radius:12px;background:#f8fafc;min-height:48px;display:flex;align-items:center;justify-content:center}
+#maBox .ma-or{display:flex;align-items:center;gap:10px;margin:14px 0 6px;color:#94a3b8;font-size:11.5px;text-transform:uppercase;letter-spacing:.5px}
+#maBox .ma-or:before,#maBox .ma-or:after{content:"";flex:1;height:1px;background:#e2e8f0}
+#maBox .ma-f{display:block;margin:10px 0;font-size:12.5px;font-weight:700;color:#334155}
+#maBox .ma-f input{display:block;width:100%;margin-top:5px;padding:10px 12px;border:1px solid #cbd5e1;border-radius:10px;font:inherit;font-size:14px;font-weight:400;color:#0f172a;background:#fff;box-sizing:border-box}
+#maBox .ma-f input:focus{outline:2px solid #bfdbfe;border-color:#60a5fa}
+#maBox .ma-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;margin:14px 0}
+#maBox .ma-stats div{border:1px solid #e2e8f0;border-radius:12px;padding:12px 8px;text-align:center;background:#f8fafc}
+#maBox .ma-stats b{display:block;font-size:20px;color:#0f172a}
+#maBox .ma-stats span{font-size:11.5px;color:#64748b;text-transform:uppercase;letter-spacing:.4px}
+#maBox .ma-banks{max-height:260px;overflow:auto;border:1px solid #e2e8f0;border-radius:12px}
+#maBox .ma-brow{padding:10px 13px;border-bottom:1px solid #eef2f7}
+#maBox .ma-brow:last-child{border-bottom:none}
+#maBox .ma-btop{display:flex;justify-content:space-between;gap:10px;font-size:13px;color:#0f172a}
+#maBox .ma-btop b{color:#065f46;white-space:nowrap;font-size:12.5px}
+#maBox .ma-bar{height:5px;border-radius:99px;background:#eef2f7;margin-top:6px;overflow:hidden}
+#maBox .ma-bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#22c55e,#16a34a)}
+
+/* ---- post-login progress card on the homepage ---- */
+#maProgressHost{margin:0 0 26px}
+#maProgressHost .mp-head{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:20px 22px;border:1px solid #dbe7f6;border-radius:20px 20px 0 0;background:linear-gradient(135deg,#fff,#f3f8ff);border-bottom:none}
+#maProgressHost .mp-id{display:flex;align-items:center;gap:13px;min-width:0}
+#maProgressHost .mp-av{width:46px;height:46px;border-radius:50%;background:#1d4ed8;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;flex:none;object-fit:cover}
+#maProgressHost .mp-eyebrow{font-size:10.5px;letter-spacing:.9px;color:#4770b2;font-weight:800;margin-bottom:2px}
+#maProgressHost .mp-id b{font-size:18px;color:#172640;letter-spacing:-.3px;overflow-wrap:anywhere}
+#maProgressHost .mp-stats{display:flex;gap:9px}
+#maProgressHost .mp-stats div{border:1px solid #e2e8f0;border-radius:12px;padding:9px 16px;text-align:center;background:#fff;min-width:78px}
+#maProgressHost .mp-stats b{display:block;font-size:19px;color:#0f172a;line-height:1.2}
+#maProgressHost .mp-stats span{font-size:10.5px;color:#64748b;text-transform:uppercase;letter-spacing:.4px}
+#maProgressHost .mp-rows{border:1px solid #dbe7f6;border-top:none;background:#fff;padding:4px 0}
+#maProgressHost .mp-row{display:grid;grid-template-columns:1fr 130px 74px 52px;align-items:center;gap:14px;padding:9px 22px;font-size:13.5px;color:#1b2b46;text-decoration:none;border-bottom:1px solid #f1f5f9}
+#maProgressHost .mp-row:last-child{border-bottom:none}
+#maProgressHost a.mp-row:hover{background:#f8fbff}
+#maProgressHost .mp-row.mp-hd{font-size:10.5px;text-transform:uppercase;letter-spacing:.5px;color:#8a94a6;font-weight:800;padding-top:11px;padding-bottom:7px}
+#maProgressHost .mp-name{overflow-wrap:anywhere;font-weight:650}
+#maProgressHost .mp-bar{height:6px;border-radius:99px;background:#eef2f7;overflow:hidden}
+#maProgressHost .mp-bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#22c55e,#16a34a)}
+#maProgressHost .mp-num{text-align:right;font-variant-numeric:tabular-nums;color:#334155;font-size:12.5px}
+#maProgressHost .mp-acc{text-align:right;font-variant-numeric:tabular-nums;color:#065f46;font-weight:700;font-size:12.5px}
+#maProgressHost .mp-empty{margin:0;padding:20px 22px;border:1px solid #dbe7f6;border-top:none;background:#fff;color:#64748b;font-size:13.5px}
+#maProgressHost .mp-foot{border:1px solid #dbe7f6;border-top:none;border-radius:0 0 20px 20px;background:#f8fbff;padding:11px 22px;font-size:12px;color:#64748b}
+#maProgressHost .mp-link{border:none;background:none;color:#1d4ed8;font:inherit;font-weight:700;cursor:pointer;padding:0}
+#maProgressHost .mp-link:hover{text-decoration:underline}
+@media(max-width:640px){
+  #maProgressHost .mp-row{grid-template-columns:1fr 62px 46px;gap:9px;padding:9px 15px}
+  #maProgressHost .mp-row .mp-bar{display:none}
+  #maProgressHost .mp-head{padding:16px}
+  #maProgressHost .mp-stats div{min-width:0;padding:8px 11px;flex:1}
+  #maProgressHost .mp-stats{width:100%}
+}
+

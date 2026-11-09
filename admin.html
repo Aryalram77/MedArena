@@ -59,12 +59,53 @@ a{color:var(--accent)}
 hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
   .home-brand-link{display:inline-flex;align-items:center;gap:4px;color:inherit;text-decoration:none}
   .site-copyright{color:var(--muted);font-size:14px;text-align:center;padding:18px 16px 22px;border-top:1px solid var(--border);margin:10px 22px 22px}
+/* users & progress table */
+.u-wrap{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#fff}
+.u-row{display:grid;grid-template-columns:minmax(180px,2.2fr) 82px 66px 70px 58px 92px 96px;gap:10px;align-items:center;padding:9px 14px;border-bottom:1px solid var(--border);font-size:13px;cursor:pointer}
+.u-row:last-child{border-bottom:none}
+.u-row:not(.u-hd):hover{background:#f7faff}
+.u-row.u-sel{background:#eef5ff}
+.u-row.u-hd{cursor:default;background:#f8fafc;font-size:10.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);font-weight:800}
+.u-id{display:flex;align-items:center;gap:9px;min-width:0}
+.u-id b{display:block;font-size:13px;color:#172640;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.u-id i{display:block;font-style:normal;font-size:11.5px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.u-av{width:28px;height:28px;border-radius:50%;background:#1d4ed8;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex:none;object-fit:cover}
+.u-tag{font-style:normal;font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;padding:3px 7px;border-radius:99px}
+.u-gg{background:#e8f0fe;color:#1a56c4}
+.u-pw{background:#e9f7ef;color:#0f7a45}
+.u-n{font-variant-numeric:tabular-nums;color:#334155;text-align:right}
+.u-ok{color:#0f7a45;font-weight:700}
+.u-low{color:#b45309;font-weight:700}
+.u-dim{color:var(--muted);font-size:12px}
+.u-banks{border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.u-brow{display:grid;grid-template-columns:minmax(120px,1fr) 120px 190px;gap:12px;align-items:center;padding:8px 13px;border-bottom:1px solid var(--border);font-size:12.5px}
+.u-brow:last-child{border-bottom:none}
+.u-brow b{color:#0f7a45;font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.u-bbar{height:6px;border-radius:99px;background:#eef2f7;overflow:hidden}
+.u-bbar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#22c55e,#16a34a)}
+@media(max-width:900px){.u-row{grid-template-columns:minmax(140px,1.6fr) 70px 56px 56px 50px;}.u-row span:nth-child(6),.u-row span:nth-child(7){display:none}.u-brow{grid-template-columns:1fr 90px}.u-brow b{grid-column:1/-1;text-align:left}}
 </style>
 </head>
 <body>
+<div id="adminGate" style="display:none;position:fixed;inset:0;z-index:9999;background:#f1f5f9;align-items:center;justify-content:center;padding:20px">
+  <form id="gateForm" style="background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:28px;width:100%;max-width:400px;box-shadow:0 10px 30px rgba(15,23,42,.08)">
+    <div style="font-weight:800;font-size:19px;margin-bottom:6px" id="gateTitle">Admin sign in</div>
+    <p id="gateHint" style="color:#64748b;font-size:13.5px;line-height:1.55;margin:0 0 18px"></p>
+    <div id="gateCurrentRow" style="display:none;margin-bottom:12px">
+      <label style="display:block;font-size:12.5px;font-weight:700;color:#334155;margin-bottom:6px">Current password</label>
+      <input type="password" id="gateCurrent" autocomplete="current-password" style="width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:9px;font-size:14px">
+    </div>
+    <label style="display:block;font-size:12.5px;font-weight:700;color:#334155;margin-bottom:6px">Password</label>
+    <input type="password" id="gatePw" autocomplete="current-password" required style="width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:9px;font-size:14px">
+    <div id="gateErr" style="color:#dc2626;font-size:13px;margin-top:10px;min-height:18px"></div>
+    <button type="submit" id="gateSubmit" style="width:100%;margin-top:8px;padding:11px;background:#1d4ed8;color:#fff;border:none;border-radius:9px;font-weight:700;font-size:14px;cursor:pointer">Sign in</button>
+    <button type="button" id="gateSignOut" style="width:100%;margin-top:8px;padding:9px;background:#e2e8f0;color:#0f172a;border:none;border-radius:9px;font-weight:600;font-size:13px;cursor:pointer">Sign out</button>
+  </form>
+</div>
 <header>
   <div class="logo"><a class="home-brand-link" href="/home" aria-label="MedArena homepage">✚ <span class="brand">MedArena</span></a> <span style="color:var(--muted);font-weight:400;font-size:13px">Admin</span></div>
   <div class="tag">content editor · edits <b>surgery-practice.html</b> + homepage · backups kept in <b>backups/</b></div>
+  <button id="adminSignOut" style="margin-left:auto;padding:7px 14px;background:#e2e8f0;color:#0f172a;border:none;border-radius:8px;font-weight:600;font-size:12.5px;cursor:pointer">Sign out</button>
 </header>
 <div class="dirty" id="dirtyFlag" style="display:none">● UNSAVED CHANGES</div>
 
@@ -157,6 +198,25 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
     <button class="ghost" id="removeAccessLock">🔓 Remove lock</button>
   </div>
   <div class="meta" id="accessMeta" style="margin-top:6px"></div>
+</div>
+<div class="panel" id="googlePanel" style="margin:0 22px 20px;max-width:1456px">
+  <h2>🌐 Google sign-in + progress tracking</h2>
+  <div class="meta" style="margin:-4px 0 12px">Users sign in with their Google account and their solved-question progress is saved next to this app (medarena-users.json). Get a Client ID at <b>console.cloud.google.com → APIs &amp; Services → Credentials → Create credentials → OAuth client ID → Web application</b>, with Authorized JavaScript origin <code>http://localhost:8600</code>.</div>
+  <label class="f">Google OAuth Client ID<input type="text" id="gClientId" placeholder="xxxxxxxx.apps.googleusercontent.com" style="min-width:340px"></label>
+  <div class="toolbar">
+    <button id="gSave">💾 Save Client ID</button>
+    <button class="ghost" id="gClear">🚫 Disable sign-in</button>
+  </div>
+  <div class="meta" id="gMeta" style="margin-top:6px"></div>
+</div>
+<style>#gClientId{width:520px;max-width:100%}</style>
+<div class="panel" id="usersPanel" style="margin:0 22px 20px;max-width:1456px">
+  <h2>👥 Users &amp; progress</h2>
+  <div class="meta" style="margin:-4px 0 12px">Everyone who has signed up or signed in with Google, with their solved-question progress. Click a row to see that account's per-bank breakdown.</div>
+  <div id="uTotals" class="meta" style="margin:0 0 12px"></div>
+  <input type="text" id="uSearch" placeholder="🔍 search name or e-mail…" style="max-width:340px;margin-bottom:12px">
+  <div id="uTable"></div>
+  <div id="uDetail" style="display:none;margin-top:16px;border-top:1px solid var(--border);padding-top:14px"></div>
 </div>
 <div class="panel" id="conceptPanel" style="margin:0 22px 20px;max-width:1456px">
   <h2>💡 Concept of the Day — homepage + practice page card</h2>
@@ -432,7 +492,74 @@ document.body.onkeydown = e => {
 };
 
 bindLive();
-loadBanks().then(() => toast("Loaded " + META.length + " banks from surgery-practice.html")).catch(e => toast("Load failed: " + e.message, true));
+/* ===== admin password gate =====
+   Nothing below runs until we know who this is. The server enforces the same
+   rule on every write, so this screen is convenience, not the lock. */
+(async function adminGate(){
+  let st = null;
+  try { st = await api("/api/admin/status"); }
+  catch (e) { toast("Cannot reach the server: " + e.message, true); return; }
+
+  const showGate = (mode) => {
+    document.querySelector("main").style.display = "none";
+    const g = document.getElementById("adminGate");
+    g.style.display = "flex";
+    document.getElementById("gateTitle").textContent =
+      mode === "set" ? "Set an admin password" : "Admin sign in";
+    document.getElementById("gateHint").textContent =
+      mode === "set"
+        ? "Choose a password for this panel. At least 8 characters. It is stored hashed, never in plain text."
+        : "Enter the admin password to edit the site.";
+    document.getElementById("gateCurrentRow").style.display =
+      mode === "change" ? "block" : "none";
+    document.getElementById("gateSubmit").textContent =
+      mode === "set" ? "Set password" : mode === "change" ? "Change password" : "Sign in";
+    g.dataset.mode = mode;
+    document.getElementById("gatePw").focus();
+  };
+
+  const boot = () => {
+    document.getElementById("adminGate").style.display = "none";
+    document.querySelector("main").style.display = "";
+    loadBanks().then(() => toast("Loaded " + META.length + " banks from surgery-practice.html"))
+               .catch(e => toast("Load failed: " + e.message, true));
+  };
+
+  if (!st.configured) { showGate("set"); }
+  else if (!st.signed_in) { showGate("login"); }
+  else { boot(); return; }
+
+  document.getElementById("gateForm").onsubmit = async (e) => {
+    e.preventDefault();
+    const mode = document.getElementById("adminGate").dataset.mode;
+    const pw = document.getElementById("gatePw").value;
+    const cur = document.getElementById("gateCurrent").value;
+    const errEl = document.getElementById("gateErr");
+    errEl.textContent = "";
+    try {
+      if (mode === "login") {
+        await api("/api/admin/login", { method: "POST", headers: {"Content-Type":"application/json"},
+          body: JSON.stringify({ password: pw }) });
+      } else {
+        await api("/api/admin/set-password", { method: "POST", headers: {"Content-Type":"application/json"},
+          body: JSON.stringify({ password: pw, current: cur }) });
+      }
+      document.getElementById("gatePw").value = "";
+      document.getElementById("gateCurrent").value = "";
+      boot();
+    } catch (ex) { errEl.textContent = ex.message; }
+  };
+
+  document.getElementById("gateSignOut").onclick = async () => {
+    try { await api("/api/admin/logout", { method: "POST" }); } catch (e) {}
+    location.reload();
+  };
+  const so = document.getElementById("adminSignOut");
+  if (so) so.onclick = async () => {
+    try { await api("/api/admin/logout", { method: "POST" }); } catch (e) {}
+    location.reload();
+  };
+})();
 
 /* ===== Practice access control ===== */
 let accessSettings=null;
@@ -457,6 +584,88 @@ $("saveAccess").onclick=()=>{
 };
 $("removeAccessLock").onclick=()=>saveLockedAccess("");
 loadAccessSettings().catch(e=>toast("Access settings load failed: "+e.message,true));
+
+/* ===== Google sign-in settings ===== */
+async function loadGoogleConfig(){
+  const cfg=await api("/api/auth/config");
+  $("gClientId").value=cfg.client_id||"";
+  $("gMeta").textContent=cfg.ready
+    ? "✅ Sign-in enabled — Client ID "+cfg.client_id+" · origin must be http://localhost:8600"
+    : "❌ Not configured — Sign in with Google button will show setup instructions";
+}
+$("gSave").onclick=async()=>{
+  const cid=$("gClientId").value.trim();
+  if(cid && !/\.(apps\.googleusercontent\.com)$/i.test(cid)){toast("That does not look like a Google Client ID",true);return;}
+  try{
+    const out=await api("/api/google-config",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({client_id:cid})});
+    await loadGoogleConfig();toast(out.msg);
+  }catch(e){toast("Save failed: "+e.message,true);}
+};
+$("gClear").onclick=async()=>{
+  try{
+    const out=await api("/api/google-config",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({client_id:""})});
+    await loadGoogleConfig();toast(out.msg);
+  }catch(e){toast("Save failed: "+e.message,true);}
+};
+loadGoogleConfig().catch(e=>toast("Google settings load failed: "+e.message,true));
+
+/* ===== Users & progress ===== */
+let uData=null, uFilter="", uOpen="";
+const uEsc=t=>(t??"").toString().replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+const uDate=ts=>{ if(!ts) return "—"; try{ return new Date(ts*1000).toLocaleDateString(undefined,{day:"2-digit",month:"short",year:"numeric"}); }catch(e){ return "—"; } };
+const uAgo=ts=>{ if(!ts) return "—"; const d=Math.floor(Date.now()/1000)-ts; if(d<60) return "just now"; if(d<3600) return Math.floor(d/60)+"m ago"; if(d<86400) return Math.floor(d/3600)+"h ago"; if(d<2592000) return Math.floor(d/86400)+"d ago"; return uDate(ts); };
+async function loadUsers(){
+  try{
+    uData=await api("/api/admin/users");
+    renderUsers();
+  }catch(e){ $("uTable").innerHTML='<div class="meta" style="color:#b91c1c">Could not load users: '+uEsc(e.message)+'</div>'; }
+}
+function renderUsers(){
+  if(!uData) return;
+  const t=uData.totals||{};
+  $("uTotals").innerHTML="<b>"+(t.users||0)+"</b> accounts · <b>"+(t.active||0)+"</b> signed in now · <b>"+(t.signed_in_7d||0)+"</b> active in 7 days · <b>"+(t.solved||0).toLocaleString()+"</b> questions solved · <b>"+(t.correct||0).toLocaleString()+"</b> correct";
+  const q=uFilter.toLowerCase();
+  const rows=(uData.users||[]).filter(u=>!q||(u.name||"").toLowerCase().includes(q)||(u.email||"").toLowerCase().includes(q));
+  if(!rows.length){
+    const msg=(uData.users||[]).length?"No account matches that search.":"No accounts yet — the first person to sign up or sign in with Google appears here.";
+    $("uTable").innerHTML='<div class="meta">'+msg+'</div>';
+    return;
+  }
+  const head='<div class="u-row u-hd"><span>User</span><span>Type</span><span>Solved</span><span>Correct</span><span>Acc.</span><span>Last seen</span><span>Joined</span></div>';
+  const body=rows.map(u=>{
+    const pic=u.picture?'<img class="u-av" alt="" src="'+uEsc(u.picture)+'" referrerpolicy="no-referrer">':'<span class="u-av">'+uEsc((u.name||u.email||"?").slice(0,1).toUpperCase())+'</span>';
+    return '<div class="u-row'+(uOpen===u.sub?" u-sel":"")+'" data-sub="'+uEsc(u.sub)+'">'+
+      '<span class="u-id">'+pic+'<span><b>'+uEsc(u.name||"(no name)")+'</b><i>'+uEsc(u.email||"")+'</i></span></span>'+
+      '<span><em class="u-tag '+(u.provider==="password"?"u-pw":"u-gg")+'">'+(u.provider==="password"?"E-mail":"Google")+'</em></span>'+
+      '<span class="u-n">'+u.solved+'</span><span class="u-n">'+u.correct+'</span>'+
+      '<span class="u-n '+(u.accuracy>=60?"u-ok":"u-low")+'">'+(u.solved?u.accuracy+"%":"—")+'</span>'+
+      '<span class="u-dim">'+uAgo(u.last_seen)+'</span><span class="u-dim">'+uDate(u.created)+'</span></div>';
+  }).join("");
+  $("uTable").innerHTML='<div class="u-wrap">'+head+body+'</div>';
+  $("uTable").querySelectorAll(".u-row[data-sub]").forEach(r=>{ r.onclick=()=>openUser(r.getAttribute("data-sub")); });
+}
+async function openUser(sub){
+  uOpen=uOpen===sub?"":sub; renderUsers();
+  const box=$("uDetail");
+  if(!uOpen){ box.style.display="none"; box.innerHTML=""; return; }
+  box.style.display="block";
+  box.innerHTML='<div class="meta">Loading…</div>';
+  try{
+    const d=await api("/api/admin/user/"+encodeURIComponent(sub));
+    const u=d.user||{}, s=d.summary||{banks:{}};
+    const banks=Object.entries(s.banks||{}).sort((a,b)=>b[1].solved-a[1].solved);
+    const rows=banks.map(([id,b])=>{
+      const acc=b.solved?Math.round(b.correct*100/b.solved):0;
+      return '<div class="u-brow"><span>'+uEsc(id)+'</span><span class="u-bbar"><i style="width:'+acc+'%"></i></span><b>'+b.solved+' solved · '+b.correct+' ✔ · '+acc+'%</b></div>';
+    }).join("");
+    box.innerHTML='<h3 style="margin:0 0 4px;font-size:16px">'+uEsc(u.name||"(no name)")+' <span style="color:var(--muted);font-weight:400;font-size:13px">'+uEsc(u.email||"")+'</span></h3>'+
+      '<div class="meta" style="margin:0 0 12px">'+(u.provider==="password"?"E-mail account":"Google account")+' · joined '+uDate(u.created)+' · last seen '+uAgo(u.last_seen)+' · '+(u.sessions||0)+' active session(s)</div>'+
+      '<div class="meta" style="margin:0 0 10px"><b>'+s.solved+'</b> solved · <b>'+s.correct+'</b> correct · <b>'+s.accuracy+'%</b> accuracy</div>'+
+      (rows?'<div class="u-banks">'+rows+'</div>':'<div class="meta">No solved questions yet.</div>');
+  }catch(e){ box.innerHTML='<div class="meta" style="color:#b91c1c">Could not load this user: '+uEsc(e.message)+'</div>'; }
+}
+$("uSearch").oninput=e=>{ uFilter=e.target.value.trim(); renderUsers(); };
+loadUsers().catch(()=>{});
 
 /* ===== Homepage editor ===== */
 let homepageContent = null;

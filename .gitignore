@@ -1,0 +1,39 @@
+# ===== NEVER commit these =====
+# Accounts database: e-mails, password hashes, live session tokens.
+medarena-users.json
+
+# Admin password hash + admin sessions.
+admin-auth.json
+
+# Google OAuth client id.
+auth-config.json
+
+# Local backups written before every destructive edit.
+backups/
+
+# Python
+__pycache__/
+*.pyc
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+
+# ===== not part of the published site =====
+# Old snapshot of the practice page; the live one is surgery-practice.html.
+surgery-practice.html.bak
+# Bank JSON files: the questions are embedded in surgery-practice.html, so these
+# are leftovers. Kept on disk, just not published.
+ortho-bank.json
+ent-bank.json
+forensic-bank.json
+surgery-part2.js
+# Perch's own working files.
+.perch/
+
+# NOTE: admin-server.py, admin.html and start-admin.bat ARE committed on purpose.
+# GitHub Pages cannot run Python, so they do nothing on the live site, but they
+# are your only backup of the server and the editor. They contain no secrets:
+# the admin password lives in admin-auth.json, which is ignored above.

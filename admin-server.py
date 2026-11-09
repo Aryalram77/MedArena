@@ -11,26 +11,36 @@ Every save is backed up into backups/ before the file is touched.
 Bind is localhost-only so the admin panel is never exposed to the LAN.
 """
 import base64
+import hashlib
+import hmac
 import json
 import ipaddress
 import os
 import re
+import secrets
 import shutil
 import socket
 import sys
 import threading
 import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from urllib.parse import quote, unquote
+from urllib.request import urlopen
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 HTML_PATH = os.path.join(ROOT, "surgery-practice.html")
 INDEX_PATH = os.path.join(ROOT, "index.html")
 BACKUP_DIR = os.path.join(ROOT, "backups")
 IMG_DIR = os.path.join(ROOT, "cee-img")
+USERS_PATH = os.path.join(ROOT, "medarena-users.json")
+AUTH_CONFIG_PATH = os.path.join(ROOT, "auth-config.json")
+SESSION_COOKIE = "ma_sess"
+SESSION_TTL = 60 * 24 * 3600  # 60 days
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8600
 
 CTYPE = {
     ".html": "text/html; charset=utf-8",
+    ".css": "text/css; charset=utf-8",
     ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg",
     ".webp": "image/webp", ".gif": "image/gif", ".svg": "image/svg+xml",
     ".json": "application/json", ".ico": "image/x-icon", ".js": "text/javascript",
@@ -263,6 +273,256 @@ def save_lock(enabled, code, stamp):
 
 # ---------- HTTP handler ----------
 
+# ---------------- Google sign-in + per-user progress store ----------------
+
+def load_auth_config():
+    try:
+        with open(AUTH_CONFIG_PATH, "r", encoding="utf-8") as f:
+            cfg = json.load(f)
+        return cfg if isinstance(cfg, dict) else {}
+    except Exception:
+        return {}
+
+
+def google_client_id():
+    return (load_auth_config().get("client_id") or "").strip()
+
+
+def save_google_client_id(cid):
+    cfg = load_auth_config()
+    cfg["client_id"] = (cid or "").strip()
+    with open(AUTH_CONFIG_PATH, "w", encoding="utf-8") as f:
+        json.dump(cfg, f, indent=1)
+    return cfg
+
+
+# ---------------- admin password ----------------
+# The admin panel edits the site, so it needs its own password. Loopback alone
+# is not enough: a tunnel (ngrok, cloudflared) makes the request look local, so
+# the password is the real gate and loopback is only a second lock.
+
+ADMIN_PATH = os.path.join(ROOT, "admin-auth.json")
+ADMIN_COOKIE = "ma_admin"
+ADMIN_TTL = 12 * 3600  # 12 hours
+
+
+def load_admin_db():
+    try:
+        with open(ADMIN_PATH, "r", encoding="utf-8") as f:
+            db = json.load(f)
+        if not isinstance(db, dict):
+            db = {}
+    except Exception:
+        db = {}
+    db.setdefault("pw", None)
+    db.setdefault("sessions", {})
+    return db
+
+
+def save_admin_db(db):
+    tmp = ADMIN_PATH + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(db, f, ensure_ascii=False, indent=1)
+    os.replace(tmp, ADMIN_PATH)
+
+
+def admin_configured():
+    return bool(load_admin_db().get("pw"))
+
+
+def admin_session_ok(handler):
+    """True when this request carries a live admin session cookie."""
+    sid = handler._cookies().get(ADMIN_COOKIE, "")
+    if not sid:
+        return False
+    db = load_admin_db()
+    ses = db["sessions"].get(sid)
+    if not isinstance(ses, dict):
+        return False
+    try:
+        if float(ses.get("exp", 0)) < time.time():
+            return False
+    except (TypeError, ValueError):
+        return False
+    return True
+
+
+def create_admin_session():
+    db = load_admin_db()
+    sid = secrets.token_urlsafe(32)
+    now = time.time()
+    db["sessions"][sid] = {"exp": now + ADMIN_TTL, "created": int(now)}
+    # drop expired sessions so the file does not grow forever
+    db["sessions"] = {k: v for k, v in db["sessions"].items()
+                      if isinstance(v, dict) and float(v.get("exp", 0) or 0) > now}
+    save_admin_db(db)
+    return sid
+
+
+def load_users_db():
+    try:
+        with open(USERS_PATH, "r", encoding="utf-8") as f:
+            db = json.load(f)
+        if not isinstance(db, dict):
+            db = {}
+    except Exception:
+        db = {}
+    db.setdefault("users", {})
+    db.setdefault("sessions", {})
+    return db
+
+
+def save_users_db(db):
+    tmp = USERS_PATH + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(db, f, ensure_ascii=False, indent=1)
+    os.replace(tmp, USERS_PATH)
+
+
+def verify_google_id_token(token):
+    """Validate a Google Identity Services ID token. Returns the tokeninfo dict.
+
+    Raises ValueError with a user-friendly message when the token is not
+    usable; other exceptions mean Google could not be reached."""
+    cid = google_client_id()
+    if not cid:
+        raise ValueError("Google login is not configured yet — set the Client ID in the admin panel.")
+    url = "https://oauth2.googleapis.com/tokeninfo?id_token=" + quote(token)
+    with urlopen(url, timeout=10) as r:
+        info = json.loads(r.read().decode("utf-8"))
+    if info.get("aud") != cid:
+        raise ValueError("ID token audience mismatch (wrong Google Client ID).")
+    try:
+        if int(info.get("exp", 0)) < time.time():
+            raise ValueError("ID token expired — please sign in again.")
+    except (TypeError, ValueError):
+        raise ValueError("ID token expired — please sign in again.")
+    if not info.get("sub"):
+        raise ValueError("ID token missing subject.")
+    if info.get("email_verified") is False and info.get("email"):
+        raise ValueError("Google account e-mail is not verified.")
+    return info
+
+
+def public_user(u):
+    if not u:
+        return None
+    return {"sub": u.get("sub", ""), "name": u.get("name", ""),
+            "email": u.get("email", ""), "picture": u.get("picture", ""),
+            "provider": u.get("provider", "google"),
+            "created": u.get("created", 0), "last_seen": u.get("last_seen", 0)}
+
+
+# ---------------- e-mail + password accounts ----------------
+
+PBKDF2_ROUNDS = 200_000
+EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[A-Za-z]{2,}$")
+
+
+def hash_password(password: str, salt: str = None) -> dict:
+    """PBKDF2-HMAC-SHA256. Returns {salt, hash, rounds} for storage."""
+    salt = salt or secrets.token_hex(16)
+    dk = hashlib.pbkdf2_hmac("sha256", password.encode("utf-8"), salt.encode("utf-8"), PBKDF2_ROUNDS)
+    return {"salt": salt, "hash": dk.hex(), "rounds": PBKDF2_ROUNDS}
+
+
+def check_password(password: str, rec: dict) -> bool:
+    if not isinstance(rec, dict) or not rec.get("hash") or not rec.get("salt"):
+        return False
+    try:
+        rounds = int(rec.get("rounds") or PBKDF2_ROUNDS)
+    except (TypeError, ValueError):
+        rounds = PBKDF2_ROUNDS
+    dk = hashlib.pbkdf2_hmac("sha256", password.encode("utf-8"), rec["salt"].encode("utf-8"), rounds)
+    return hmac.compare_digest(dk.hex(), rec["hash"])
+
+
+def norm_email(email: str) -> str:
+    return (email or "").strip().lower()
+
+
+def email_sub(email: str) -> str:
+    """Stable user id for a password account."""
+    return "pw:" + norm_email(email)
+
+
+def progress_summary(progress: dict) -> dict:
+    """Solved / correct / accuracy + per-bank rollup from a progress map."""
+    solved = correct = 0
+    banks = {}
+    for qid, v in (progress or {}).items():
+        if not isinstance(qid, str) or "|" not in qid:
+            continue
+        solved += 1
+        ok = 1 if isinstance(v, dict) and v.get("c") else 0
+        correct += ok
+        bid = qid.split("|", 1)[0]
+        b = banks.setdefault(bid, {"solved": 0, "correct": 0})
+        b["solved"] += 1
+        b["correct"] += ok
+    return {"solved": solved, "correct": correct,
+            "accuracy": round(correct * 100.0 / solved) if solved else 0,
+            "banks": banks}
+
+
+def create_session(db, sub: str) -> str:
+    now = int(time.time())
+    sid = secrets.token_urlsafe(32)
+    db["sessions"] = {k: v for k, v in db["sessions"].items()
+                      if float(v.get("exp", 0) or 0) >= now}
+    db["sessions"][sid] = {"sub": sub, "exp": now + SESSION_TTL}
+    return sid
+
+
+def session_cookie(sid: str) -> str:
+    return "%s=%s; Path=/; HttpOnly; SameSite=Lax; Max-Age=%d" % (SESSION_COOKIE, sid, SESSION_TTL)
+
+
+def clear_cookie() -> str:
+    return "%s=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0" % SESSION_COOKIE
+
+
+def admin_users_report():
+    """Every account with its progress summary — for the admin dashboard."""
+    db = load_users_db()
+    now = int(time.time())
+    active = {}
+    for ses in db["sessions"].values():
+        try:
+            if float(ses.get("exp", 0) or 0) >= now:
+                active[ses.get("sub", "")] = active.get(ses.get("sub", ""), 0) + 1
+        except (TypeError, ValueError):
+            continue
+    out = []
+    for sub, u in db["users"].items():
+        if not isinstance(u, dict):
+            continue
+        prog = u.get("progress") or {}
+        s = progress_summary(prog)
+        last = 0
+        for v in prog.values():
+            if isinstance(v, dict):
+                try:
+                    last = max(last, int(v.get("t", 0) or 0))
+                except (TypeError, ValueError):
+                    pass
+        out.append({
+            "sub": sub,
+            "name": u.get("name", ""),
+            "email": u.get("email", ""),
+            "picture": u.get("picture", ""),
+            "provider": u.get("provider", "google"),
+            "created": u.get("created", 0),
+            "last_seen": u.get("last_seen", 0),
+            "last_answer": last,
+            "solved": s["solved"], "correct": s["correct"], "accuracy": s["accuracy"],
+            "banks": s["banks"],
+            "sessions": active.get(sub, 0),
+        })
+    out.sort(key=lambda r: (r["solved"], r["last_seen"]), reverse=True)
+    return out
+
+
 class Handler(BaseHTTPRequestHandler):
     protocol_version = "HTTP/1.1"
 
@@ -279,8 +539,8 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
-    def _send_json(self, obj, code=200):
-        self._send(code, "application/json", json.dumps(obj).encode())
+    def _send_json(self, obj, code=200, extra=None):
+        self._send(code, "application/json", json.dumps(obj).encode(), extra=extra)
 
     def _file(self, path, fallback=None):
         full = os.path.normpath(os.path.join(ROOT, path.lstrip("/")))
@@ -303,6 +563,30 @@ class Handler(BaseHTTPRequestHandler):
         n = int(self.headers.get("Content-Length", 0) or 0)
         return self.rfile.read(n) if n else b""
 
+    def _cookies(self):
+        out = {}
+        for part in (self.headers.get("Cookie", "") or "").split(";"):
+            k, _, v = part.strip().partition("=")
+            if k:
+                out[k] = v
+        return out
+
+    def _session(self):
+        """-> (user dict or None, session id or None) for the request cookie."""
+        sid = self._cookies().get(SESSION_COOKIE, "")
+        if not sid:
+            return None, None
+        db = load_users_db()
+        ses = db["sessions"].get(sid)
+        if not ses:
+            return None, None
+        try:
+            if float(ses.get("exp", 0)) < time.time():
+                return None, None
+        except (TypeError, ValueError):
+            return None, None
+        return db["users"].get(ses.get("sub", "")), sid
+
     # ---------------- GET ----------------
     def do_GET(self):
         path = self.path.split("?")[0]
@@ -310,11 +594,21 @@ class Handler(BaseHTTPRequestHandler):
             self._file("index.html"); return
         if path in ("/surgery-practice.html", "/practice"):
             self._file("surgery-practice.html"); return
+        if path == "/auth.js":
+            self._file("auth.js"); return
+        if path == "/auth.css":
+            self._file("auth.css"); return
+        if path in ("/pdf.min.js", "/pdf.worker.min.js"):
+            self._file(path.lstrip("/")); return
         if path == "/admin":
             if not self._is_loopback():
                 self._send(403, "text/plain", b"Admin is available only on this computer")
                 return
             self._file("admin.html"); return
+        if path == "/api/admin/status":
+            self._send_json({"configured": admin_configured(),
+                             "signed_in": admin_session_ok(self),
+                             "loopback": self._is_loopback()}); return
         if path.startswith("/api/banks"):
             with _lock:
                 html = load_html()
@@ -354,6 +648,44 @@ class Handler(BaseHTTPRequestHandler):
             self._send_json({"enabled": bool(lk), "updated": (lk or {}).get("updated", ""),
                              "hash": (lk or {}).get("rev", "")})
             return
+        if path == "/api/auth/config":
+            self._send_json({"client_id": google_client_id(),
+                             "ready": bool(google_client_id()),
+                             "password_login": True})
+            return
+        if path == "/api/me":
+            user, _sid = self._session()
+            self._send_json({"user": public_user(user)})
+            return
+        if path == "/api/progress":
+            user, _sid = self._session()
+            if not user:
+                self._send_json({"error": "not signed in"}, 401); return
+            self._send_json({"progress": user.get("progress", {})})
+            return
+        if path == "/api/admin/users":
+            if not (self._is_loopback() or admin_session_ok(self)):
+                self._send_json({"error": "admin only"}, 403); return
+            users = admin_users_report()
+            totals = {"users": len(users),
+                      "solved": sum(u["solved"] for u in users),
+                      "correct": sum(u["correct"] for u in users),
+                      "active": sum(1 for u in users if u["sessions"]),
+                      "signed_in_7d": sum(1 for u in users if u["last_seen"] and u["last_seen"] > time.time() - 7 * 86400)}
+            self._send_json({"users": users, "totals": totals})
+            return
+        if path.startswith("/api/admin/user/"):
+            if not (self._is_loopback() or admin_session_ok(self)):
+                self._send_json({"error": "admin only"}, 403); return
+            sub = unquote(path[len("/api/admin/user/"):].strip("/"))
+            db = load_users_db()
+            u = db["users"].get(sub)
+            if not isinstance(u, dict):
+                self._send_json({"error": "unknown user"}, 404); return
+            s = progress_summary(u.get("progress") or {})
+            self._send_json({"user": public_user(u), "summary": s,
+                             "progress": u.get("progress") or {}})
+            return
         if path.startswith("/cee-img/"):
             self._file(path); return
         if path == "/favicon.ico":
@@ -361,10 +693,19 @@ class Handler(BaseHTTPRequestHandler):
         self._send(404, "text/plain", b"not found")
 
     # ---------------- POST ----------------
+    # Public routes (usable from LAN too): sign-in / sign-up, progress sync,
+    # and the admin password endpoints themselves.
+    PUBLIC_POST = ("/api/auth/google", "/api/auth/signup", "/api/auth/login",
+                   "/api/auth/logout", "/api/logout", "/api/progress",
+                   "/api/admin/login", "/api/admin/logout", "/api/admin/set-password")
+
     def do_POST(self):
         path = self.path.split("?")[0]
-        if not self._is_loopback():
-            self._send_json({"error": "Admin changes are available only on this computer"}, 403)
+        # Writes always need an admin session. Loopback alone is NOT enough:
+        # a tunnel (ngrok, cloudflared) connects from 127.0.0.1, so trusting
+        # the peer address would hand the panel to anyone who finds the URL.
+        if path not in self.PUBLIC_POST and not admin_session_ok(self):
+            self._send_json({"error": "Admin changes need the admin password"}, 403)
             return
         raw = self._body()
         try:
@@ -372,6 +713,161 @@ class Handler(BaseHTTPRequestHandler):
         except Exception:
             self._send_json({"error": "bad JSON body"}, 400); return
 
+        # ---------------- admin password ----------------
+        if path == "/api/admin/login":
+            pw = str(payload.get("password", "") or "")
+            rec = load_admin_db().get("pw")
+            if not rec:
+                self._send_json({"error": "No admin password is set yet. Set one first."}, 400); return
+            if not check_password(pw, rec):
+                time.sleep(0.4)  # slow down guessing
+                self._send_json({"error": "Wrong password."}, 401); return
+            sid = create_admin_session()
+            self._send_json({"ok": True}, extra={
+                "Set-Cookie": "%s=%s; Path=/; HttpOnly; SameSite=Lax; Max-Age=%d"
+                % (ADMIN_COOKIE, sid, ADMIN_TTL)})
+            return
+        if path == "/api/admin/logout":
+            sid = self._cookies().get(ADMIN_COOKIE, "")
+            if sid:
+                db = load_admin_db()
+                db["sessions"].pop(sid, None)
+                save_admin_db(db)
+            self._send_json({"ok": True}, extra={
+                "Set-Cookie": "%s=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0" % ADMIN_COOKIE})
+            return
+        if path == "/api/admin/set-password":
+            pw = str(payload.get("password", "") or "")
+            current = str(payload.get("current", "") or "")
+            db = load_admin_db()
+            if db.get("pw"):
+                # changing an existing password needs the old one, or a local session
+                if not (admin_session_ok(self) or check_password(current, db["pw"])):
+                    self._send_json({"error": "Current password is required."}, 403); return
+            if len(pw) < 8:
+                self._send_json({"error": "Use at least 8 characters."}, 400); return
+            db["pw"] = hash_password(pw)
+            db["sessions"] = {}  # signing everyone out is the safe default
+            save_admin_db(db)
+            sid = create_admin_session()
+            self._send_json({"ok": True}, extra={
+                "Set-Cookie": "%s=%s; Path=/; HttpOnly; SameSite=Lax; Max-Age=%d"
+                % (ADMIN_COOKIE, sid, ADMIN_TTL)})
+            return
+
+        # ---------------- public auth + progress endpoints ----------------
+        if path == "/api/auth/google":
+            token = str(payload.get("credential", "") or "")
+            if not token:
+                self._send_json({"error": "missing credential"}, 400); return
+            try:
+                info = verify_google_id_token(token)
+            except ValueError as ex:
+                self._send_json({"error": str(ex)}, 400); return
+            except Exception:
+                self._send_json({"error": "could not reach Google to verify the token"}, 502); return
+            with _lock:
+                db = load_users_db()
+                now = int(time.time())
+                u = db["users"].setdefault(info["sub"], {"sub": info["sub"], "created": now, "progress": {}})
+                u["name"] = info.get("name", "") or u.get("name", "")
+                u["email"] = info.get("email", "") or u.get("email", "")
+                u["picture"] = info.get("picture", "") or u.get("picture", "")
+                u["provider"] = "google"
+                u["last_seen"] = now
+                sid = create_session(db, info["sub"])
+                save_users_db(db)
+            self._send_json({"user": public_user(u)}, extra={"Set-Cookie": session_cookie(sid)})
+            return
+
+        if path == "/api/auth/signup":
+            name = str(payload.get("name", "") or "").strip()[:80]
+            email = norm_email(payload.get("email", ""))
+            password = str(payload.get("password", "") or "")
+            if not name:
+                self._send_json({"error": "Please enter your name."}, 400); return
+            if not EMAIL_RE.match(email):
+                self._send_json({"error": "That e-mail address does not look valid."}, 400); return
+            if len(password) < 8:
+                self._send_json({"error": "Password must be at least 8 characters."}, 400); return
+            sub = email_sub(email)
+            with _lock:
+                db = load_users_db()
+                now = int(time.time())
+                existing = db["users"].get(sub)
+                if isinstance(existing, dict) and existing.get("pw"):
+                    self._send_json({"error": "An account with this e-mail already exists. Sign in instead."}, 409)
+                    return
+                u = existing if isinstance(existing, dict) else {"sub": sub, "created": now, "progress": {}}
+                u.update({"sub": sub, "name": name, "email": email,
+                          "provider": "password", "pw": hash_password(password),
+                          "created": u.get("created", now), "last_seen": now})
+                u.setdefault("progress", {})
+                db["users"][sub] = u
+                sid = create_session(db, sub)
+                save_users_db(db)
+            self._send_json({"user": public_user(u)}, extra={"Set-Cookie": session_cookie(sid)})
+            return
+
+        if path == "/api/auth/login":
+            email = norm_email(payload.get("email", ""))
+            password = str(payload.get("password", "") or "")
+            sub = email_sub(email)
+            with _lock:
+                db = load_users_db()
+                u = db["users"].get(sub)
+                if not isinstance(u, dict) or not check_password(password, u.get("pw") or {}):
+                    self._send_json({"error": "Wrong e-mail or password."}, 401); return
+                u["last_seen"] = int(time.time())
+                sid = create_session(db, sub)
+                save_users_db(db)
+            self._send_json({"user": public_user(u)}, extra={"Set-Cookie": session_cookie(sid)})
+            return
+
+        if path in ("/api/auth/logout", "/api/logout"):
+            _user, sid = self._session()
+            if sid:
+                with _lock:
+                    db = load_users_db()
+                    db["sessions"].pop(sid, None)
+                    save_users_db(db)
+            self._send_json({"ok": True}, extra={"Set-Cookie": clear_cookie()})
+            return
+
+        if path == "/api/progress":
+            user, _sid = self._session()
+            if not user:
+                self._send_json({"error": "not signed in"}, 401); return
+            items = payload.get("progress")
+            if not isinstance(items, dict):
+                self._send_json({"error": "payload must be {progress:{qid:{c,t}}}"}, 400); return
+            now = int(time.time())
+            n = 0
+            with _lock:
+                db = load_users_db()
+                u = db["users"].setdefault(user["sub"], {"sub": user["sub"], "progress": {}})
+                p = u.setdefault("progress", {})
+                for qid, v in items.items():
+                    if not isinstance(qid, str) or not qid or len(qid) > 300:
+                        continue
+                    t = now
+                    ok = 0
+                    if isinstance(v, dict):
+                        try:
+                            t = int(v.get("t", now))
+                        except (TypeError, ValueError):
+                            t = now
+                        ok = 1 if v.get("c") else 0
+                    prev = p.get(qid)
+                    if prev and prev.get("c"):
+                        ok = 1  # once solved correctly, always shown as solved
+                    p[qid] = {"c": ok, "t": t}
+                    n += 1
+                save_users_db(db)
+            self._send_json({"ok": True, "saved": n})
+            return
+
+        # ---------------- admin (loopback only) endpoints ----------------
         if path == "/api/save/":
             bid = path[len("/api/save/"):].strip("/")
             bank = payload.get("bank")
@@ -470,6 +966,17 @@ class Handler(BaseHTTPRequestHandler):
                 self._send_json({"ok": True})
             except Exception as ex:
                 self._send_json({"error": "delete failed: %r" % ex}, 500)
+            return
+
+        if path == "/api/google-config":
+            cid = str(payload.get("client_id", "") or "").strip()
+            try:
+                cfg = save_google_client_id(cid)
+                self._send_json({"ok": True, "client_id": cfg.get("client_id", ""),
+                                 "msg": ("Google Client ID saved" if cid
+                                         else "Google Client ID cleared — sign-in disabled")})
+            except Exception as ex:
+                self._send_json({"error": "%r" % ex}, 500)
             return
 
         self._send_json({"error": "unknown endpoint"}, 404)
