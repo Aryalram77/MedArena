@@ -57,6 +57,15 @@ button.small{padding:5px 10px;font-size:12px}
 kbd{background:#0f172a;border:1px solid var(--border);border-radius:4px;padding:1px 6px;font-size:11px}
 a{color:var(--accent)}
 hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
+/* per-set practice lock picker */
+.lock-tools{display:flex;gap:8px;align-items:center;margin:8px 0 6px}
+.lock-bank-list{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:10px 12px;max-height:300px;overflow:auto;display:flex;flex-direction:column;gap:10px}
+.lock-cat{display:grid;grid-template-columns:repeat(auto-fill,minmax(225px,1fr));gap:6px 12px}
+.lock-cat-h{grid-column:1/-1;font-size:11px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);font-weight:800;margin-top:2px}
+.lock-bank-list label{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--text);padding:7px 9px;border:1px solid var(--border);border-radius:8px;background:var(--card);cursor:pointer}
+.lock-bank-list label:hover{border-color:var(--accent)}
+.lock-bank-list input{width:16px;height:16px;accent-color:var(--accent);flex:0 0 auto}
+.lock-bank-list em{margin-left:auto;font-style:normal;font-size:11px;color:var(--muted);white-space:nowrap}
   .home-brand-link{display:inline-flex;align-items:center;gap:4px;color:inherit;text-decoration:none}
   .site-copyright{color:var(--muted);font-size:14px;text-align:center;padding:18px 16px 22px;border-top:1px solid var(--border);margin:10px 22px 22px}
 /* users & progress table */
@@ -85,6 +94,79 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
 .u-bbar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#22c55e,#16a34a)}
 @media(max-width:900px){.u-row{grid-template-columns:minmax(140px,1.6fr) 70px 56px 56px 50px;}.u-row span:nth-child(6),.u-row span:nth-child(7){display:none}.u-brow{grid-template-columns:1fr 90px}.u-brow b{grid-column:1/-1;text-align:left}}
 </style>
+<script>window.MA_API_BASE = "https://medarena-api.medarena-ram.workers.dev"; // cloud API set inside the page - set localStorage.ma_api_base = "-" to use the local server instead
+</script>
+<script>
+/* MedArena API bridge — lets the local pages talk to the Cloudflare Worker.
+ *
+ * Active only when an external API base is configured. Precedence:
+ *   1. localStorage("ma_api_base")   (runtime switch)
+ *   2. window.MA_API_BASE            (constant baked into the page)
+ * When no base is set, fetch is not wrapped at all and everything works
+ * exactly as before against the local admin-server.py (cookie sessions).
+ *
+ * In cloud mode:
+ *   - every fetch("/api/...") is rewritten to <base>/api/...
+ *   - Authorization: Bearer <token> is attached from
+ *       localStorage["ma_admin_token"] for /api/admin/*
+ *       localStorage["ma_token"] for everything else
+ *   - credentials are omitted (the cookie jar is not used cross-origin)
+ * Tokens arrive in the JSON of login responses as `token` — auth.js and
+ * admin.html store them after sign-in.
+ */
+(function () {
+  "use strict";
+  var base = "";
+  var ls = "";
+  try { ls = (localStorage.getItem("ma_api_base") || "").trim(); } catch (e) {}
+  base = (ls === "-") ? "" : (ls || window.MA_API_BASE || "").trim();
+  base = base.replace(/\/+$/, "");
+  if (!base) return;
+
+  function tokFor(path) {
+    try {
+      if (path.indexOf("/api/admin") === 0)
+        return localStorage.getItem("ma_admin_token") || "";
+      return localStorage.getItem("ma_token") || "";
+    } catch (e) { return ""; }
+  }
+
+  var orig = window.fetch && window.fetch.bind(window);
+  if (!orig) return;
+  window.fetch = function (input, init) {
+    try {
+      var url = typeof input === "string" ? input : (input && input.url) || "";
+      if (url.indexOf("/api/") === 0 && (!/^([a-z]+:)?\/\//i.test(url))) {
+        url = base + url;
+        input = url;
+        init = init ? Object.assign({}, init) : {};
+        init.mode = "cors";
+        init.credentials = "omit";
+        var h = new Headers(init.headers || {});
+        var tok = tokFor(url.slice(base.length).split("?")[0]);
+        if (tok) h.set("Authorization", "Bearer " + tok);
+        init.headers = h;
+      }
+    } catch (e) { /* fall through with the original request */ }
+    return orig(input, init);
+  };
+
+  window.MA_BRIDGE = {
+    base: base,
+    setBase: function (b) {
+      try { localStorage.setItem("ma_api_base", (b || "").replace(/\/+$/, "")); } catch (e) {}
+      location.reload();
+    },
+    clearTokens: function () {
+      try {
+        localStorage.removeItem("ma_token");
+        localStorage.removeItem("ma_admin_token");
+      } catch (e) {}
+    },
+  };
+})();
+
+</script>
 </head>
 <body>
 <div id="adminGate" style="display:none;position:fixed;inset:0;z-index:9999;background:#f1f5f9;align-items:center;justify-content:center;padding:20px">
@@ -191,11 +273,21 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
 </div>
 <div class="panel" id="accessPanel" style="margin:0 22px 20px;max-width:1456px">
   <h2>🔐 Practice access</h2>
-  <div class="meta" style="margin:-4px 0 12px">The lock is embedded into the page itself — works fully offline. Each device remembers the unlock once; changing the code re-locks everyone.</div>
+  <div class="meta" style="margin:-4px 0 12px">Choose exactly which sets need a code — unticked sets stay open to everyone. The lock is embedded into the page itself and works fully offline. Each device remembers the unlock once; changing the code re-locks everyone.</div>
   <label class="f">Unlock code (min 3 characters)<input type="password" id="accessCode" autocomplete="new-password" placeholder="New code"></label>
+  <div style="margin-top:12px">
+    <div style="font-weight:700;font-size:13px;margin-bottom:6px">Lock these sets <span class="meta" style="font-weight:400">— select one or more</span></div>
+    <div class="lock-tools">
+      <button class="ghost small" id="lockSelectAll" type="button">Select all</button>
+      <button class="ghost small" id="lockClearAll" type="button">Clear</button>
+      <span class="meta" id="lockPickCount"></span>
+    </div>
+    <div id="lockBankList" class="lock-bank-list"><span class="meta">Loading sets…</span></div>
+  </div>
   <div class="toolbar">
-    <button id="saveAccess">🔒 Set / update code</button>
-    <button class="ghost" id="removeAccessLock">🔓 Remove lock</button>
+    <button id="saveAccess">🔒 Save lock</button>
+    <button class="ghost" id="saveAccessKeep" style="display:none">💾 Save selection (keep current code)</button>
+    <button class="ghost" id="removeAccessLock">🔓 Remove all locks</button>
   </div>
   <div class="meta" id="accessMeta" style="margin-top:6px"></div>
 </div>
@@ -537,42 +629,83 @@ bindLive();
     const errEl = document.getElementById("gateErr");
     errEl.textContent = "";
     try {
-      if (mode === "login") {
-        await api("/api/admin/login", { method: "POST", headers: {"Content-Type":"application/json"},
-          body: JSON.stringify({ password: pw }) });
-      } else {
-        await api("/api/admin/set-password", { method: "POST", headers: {"Content-Type":"application/json"},
-          body: JSON.stringify({ password: pw, current: cur }) });
-      }
+      const out = mode === "login"
+        ? await api("/api/admin/login", { method: "POST", headers: {"Content-Type":"application/json"},
+            body: JSON.stringify({ password: pw }) })
+        : await api("/api/admin/set-password", { method: "POST", headers:{"Content-Type":"application/json"},
+            body: JSON.stringify({ password: pw, current: cur }) });
+      // cloud mode: the Worker returns a bearer token — keep it on this device
+      if (out && out.token) { try { localStorage.setItem("ma_admin_token", out.token); } catch (e) {} }
       document.getElementById("gatePw").value = "";
       document.getElementById("gateCurrent").value = "";
       boot();
     } catch (ex) { errEl.textContent = ex.message; }
   };
 
-  document.getElementById("gateSignOut").onclick = async () => {
+  const signOutAdmin = async () => {
     try { await api("/api/admin/logout", { method: "POST" }); } catch (e) {}
+    try { localStorage.removeItem("ma_admin_token"); } catch (e) {}
     location.reload();
   };
+  document.getElementById("gateSignOut").onclick = signOutAdmin;
   const so = document.getElementById("adminSignOut");
-  if (so) so.onclick = async () => {
-    try { await api("/api/admin/logout", { method: "POST" }); } catch (e) {}
-    location.reload();
-  };
+  if (so) so.onclick = signOutAdmin;
 })();
 
-/* ===== Practice access control ===== */
-let accessSettings=null;
-async function loadAccessSettings(){
-  accessSettings=await api("/api/access-settings");
-  $("accessMeta").textContent = accessSettings.enabled
-    ? ("🔒 Lock active · updated " + accessSettings.updated + " · devices that entered the code stay unlocked until you change it")
-    : "🔓 No lock — practice opens directly";
-  $("accessCode").value = "";
+/* ===== Practice access control (per-set locks) ===== */
+let accessSettings=null, lockBanksMeta=[];
+function lockedSetFromSettings(){
+  if (!accessSettings || !accessSettings.enabled) return new Set();
+  // banks: null/absent = legacy all-set lock; array = only those ids
+  return Array.isArray(accessSettings.banks)
+    ? new Set(accessSettings.banks)
+    : new Set(lockBanksMeta.map(b => b.id));
 }
-async function saveLockedAccess(code){
+function renderLockBankList(){
+  const wrap=$("lockBankList"); if(!wrap) return;
+  if(!lockBanksMeta.length){ wrap.innerHTML='<span class="meta">No sets found.</span>'; return; }
+  const locked=lockedSetFromSettings();
+  const cats=[...new Set(lockBanksMeta.map(b=>b.cat||"Question Banks"))];
+  wrap.innerHTML=cats.map(cat=>{
+    const items=lockBanksMeta.filter(b=>(b.cat||"Question Banks")===cat);
+    const boxes=items.map(b=>{
+      const n=Number(b.count);
+      const tag=n>0?n.toLocaleString()+" q":"";
+      return `<label><input type="checkbox" value="${esc(b.id)}" ${locked.has(b.id)?"checked":""}><span>${esc(b.name)}</span><em>${tag}</em></label>`;
+    }).join("");
+    return `<div class="lock-cat"><div class="lock-cat-h">${esc(cat)}</div>${boxes}</div>`;
+  }).join("");
+  updateLockPickCount();
+}
+function selectedLockBanks(){
+  return [...document.querySelectorAll("#lockBankList input[type=checkbox]:checked")].map(x=>x.value);
+}
+function updateLockPickCount(){
+  const el=$("lockPickCount"); if(!el) return;
+  const n=selectedLockBanks().length;
+  el.textContent = n ? (n+" selected") : "none selected";
+}
+async function loadAccessSettings(){
   try{
-    const out=await api("/api/save-access-settings",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({enabled:!!code,code:code||""})});
+    const [settings,banks]=await Promise.all([api("/api/access-settings"), api("/api/banks")]);
+    accessSettings=settings;
+    lockBanksMeta=Array.isArray(banks)?banks:[];
+    renderLockBankList();
+    const n=Array.isArray(settings.banks)?settings.banks.length:(settings.enabled?lockBanksMeta.length:0);
+    $("accessMeta").textContent = settings.enabled
+      ? ("🔒 Lock active on "+n+" set"+(n===1?"":"s")+" · updated "+settings.updated+" · devices that entered the code stay unlocked until you change it")
+      : "🔓 No lock — every practice set opens directly";
+    $("saveAccessKeep").style.display = settings.enabled ? "" : "none";
+    $("accessCode").value="";
+  }catch(e){ toast("Access settings load failed: "+e.message,true); }
+}
+async function saveLockedAccess(code, keepCode){
+  const banks=selectedLockBanks();
+  if((code || keepCode) && !banks.length){ toast("Tick at least one set to lock (or use Remove all locks)",true); return; }
+  try{
+    const body={enabled:!!(code||keepCode),code:code||"",banks};
+    if(keepCode) body.keep_code=true;
+    const out=await api("/api/save-access-settings",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
     await loadAccessSettings();toast(out.msg);
   }catch(e){toast("Save failed: "+e.message,true);}
 }
@@ -582,7 +715,11 @@ $("saveAccess").onclick=()=>{
   if(code.length<3){toast("Code must be at least 3 characters",true);return;}
   saveLockedAccess(code);
 };
+$("saveAccessKeep").onclick=()=>saveLockedAccess("",true);
 $("removeAccessLock").onclick=()=>saveLockedAccess("");
+$("lockSelectAll").onclick=()=>{ document.querySelectorAll("#lockBankList input[type=checkbox]").forEach(x=>x.checked=true); updateLockPickCount(); };
+$("lockClearAll").onclick=()=>{ document.querySelectorAll("#lockBankList input[type=checkbox]").forEach(x=>x.checked=false); updateLockPickCount(); };
+$("lockBankList").addEventListener("change",updateLockPickCount);
 loadAccessSettings().catch(e=>toast("Access settings load failed: "+e.message,true));
 
 /* ===== Google sign-in settings ===== */

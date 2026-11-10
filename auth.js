@@ -299,6 +299,8 @@ function maPost(url, body) {
   }).then(async r => {
     let d = {};
     try { d = await r.json(); } catch (e) {}
+    // cloud mode: the Worker returns a bearer token — keep it for this device
+    if (r.ok && d.token) { try { localStorage.setItem("ma_token", d.token); } catch (e) {} }
     return { ok: r.ok, data: d };
   });
 }
@@ -404,6 +406,7 @@ async function maAfterSignin(user, quiet) {
 
 function maSignOut() {
   fetch("/api/auth/logout", { method: "POST", credentials: "same-origin" }).catch(() => {});
+  try { localStorage.removeItem("ma_token"); } catch (e) {}
   CLOUD.user = null;
   maRenderChip();
   maOpen("signin");

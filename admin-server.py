@@ -219,17 +219,34 @@ def load_lock():
         return None
 
 
-def save_lock(enabled, code, stamp):
+def save_lock(enabled, code, banks, stamp, keep_code=False):
     with _lock:
-        rev = None
-        if enabled:
-            if not code or len(code) < 3:
-                raise RuntimeError("code must be at least 3 characters")
-            rev = ma_hash(code)
-            line = 'const LOCK = {"rev":"%s","updated":"%s"};' % (rev, stamp)
-        else:
-            line = "const LOCK = null;"
         html = load_html(HTML_PATH)
+        if enabled:
+            existing = load_lock()
+            if keep_code:
+                if not existing or not existing.get("rev"):
+                    raise RuntimeError("no existing lock to keep — set a code first")
+                rev = existing["rev"]
+            else:
+                if not code or len(code) < 3:
+                    raise RuntimeError("code must be at least 3 characters")
+                rev = ma_hash(code)
+            banks = [str(b) for b in (banks or []) if str(b)]
+            if not banks:
+                raise RuntimeError("select at least one set to lock")
+            known = {e["id"] for e in discover_banks(html)}
+            unknown = [b for b in banks if b not in known]
+            if unknown:
+                raise RuntimeError("unknown bank id(s): " + ", ".join(unknown))
+            obj = {"rev": rev, "updated": stamp, "banks": banks}
+            line = "const LOCK = %s;" % json.dumps(obj, separators=(",", ":"))
+            pobj = {"rev": rev, "updated": stamp, "banks": banks}
+            pline = "const PLOCK = %s;" % json.dumps(pobj, separators=(",", ":"))
+        else:
+            rev = None
+            line = "const LOCK = null;"
+            pline = "const PLOCK = null;"
         if "const LOCK =" not in html:
             raise RuntimeError("LOCK constant missing in surgery-practice.html")
         os.makedirs(BACKUP_DIR, exist_ok=True)
@@ -244,13 +261,9 @@ def save_lock(enabled, code, stamp):
         with open(HTML_PATH, "w", encoding="utf-8", newline="") as f:
             f.write(html2)
         back = load_lock()
-        if enabled and (not back or back.get("rev") != rev):
+        if enabled and (not back or back.get("rev") != rev or back.get("banks") != banks):
             raise RuntimeError("verification failed after write")
-        # mirror the lock state into index.html so the homepage can show the lock sign offline
-        if enabled:
-            pline = 'const PLOCK = {"rev":"%s","updated":"%s"};' % (rev, stamp)
-        else:
-            pline = "const PLOCK = null;"
+        # mirror the lock state into index.html so the homepage can mark locked sets offline
         ipath = os.path.join(BACKUP_DIR, "index-%s.html" % stamp24)
         ihh = load_html(INDEX_PATH)
         shutil.copyfile(INDEX_PATH, ipath)
@@ -645,8 +658,9 @@ class Handler(BaseHTTPRequestHandler):
             self._send_json(load_concept()); return
         if path == "/api/access-settings":
             lk = load_lock()
+            banks = lk.get("banks") if lk else None
             self._send_json({"enabled": bool(lk), "updated": (lk or {}).get("updated", ""),
-                             "hash": (lk or {}).get("rev", "")})
+                             "hash": (lk or {}).get("rev", ""), "banks": banks})
             return
         if path == "/api/auth/config":
             self._send_json({"client_id": google_client_id(),
@@ -918,12 +932,28 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/api/save-access-settings":
             enabled = bool(payload.get("enabled"))
             code = str(payload.get("code", ""))
+            banks = payload.get("banks", [])
+            if banks is None:
+                banks = []
+            if not isinstance(banks, list):
+                self._send_json({"error": "banks must be a list of set ids"}, 400); return
+            keep_code = bool(payload.get("keep_code"))
             try:
                 stamp = time.strftime("%d %b %Y, %H:%M")
-                backup = save_lock(enabled, code, stamp)
-                self._send_json({"ok": True, "msg": ("Lock set — backup " + backup) if enabled else ("Lock removed — backup " + backup)})
+                backup = save_lock(enabled, code, banks, stamp, keep_code=keep_code)
+                count = len([b for b in banks if b])
+                if enabled and keep_code:
+                    msg = ("Lock selection updated to %d set%s (code unchanged) — backup %s"
+                           % (count, "" if count == 1 else "s", backup))
+                elif enabled:
+                    msg = ("Lock set on %d set%s — backup %s"
+                           % (count, "" if count == 1 else "s", backup))
+                else:
+                    msg = "Lock removed — backup " + backup
+                self._send_json({"ok": True, "msg": msg})
             except Exception as ex:
-                self._send_json({"error": "%r" % ex}, 400 if "code must" in str(ex) else 500)
+                bad = any(t in str(ex) for t in ("code must", "select at least", "unknown bank", "no existing lock"))
+                self._send_json({"error": "%r" % ex}, 400 if bad else 500)
             return
 
         if path == "/api/save-concept":
