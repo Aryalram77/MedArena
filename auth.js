@@ -150,7 +150,7 @@ function maUpdateCards() {
 window.maUpdateCards = maUpdateCards;
 
 /* ---------------- modal ---------------- */
-let maView = "", maErr = "";
+let maView = "", maErr = "", maMsg = "", maResetToken = "", maInitDone = false;
 function maModal() {
   let ov = maEl("maOverlay");
   if (!ov) {
@@ -162,8 +162,8 @@ function maModal() {
   }
   return ov;
 }
-function maClose() { const ov = maEl("maOverlay"); if (ov) ov.classList.remove("show"); maView = ""; maErr = ""; }
-function maOpen(view) { maView = view; maErr = ""; maModal().classList.add("show"); maRender(); }
+function maClose() { const ov = maEl("maOverlay"); if (ov) ov.classList.remove("show"); maView = ""; maErr = ""; maMsg = ""; }
+function maOpen(view) { maView = view; maErr = ""; maMsg = ""; maModal().classList.add("show"); maRender(); }
 
 function maRender() {
   const box = maEl("maBox"); if (!box) return;
@@ -171,19 +171,26 @@ function maRender() {
   if (maView === "signin") html += maHtmlSignin();
   else if (maView === "signup") html += maHtmlSignup();
   else if (maView === "acct") html += maHtmlAcct();
+  else if (maView === "forgot") html += maHtmlForgot();
+  else if (maView === "reset") html += maHtmlReset();
   else html += maHtmlProg();
   box.innerHTML = html;
 
   box.querySelectorAll("[data-ma-out]").forEach(b => { b.onclick = maSignOut; });
-  const go = (attr, view) => box.querySelectorAll("[" + attr + "]").forEach(b => { b.onclick = () => maOpen(view); });
+  const go = (attr, view) => box.querySelectorAll("[" + attr + "]").forEach(b => { b.onclick = () => { if (attr === "data-ma-signin") maResetToken = ""; maOpen(view); }; });
   go("data-ma-prog", "prog"); go("data-ma-acct", "acct");
   go("data-ma-signin", "signin"); go("data-ma-signup", "signup");
+  go("data-ma-forgot", "forgot");
   box.querySelectorAll("[data-ma-close]").forEach(b => { b.onclick = maClose; });
 
   const lf = maEl("maLoginForm");
   if (lf) lf.onsubmit = maSubmitLogin;
   const sf = maEl("maSignupForm");
   if (sf) sf.onsubmit = maSubmitSignup;
+  const ff = maEl("maForgotForm");
+  if (ff) ff.onsubmit = maSubmitForgot;
+  const rf = maEl("maResetForm");
+  if (rf) rf.onsubmit = maSubmitReset;
 
   if (maView === "signin" && CLOUD.online && CLOUD.clientId) {
     maEnsureGsi(err => {
@@ -201,6 +208,9 @@ function maRender() {
 
 function maErrBox() {
   return maErr ? '<div class="ma-err">' + maEsc(maErr) + '</div>' : "";
+}
+function maMsgBox() {
+  return maMsg ? '<div class="ma-note"><b>' + maEsc(maMsg) + '</b></div>' : "";
 }
 
 function maHtmlSignin() {
@@ -223,6 +233,7 @@ function maHtmlSignin() {
     '<label class="ma-f">E-mail<input type="email" id="maEmail" name="email" autocomplete="username" required placeholder="you@example.com"></label>' +
     '<label class="ma-f">Password<input type="password" id="maPass" name="password" autocomplete="current-password" required placeholder="Your password"></label>' +
     '<button class="ma-btn primary ma-wide" type="submit">Sign in</button>' +
+    '<button type="button" class="ma-forgot" data-ma-forgot>Forgot password?</button>' +
     '</form>';
   inner += note;
   inner += '<div class="ma-act"><button class="ma-btn" data-ma-signup>New here? Create an account</button>' +
@@ -248,6 +259,39 @@ function maHtmlSignup() {
     '</form>' + note +
     '<div class="ma-act"><button class="ma-btn" data-ma-signin>I already have an account</button>' +
     '<button class="ma-btn" data-ma-close>Close</button></div>';
+}
+
+function maHtmlForgot() {
+  let note = "";
+  if (!CLOUD.online) {
+    note = '<div class="ma-note"><b>Server not detected.</b> Password reset needs the cloud server — try again at <b>' + document.location.origin + '</b>.</div>';
+  }
+  return '<h2>Reset your password</h2>' +
+    '<p>Enter the e-mail you sign in with. If it has an account, a one-time reset link is e-mailed to you (valid for 30 minutes).</p>' +
+    maMsgBox() + maErrBox() +
+    '<form id="maForgotForm" autocomplete="off">' +
+    '<label class="ma-f">E-mail<input type="email" id="maForgotEmail" name="email" autocomplete="username" required placeholder="you@example.com"></label>' +
+    '<button class="ma-btn primary ma-wide" type="submit">E-mail me a reset link</button>' +
+    '</form>' + note +
+    '<div class="ma-act"><button class="ma-btn" data-ma-signin>Back to sign in</button>' +
+    '<button class="ma-btn" data-ma-close>Close</button></div>';
+}
+
+function maHtmlReset() {
+  if (!maResetToken) {
+    return '<h2>Set a new password</h2>' +
+      '<p class="ma-note">This reset link is missing its token. Use "Forgot password?" on the sign-in panel to get a fresh one.</p>' +
+      '<div class="ma-act"><button class="ma-btn" data-ma-signin>Back to sign in</button><button class="ma-btn" data-ma-close>Close</button></div>';
+  }
+  return '<h2>Set a new password</h2>' +
+    '<p>Your reset link is valid — choose a new password (at least 8 characters). You will be signed in automatically.</p>' +
+    maErrBox() +
+    '<form id="maResetForm" autocomplete="off">' +
+    '<label class="ma-f">New password<input type="password" id="maNewPass" name="password" autocomplete="new-password" minlength="8" required placeholder="At least 8 characters"></label>' +
+    '<label class="ma-f">Repeat password<input type="password" id="maNewPass2" name="password2" autocomplete="new-password" minlength="8" required placeholder="Same password again"></label>' +
+    '<button class="ma-btn primary ma-wide" type="submit">Set password</button>' +
+    '</form>' +
+    '<div class="ma-act"><button class="ma-btn" data-ma-close>Close</button></div>';
 }
 
 function maHtmlAcct() {
@@ -374,7 +418,54 @@ function maCredential(resp) {
     .catch(() => maToast("Network error during sign-in."));
 }
 
-/* adopt a signed-in session: merge cloud progress with local */
+function maSubmitForgot(e) {
+  e.preventDefault();
+  const email = (maEl("maForgotEmail") || {}).value || "";
+  const btn = e.target.querySelector('button[type="submit"]');
+  if (btn) { btn.disabled = true; btn.textContent = "Sending\u2026"; }
+  maPost("/api/auth/forgot", { email })
+    .then(r => {
+      if (btn) { btn.disabled = false; btn.textContent = "E-mail me a reset link"; }
+      maErr = "";
+      maMsg = r.data.msg || "If that e-mail has an account, a reset link is on its way.";
+      maRender();
+    })
+    .catch(() => { maErr = "Network error — check your connection and try again."; maRender(); });
+}
+
+function maSubmitReset(e) {
+  e.preventDefault();
+  const a = (maEl("maNewPass") || {}).value || "";
+  const b2 = (maEl("maNewPass2") || {}).value || "";
+  if (a !== b2) { maErr = "The two passwords do not match."; maRender(); return; }
+  const btn = e.target.querySelector('button[type="submit"]');
+  if (btn) { btn.disabled = true; btn.textContent = "Setting\u2026"; }
+  maPost("/api/auth/reset", { token: maResetToken, password: a })
+    .then(r => {
+      if (btn) { btn.disabled = false; btn.textContent = "Set password"; }
+      if (r.ok && r.data.user) {
+        maResetToken = "";
+        try { history.replaceState(null, "", location.pathname + location.search); } catch (err) {}
+        return maAfterSignin(r.data.user, false);
+      }
+      maErr = r.data.error || "Could not set the password.";
+      maRender();
+    })
+    .catch(() => { maErr = "Network error — the link may have expired. Request a new one."; maRender(); });
+}
+
+/* reset link from the e-mail: /#reset=TOKEN opens the reset panel automatically */
+function maMaybeOpenReset() {
+  let h = "";
+  try { h = location.hash || ""; } catch (e) {}
+  if (h.indexOf("#reset=") !== 0) return false;
+  maResetToken = decodeURIComponent(h.slice(7));
+  try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {}
+  maOpen("reset");
+  return true;
+}
+
+/* ---------------- adopt a signed-in session: merge cloud progress with local ---------------- */
 async function maAfterSignin(user, quiet) {
   CLOUD.user = user;
   let server = {};
@@ -485,6 +576,8 @@ async function maInit() {
     const r = await fetch("/api/auth/config", { cache: "no-store" });
     if (r.ok) { const cfg = await r.json(); CLOUD.online = true; CLOUD.clientId = cfg.client_id || ""; }
   } catch (e) {}
+  maInitDone = true;
+  if (maMaybeOpenReset()) return;
   maRenderChip();
   try { maUpdateCards(); } catch (e) {}
   if (CLOUD.online) {
@@ -501,3 +594,4 @@ async function maInit() {
 }
 maInit();
 })();
+

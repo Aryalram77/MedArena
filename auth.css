@@ -25,6 +25,8 @@
 #maBox .ma-btn.primary:hover{background:#1e40af}
 #maBox .ma-btn.primary:disabled{opacity:.65;cursor:default}
 #maBox .ma-wide{width:100%;margin-top:4px}
+#maBox .ma-forgot{display:block;width:100%;background:none;border:0;color:#315db2;font-family:inherit;font-size:12.5px;font-weight:700;cursor:pointer;margin:7px 0 2px;padding:4px 0;text-align:center;letter-spacing:.2px}
+#maBox .ma-forgot:hover{color:#1e40af;text-decoration:underline}
 #maBox .ma-gwrap{margin:14px 0 4px;padding:10px;border:1px solid #e2e8f0;border-radius:12px;background:#f8fafc;min-height:48px;display:flex;align-items:center;justify-content:center}
 #maBox .ma-or{display:flex;align-items:center;gap:10px;margin:14px 0 6px;color:#94a3b8;font-size:11.5px;text-transform:uppercase;letter-spacing:.5px}
 #maBox .ma-or:before,#maBox .ma-or:after{content:"";flex:1;height:1px;background:#e2e8f0}
