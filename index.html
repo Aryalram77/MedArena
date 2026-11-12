@@ -1421,7 +1421,7 @@ renderEmbeddedBanks();
                   !!(cloudRev && saved && saved.rev === cloudRev);
     unlockedNow = !!saved && (saved.rev === PLOCK.rev || subOk);
     let dismissed = false; try { dismissed = sessionStorage.getItem("medarena.ppDismissed") === "1"; } catch (e) {}
-    return { link: true, auto: !unlockedNow && !dismissed };
+    return { link: true, auto: false };
   }
   function paint(show){
     panel.style.display = show ? "grid" : "none";
