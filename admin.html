@@ -322,26 +322,16 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
   <div id="uTable"></div>
   <div id="uDetail" style="display:none;margin-top:16px;border-top:1px solid var(--border);padding-top:14px"></div>
 </div>
-<div class="panel" id="conceptPanel" style="margin:0 22px 20px;max-width:1456px">
-  <h2>💡 Concept of the Day — homepage + practice page card</h2>
-  <div class="f">Title<input type="text" id="cTitle" placeholder="e.g. Adrenal crisis — the one steroid dose every case needs"></div>
-  <div class="f" style="margin-top:8px">Content (line breaks are kept)
-    <textarea id="cBody" rows="5" placeholder="High-yield pearl, mnemonic, mechanism…"></textarea>
+<div class="panel" id="qotdPanel" style="margin:0 22px 20px;max-width:1456px">
+  <h2>❓ Question of the Day — auto-selected daily from all sets</h2>
+  <div class="meta" style="margin:-4px 0 12px">One question is picked automatically each day from every question in every set, deterministically by date (UTC). It rotates on its own — no manual editing. Preview below shows today's question.</div>
+  <div id="qotdPreview" style="padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:#f8fafc"></div>
+  <div class="toolbar" style="margin-top:10px">
+    <button class="ghost" id="qotdRefresh">🔄 Refresh preview</button>
+    <a href="https://aryalram77.github.io/MedArena/" target="_blank"><button class="ghost">▶ Preview homepage</button></a>
+    <a href="https://aryalram77.github.io/MedArena/surgery-practice.html" target="_blank"><button class="ghost">▶ Preview practice page</button></a>
   </div>
-  <div class="f" style="margin-top:10px">Image (optional)
-    <div class="imgrow" id="cImgRow"></div>
-    <div class="toolbar"><input type="file" id="cImgFile" accept="image/*" style="display:none">
-      <button class="small ghost" id="cImgAdd">🖼 Add image…</button>
-      <button class="small ghost" id="cImgDetach">✕ Detach image</button>
-    </div>
-  </div>
-  <div class="toolbar">
-    <button id="cSave">💾 Save concept (writes to homepage)</button>
-    <button class="ghost" id="cClear">🧹 Clear card</button>
-    <a href="/home" target="_blank" style="margin-left:auto"><button class="ghost">▶ Preview homepage</button></a>
-    <a href="/surgery-practice.html" target="_blank"><button class="ghost">▶ Preview practice page</button></a>
-  </div>
-  <div class="meta" id="cMeta" style="margin-top:6px"></div>
+  <div class="meta" id="qotdMeta" style="margin-top:6px"></div>
 </div>
 <div id="status"></div>
 
@@ -872,54 +862,26 @@ $("hSave").onclick=async()=>{
 };
 loadHomepageContent().catch(e=>toast("Homepage load failed: "+e.message,true));
 
-/* ===== Concept of the Day ===== */
-let concept = null;
-async function loadConcept(){
-  concept = await api("/api/concept");
-  if (!concept) concept = { title: "", body: "", img: "", updated: "" };
-  $("cTitle").value = concept.title || "";
-  $("cBody").value = concept.body || "";
-  renderCImg();
-  $("cMeta").textContent = concept.updated ? ("Last updated: " + concept.updated) : "Card is hidden on the homepage until you fill a title or content.";
+/* ===== Question of the Day (auto-selected daily) ===== */
+async function loadQotD(){
+  const box = $("qotdPreview"), meta = $("qotdMeta");
+  if (!box) return;
+  box.innerHTML = "<span class='meta'>Loading…</span>";
+  try {
+    const d = await api("/api/question-of-day");
+    const q = d.question || {};
+    const opts = (q.options||[]).map(o => `<div style="margin:2px 0"><b>${esc(o.letter)}.</b> ${esc(o.text)}</div>`).join("");
+    box.innerHTML = `<div style="font-weight:800;margin-bottom:6px">${esc(q.stem||"")}</div>${opts}` +
+      `<div style="margin-top:8px;color:#166534"><b>Answer: ${esc(q.answerLetter)}${q.answerText?" — "+esc(q.answerText):""}</b></div>` +
+      (q.explanation ? `<div style="margin-top:6px;color:#475569;font-size:13px">${esc(q.explanation)}</div>` : "");
+    if (meta) meta.textContent = `Date: ${d.date} · Source: ${d.bankName} (Q${q.n}) · auto-rotates daily.`;
+  } catch (e) {
+    box.innerHTML = "<span class='meta'>Failed to load: " + esc(e.message) + "</span>";
+  }
 }
-function renderCImg(){
-  $("cImgRow").innerHTML = (concept && concept.img)
-    ? `<div class="thumb"><img src="/${esc(concept.img)}"><button id="cImgDel" title="detach">✕</button></div>`
-    : "";
-  const d = $("cImgDel"); if (d) d.onclick = () => { concept.img = ""; renderCImg(); };
-}
-$("cImgAdd").onclick = () => $("cImgFile").click();
-$("cImgFile").onchange = async e => {
-  const f = e.target.files[0]; if (!f) return;
-  const ext = (f.name.split(".").pop() || "png").toLowerCase();
-  const data = await new Promise(res => { const r = new FileReader(); r.onload = () => res(r.result); r.readAsDataURL(f); });
-  const out = await api("/api/image", { method: "POST", headers: {"Content-Type":"application/json"},
-    body: JSON.stringify({ name: `cee-img/concept-${Date.now()}.${ext}`, data }) });
-  concept.img = out.src;
-  e.target.value = "";
-  renderCImg();
-  toast("Image uploaded — now press Save concept");
-};
-$("cImgDetach").onclick = () => { if (concept){ concept.img = ""; renderCImg(); toast("Image detached — press Save concept"); } };
-$("cSave").onclick = async () => {
-  try{
-    concept.title = $("cTitle").value.trim();
-    concept.body = $("cBody").value;
-    const out = await api("/api/save-concept", { method: "POST", headers: {"Content-Type":"application/json"}, body: JSON.stringify(concept) });
-    await loadConcept();
-    toast("Saved ✔ " + out.msg);
-  }catch(e){ toast("Save failed: " + e.message, true); }
-};
-$("cClear").onclick = async () => {
-  if (!confirm("Hide the Concept of the Day card on the homepage?")) return;
-  try{
-    const out = await api("/api/save-concept", { method: "POST", headers: {"Content-Type":"application/json"},
-      body: JSON.stringify({ title: "", body: "", img: "" }) });
-    await loadConcept();
-    toast("Card cleared ✔ " + out.msg);
-  }catch(e){ toast("Failed: " + e.message, true); }
-};
-loadConcept().catch(e => toast("Concept load failed: " + e.message, true));
+const qotdRefresh = $("qotdRefresh");
+if (qotdRefresh) qotdRefresh.onclick = () => loadQotD();
+loadQotD().catch(e => toast("QotD load failed: " + e.message, true));
 </script>
 <footer class="site-copyright" id="siteCopyright" aria-label="Copyright">© Dr. Ram</footer>
 </body>

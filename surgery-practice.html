@@ -147,7 +147,7 @@ kbd{background:#f1f5f9;border:1px solid #cbd5e1;border-bottom-width:2px;border-r
 .concept .cimg{margin-top:14px;max-width:100%;max-height:380px;border-radius:12px;border:1px solid var(--border,#2b3a55);display:block;box-shadow:0 6px 22px rgba(0,0,0,.35)}
 .concept .stamp{margin-left:auto;font-size:11.5px;color:#94a3b8;white-space:nowrap}
 /* Concept of the Day belongs on the homepage only. */
-#conceptSec{display:none!important}
+/* (concept section removed; QotD uses #qotdSec) */
 
 .access-gate{position:fixed;z-index:1000;inset:0;display:none;place-items:center;padding:20px;background:rgba(10,20,40,.72);backdrop-filter:blur(8px)}
 .access-gate-card{width:min(430px,100%);padding:26px;border-radius:20px;background:#fff;box-shadow:0 24px 80px rgba(0,0,0,.3)}
@@ -341,17 +341,18 @@ kbd{background:#f1f5f9;border:1px solid #cbd5e1;border-bottom-width:2px;border-r
    </div>
 </section>
 
-<!-- Concept of the Day (managed by MedArena Admin) -->
-<section class="concept" id="conceptSec" style="display:none">
+<!-- Question of the Day (auto-selected daily from all sets) -->
+<section class="concept" id="qotdSec" style="display:none">
   <div class="crow">
-    <div class="bulb">💡</div>
+    <div class="bulb">❓</div>
     <div style="flex:1;min-width:0">
-      <div class="kicker">Concept of the Day</div>
-      <h2 id="conceptTitle"></h2>
-      <div class="cbody" id="conceptBody"></div>
-      <img id="conceptImg" alt="" style="display:none">
+      <div class="kicker">Question of the Day · <span id="qotdBank"></span></div>
+      <h2 id="qotdStem" style="font-size:16px;font-weight:700;line-height:1.5;margin:6px 0"></h2>
+      <div id="qotdOpts" style="margin:8px 0"></div>
+      <button class="btn sec small" id="qotdReveal" type="button" style="margin-top:6px">Reveal answer</button>
+      <div id="qotdAns" style="display:none;margin-top:8px"></div>
     </div>
-    <div class="stamp" id="conceptStamp"></div>
+    <div class="stamp" id="qotdStamp"></div>
   </div>
 </section>
 
@@ -464,25 +465,46 @@ kbd{background:#f1f5f9;border:1px solid #cbd5e1;border-bottom-width:2px;border-r
 
 <script>
 "use strict";
-/* ===== Concept of the Day (set from MedArena Admin) ===== */
-const CONCEPT = {"title":"Why do patients with chronic liver disease bruise easily?","body":"Because the diseased liver can't synthesise clotting factors well.\n\n• The liver makes nearly all coagulation factors (I, II, V, VII, IX, X…)\n• Vitamin K acts only if the liver is healthy enough to use it\n• Also: low platelets from hypersplenism add to the bleeding risk\n\n\nExam hook: In liver disease, ING coagulopathy responds to FFP, not just vitamin K alone.","img":"","updated":"05 Nov 2026, 20:39"}; // {title, body, img, updated}
-(function renderConcept(){
-  const c = (typeof CONCEPT === "object" && CONCEPT) ? CONCEPT : null;
-  const sec = document.getElementById("conceptSec");
-  const has = !!(c && (c.title || c.body));
-  if (has){
+/* ===== Question of the Day (auto-selected daily from all sets) ===== */
+const CONCEPT = null; // legacy placeholder (concept feature replaced by QotD)
+(async function renderQotD(){
+  const sec = document.getElementById("qotdSec");
+  if (!sec) return;
+  try {
+    const r = await fetch("/api/question-of-day", {cache:"no-store"});
+    if (!r.ok) throw new Error();
+    const d = await r.json();
+    const q = d.question;
+    if (!q || !q.stem) { sec.style.display = "none"; return; }
     sec.style.display = "";
-    document.getElementById("conceptTitle").textContent = c.title || "";
-    const b = document.getElementById("conceptBody");
-    b.textContent = c.body || "";
-    b.style.display = c.body ? "" : "none";
-    const im = document.getElementById("conceptImg");
-    if (c.img){ im.src = c.img; im.style.display = ""; } else im.style.display = "none";
-    document.getElementById("conceptStamp").textContent = c.updated ? "updated " + c.updated : "";
-  }
-  window.__conceptHas = has;
+    const bank = document.getElementById("qotdBank");
+    if (bank) bank.textContent = d.bankName || "";
+    const stem = document.getElementById("qotdStem");
+    if (stem) stem.textContent = q.stem;
+    const opts = document.getElementById("qotdOpts");
+    if (opts) opts.innerHTML = (q.options||[]).map(o => `<div class="optrow" style="cursor:default"><span class="lt">${esc(o.letter)}</span><span class="ot">${esc(o.text)}</span></div>`).join("");
+    const reveal = document.getElementById("qotdReveal");
+    const ans = document.getElementById("qotdAns");
+    if (reveal && ans) {
+      reveal.style.display = "";
+      ans.style.display = "none";
+      ans.innerHTML = "";
+      reveal.onclick = () => {
+        reveal.style.display = "none";
+        ans.style.display = "";
+        ans.innerHTML = `<div style="margin-top:6px"><b>Answer: ${esc(q.answerLetter)}${q.answerText ? " — " + esc(q.answerText) : ""}</b></div>` +
+          (q.explanation ? `<div class="explain show" style="margin-top:8px">${esc(q.explanation)}</div>` : "");
+        if (opts) opts.querySelectorAll(".optrow").forEach(row => {
+          const lt = row.querySelector(".lt");
+          if (lt && lt.textContent.trim() === q.answerLetter) row.classList.add("reveal-ok");
+        });
+      };
+    }
+    const stamp = document.getElementById("qotdStamp");
+    if (stamp) stamp.textContent = d.date ? "📅 " + d.date : "";
+  } catch (e) { sec.style.display = "none"; }
 })();
-function toggleConcept(show){ const s = document.getElementById("conceptSec"); if (s) s.style.display = (show && window.__conceptHas) ? "block" : "none"; }
+function toggleConcept(show){}
 /* Safe storage: falls back to in-memory if localStorage is blocked (e.g. strict file:// settings) */
 const store = (() => {
   try { const t = "__mqt"; localStorage.setItem(t, "1"); localStorage.removeItem(t); return localStorage; }
