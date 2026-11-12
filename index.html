@@ -1426,7 +1426,7 @@ renderEmbeddedBanks();
   function paint(show){
     panel.style.display = show ? "grid" : "none";
     ["ppSteps", "ppDevBox", "ppCta"].forEach(id => { const el = document.getElementById(id); if (el) el.style.display = unlockedNow ? "none" : ""; });
-    const qr = document.getElementById("ppQr"); if (qr) qr.style.display = unlockedNow ? "none" : "";
+    const qr = document.getElementById("ppQr"); if (qr) { qr.style.display = unlockedNow ? "none" : ""; if (!unlockedNow && typeof ESEWA_QR === "string") qr.src = ESEWA_QR; }
     const ok = document.getElementById("ppOk"); if (ok) ok.style.display = unlockedNow ? "" : "none";
   }
   function refresh(){
