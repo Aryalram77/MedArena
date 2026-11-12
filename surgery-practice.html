@@ -553,6 +553,7 @@ const fmtTime = s => `${String(Math.floor(s / 60)).padStart(2, "0")}:${String(s 
 const QKEY = q => q.stem.slice(0, 120);
 
 const state = { exam: null, errors: new Set(JSON.parse(store.getItem("se1.errors") || "[]")) };
+let pendingRepractice = null;
 function toast(m){ const t = $("toast"); t.textContent = m; t.style.display = "block"; clearTimeout(t._h); t._h = setTimeout(() => t.style.display = "none", 3500); }
 
 function runtimeQuestion(q, shufO){
@@ -594,7 +595,7 @@ function bankNegMark(){
 $("modeSel").onchange = () => { const m = $("modeSel").value; $("timerMin").disabled = m === "tutor"; $("timerMin").value = m === "tutor" ? 0 : bankDefaultMinutes(); };
 $("startBtn").onclick = openPlayerNamePrompt;
 function openPlayerNamePrompt(){
-  if (!buildPool()) return;
+  if (!pendingRepractice && !buildPool()) return;
   const modal = $("namePrompt"), input = $("playerNameInput");
   try { input.value = sessionStorage.getItem("medarena.playerName") || ""; } catch(e) { input.value = ""; }
   modal.classList.add("visible");
@@ -610,7 +611,13 @@ $("playerNameForm").onsubmit = e => {
   startExam(name);
 };
 function startExam(playerName){
-  const bp = buildPool(); if (!bp) return;
+  let bp;
+  if (pendingRepractice) {
+    bp = { src: pendingRepractice.pool, label: pendingRepractice.label };
+    pendingRepractice = null;
+  } else {
+    bp = buildPool(); if (!bp) return;
+  }
   let pool = $("shufQ").checked ? shuffle([...bp.src]) : [...bp.src];
   pool = pool.map(q => runtimeQuestion(q, $("shufO").checked));
   const mode = CUR.noKey ? "timed" : $("modeSel").value;
@@ -959,10 +966,26 @@ function refreshWrongDash(){
   if (!wrongQs.length){ box.style.display = "none"; box.innerHTML = ""; return; }
   const nums = wrongQs.map(q => "Q" + q.n).join(", ");
   box.style.display = "";
-  box.innerHTML = `<b>🔁 Wrong answers in this set: ${wrongQs.length}</b> — ${nums}` +
-    ` <button class="btn sec small" id="repracticeBtn" type="button" style="margin-left:8px">Re-practice wrong →</button>`;
-  const b = $("repracticeBtn");
-  if (b) b.onclick = () => { const sel = $("setSel"); if (sel) sel.value = "errors"; openPlayerNamePrompt(); };
+  let html = `<b>🔁 Wrong answers in this set: ${wrongQs.length}</b> — ${nums}`;
+  html += ` <button class="btn sec small" id="repracticeAllBtn" type="button" style="margin-left:8px">Re-practice all wrong →</button>`;
+  html += `<details style="margin-top:8px"><summary style="cursor:pointer;font-weight:700;color:#991b1b">Show wrong questions (click to practice one)</summary><div style="margin-top:6px;display:flex;flex-direction:column;gap:4px;max-height:260px;overflow:auto">`;
+  wrongQs.forEach(q => {
+    const snippet = (q.stem || "").replace(/\s+/g, " ").slice(0, 90);
+    html += `<button class="btn sec small" data-wq="${q.n}" style="text-align:left;white-space:normal;padding:6px 8px;font-size:12px" title="${esc(q.stem)}">Q${q.n} — ${esc(snippet)}${snippet.length >= 90 ? "…" : ""}</button>`;
+  });
+  html += `</div></details>`;
+  box.innerHTML = html;
+  const allBtn = $("repracticeAllBtn");
+  if (allBtn) allBtn.onclick = () => { const sel = $("setSel"); if (sel) sel.value = "errors"; openPlayerNamePrompt(); };
+  box.querySelectorAll("[data-wq]").forEach(btn => {
+    btn.onclick = () => {
+      const n = parseInt(btn.dataset.wq, 10);
+      const q = CUR.questions.find(x => x.n === n);
+      if (!q) return;
+      pendingRepractice = { pool: [q], label: "Re-practice Q" + n };
+      openPlayerNamePrompt();
+    };
+  });
 }
 /* ===== organized text renderer (explanations & module summaries) ===== */
 function fmtOrganized(raw){
