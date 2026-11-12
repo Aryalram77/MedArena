@@ -125,7 +125,8 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
 
   function tokFor(path) {
     try {
-      if (path.indexOf("/api/admin") === 0)
+      if (path.indexOf("/api/admin") === 0 ||
+          path === "/api/subs" || path === "/api/sub-generate" || path === "/api/sub-revoke")
         return localStorage.getItem("ma_admin_token") || "";
       return localStorage.getItem("ma_token") || "";
     } catch (e) { return ""; }
@@ -290,6 +291,18 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
     <button class="ghost" id="removeAccessLock">🔓 Remove all locks</button>
   </div>
   <div class="meta" id="accessMeta" style="margin-top:6px"></div>
+</div>
+<div class="panel" id="subsPanel" style="margin:0 22px 20px;max-width:1456px">
+  <h2>💳 Lifetime subscriptions — Rs 1,000 (eSewa)</h2>
+  <div class="meta" style="margin:-4px 0 12px">Buyer scans the eSewa QR shown on the homepage / practice gate and pays Rs 1,000, then sends you the screenshot together with their <b>Device ID</b>. Generate one personal code per device — it unlocks all locked sets on that device forever. Removing the lock removes all codes with it.</div>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end">
+    <label class="f" style="max-width:260px">Device ID (shown on buyer's screen)<input type="text" id="subDevId" placeholder="MA-AB2C-D3EF" style="text-transform:uppercase"></label>
+    <label class="f" style="flex:1;min-width:200px">Note (buyer name / phone / eSewa txn)<input type="text" id="subNote" placeholder="optional"></label>
+    <button id="subGenerate">⚡ Generate lifetime code</button>
+  </div>
+  <div id="subResult" class="meta" style="margin-top:10px"></div>
+  <h2 style="margin-top:16px">Issued codes</h2>
+  <div id="subsList" class="meta"><span class="meta">Loading…</span></div>
 </div>
 <div class="panel" id="googlePanel" style="margin:0 22px 20px;max-width:1456px">
   <h2>🌐 Google sign-in + progress tracking</h2>
@@ -721,6 +734,44 @@ $("lockSelectAll").onclick=()=>{ document.querySelectorAll("#lockBankList input[
 $("lockClearAll").onclick=()=>{ document.querySelectorAll("#lockBankList input[type=checkbox]").forEach(x=>x.checked=false); updateLockPickCount(); };
 $("lockBankList").addEventListener("change",updateLockPickCount);
 loadAccessSettings().catch(e=>toast("Access settings load failed: "+e.message,true));
+
+/* ===== lifetime subscriptions ===== */
+let subCodeCopy=null;
+async function loadSubs(){
+  try{
+    const out=await api("/api/subs");
+    const box=$("subsList");
+    if(!out.enabled){ box.innerHTML="<span class='meta'>⚠ Set up the practice lock first (🔐 Practice access) — premium sets need a lock to exist.</span>"; return; }
+    const rows=(out.log||[]).map(e=>`<div class="u-row" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:7px 0;border-bottom:1px solid var(--border)">
+      <b style="letter-spacing:.5px">${esc(e.devId)}</b>
+      <span style="font-family:monospace;font-weight:700;color:#6d28d9">${esc(e.revoked?"-------- (revoked)":e.code)}</span>
+      <span class="meta">${esc(e.createdAt)}${e.note?" · "+esc(e.note):""}${e.revoked?" · revoked "+esc(e.revoked):""}</span>
+      ${e.revoked?"":`<button class="ghost small" data-revoke="${esc(e.devId)}" style="margin-left:auto">Revoke</button>`}
+    </div>`);
+    box.innerHTML=rows.length?rows.join(""):"<span class='meta'>No codes issued yet.</span>";
+    box.querySelectorAll("[data-revoke]").forEach(b=>b.onclick=async()=>{
+      if(!confirm("Revoke the code for "+b.dataset.revoke+"? That device will re-lock immediately."))return;
+      try{ await api("/api/sub-revoke",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({devId:b.dataset.revoke})}); toast("Code revoked"); loadSubs(); }
+      catch(e){ toast("Revoke failed: "+e.message,true); }
+    });
+  }catch(e){ $("subsList").textContent="Load failed: "+e.message; }
+}
+$("subGenerate").onclick=async()=>{
+  const devId=$("subDevId").value.trim().toUpperCase();
+  if(!/^MA-[2-9A-HJ-NP-Z]{4}-[2-9A-HJ-NP-Z]{4}$/.test(devId)){ $("subResult").textContent="Device ID must look like MA-XXXX-XXXX (letters/digits, no I/L/O/0/1)"; return; }
+  $("subResult").textContent="Generating…";
+  try{
+    const out=await api("/api/sub-generate",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({devId,note:$("subNote").value.trim()})});
+    if(out&&out.ok){
+      subCodeCopy=out.code;
+      $("subResult").innerHTML=`✅ Code for <b>${esc(out.devId)}</b>: <b style="font-family:monospace;font-size:16px;color:#6d28d9">${esc(out.code)}</b> <button class="ghost small" id="subCopyCode">Copy code</button> — give it to the buyer (they enter it in the practice gate).`;
+      $("subCopyCode").onclick=()=>{ try{navigator.clipboard&&navigator.clipboard.writeText(subCodeCopy);}catch(e){} $("subCopyCode").textContent="Copied!"; setTimeout(()=>$("subCopyCode").textContent="Copy code",1600); };
+      $("subDevId").value=""; $("subNote").value="";
+      loadSubs();
+    } else { $("subResult").textContent=(out&&out.error)||"Generation failed"; }
+  }catch(e){ $("subResult").textContent="Generation failed: "+e.message; }
+};
+loadSubs().catch(()=>{});
 
 /* ===== Google sign-in settings ===== */
 async function loadGoogleConfig(){

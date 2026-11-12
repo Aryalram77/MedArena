@@ -33,6 +33,7 @@ INDEX_PATH = os.path.join(ROOT, "index.html")
 BACKUP_DIR = os.path.join(ROOT, "backups")
 IMG_DIR = os.path.join(ROOT, "cee-img")
 USERS_PATH = os.path.join(ROOT, "medarena-users.json")
+SUBS_PATH = os.path.join(ROOT, "medarena-subs.json")
 AUTH_CONFIG_PATH = os.path.join(ROOT, "auth-config.json")
 SESSION_COOKIE = "ma_sess"
 SESSION_TTL = 60 * 24 * 3600  # 60 days
@@ -282,6 +283,104 @@ def save_lock(enabled, code, banks, stamp, keep_code=False):
         with open(INDEX_PATH, "w", encoding="utf-8", newline="") as f:
             f.write(ih2)
         return os.path.basename(bpath)
+
+
+# ---------- lifetime subscriptions (Rs 1,000 · eSewa) ----------
+import secrets
+
+SUB_ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZ23456789"  # no I/L/O/0/1 — readable when dictated
+DEV_RE = re.compile(r"^MA-[2-9A-HJ-NP-Z]{4}-[2-9A-HJ-NP-Z]{4}$")
+
+
+def load_subs_log():
+    try:
+        with open(SUBS_PATH, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        return data if isinstance(data, list) else []
+    except Exception:
+        return []
+
+
+def save_subs_log(entries):
+    with open(SUBS_PATH, "w", encoding="utf-8") as f:
+        json.dump(entries, f, indent=2, ensure_ascii=False)
+
+
+def update_lock_subs(subs):
+    """Write LOCK.subs into surgery-practice.html and mirror into index.html (PLOCK)."""
+    with _lock:
+        html = load_html(HTML_PATH)
+        lk = load_lock()
+        if not lk:
+            raise RuntimeError("no practice lock is set — enable the lock first (sets stay premium-only)")
+        lk["subs"] = subs
+        lk["updated"] = time.strftime("%d %b %Y, %H:%M")
+        line = "const LOCK = %s;" % json.dumps(lk, separators=(",", ":"))
+        pobj = {k: lk[k] for k in ("rev", "updated", "banks", "subs") if k in lk}
+        pline = "const PLOCK = %s;" % json.dumps(pobj, separators=(",", ":"))
+        os.makedirs(BACKUP_DIR, exist_ok=True)
+        stamp24 = time.strftime("%Y%m%d-%H%M%S")
+        shutil.copyfile(HTML_PATH, os.path.join(BACKUP_DIR, "surgery-practice-%s.html" % stamp24))
+        html2 = re.sub(r"const LOCK = [^\n]*", lambda _m, s=line: s, html, count=1)
+        if html2 == html:
+            raise RuntimeError("could not replace LOCK")
+        with open(HTML_PATH, "w", encoding="utf-8", newline="") as f:
+            f.write(html2)
+        back = load_lock()
+        if back.get("subs") != subs:
+            raise RuntimeError("verification failed after write")
+        shutil.copyfile(INDEX_PATH, os.path.join(BACKUP_DIR, "index-%s.html" % stamp24))
+        ihh = load_html(INDEX_PATH)
+        if "const PLOCK =" not in ihh:
+            raise RuntimeError("PLOCK missing in index.html")
+        ih2 = re.sub(r"const PLOCK = [^\n]*", lambda _m, s=pline: s, ihh, count=1)
+        if ih2 == ihh:
+            raise RuntimeError("could not replace PLOCK in index.html")
+        with open(INDEX_PATH, "w", encoding="utf-8", newline="") as f:
+            f.write(ih2)
+        return lk
+
+
+def generate_sub(dev_id, note):
+    dev_id = str(dev_id or "").strip().upper()
+    if not DEV_RE.match(dev_id):
+        raise RuntimeError("Device ID must look like MA-XXXX-XXXX (no I/L/O/0/1)")
+    lk = load_lock() or {}
+    active = {s.get("id") for s in (lk.get("subs") or []) if s.get("id")}
+    if dev_id in active:
+        raise RuntimeError("this Device ID already has an active code — revoke it first")
+    code = "MA-%s-%s" % ("".join(secrets.choice(SUB_ALPHABET) for _ in range(4)),
+                         "".join(secrets.choice(SUB_ALPHABET) for _ in range(4)))
+    rev = ma_hash(dev_id + "#" + code)
+    update_lock_subs((lk.get("subs") or []) + [{"id": dev_id, "rev": rev,
+                                               "at": time.strftime("%d %b %Y, %H:%M")}])
+    entry = {"devId": dev_id, "code": code, "rev": rev, "note": str(note or "")[:120],
+             "createdAt": time.strftime("%d %b %Y, %H:%M")}
+    log = load_subs_log()
+    log.insert(0, entry)
+    save_subs_log(log)
+    return entry
+
+
+def revoke_sub(dev_id):
+    dev_id = str(dev_id or "").strip().upper()
+    if not DEV_RE.match(dev_id):
+        raise RuntimeError("bad Device ID")
+    lk = load_lock() or {}
+    cur = lk.get("subs") or []
+    new = [s for s in cur if s.get("id") != dev_id]
+    if len(new) == len(cur):
+        raise RuntimeError("no active code for this Device ID")
+    update_lock_subs(new)
+    log = load_subs_log()
+    changed = False
+    for e in log:
+        if e.get("devId") == dev_id and not e.get("revoked"):
+            e["revoked"] = time.strftime("%d %b %Y, %H:%M")
+            changed = True
+    if changed:
+        save_subs_log(log)
+    return True
 
 
 # ---------- HTTP handler ----------
@@ -662,6 +761,13 @@ class Handler(BaseHTTPRequestHandler):
             self._send_json({"enabled": bool(lk), "updated": (lk or {}).get("updated", ""),
                              "hash": (lk or {}).get("rev", ""), "banks": banks})
             return
+        if path == "/api/subs":
+            if not (self._is_loopback() or admin_session_ok(self)):
+                self._send_json({"error": "admin only"}, 403); return
+            lk = load_lock() or {}
+            self._send_json({"enabled": bool(lk.get("rev")), "subs": lk.get("subs", []),
+                             "log": load_subs_log()})
+            return
         if path == "/api/auth/config":
             self._send_json({"client_id": google_client_id(),
                              "ready": bool(google_client_id()),
@@ -954,6 +1060,22 @@ class Handler(BaseHTTPRequestHandler):
             except Exception as ex:
                 bad = any(t in str(ex) for t in ("code must", "select at least", "unknown bank", "no existing lock"))
                 self._send_json({"error": "%r" % ex}, 400 if bad else 500)
+            return
+
+        if path == "/api/sub-generate":
+            try:
+                entry = generate_sub(payload.get("devId"), payload.get("note"))
+                self._send_json({"ok": True, "code": entry["code"], "devId": entry["devId"],
+                                 "createdAt": entry["createdAt"]})
+            except Exception as ex:
+                self._send_json({"error": "%s" % ex}, 400)
+            return
+        if path == "/api/sub-revoke":
+            try:
+                revoke_sub(payload.get("devId"))
+                self._send_json({"ok": True})
+            except Exception as ex:
+                self._send_json({"error": "%s" % ex}, 400)
             return
 
         if path == "/api/save-concept":

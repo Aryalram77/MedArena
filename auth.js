@@ -229,12 +229,14 @@ function maHtmlSignin() {
              '<div class="ma-or"><span>or use your e-mail</span></div>';
   }
   inner += maErrBox();
-  inner += '<form id="maLoginForm" autocomplete="on">' +
-    '<label class="ma-f">E-mail<input type="email" id="maEmail" name="email" autocomplete="username" required placeholder="you@example.com"></label>' +
-    '<label class="ma-f">Password<input type="password" id="maPass" name="password" autocomplete="current-password" required placeholder="Your password"></label>' +
-    '<button class="ma-btn primary ma-wide" type="submit">Sign in</button>' +
-    '<button type="button" class="ma-forgot" data-ma-forgot>Forgot password?</button>' +
-    '</form>';
+  if (CLOUD.online) {
+    inner += '<form id="maLoginForm" autocomplete="on">' +
+      '<label class="ma-f">E-mail<input type="email" id="maEmail" name="email" autocomplete="username" required placeholder="you@example.com"></label>' +
+      '<label class="ma-f">Password<input type="password" id="maPass" name="password" autocomplete="current-password" required placeholder="Your password"></label>' +
+      '<button class="ma-btn primary ma-wide" type="submit">Sign in</button>' +
+      '<button type="button" class="ma-forgot" data-ma-forgot>Forgot password?</button>' +
+      '</form>';
+  }
   inner += note;
   inner += '<div class="ma-act"><button class="ma-btn" data-ma-signup>New here? Create an account</button>' +
            '<button class="ma-btn" data-ma-close>Continue without an account</button></div>';
@@ -518,6 +520,8 @@ function maRenderChip() {
       (u.picture ? '<img class="av avimg" alt="" src="' + maEsc(u.picture) + '" referrerpolicy="no-referrer">'
                  : '<span class="av">' + maEsc(nm.slice(0, 1).toUpperCase()) + '</span>') +
       '<span class="nm">' + maEsc(nm) + '</span></button>';
+  } else if (maInitDone && !CLOUD.online) {
+    chip.innerHTML = '<span class="auth-btn" style="cursor:default;opacity:.8">💾 Offline — progress saved on this device</span>';
   } else {
     chip.innerHTML = '<button class="auth-btn" id="maChipBtn">\ud83d\udc64 Sign in</button>';
   }

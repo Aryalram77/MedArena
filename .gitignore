@@ -2,6 +2,9 @@
 # Accounts database: e-mails, password hashes, live session tokens.
 medarena-users.json
 
+# Subscription log: device-bound codes in plaintext. Never publish this.
+medarena-subs.json
+
 # Admin password hash + admin sessions.
 admin-auth.json
 
