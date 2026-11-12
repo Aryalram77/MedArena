@@ -125,10 +125,9 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
 
   function tokFor(path) {
     try {
-      if (path.indexOf("/api/admin") === 0 ||
-          path === "/api/subs" || path === "/api/sub-generate" || path === "/api/sub-revoke")
-        return localStorage.getItem("ma_admin_token") || "";
-      return localStorage.getItem("ma_token") || "";
+      // admin.html is an admin-only page: every mutating (and most read) call
+      // needs the admin bearer token on the cloud.
+      return localStorage.getItem("ma_admin_token") || "";
     } catch (e) { return ""; }
   }
 
