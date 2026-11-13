@@ -331,7 +331,7 @@ pre{white-space:pre-wrap;word-break:break-word;overflow-x:auto;}
 <body>
 <header>
   <div class="logo"><a class="home-brand-link" href="index.html" aria-label="MedArena homepage">✚ <span class="brand">MedArena</span></a></div>
-  <div class="tag" id="hdrTag">Categories: Loksewa · Surgery · CEE MD/MS · USMLE — banks embedded</div>
+  <div class="tag" id="hdrTag">Categories: Loksewa · Surgery · CEE MD/MS — banks embedded</div>
 </header>
 
 <main class="container">
@@ -959,7 +959,7 @@ function renderSets(){
 }
 
 function renderBankSel(){
-  const CATS = ["Loksewa", "Surgery", "CEE MD/MS", "USMLE"];
+  const CATS = ["Loksewa", "Surgery", "CEE MD/MS"];
   let html = "";
   CATS.forEach(cat => {
     html += `<optgroup label="${esc(cat)}">`;

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MedArena — USMLE Style Practice</title>
+<title>MedArena — Clinical MCQ Practice</title>
 <script>
 /* Asset bootstrap.
    The app is served by admin-server.py at http://localhost:8600, where the
@@ -1426,8 +1426,8 @@ async function renderEmbeddedBanks(){
     if(!Array.isArray(banks)) throw new Error("The bank list returned an unexpected response.");
     const groups=new Map();
     banks.forEach(bank=>{const cat=bank.cat||"Question Banks";if(!groups.has(cat))groups.set(cat,[]);groups.get(cat).push(bank);});
-    const icons={"Loksewa":"🏛️","Surgery":"⚕️","CEE MD/MS":"🩺","USMLE":"🧠"};
-    const colors={"Loksewa":"#168a78","Surgery":"#7c3aed","CEE MD/MS":"#426ce0","USMLE":"#8458cf"};
+    const icons={"Loksewa":"🏛️","Surgery":"⚕️","CEE MD/MS":"🩺"};
+    const colors={"Loksewa":"#168a78","Surgery":"#7c3aed","CEE MD/MS":"#426ce0"};
     const count=banks.reduce((sum,b)=>sum+Math.max(0,Number(b.count)||0),0);
     total.innerHTML=`<strong>${count.toLocaleString()}</strong><span>questions ready</span>`;
     wrap.innerHTML=[...groups.entries()].map(([cat,items])=>{
