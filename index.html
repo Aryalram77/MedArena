@@ -258,6 +258,34 @@ header .logo{font-size:21px}.home-brand-link{color:inherit;text-decoration:none}
 })();
 
 </script>
+<style>
+/* --- mobile fixes (Android/small screens) --- */
+@media (max-width: 900px){
+  .bank-tiles.cols3{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media (max-width: 700px){
+  header{flex-wrap:wrap;align-items:center;}
+  header .logo{flex:1 1 auto;}
+  .tabs{margin-left:0;width:100%;order:3;display:flex;flex-wrap:wrap;}
+  .tabs button{flex:1 1 140px;text-align:center;}
+  #ppOpenLink{order:2;margin-left:auto;}
+  .bank-tiles.cols3{grid-template-columns:1fr !important;}
+  .embedded-group.wide{grid-column:auto;}
+  .container{padding:0 12px;}
+  .home-hero{padding:22px 16px;}
+  .group-head{align-items:flex-start;}
+}
+@media (max-width: 480px){
+  .tabs button{flex:1 1 100%;font-size:13px;padding:10px 12px;}
+  #ppOpenLink{width:100%;justify-content:center;margin-left:0;}
+  .hero-cta{width:100%;justify-content:center;}
+  .bank-section-head{flex-direction:column;align-items:flex-start;gap:8px;}
+  .home-bank-card{min-height:auto;}
+  .group-icon{width:40px;height:40px;flex-basis:40px;font-size:18px;}
+}
+img{max-width:100%;height:auto;}
+html,body{overflow-x:hidden;}
+</style>
 </head>
 <body>
 <header>
