@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emergency Medicine STP - Emergency Health Service Package 2078</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/minimalist.min.css">
+<style>
+  :root{
+    --bg:#f1f5f9; --card:#ffffff; --ink:#0f172a; --muted:#64748b;
+    --line:#e2e8f0; --accent:#1d4ed8; --accent2:#3b82f6; --ok:#16a34a;
+    --bad:#dc2626; --flag:#f59e0b; --mark:#fde047;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+  .header{background:#0f172a;color:#fff;padding:15px 20px;display:flex;align-items:center;gap:12px}
+  .header .logo{font-weight:800;font-size:18px;letter-spacing:.4px}
+  .header .logo .brand{background:linear-gradient(90deg,#3b82f6,#22d3ee,#8b5cf6,#3b82f6);background-size:280% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:brandFlow 5s linear infinite}
+  .header .tag{color:#94a3b8;font-size:12.5px}
+  @keyframes brandFlow{0%{background-position:0% 0}100%{background-position:280% 0}}
+  .container{max-width:1200px;margin:0 auto;padding:20px}
+  .section{margin-bottom:30px}
+  .section-title{font-size:22px;margin:0 0 20px;color:#172640;border-bottom:1px solid var(--line);padding-bottom:10px}
+  .toc-list{list-style:none;padding:0;margin:0}
+  .toc-list li{margin:8px 0;padding:8px 12px;border:1px solid var(--line);border-radius:8px;cursor:pointer;transition:background .2s}
+  .toc-list li:hover{background:#f8fafc}
+  .toc-list li.active, .toc-list li.active:hover{background:#e2eef7;color:#1d4ed8;font-weight:600}
+  .pdf-viewer{min-height:800px;border:1px solid var(--line);border-radius:12px;overflow:hidden;position:relative}
+  .pdf-page{width:100%;height:auto;display:block}
+  .nav-control{position:absolute;top:0;bottom:0;width:40px;background:rgba(0,0,0,.5);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index10}
+  .nav-control.prev{left:0}
+  .nav-control.next{right:0}
+  .chapter-indicator{position:absolute;top:10px;left:50%;transform:translateX(-50%);background:var(--card);padding:6px 12px;border-radius:20px;font-size:12px;color:#64748b;z-index:5}
+  .badge{display:inline-block;padding:3px 8px;border-radius:12px;font-size:11px;color:#fff;background:#16a34a;margin-left:6px}
+  .free-badge{background:#16a34a}
+</style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo"><span class="cross">X</span><span class="brand">Emergency Medicine STP</span></div>
+  </div>
+  <div class="container">
+    <div class="section">
+      <h2 class="section-title">Emergency Health Service Package 2078 (STP)</h2>
+      <p class="muted">National Clinical Guideline - Free for all learners</p>
+      
+      <!-- Table of Contents -->
+      <div class="section" id="toc-section">
+        <h3>Chapter Index</h3>
+        <ol class="toc-list" id="toc-list">
+          <!-- Chapters will be injected by JavaScript -->
+        </ol>
+      </div>
+      
+      <!-- PDF Viewer -->
+      <div class="section" id="pdf-section">
+        <h3>Document Viewer</h3>
+        <div class="pdf-viewer" id="pdf-viewer">
+          <div class="loading">Loading PDF...</div>
+        </div>
+        <div class="nav-control prev" id="prev-page" title="Previous page">&#10094;</div>
+        <div class="nav-control next" id="next-page" title="Next page">&#10095;</div>
+        <div class="chapter-indicator" id="chapter-indicator">Chapter 1</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // PDF.js configuration
+    const pdfUrl = 'https://medarena-api.medarena-ram.workers.dev/api/static-pdf?path=';
+    // Note: In production, the PDF would be served from a Cloudflare Workers endpoint
+    // For now, using relative path - the PDF should be placed in the static directory
+    
+    // Chapter data extracted from PDF TOC
+    const chapterData = [
+      {title: '1. Definition of Emergency Health Services', page: 1},
+      {title: '2. National HIV Testing and Treatment Guidelines 2020', page: 2},
+      {title: '3. Development Process of the STP', page: 3},
+      {title: '4. Utilization of the STP', page: 4},
+      {title: '5. Basic Health Service Centers (BHSC)', page: 21},
+      {title: '6. Primary hospitals', page: 22},
+      {title: '7. General hospitals', page: 23},
+      {title: '8. Emergency Health Services - Features', page: 20},
+      {title: '9. Respiratory Emergencies', page: 22},
+      {title: '10. Cardiac Emergencies', page: 23},
+      {title: '11. Neurological Emergencies', page: 23},
+      {title: '12. Gastrointestinal Emergencies', page: 23},
+      {title: '13. Genitourinary Emergencies', page: 23},
+      {title: '14. Gynaecology and Obstetrical Emergencies', page: 23},
+      {title: '14. Orthopedics and Trauma', page: 23},
+      {title: '15. Metabolic Emergencies', page: 23},
+      {title: '16. Ocular Emergencies', page: 23},
+      {title: '17. ENT Emergencies', page: 182},
+      {title: '18. Burns', page: 185},
+      {title: '19. Mental Health Emergencies', page: 191},
+      {title: '20. Toxicological Emergencies', page: 204},
+      {title: '21. Snake bite, Animal bite, Insect bite', page: 225},
+      {title: '22. Pediatric Emergencies', page: 234},
+      {title: '23. Miscellaneous', page: 244}
+    ];
+    
+    let currentPage = 1;
+    let pdfDoc = null;
+    
+    // Initialize PDF viewer
+    document.addEventListener('DOMContentLoaded', function() {
+      // Load PDF using pdf.js
+      const pdfjsLib = window.pdfjsLib;
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdf.worker.min.js';
+      
+      // Load the PDF - in this demo, we'll use a simple approach
+      // The actual PDF path would need to be configured
+      const pdfPath = 'Emergency Health Service Package 2078.pdf';
+      
+      // For demonstration, show a message
+      document.getElementById('pdf-viewer').innerHTML = '
+        <div style="padding:50px;text-align:center;">
+          <h3>PDF Viewer</h3>
+          <p>Place the PDF file <strong>Emergency Health Service Package 2078.pdf</strong> in the same directory</p>
+          <p>or configure the PDF URL in the JavaScript.</p>
+        </div>';
+      
+      // Render TOC
+      const tocList = document.getElementById('toc-list');
+      chapterData.forEach((ch, i) => {
+        const li = document.createElement('li');
+        li.textContent = ch.title;
+        li.onclick = function() {
+          goToPage(ch.page);
+          // Update active state
+          document.querySelectorAll('#toc-list li').forEach(el => el.classList.remove('active'));
+          li.classList.add('active');
+        };
+        // Set first chapter as active
+        if (i === 0) li.classList.add('active');
+        tocList.appendChild(li);
+      });
+      
+      // Load PDF
+      pdfjsLib.getPDF(pdfPath).then(function(pdf) {
+        pdfDoc = pdf;
+        renderPage(1);
+        updateChapterIndicator(1);
+      }).catch(function(error) {
+        console.error('PDF loading error:', error);
+        document.getElementById('pdf-viewer').innerHTML = '
+          <div style="padding:20px;background:#fef3c7;color:#92400e;border:1px dashed #d97706;">
+            <h3>PDF Not Found</h3>
+            <p>The Emergency Health Service Package 2078 PDF could not be loaded.</p>
+            <p>Please ensure the PDF file is placed in the correct location.</p>
+          </div>';
+      });
+    });
+    
+    function renderPage(pageNum) {
+      if (!pdfDoc) return;
+      pdfDoc.getPage(pageNum).then(function(page) {
+        const viewport = page.getViewport({scale: 1.5});
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+        
+        // Update chapter indicator
+        updateChapterIndicator(pageNum);
+        
+        // Render page
+        const renderContext = {
+          canvasContext: context,
+          viewport: viewport
+        };
+        page.render(renderContext).then(function() {
+          // Insert canvas into viewer
+          const viewer = document.getElementById('pdf-viewer');
+          // Clear previous canvas if any
+          const existing = viewer.querySelector('canvas');
+          if (existing) existing.remove();
+          viewer.appendChild(canvas);
+        });
+      });
+    }
+    
+    function goToPage(pageNum) {
+      currentPage = pageNum;
+      renderPage(pageNum);
+      updateChapterIndicator(pageNum);
+      // Update TOC active state
+      document.querySelectorAll('#toc-list li').forEach(el => {
+        if (parseInt(el.textContent.split('.')[1] || el.textContent) === pageNum) {
+          el.classList.add('active');
+        } else {
+          el.classList.remove('active');
+        }
+      });
+    }
+    
+    function updateChapterIndicator(pageNum) {
+      const indicator = document.getElementById('chapter-indicator');
+      // Find the chapter closest to this page
+      let closestChapter = chapterData[0];
+      let minDiff = Math.abs(chapterData[0].page - pageNum);
+      for (let i = 1; i < chapterData.length; i++) {
+        const diff = Math.abs(chapterData[i].page - pageNum);
+        if (diff < minDiff) {
+          minDiff = diff;
+          closestChapter = chapterData[i];
+        }
+      }
+      indicator.textContent = closestChapter.title;
+      
+      // Enable/disable navigation buttons
+      document.getElementById('prev-page').disabled = pageNum <= 1;
+      document.getElementById('next-page').disabled = pageNum >= chapterData.length;
+    }
+    
+    // Navigation button clicks
+    document.getElementById('prev-page').addEventListener('click', function() {
+      if (currentPage > 1) goToPage(currentPage - 1);
+    });
+    document.getElementById('next-page').addEventListener('click', function() {
+      if (currentPage < chapterData.length) goToPage(currentPage + 1);
+    });
+    
+    // Highlight TOC item when scrolling (basic version)
+    const tocItems = document.querySelectorAll('#toc-list li');
+    window.addEventListener('scroll', function() {
+      // Simple version - just show which chapter we're near
+      // In a full implementation, would check PDF page positions
+    });
+  </script>
+</body>
+</html>
