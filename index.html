@@ -295,6 +295,13 @@ html,body{overflow-x:hidden;}
 .home-mock .section-eyebrow{color:#dc2626}
 .home-mock .section-eyebrow::before{content:"";display:inline-block;width:8px;height:8px;margin-right:7px;border-radius:50%;background:#ef4444;box-shadow:0 0 0 5px rgba(239,68,68,.14);animation:livePulse 1.6s ease-in-out infinite;vertical-align:1px}
 @keyframes livePulse{0%,100%{opacity:1}50%{opacity:.3}}
+.home-mock .home-bank-action{
+  display:inline-flex;align-items:center;gap:9px;margin-top:16px;padding:14px 30px;border-radius:999px;
+  background:linear-gradient(92deg,#f59e0b,#f97316);border:1px solid #d97706;color:#fff;
+  font-size:15.5px;box-shadow:0 12px 26px rgba(245,158,11,.38);
+}
+.home-mock .home-bank-action span{padding-left:0;transition:padding .18s}
+.home-mock .home-bank-action:hover span{padding-left:8px}
 .home-leaderboard{margin:0 0 24px}
 .leaderboard-host{background:#fff;border:1px solid #e3eaf5;border-radius:16px;overflow:hidden}
 .lb-table{width:100%;border-collapse:collapse;font-size:14px}
