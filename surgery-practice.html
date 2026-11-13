@@ -1007,7 +1007,7 @@ function renderBankSel(){
   const at = BANKS.findIndex(b => b.bank === CUR);
   $("bankSel").value = String(at < 0 ? 0 : at);
 }
-$("bankSel").onchange = () => { CUR = BANKS[parseInt($("bankSel").value, 10) || 0].bank; renderSets(); updateBankLine(); if ($("modeSel").value !== "tutor") $("timerMin").value = bankDefaultMinutes(); refreshWrongDash(); };
+$("bankSel").onchange = () => { CUR = BANKS[parseInt($("bankSel").value, 10) || 0].bank; renderSets(); if (MOCK) try { $("setSel").value = "all"; } catch (e) {} updateBankLine(); if ($("modeSel").value !== "tutor") $("timerMin").value = bankDefaultMinutes(); refreshWrongDash(); };
 function updateBankLine(){
   const n = CUR.questions.length;
   const chs = [...new Set(CUR.questions.map(q => q.chapter))].length;
