@@ -558,7 +558,7 @@ const MOCK = routeParams.get("mock") === "1";
 const requestedBank = routeParams.get("bank") || (MOCK ? "loksewamock" : null);
 const requestedEntry = BANKS.find(entry => entry.id === requestedBank);
 let CUR = requestedEntry ? requestedEntry.bank : BANKS[0].bank;
-if (MOCK) { try { $("modeSel").disabled = true; $("timerMin").disabled = true; $("modeSel").value = "timed"; $("timerMin").value = 120; $("shufQ").checked = true; $("shufO").checked = true; } catch (e) {} }
+if (MOCK) { try { $("modeSel").disabled = true; $("timerMin").disabled = true; $("modeSel").value = "timed"; $("timerMin").value = 120; $("shufQ").checked = true; $("shufO").checked = true; $("setSel").value = "all"; } catch (e) {} }
 const LETTERS = "ABCDE";
 const $ = s => { const d = document; const el = d.getElementById(s); return el || d.querySelector(s); };
 const esc = t => (t ?? "").toString().replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -1112,6 +1112,7 @@ function openModules(){
 })();
 renderBankSel();
 renderSets();
+if (MOCK) try { $("setSel").value = "all"; } catch (e) {}
 updateBankLine();
 refreshWrongDash();
 $("timerMin").value = bankDefaultMinutes();
