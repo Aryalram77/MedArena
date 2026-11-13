@@ -295,6 +295,38 @@ kbd{background:#f1f5f9;border:1px solid #cbd5e1;border-bottom-width:2px;border-r
 })();
 
 </script>
+<style>
+/* --- mobile fixes (Android/small screens) --- */
+html,body{overflow-x:hidden;}
+img,video,canvas{max-width:100%;height:auto;}
+#qBody img,.explain img,.explain .expl-imgs img{max-width:100% !important;height:auto;}
+table{display:block;overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch;}
+pre{white-space:pre-wrap;word-break:break-word;overflow-x:auto;}
+@media (max-width: 700px){
+  header{flex-wrap:wrap;gap:10px;padding:10px 12px;}
+  header .logo{flex:1 1 auto;}
+  #hdrTag{width:100%;font-size:12px;line-height:1.4;white-space:normal;}
+  .container{padding:0 10px;margin:14px auto 28px;}
+  .card{padding:14px;border-radius:12px;}
+  .formgrid{grid-template-columns:1fr !important;}
+  .formgrid .f{min-width:0;}
+  .formgrid select,.formgrid input{width:100%;max-width:100%;}
+  .chkrow{gap:10px;}
+  .btn{width:100%;margin-left:0 !important;}
+  .btn-secondary{margin-left:0 !important;margin-top:8px;}
+  .rowbtns{flex-wrap:wrap;}
+  .rowbtns .btn{flex:1 1 140px;width:auto;}
+  .qwrap{padding:14px 12px;}
+  .palette{grid-template-columns:repeat(auto-fill,minmax(36px,1fr));}
+  .modal-card{width:100%;max-height:96vh;border-radius:14px;}
+}
+@media (max-width: 480px){
+  h1{font-size:22px;line-height:1.2;}
+  .sub{font-size:13px;}
+  .rowbtns .btn{flex:1 1 100%;width:100%;}
+  .optrow{padding:10px;}
+}
+</style>
 </head>
 <body>
 <header>
