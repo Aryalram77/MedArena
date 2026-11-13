@@ -1214,6 +1214,8 @@ function medArenaHash(s){
   const entryNow = () => BANKS.find(b => b.bank === CUR) || BANKS[0];
   function setLocked(entry){
     if (!entry || !rev) return false;
+    // Live Mock Test is free for everyone.
+    if (entry.id === "loksewamock") return false;
     const list = onlyBanks();
     return list ? list.includes(entry.id) : true;
   }
