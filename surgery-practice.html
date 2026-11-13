@@ -821,7 +821,14 @@ function finishExam(auto){
   if (MOCK) {
     try {
       const _name = (((ex.playerName || "") + "").trim() || (sessionStorage.getItem("medarena.playerName") || "").trim() || "Anonymous").slice(0, 40);
-      const _wrong = items.filter(it => !it.q.noKey && it.ua.length && !it.ok).length;
+      let _wrong = 0;
+      ex.pool.forEach((q, i) => {
+        const sel = ex.sel[i] || [];
+        if (q.noKey || !sel.length) return;
+        const csJ = (q.correctSet || []).map(L => String(L).toUpperCase());
+        const ok = sel.length === 1 && csJ.includes(String(sel[0]).toUpperCase());
+        if (!ok) _wrong++;
+      });
       const _net = Number((correct - _wrong * 0.2).toFixed(2));
       fetch("/api/mock/submit", { method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: _name, score: _net, total: ex.pool.length,
