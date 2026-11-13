@@ -886,7 +886,7 @@ function buildResults(pool, sel, a, playerName){
   const board = saveSessionLeaderboard({name: playerName, bank: CUR.name, label: a.label, total, answered, correct, scored: scoredCount, score: net !== null ? String(net).replace(/\.00$/, "") : correct, percent: pct, startedAt: a.startedAt});
   $("resultsGreeting").textContent = `Hey ${playerName}!`;
   renderSessionLeaderboard(board);
-  ["examOrchestrator", "conceptSec"].forEach(id => $(`#${id}`).style.display = "none");
+  ["examOrchestrator"].forEach(id => { const el = $(`#${id}`); if (el) el.style.display = "none"; });
   $("examPlay").style.display = "none";
   const res = $("examResults"); res.style.display = "block";
   if (MOCK) {
