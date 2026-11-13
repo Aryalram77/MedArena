@@ -653,6 +653,8 @@ function applyPracticeLockIcons(){
     const href = a.getAttribute("href") || "";
     const m = href.match(/[?&]bank=([^&]+)/);
     const id = m ? decodeURIComponent(m[1]) : "";
+    // The Live Mock Test is always free for everyone.
+    if (id === "loksewamock") { const ex = a.querySelector(".lock-ic"); if (ex) ex.remove(); return; }
     const locked = list ? list.includes(id) : true;
     const existing = a.querySelector(".lock-ic");
     if (!locked){ if (existing) existing.remove(); return; }
