@@ -786,8 +786,10 @@ function saveMarks(qi){
 }
 $("submitBtn").onclick = () => {
   if (!state.exam) return;
-  const un = state.exam.sel.filter(x => !x || !x.length).length;
-  if (un > 0 && !confirm(`${un} unanswered. Submit anyway?`)) return;
+  if (!MOCK) {
+    const un = state.exam.sel.filter(x => !x || !x.length).length;
+    if (un > 0 && !confirm(`${un} unanswered. Submit anyway?`)) return;
+  }
   finishExam(false);
 };
 document.addEventListener("keydown", e => {
@@ -818,17 +820,18 @@ function finishExam(auto){
 
   if (MOCK) {
     try {
-      const _name = ((ex.playerName || "") + "").trim() || (sessionStorage.getItem("medarena.playerName") || "").trim();
+      const _name = (((ex.playerName || "") + "").trim() || (sessionStorage.getItem("medarena.playerName") || "").trim() || "Anonymous").slice(0, 40);
       const _wrong = items.filter(it => !it.q.noKey && it.ua.length && !it.ok).length;
       const _net = Number((correct - _wrong * 0.2).toFixed(2));
-      if (_name) {
-        fetch("/api/mock/submit", { method: "POST", headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name: _name, score: _net, total: ex.pool.length,
-            time_taken: ex.minutes * 60 - Math.max(0, ex.timeLeft) }) })
-          .then(r => r.json()).then(d => { if (d && d.ok) toast("Mock test submitted! Score " + _net + "/" + ex.pool.length + " (rank " + d.rank + " of " + d.total + "). View the leaderboard on the homepage."); })
-          .catch(() => {});
-      }
-    } catch (e) {}
+      fetch("/api/mock/submit", { method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: _name, score: _net, total: ex.pool.length,
+          time_taken: ex.minutes * 60 - Math.max(0, ex.timeLeft) }) })
+        .then(r => r.json()).then(d => {
+          if (d && d.ok) toast("Mock test submitted! Score " + _net + "/" + ex.pool.length + " (rank " + d.rank + " of " + d.total + "). View the leaderboard on the homepage.");
+          else toast("Mock test finished. Score " + _net + "/" + ex.pool.length + ".");
+        })
+        .catch(err => { toast("Mock test finished. Score " + _net + "/" + ex.pool.length + ". (Leaderboard sync failed.)"); });
+    } catch (e) { console.error("mock submit error:", e); }
   }
   const a = { startedAt: Date.now(), label: ex.label, mode: ex.mode, minutes: ex.minutes, total: ex.pool.length, correct, timeUsed: ex.minutes * 60 - Math.max(0, ex.timeLeft), pool: ex.pool, sel: ex.sel, flags: ex.flags };
   store.setItem("se1.last", JSON.stringify(a));
