@@ -1001,6 +1001,7 @@ function updateBankLine(){
   $("bankLine").textContent = `Bank: ${CUR.name} — ${n} questions across ${chs} ${CUR.noKey ? "topics (answer key not included — self-assessment mode)" : "chapters"}`;
 }
 function refreshWrongDash(){
+  if (MOCK) { const b = $("wrongDash"); if (b) { b.style.display = "none"; b.innerHTML = ""; } return; }
   const box = $("wrongDash");
   if (!box) return;
   const wrongQs = CUR.questions.filter(q => state.errors.has(QKEY(q)));
@@ -1121,6 +1122,10 @@ if (MOCK) {
     const cfg = document.querySelector(".formgrid"); if (cfg) cfg.style.display = "none";
     const sub = document.getElementById("bankLine");
     if (sub) sub.insertAdjacentHTML("afterend", '<div class="hintbox" style="margin-top:10px"><b>Live Mock Test</b> 100 questions sampled from all 8 Loksewa sets. Timed 75 minutes. Negative marking -0.2 per wrong answer. Score is submitted to the leaderboard when you finish.</div>');
+    const wd = document.getElementById("wrongDash"); if (wd) wd.style.display = "none";
+    // remove the "My errors" option from the set selector
+    const sel = document.getElementById("setSel");
+    if (sel) for (let i = sel.options.length - 1; i >= 0; i--) if ((sel.options[i].value || "").startsWith("errors")) sel.remove(i);
   } catch (e) {}
 }
 refreshWrongDash();
