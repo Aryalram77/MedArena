@@ -635,7 +635,7 @@ function startExam(playerName){
   let pool = $("shufQ").checked ? shuffle([...bp.src]) : [...bp.src];
   pool = pool.map(q => runtimeQuestion(q, $("shufO").checked));
   const mode = MOCK ? "timed" : (CUR.noKey ? "timed" : $("modeSel").value);
-  const minutes = MOCK ? 120 : (mode === "tutor" ? 0 : Math.max(0, parseInt($("timerMin").value, 10) || 0));
+  const minutes = MOCK ? 75 : (mode === "tutor" ? 0 : Math.max(0, parseInt($("timerMin").value, 10) || 0));
   state.exam = { pool, label: bp.label, playerName, mode, minutes, bankId: (BANKS.find(x => x.bank === CUR) || {}).id || "", sel: pool.map(() => null), flags: pool.map(() => false), marks: {}, cur: 0, timeLeft: minutes * 60, timerInt: null };
   if (mode === "timed" && minutes > 0) { state.exam.timerInt = setInterval(tick, 1000); updateTimer(); }
   ["examOrchestrator", "examResults"].forEach(id => $(`#${id}`).style.display = "none");
@@ -819,11 +819,13 @@ function finishExam(auto){
   if (MOCK) {
     try {
       const _name = ((ex.playerName || "") + "").trim() || (sessionStorage.getItem("medarena.playerName") || "").trim();
+      const _wrong = items.filter(it => !it.q.noKey && it.ua.length && !it.ok).length;
+      const _net = Number((correct - _wrong * 0.2).toFixed(2));
       if (_name) {
         fetch("/api/mock/submit", { method: "POST", headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name: _name, score: correct, total: ex.pool.length,
+          body: JSON.stringify({ name: _name, score: _net, total: ex.pool.length,
             time_taken: ex.minutes * 60 - Math.max(0, ex.timeLeft) }) })
-          .then(r => r.json()).then(d => { if (d && d.ok) toast("Mock test submitted! Rank " + d.rank + " of " + d.total + ". View the leaderboard on the homepage."); })
+          .then(r => r.json()).then(d => { if (d && d.ok) toast("Mock test submitted! Score " + _net + "/" + ex.pool.length + " (rank " + d.rank + " of " + d.total + "). View the leaderboard on the homepage."); })
           .catch(() => {});
       }
     } catch (e) {}
@@ -1114,6 +1116,13 @@ renderBankSel();
 renderSets();
 if (MOCK) try { $("setSel").value = "all"; } catch (e) {}
 updateBankLine();
+if (MOCK) {
+  try {
+    const cfg = document.querySelector(".formgrid"); if (cfg) cfg.style.display = "none";
+    const sub = document.getElementById("bankLine");
+    if (sub) sub.insertAdjacentHTML("afterend", '<div class="hintbox" style="margin-top:10px"><b>Live Mock Test</b> 100 questions sampled from all 8 Loksewa sets. Timed 75 minutes. Negative marking -0.2 per wrong answer. Score is submitted to the leaderboard when you finish.</div>');
+  } catch (e) {}
+}
 refreshWrongDash();
 $("timerMin").value = bankDefaultMinutes();
 /* auto-repractice from homepage dashboard */
