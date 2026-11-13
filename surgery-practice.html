@@ -889,6 +889,19 @@ function buildResults(pool, sel, a, playerName){
   ["examOrchestrator", "conceptSec"].forEach(id => $(`#${id}`).style.display = "none");
   $("examPlay").style.display = "none";
   const res = $("examResults"); res.style.display = "block";
+  if (MOCK) {
+    try {
+      const sb = document.querySelector(".card.session-board"); if (sb) sb.style.display = "none";
+      // add a prominent "View solutions" button next to New session
+      const btns = res.querySelector('div[style*="display:flex"]');
+      if (btns && !document.getElementById("viewSolutionsBtn")) {
+        const b = document.createElement("button");
+        b.className = "btn small"; b.id = "viewSolutionsBtn"; b.textContent = "View solutions";
+        b.onclick = () => { const rv = document.getElementById("reviewList"); if (rv) rv.scrollIntoView({behavior:"smooth", block:"start"}); };
+        btns.appendChild(b);
+      }
+    } catch (e) {}
+  }
   $("scoreCirc").style.background = isNoKey ? "#64748b" : (pct >= 70 ? "var(--ok)" : pct >= 50 ? "var(--flag)" : "var(--bad)");
   $("scorePct").textContent = isNoKey ? "—" : pct + "%";
   $("scoreFrac").textContent = isNoKey ? `${answered}/${total} answered` : `${correct}/${scoredCount}`;
@@ -922,7 +935,7 @@ function buildResults(pool, sel, a, playerName){
      ${unscoredCount ? `<div>— Unscored: <b>${unscoredCount}</b> (source marks these items defective)</div>` : ""}
      <div>⚑ Flagged: <b style="color:var(--flag)">${flaggedCount}</b></div>
      ${neg ? `<div style="margin-top:6px;padding-top:6px;border-top:1px dashed var(--line)">➗ Net marks: <b style="color:var(--ink)">${net}</b> / ${scoredCount}${penalty ? ` <span class="mut">· −${penalty.toFixed(2)} deducted (${wrong} wrong × ${neg})</span>` : ""}</div><div class="mut" style="margin-top:2px">Negative marking for this section: <b>${neg}</b> per wrong answer</div>` : ""}
-     <div class="mut" style="margin-top:6px">Wrong answers are added to <b>My errors</b> for targeted re-practice.</div>`;
+     ${MOCK ? "" : `<div class="mut" style="margin-top:6px">Wrong answers are added to <b>My errors</b> for targeted re-practice.</div>`}`;
   $("againBtn").onclick = () => { res.style.display = "none"; renderSets(); $("examOrchestrator").style.display = "block"; toggleConcept(true); };
   revData = items; renderReview("all");
   window.scrollTo(0, 0);
@@ -1121,7 +1134,6 @@ if (MOCK) {
   try {
     const cfg = document.querySelector(".formgrid"); if (cfg) cfg.style.display = "none";
     const sub = document.getElementById("bankLine");
-    if (sub) sub.insertAdjacentHTML("afterend", '<div class="hintbox" style="margin-top:10px"><b>Live Mock Test</b> 100 questions sampled from all 8 Loksewa sets. Timed 75 minutes. Negative marking -0.2 per wrong answer. Score is submitted to the leaderboard when you finish.</div>');
     const wd = document.getElementById("wrongDash"); if (wd) wd.style.display = "none";
     // remove the "My errors" option from the set selector
     const sel = document.getElementById("setSel");
