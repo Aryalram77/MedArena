@@ -670,6 +670,8 @@ function applyPracticeLockIcons(){
     const id = m ? decodeURIComponent(m[1]) : "";
     // The Live Mock Test is always free for everyone.
     if (id === "loksewamock") { const ex = a.querySelector(".lock-ic"); if (ex) ex.remove(); return; }
+    // Emergency Medicine STP viewer is free for everyone too.
+    if (href.indexOf("emergency-stp.html") !== -1) { const ex = a.querySelector(".lock-ic"); if (ex) ex.remove(); return; }
     const locked = list ? list.includes(id) : true;
     const existing = a.querySelector(".lock-ic");
     if (!locked){ if (existing) existing.remove(); return; }
@@ -1484,8 +1486,14 @@ async function renderEmbeddedBanks(){
     total.innerHTML=`<strong>${count.toLocaleString()}</strong><span>questions ready</span>`;
     wrap.innerHTML=[...groups.entries()].map(([cat,items])=>{
       const tone=colors[cat]||"#426ce0";
-      const cards=items.map(bank=>`<article class="home-bank-card" style="--tone:${tone}"><div class="home-bank-name">${esc(bank.name)}</div><div class="home-bank-meta"><b>${Number(bank.count)>0?Number(bank.count).toLocaleString():"—"}</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=${encodeURIComponent(bank.id)}" aria-label="Set up ${esc(bank.name)} practice"> Set up practice <span aria-hidden="true">→</span></a></article>`).join("");
-      return `<section class="embedded-group${cat==="CEE MD/MS"?" wide":""}" style="--tone:${tone}"><div class="group-head"><div class="group-icon">${icons[cat]||"📚"}</div><div><h3>${esc(cat)}</h3><p>${items.length} ${items.length===1?"question set":"question sets"} · curated for your exam prep</p></div></div><div class="bank-tiles${cat==="CEE MD/MS"?" cols3":""}">${cards}</div></section>`;
+      let cards=items.map(bank=>`<article class="home-bank-card" style="--tone:${tone}"><div class="home-bank-name">${esc(bank.name)}</div><div class="home-bank-meta"><b>${Number(bank.count)>0?Number(bank.count).toLocaleString():"—"}</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=${encodeURIComponent(bank.id)}" aria-label="Set up ${esc(bank.name)} practice"> Set up practice <span aria-hidden="true">→</span></a></article>`).join("");
+      let setCount=items.length;
+      if(cat==="CEE MD/MS"){
+        /* Emergency Medicine STP: free chapter-wise protocol viewer (no lock). */
+        cards+=`<article class="home-bank-card" style="--tone:${tone}"><div class="home-bank-name">Emergency Medicine STP</div><div class="home-bank-meta"><b>23</b> chapters <span>·</span> Free for everyone</div><a class="home-bank-action" href="emergency-stp.html" aria-label="Open Emergency Medicine STP"> View Protocol <span aria-hidden="true">→</span></a></article>`;
+        setCount+=1;
+      }
+      return `<section class="embedded-group${cat==="CEE MD/MS"?" wide":""}" style="--tone:${tone}"><div class="group-head"><div class="group-icon">${icons[cat]||"📚"}</div><div><h3>${esc(cat)}</h3><p>${setCount} ${setCount===1?"question set":"question sets"} · curated for your exam prep</p></div></div><div class="bank-tiles${cat==="CEE MD/MS"?" cols3":""}">${cards}</div></section>`;
     }).join("");
     if(!banks.length) wrap.innerHTML='<div class="bank-loading">No built-in question banks are available yet.</div>';
     applyPracticeLockIcons();
