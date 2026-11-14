@@ -74,6 +74,35 @@ function maFlush() {
     });
 }
 
+/* ---------------- in-progress session resume (cloud sync) ---------------- */
+window.maSyncResume = function (bankId, session) {
+  if (!bankId) return;
+  try {
+    if (session) localStorage.setItem("medarena.resume." + bankId, JSON.stringify(session));
+    else localStorage.removeItem("medarena.resume." + bankId);
+  } catch (e) {}
+  if (!CLOUD.user || !CLOUD.online) return;
+  try {
+    fetch("/api/session", { method: "POST", headers: { "Content-Type": "application/json" },
+      credentials: "same-origin", body: JSON.stringify({ bankId: bankId, session: session }) }).catch(() => {});
+  } catch (e) {}
+};
+window.maLoadResume = async function (bankId) {
+  let local = null;
+  try { local = JSON.parse(localStorage.getItem("medarena.resume." + bankId) || "null"); } catch (e) { local = null; }
+  if (CLOUD.user && CLOUD.online) {
+    try {
+      const r = await fetch("/api/session?bank=" + encodeURIComponent(bankId), { cache: "no-store" });
+      if (r.ok) {
+        const d = await r.json();
+        const srv = d && d.session;
+        if (srv && (!local || (srv.savedAt || 0) >= (local.savedAt || 0))) local = srv;
+      }
+    } catch (e) {}
+  }
+  return local;
+};
+
 /* ---------------- stats ---------------- */
 function maStats() {
   let solved = 0, correct = 0;
@@ -569,12 +598,16 @@ function maShowProgressCard() {
   const u = CLOUD.user, st = maStats(), meta = maBankMeta();
   const rows = Object.keys(meta).map(id => {
     const n = maBankCount(id);
-    if (!n.solved) return "";
+    let resume = null;
+    try { resume = JSON.parse(localStorage.getItem("medarena.resume." + id) || "null"); } catch (e) { resume = null; }
     const total = meta[id].count || 0;
     const pct = total ? Math.min(100, Math.round(n.solved * 100 / total)) : 0;
     const acc = n.solved ? Math.round(n.correct * 100 / n.solved) : 0;
+    const resumeLink = (resume && Array.isArray(resume.pool))
+      ? ' <a class="mp-resume" href="surgery-practice.html?bank=' + encodeURIComponent(id) + '" title="Resume unfinished session">▶ Resume</a>' : '';
+    if (!n.solved && !resume) return "";
     return '<a class="mp-row" href="surgery-practice.html?bank=' + encodeURIComponent(id) + '">' +
-      '<span class="mp-name">' + maEsc(meta[id].name) + '</span>' +
+      '<span class="mp-name">' + maEsc(meta[id].name) + resumeLink + '</span>' +
       '<span class="mp-bar"><i style="width:' + pct + '%"></i></span>' +
       '<span class="mp-num">' + n.solved + (total ? "/" + total : "") + '</span>' +
       '<span class="mp-acc">' + acc + '%</span></a>';

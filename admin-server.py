@@ -871,6 +871,20 @@ class Handler(BaseHTTPRequestHandler):
                 self._send_json({"error": "not signed in"}, 401); return
             self._send_json({"progress": user.get("progress", {})})
             return
+        if path == "/api/session":
+            user, _sid = self._session()
+            if not user:
+                self._send_json({"error": "not signed in"}, 401); return
+            bank = ""
+            if "?" in self.path:
+                from urllib.parse import parse_qs, urlparse
+                bank = parse_qs(urlparse(self.path).query).get("bank", [""])[0]
+            with _lock:
+                db = load_users_db()
+                u = db["users"].get(user["sub"], {}) or {}
+                sess = (u.get("resume") or {}).get(bank) if bank else u.get("resume")
+            self._send_json({"session": sess})
+            return
         if path == "/api/admin/users":
             if not (self._is_loopback() or admin_session_ok(self)):
                 self._send_json({"error": "admin only"}, 403); return
@@ -908,6 +922,7 @@ class Handler(BaseHTTPRequestHandler):
     # and the admin password endpoints themselves.
     PUBLIC_POST = ("/api/auth/google", "/api/auth/signup", "/api/auth/login",
                    "/api/auth/logout", "/api/logout", "/api/progress",
+                   "/api/session",
                    "/api/admin/login", "/api/admin/logout", "/api/admin/set-password")
 
     def do_POST(self):
@@ -1076,6 +1091,32 @@ class Handler(BaseHTTPRequestHandler):
                     n += 1
                 save_users_db(db)
             self._send_json({"ok": True, "saved": n})
+            return
+
+        if path == "/api/session":
+            user, _sid = self._session()
+            if not user:
+                self._send_json({"error": "not signed in"}, 401); return
+            bankId = str(payload.get("bankId") or "").strip()
+            session = payload.get("session", None)
+            if not bankId:
+                self._send_json({"error": "bankId required"}, 400); return
+            # cap payload size ~5MB
+            try:
+                if session is not None and len(json.dumps(session)) > 5 * 1024 * 1024:
+                    self._send_json({"error": "session too large"}, 413); return
+            except Exception:
+                pass
+            with _lock:
+                db = load_users_db()
+                u = db["users"].setdefault(user["sub"], {"sub": user["sub"], "progress": {}, "resume": {}})
+                u.setdefault("resume", {})
+                if session is None:
+                    u["resume"].pop(bankId, None)
+                else:
+                    u["resume"][bankId] = session
+                save_users_db(db)
+            self._send_json({"ok": True})
             return
 
         # ---------------- admin (loopback only) endpoints ----------------
