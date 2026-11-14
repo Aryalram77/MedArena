@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MedArena Ã¢â‚¬â€� Clinical MCQ Practice</title>
+<title>MedArena — Clinical MCQ Practice</title>
 <script>
 /* Asset bootstrap.
    The app is served by admin-server.py at http://localhost:8600, where the
@@ -23,7 +23,7 @@
     return s;
   };
   var CDN_PDF = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js";
-  /* PDF.js is optional Ã¢â‚¬â€� only the hidden PDF importer uses it. Try the local
+  /* PDF.js is optional — only the hidden PDF importer uses it. Try the local
      copy where one is served, fall back to the CDN, then carry on without it. */
   window.__maLoad(isLocal ? "pdf.min.js" : CDN_PDF, function () {
     if (isLocal) window.__maLoad(CDN_PDF, function () { window.__pdfFail = 1; });
@@ -188,7 +188,7 @@ header .logo{font-size:21px}.home-brand-link{color:inherit;text-decoration:none}
 <script>window.MA_API_BASE = "https://medarena-api.medarena-ram.workers.dev"; // cloud API set inside the page - set localStorage.ma_api_base = "-" to use the local server instead
 </script>
 <script>
-/* MedArena API bridge Ã¢â‚¬â€� lets the local pages talk to the Cloudflare Worker.
+/* MedArena API bridge — lets the local pages talk to the Cloudflare Worker.
  *
  * Active only when an external API base is configured. Precedence:
  *   1. localStorage("ma_api_base")   (runtime switch)
@@ -202,7 +202,7 @@ header .logo{font-size:21px}.home-brand-link{color:inherit;text-decoration:none}
  *       localStorage["ma_admin_token"] for /api/admin/*
  *       localStorage["ma_token"] for everything else
  *   - credentials are omitted (the cookie jar is not used cross-origin)
- * Tokens arrive in the JSON of login responses as `token` Ã¢â‚¬â€� auth.js and
+ * Tokens arrive in the JSON of login responses as `token` — auth.js and
  * admin.html store them after sign-in.
  */
 (function () {
@@ -317,13 +317,13 @@ html,body{overflow-x:hidden;}
 </head>
 <body>
 <header>
-  <div class="logo"><a class="home-brand-link" href="index.html" aria-label="MedArena homepage">Ã¢Å“Å¡ <span class="brand">MedArena</span></a></div>
+  <div class="logo"><a class="home-brand-link" href="index.html" aria-label="MedArena homepage">✚ <span class="brand">MedArena</span></a></div>
   <div class="tabs">
-    <button id="tabBank" class="active">Ã°Å¸â€œÅ¡ Question Bank</button>
-    <button id="tabExam">Ã°Å¸â€”â€š Practice Session</button>
+    <button id="tabBank" class="active">📚 Question Bank</button>
+    <button id="tabExam">🗂 Practice Session</button>
   </div>
-  <a href="high-yield.html" class="hy-toplink" title="Very High Yield notes">Ã¢Â­ï¿½ Very High Yield</a>
-  <a href="#" id="ppOpenLink" class="pp-toplink" style="display:none">Ã¢Å¡Â¡ Get lifetime access here</a>
+  <a href="high-yield.html" class="hy-toplink" title="Very High Yield notes">⭐ Very High Yield</a>
+  <a href="#" id="ppOpenLink" class="pp-toplink" style="display:none">⚡ Get lifetime access here</a>
 </header>
 
 <main class="container">
@@ -336,19 +336,19 @@ html,body{overflow-x:hidden;}
     <div class="hero-eyebrow"><span class="hero-dot"></span> <span id="homeEyebrow">YOUR NEXT STEP STARTS HERE</span></div>
     <h1><span id="homeTitleLead">Prepare with</span> <span id="homeTitleAccent">purpose.</span><br><span id="homeTitleSecond">Practice with confidence.</span></h1>
     <p id="homeSubtitle">Focused question banks for your next medical entrance and Loksewa exam.</p>
-    <a class="hero-cta" href="surgery-practice.html" id="homeCta">Explore practice <span aria-hidden="true">Ã¢â€ â€”</span></a>
+    <a class="hero-cta" href="surgery-practice.html" id="homeCta">Explore practice <span aria-hidden="true">↗</span></a>
   </div>
-  <div class="hero-orbit" aria-hidden="true"><div class="orbit-ring"></div><div class="orbit-core">Ã¢Å“Å¡</div><span class="orbit-chip orbit-chip-one">LEARN</span><span class="orbit-chip orbit-chip-two">PRACTICE</span><span class="orbit-chip orbit-chip-three">GROW</span></div>
+  <div class="hero-orbit" aria-hidden="true"><div class="orbit-ring"></div><div class="orbit-core">✚</div><span class="orbit-chip orbit-chip-one">LEARN</span><span class="orbit-chip orbit-chip-two">PRACTICE</span><span class="orbit-chip orbit-chip-three">GROW</span></div>
 </section>
 <section id="maProgressHost" aria-live="polite" hidden></section>
 <section class="home-mock" aria-labelledby="mockTitle">
   <div class="mock-card">
-    <div class="mock-icon">Ã°Å¸ï¿½â€ </div>
+    <div class="mock-icon">🏆</div>
     <div class="mock-copy">
       <div class="section-eyebrow">LIVE MOCK TEST</div>
-      <h2 id="mockTitle">Loksewa Live Mock Test Ã¢â‚¬â€� 100 questions (Free)</h2>
+      <h2 id="mockTitle">Loksewa Live Mock Test — 100 questions (Free)</h2>
       
-      <a class="home-bank-action" href="surgery-practice.html?bank=loksewamock&mock=1">Start mock test (Free) <span aria-hidden="true">Ã¢â€ â€™</span></a>
+      <a class="home-bank-action" href="surgery-practice.html?bank=loksewamock&mock=1">Start mock test (Free) <span aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>
@@ -361,14 +361,14 @@ html,body{overflow-x:hidden;}
 <section class="home-banks" aria-labelledby="homeBankTitle">
   <div class="bank-section-head"><div><div class="section-eyebrow" id="homeBankEyebrow">CHOOSE YOUR TRACK</div><h2 id="homeBankTitle">Your question banks</h2><p id="homeBankSubtitle">Jump into a set and build exam-day confidence.</p></div><div class="bank-total" id="bankTotal"><strong>15,437</strong><span>questions ready</span></div></div>
   <div id="embeddedBankGroups" class="embedded-groups">
-    <section class="embedded-group" style="--tone:#168a78"><div class="group-head"><div class="group-icon">Ã°Å¸ï¿½â€ºÃ¯Â¸ï¿½</div><div><h3>Loksewa</h3><p>9 question sets Ã‚Â· curated for your exam prep</div></div><div class="bank-tiles"><article class="home-bank-card" style="--tone:#168a78"><div class="home-bank-name">Central Loksewa 2062</div><div class="home-bank-meta"><b>100</b> questions <span>Ã‚Â·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=central2062"> Set up practice <span aria-hidden="true">Ã¢â€ â€™</span></a></article><article class="home-bank-card" style="--tone:#168a78"><div class="home-bank-name">Central Loksewa 2081</div><div class="home-bank-meta"><b>100</b> questions <span>Ã‚Â·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=central2081"> Set up practice <span aria-hidden="true">Ã¢â€ â€™</span></a></article><article class="home-bank-card" style="--tone:#168a78"><div class="home-bank-name">Karnali Loksewa 2082</div><div class="home-bank-meta"><b>100</b> questions <span>Ã‚Â·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=karnali2082"> Set up practice <span aria-hidden="true">Ã¢â€ â€™</span></a></article><article class="home-bank-card" style="--tone:#168a78"><div class="home-bank-name">Gandaki Loksewa 2078</div><div class="home-bank-meta"><b>100</b> questions <span>Ã‚Â·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=gandaki2078"> Set up practice <span aria-hidden="true">Ã¢â€ â€™</span></a></article><article class="home-bank-card" style="--tone:#168a78"><div class="home-bank-name">Federal Loksewa Ã¢â‚¬â€� Medical Officer (2083-01-04)</div><div class="home-bank-meta"><b>88</b> questions <span>Ã‚Â·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=loksewa"> Set up practice <span aria-hidden="true">Ã¢â€ â€™</span></a></article><article class="home-bank-card" style="--tone:#168a78"><div class="home-bank-name">Loksewa Lumbini Province 2083</div><div class="home-bank-meta"><b>100</b> questions <span>Ã‚Â·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=lumbini83"> Set up practice <span aria-hidden="true">Ã¢â€ â€™</span></a></article><article class="home-bank-card" style="--tone:#168a78"><div class="home-bank-name">Gandaki Province Loksewa Set 2083</div><div class="home-bank-meta"><b>100</b> questions <span>Ã‚Â·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=gandaki83"> Set up practice <span aria-hidden="true">Ã¢â€ â€™</span></a></article><article class="home-bank-card" style="--tone:#168a78"><div class="home-bank-name">Loksewa Federal 2070</div><div class="home-bank-meta"><b>100</b> questions <span>Ã‚Â·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=loksewa2070"> Set up practice <span aria-hidden="true">Ã¢â€ â€™</span></a></article></div></section>
-    <section class="embedded-group" style="--tone:#7c3aed"><div class="group-head"><div class="group-icon">Ã¢Å¡â€¢Ã¯Â¸ï¿½</div><div><h3>Surgery</h3><p>3 question sets Ã‚Â· curated for your exam prep</div></div><div class="bank-tiles"><article class="home-bank-card" style="--tone:#7c3aed"><div class="home-bank-name">Surgery 1</div><div class="home-bank-meta"><b>1,598</b> questions <span>Ã‚Â·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=se1"> Set up practice <span aria-hidden="true">Ã¢â€ â€™</span></a></article><article class="home-bank-card" style="--tone:#7c3aed"><div class="home-bank-name">Surgery 2</div><div class="home-bank-meta"><b>2,042</b> questions <span>Ã‚Â·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=surgery2"> Set up practice <span aria-hidden="true">Ã¢â€ â€™</span></a></article><article class="home-bank-card" style="--tone:#7c3aed"><div class="home-bank-name">Surgery 3</div><div class="home-bank-meta"><b>2,111</b> questions <span>Ã‚Â·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=surgery3"> Set up practice <span aria-hidden="true">Ã¢â€ â€™</span></a></article></div></section>
-    <section class="embedded-group wide" style="--tone:#426ce0"><div class="group-head"><div class="group-icon">Ã°Å¸Â©Âº</div><div><h3>CEE MD/MS</h3><p>16 question sets Ã‚Â· curated for your exam prep</div></div><div class="bank-tiles"><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">CEE Model Exam Set 1</div><div class="home-bank-meta"><b>200</b> questions <span>Ã‚Â·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=cee1"> Set up practice <span aria-hidden="true">Ã¢â€ â€™</span></a></article><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">CEE Model Exam Set 2</div><div class="home-bank-meta"><b>200</b> questions <span>Ã‚Â·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=cee2"> Set up practice <span aria-hidden="true">Ã¢â€ â€™</span></a></article><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">CEE Model Exam Set 3</div><div class="home-bank-meta"><b>200</b> questions <span>Ã‚Â·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=cee3"> Set up practice <span aria-hidden="true">Ã¢â€ â€™</span></a></article><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">CEE Model Exam Set 4</div><div class="home-bank-meta"><b>200</b> questions <span>Ã‚Â·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=cee4"> Set up practice <span aria-hidden="true">Ã¢â€ â€™</span></a></article><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">CEE Model Exam Set 5</div><div class="home-bank-meta"><b>193</b> questions <span>Ã‚Â·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=cee5"> Set up practice <span aria-hidden="true">Ã¢â€ â€™</span></a></article><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">CEE Model Exam Set 6</div><div class="home-bank-meta"><b>200</b> questions <span>Ã‚Â·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=cee6"> Set up practice <span aria-hidden="true">Ã¢â€ â€™</span></a></article><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">CEE Neurology Capsule</div><div class="home-bank-meta"><b>455</b> questions <span>Ã‚Â·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=neuro"> Set up practice <span aria-hidden="true">Ã¢â€ â€™</span></a></article><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">ENT</div><div class="home-bank-meta"><b>1,122</b> questions <span>Ã‚Â·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=ent"> Set up practice <span aria-hidden="true">Ã¢â€ â€™</span></a></article><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">Forensic Medicine</div><div class="home-bank-meta"><b>1,113</b> questions <span>Ã‚Â·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=forensic"> Set up practice <span aria-hidden="true">Ã¢â€ â€™</span></a></article><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">Hematology Capsule</div><div class="home-bank-meta"><b>458</b> questions <span>Ã‚Â·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=hema"> Set up practice <span aria-hidden="true">Ã¢â€ â€™</span></a></article><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">Opthalmology</div><div class="home-bank-meta"><b>512</b> questions <span>Ã‚Â·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=ophtho"> Set up practice <span aria-hidden="true">Ã¢â€ â€™</span></a></article><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">Orthopedics</div><div class="home-bank-meta"><b>1,424</b> questions <span>Ã‚Â·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=ortho"> Set up practice <span aria-hidden="true">Ã¢â€ â€™</span></a></article><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">Physiology Capsule</div><div class="home-bank-meta"><b>1,151</b> questions <span>Ã‚Â·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=physiology"> Set up practice <span aria-hidden="true">Ã¢â€ â€™</span></a></article><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">Psychiatry</div><div class="home-bank-meta"><b>574</b> questions <span>Ã‚Â·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=psychiatry"> Set up practice <span aria-hidden="true">Ã¢â€ â€™</span></a></article>
+    <section class="embedded-group" style="--tone:#168a78"><div class="group-head"><div class="group-icon">🏛️</div><div><h3>Loksewa</h3><p>9 question sets · curated for your exam prep</div></div><div class="bank-tiles"><article class="home-bank-card" style="--tone:#168a78"><div class="home-bank-name">Central Loksewa 2062</div><div class="home-bank-meta"><b>100</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=central2062"> Set up practice <span aria-hidden="true">→</span></a></article><article class="home-bank-card" style="--tone:#168a78"><div class="home-bank-name">Central Loksewa 2081</div><div class="home-bank-meta"><b>100</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=central2081"> Set up practice <span aria-hidden="true">→</span></a></article><article class="home-bank-card" style="--tone:#168a78"><div class="home-bank-name">Karnali Loksewa 2082</div><div class="home-bank-meta"><b>100</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=karnali2082"> Set up practice <span aria-hidden="true">→</span></a></article><article class="home-bank-card" style="--tone:#168a78"><div class="home-bank-name">Gandaki Loksewa 2078</div><div class="home-bank-meta"><b>100</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=gandaki2078"> Set up practice <span aria-hidden="true">→</span></a></article><article class="home-bank-card" style="--tone:#168a78"><div class="home-bank-name">Federal Loksewa — Medical Officer (2083-01-04)</div><div class="home-bank-meta"><b>88</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=loksewa"> Set up practice <span aria-hidden="true">→</span></a></article><article class="home-bank-card" style="--tone:#168a78"><div class="home-bank-name">Loksewa Lumbini Province 2083</div><div class="home-bank-meta"><b>100</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=lumbini83"> Set up practice <span aria-hidden="true">→</span></a></article><article class="home-bank-card" style="--tone:#168a78"><div class="home-bank-name">Gandaki Province Loksewa Set 2083</div><div class="home-bank-meta"><b>100</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=gandaki83"> Set up practice <span aria-hidden="true">→</span></a></article><article class="home-bank-card" style="--tone:#168a78"><div class="home-bank-name">Loksewa Federal 2070</div><div class="home-bank-meta"><b>100</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=loksewa2070"> Set up practice <span aria-hidden="true">→</span></a></article></div></section>
+    <section class="embedded-group" style="--tone:#7c3aed"><div class="group-head"><div class="group-icon">⚕️</div><div><h3>Surgery</h3><p>3 question sets · curated for your exam prep</div></div><div class="bank-tiles"><article class="home-bank-card" style="--tone:#7c3aed"><div class="home-bank-name">Surgery 1</div><div class="home-bank-meta"><b>1,598</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=se1"> Set up practice <span aria-hidden="true">→</span></a></article><article class="home-bank-card" style="--tone:#7c3aed"><div class="home-bank-name">Surgery 2</div><div class="home-bank-meta"><b>2,042</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=surgery2"> Set up practice <span aria-hidden="true">→</span></a></article><article class="home-bank-card" style="--tone:#7c3aed"><div class="home-bank-name">Surgery 3</div><div class="home-bank-meta"><b>2,111</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=surgery3"> Set up practice <span aria-hidden="true">→</span></a></article></div></section>
+    <section class="embedded-group wide" style="--tone:#426ce0"><div class="group-head"><div class="group-icon">🩺</div><div><h3>CEE MD/MS</h3><p>17 question sets · curated for your exam prep</div></div><div class="bank-tiles"><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">CEE Model Exam Set 1</div><div class="home-bank-meta"><b>200</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=cee1"> Set up practice <span aria-hidden="true">→</span></a></article><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">CEE Model Exam Set 2</div><div class="home-bank-meta"><b>200</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=cee2"> Set up practice <span aria-hidden="true">→</span></a></article><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">CEE Model Exam Set 3</div><div class="home-bank-meta"><b>200</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=cee3"> Set up practice <span aria-hidden="true">→</span></a></article><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">CEE Model Exam Set 4</div><div class="home-bank-meta"><b>200</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=cee4"> Set up practice <span aria-hidden="true">→</span></a></article><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">CEE Model Exam Set 5</div><div class="home-bank-meta"><b>193</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=cee5"> Set up practice <span aria-hidden="true">→</span></a></article><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">CEE Model Exam Set 6</div><div class="home-bank-meta"><b>200</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=cee6"> Set up practice <span aria-hidden="true">→</span></a></article><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">CEE Neurology Capsule</div><div class="home-bank-meta"><b>455</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=neuro"> Set up practice <span aria-hidden="true">→</span></a></article><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">ENT</div><div class="home-bank-meta"><b>1,122</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=ent"> Set up practice <span aria-hidden="true">→</span></a></article><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">Forensic Medicine</div><div class="home-bank-meta"><b>1,113</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=forensic"> Set up practice <span aria-hidden="true">→</span></a></article><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">Hematology Capsule</div><div class="home-bank-meta"><b>458</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=hema"> Set up practice <span aria-hidden="true">→</span></a></article><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">Opthalmology</div><div class="home-bank-meta"><b>512</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=ophtho"> Set up practice <span aria-hidden="true">→</span></a></article><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">Orthopedics</div><div class="home-bank-meta"><b>1,424</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=ortho"> Set up practice <span aria-hidden="true">→</span></a></article><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">Physiology Capsule</div><div class="home-bank-meta"><b>1,151</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=physiology"> Set up practice <span aria-hidden="true">→</span></a></article><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">Psychiatry</div><div class="home-bank-meta"><b>574</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=psychiatry"> Set up practice <span aria-hidden="true">→</span></a></article>
     <article class="home-bank-card" style="--tone:#426ce0">
       <div class="home-bank-name">Emergency Medicine STP</div>
-      <div class="home-bank-meta"><b>1</b> protocol <span>Ã¢Å¸Â³</span> Ready to view</div>
-      <a class="home-bank-action" href="emergency-stp.html"> View Protocol <span aria-hidden="true">Ã¢â€ â€™</span></a>
-    </article><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">Radiology</div><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">Anatomy</div><div class="home-bank-meta"><b>46</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=anatomy"> Set up practice <span aria-hidden="true">→</span></a></article><div class="home-bank-meta"><b>796</b> questions <span>Ã‚Â·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=radiology"> Set up practice <span aria-hidden="true">Ã¢â€ â€™</span></a></article><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">Community Medicine</div><div class="home-bank-meta"><b>2836</b> questions <span>Ã‚Â·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=psm"> Set up practice <span aria-hidden="true">Ã¢â€ â€™</span></a></article></div></section>
+      <div class="home-bank-meta"><b>1</b> protocol <span>⟳</span> Ready to view</div>
+      <a class="home-bank-action" href="emergency-stp.html"> View Protocol <span aria-hidden="true">→</span></a>
+    </article><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">Radiology</div><div class="home-bank-meta"><b>796</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=radiology"> Set up practice <span aria-hidden="true">→</span></a></article><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">Anatomy</div><div class="home-bank-meta"><b>46</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=anatomy"> Set up practice <span aria-hidden="true">→</span></a></article><article class="home-bank-card" style="--tone:#426ce0"><div class="home-bank-name">Community Medicine</div><div class="home-bank-meta"><b>2836</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=psm"> Set up practice <span aria-hidden="true">→</span></a></article></div></section>
   <div id="bankLoadNote" class="bank-load-note" hidden></div>
 </section>
 <style>
@@ -398,33 +398,33 @@ html,body{overflow-x:hidden;}
 </style>
 <div class="pp-overlay" id="premiumPanel" style="display:none" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
   <div class="pp-card">
-    <button type="button" class="pp-close" id="ppClose" aria-label="Dismiss">Ã¢Å“â€¢</button>
+    <button type="button" class="pp-close" id="ppClose" aria-label="Dismiss">✕</button>
     <div class="pp-info">
       <div class="pp-kicker">Subscription</div>
-      <h2 id="ppTitle">Lifetime Access Ã¢â‚¬â€� Rs 1,000</h2>
-      <p>One payment unlocks <b>all locked sets</b> Ã¢â‚¬â€� every Ã°Å¸â€�â€™ set, not just one Ã¢â‚¬â€� forever, on this device.</p>
-      <div class="pp-ok" id="ppOk" style="display:none">Ã¢Å“â€¦ This device already has lifetime access Ã¢â‚¬â€� all locked sets are open.</div>
+      <h2 id="ppTitle">Lifetime Access — Rs 1,000</h2>
+      <p>One payment unlocks <b>all locked sets</b> — every 🔒 set, not just one — forever, on this device.</p>
+      <div class="pp-ok" id="ppOk" style="display:none">✅ This device already has lifetime access — all locked sets are open.</div>
       <ol class="pp-steps" id="ppSteps">
         <li>Scan the eSewa QR and pay Rs 1,000</li>
         <li>Send the payment screenshot + your Device ID</li>
         <li>Enter the personal code you receive in the practice page</li>
       </ol>
-      <div class="pp-dev" id="ppDevBox">Your Device ID: <b id="ppDevId">Ã¢â‚¬â€�</b><button type="button" class="pp-copy" id="ppCopy">Copy</button></div>
-      <a class="pp-cta" id="ppCta" href="surgery-practice.html">Enter your code Ã¢â€ â€™</a>
+      <div class="pp-dev" id="ppDevBox">Your Device ID: <b id="ppDevId">—</b><button type="button" class="pp-copy" id="ppCopy">Copy</button></div>
+      <a class="pp-cta" id="ppCta" href="surgery-practice.html">Enter your code →</a>
     </div>
-    <img class="pp-qr" id="ppQr" alt="eSewa QR Ã¢â‚¬â€� scan to pay Rs 1,000">
+    <img class="pp-qr" id="ppQr" alt="eSewa QR — scan to pay Rs 1,000">
       <div class="pp-wa" id="ppWa" style="margin-top:10px;padding:9px 12px;border:1px solid #bbf7d0;border-radius:10px;background:#f0fdf4;color:#166534;font-size:13px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
-        <span>Ã°Å¸â€™Â¬ Send your payment screenshot on WhatsApp:</span>
-        <a href="https://wa.me/9779864931365" target="_blank" rel="noopener" style="font-weight:800;color:#15803d;text-decoration:none">+977 9864931365 Ã¢â€ â€™</a>
+        <span>💬 Send your payment screenshot on WhatsApp:</span>
+        <a href="https://wa.me/9779864931365" target="_blank" rel="noopener" style="font-weight:800;color:#15803d;text-decoration:none">+977 9864931365 →</a>
       </div>
   </div>
 </div>
 <!-- Question of the Day (auto-selected daily from all sets) -->
 <section class="concept" id="qotdSec" style="display:none">
   <div class="crow">
-    <div class="bulb">Ã¢ï¿½â€œ</div>
+    <div class="bulb">❓</div>
     <div style="flex:1;min-width:0">
-      <div class="kicker">Question of the Day Ã‚Â· <span id="qotdBank"></span></div>
+      <div class="kicker">Question of the Day · <span id="qotdBank"></span></div>
       <h2 id="qotdStem" style="font-size:16px;font-weight:700;line-height:1.5;margin:6px 0"></h2>
       <div id="qotdOpts" style="margin:8px 0"></div>
       <button class="ma-btn" id="qotdReveal" type="button" style="margin-top:6px">Reveal answer</button>
@@ -437,7 +437,7 @@ html,body{overflow-x:hidden;}
 <section class="pedcalc" id="pediatricDoseCalc" aria-labelledby="pcTitle">
   <div class="section-eyebrow">QUICK REFERENCE</div>
   <h2 id="pcTitle">Pediatric dose calculator</h2>
-  <p class="pc-intro">Enter the childÃ¢â‚¬â„¢s age and current weight, choose a medicine and match the concentration printed on the bottle.</p>
+  <p class="pc-intro">Enter the child’s age and current weight, choose a medicine and match the concentration printed on the bottle.</p>
   <div class="pc-grid">
     <label class="pc-field">Age (months)<input id="pcAge" type="number" min="0" max="216" step="1" inputmode="numeric" placeholder="e.g. 24"></label>
     <label class="pc-field">Weight (kg)<input id="pcWeight" type="number" min="0.1" max="100" step="0.1" inputmode="decimal" placeholder="e.g. 12"></label>
@@ -447,8 +447,8 @@ html,body{overflow-x:hidden;}
   <div class="pc-actions"><button class="btn" id="pcCalculate" type="button">Calculate dose</button><span class="mut">Volume is shown per dose unless stated daily.</span></div>
   <div class="pc-result" id="pcResult" role="status" aria-live="polite"></div>
   <div class="pc-note"><b>Safety:</b> This is a basic educational calculator, not a prescription. Antibiotics must only be used when prescribed for a diagnosed infection; the correct medicine, dose and duration depend on the child and infection. Do not use for newborns/infants under 3 months, kidney or liver disease, allergies, or severe illness without clinician advice. Check the bottle concentration and measuring device. Do not combine products containing paracetamol.</div>
-  <div class="pc-disclaimer"><b>Strengths documented in Nepal:</b> paracetamol 125 mg/5 mL; levocetirizine 2.5 mg/5 mL; cefixime 50 or 100 mg/5 mL; amoxicillin 125 or 250 mg/5 mL; amoxicillin/clavulanate 200/28.5 or 400/57 mg per 5 mL. A 125/31.25 mg per 5 mL amoxicillin/clavulanate product is also listed locally, but is excluded from this high-dose example because it has a different ratio. Always follow the exact bottle label.<br><br>Levocetirizine doses are age-based label doses, not WHO recommendations. The amoxicillin and amoxicillin/clavulanate values shown are the WHO acute bacterial sinusitis example only (80Ã¢â‚¬â€œ90 mg/kg/day of amoxicillin, divided every 12 hours); WHO notes antibiotics are unnecessary in most sinusitis cases. Cefixime is shown as 8 mg/kg/day for children aged 6 months and older, maximum 400 mg/day.</div>
-  <div class="pc-sources">Sources: <a href="https://iris.who.int/bitstream/handle/10665/365237/9789240062382-eng.pdf?sequence=1" target="_blank" rel="noopener">WHO AWaRe antibiotic book</a> Ã‚Â· <a href="https://cdn.who.int/media/docs/default-source/essential-medicines/2019-eml-expert-committee/late-papers/abwg_paediatric_dosing_ab.pdf" target="_blank" rel="noopener">WHO pediatric antibiotic dosing table</a> Ã‚Â· <a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=068e6edd-a5fe-40d8-8dcf-ac82b78dced4" target="_blank" rel="noopener">Cefixime label (age and maximum)</a> Ã‚Â· <a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=dc8adb01-a7ca-490b-b476-8915f1a2e6db" target="_blank" rel="noopener">Levocetirizine label</a> Ã‚Â· <a href="https://giwmscdnone.gov.np/media/pdf_upload/National%20List%20of%20Essential%20Medicines%20Nepal%2C%20Sixth%20revision%20%282021%29_21%20Dec.pdf" target="_blank" rel="noopener">Nepal National List of Essential Medicines</a> Ã‚Â· <a href="https://giwmscdnone.gov.np/media/pdf_upload/Levocetirizine%20HCl%20Syrup_snqanrx.pdf" target="_blank" rel="noopener">Nepal levocetirizine syrup profile</a> Ã‚Â· <a href="https://giwmscdnone.gov.np/media/pdf_upload/List%20of%20Drugs%20available%20in%20Hospital%20Pharmacy%20%281%29%20%282%29_kz831g9.pdf" target="_blank" rel="noopener">Nepal hospital pharmacy list</a></div>
+  <div class="pc-disclaimer"><b>Strengths documented in Nepal:</b> paracetamol 125 mg/5 mL; levocetirizine 2.5 mg/5 mL; cefixime 50 or 100 mg/5 mL; amoxicillin 125 or 250 mg/5 mL; amoxicillin/clavulanate 200/28.5 or 400/57 mg per 5 mL. A 125/31.25 mg per 5 mL amoxicillin/clavulanate product is also listed locally, but is excluded from this high-dose example because it has a different ratio. Always follow the exact bottle label.<br><br>Levocetirizine doses are age-based label doses, not WHO recommendations. The amoxicillin and amoxicillin/clavulanate values shown are the WHO acute bacterial sinusitis example only (80–90 mg/kg/day of amoxicillin, divided every 12 hours); WHO notes antibiotics are unnecessary in most sinusitis cases. Cefixime is shown as 8 mg/kg/day for children aged 6 months and older, maximum 400 mg/day.</div>
+  <div class="pc-sources">Sources: <a href="https://iris.who.int/bitstream/handle/10665/365237/9789240062382-eng.pdf?sequence=1" target="_blank" rel="noopener">WHO AWaRe antibiotic book</a> · <a href="https://cdn.who.int/media/docs/default-source/essential-medicines/2019-eml-expert-committee/late-papers/abwg_paediatric_dosing_ab.pdf" target="_blank" rel="noopener">WHO pediatric antibiotic dosing table</a> · <a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=068e6edd-a5fe-40d8-8dcf-ac82b78dced4" target="_blank" rel="noopener">Cefixime label (age and maximum)</a> · <a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=dc8adb01-a7ca-490b-b476-8915f1a2e6db" target="_blank" rel="noopener">Levocetirizine label</a> · <a href="https://giwmscdnone.gov.np/media/pdf_upload/National%20List%20of%20Essential%20Medicines%20Nepal%2C%20Sixth%20revision%20%282021%29_21%20Dec.pdf" target="_blank" rel="noopener">Nepal National List of Essential Medicines</a> · <a href="https://giwmscdnone.gov.np/media/pdf_upload/Levocetirizine%20HCl%20Syrup_snqanrx.pdf" target="_blank" rel="noopener">Nepal levocetirizine syrup profile</a> · <a href="https://giwmscdnone.gov.np/media/pdf_upload/List%20of%20Drugs%20available%20in%20Hospital%20Pharmacy%20%281%29%20%282%29_kz831g9.pdf" target="_blank" rel="noopener">Nepal hospital pharmacy list</a></div>
 </section>
 <script>
 (()=>{
@@ -465,11 +465,11 @@ html,body{overflow-x:hidden;}
    if(age<6){message='Levocetirizine label dosing starts at 6 months. Please consult a clinician.';}
    else {const mg=age<72?1.25:age<144?2.5:5, ml=mg/(s/5);message='<b>Label dose:</b> '+f(mg)+' mg once daily in the evening = <b>'+f(ml)+' mL per dose</b> ('+choices.levocetirizine.find(x=>x[0]===String(s))[1]+'). Age-based label dose; not a WHO dose. Kidney disease needs clinician review.';}
   } else if(drug.value==='paracetamol'){
-   if(age<3){message='Paracetamol requires special guidance under 3 months.';} else {const lo=10*kg, hi=15*kg, mlLo=lo/(s/5),mlHi=hi/(s/5),max=60*kg;message='<b>10Ã¢â‚¬â€œ15 mg/kg per dose every 6 hours as needed:</b> '+f(lo)+'Ã¢â‚¬â€œ'+f(hi)+' mg = <b>'+f(mlLo)+'Ã¢â‚¬â€œ'+f(mlHi)+' mL per dose</b>. Maximum: '+f(max)+' mg in 24 hours (all paracetamol sources combined).';}
+   if(age<3){message='Paracetamol requires special guidance under 3 months.';} else {const lo=10*kg, hi=15*kg, mlLo=lo/(s/5),mlHi=hi/(s/5),max=60*kg;message='<b>10–15 mg/kg per dose every 6 hours as needed:</b> '+f(lo)+'–'+f(hi)+' mg = <b>'+f(mlLo)+'–'+f(mlHi)+' mL per dose</b>. Maximum: '+f(max)+' mg in 24 hours (all paracetamol sources combined).';}
   } else if(drug.value==='cefixime'){
    if(age<6){message='Cefixime dosing in this calculator starts at 6 months. Please consult a clinician.';} else {const day=Math.min(8*kg,400),ml=day/(s/5);message='<b>8 mg/kg/day</b> (maximum 400 mg/day): '+f(day)+' mg/day = <b>'+f(ml)+' mL total per day</b>, given once daily or split into 2 equal doses 12 hours apart. Diagnosis and renal function affect dosing.';}
   } else {
-   const lo=80*kg,hi=90*kg,maxDose=1000,loDose=Math.min(lo/2,maxDose),hiDose=Math.min(hi/2,maxDose),loMl=loDose/(s/5),hiMl=hiDose/(s/5),drugName=drug.value==='amoxclav'?'amoxicillin component':'amoxicillin';message='<b>WHO acute bacterial sinusitis example only:</b> 80Ã¢â‚¬â€œ90 mg/kg/day of '+drugName+', divided every 12 hours. Per dose: '+f(loDose)+'Ã¢â‚¬â€œ'+f(hiDose)+' mg = <b>'+f(loMl)+'Ã¢â‚¬â€œ'+f(hiMl)+' mL</b> of this liquid. WHO weight-band maximum shown is 1,000 mg per dose. Confirm product ratio and prescribed dose with clinician/pharmacist.';
+   const lo=80*kg,hi=90*kg,maxDose=1000,loDose=Math.min(lo/2,maxDose),hiDose=Math.min(hi/2,maxDose),loMl=loDose/(s/5),hiMl=hiDose/(s/5),drugName=drug.value==='amoxclav'?'amoxicillin component':'amoxicillin';message='<b>WHO acute bacterial sinusitis example only:</b> 80–90 mg/kg/day of '+drugName+', divided every 12 hours. Per dose: '+f(loDose)+'–'+f(hiDose)+' mg = <b>'+f(loMl)+'–'+f(hiMl)+' mL</b> of this liquid. WHO weight-band maximum shown is 1,000 mg per dose. Confirm product ratio and prescribed dose with clinician/pharmacist.';
    if(drug.value==='amoxclav')message+=' This calculation uses the amoxicillin amount in the 7:1 strength; it also contains clavulanate.';
   }
   result.innerHTML=message;result.classList.add('show');
@@ -478,18 +478,18 @@ html,body{overflow-x:hidden;}
 </script>
 <section id="adminView">
   <div class="card">
-    <h1>Question Bank Ã¢â‚¬â€� Upload &amp; Scan PDFs</h1>
-    <div class="sub">Upload PDFs containing MCQs with answer keys. They are scanned, parsed into exam-format questions and stored locally in your browser. <span class="badge y" id="bootChip">JS not loaded yetÃ¢â‚¬Â¦</span></div>
+    <h1>Question Bank — Upload &amp; Scan PDFs</h1>
+    <div class="sub">Upload PDFs containing MCQs with answer keys. They are scanned, parsed into exam-format questions and stored locally in your browser. <span class="badge y" id="bootChip">JS not loaded yet…</span></div>
     <label class="drop" id="dropZone" for="pdfInput">
-      <div style="font-size:30px">Ã°Å¸â€œâ€ž</div>
+      <div style="font-size:30px">📄</div>
       <div><b>Click to select PDFs</b> or drag &amp; drop files here</div>
-      <div class="mut" style="margin-top:6px">Multiple files supported Ã‚Â· parsed fully offline in your browser</div>
+      <div class="mut" style="margin-top:6px">Multiple files supported · parsed fully offline in your browser</div>
       <input type="file" id="pdfInput" accept=".pdf,application/pdf" multiple style="display:none">
     </label>
     <div id="uploadLog"></div>
     <div class="rowflex" style="margin-top:14px">
-      <button class="btn sec small" id="exportAllBtn">Ã¢Â¬â€¡ Export all banks (JSON)</button>
-      <button class="btn sec small" id="importBtn">Ã¢Â¬â€  Import JSON backup</button>
+      <button class="btn sec small" id="exportAllBtn">⬇ Export all banks (JSON)</button>
+      <button class="btn sec small" id="importBtn">⬆ Import JSON backup</button>
       <input type="file" id="jsonInput" accept=".json" hidden>
     </div>
   </div>
@@ -498,12 +498,12 @@ html,body{overflow-x:hidden;}
     <h1 style="font-size:18px">Saved Banks</h1>
     <div class="sub">Each uploaded PDF becomes a bank. Practice sessions are built from these.</div>
     <div class="bankgrid" id="bankList"></div>
-    <div id="noBanks" class="mut" style="display:none">No banks yet Ã¢â‚¬â€� upload a PDF above.</div>
+    <div id="noBanks" class="mut" style="display:none">No banks yet — upload a PDF above.</div>
   </div>
 
   <div class="hintbox card" style="background:#fffbeb;border-color:#fde68a;color:#78350f">
-    <b>Ã¢Å¡â„¢ Parser tips (what format works best)</b>
-    The scanner recognises numbered questions (<code>1.</code> / <code>1)</code> / <code>Question 1</code>), options on their own lines (<code>A.</code> <code>(B)</code> <code>C)</code>), and answer keys such as <code>Answer: B</code>, <code>Correct Answer Ã¢â‚¬â€� C</code>, <code>Ans. (D)</code> or a bare <code>(C)</code> line. Text following the answer line is kept as the explanation. Questions where options or the answer key can't be detected are counted as Ã¢â‚¬Å“skippedÃ¢â‚¬ï¿½ Ã¢â‚¬â€� check the upload report. Use text-based (selectable) PDFs, not scanned images.
+    <b>⚙ Parser tips (what format works best)</b>
+    The scanner recognises numbered questions (<code>1.</code> / <code>1)</code> / <code>Question 1</code>), options on their own lines (<code>A.</code> <code>(B)</code> <code>C)</code>), and answer keys such as <code>Answer: B</code>, <code>Correct Answer — C</code>, <code>Ans. (D)</code> or a bare <code>(C)</code> line. Text following the answer line is kept as the explanation. Questions where options or the answer key can't be detected are counted as “skipped” — check the upload report. Use text-based (selectable) PDFs, not scanned images.
   </div>
 </section>
 
@@ -512,13 +512,13 @@ html,body{overflow-x:hidden;}
   <div id="examConfig" class="exview active">
     <div class="card">
       <h1>Create Practice Session</h1>
-      <div class="sub">Choose a bank, a set of questions, mode and options Ã¢â‚¬â€� then start.</div>
+      <div class="sub">Choose a bank, a set of questions, mode and options — then start.</div>
       <div class="formgrid" style="margin-bottom:16px">
         <label class="f">Question bank
-          <select id="bankSel"><option value="">Ã¢â‚¬â€� select bank Ã¢â‚¬â€�</option></select>
+          <select id="bankSel"><option value="">— select bank —</option></select>
         </label>
         <label class="f">Set
-          <select id="setSel"><option value="">Ã¢â‚¬â€�</option></select>
+          <select id="setSel"><option value="">—</option></select>
         </label>
         <label class="f">Set size
           <select id="setSizeSel">
@@ -527,8 +527,8 @@ html,body{overflow-x:hidden;}
         </label>
         <label class="f">Mode
           <select id="modeSel">
-            <option value="timed" selected>Ã¢ï¿½Â± Timed (exam-like)</option>
-            <option value="tutor">Ã°Å¸Å½â€œ Tutor (instant feedback)</option>
+            <option value="timed" selected>⏱ Timed (exam-like)</option>
+            <option value="tutor">🎓 Tutor (instant feedback)</option>
           </select>
         </label>
         <label class="f">Timer (minutes, 0 = none)
@@ -536,11 +536,11 @@ html,body{overflow-x:hidden;}
         </label>
       </div>
       <div class="chkrow" style="margin-bottom:18px">
-        <label><input type="checkbox" id="shufQ" checked> Ã°Å¸â€�â‚¬ Shuffle question order</label>
-        <label><input type="checkbox" id="shufO" checked> Shuffle answer options (AÃ¢â‚¬â€œE)</label>
+        <label><input type="checkbox" id="shufQ" checked> 🔀 Shuffle question order</label>
+        <label><input type="checkbox" id="shufO" checked> Shuffle answer options (A–E)</label>
       </div>
-      <button class="btn" id="startBtn">Ã¢â€“Â¶ Start session</button>
-      <div class="mut" style="margin-top:8px">Shortcuts during session: <kbd>Ã¢â€ ï¿½</kbd><kbd>Ã¢â€ â€™</kbd> navigate Ã‚Â· <kbd>1</kbd>Ã¢â‚¬â€œ<kbd>9</kbd> select option Ã‚Â· <kbd>F</kbd> flag</div>
+      <button class="btn" id="startBtn">▶ Start session</button>
+      <div class="mut" style="margin-top:8px">Shortcuts during session: <kbd>←</kbd><kbd>→</kbd> navigate · <kbd>1</kbd>–<kbd>9</kbd> select option · <kbd>F</kbd> flag</div>
     </div>
     <div class="card">
       <h1 style="font-size:18px">Previous sessions</h1>
@@ -561,19 +561,19 @@ html,body{overflow-x:hidden;}
         <span id="examModePill" class="pill"></span>
         <div style="margin-left:auto;display:flex;gap:10px;align-items:center">
           <div id="timerBox" class="timer">--:--</div>
-          <button class="btn sec small" id="pauseBtn">Ã¢ï¿½Â¸ Save &amp; exit</button>
+          <button class="btn sec small" id="pauseBtn">⏸ Save &amp; exit</button>
           <button class="btn small" id="submitBtn">Submit block</button>
         </div>
       </div>
       <div class="qwrap" id="qBody"></div>
       <div class="qfoot" style="padding:0 26px 22px">
-        <button class="btn sec" id="prevBtn">Ã¢â€ ï¿½ Previous</button>
+        <button class="btn sec" id="prevBtn">← Previous</button>
         <div class="mut" id="posLabel"></div>
-        <button class="btn" id="nextBtn">Next Ã¢â€ â€™</button>
+        <button class="btn" id="nextBtn">Next →</button>
       </div>
     </div>
     <div class="card">
-      <div class="sub" style="margin-bottom:8px">Question palette Ã¢â‚¬â€� click to jump. <span style="color:#b45309">Ã¢Å¡â€˜</span> = flagged Ã‚Â· blue = answered Ã‚Â· dark border = current.</div>
+      <div class="sub" style="margin-bottom:8px">Question palette — click to jump. <span style="color:#b45309">⚑</span> = flagged · blue = answered · dark border = current.</div>
       <div class="palette" id="palette"></div>
     </div>
   </div>
@@ -587,8 +587,8 @@ html,body{overflow-x:hidden;}
         <div>
           <div id="resLines" style="font-size:14px;line-height:1.9"></div>
           <div class="minibtns">
-            <button class="btn sec small" id="retakeBtn">Ã°Å¸â€�ï¿½ Retake same set</button>
-            <button class="btn sec small" id="newBtn2">Ã¯Â¼â€¹ New session</button>
+            <button class="btn sec small" id="retakeBtn">🔁 Retake same set</button>
+            <button class="btn sec small" id="newBtn2">＋ New session</button>
           </div>
         </div>
       </div>
@@ -616,7 +616,7 @@ html,body{overflow-x:hidden;}
 <script>
 "use strict";
 /* Homepage copy managed from the Admin panel. */
-const HOMEPAGE_CONTENT = {"eyebrow":"YOUR NEXT STEP STARTS HERE","titleLead":"Prepare with","titleAccent":"purpose.","titleSecond":"Practice with confidence for Loksewa, CEE-MD/MS exams ","subtitle":"Focused question banks for your next medical entrance and Loksewa exam.","ctaLabel":"Explore practice","banksEyebrow":"CHOOSE YOUR TRACK","banksTitle":"Your question banks","banksSubtitle":"Jump into a set and build exam-day confidence.","footerText":"Ã‚Â© Dr. Ram","updated":"07 Nov 2026, 19:13"};
+const HOMEPAGE_CONTENT = {"eyebrow":"YOUR NEXT STEP STARTS HERE","titleLead":"Prepare with","titleAccent":"purpose.","titleSecond":"Practice with confidence for Loksewa, CEE-MD/MS exams ","subtitle":"Focused question banks for your next medical entrance and Loksewa exam.","ctaLabel":"Explore practice","banksEyebrow":"CHOOSE YOUR TRACK","banksTitle":"Your question banks","banksSubtitle":"Jump into a set and build exam-day confidence.","footerText":"© Dr. Ram","updated":"07 Nov 2026, 19:13"};
 (function renderHomepageContent(){
   const c=HOMEPAGE_CONTENT||{};
   const copyright=document.getElementById("siteCopyright");if(copyright&&typeof c.footerText==="string"&&c.footerText.trim())copyright.textContent=c.footerText;
@@ -650,7 +650,7 @@ const HOMEPAGE_CONTENT = {"eyebrow":"YOUR NEXT STEP STARTS HERE","titleLead":"Pr
       reveal.onclick = () => {
         reveal.style.display = "none";
         ans.style.display = "";
-        ans.innerHTML = `<div style="margin-top:6px"><b>Answer: ${esc(q.answerLetter)}${q.answerText ? " Ã¢â‚¬â€� " + esc(q.answerText) : ""}</b></div>` +
+        ans.innerHTML = `<div style="margin-top:6px"><b>Answer: ${esc(q.answerLetter)}${q.answerText ? " — " + esc(q.answerText) : ""}</b></div>` +
           (q.explanation ? `<div class="explain show" style="margin-top:8px">${esc(q.explanation)}</div>` : "");
         if (opts) opts.querySelectorAll(".optrow").forEach(row => {
           const lt = row.querySelector(".lt");
@@ -659,7 +659,7 @@ const HOMEPAGE_CONTENT = {"eyebrow":"YOUR NEXT STEP STARTS HERE","titleLead":"Pr
       };
     }
     const stamp = document.getElementById("qotdStamp");
-    if (stamp) stamp.textContent = d.date ? "Ã°Å¸â€œâ€¦ " + d.date : "";
+    if (stamp) stamp.textContent = d.date ? "📅 " + d.date : "";
   } catch (e) { sec.style.display = "none"; }
 })();
 /* ===== practice lock signs (mirrored from admin; null = no lock) ===== */
@@ -690,13 +690,13 @@ function applyPracticeLockIcons(){
 applyPracticeLockIcons();
 window.addEventListener("error", e => {
   const t = document.getElementById("bootChip") || document.getElementById("toast");
-  if(t){ t.textContent = "Ã¢Å¡Â  JS Error: " + e.message; }
+  if(t){ t.textContent = "⚠ JS Error: " + e.message; }
 });
 function setupPdf(){ if(window.pdfjsLib && !window.pdfjsLib.GlobalWorkerOptions.workerSrcSet){ try{ pdfjsLib.GlobalWorkerOptions.workerSrc = "pdf.worker.min.js"; }catch(e){} } }
 setupPdf();
 const $ = s => document.querySelector(s);
 const $id = s => document.getElementById(s);
-/* bind an event only when the element exists Ã¢â‚¬â€� the admin/import UI is hidden
+/* bind an event only when the element exists — the admin/import UI is hidden
    on the public homepage, so those nodes may legitimately be absent. */
 const on = (id, ev, fn) => { const el = $id(id); if (el) el.addEventListener(ev, fn); return el; };
 const state = { banks: [], exam: null, bank: null, errorPool: [] };
@@ -811,7 +811,7 @@ function pickSequence(mks){
 }
 function findAnswerAfter(b, from, nOpts){
   const region = b.slice(from);
-  const kws = markAll(region, /(?:correct\s+(?:answer|choice|option)|(?:answers?|ans)\b)[\s:*\-Ã¢â‚¬â€œÃ¢â‚¬â€�=.{\[]*/gi);
+  const kws = markAll(region, /(?:correct\s+(?:answer|choice|option)|(?:answers?|ans)\b)[\s:*\-–—=.{\[]*/gi);
   for(const k of kws){
     const after = region.slice(k.index + k[0].length, k.index + k[0].length + 30);
     const lm = after.match(/^\W{0,4}(?:is|was|=|be)?\W{0,4}\(?\s*([A-Ea-e1-5])\s*[\).:\]]{0,2}(?![A-Za-z])/i);
@@ -927,25 +927,25 @@ async function handlePdfFiles(files){
     for(const f of pdfs){
       row = document.createElement("div");
       row.className = "uplrow";
-      row.innerHTML = `<div class="rowflex"><span class="name">${esc(f.name)}</span><span class="stat" id="s_${f.size}">queuedÃ¢â‚¬Â¦ (${(f.size / 1024).toFixed(0)} KB)</span></div><div class="filebar"><i id="b_${f.size}"></i></div>`;
+      row.innerHTML = `<div class="rowflex"><span class="name">${esc(f.name)}</span><span class="stat" id="s_${f.size}">queued… (${(f.size / 1024).toFixed(0)} KB)</span></div><div class="filebar"><i id="b_${f.size}"></i></div>`;
       rowLog.prepend(row);
       const stat = row.querySelector(".stat"), bar = row.querySelector("i");
-      const fail = msg => { stat.className = "stat err"; stat.textContent = "Ã¢Å“â€“ " + msg; };
+      const fail = msg => { stat.className = "stat err"; stat.textContent = "✖ " + msg; };
       if(!window.pdfjsLib){ fail("PDF.js library not loaded"); return; }
       try{
         const text = await extractPdfText(f, (p, n) => {
-          stat.textContent = `scanning page ${p}/${n}Ã¢â‚¬Â¦`;
+          stat.textContent = `scanning page ${p}/${n}…`;
           bar.style.width = `${Math.round(p / n * 70)}%`;
         });
         bar.style.width = "85%";
-        stat.textContent = "parsing questionsÃ¢â‚¬Â¦";
+        stat.textContent = "parsing questions…";
         await new Promise(r => setTimeout(r, 30));
         const { questions, skipped } = parseQuestions(text);
         const bank = { id: "b" + Date.now() + Math.random().toString(36).slice(2, 7), name: f.name, createdAt: Date.now(), questions };
         await idbPut("banks", bank);
         bar.style.width = "100%";
         stat.className = "stat ok";
-        stat.textContent = `Ã¢Å“â€� ${questions.length} questions parsed${skipped.length ? ` Ã‚Â· ${skipped.length} skipped` : ""}`;
+        stat.textContent = `✔ ${questions.length} questions parsed${skipped.length ? ` · ${skipped.length} skipped` : ""}`;
         await loadBanks(); renderConfig();
       } catch(inner){
         fail("Parse/scan error: " + (inner && inner.message ? inner.message : inner));
@@ -953,8 +953,8 @@ async function handlePdfFiles(files){
       }
     }
   } catch(outer){
-    if(row){ const s = row.querySelector(".stat"); s.className = "stat err"; s.textContent = "Ã¢Å“â€“ " + (outer && outer.message ? outer.message : outer); }
-    $("bootChip").textContent = "Ã¢Å¡Â  Upload error: " + (outer && outer.message ? outer.message : outer);
+    if(row){ const s = row.querySelector(".stat"); s.className = "stat err"; s.textContent = "✖ " + (outer && outer.message ? outer.message : outer); }
+    $("bootChip").textContent = "⚠ Upload error: " + (outer && outer.message ? outer.message : outer);
     $("bootChip").className = "badge r";
     console.error(outer);
   }
@@ -994,11 +994,11 @@ function renderBanks(){
     const div = document.createElement("div");
     div.className = "bankcard";
     div.innerHTML = `<h3>${esc(b.name)}</h3>
-      <div class="meta">${b.questions.length} questions Ã‚Â· ${d.toLocaleDateString()} ${d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</div>
+      <div class="meta">${b.questions.length} questions · ${d.toLocaleDateString()} ${d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</div>
       <div class="rowflex">
-        <button class="btn small">Ã°Å¸â€˜ï¿½ View</button>
-        <button class="btn sec small">Ã¢Â¬â€¡ Export</button>
-        <button class="btn danger small">Ã°Å¸â€”â€˜ Delete</button>
+        <button class="btn small">👁 View</button>
+        <button class="btn sec small">⬇ Export</button>
+        <button class="btn danger small">🗑 Delete</button>
       </div>`;
     const [viewBtn, expBtn, delBtn] = div.querySelectorAll("button");
     viewBtn.onclick = () => openBankViewer(b);
@@ -1036,7 +1036,7 @@ function openBankViewer(b){
 function renderConfig(){
   const sel = $("bankSel");
   const prev = sel.value;
-  sel.innerHTML = `<option value="">Ã¢â‚¬â€� select bank Ã¢â‚¬â€�</option>` + state.banks.map(b => `<option value="${b.id}">${esc(b.name)} (${b.questions.length})</option>`).join("");
+  sel.innerHTML = `<option value="">— select bank —</option>` + state.banks.map(b => `<option value="${b.id}">${esc(b.name)} (${b.questions.length})</option>`).join("");
   if(prev && state.banks.some(b => b.id === prev)) sel.value = prev;
   renderSets(); renderAttempts();
 }
@@ -1051,14 +1051,14 @@ on("modeSel", "change", () => {
 });
 function renderSets(){
   const sel = $("setSel"); sel.innerHTML = "";
-  if(!state.bank){ sel.innerHTML = `<option value="">Ã¢â‚¬â€�</option>`; return; }
+  if(!state.bank){ sel.innerHTML = `<option value="">—</option>`; return; }
   const size = parseInt($("setSizeSel").value, 10);
   const n = state.bank.questions.length;
   const ns = Math.ceil(n / size);
   let html = "";
   for(let i = 0; i < ns; i++){
     const f = i * size + 1, t = Math.min(n, (i + 1) * size);
-    html += `<option value="${i}">Set ${i + 1} (Q${f}Ã¢â‚¬â€œQ${t})</option>`;
+    html += `<option value="${i}">Set ${i + 1} (Q${f}–Q${t})</option>`;
   }
   html += `<option value="all">All questions (${n})</option>`;
   sel.innerHTML = html;
@@ -1097,19 +1097,19 @@ function renderAttempts(){
           .slice(0, 8);
         let html = `<div class="rowflex" style="gap:26px;align-items:flex-start;flex-wrap:wrap">
           <div class="rowflex" style="flex-direction:column;gap:4px">
-            <div style="font-size:34px;font-weight:800;color:${overall == null ? "var(--muted)" : overall >= 70 ? "var(--ok)" : overall >= 50 ? "var(--flag)" : "var(--bad)"}">${overall == null ? "Ã¢â‚¬â€�" : overall + "%"}</div>
+            <div style="font-size:34px;font-weight:800;color:${overall == null ? "var(--muted)" : overall >= 70 ? "var(--ok)" : overall >= 50 ? "var(--flag)" : "var(--bad)"}">${overall == null ? "—" : overall + "%"}</div>
             <div class="mut">overall accuracy</div>
-            <div class="mut">${totQ} answers Ã‚Â· ${done.length} completed session(s) Ã‚Â· ${totQ - totC} incorrect</div>
+            <div class="mut">${totQ} answers · ${done.length} completed session(s) · ${totQ - totC} incorrect</div>
           </div>
           <div style="flex:1;min-width:260px">
-            <div class="mut" style="margin-bottom:6px"><b style="color:var(--bad)">Needs attention</b> Ã¢â‚¬â€� most-missed questions:</div>`;
-        if(!weakest.length) html += `<div class="mut">Nothing weak so far. Keep going Ã°Å¸â€™Âª</div>`;
+            <div class="mut" style="margin-bottom:6px"><b style="color:var(--bad)">Needs attention</b> — most-missed questions:</div>`;
+        if(!weakest.length) html += `<div class="mut">Nothing weak so far. Keep going 💪</div>`;
         else {
           html += `<div>`;
           weakest.forEach(r => {
             const acc = Math.round(r.right / r.seen * 100);
             html += `<div style="margin-bottom:7px">
-              <div class="mut" style="display:flex;justify-content:space-between"><span style="color:var(--ink)">Q: ${esc(r.stem.slice(0, 72))}${r.stem.length > 72 ? "Ã¢â‚¬Â¦" : ""}</span><span style="flex-shrink:0">${acc}% (${r.right}/${r.seen})</span></div>
+              <div class="mut" style="display:flex;justify-content:space-between"><span style="color:var(--ink)">Q: ${esc(r.stem.slice(0, 72))}${r.stem.length > 72 ? "…" : ""}</span><span style="flex-shrink:0">${acc}% (${r.right}/${r.seen})</span></div>
               <div style="height:5px;border-radius:4px;background:#fee2e2;overflow:hidden"><i style="display:block;height:100%;width:${acc}%;background:var(--bad)"></i></div>
             </div>`;
           });
@@ -1118,7 +1118,7 @@ function renderAttempts(){
         html += `</div>`;
         if(state.errorPool.length){
           html += `<div class="minibtns">
-            <button class="btn small" id="practiceErrBtn">Ã°Å¸â€�ï¿½ Practice my errors (${state.errorPool.length})</button>
+            <button class="btn small" id="practiceErrBtn">🔁 Practice my errors (${state.errorPool.length})</button>
           </div>`;
         }
         perf.innerHTML = html;
@@ -1131,10 +1131,10 @@ function renderAttempts(){
     let optHtml = "";
     const size0 = parseInt($("setSizeSel").value, 10), nQ = bank.questions.length;
     for(let i = 0; i < Math.ceil(nQ / size0); i++){
-      optHtml += `<option value="${i}">Set ${i + 1} (Q${i * size0 + 1}Ã¢â‚¬â€œQ${Math.min(nQ, (i + 1) * size0)})</option>`;
+      optHtml += `<option value="${i}">Set ${i + 1} (Q${i * size0 + 1}–Q${Math.min(nQ, (i + 1) * size0)})</option>`;
     }
     optHtml += `<option value="all">All questions (${nQ})</option>`;
-    optHtml += `<option value="errors" ${state.errorPool.length ? "" : "disabled"}>Ã°Å¸â€�ï¿½ My errors (${state.errorPool.length})</option>`;
+    optHtml += `<option value="errors" ${state.errorPool.length ? "" : "disabled"}>🔁 My errors (${state.errorPool.length})</option>`;
     setSel.innerHTML = optHtml;
     if([...setSel.options].some(o => o.value === cur)) setSel.value = cur;
     if(!rows.length){ wrap.innerHTML = `<div class="mut">No sessions for this bank yet.</div>`; return; }
@@ -1147,7 +1147,7 @@ function renderAttempts(){
       tr.innerHTML = `<td>${d.toLocaleDateString()} ${d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</td>
         <td>${esc(a.setLabel)}</td><td>${a.mode === "tutor" ? "Tutor" : "Timed"}</td>
         <td>${a.finishedAt ? `<span class="badge g">Completed</span>` : `<span class="badge y">In progress</span>`}</td>
-        <td>${a.finishedAt ? `${a.correct}/${a.total} (${Math.round(a.correct / Math.max(1, a.total) * 100)}%)` : "Ã¢â‚¬â€�"}</td>`;
+        <td>${a.finishedAt ? `${a.correct}/${a.total} (${Math.round(a.correct / Math.max(1, a.total) * 100)}%)` : "—"}</td>`;
       const td = document.createElement("td");
       if(!a.finishedAt){
         const rb = document.createElement("button"); rb.className = "btn small"; rb.textContent = "Resume";
@@ -1156,7 +1156,7 @@ function renderAttempts(){
         const vb = document.createElement("button"); vb.className = "btn sec small"; vb.textContent = "Review";
         vb.onclick = () => buildResults(a.snapshot.pool, a.snapshot.sel, a); td.appendChild(vb);
       }
-      const xb = document.createElement("button"); xb.className = "btn danger small"; xb.textContent = "Ã°Å¸â€”â€˜";
+      const xb = document.createElement("button"); xb.className = "btn danger small"; xb.textContent = "🗑";
       xb.style.marginLeft = "6px";
       xb.onclick = async () => { await idbDel("attempts", a.id); renderAttempts(); };
       td.appendChild(xb); tr.appendChild(td); tb.appendChild(tr);
@@ -1181,7 +1181,7 @@ async function startExam(){
   let src, label;
   if(setVal === "all"){ src = [...state.bank.questions]; label = `All (${n})`; }
   else if(setVal === "errors"){ src = [...state.errorPool]; label = `My errors (${src.length})`; if(!src.length) return toast("No past errors recorded for this bank yet."); }
-  else { const i = parseInt(setVal, 10); src = state.bank.questions.slice(i * size, Math.min(n, (i + 1) * size)); label = `Set ${i + 1} (Q${i * size + 1}Ã¢â‚¬â€œQ${Math.min(n, (i + 1) * size)})`; }
+  else { const i = parseInt(setVal, 10); src = state.bank.questions.slice(i * size, Math.min(n, (i + 1) * size)); label = `Set ${i + 1} (Q${i * size + 1}–Q${Math.min(n, (i + 1) * size)})`; }
   const mode = $("modeSel").value;
   const minutes = mode === "tutor" ? 0 : Math.max(0, parseInt($("timerMin").value, 10) || 0);
   let pool = $("shufQ").checked ? shuffle([...src]) : [...src];
@@ -1209,9 +1209,9 @@ function enterExam(attempt){
   };
   ["examConfig", "examResults"].forEach(id => $(`#${id}`).classList.remove("active"));
   $("examPlay").classList.add("active");
-  $("examTitle").textContent = `${attempt.bankName} Ã‚Â· ${attempt.setLabel}`;
+  $("examTitle").textContent = `${attempt.bankName} · ${attempt.setLabel}`;
   const pill = $("examModePill");
-  pill.textContent = attempt.mode === "tutor" ? "Ã°Å¸Å½â€œ Tutor" : "Ã¢ï¿½Â± Timed";
+  pill.textContent = attempt.mode === "tutor" ? "🎓 Tutor" : "⏱ Timed";
   pill.className = "pill " + (attempt.mode === "tutor" ? "tutor" : "timed");
   $("timerBox").style.display = attempt.mode === "timed" && attempt.minutes > 0 ? "" : "none";
   clearInterval(state.exam.timerInt);
@@ -1258,7 +1258,7 @@ function renderPalette(){
   });
 }
 function baselineOpts(q){
-  return q.options.map(o => `<div class="optrow" data-i="${q.options.indexOf(o)}" data-text="${esc(o.text)}"><span class="lt">${esc(o.k)}</span><span class="ot">${esc(o.text)}</span><button class="strikebtn" title="strike out">Ã¢Å Ëœ</button></div>`);
+  return q.options.map(o => `<div class="optrow" data-i="${q.options.indexOf(o)}" data-text="${esc(o.text)}"><span class="lt">${esc(o.k)}</span><span class="ot">${esc(o.text)}</span><button class="strikebtn" title="strike out">⊘</button></div>`);
 }
 function renderQuestion(){
   const ex = state.exam;
@@ -1280,11 +1280,11 @@ function renderQuestion(){
     });
   }
   $("qBody").innerHTML = `
-    <div class="qnum"><span>Question ${i + 1} of ${ex.pool.length} ${flag ? `<span style="color:var(--flag)">Ã¢Å¡â€˜</span>` : ""}</span>
+    <div class="qnum"><span>Question ${i + 1} of ${ex.pool.length} ${flag ? `<span style="color:var(--flag)">⚑</span>` : ""}</span>
       <span class="rowflex" style="gap:8px">
-        <button class="hlbtn" id="hlBtn">Ã°Å¸â€“ï¿½ Highlight</button>
-        <button class="hlbtn" id="clrBtn">Ã¢â€ Âº Clear marks</button>
-        <button class="hlbtn" style="border-color:#fcd34d" id="flagBtn">${flag ? "Ã°Å¸Å¡Â© Unflag" : "Ã¢Å¡â€˜ Flag"}</button>
+        <button class="hlbtn" id="hlBtn">🖍 Highlight</button>
+        <button class="hlbtn" id="clrBtn">↺ Clear marks</button>
+        <button class="hlbtn" style="border-color:#fcd34d" id="flagBtn">${flag ? "🚩 Unflag" : "⚑ Flag"}</button>
       </span></div>
     <div class="stem" id="stemEl">${stemHtml}</div>
     <div id="optsEl">${optHtml.join("")}</div>
@@ -1306,7 +1306,7 @@ function renderQuestion(){
   $("flagBtn").onclick = () => { ex.flags[i] = !ex.flags[i]; renderQuestion(); renderPalette(); persistExam(); };
   $("hlBtn").onclick = () => applyHighlight(i);
   $("clrBtn").onclick = () => { delete ex.marks[i]; renderQuestion(); persistExam(); };
-  $("posLabel").textContent = `Answered ${ansed}/${ex.pool.length} Ã‚Â· Flagged ${ex.flags.filter(Boolean).length}`;
+  $("posLabel").textContent = `Answered ${ansed}/${ex.pool.length} · Flagged ${ex.flags.filter(Boolean).length}`;
   if(answered && ex.mode !== "tutor"){
     ex.pool.forEach((qq, oi) => {
       const r = body.querySelectorAll(".optrow")[oi];
@@ -1397,7 +1397,7 @@ async function finishExam(auto){
   await idbPut("attempts", a);
   state.exam = null;
   buildResults(ex.pool, ex.sel, a);
-  if(auto) toast("Ã¢ï¿½Â± Time's up Ã¢â‚¬â€� session submitted.");
+  if(auto) toast("⏱ Time's up — session submitted.");
 }
 
 /* ============ Results ============ */
@@ -1422,13 +1422,13 @@ function buildResults(pool, sel, attempt){
   circ.style.background = col;
   $("scorePct").textContent = pct + "%";
   $("scoreFrac").textContent = `${correct}/${total}`;
-  $("resMeta").textContent = attempt ? `${attempt.bankName} Ã‚Â· ${attempt.setLabel} Ã‚Â· ${attempt.mode === "tutor" ? "Tutor" : "Timed"} Ã‚Â· ${new Date(attempt.startedAt).toLocaleString()}${attempt.timeUsed != null ? ` Ã‚Â· time ${fmtTime(attempt.timeUsed)}` : ""}` : "";
+  $("resMeta").textContent = attempt ? `${attempt.bankName} · ${attempt.setLabel} · ${attempt.mode === "tutor" ? "Tutor" : "Timed"} · ${new Date(attempt.startedAt).toLocaleString()}${attempt.timeUsed != null ? ` · time ${fmtTime(attempt.timeUsed)}` : ""}` : "";
   $("resLines").innerHTML =
-    `<div>Ã¢Å“â€� Correct: <b style="color:var(--ok)">${correct - 0}</b></div>
-     <div>Ã¢Å“Ëœ Incorrect: <b style="color:var(--bad)">${total - correct - unanswered}</b></div>
-     <div>Ã¢â€”â€¹ Unanswered: <b>${unanswered}</b></div>
-     <div>Ã¢Å¡â€˜ Flagged: <b style="color:var(--flag)">${flaggedCount}</b></div>`;
-  $("retakeBtn").textContent = attempt && attempt.snapshot ? "Ã°Å¸â€�ï¿½ Retake same set" : "";
+    `<div>✔ Correct: <b style="color:var(--ok)">${correct - 0}</b></div>
+     <div>✘ Incorrect: <b style="color:var(--bad)">${total - correct - unanswered}</b></div>
+     <div>○ Unanswered: <b>${unanswered}</b></div>
+     <div>⚑ Flagged: <b style="color:var(--flag)">${flaggedCount}</b></div>`;
+  $("retakeBtn").textContent = attempt && attempt.snapshot ? "🔁 Retake same set" : "";
   $("retakeBtn").onclick = () => {
     if(attempt && attempt.snapshot){ attempt.finishedAt = null; attempt.startedAt = Date.now(); attempt.id = "a" + Date.now(); idbPut("attempts", attempt).then(() => enterExam(attempt)); }
   };
@@ -1437,7 +1437,7 @@ function buildResults(pool, sel, attempt){
 }
 function renderReview(f){
   const bar = $("revFilters"); bar.innerHTML = "";
-  const defs = [["all", "All"], ["wrong", "Ã¢Å“Ëœ Incorrect"], ["unans", "Ã¢â€”â€¹ Unanswered"], ["ok", "Ã¢Å“â€� Correct"], ["flag", "Ã¢Å¡â€˜ Flagged"]];
+  const defs = [["all", "All"], ["wrong", "✘ Incorrect"], ["unans", "○ Unanswered"], ["ok", "✔ Correct"], ["flag", "⚑ Flagged"]];
   defs.forEach(([k, lab]) => {
     const b = document.createElement("button");
     b.className = "btn small " + (k === f ? "sec" : "sec");
@@ -1455,7 +1455,7 @@ function renderReview(f){
     const det = document.createElement("details");
     det.className = "qcard";
     const status = it.ua == null ? `<span class="badge y">unanswered</span>` : it.ok ? `<span class="badge g">correct</span>` : `<span class="badge r">incorrect</span>`;
-    det.innerHTML = `<summary style="cursor:pointer;font-weight:600;font-size:14px">Q${it.q.n} Ã¢â‚¬â€� ${esc(it.q.stem.slice(0, 110))}${it.q.stem.length > 110 ? "Ã¢â‚¬Â¦" : ""} ${status} ${it.flag ? "<span style='color:var(--flag)'>Ã¢Å¡â€˜</span>" : ""}</summary>
+    det.innerHTML = `<summary style="cursor:pointer;font-weight:600;font-size:14px">Q${it.q.n} — ${esc(it.q.stem.slice(0, 110))}${it.q.stem.length > 110 ? "…" : ""} ${status} ${it.flag ? "<span style='color:var(--flag)'>⚑</span>" : ""}</summary>
       <div class="stem" style="margin-top:10px">${esc(it.q.stem)}</div>
       ${it.q.options.map(o => {
         const isC = o.text === it.cor, isU = o.text === it.ua;
@@ -1484,20 +1484,20 @@ async function renderEmbeddedBanks(){
     if(!Array.isArray(banks)) throw new Error("The bank list returned an unexpected response.");
     const groups=new Map();
     banks.forEach(bank=>{const cat=bank.cat||"Question Banks";if(!groups.has(cat))groups.set(cat,[]);groups.get(cat).push(bank);});
-    const icons={"Loksewa":"Ã°Å¸ï¿½â€ºÃ¯Â¸ï¿½","Surgery":"Ã¢Å¡â€¢Ã¯Â¸ï¿½","CEE MD/MS":"Ã°Å¸Â©Âº"};
+    const icons={"Loksewa":"🏛️","Surgery":"⚕️","CEE MD/MS":"🩺"};
     const colors={"Loksewa":"#168a78","Surgery":"#7c3aed","CEE MD/MS":"#426ce0"};
     const count=banks.reduce((sum,b)=>sum+Math.max(0,Number(b.count)||0),0);
     total.innerHTML=`<strong>${count.toLocaleString()}</strong><span>questions ready</span>`;
     wrap.innerHTML=[...groups.entries()].map(([cat,items])=>{
       const tone=colors[cat]||"#426ce0";
-      let cards=items.map(bank=>`<article class="home-bank-card" style="--tone:${tone}"><div class="home-bank-name">${esc(bank.name)}</div><div class="home-bank-meta"><b>${Number(bank.count)>0?Number(bank.count).toLocaleString():"Ã¢â‚¬â€�"}</b> questions <span>Ã‚Â·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=${encodeURIComponent(bank.id)}" aria-label="Set up ${esc(bank.name)} practice"> Set up practice <span aria-hidden="true">Ã¢â€ â€™</span></a></article>`).join("");
+      let cards=items.map(bank=>`<article class="home-bank-card" style="--tone:${tone}"><div class="home-bank-name">${esc(bank.name)}</div><div class="home-bank-meta"><b>${Number(bank.count)>0?Number(bank.count).toLocaleString():"—"}</b> questions <span>·</span> Ready to practice</div><a class="home-bank-action" href="surgery-practice.html?bank=${encodeURIComponent(bank.id)}" aria-label="Set up ${esc(bank.name)} practice"> Set up practice <span aria-hidden="true">→</span></a></article>`).join("");
       let setCount=items.length;
       if(cat==="CEE MD/MS"){
         /* Emergency Medicine STP: free chapter-wise protocol viewer (no lock). */
-        cards+=`<article class="home-bank-card" style="--tone:${tone}"><div class="home-bank-name">Emergency Medicine STP</div><div class="home-bank-meta"><b>23</b> chapters <span>Ã‚Â·</span> Free for everyone</div><a class="home-bank-action" href="emergency-stp.html" aria-label="Open Emergency Medicine STP"> View Protocol <span aria-hidden="true">Ã¢â€ â€™</span></a></article>`;
+        cards+=`<article class="home-bank-card" style="--tone:${tone}"><div class="home-bank-name">Emergency Medicine STP</div><div class="home-bank-meta"><b>23</b> chapters <span>·</span> Free for everyone</div><a class="home-bank-action" href="emergency-stp.html" aria-label="Open Emergency Medicine STP"> View Protocol <span aria-hidden="true">→</span></a></article>`;
         setCount+=1;
       }
-      return `<section class="embedded-group${cat==="CEE MD/MS"?" wide":""}" style="--tone:${tone}"><div class="group-head"><div class="group-icon">${icons[cat]||"Ã°Å¸â€œÅ¡"}</div><div><h3>${esc(cat)}</h3><p>${setCount} ${setCount===1?"question set":"question sets"} Ã‚Â· curated for your exam prep</p></div></div><div class="bank-tiles${cat==="CEE MD/MS"?" cols3":""}">${cards}</div></section>`;
+      return `<section class="embedded-group${cat==="CEE MD/MS"?" wide":""}" style="--tone:${tone}"><div class="group-head"><div class="group-icon">${icons[cat]||"📚"}</div><div><h3>${esc(cat)}</h3><p>${setCount} ${setCount===1?"question set":"question sets"} · curated for your exam prep</p></div></div><div class="bank-tiles${cat==="CEE MD/MS"?" cols3":""}">${cards}</div></section>`;
     }).join("");
     if(!banks.length) wrap.innerHTML='<div class="bank-loading">No built-in question banks are available yet.</div>';
     applyPracticeLockIcons();
@@ -1509,7 +1509,7 @@ async function renderEmbeddedBanks(){
 }
 renderEmbeddedBanks();
 
-/* ============ lifetime subscription panel (Rs 1,000 Ã‚Â· eSewa) ============ */
+/* ============ lifetime subscription panel (Rs 1,000 · eSewa) ============ */
 (function premiumPanel(){
   const panel = document.getElementById("premiumPanel");
   if (!panel) return;
@@ -1566,7 +1566,7 @@ renderEmbeddedBanks();
   if (x) x.onclick = dismiss;
   panel.addEventListener("mousedown", e => { if (e.target === panel) dismiss(); });
   document.addEventListener("keydown", e => { if (e.key === "Escape" && panel.style.display === "grid") dismiss(); });
-  /* header link Ã¢â€ â€™ open the popup (also on unlocked devices, showing the "already unlocked" state) */
+  /* header link → open the popup (also on unlocked devices, showing the "already unlocked" state) */
   window.__maOpenPremium = () => {
     computeState();
     try { sessionStorage.removeItem("medarena.ppDismissed"); } catch (e) {}
@@ -1602,8 +1602,8 @@ initDB().then(async () => {
   const hasPdf = !!window.pdfjsLib;
   if (chip) {
     chip.textContent = hasPdf
-      ? "Ã¢Å“â€¦ JavaScript + PDF.js + database loaded Ã¢â‚¬â€� click the PDF area above"
-      : "Ã¢Å“â€¦ JS + DB loaded Ã¢â‚¬â€� but PDF.js missing (uploads unavailable)";
+      ? "✅ JavaScript + PDF.js + database loaded — click the PDF area above"
+      : "✅ JS + DB loaded — but PDF.js missing (uploads unavailable)";
     chip.className = hasPdf ? "badge g" : "badge r";
   }
   await loadBanks();
@@ -1613,11 +1613,11 @@ initDB().then(async () => {
   renderSets(); renderAttempts();
 }).catch(e => {
   const chip = $id("bootChip");
-  if (chip) { chip.textContent = "Ã¢Å¡Â  DB Error: " + e.message; chip.className = "badge r"; }
+  if (chip) { chip.textContent = "⚠ DB Error: " + e.message; chip.className = "badge r"; }
   toast("Database error: " + e.message);
 });
 </script>
-<footer class="site-copyright" id="siteCopyright" aria-label="Copyright">Ã‚Â© Dr. Ram</footer>
+<footer class="site-copyright" id="siteCopyright" aria-label="Copyright">© Dr. Ram</footer>
 <script>
 /* Load the accounts layer everywhere. Locally it talks to admin-server.py; on a
    static host (GitHub Pages) there is no /api, and auth.js detects that itself
@@ -1626,7 +1626,7 @@ initDB().then(async () => {
 (function () {
   var s = document.createElement("script");
   s.src = "auth.js";
-  s.onerror = function () { console.warn("[MedArena] auth.js unavailable Ã¢â‚¬â€� running without accounts."); };
+  s.onerror = function () { console.warn("[MedArena] auth.js unavailable — running without accounts."); };
   document.head.appendChild(s);
 })();
 </script>
@@ -1645,7 +1645,7 @@ initDB().then(async () => {
         return;
       }
       const rows = list.map((e,i) => {
-        const medal = i===0 ? "Ã°Å¸Â¥â€¡" : i===1 ? "Ã°Å¸Â¥Ë†" : i===2 ? "Ã°Å¸Â¥â€°" : (i+1);
+        const medal = i===0 ? "🥇" : i===1 ? "🥈" : i===2 ? "🥉" : (i+1);
         return '<tr><td class="lb-rank">' + medal + '</td><td class="lb-name">' + esc(e.name) + '</td><td class="lb-score"><b>' + e.score + '</b>/' + e.total + '</td><td class="lb-time">' + fmtTime(e.time_taken) + '</td></tr>';
       }).join("");
       host.innerHTML = '<table class="lb-table"><thead><tr><th>#</th><th>Name</th><th>Score</th><th>Time</th></tr></thead><tbody>' + rows + '</tbody></table>';
