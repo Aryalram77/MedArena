@@ -216,6 +216,37 @@ def save_homepage_content(content):
         return os.path.basename(backup)
 
 
+def load_notification():
+    try:
+        html = load_html(INDEX_PATH)
+        m = re.search(r"const NOTIFICATION_CONTENT = ([^\n]*);", html)
+        value = json.loads(m.group(1)) if m else {}
+        return value if isinstance(value, dict) else {}
+    except Exception:
+        return {}
+
+
+def save_notification_content(content):
+    with _lock:
+        html = load_html(INDEX_PATH)
+        m = re.search(r"const NOTIFICATION_CONTENT = ([^\n]*);", html)
+        if not m:
+            raise RuntimeError("NOTIFICATION_CONTENT constant missing in index.html")
+        data = content if isinstance(content, dict) else {}
+        data["updated"] = time.strftime("%d %b %Y, %H:%M")
+        encoded = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
+        updated = "const NOTIFICATION_CONTENT = %s;" % encoded
+        html2 = html[:m.start()] + updated + html[m.end():]
+        os.makedirs(BACKUP_DIR, exist_ok=True)
+        stamp = time.strftime("%Y%m%d-%H%M%S")
+        backup = os.path.join(BACKUP_DIR, "index-notification-%s.html" % stamp)
+        shutil.copyfile(INDEX_PATH, backup)
+        with open(INDEX_PATH, "w", encoding="utf-8", newline="") as f:
+            f.write(html2)
+        saved = load_notification()
+        return os.path.basename(backup)
+
+
 def save_concept(c, stamp):
     with _lock:
         keep = bool(c.get("title") or c.get("body") or c.get("img"))
@@ -826,6 +857,8 @@ class Handler(BaseHTTPRequestHandler):
                 self._send_json(data); return
         if path == "/api/homepage":
             self._send_json(load_homepage_content()); return
+        if path == "/api/notification":
+            self._send_json(load_notification()); return
         if path == "/api/concept":
             self._send_json(load_concept()); return
         if path == "/api/question-of-day":
@@ -1162,6 +1195,15 @@ class Handler(BaseHTTPRequestHandler):
                     self._send_json({"error": "field %s must be text" % key}, 400); return
             try:
                 backup = save_homepage_content(content)
+                self._send_json({"ok": True, "backup": backup, "msg": "saved to index.html · backup " + backup})
+            except Exception as ex:
+                self._send_json({"error": "save failed: %r" % ex}, 500)
+            return
+
+        if path == "/api/save-notification":
+            content = payload if isinstance(payload, dict) else {}
+            try:
+                backup = save_notification_content(content)
                 self._send_json({"ok": True, "backup": backup, "msg": "saved to index.html · backup " + backup})
             except Exception as ex:
                 self._send_json({"error": "save failed: %r" % ex}, 500)

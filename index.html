@@ -350,9 +350,33 @@ html,body{overflow-x:hidden;}
     <button id="tabBank" class="active">📚 Question Bank</button>
     <button id="tabExam">🗂 Practice Session</button>
   </div>
+  <button type="button" id="notifBtn" class="notif-btn" aria-label="Notifications" title="Notifications" style="position:relative;background:#1e293b;color:#cbd5e1;border:none;padding:9px 12px;border-radius:8px;font-size:16px;cursor:pointer;line-height:1">
+    🔔<span id="notifBadge" style="position:absolute;top:4px;right:4px;width:9px;height:9px;border-radius:50%;background:#ef4444;box-shadow:0 0 0 2px #0f172a;display:none"></span>
+  </button>
   <a href="high-yield.html" class="hy-toplink" title="Very High Yield notes">⭐ Very High Yield</a>
   <a href="#" id="ppOpenLink" class="pp-toplink" style="display:none">⚡ Get lifetime access here</a>
 </header>
+
+<div id="notifPanel" style="display:none;position:fixed;top:60px;right:16px;width:min(360px,calc(100vw - 32px));z-index:200;background:#fff;border:1px solid #e2e8f0;border-radius:14px;box-shadow:0 18px 46px rgba(15,23,42,.22);overflow:hidden">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid #e2e8f0;background:#f8fafc">
+    <b style="font-size:14px;color:#0f172a">📣 Notifications</b>
+    <button type="button" id="notifClose" style="background:none;border:none;font-size:18px;cursor:pointer;color:#64748b;line-height:1">×</button>
+  </div>
+  <div id="notifBody" style="padding:14px;max-height:60vh;overflow-y:auto;font-size:14px;color:#334155"></div>
+</div>
+<style>
+.notif-btn:hover{background:#334155!important;color:#fff}
+.notif-type-info{border-left:4px solid #3b82f6;background:#eff6ff}
+.notif-type-warning{border-left:4px solid #f59e0b;background:#fffbeb}
+.notif-type-success{border-left:4px solid #16a34a;background:#f0fdf4}
+.notif-type-danger{border-left:4px solid #dc2626;background:#fef2f2}
+.notif-card{padding:12px 14px;border-radius:10px;margin-bottom:10px}
+.notif-card:last-child{margin-bottom:0}
+.notif-card h4{margin:0 0 4px;font-size:14.5px;color:#0f172a}
+.notif-card p{margin:0 0 8px;white-space:pre-wrap;line-height:1.55}
+.notif-card a{font-weight:700;text-decoration:none}
+.notif-empty{text-align:center;color:#64748b;padding:18px 8px;font-size:13.5px}
+</style>
 
 <main class="container">
 
@@ -709,12 +733,75 @@ html,body{overflow-x:hidden;}
 "use strict";
 /* Homepage copy managed from the Admin panel. */
 const HOMEPAGE_CONTENT = {"eyebrow":"YOUR NEXT STEP STARTS HERE","titleLead":"Prepare with","titleAccent":"purpose.","titleSecond":"Practice with confidence for Loksewa, CEE-MD/MS exams ","subtitle":"Focused question banks for your next medical entrance and Loksewa exam.","ctaLabel":"Explore practice","banksEyebrow":"CHOOSE YOUR TRACK","banksTitle":"Your question banks","banksSubtitle":"Jump into a set and build exam-day confidence.","footerText":"© Dr. Ram","updated":"07 Nov 2026, 19:13"};
+const NOTIFICATION_CONTENT = {"enabled":false,"title":"","message":"","type":"info","link":"","linkLabel":"","updated":""};
 (function renderHomepageContent(){
   const c=HOMEPAGE_CONTENT||{};
   const copyright=document.getElementById("siteCopyright");if(copyright&&typeof c.footerText==="string"&&c.footerText.trim())copyright.textContent=c.footerText;
   const fields={homeEyebrow:"eyebrow",homeTitleLead:"titleLead",homeTitleAccent:"titleAccent",homeTitleSecond:"titleSecond",homeSubtitle:"subtitle",homeBankEyebrow:"banksEyebrow",homeBankTitle:"banksTitle",homeBankSubtitle:"banksSubtitle"};
   Object.entries(fields).forEach(([id,key])=>{const el=document.getElementById(id);if(el&&typeof c[key]==="string")el.textContent=c[key];});
   const cta=document.getElementById("homeCta");if(cta&&c.ctaLabel)cta.firstChild.textContent=c.ctaLabel+" ";
+})();
+/* ===== Notifications / broadcast ===== */
+(function renderNotification(){
+  const c = (typeof NOTIFICATION_CONTENT === "object" && NOTIFICATION_CONTENT) ? NOTIFICATION_CONTENT : {};
+  const btn = document.getElementById("notifBtn");
+  const badge = document.getElementById("notifBadge");
+  const body = document.getElementById("notifBody");
+  const panel = document.getElementById("notifPanel");
+  const closeBtn = document.getElementById("notifClose");
+  if (!btn || !panel || !body) return;
+  const enabled = !!c.enabled;
+  const updated = c.updated || "";
+  const dismissedKey = "medarena.notif.dismissed";
+  let dismissed = "";
+  try { dismissed = localStorage.getItem(dismissedKey) || ""; } catch (e) {}
+  const hasNew = enabled && updated && dismissed !== updated;
+  if (badge) badge.style.display = hasNew ? "block" : "none";
+  function escN(t){ return (t ?? "").toString().replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+  function renderBody(){
+    if (!enabled || !((c.title||"").trim() || (c.message||"").trim())) {
+      body.innerHTML = '<div class="notif-empty">No new notifications right now. Check back later!</div>';
+      return;
+    }
+    const type = (c.type || "info").toLowerCase();
+    const cls = "notif-card notif-type-" + (["info","warning","success","danger"].includes(type) ? type : "info");
+    let html = '<div class="' + cls + '">';
+    if (c.title) html += '<h4>' + escN(c.title) + '</h4>';
+    if (c.message) html += '<p>' + escN(c.message) + '</p>';
+    if (c.link) html += '<a href="' + escN(c.link) + '" target="_blank" rel="noopener">' + escN(c.linkLabel || "Open") + ' →</a>';
+    html += '</div>';
+    body.innerHTML = html;
+  }
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const open = panel.style.display !== "none";
+    panel.style.display = open ? "none" : "block";
+    if (!open) {
+      renderBody();
+      if (updated) { try { localStorage.setItem(dismissedKey, updated); } catch (e) {} }
+      if (badge) badge.style.display = "none";
+    }
+  });
+  if (closeBtn) closeBtn.addEventListener("click", () => { panel.style.display = "none"; });
+  document.addEventListener("click", (e) => {
+    if (panel.style.display !== "none" && !panel.contains(e.target) && e.target !== btn) panel.style.display = "none";
+  });
+  // auto-fetch from server (cloud/local) to pick up admin broadcasts
+  (async function(){
+    try {
+      const r = await fetch("/api/notification", {cache:"no-store"});
+      if (!r.ok) return;
+      const d = await r.json();
+      if (d && typeof d === "object") {
+        Object.assign(c, d);
+        const en = !!c.enabled;
+        const up = c.updated || "";
+        let dis = "";
+        try { dis = localStorage.getItem(dismissedKey) || ""; } catch (e) {}
+        if (badge) badge.style.display = (en && up && dis !== up) ? "block" : "none";
+      }
+    } catch (e) {}
+  })();
 })();
 /* ===== Question of the Day (auto-selected daily from all sets) ===== */
 (async function renderQotD(){

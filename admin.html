@@ -273,6 +273,23 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
   </div>
   <div class="meta" id="hMeta" style="margin-top:6px"></div>
 </div>
+<div class="panel" id="notificationPanel" style="margin:0 22px 20px;max-width:1456px">
+  <h2>📣 Notifications / Broadcast</h2>
+  <div class="meta" style="margin:-4px 0 12px">Broadcast a message to all visitors. It appears in the 🔔 bell on the homepage. Toggle off to hide it.</div>
+  <div class="grid2">
+    <label class="f">Enabled<select id="nEnabled"><option value="false">No (hidden)</option><option value="true">Yes (show)</option></select></label>
+    <label class="f">Type<select id="nType"><option value="info">Info (blue)</option><option value="success">Success (green)</option><option value="warning">Warning (amber)</option><option value="danger">Alert (red)</option></select></label>
+    <label class="f" style="grid-column:1/-1">Title<input type="text" id="nTitle" placeholder="e.g. New CEE Set 7 added"></label>
+    <label class="f" style="grid-column:1/-1">Message<textarea id="nMessage" rows="3" placeholder="Short message shown to all visitors."></textarea></label>
+    <label class="f">Link URL (optional)<input type="text" id="nLink" placeholder="https://..."></label>
+    <label class="f">Link label<input type="text" id="nLinkLabel" placeholder="Open"></label>
+  </div>
+  <div class="toolbar">
+    <button id="nSave">💾 Save notification</button>
+    <a href="/home" target="_blank" style="margin-left:auto"><button class="ghost">▶ Preview homepage</button></a>
+  </div>
+  <div class="meta" id="nMeta" style="margin-top:6px"></div>
+</div>
 <div class="panel" id="accessPanel" style="margin:0 22px 20px;max-width:1456px">
   <h2>🔐 Practice access</h2>
   <div class="meta" style="margin:-4px 0 12px">Choose exactly which sets need a code — unticked sets stay open to everyone. The lock is embedded into the page itself and works fully offline. Each device remembers the unlock once; changing the code re-locks everyone.</div>
@@ -863,6 +880,33 @@ $("hSave").onclick=async()=>{
   }catch(e){toast("Homepage save failed: "+e.message,true);}
 };
 loadHomepageContent().catch(e=>toast("Homepage load failed: "+e.message,true));
+
+/* ===== Notifications / broadcast ===== */
+async function loadNotificationContent(){
+  const c=await api("/api/notification");
+  $("nEnabled").value = c.enabled ? "true" : "false";
+  $("nType").value = c.type || "info";
+  $("nTitle").value = c.title || "";
+  $("nMessage").value = c.message || "";
+  $("nLink").value = c.link || "";
+  $("nLinkLabel").value = c.linkLabel || "";
+  $("nMeta").textContent = c.updated ? "Last updated: " + c.updated : "No notification saved yet.";
+}
+$("nSave").onclick=async()=>{
+  try{
+    const content = {
+      enabled: $("nEnabled").value === "true",
+      type: $("nType").value,
+      title: $("nTitle").value.trim(),
+      message: $("nMessage").value.trim(),
+      link: $("nLink").value.trim(),
+      linkLabel: $("nLinkLabel").value.trim()
+    };
+    const out=await api("/api/save-notification",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(content)});
+    await loadNotificationContent();toast("Notification saved ✔ "+out.msg);
+  }catch(e){toast("Notification save failed: "+e.message,true);}
+};
+loadNotificationContent().catch(e=>toast("Notification load failed: "+e.message,true));
 
 /* ===== Question of the Day (auto-selected daily) ===== */
 async function loadQotD(){
