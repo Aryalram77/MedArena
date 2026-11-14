@@ -392,6 +392,67 @@ html,body{overflow-x:hidden;}
   </div>
   <div class="hero-orbit" aria-hidden="true"><div class="orbit-ring"></div><div class="orbit-core">✚</div><span class="orbit-chip orbit-chip-one">LEARN</span><span class="orbit-chip orbit-chip-two">PRACTICE</span><span class="orbit-chip orbit-chip-three">GROW</span></div>
 </section>
+<style>
+.home-countdown{margin:0 0 26px;padding:22px 26px;border-radius:20px;color:#fff;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#0b1224 0%,#12204a 60%,#1a2a5e 100%);
+  border:1px solid rgba(245,196,81,.3);box-shadow:0 16px 40px rgba(11,18,36,.28)}
+.home-countdown::before{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(135deg,rgba(255,255,255,.02) 0 1px,transparent 1px 16px)}
+.cd-inner{position:relative;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.cd-left{flex:1;min-width:200px}
+.cd-eyebrow{font-size:11px;letter-spacing:2.4px;font-weight:800;color:#f5c451;text-transform:uppercase}
+.cd-title{font-size:clamp(18px,2.4vw,24px);font-weight:800;margin:6px 0 2px;letter-spacing:-.3px}
+.cd-sub{font-size:13px;color:#cbd5e1}
+.cd-timer{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.cd-unit{display:flex;flex-direction:column;align-items:center;min-width:62px;padding:8px 10px;border-radius:12px;background:rgba(245,196,81,.1);border:1px solid rgba(245,196,81,.25)}
+.cd-unit b{font-size:24px;font-weight:800;color:#fde68a;font-variant-numeric:tabular-nums;line-height:1}
+.cd-unit span{font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:#cbd5e1;margin-top:3px}
+.cd-sep{font-size:22px;font-weight:800;color:#f5c451;opacity:.7}
+.cd-done{font-size:16px;font-weight:800;color:#fde68a}
+@media(max-width:560px){.cd-inner{flex-direction:column;align-items:flex-start}.cd-timer{width:100%;justify-content:space-between}.cd-unit{min-width:0;flex:1}}
+</style>
+<section class="home-countdown" aria-labelledby="cdTitle">
+  <div class="cd-inner">
+    <div class="cd-left">
+      <div class="cd-eyebrow">⏳ Exam Countdown</div>
+      <div class="cd-title" id="cdTitle">Federal Loksewa — Medical Officer</div>
+      <div class="cd-sub">Stay focused. Practice daily, track your progress.</div>
+    </div>
+    <div class="cd-timer" id="cdTimer">
+      <div class="cd-unit"><b id="cdD">00</b><span>Days</span></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><b id="cdH">00</b><span>Hours</span></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><b id="cdM">00</b><span>Minutes</span></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><b id="cdS">00</b><span>Seconds</span></div>
+    </div>
+  </div>
+</section>
+<script>
+(function(){
+  const target = new Date("2027-02-12T00:00:00").getTime();
+  const dEl=document.getElementById("cdD"),hEl=document.getElementById("cdH"),mEl=document.getElementById("cdM"),sEl=document.getElementById("cdS"),timer=document.getElementById("cdTimer");
+  function pad(n){return String(n).padStart(2,"0");}
+  function tick(){
+    const now=Date.now();
+    let diff=target-now;
+    if(diff<=0){
+      if(timer) timer.innerHTML='<div class="cd-done">🎉 Exam day is here — best of luck!</div>';
+      clearInterval(iv); return;
+    }
+    const d=Math.floor(diff/86400000); diff%=86400000;
+    const h=Math.floor(diff/3600000); diff%=3600000;
+    const m=Math.floor(diff/60000); diff%=60000;
+    const s=Math.floor(diff/1000);
+    if(dEl) dEl.textContent=pad(d);
+    if(hEl) hEl.textContent=pad(h);
+    if(mEl) mEl.textContent=pad(m);
+    if(sEl) sEl.textContent=pad(s);
+  }
+  tick();
+  const iv=setInterval(tick,1000);
+})();
+</script>
 <section id="maProgressHost" aria-live="polite" hidden></section>
 <section class="home-mock" aria-labelledby="mockTitle">
   <div class="mock-card">
