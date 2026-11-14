@@ -1501,6 +1501,12 @@ function showConfigView(){
 async function renderEmbeddedBanks(){
   const wrap=document.getElementById("embeddedBankGroups"), total=document.getElementById("bankTotal");
   try{
+    /* The cards baked into this file are authoritative on a static host.
+       /api/banks is proxied to the Cloudflare worker there, and that list
+       lags behind the site (it still lacks Anatomy), so using it would
+       replace correct cards with stale ones. Only a local server is trusted. */
+    const onLocalHost=/^(localhost|127\.0\.0\.1|\[::1\])$/i.test(location.hostname);
+    if(!onLocalHost) throw new Error("Using the built-in bank list.");
     const response=await fetch("/api/banks",{cache:"no-store"});
     if(!response.ok) throw new Error("Bank list is unavailable right now.");
     const banks=await response.json();
@@ -1538,7 +1544,10 @@ async function renderEmbeddedBanks(){
   }catch(error){
     /* keep the built-in static bank cards; just surface the note */
     const note=document.getElementById("bankLoadNote");
-    if(note){ note.textContent=error.message; note.hidden=false; }
+    /* A static host falling back to its own cards is normal, not an error. */
+    if(note && /^(localhost|127\.0\.0\.1|\[::1\])$/i.test(location.hostname)){
+      note.textContent=error.message; note.hidden=false;
+    }
     /* No API (static host): derive the total from the cards on the page. */
     if(total && wrap){
       let n = 0;
