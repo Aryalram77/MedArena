@@ -437,18 +437,83 @@ html,body{overflow-x:hidden;}
   </div>
 </div>
 <!-- Question of the Day (auto-selected daily from all sets) -->
-<section class="concept" id="qotdSec" style="display:none">
-  <div class="crow">
-    <div class="bulb">❓</div>
-    <div style="flex:1;min-width:0">
-      <div class="kicker">Question of the Day · <span id="qotdBank"></span></div>
-      <h2 id="qotdStem" style="font-size:16px;font-weight:700;line-height:1.5;margin:6px 0"></h2>
-      <div id="qotdOpts" style="margin:8px 0"></div>
-      <button class="btn small" id="qotdReveal" type="button" style="margin-top:6px">Reveal answer</button>
-      <div id="qotdAns" style="display:none;margin-top:8px"></div>
+<style>
+/* ===== Question of the Day — charming daily card ===== */
+.qotd{position:relative;overflow:hidden;margin:0 0 26px;padding:clamp(22px,3.4vw,34px);border-radius:26px;color:#fff;
+  background:
+    radial-gradient(120% 150% at 6% 0%,rgba(251,191,36,.30) 0%,transparent 48%),
+    radial-gradient(130% 160% at 100% 100%,rgba(236,72,153,.32) 0%,transparent 54%),
+    linear-gradient(140deg,#1b1140 0%,#2a1a63 48%,#3b1d6e 100%);
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 24px 60px rgba(46,20,101,.34),inset 0 1px 0 rgba(255,255,255,.12);
+  animation:qotdIn .55s cubic-bezier(.22,.9,.3,1.08) both}
+@keyframes qotdIn{from{opacity:0;transform:translateY(16px) scale(.985)}to{opacity:1;transform:none}}
+.qotd::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;pointer-events:none;
+  background:linear-gradient(135deg,rgba(253,224,71,.9),rgba(244,114,182,.65),rgba(129,140,248,.7),rgba(253,224,71,.9));
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.qotd-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+.qotd-badge{width:52px;height:52px;flex:0 0 52px;display:grid;place-items:center;font-size:26px;border-radius:16px;
+  background:linear-gradient(145deg,#fbbf24,#f472b6);
+  box-shadow:0 10px 24px rgba(244,114,182,.42),inset 0 1px 0 rgba(255,255,255,.55);
+  animation:qotdBob 4.5s ease-in-out infinite}
+@keyframes qotdBob{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-4px) rotate(5deg)}}
+.qotd-headtext{flex:1;min-width:180px}
+.qotd-kicker{font-size:11px;font-weight:800;letter-spacing:2.2px;text-transform:uppercase;
+  background:linear-gradient(90deg,#fde68a,#f9a8d4);-webkit-background-clip:text;background-clip:text;color:transparent}
+.qotd-bank{margin-top:5px;font-size:14px;font-weight:700;color:#e9d5ff}
+.qotd-date{flex:0 0 auto;display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:999px;
+  font-size:12.5px;font-weight:700;color:#fef3c7;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16)}
+.qotd-stem{margin:0 0 16px;font-size:clamp(18px,2.1vw,23px);line-height:1.42;font-weight:800;letter-spacing:-.2px;color:#fff}
+.qotd-opts{display:grid;gap:10px}
+.qotd .optrow{display:flex;align-items:center;gap:13px;margin:0;padding:13px 15px;border-radius:14px;
+  border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.07);color:#f5f3ff;font-size:15px;line-height:1.5;
+  white-space:pre-wrap;cursor:pointer;backdrop-filter:blur(4px);
+  transition:transform .18s ease,border-color .18s ease,background .18s ease,box-shadow .18s ease}
+.qotd .optrow:hover{transform:translateY(-2px);border-color:rgba(253,224,71,.55);background:rgba(255,255,255,.12);box-shadow:0 10px 24px rgba(0,0,0,.25)}
+.qotd .optrow:focus-visible{outline:3px solid #fde68a;outline-offset:2px}
+.qotd .optrow .lt{min-width:30px;width:30px;height:30px;border-radius:10px;display:grid;place-items:center;flex:0 0 30px;
+  font-weight:800;font-size:13.5px;color:#2a1a63;background:linear-gradient(145deg,#fde68a,#fbbf24);box-shadow:0 4px 12px rgba(251,191,36,.35)}
+.qotd .optrow .ot{flex:1;min-width:0}
+.qotd .optrow.sel{border-color:rgba(253,224,71,.8);background:rgba(251,191,36,.16);box-shadow:0 0 0 3px rgba(251,191,36,.14)}
+.qotd .optrow.reveal-ok{border-color:rgba(74,222,128,.75);background:rgba(34,197,94,.2);box-shadow:0 0 0 3px rgba(34,197,94,.16),0 12px 26px rgba(34,197,94,.18)}
+.qotd .optrow.reveal-ok .lt{background:linear-gradient(145deg,#4ade80,#16a34a);color:#fff}
+.qotd .optrow.reveal-bad{border-color:rgba(248,113,113,.75);background:rgba(239,68,68,.18)}
+.qotd .optrow.reveal-bad .lt{background:linear-gradient(145deg,#f87171,#dc2626);color:#fff}
+.qotd-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px}
+.qotd-reveal{display:inline-flex;align-items:center;gap:9px;padding:12px 22px;border:0;border-radius:999px;cursor:pointer;
+  font:inherit;font-size:14.5px;font-weight:800;color:#3b0764;
+  background:linear-gradient(95deg,#fde047,#fb923c 55%,#f472b6);
+  box-shadow:0 12px 28px rgba(244,114,182,.4);
+  transition:transform .18s ease,box-shadow .18s ease,filter .18s ease}
+.qotd-reveal:hover{transform:translateY(-2px);filter:brightness(1.06);box-shadow:0 16px 34px rgba(244,114,182,.5)}
+.qotd-reveal:active{transform:translateY(0)}
+.qotd-reveal:focus-visible{outline:3px solid #fde68a;outline-offset:3px}
+.qotd-reveal-ic{font-size:16px}
+.qotd-ans{margin-top:16px}
+.qotd-answer{display:flex;gap:13px;align-items:flex-start;padding:16px 18px;border-radius:16px;
+  border:1px solid rgba(74,222,128,.5);background:linear-gradient(135deg,rgba(34,197,94,.18),rgba(16,185,129,.1));
+  animation:qotdIn .4s ease both}
+.qotd-check{width:28px;height:28px;flex:0 0 28px;display:grid;place-items:center;border-radius:50%;
+  background:linear-gradient(145deg,#4ade80,#16a34a);color:#fff;font-weight:900;font-size:14px;box-shadow:0 6px 16px rgba(34,197,94,.45)}
+.qotd-answer b{color:#dcfce7}
+.qotd-explain{margin-top:8px;color:#e2e8f0;font-size:14px;line-height:1.65;white-space:pre-wrap}
+@media(max-width:560px){.qotd{border-radius:20px}.qotd-badge{width:44px;height:44px;flex-basis:44px;font-size:22px;border-radius:13px}.qotd-date{width:100%;justify-content:center}}
+</style>
+<section class="qotd" id="qotdSec" style="display:none" aria-labelledby="qotdStem">
+  <div class="qotd-head">
+    <div class="qotd-badge" aria-hidden="true">💡</div>
+    <div class="qotd-headtext">
+      <div class="qotd-kicker">Question of the Day</div>
+      <div class="qotd-bank" id="qotdBank"></div>
     </div>
-    <div class="stamp" id="qotdStamp"></div>
+    <div class="qotd-date" id="qotdStamp"></div>
   </div>
+  <h2 class="qotd-stem" id="qotdStem"></h2>
+  <div class="qotd-opts" id="qotdOpts"></div>
+  <div class="qotd-actions">
+    <button class="qotd-reveal" id="qotdReveal" type="button"><span class="qotd-reveal-ic" aria-hidden="true">✨</span> Reveal answer</button>
+  </div>
+  <div class="qotd-ans" id="qotdAns"></div>
 </section>
 
 <section class="pedcalc" id="pediatricDoseCalc" aria-labelledby="pcTitle">
@@ -660,9 +725,20 @@ const HOMEPAGE_CONTENT = {"eyebrow":"YOUR NEXT STEP STARTS HERE","titleLead":"Pr
     const stem = document.getElementById("qotdStem");
     if (stem) stem.textContent = q.stem;
     const opts = document.getElementById("qotdOpts");
-    if (opts) opts.innerHTML = (q.options||[]).map(o => `<div class="optrow" style="cursor:default"><span class="lt">${escQ(o.letter)}</span><span class="ot">${escQ(o.text)}</span></div>`).join("");
+    if (opts) opts.innerHTML = (q.options||[]).map(o => `<div class="optrow" role="button" tabindex="0" aria-label="Option ${escQ(o.letter)}"><span class="lt">${escQ(o.letter)}</span><span class="ot">${escQ(o.text)}</span></div>`).join("");
     const reveal = document.getElementById("qotdReveal");
     const ans = document.getElementById("qotdAns");
+    if (opts) {
+      const rows = () => Array.from(opts.querySelectorAll(".optrow"));
+      rows().forEach(row => {
+        const choose = () => {
+          rows().forEach(r => r.classList.remove("sel"));
+          row.classList.add("sel");
+        };
+        row.addEventListener("click", choose);
+        row.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); choose(); } });
+      });
+    }
     if (reveal && ans) {
       reveal.style.display = "";
       ans.style.display = "none";
@@ -670,16 +746,24 @@ const HOMEPAGE_CONTENT = {"eyebrow":"YOUR NEXT STEP STARTS HERE","titleLead":"Pr
       reveal.onclick = () => {
         reveal.style.display = "none";
         ans.style.display = "";
-        ans.innerHTML = `<div style="margin-top:6px"><b>Answer: ${escQ(q.answerLetter)}${q.answerText ? " — " + escQ(q.answerText) : ""}</b></div>` +
-          (q.explanation ? `<div class="explain show" style="margin-top:8px">${escQ(q.explanation)}</div>` : "");
+        ans.innerHTML = `<div class="qotd-answer"><span class="qotd-check" aria-hidden="true">✓</span><div><b>Answer: ${escQ(q.answerLetter)}${q.answerText ? " — " + escQ(q.answerText) : ""}</b>` +
+          (q.explanation ? `<div class="qotd-explain">${escQ(q.explanation)}</div>` : "") + `</div></div>`;
         if (opts) opts.querySelectorAll(".optrow").forEach(row => {
           const lt = row.querySelector(".lt");
-          if (lt && lt.textContent.trim() === q.answerLetter) row.classList.add("reveal-ok");
+          const letter = lt ? lt.textContent.trim() : "";
+          if (letter === q.answerLetter) row.classList.add("reveal-ok");
+          else if (row.classList.contains("sel")) row.classList.add("reveal-bad");
         });
       };
     }
     const stamp = document.getElementById("qotdStamp");
-    if (stamp) stamp.textContent = d.date ? "📅 " + d.date : "";
+    if (stamp) {
+      if (!d.date) stamp.textContent = "";
+      else {
+        const dt = new Date(String(d.date) + "T00:00:00");
+        stamp.textContent = isNaN(dt.getTime()) ? "📅 " + d.date : "📅 " + dt.toLocaleDateString(undefined, {day:"numeric", month:"short", year:"numeric"});
+      }
+    }
   } catch (e) { sec.style.display = "none"; }
 })();
 /* ===== practice lock signs (mirrored from admin; null = no lock) ===== */
