@@ -3,230 +3,346 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Emergency Medicine STP - Emergency Health Service Package 2078</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/minimalist.min.css">
+<title>Emergency Medicine STP — Standard Treatment Protocol of EHSP 2078</title>
+<script>
+/* PDF.js loader: local copy when served locally, CDN on GitHub Pages. */
+(function(){
+  var host = location.hostname;
+  var isLocal = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(host) || location.protocol === "file:";
+  window.__maLoad = function (src, onfail) {
+    var s = document.createElement("script");
+    s.src = src; s.async = true;
+    if (onfail) s.onerror = function () { onfail(); };
+    document.head.appendChild(s);
+    return s;
+  };
+  var CDN_PDF = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js";
+  window.__maLoad(isLocal ? "pdf.min.js" : CDN_PDF, function () {
+    if (isLocal) window.__maLoad(CDN_PDF, function () { window.__pdfFail = 1; });
+    else window.__pdfFail = 1;
+  });
+})();
+</script>
 <style>
   :root{
     --bg:#f1f5f9; --card:#ffffff; --ink:#0f172a; --muted:#64748b;
     --line:#e2e8f0; --accent:#1d4ed8; --accent2:#3b82f6; --ok:#16a34a;
-    --bad:#dc2626; --flag:#f59e0b; --mark:#fde047;
   }
   *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
   body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink)}
-  .header{background:#0f172a;color:#fff;padding:15px 20px;display:flex;align-items:center;gap:12px}
+  a{color:var(--accent)}
+
+  .header{background:#0f172a;color:#fff;padding:13px 20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
   .header .logo{font-weight:800;font-size:18px;letter-spacing:.4px}
   .header .logo .brand{background:linear-gradient(90deg,#3b82f6,#22d3ee,#8b5cf6,#3b82f6);background-size:280% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:brandFlow 5s linear infinite}
-  .header .tag{color:#94a3b8;font-size:12.5px}
   @keyframes brandFlow{0%{background-position:0% 0}100%{background-position:280% 0}}
-  .container{max-width:1200px;margin:0 auto;padding:20px}
-  .section{margin-bottom:30px}
-  .section-title{font-size:22px;margin:0 0 20px;color:#172640;border-bottom:1px solid var(--line);padding-bottom:10px}
-  .toc-list{list-style:none;padding:0;margin:0}
-  .toc-list li{margin:8px 0;padding:8px 12px;border:1px solid var(--line);border-radius:8px;cursor:pointer;transition:background .2s}
-  .toc-list li:hover{background:#f8fafc}
-  .toc-list li.active, .toc-list li.active:hover{background:#e2eef7;color:#1d4ed8;font-weight:600}
-  .pdf-viewer{min-height:800px;border:1px solid var(--line);border-radius:12px;overflow:hidden;position:relative}
-  .pdf-page{width:100%;height:auto;display:block}
-  .nav-control{position:absolute;top:0;bottom:0;width:40px;background:rgba(0,0,0,.5);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index10}
-  .nav-control.prev{left:0}
-  .nav-control.next{right:0}
-  .chapter-indicator{position:absolute;top:10px;left:50%;transform:translateX(-50%);background:var(--card);padding:6px 12px;border-radius:20px;font-size:12px;color:#64748b;z-index:5}
-  .badge{display:inline-block;padding:3px 8px;border-radius:12px;font-size:11px;color:#fff;background:#16a34a;margin-left:6px}
-  .free-badge{background:#16a34a}
+  .header .tag{color:#94a3b8;font-size:12.5px}
+  .header .free-badge{background:#16a34a;color:#fff;font-size:11px;padding:3px 9px;border-radius:12px;font-weight:700}
+  .back-link{margin-left:auto;color:#cbd5e1;text-decoration:none;font-size:13px;border:1px solid #334155;padding:6px 12px;border-radius:9px}
+  .back-link:hover{color:#fff;border-color:#64748b}
+
+  .toolbar{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);padding:9px 16px;display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+  .toolbar select#chSelect{flex:1 1 260px;max-width:520px;padding:9px 11px;border:1px solid var(--line);border-radius:10px;font-size:14px;background:#fff;color:var(--ink)}
+  .tbtn{padding:9px 13px;border:1px solid var(--line);border-radius:10px;background:#fff;font-size:13.5px;cursor:pointer;color:#334155;font-weight:600;white-space:nowrap}
+  .tbtn:hover{border-color:var(--accent2);color:var(--accent)}
+  .tbtn:disabled{opacity:.45;cursor:default}
+  .pagejump{display:flex;align-items:center;gap:5px;font-size:12.5px;color:var(--muted)}
+  .pagejump input{width:64px;padding:8px 9px;border:1px solid var(--line);border-radius:9px;font-size:13px}
+
+  .wrap{display:grid;grid-template-columns:300px minmax(0,1fr);gap:18px;max-width:1400px;margin:0 auto;padding:18px}
+  .side{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;align-self:start;position:sticky;top:64px;max-height:calc(100vh - 82px);overflow:auto}
+  .side h3{margin:2px 0 4px;font-size:15px;color:#172640}
+  .side .sub{color:var(--muted);font-size:11.5px;margin:0 0 10px}
+  .chlist{list-style:none;margin:0;padding:0}
+  .chlist li{padding:9px 10px;border-radius:9px;font-size:13px;cursor:pointer;border:1px solid transparent;margin:2px 0;color:#334155;line-height:1.35}
+  .chlist li:hover{background:#f1f5f9}
+  .chlist li.active{background:#e2eef7;color:#1d4ed8;font-weight:600;border-color:#cfe3f5}
+  .chlist li .pg{display:block;color:var(--muted);font-size:11px;font-weight:400;margin-top:2px}
+
+  .viewer-col{min-width:0}
+  .doc-head{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:14px}
+  .doc-head h1{margin:0 0 5px;font-size:20px;color:#172640;letter-spacing:-.3px}
+  .doc-head p{margin:0;color:var(--muted);font-size:13px}
+  .now-chapter{font-weight:700;color:var(--accent);font-size:14.5px;margin-top:9px}
+
+  #pages{display:flex;flex-direction:column;gap:14px;align-items:center}
+  .page-wrap{background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 4px 14px rgba(31,55,93,.07);width:100%;max-width:920px;padding:10px 10px 6px;min-height:120px}
+  .page-wrap canvas{display:block;width:100%;height:auto;border-radius:4px}
+  .page-num{color:var(--muted);font-size:11.5px;text-align:center;padding:6px 0 2px}
+  .ph{color:#94a3b8;font-size:13px;text-align:center;padding:70px 10px;animation:pulse 1.4s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+
+  .status{margin:14px auto;max-width:920px;text-align:center;color:var(--muted);font-size:13.5px}
+  .errbox{max-width:920px;margin:20px auto;padding:22px;background:#fef3c7;color:#92400e;border:1px dashed #d97706;border-radius:12px;text-align:center}
+  .errbox button{margin-top:12px;padding:9px 16px;border-radius:9px;border:none;background:#d97706;color:#fff;font-weight:700;cursor:pointer}
+
+  .mobile-select{display:none}
+  @media(max-width:900px){
+    .wrap{grid-template-columns:1fr;padding:12px}
+    .side{display:none}
+    .mobile-select{display:block}
+    .doc-head{padding:13px 14px}
+    .page-wrap{padding:6px}
+  }
 </style>
 </head>
 <body>
   <div class="header">
-    <div class="logo"><span class="cross">X</span><span class="brand">Emergency Medicine STP</span></div>
+    <div class="logo"><span class="brand">Emergency Medicine STP</span></div>
+    <span class="free-badge">FREE</span>
+    <span class="tag">Standard Treatment Protocol of Emergency Health Service Package 2078 · Government of Nepal, MoHP</span>
+    <a class="back-link" href="index.html">&larr; Back to MedArena</a>
   </div>
-  <div class="container">
-    <div class="section">
-      <h2 class="section-title">Emergency Health Service Package 2078 (STP)</h2>
-      <p class="muted">National Clinical Guideline - Free for all learners</p>
-      
-      <!-- Table of Contents -->
-      <div class="section" id="toc-section">
-        <h3>Chapter Index</h3>
-        <ol class="toc-list" id="toc-list">
-          <!-- Chapters will be injected by JavaScript -->
-        </ol>
+
+  <div class="toolbar">
+    <button class="tbtn" id="prevCh" title="Previous chapter">&laquo; Prev</button>
+    <select id="chSelect" aria-label="Choose chapter"></select>
+    <button class="tbtn" id="nextCh" title="Next chapter">Next &raquo;</button>
+    <span class="pagejump">Go to page <input id="pgInput" type="number" min="1" max="298" placeholder="1-298"><button class="tbtn" id="pgGo">Go</button></span>
+  </div>
+
+  <div class="wrap">
+    <aside class="side">
+      <h3>Chapter Index</h3>
+      <p class="sub">298 pages · 23 chapters · Free for everyone</p>
+      <ol class="chlist" id="chList"></ol>
+    </aside>
+
+    <div class="viewer-col">
+      <div class="doc-head">
+        <h1>Standard Treatment Protocol of Emergency Health Service Package 2078</h1>
+        <p>National clinical guideline — Ministry of Health and Population, Nepal · WHO Country Office support. Select a chapter to read it page by page.</p>
+        <div class="now-chapter" id="chLabel"></div>
       </div>
-      
-      <!-- PDF Viewer -->
-      <div class="section" id="pdf-section">
-        <h3>Document Viewer</h3>
-        <div class="pdf-viewer" id="pdf-viewer">
-          <div class="loading">Loading PDF...</div>
-        </div>
-        <div class="nav-control prev" id="prev-page" title="Previous page">&#10094;</div>
-        <div class="nav-control next" id="next-page" title="Next page">&#10095;</div>
-        <div class="chapter-indicator" id="chapter-indicator">Chapter 1</div>
-      </div>
+
+      <div class="status" id="status">Loading PDF…</div>
+      <div id="pages"></div>
+      <div class="status" id="endNote"></div>
     </div>
   </div>
 
-  <script>
-    // PDF.js configuration
-    const pdfUrl = 'https://medarena-api.medarena-ram.workers.dev/api/static-pdf?path=';
-    // Note: In production, the PDF would be served from a Cloudflare Workers endpoint
-    // For now, using relative path - the PDF should be placed in the static directory
-    
-    // Chapter data extracted from PDF TOC
-    const chapterData = [
-      {title: '1. Definition of Emergency Health Services', page: 1},
-      {title: '2. National HIV Testing and Treatment Guidelines 2020', page: 2},
-      {title: '3. Development Process of the STP', page: 3},
-      {title: '4. Utilization of the STP', page: 4},
-      {title: '5. Basic Health Service Centers (BHSC)', page: 21},
-      {title: '6. Primary hospitals', page: 22},
-      {title: '7. General hospitals', page: 23},
-      {title: '8. Emergency Health Services - Features', page: 20},
-      {title: '9. Respiratory Emergencies', page: 22},
-      {title: '10. Cardiac Emergencies', page: 23},
-      {title: '11. Neurological Emergencies', page: 23},
-      {title: '12. Gastrointestinal Emergencies', page: 23},
-      {title: '13. Genitourinary Emergencies', page: 23},
-      {title: '14. Gynaecology and Obstetrical Emergencies', page: 23},
-      {title: '14. Orthopedics and Trauma', page: 23},
-      {title: '15. Metabolic Emergencies', page: 23},
-      {title: '16. Ocular Emergencies', page: 23},
-      {title: '17. ENT Emergencies', page: 182},
-      {title: '18. Burns', page: 185},
-      {title: '19. Mental Health Emergencies', page: 191},
-      {title: '20. Toxicological Emergencies', page: 204},
-      {title: '21. Snake bite, Animal bite, Insect bite', page: 225},
-      {title: '22. Pediatric Emergencies', page: 234},
-      {title: '23. Miscellaneous', page: 244}
-    ];
-    
-    let currentPage = 1;
-    let pdfDoc = null;
-    
-    // Initialize PDF viewer
-    document.addEventListener('DOMContentLoaded', function() {
-      // Load PDF using pdf.js
-      const pdfjsLib = window.pdfjsLib;
-      pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdf.worker.min.js';
-      
-      // Load the PDF - in this demo, we'll use a simple approach
-      // The actual PDF path would need to be configured
-      const pdfPath = 'Emergency Health Service Package 2078.pdf';
-      
-      // For demonstration, show a message
-      document.getElementById('pdf-viewer').innerHTML = '
-        <div style="padding:50px;text-align:center;">
-          <h3>PDF Viewer</h3>
-          <p>Place the PDF file <strong>Emergency Health Service Package 2078.pdf</strong> in the same directory</p>
-          <p>or configure the PDF URL in the JavaScript.</p>
-        </div>';
-      
-      // Render TOC
-      const tocList = document.getElementById('toc-list');
-      chapterData.forEach((ch, i) => {
-        const li = document.createElement('li');
-        li.textContent = ch.title;
-        li.onclick = function() {
-          goToPage(ch.page);
-          // Update active state
-          document.querySelectorAll('#toc-list li').forEach(el => el.classList.remove('active'));
-          li.classList.add('active');
-        };
-        // Set first chapter as active
-        if (i === 0) li.classList.add('active');
-        tocList.appendChild(li);
-      });
-      
-      // Load PDF
-      pdfjsLib.getPDF(pdfPath).then(function(pdf) {
-        pdfDoc = pdf;
-        renderPage(1);
-        updateChapterIndicator(1);
-      }).catch(function(error) {
-        console.error('PDF loading error:', error);
-        document.getElementById('pdf-viewer').innerHTML = '
-          <div style="padding:20px;background:#fef3c7;color:#92400e;border:1px dashed #d97706;">
-            <h3>PDF Not Found</h3>
-            <p>The Emergency Health Service Package 2078 PDF could not be loaded.</p>
-            <p>Please ensure the PDF file is placed in the correct location.</p>
-          </div>';
-      });
-    });
-    
-    function renderPage(pageNum) {
-      if (!pdfDoc) return;
-      pdfDoc.getPage(pageNum).then(function(page) {
-        const viewport = page.getViewport({scale: 1.5});
-        const canvas = document.createElement('canvas');
-        const context = canvas.getContext('2d');
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
-        
-        // Update chapter indicator
-        updateChapterIndicator(pageNum);
-        
-        // Render page
-        const renderContext = {
-          canvasContext: context,
-          viewport: viewport
-        };
-        page.render(renderContext).then(function() {
-          // Insert canvas into viewer
-          const viewer = document.getElementById('pdf-viewer');
-          // Clear previous canvas if any
-          const existing = viewer.querySelector('canvas');
-          if (existing) existing.remove();
-          viewer.appendChild(canvas);
-        });
-      });
+<script>
+(function(){
+  "use strict";
+
+  var PDF_URL = "pdfs/standard-treatment-protocol-ehsp-2078.pdf";
+  var TOTAL = 298;
+
+  /* Physical page numbers (printed page + 18). */
+  var CHAPTERS = [
+    {t:"Front Matter — Contents, Foreword & Abbreviations", s:1,  e:18},
+    {t:"Background & How to Use the STP",                    s:19, e:24},
+    {t:"ABCDE Approach in the Emergency Room",               s:25, e:45},
+    {t:"Basic & Advanced Life Support Algorithms",           s:46, e:52},
+    {t:"List of Emergency Conditions",                       s:53, e:54},
+    {t:"1. Respiratory Emergencies",                         s:55, e:79},
+    {t:"2. Cardiac Emergencies",                             s:80, e:106},
+    {t:"3. Neurological Emergencies",                        s:107, e:118},
+    {t:"4. Gastrointestinal Emergencies",                    s:119, e:145},
+    {t:"5. Genitourinary Emergencies",                       s:146, e:152},
+    {t:"6. Gynaecology & Obstetrical Emergencies",           s:153, e:169},
+    {t:"7. Orthopedics & Trauma",                            s:170, e:185},
+    {t:"8. Metabolic Emergencies",                           s:186, e:196},
+    {t:"9. Ocular Emergencies",                              s:197, e:199},
+    {t:"10. ENT Emergencies",                                s:200, e:202},
+    {t:"11. Burns",                                          s:203, e:208},
+    {t:"12. Mental Health Emergencies",                      s:209, e:221},
+    {t:"13. Toxicological Emergencies",                      s:222, e:242},
+    {t:"14. Snake bite, Animal bite & Insect bite",          s:243, e:251},
+    {t:"15. Pediatric Emergencies",                          s:252, e:261},
+    {t:"16. Miscellaneous",                                  s:262, e:270},
+    {t:"Annexes — Schedules, Essential Medicines, Referral Form", s:271, e:294},
+    {t:"Bibliography",                                       s:295, e:298}
+  ];
+
+  var pdfDoc = null;
+  var cur = -1;
+  var gen = 0;        /* generation counter: aborts stale renders */
+  var io = null;      /* IntersectionObserver for lazy page rendering */
+  var pendingScroll = null;
+
+  function $(id){ return document.getElementById(id); }
+  function status(msg){ $("status").textContent = msg || ""; $("status").style.display = msg ? "" : "none"; }
+
+  /* ---------- build chapter UI ---------- */
+  var sel = $("chSelect"), list = $("chList");
+  CHAPTERS.forEach(function(ch, i){
+    var n = ch.e - ch.s + 1;
+    var opt = document.createElement("option");
+    opt.value = i;
+    opt.textContent = ch.t + "  (p." + ch.s + "–" + ch.e + ")";
+    sel.appendChild(opt);
+
+    var li = document.createElement("li");
+    li.innerHTML = ch.t + '<span class="pg">Pages ' + ch.s + "–" + ch.e + " · " + n + " page" + (n === 1 ? "" : "s") + "</span>";
+    li.onclick = function(){ openChapter(i); };
+    list.appendChild(li);
+  });
+
+  function markActive(i){
+    sel.value = String(i);
+    var lis = list.querySelectorAll("li");
+    lis.forEach && lis.forEach(function(el, k){ el.classList.toggle("active", k === i); });
+    Array.prototype.forEach.call(lis, function(el, k){ el.classList.toggle("active", k === i); });
+    var act = list.querySelector("li.active");
+    if (act && act.scrollIntoView) try { act.scrollIntoView({block:"nearest"}); } catch(e){}
+    $("prevCh").disabled = i <= 0;
+    $("nextCh").disabled = i >= CHAPTERS.length - 1;
+  }
+
+  /* ---------- chapter rendering ---------- */
+  function openChapter(i){
+    if (!pdfDoc || i < 0 || i >= CHAPTERS.length) return;
+    cur = i;
+    gen++;
+    var myGen = gen;
+    var ch = CHAPTERS[i];
+    var host = $("pages");
+    host.innerHTML = "";
+    status("");
+    $("chLabel").textContent = ch.t + " — pages " + ch.s + " to " + ch.e;
+    $("endNote").textContent = "";
+    markActive(i);
+    try { history.replaceState(null, "", "#ch" + (i + 1)); } catch(e){}
+
+    if (io) { try { io.disconnect(); } catch(e){} }
+
+    var wraps = [];
+    for (var p = ch.s; p <= ch.e; p++){
+      var wrap = document.createElement("div");
+      wrap.className = "page-wrap";
+      wrap.setAttribute("data-page", p);
+      wrap.innerHTML = '<div class="ph">Loading page ' + p + '…</div>';
+      host.appendChild(wrap);
+      wraps.push(wrap);
     }
-    
-    function goToPage(pageNum) {
-      currentPage = pageNum;
-      renderPage(pageNum);
-      updateChapterIndicator(pageNum);
-      // Update TOC active state
-      document.querySelectorAll('#toc-list li').forEach(el => {
-        if (parseInt(el.textContent.split('.')[1] || el.textContent) === pageNum) {
-          el.classList.add('active');
-        } else {
-          el.classList.remove('active');
+
+    io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting){
+          io.unobserve(en.target);
+          renderInto(en.target, myGen);
         }
       });
+    }, {rootMargin: "700px 0px"});
+    wraps.forEach(function(w){ io.observe(w); });
+
+    if (pendingScroll){
+      var target = pendingScroll; pendingScroll = null;
+      setTimeout(function(){
+        var w = host.querySelector('.page-wrap[data-page="' + target + '"]');
+        if (w) w.scrollIntoView();
+      }, 60);
     }
-    
-    function updateChapterIndicator(pageNum) {
-      const indicator = document.getElementById('chapter-indicator');
-      // Find the chapter closest to this page
-      let closestChapter = chapterData[0];
-      let minDiff = Math.abs(chapterData[0].page - pageNum);
-      for (let i = 1; i < chapterData.length; i++) {
-        const diff = Math.abs(chapterData[i].page - pageNum);
-        if (diff < minDiff) {
-          minDiff = diff;
-          closestChapter = chapterData[i];
-        }
+  }
+
+  async function renderInto(wrap, myGen){
+    var p = +wrap.getAttribute("data-page");
+    try{
+      var page = await pdfDoc.getPage(p);
+      if (myGen !== gen) return;
+      var base = page.getViewport({scale: 1});
+      var avail = Math.min((document.querySelector(".viewer-col").clientWidth || 900) - 24, 900);
+      var scale = Math.max(0.55, Math.min(2, avail / base.width));
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      var vp = page.getViewport({scale: scale * dpr});
+      var canvas = document.createElement("canvas");
+      canvas.width = Math.round(vp.width);
+      canvas.height = Math.round(vp.height);
+      await page.render({canvasContext: canvas.getContext("2d"), viewport: vp}).promise;
+      if (myGen !== gen) return;
+      wrap.innerHTML = "";
+      wrap.appendChild(canvas);
+      var lbl = document.createElement("div");
+      lbl.className = "page-num";
+      lbl.textContent = "Page " + p + " of " + pdfDoc.numPages;
+      wrap.appendChild(lbl);
+    }catch(e){
+      if (myGen === gen){
+        var ph = wrap.querySelector(".ph");
+        if (ph){ ph.textContent = "Could not render page " + p + "."; ph.style.animation = "none"; }
       }
-      indicator.textContent = closestChapter.title;
-      
-      // Enable/disable navigation buttons
-      document.getElementById('prev-page').disabled = pageNum <= 1;
-      document.getElementById('next-page').disabled = pageNum >= chapterData.length;
     }
-    
-    // Navigation button clicks
-    document.getElementById('prev-page').addEventListener('click', function() {
-      if (currentPage > 1) goToPage(currentPage - 1);
+  }
+
+  function chapterForPage(p){
+    for (var i = 0; i < CHAPTERS.length; i++)
+      if (p >= CHAPTERS[i].s && p <= CHAPTERS[i].e) return i;
+    return 0;
+  }
+
+  /* ---------- toolbar wiring ---------- */
+  sel.onchange = function(){ openChapter(+sel.value); };
+  $("prevCh").onclick = function(){ openChapter(cur - 1); window.scrollTo({top:0}); };
+  $("nextCh").onclick = function(){ openChapter(cur + 1); window.scrollTo({top:0}); };
+  $("pgGo").onclick = goPage;
+  $("pgInput").addEventListener("keydown", function(e){ if (e.key === "Enter") goPage(); });
+  function goPage(){
+    var p = parseInt($("pgInput").value, 10);
+    if (!p || p < 1) p = 1;
+    if (p > TOTAL) p = TOTAL;
+    pendingScroll = p;
+    openChapter(chapterForPage(p));
+  }
+
+  /* ---------- error UI ---------- */
+  function showError(msg){
+    status("");
+    var box = document.createElement("div");
+    box.className = "errbox";
+    box.innerHTML = "<h3>PDF could not load</h3><p>" + msg + "</p>" +
+      '<button id="retryBtn">Try again</button>';
+    $("pages").innerHTML = "";
+    $("pages").appendChild(box);
+    $("retryBtn").onclick = loadDoc;
+  }
+
+  /* ---------- boot ---------- */
+  function whenLib(cb, tries){
+    if (window.pdfjsLib) return cb();
+    if (window.__pdfFail || (tries || 0) > 60) return showError("The PDF.js viewer library did not load. Check your internet connection and reload the page.");
+    setTimeout(function(){ whenLib(cb, (tries || 0) + 1); }, 100);
+  }
+
+  function loadDoc(){
+    gen++;
+    $("pages").innerHTML = "";
+    status("Loading PDF…");
+    try { pdfjsLib.GlobalWorkerOptions.workerSrc =
+      /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname) || location.protocol === "file:"
+        ? "pdf.worker.min.js"
+        : "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+    } catch(e){}
+
+    var task = pdfjsLib.getDocument({url: PDF_URL});
+    task.onProgress = function(prog){
+      if (prog && prog.total){
+        var pct = Math.round((prog.loaded / prog.total) * 100);
+        status("Downloading PDF… " + pct + "%");
+      }
+    };
+    task.promise.then(function(doc){
+      pdfDoc = doc;
+      TOTAL = doc.numPages || TOTAL;
+      $("pgInput").max = TOTAL;
+      status("");
+      $("endNote").textContent = "— End of document · " + TOTAL + " pages —";
+      /* open chapter from URL hash (#chN) or start with Background */
+      var m = (location.hash || "").match(/^#ch(\d+)$/);
+      var start = m ? Math.min(Math.max(+m[1] - 1, 0), CHAPTERS.length - 1) : 1;
+      openChapter(start);
+    }, function(err){
+      console.error("PDF load failed:", err);
+      showError("The viewer could not download the protocol file (" + PDF_URL + "). " +
+        "It may be a network issue — press “Try again”. (" + ((err && err.message) || err) + ")");
     });
-    document.getElementById('next-page').addEventListener('click', function() {
-      if (currentPage < chapterData.length) goToPage(currentPage + 1);
-    });
-    
-    // Highlight TOC item when scrolling (basic version)
-    const tocItems = document.querySelectorAll('#toc-list li');
-    window.addEventListener('scroll', function() {
-      // Simple version - just show which chapter we're near
-      // In a full implementation, would check PDF page positions
-    });
-  </script>
+  }
+
+  document.addEventListener("DOMContentLoaded", function(){
+    whenLib(loadDoc);
+  });
+})();
+</script>
 </body>
 </html>
