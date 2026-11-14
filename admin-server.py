@@ -45,6 +45,8 @@ CTYPE = {
     ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg",
     ".webp": "image/webp", ".gif": "image/gif", ".svg": "image/svg+xml",
     ".json": "application/json", ".ico": "image/x-icon", ".js": "text/javascript",
+    ".pdf": "application/pdf", ".woff2": "font/woff2", ".woff": "font/woff",
+    ".mp4": "video/mp4", ".txt": "text/plain; charset=utf-8",
 }
 
 _lock = threading.Lock()
@@ -112,9 +114,74 @@ def load_concept():
         return {"title": "", "body": "", "img": "", "updated": ""}
 
 
+def question_of_day():
+    """Pick one question for today, rotating deterministically by date.
+
+    The homepage and the admin preview both call /api/question-of-day. It used
+    to exist only on the Cloudflare worker, so locally the request 404'd and the
+    Question of the Day section stayed hidden. This mirrors the worker's shape:
+    {date, bankId, bankName, question:{n, stem, options, answerLetter,
+    answerText, explanation}}.
+    """
+    today = time.strftime("%Y-%m-%d")
+    try:
+        html = load_html()
+    except Exception:
+        return {"date": today, "bankId": "", "bankName": "", "question": None}
+
+    # Collect every parseable bank, then choose (bank, question) from the date.
+    pool = []
+    for e in discover_banks(html):
+        span = find_const(html, e["const"])
+        if not span:
+            continue
+        try:
+            data = json.loads(html[html.find("{", span[0]):span[1]])
+        except Exception:
+            continue
+        qs = data.get("questions") or []
+        if qs:
+            pool.append((e["id"], data.get("name") or e["id"], qs))
+    if not pool:
+        return {"date": today, "bankId": "", "bankName": "", "question": None}
+
+    # Stable per-day rotation: same question all day, different tomorrow.
+    seed = int(time.strftime("%Y%m%d"))
+    bank_id, bank_name, questions = pool[seed % len(pool)]
+    q = questions[(seed // max(1, len(pool))) % len(questions)]
+
+    opts = q.get("options") or []
+    # Banks store the key as correctSet:["D"] plus answerLetter/answerText,
+    # not a per-option `correct` flag.
+    answer_letter = q.get("answerLetter") or ""
+    answer_text = q.get("answerText") or ""
+    if not answer_letter:
+        cs = q.get("correctSet") or []
+        if cs:
+            answer_letter = cs[0]
+    if not answer_text and answer_letter:
+        for o in opts:
+            if o.get("letter") == answer_letter:
+                answer_text = o.get("text", "")
+                break
+
+    return {
+        "date": today,
+        "bankId": bank_id,
+        "bankName": bank_name,
+        "question": {
+            "n": q.get("n"),
+            "stem": q.get("stem", ""),
+            "chapter": q.get("chapter", ""),
+            "options": [{"letter": o.get("letter", ""), "text": o.get("text", "")} for o in opts],
+            "answerLetter": answer_letter,
+            "answerText": answer_text,
+            "explanation": q.get("explanation") or q.get("answer") or "",
+        },
+    }
+
+
 HOMEPAGE_FIELDS = ("eyebrow", "titleLead", "titleAccent", "titleSecond", "subtitle", "ctaLabel", "banksEyebrow", "banksTitle", "banksSubtitle", "footerText")
-
-
 def load_homepage_content():
     try:
         html = load_html(INDEX_PATH)
@@ -706,6 +773,12 @@ class Handler(BaseHTTPRequestHandler):
             self._file("index.html"); return
         if path in ("/surgery-practice.html", "/practice"):
             self._file("surgery-practice.html"); return
+        # Standalone pages linked from the homepage. They were served by the
+        # static host but not routed here, so every local click 404'd.
+        if path in ("/high-yield.html", "/very-high-yield"):
+            self._file("high-yield.html"); return
+        if path in ("/emergency-stp.html", "/emergency-stp"):
+            self._file("emergency-stp.html"); return
         if path == "/auth.js":
             self._file("auth.js"); return
         if path == "/auth.css":
@@ -755,6 +828,19 @@ class Handler(BaseHTTPRequestHandler):
             self._send_json(load_homepage_content()); return
         if path == "/api/concept":
             self._send_json(load_concept()); return
+        if path == "/api/question-of-day":
+            self._send_json(question_of_day()); return
+        if path == "/api/sub-verify":
+            # The homepage asks whether this device already holds a valid code.
+            # It used to hit only the Cloudflare worker, so locally it 404'd.
+            dev = (unquote(self.path.split("dev=")[-1].split("&")[0]) if "dev=" in self.path else "").strip().upper()
+            lk = load_lock() or {}
+            rev = ""
+            for s in (lk.get("subs") or []):
+                if s.get("id") == dev and s.get("rev"):
+                    rev = s["rev"]
+                    break
+            self._send_json({"dev": dev, "rev": rev}); return
         if path == "/api/access-settings":
             lk = load_lock()
             banks = lk.get("banks") if lk else None
@@ -807,6 +893,9 @@ class Handler(BaseHTTPRequestHandler):
                              "progress": u.get("progress") or {}})
             return
         if path.startswith("/cee-img/"):
+            self._file(path); return
+        # Static asset folders used by the practice engine and the STP viewer.
+        if path.startswith("/pdfs/") or path.startswith("/radiology-img/"):
             self._file(path); return
         if path == "/favicon.ico":
             self._send(204, "image/x-icon", b""); return

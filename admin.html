@@ -94,9 +94,11 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
 .u-bbar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#22c55e,#16a34a)}
 @media(max-width:900px){.u-row{grid-template-columns:minmax(140px,1.6fr) 70px 56px 56px 50px;}.u-row span:nth-child(6),.u-row span:nth-child(7){display:none}.u-brow{grid-template-columns:1fr 90px}.u-brow b{grid-column:1/-1;text-align:left}}
 </style>
-<script>window.MA_API_BASE = "https://medarena-api.medarena-ram.workers.dev"; // cloud API set inside the page - set localStorage.ma_api_base = "-" to use the local server instead
-</script>
 <script>
+/* The admin panel edits files on this computer and is loopback-only, so it
+   always talks to admin-server.py. It must never use the cloud worker: every
+   admin call there 403s (no admin token) and the panel hangs on "Loading sets".
+   MA_API_BASE is deliberately left unset on this page. */
 /* MedArena API bridge — lets the local pages talk to the Cloudflare Worker.
  *
  * Active only when an external API base is configured. Precedence:
@@ -118,9 +120,9 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
   "use strict";
   var base = "";
   var ls = "";
-  try { ls = (localStorage.getItem("ma_api_base") || "").trim(); } catch (e) {}
-  base = (ls === "-") ? "" : (ls || window.MA_API_BASE || "").trim();
-  base = base.replace(/\/+$/, "");
+  /* Admin is always local: ignore any stored cloud base so a leftover
+     localStorage value cannot re-point this page at the worker. */
+  base = "";
   if (!base) return;
 
   function tokFor(path) {

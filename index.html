@@ -210,9 +210,20 @@ header .logo{font-size:21px}.home-brand-link{color:inherit;text-decoration:none}
   var base = "";
   var ls = "";
   try { ls = (localStorage.getItem("ma_api_base") || "").trim(); } catch (e) {}
-  base = (ls === "-") ? "" : (ls || window.MA_API_BASE || "").trim();
+  /* Served from localhost means admin-server.py is right there: use it for
+     everything it implements. Only the mock-test leaderboard lives on the
+     Cloudflare worker, so those paths alone go to the cloud. A static host
+     (GitHub Pages) has no local server, so it uses the worker for everything.
+     An explicit ma_api_base still wins. */
+  var onLocal = /^(localhost|127\.0\.0\.1|\[::1\])$/i.test(location.hostname);
+  var cloud = (window.MA_API_BASE || "").trim();
+  if (ls === "-") base = "";
+  else if (ls) base = ls;
+  else if (onLocal) base = "";
+  else base = cloud;
   base = base.replace(/\/+$/, "");
-  if (!base) return;
+  cloud = cloud.replace(/\/+$/, "");
+  if (!base && !cloud) return;
 
   function tokFor(path) {
     try {
@@ -228,15 +239,21 @@ header .logo{font-size:21px}.home-brand-link{color:inherit;text-decoration:none}
     try {
       var url = typeof input === "string" ? input : (input && input.url) || "";
       if (url.indexOf("/api/") === 0 && (!/^([a-z]+:)?\/\//i.test(url))) {
-        url = base + url;
-        input = url;
-        init = init ? Object.assign({}, init) : {};
-        init.mode = "cors";
-        init.credentials = "omit";
-        var h = new Headers(init.headers || {});
-        var tok = tokFor(url.slice(base.length).split("?")[0]);
-        if (tok) h.set("Authorization", "Bearer " + tok);
-        init.headers = h;
+        // Cloud-only endpoints, even when the page is served locally.
+        var cloudOnly = /^\/api\/mock\//.test(url);
+        var target = cloudOnly ? cloud : base;
+        if (target) {
+          var path = url.split("?")[0];
+          url = target + url;
+          input = url;
+          init = init ? Object.assign({}, init) : {};
+          init.mode = "cors";
+          init.credentials = "omit";
+          var h = new Headers(init.headers || {});
+          var tok = tokFor(path);
+          if (tok) h.set("Authorization", "Bearer " + tok);
+          init.headers = h;
+        }
       }
     } catch (e) { /* fall through with the original request */ }
     return orig(input, init);
@@ -427,7 +444,7 @@ html,body{overflow-x:hidden;}
       <div class="kicker">Question of the Day · <span id="qotdBank"></span></div>
       <h2 id="qotdStem" style="font-size:16px;font-weight:700;line-height:1.5;margin:6px 0"></h2>
       <div id="qotdOpts" style="margin:8px 0"></div>
-      <button class="ma-btn" id="qotdReveal" type="button" style="margin-top:6px">Reveal answer</button>
+      <button class="btn small" id="qotdReveal" type="button" style="margin-top:6px">Reveal answer</button>
       <div id="qotdAns" style="display:none;margin-top:8px"></div>
     </div>
     <div class="stamp" id="qotdStamp"></div>
@@ -628,6 +645,9 @@ const HOMEPAGE_CONTENT = {"eyebrow":"YOUR NEXT STEP STARTS HERE","titleLead":"Pr
 (async function renderQotD(){
   const sec = document.getElementById("qotdSec");
   if (!sec) return;
+  /* Local escape: the shared `esc` is declared further down this same script,
+     so referencing it here threw a TDZ error that the catch below swallowed. */
+  const escQ = t => (t ?? "").toString().replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   try {
     const r = await fetch("/api/question-of-day", {cache:"no-store"});
     if (!r.ok) throw new Error();
@@ -640,7 +660,7 @@ const HOMEPAGE_CONTENT = {"eyebrow":"YOUR NEXT STEP STARTS HERE","titleLead":"Pr
     const stem = document.getElementById("qotdStem");
     if (stem) stem.textContent = q.stem;
     const opts = document.getElementById("qotdOpts");
-    if (opts) opts.innerHTML = (q.options||[]).map(o => `<div class="optrow" style="cursor:default"><span class="lt">${esc(o.letter)}</span><span class="ot">${esc(o.text)}</span></div>`).join("");
+    if (opts) opts.innerHTML = (q.options||[]).map(o => `<div class="optrow" style="cursor:default"><span class="lt">${escQ(o.letter)}</span><span class="ot">${escQ(o.text)}</span></div>`).join("");
     const reveal = document.getElementById("qotdReveal");
     const ans = document.getElementById("qotdAns");
     if (reveal && ans) {
@@ -650,8 +670,8 @@ const HOMEPAGE_CONTENT = {"eyebrow":"YOUR NEXT STEP STARTS HERE","titleLead":"Pr
       reveal.onclick = () => {
         reveal.style.display = "none";
         ans.style.display = "";
-        ans.innerHTML = `<div style="margin-top:6px"><b>Answer: ${esc(q.answerLetter)}${q.answerText ? " — " + esc(q.answerText) : ""}</b></div>` +
-          (q.explanation ? `<div class="explain show" style="margin-top:8px">${esc(q.explanation)}</div>` : "");
+        ans.innerHTML = `<div style="margin-top:6px"><b>Answer: ${escQ(q.answerLetter)}${q.answerText ? " — " + escQ(q.answerText) : ""}</b></div>` +
+          (q.explanation ? `<div class="explain show" style="margin-top:8px">${escQ(q.explanation)}</div>` : "");
         if (opts) opts.querySelectorAll(".optrow").forEach(row => {
           const lt = row.querySelector(".lt");
           if (lt && lt.textContent.trim() === q.answerLetter) row.classList.add("reveal-ok");
@@ -694,7 +714,10 @@ window.addEventListener("error", e => {
 });
 function setupPdf(){ if(window.pdfjsLib && !window.pdfjsLib.GlobalWorkerOptions.workerSrcSet){ try{ pdfjsLib.GlobalWorkerOptions.workerSrc = "pdf.worker.min.js"; }catch(e){} } }
 setupPdf();
-const $ = s => document.querySelector(s);
+/* Accepts a bare element id (the common case on this page) or a CSS selector.
+   Tries getElementById first so $("setSel") works, then falls back to
+   querySelector for real selectors like $("#examView #examPlay"). */
+const $ = s => document.getElementById(s) || document.querySelector(s);
 const $id = s => document.getElementById(s);
 /* bind an event only when the element exists — the admin/import UI is hidden
    on the public homepage, so those nodes may legitimately be absent. */
@@ -1526,7 +1549,10 @@ renderEmbeddedBanks();
   }
   let unlockedNow = false;
   let cloudRev = null;
-  fetch("/api/sub-verify?dev=" + encodeURIComponent((localStorage.getItem("medarena.deviceId") || "").trim().toUpperCase()))
+  /* deviceId() creates and persists the id on first call. Call it here so the
+     request never goes out with an empty dev= (the worker answers 400 to that). */
+  const bootDev = deviceId();
+  fetch("/api/sub-verify?dev=" + encodeURIComponent(bootDev))
     .then(r => r.ok ? r.json() : null)
     .then(d => { if (d && d.rev){ cloudRev = d.rev; refresh(); } })
     .catch(() => {});
