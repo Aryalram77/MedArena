@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Very High Yield — Neurology | MedArena</title>
+<meta name="description" content="Very High Yield notes: brainstem syndromes, neuroanatomy mnemonics, exam checks and high-yield tables for Loksewa and CEE MD/MS preparation.">
+<style>
+  :root{
+    --bg:#f1f5f9; --card:#ffffff; --ink:#0f172a; --muted:#64748b;
+    --line:#e2e8f0; --accent:#1d4ed8; --accent2:#3b82f6;
+    --gold:#f59e0b; --gold2:#f97316; --violet:#7c3aed;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  a{color:var(--accent)}
+
+  #readbar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#f59e0b,#f97316,#ef4444);z-index:100;transition:width .12s linear}
+
+  .header{background:#0f172a;color:#fff;padding:13px 20px;display:flex;align-items:center;gap:13px;flex-wrap:wrap;position:sticky;top:0;z-index:50;box-shadow:0 6px 22px rgba(15,23,42,.18)}
+  .header .logo{font-weight:800;font-size:18px;letter-spacing:.4px}
+  .header .logo .brand{background:linear-gradient(90deg,#fbbf24,#f97316,#fbbf24);background-size:280% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:brandFlow 5s linear infinite}
+  @keyframes brandFlow{0%{background-position:0% 0}100%{background-position:280% 0}}
+  .header .star-badge{background:linear-gradient(92deg,#f59e0b,#f97316);color:#fff;font-size:11px;padding:4px 10px;border-radius:12px;font-weight:800;letter-spacing:.6px}
+  .back-link{margin-left:auto;color:#cbd5e1;text-decoration:none;font-size:13px;border:1px solid #334155;padding:6px 12px;border-radius:9px;white-space:nowrap}
+  .back-link:hover{color:#fff;border-color:#64748b}
+
+  .wrap{max-width:1280px;margin:0 auto;padding:20px}
+
+  .hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#78350f,#b45309 45%,#d97706 75%,#f59e0b);border-radius:20px;color:#fff;padding:30px 30px 26px;box-shadow:0 16px 40px rgba(180,83,9,.28);margin-bottom:18px}
+  .hero::before{content:"\2726";position:absolute;right:26px;top:14px;font-size:64px;opacity:.14}
+  .hero::after{content:"\2726";position:absolute;right:110px;bottom:8px;font-size:30px;opacity:.18}
+  .hero .kicker{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);padding:5px 13px;border-radius:99px;font-size:11.5px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase}
+  .hero h1{margin:12px 0 8px;font-size:34px;letter-spacing:-.8px;line-height:1.15}
+  .hero p{margin:0;max-width:640px;color:#fff3;font-size:14.5px}
+  .hero p b{color:#fff}
+
+  .chips{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 18px}
+  .chip{padding:9px 15px;border-radius:99px;font-size:13.5px;font-weight:700;border:1px solid var(--line);background:#fff;color:#475569;text-decoration:none}
+  .chip.active{background:#0f172a;border-color:#0f172a;color:#fbbf24;box-shadow:0 6px 16px rgba(15,23,42,.22)}
+  .chip.soon{opacity:.55;border-style:dashed;cursor:default}
+
+  .grid{display:grid;grid-template-columns:288px minmax(0,1fr);gap:18px;align-items:start}
+  .toc-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px 13px;position:sticky;top:74px;max-height:calc(100vh - 92px);overflow:auto}
+  .toc-card h3{margin:2px 4px 10px;font-size:13px;letter-spacing:1.1px;text-transform:uppercase;color:var(--muted)}
+  .toc-card a{display:block;padding:7px 10px;border-radius:9px;font-size:13px;color:#334155;text-decoration:none;line-height:1.35;margin:1px 0}
+  .toc-card a:hover{background:#f1f5f9}
+  .toc-card a.toc-part{font-weight:800;color:#172640;background:#fff7ed;border:1px solid #fed7aa;font-size:12.8px}
+  .toc-card a.toc-sec{padding-left:16px;font-size:12.8px}
+  .toc-card a.hl{background:#fef3c7;color:#92400e;font-weight:700}
+  .toc-mobile{display:none;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin-bottom:14px}
+  .toc-mobile summary{cursor:pointer;font-weight:800;font-size:14px;color:#172640}
+  .toc-mobile a{display:block;padding:6px 4px;font-size:13.5px;color:#334155;text-decoration:none;border-bottom:1px dashed var(--line)}
+  .toc-mobile a.toc-part{font-weight:800;color:#172640}
+
+  .content{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 30px 30px;box-shadow:0 10px 30px rgba(31,55,93,.06)}
+
+  .hy-part{position:relative;overflow:hidden;background:linear-gradient(120deg,#1e3a8a,#4338ca 55%,#7c3aed);color:#fff;border-radius:15px;padding:19px 22px;margin:34px 0 18px;font-size:20px;font-weight:800;letter-spacing:-.3px;box-shadow:0 12px 30px rgba(67,56,202,.28);display:flex;align-items:center;gap:12px}
+  .hy-part:first-child{margin-top:0}
+  .hy-part::after{content:"\2726\2726\2726";position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:15px;opacity:.25;letter-spacing:6px}
+  .part-icon{font-size:24px}
+  .hy-sec{scroll-margin-top:84px;display:flex;align-items:center;gap:11px;margin:30px 0 10px;font-size:18.5px;color:#172640;letter-spacing:-.3px}
+  .secn{display:grid;place-items:center;min-width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,#1d4ed8,#3b82f6);color:#fff;font-size:14px;font-weight:800;box-shadow:0 4px 12px rgba(59,130,246,.35)}
+  .hy-sub{scroll-margin-top:84px;margin:20px 0 8px;font-size:15.5px;color:#1d4ed8;font-weight:800}
+  .hy-label{scroll-margin-top:84px;margin:15px 0 6px;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:#92400e;display:inline-block;background:#fffbeb;border:1px solid #fde68a;padding:4px 11px;border-radius:99px}
+
+  .hy-p{margin:9px 0;font-size:14.3px;color:#1e293b}
+  .hy-list{margin:8px 0 12px;padding-left:24px}
+  .hy-list li{margin:6px 0;font-size:14.3px;color:#1e293b;padding-left:3px}
+  .hy-list li::marker{color:var(--violet)}
+  .hy-list li.cont{list-style:none;margin-left:-22px;padding-left:22px}
+  .hy-list li.cont::before{content:""}
+  .hy-p b,.hy-list b{color:#0f172a;background:linear-gradient(transparent 62%,rgba(253,224,71,.75) 62%);border-radius:2px;padding:0 1px}
+  .arrow{color:var(--violet);font-weight:800}
+  .hy-formula{display:inline-block;background:#eef2ff;border:1px solid #c7d2fe;border-radius:10px;padding:8px 15px;font-weight:700;color:#3730a3;margin:8px 0;font-size:14px}
+
+  .hy-code{background:#0f172a;color:#e2e8f0;border-radius:12px;padding:14px 18px;font-family:ui-monospace,Consolas,"Courier New",monospace;font-size:13px;overflow-x:auto;white-space:pre;margin:12px 0;line-height:1.55;box-shadow:0 8px 20px rgba(15,23,42,.18)}
+
+  .hy-mcq{background:linear-gradient(135deg,#fffbeb,#fef3c7);border:1px solid #fcd34d;border-radius:14px;padding:15px 18px;margin:14px 0;box-shadow:0 6px 16px rgba(245,158,11,.12)}
+  .mcq-tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;background:#f59e0b;color:#fff;border-radius:99px;padding:3px 11px;margin-bottom:9px}
+  .mcq-q{margin:0 0 9px;font-weight:700;font-size:14.5px;color:#78350f}
+  .mcq-opts{list-style:none;margin:0;padding:0}
+  .mcq-opts li{padding:5px 8px;border-radius:8px;font-size:13.8px;color:#292524}
+  .mcq-opts li:hover{background:rgba(255,255,255,.7)}
+  .optl{display:inline-grid;place-items:center;min-width:22px;height:22px;border-radius:7px;background:#fff;border:1px solid #fcd34d;font-weight:800;font-size:12px;color:#92400e;margin-right:8px}
+  .mcq-ans{margin-top:11px;background:#dcfce7;color:#166534;border-radius:9px;padding:8px 13px;font-weight:800;font-size:13.5px;display:inline-block}
+
+  .hy-tblwrap{overflow-x:auto;margin:14px 0;border-radius:13px;border:1px solid var(--line);box-shadow:0 6px 16px rgba(31,55,93,.07)}
+  .hy-tblwrap table{border-collapse:collapse;width:100%;font-size:13.4px;min-width:620px}
+  .hy-tblwrap th{background:linear-gradient(120deg,#1e3a8a,#3b82f6);color:#fff;text-align:left;padding:10px 13px;font-weight:800;white-space:nowrap}
+  .hy-tblwrap td{padding:9px 13px;border-top:1px solid var(--line);vertical-align:top;color:#1e293b}
+  .hy-tblwrap tr:nth-child(even) td{background:#f8fafc}
+
+  .foot-note{margin-top:30px;padding:14px 18px;border-radius:13px;background:#f8fafc;border:1px dashed var(--line);color:var(--muted);font-size:12.5px}
+  .foot-note b{color:#334155}
+
+  @media(max-width:900px){
+    .grid{grid-template-columns:1fr}
+    .toc-card{display:none}
+    .toc-mobile{display:block}
+    .content{padding:20px 16px 24px}
+    .hero h1{font-size:26px}
+    .hero{padding:22px 20px}
+    .hy-part{font-size:17px;padding:15px 17px}
+  }
+</style>
+</head>
+<body>
+<div id="readbar"></div>
+
+<div class="header">
+  <div class="logo"><span class="brand">Very High Yield</span></div>
+  <span class="star-badge">&#11088; EXAM GOLD</span>
+  <a class="back-link" href="index.html">&larr; Back to MedArena</a>
+</div>
+
+<div class="wrap">
+  <div class="hero">
+    <span class="kicker">&#11088; Very High Yield Series</span>
+    <h1>Read less. Score more.</h1>
+    <p>The highest-yield facts, mnemonics, syndromes and <b>exam-check MCQs</b> — distilled from high-yield lectures and organised for rapid revision. <b>Free for everyone.</b></p>
+  </div>
+
+  <div class="chips">
+    <span class="chip active">&#129504; Neurology</span>
+    <span class="chip soon">&#10133; More topics coming soon</span>
+  </div>
+
+  <details class="toc-mobile">
+    <summary>&#128202; On this page</summary>
+    <a class="toc-part" href="#part1">🧠 Brainstem Syndromes &amp; Mnemonics</a>
+      <a class="toc-sec" href="#sec1">1. Fundamental Rules of Brainstem Localization</a>
+      <a class="toc-sec" href="#sec2">2. Midbrain Syndromes</a>
+      <a class="toc-sec" href="#sec3">3. Pontine Syndromes</a>
+      <a class="toc-sec" href="#sec4">4. Medullary Syndromes</a>
+      <a class="toc-sec" href="#sec5">5. Clinical Integration: Taste Pathway</a>
+      <a class="toc-sec" href="#sec6">6. Internuclear Ophthalmoplegia (INO) &amp; the MLF</a>
+      <a class="toc-part" href="#part2">✨ Neuroanatomy: Top 10 Mnemonics &amp; High-Yield Concepts</a>
+      <a class="toc-sec" href="#sec7">1. Primary Auditory Cortex &amp; Heschl’s Gyrus</a>
+      <a class="toc-sec" href="#sec8">2. Language Areas: Wernicke’s vs. Broca’s Area</a>
+      <a class="toc-sec" href="#sec9">3. Frontal Eye Field &amp; Summary of Key Brodmann Areas</a>
+      <a class="toc-sec" href="#sec10">4. Quadrigeminal Cistern &amp; Vein of Galen</a>
+      <a class="toc-sec" href="#sec11">5. Anatomical Relations of the Oculomotor Nerve (CN III)</a>
+      <a class="toc-sec" href="#sec12">6. Basilar Artery Branches vs. Vertebral Artery Branches</a>
+      <a class="toc-sec" href="#sec13">7. Ventricular System &amp; Axial Midbrain Anatomy</a>
+      <a class="toc-sec" href="#sec14">8. Hypothalamic Nuclei Functions</a>
+      <a class="toc-sec" href="#sec15">9. The Auditory Pathway</a>
+      <a class="toc-sec" href="#sec16">10. Brown-Séquard Syndrome (Spinal Cord Hemisection)</a>
+  </details>
+
+  <div class="grid">
+    <aside class="toc-card">
+      <h3>On this page</h3>
+      <a class="toc-part" href="#part1">🧠 Brainstem Syndromes &amp; Mnemonics</a>
+      <a class="toc-sec" href="#sec1">1. Fundamental Rules of Brainstem Localization</a>
+      <a class="toc-sec" href="#sec2">2. Midbrain Syndromes</a>
+      <a class="toc-sec" href="#sec3">3. Pontine Syndromes</a>
+      <a class="toc-sec" href="#sec4">4. Medullary Syndromes</a>
+      <a class="toc-sec" href="#sec5">5. Clinical Integration: Taste Pathway</a>
+      <a class="toc-sec" href="#sec6">6. Internuclear Ophthalmoplegia (INO) &amp; the MLF</a>
+      <a class="toc-part" href="#part2">✨ Neuroanatomy: Top 10 Mnemonics &amp; High-Yield Concepts</a>
+      <a class="toc-sec" href="#sec7">1. Primary Auditory Cortex &amp; Heschl’s Gyrus</a>
+      <a class="toc-sec" href="#sec8">2. Language Areas: Wernicke’s vs. Broca’s Area</a>
+      <a class="toc-sec" href="#sec9">3. Frontal Eye Field &amp; Summary of Key Brodmann Areas</a>
+      <a class="toc-sec" href="#sec10">4. Quadrigeminal Cistern &amp; Vein of Galen</a>
+      <a class="toc-sec" href="#sec11">5. Anatomical Relations of the Oculomotor Nerve (CN III)</a>
+      <a class="toc-sec" href="#sec12">6. Basilar Artery Branches vs. Vertebral Artery Branches</a>
+      <a class="toc-sec" href="#sec13">7. Ventricular System &amp; Axial Midbrain Anatomy</a>
+      <a class="toc-sec" href="#sec14">8. Hypothalamic Nuclei Functions</a>
+      <a class="toc-sec" href="#sec15">9. The Auditory Pathway</a>
+      <a class="toc-sec" href="#sec16">10. Brown-Séquard Syndrome (Spinal Cord Hemisection)</a>
+    </aside>
+
+    <article class="content">
+      <div class="hy-part" id="part1"><span class="part-icon">🧠</span>Brainstem Syndromes &amp; Mnemonics</div>
+<h3 class="hy-sec" id="sec1"><span class="secn">1</span>Fundamental Rules of Brainstem Localization</h3>
+<h4 class="hy-sub">A. The "Rule of 4" (Cranial Nerve Levels)</h4>
+<p class="hy-p">The 12 cranial nerves are divided across the brainstem:</p>
+<ul class="hy-list">
+<li><b>Midbrain (Upper):</b> Cranial Nerves <b>3 and 4</b><br><i>(CN 1 and 2 originate directly from the forebrain/diencephalon).</i></li>
+<li><b>Pons (Middle):</b> Cranial Nerves <b>5, 6, 7, and 8</b></li>
+<li><b>Medulla (Lower):</b> Cranial Nerves <b>9, 10, 11, and 12</b></li>
+</ul>
+<h4 class="hy-sub">B. The "Rule of 12" (Medial Cranial Nerves)</h4>
+<ul class="hy-list">
+<li>Cranial nerves whose numbers divide evenly into 12 are located <b>medially</b>:<br></li>
+</ul>
+<p class="hy-p"><b>3</b>,<b>4</b>,<b>6</b>,<b>12</b></p>
+<ul class="hy-list">
+<li>3×4=12</li>
+<li>4×3=12</li>
+<li>6×2=12</li>
+<li>12×1=12</li>
+<li>All other cranial nerves (<b>5, 7, 8, 9, 10, 11</b>) exit <b>laterally</b>.</li>
+</ul>
+<h4 class="hy-sub">C. The "Rule of M" (Medial Brainstem Structures)</h4>
+<p class="hy-p">Everything located in the <b>medial</b> aspect starts with <b>M</b>:</p>
+<ul class="hy-list">
+<li><b>M</b>otor Cranial Nerves:</li>
+<ul class="hy-list">
+<li><b>CN 3, 4, 6:</b> Eye movement</li>
+<li><b>CN 12:</b> Tongue movement</li>
+</ul>
+<li><b>M</b>otor Pathway:</li>
+<ul class="hy-list">
+<li><b>Corticospinal</b><b> Tract (CST):</b> Lesion causes <b>contralateral hemiplegia / hemiparesis</b>.</li>
+</ul>
+<li><b>M</b>edial Lemniscus (Dorsal Column Pathway):</li>
+<ul class="hy-list">
+<li>Carries conscious proprioception, vibration, and fine touch </li>
+<li class="cont"><span class="arrow">→</span> Lesion causes <b>contralateral loss of proprioception/vibration</b>.</li>
+</ul>
+<li><b>M</b>edial Longitudinal Fasciculus (<b>MLF</b>):</li>
+<ul class="hy-list">
+<li>Coordinates horizontal conjugate eye movements.</li>
+</ul>
+</ul>
+<h4 class="hy-sub">D. The "Rule of S" (Side / Lateral Brainstem Structures)</h4>
+<p class="hy-p">Everything located on the <b>side (lateral)</b> aspect starts with <b>S</b>:</p>
+<ul class="hy-list">
+<li><b>S</b>ensory Cranial Nerves:</li>
+<ul class="hy-list">
+<li><b>CN 5</b> (trigeminal – facial sensation), <b>CN 7, 8</b> (auditory/vestibular), <b>CN 9, 10, 11</b>.</li>
+</ul>
+<li><b>S</b>pinothalamic Tract (SPT):</li>
+<ul class="hy-list">
+<li>Carries pain and temperature </li>
+<li class="cont"><span class="arrow">→</span> Crosses early in spinal cord </li>
+<li class="cont"><span class="arrow">→</span> Lesion causes <b>contralateral loss of pain and temperature over the body</b>.</li>
+</ul>
+<li><b>S</b>ympathetic Pathway:</li>
+<ul class="hy-list">
+<li>Disruption causes <b>ipsilateral</b><b> Horner syndrome</b> (ptosis, miosis, anhidrosis).</li>
+</ul>
+<li><b>S</b>pinocerebellar / Cerebellar Pathways:</li>
+<ul class="hy-list">
+<li>Disruption causes <b>ipsilateral</b><b> cerebellar ataxia</b>.</li>
+</ul>
+</ul>
+<h4 class="hy-sub">E. General Deficit Lateralization</h4>
+<ul class="hy-list">
+<li><b>Cranial Nerve deficits are always IPSILATERAL</b> to the lesion.</li>
+<li><b>Long tract motor/sensory deficits (CST / </b><b>Spinothalamic</b><b>) are CONTRALATERAL</b>.</li>
+</ul>
+<h4 class="hy-label">Crossed Sensory Deficit (Alternating Hemianesthesia)</h4>
+<ul class="hy-list">
+<li>Seen in lateral brainstem lesions.</li>
+<li><b>Ipsilateral</b><b> face</b> sensory loss (CN 5 spinal tract/nucleus).</li>
+<li><b>Contralateral body</b> pain &amp; temperature loss (Spinothalamic tract).</li>
+</ul>
+<h3 class="hy-sec" id="sec2"><span class="secn">2</span>Midbrain Syndromes</h3>
+<p class="hy-p">All midbrain vascular syndromes involve an <b>ipsilateral</b><b> 3rd cranial nerve (</b><b>Oculomotor</b><b>) palsy</b> and are typically supplied by penetrating branches of the <b>Posterior Cerebral Artery (PCA)</b>.</p>
+<pre class="hy-code">Midbrain Syndromes = Ipsilateral CN 3 Palsy + Characteristic Feature</pre>
+<h4 class="hy-sub">1. Weber Syndrome</h4>
+<ul class="hy-list">
+<li><b>Localization:</b> Ventral midbrain / Cerebral peduncle.</li>
+<li><b>Mnemonic:</b> <b>W</b>eber = <b>W</b>eakness.</li>
+</ul>
+<h4 class="hy-label">Features</h4>
+<ul class="hy-list">
+<li>Ipsilateral CN 3 palsy.</li>
+<li>Contralateral hemiparesis / hemiplegia (involvement of Corticospinal Tract in cerebral peduncle).</li>
+</ul>
+<h4 class="hy-sub">2. Benedikt Syndrome</h4>
+<ul class="hy-list">
+<li><b>Localization:</b> Midbrain tegmentum involving the <b>Red Nucleus</b>.</li>
+<li><b>Mnemonic:</b> <b>Bened</b> = <b>Red</b> nucleus; <b>B</b>enedikt = <b>B</b>obbing head / involuntary movements.</li>
+</ul>
+<h4 class="hy-label">Features</h4>
+<ul class="hy-list">
+<li>Ipsilateral CN 3 palsy.</li>
+<li>Contralateral tremor, involuntary choreiform/athetoid movements, or ataxia (dentatorubrothalamic tract / red nucleus).</li>
+</ul>
+<h4 class="hy-sub">3. Nothnagel Syndrome</h4>
+<ul class="hy-list">
+<li><b>Localization:</b> Superior Cerebellar Peduncle (SCP).</li>
+<li><b>Mnemonic:</b> <b>North</b> = <b>Superior</b> cerebellar peduncle.</li>
+</ul>
+<h4 class="hy-label">Features</h4>
+<ul class="hy-list">
+<li>Ipsilateral CN 3 palsy.</li>
+<li>Cerebellar ataxia (loss of coordination).</li>
+</ul>
+<h4 class="hy-sub">4. Claude Syndrome</h4>
+<ul class="hy-list">
+<li><b>Formula:</b> </li>
+</ul>
+<p class="hy-p"><b>B</b>+<b>N</b>=<b>C</b></p>
+<p class="hy-p">(Benedikt + Nothnagel = Claude).</p>
+<ul class="hy-list">
+<li><b>Localization:</b> Involves both the Red Nucleus and Superior Cerebellar Peduncle.</li>
+</ul>
+<h4 class="hy-label">Features</h4>
+<ul class="hy-list">
+<li>Ipsilateral CN 3 palsy.</li>
+<li>Contralateral extrapyramidal signs/tremor (Benedikt component).</li>
+<li>Cerebellar ataxia (Nothnagel component).</li>
+</ul>
+<h4 class="hy-sub">5. Parinaud Syndrome (Dorsal Midbrain / Tectal Syndrome)</h4>
+<ul class="hy-list">
+<li><b>Etiology:</b> Pineal gland tumor / germinoma compressing the dorsal midbrain (tectum/colliculi).</li>
+<li><b>Mnemonic:</b> <b>P</b>arinaud = <b>P</b>ineal tumor / <b>D</b>orsal midbrain.</li>
+<li><b>Involvement:</b> Superior colliculi and pretectal area.</li>
+</ul>
+<h4 class="hy-label">Features</h4>
+<ul class="hy-list">
+<li><b>Upward gaze palsy</b> (vertical gaze center affected; "sunset sign").</li>
+<li><b>Convergence-retraction </b><b>nystagmus</b>.</li>
+<li><b>Lid retraction</b> (Collier sign).</li>
+<li><b>Light-near dissociation</b> (pseudo-Argyll Robertson pupil: reacts to accommodation but not to light).</li>
+</ul>
+<h3 class="hy-sec" id="sec3"><span class="secn">3</span>Pontine Syndromes</h3>
+<p class="hy-p">Pontine cranial nerves are <b>5, 6, 7, and 8</b> (CN 6 is medial; CN 5, 7, 8 are lateral).</p>
+<h4 class="hy-sub">1. Marie-Foix Syndrome (Lateral Pontine Syndrome)</h4>
+<ul class="hy-list">
+<li><b>Vascular Supply:</b> <b>AICA</b> (Anterior Inferior Cerebellar Artery, branch of the Basilar artery).</li>
+<li><b>Mnemonic:</b> <b>Foix</b> = <b>F</b>acial (CN 7) + hearing loss (CN 8).<br><i>(Also: "AICA" sounds like the Marathi word for "listen", linking AICA to CN 8 / hearing).</i></li>
+</ul>
+<h4 class="hy-label">Features</h4>
+<ul class="hy-list">
+<li>Ipsilateral facial weakness/paralysis (CN 7).</li>
+<li>Ipsilateral hearing loss, tinnitus, vertigo, nystagmus (CN 8 / labyrinthine artery).</li>
+<li>Ipsilateral loss of facial sensation (CN 5).</li>
+<li>Contralateral hemiplegia (CST).</li>
+<li>Contralateral loss of pain and temperature on body (SPT).</li>
+<li>Ipsilateral limb ataxia.</li>
+<li>Ipsilateral Horner syndrome.</li>
+</ul>
+<h4 class="hy-sub">2. Millard-Gubler Syndrome vs. Foville Syndrome</h4>
+<p class="hy-p">Both involve <b>CN 6 + CN 7 + CST (contralateral hemiplegia)</b>, but they differ by the exact lesion site of CN 6:</p>
+<div class="hy-tblwrap"><table><tr><th>Feature</th><th>Millard-Gubler Syndrome</th><th>Foville Syndrome</th></tr><tr><td>Location</td><td>Ventral caudal pons</td><td>Caudal pontine tegmentum / dorsal pons</td></tr><tr><td>CN 6 Lesion</td><td>Fascicle / Fibers of CN 6</td><td>Nucleus of CN 6 (+ PPRF)</td></tr><tr><td>Eye Movement Deficit</td><td>Isolated lateral rectus palsy (inability to abduct the ipsilateral eye)</td><td>Conjugate horizontal gaze palsy toward the lesion side (loss of lateral gaze)</td></tr><tr><td>Mnemonic</td><td>Count letters: Millard (7) Gubler (6)<br>→<br>CN 6 &amp; 7 fascicles</td><td>FovilLE = Loss of Lateral Gaze</td></tr><tr><td>Other Signs</td><td>Ipsilateral LMN facial palsy (CN 7), contralateral hemiparesis</td><td>Ipsilateral facial palsy (CN 7), contralateral hemiparesis</td></tr></table></div>
+<h4 class="hy-sub">3. Raymond Syndrome</h4>
+<ul class="hy-list">
+<li><b>Mnemonic:</b> <b>Ray</b> = <b>X-ray</b> </li>
+<li class="cont"><span class="arrow">→</span> <b>X</b> = Roman numeral <b>VI</b> (6 only).</li>
+</ul>
+<h4 class="hy-label">Features</h4>
+<ul class="hy-list">
+<li>Ipsilateral CN 6 palsy (lateral rectus weakness).</li>
+<li>Contralateral hemiparesis (CST).</li>
+<li><b>Spares CN 7</b>.</li>
+</ul>
+<h4 class="hy-sub">4. Locked-in Syndrome</h4>
+<ul class="hy-list">
+<li><b>Etiology:</b> Acute bilateral ventral pontine infarction due to <b>Basilar</b><b> artery</b> thrombosis.</li>
+<li><b>Mnemonic:</b> Locked in the <b>B</b>asement </li>
+<li class="cont"><span class="arrow">→</span> <b>B</b>asilar artery occlusion.</li>
+</ul>
+<h4 class="hy-label">Features</h4>
+<ul class="hy-list">
+<li>Complete quadriplegia and anarthria/aphonia (loss of all voluntary motor function).</li>
+<li>Preserved consciousness (Reticular Activating System in tegmentum is intact).</li>
+<li>Preserved vertical eye movements and blinking (supranuclear centers in midbrain spared).</li>
+</ul>
+<h3 class="hy-sec" id="sec4"><span class="secn">4</span>Medullary Syndromes</h3>
+<p class="hy-p">Medullary cranial nerves are <b>9, 10, 11, and 12</b> (CN 12 is medial; CN 9, 10, 11 are lateral).</p>
+<pre class="hy-code">Medulla:
+- Medial: CN 12 + CST + Medial Lemniscus
+- Lateral: CN 9, 10, 11 + CN 5 + Spinothalamic + Sympathetic + Cerebellar</pre>
+<h4 class="hy-sub">1. Medial Medullary Syndrome (Dejerine Syndrome)</h4>
+<ul class="hy-list">
+<li><b>Vascular Supply:</b> <b>Anterior Spinal Artery (ASA)</b> or branch of Vertebral Artery.</li>
+<li><b>Mnemonic:</b> <b>MD</b> = <b>M</b>edial is <b>D</b>ejerine.</li>
+</ul>
+<h4 class="hy-label">Features</h4>
+<ul class="hy-list">
+<li><b>Ipsilateral</b><b> CN 12 palsy:</b> Weakness and atrophy of the tongue.</li>
+<ul class="hy-list">
+<li><i>Mnemonic:</i> <b>"Tongue licks the wound"</b> </li>
+<li class="cont"><span class="arrow">→</span> Tongue deviates <b>toward the side of the lesion</b>.</li>
+</ul>
+<li><b>Contralateral hemiplegia:</b> Corticospinal tract involvement.</li>
+<li><b>Contralateral loss of proprioception/vibration:</b> Medial lemniscus involvement.</li>
+</ul>
+<p class="hy-p"><i>(Note: Do not confuse </i><i>Dejerine</i><i> Medullary Syndrome with </i><i>Dejerine-Roussy</i><i> Syndrome, which is a thalamic pain syndrome).</i></p>
+<h4 class="hy-sub">2. Lateral Medullary Syndrome (Wallenberg Syndrome)</h4>
+<ul class="hy-list">
+<li><b>Vascular Supply:</b> <b>Vertebral Artery</b> (<span class="arrow">→</span> Posterior Inferior Cerebellar Artery / <b>PICA</b>).</li>
+<li><b>Mnemonic:</b> <b>PICA-chew</b> </li>
+<li class="cont"><span class="arrow">→</span> Chewing/swallowing/speech difficulty (CN 9 &amp; 10).</li>
+</ul>
+<h4 class="hy-label">Structures Involved</h4>
+<ul class="hy-list">
+<li><b>Nucleus </b><b>Ambiguus</b><b> (CN 9, 10, 11):</b> Dysphagia, dysarthria, hoarseness, loss of gag reflex, uvula deviates to the opposite side.</li>
+<li><b>Spinal Trigeminal Tract/Nucleus (CN 5):</b> Ipsilateral facial loss of pain &amp; temperature.</li>
+<li><b>Spinothalamic</b><b> Tract:</b> Contralateral body loss of pain &amp; temperature.</li>
+<li><b>Vestibular Nuclei:</b> Vertigo, nausea, vomiting, nystagmus.</li>
+<li><b>Inferior Cerebellar Peduncle:</b> Ipsilateral limb ataxia.</li>
+<li><b>Descending </b><b>Sympathetics</b><b>:</b> Ipsilateral Horner syndrome.</li>
+</ul>
+<h4 class="hy-label">Critical Negative Findings</h4>
+<ul class="hy-list">
+<li><b>NO hemiplegia</b> (CST is medial).</li>
+<li><b>NO tongue deviation</b> (CN 12 is medial).</li>
+</ul>
+<h3 class="hy-sec" id="sec5"><span class="secn">5</span>Clinical Integration: Taste Pathway</h3>
+<p class="hy-p"><b>Clinical Question</b><b>:</b><br><i>Which brainstem syndrome causes loss of taste from the anterior 2/3 of the tongue?</i></p>
+<h4 class="hy-label">Innervation Pathway</h4>
+<ul class="hy-list">
+<li>Taste from anterior 2/3 of tongue </li>
+<li class="cont"><span class="arrow">→</span> <b>CN 7 (Chorda tympani)</b>.</li>
+<li>Taste from posterior 1/3 of tongue </li>
+<li class="cont"><span class="arrow">→</span> <b>CN 9</b>.</li>
+<li>Taste from epiglottis/vallecula </li>
+<li class="cont"><span class="arrow">→</span> <b>CN 10</b>.</li>
+<li>All taste fibers terminate in the <b>Nucleus </b><b>Tractus</b><b> </b><b>Solitarius</b><b> (NTS)</b> (<b>N</b> = 9, <b>T</b> = 10, <b>S</b> = 7).</li>
+</ul>
+<h4 class="hy-label">Answer</h4>
+<ul class="hy-list">
+<li>Because the anterior 2/3 taste is mediated by <b>CN 7</b>, it is impaired in <b>Lateral Pontine Syndrome (Marie-</b><b>Foix</b><b> syndrome / AICA occlusion)</b>.</li>
+</ul>
+<h3 class="hy-sec" id="sec6"><span class="secn">6</span>Internuclear Ophthalmoplegia (INO) &amp; the MLF</h3>
+<h4 class="hy-sub">Anatomy of Horizontal Gaze</h4>
+<ul class="hy-list">
+<li>To look to one side (e.g., to the left):</li>
+<ul class="hy-list">
+<li>Left <b>CN 6 nucleus</b> activates the Left Lateral Rectus (abduction).</li>
+<li>Left CN 6 nucleus simultaneously sends an interneuron through the <b>Right MLF</b> across the midline to the Right <b>CN 3 </b><b>subnucleus</b> (Medial Rectus).</li>
+<li>Right Medial Rectus adducts the right eye.</li>
+</ul>
+</ul>
+<pre class="hy-code">Right Eye (Adduction)  &lt;--- [Right MLF] &lt;--- [Left CN 6 Nucleus] ---&gt; Left Eye (Abduction)
+(CN 3)                                                              (CN 6)</pre>
+<h4 class="hy-sub">Pathophysiology of INO</h4>
+<ul class="hy-list">
+<li>The MLF is named by the <b>adduction deficit</b>:</li>
+</ul>
+<h4 class="hy-label">Right MLF Lesion</h4>
+<ul class="hy-list">
+<li>When asked to look to the <b>Left</b>:</li>
+<ul class="hy-list">
+<li><b>Right eye cannot adduct</b> (failure of right medial rectus).</li>
+<li><b>Left eye abducts with </b><b>nystagmus</b> (compensatory overactivation).</li>
+</ul>
+</ul>
+<h4 class="hy-label">Primary Gaze</h4>
+<ul class="hy-list">
+<li><b>Mnemonic:</b> <b>I-NO</b> = In primary gaze, <b>NO</b> abnormality (eyes look straight ahead with no squint).</li>
+</ul>
+<h4 class="hy-sub">Etiology</h4>
+<ul class="hy-list">
+<li><b>Young patients / Bilateral INO:</b> <b>Multiple Sclerosis</b> (demyelinating plaque in MLF).</li>
+<li><b>Elderly patients / Unilateral INO:</b> <b>Brainstem Stroke</b> (ischemia to paramedian pontine perforators of basilar artery).</li>
+</ul>
+<h4 class="hy-sub">Summary Reference Table</h4>
+<div class="hy-tblwrap"><table><tr><th>Brainstem Level</th><th>Syndrome Name</th><th>Localization</th><th>Key Cranial Nerve Deficit</th><th>Distinctive Clinical Findings</th></tr><tr><td>Midbrain</td><td>Weber</td><td>Ventral / Cerebral Peduncle</td><td>Ipsilateral CN 3</td><td>Contralateral hemiparesis / weakness</td></tr><tr><td>&nbsp;</td><td>Benedikt</td><td>Tegmentum / Red Nucleus</td><td>Ipsilateral CN 3</td><td>Contralateral involuntary tremor / chorea ("bobbing head")</td></tr><tr><td>&nbsp;</td><td>Nothnagel</td><td>Superior Cerebellar Peduncle</td><td>Ipsilateral CN 3</td><td>Cerebellar ataxia</td></tr><tr><td>&nbsp;</td><td>Claude</td><td>Red Nucleus + SCP</td><td>Ipsilateral CN 3</td><td>Tremor + cerebellar ataxia (<br>B+N=C<br>)</td></tr><tr><td>&nbsp;</td><td>Parinaud</td><td>Dorsal Midbrain (Tectum)</td><td>Pretectal / Colliculi</td><td>Upward gaze palsy, convergence-retraction nystagmus, lid retraction</td></tr><tr><td>Pons</td><td>Marie-Foix</td><td>Lateral Pons (AICA)</td><td>Ipsilateral CN 7, 8, 5</td><td>Facial paralysis, hearing loss/vertigo, contralateral hemiplegia</td></tr><tr><td>&nbsp;</td><td>Millard-Gubler</td><td>Ventral Pons</td><td>Ipsilateral CN 6 (fascicle), 7</td><td>Contralateral hemiplegia, isolated CN 6 palsy</td></tr><tr><td>&nbsp;</td><td>Foville</td><td>Dorsal / Caudal Tegmentum</td><td>Ipsilateral CN 6 (nucleus), 7</td><td>Horizontal gaze palsy, ipsilateral CN 7 palsy, contralateral hemiplegia</td></tr><tr><td>&nbsp;</td><td>Raymond</td><td>Ventral Paramedian Pons</td><td>Ipsilateral CN 6 only</td><td>Contralateral hemiparesis (CN 7 spared)</td></tr><tr><td>&nbsp;</td><td>Locked-in</td><td>Bilateral Ventral Pons</td><td>Basilar artery occlusion</td><td>Quadriplegia, preserved consciousness, preserved vertical eye movement/blinking</td></tr><tr><td>Medulla</td><td>Dejerine</td><td>Medial Medulla (ASA)</td><td>Ipsilateral CN 12</td><td>Tongue deviates to lesion side, contralateral hemiplegia &amp; DCML sensory loss</td></tr><tr><td>&nbsp;</td><td>Wallenberg</td><td>Lateral Medulla (PICA/VA)</td><td>Ipsilateral CN 9, 10, 11, 5</td><td>Dysphagia, loss of gag reflex, crossed facial/body sensory loss, Horner syndrome (No hemiplegia)</td></tr></table></div>
+<div class="hy-part" id="part2"><span class="part-icon">✨</span>Neuroanatomy: Top 10 Mnemonics &amp; High-Yield Concepts</div>
+<h3 class="hy-sec" id="sec7"><span class="secn">1</span>Primary Auditory Cortex &amp; Heschl’s Gyrus</h3>
+<div class="hy-mcq"><div class="mcq-tag">📝 Exam Check</div><p class="mcq-q">Heschl’s gyrus is located in:</p><ol class="mcq-opts"><li><span class="optl">A.</span> Primary auditory cortex</li><li><span class="optl">B.</span> Visual cortex</li><li><span class="optl">C.</span> Parietal association area</li><li><span class="optl">D.</span> Medial frontal lobe</li></ol><div class="mcq-ans">✔ Answer: A. Primary auditory cortex</div></div>
+<h4 class="hy-sub">Key Anatomical Facts &amp; Mnemonics</h4>
+<ul class="hy-list">
+<li><b>Mnemonic:</b> <b>HE</b>schl’s </li>
+<li class="cont"><span class="arrow">→</span> <b>HE</b>aring.</li>
+<li><b>Location:</b> Superior surface of the <b>Superior Temporal </b><b>Gyrus</b> (within the lateral sulcus/transverse temporal gyrus).</li>
+<li><b>Brodmann</b><b> Areas:</b> <b>Area 41 and 42</b> (Primary Auditory Cortex).</li>
+</ul>
+<h3 class="hy-sec" id="sec8"><span class="secn">2</span>Language Areas: Wernicke’s vs. Broca’s Area</h3>
+<div class="hy-mcq"><div class="mcq-tag">📝 Exam Check</div><p class="mcq-q">Wernicke’s area is located in:</p><ol class="mcq-opts"><li><span class="optl">A.</span> Inferior frontal</li><li><span class="optl">B.</span> Superior temporal</li><li><span class="optl">C.</span> Inferior temporal</li><li><span class="optl">D.</span> Superior frontal</li></ol><div class="mcq-ans">✔ Answer: B. Superior temporal</div></div>
+<h4 class="hy-sub">Comparative Overview &amp; Mnemonics</h4>
+<div class="hy-tblwrap"><table><tr><th>Feature</th><th>Wernicke’s Area</th><th>Broca’s Area</th></tr><tr><td>Function</td><td>Sensory speech / Comprehension</td><td>Motor speech / Expression</td></tr><tr><td>Location</td><td>Superior Temporal Gyrus</td><td>Inferior Frontal Gyrus (Pars opercularis &amp; triangularis)</td></tr><tr><td>Location Mnemonic</td><td>WEST<br>→<br>WErnicke = Superior Temporal</td><td>BIF<br>→<br>Broca = Inferior Frontal</td></tr><tr><td>Brodmann Area</td><td>Area 22</td><td>Area 44 and 45</td></tr><tr><td>Number Mnemonic</td><td>Temporal<br>→<br>Two Two = 22</td><td>Frontal<br>→<br>Four Four / Four Five = 44, 45</td></tr><tr><td>Aphasia Type</td><td>Fluent, receptive (word salad, impaired comprehension)</td><td>Non-fluent, expressive (broken speech, preserved comprehension)</td></tr></table></div>
+<h3 class="hy-sec" id="sec9"><span class="secn">3</span>Frontal Eye Field &amp; Summary of Key Brodmann Areas</h3>
+<div class="hy-mcq"><div class="mcq-tag">📝 Exam Check</div><p class="mcq-q">Frontal eye field is Brodmann area:</p><ol class="mcq-opts"><li><span class="optl">A.</span> 4</li><li><span class="optl">B.</span> 8</li><li><span class="optl">C.</span> 41, 42</li><li><span class="optl">D.</span> 17</li></ol><div class="mcq-ans">✔ Answer: B. 8</div></div>
+<h4 class="hy-sub">High-Yield Brodmann Areas &amp; Mnemonics</h4>
+<pre class="hy-code">Frontal Cortex Motor Areas (Even Numbers):
+Area 4 (Primary Motor) ---&gt; Area 6 (Premotor) ---&gt; Area 8 (Frontal Eye Field)</pre>
+<h4 class="hy-label">Frontal Eye Field (Area 8)</h4>
+<ul class="hy-list">
+<li><b>Mnemonic:</b> Eye field looks like a pair of glasses/spectacles </li>
+<li class="cont"><span class="arrow">→</span> shaped like the number <b>8</b>.</li>
+<li><i>Cross-topic pearl:</i> Mahatma Gandhi (MG = <b>M</b>yasthenia <b>G</b>ravis) wore round spectacles </li>
+<li class="cont"><span class="arrow">→</span> <b>HLA-B8</b> association.</li>
+</ul>
+<h4 class="hy-label">Primary Sensory Cortex (Areas 3, 1, 2)</h4>
+<ul class="hy-list">
+<li>Postcentral gyrus (Parietal lobe).</li>
+<li>Sensation comes first before movement </li>
+<li class="cont"><span class="arrow">→</span> Count <b>1, 2, 3</b>.</li>
+</ul>
+<h4 class="hy-label">Primary Motor Cortex (Area 4)</h4>
+<ul class="hy-list">
+<li>Precentral gyrus (Frontal lobe).</li>
+<li>Motor control of our <b>4 limbs</b> </li>
+<li class="cont"><span class="arrow">→</span> Area <b>4</b>.</li>
+</ul>
+<h4 class="hy-label">Premotor / Supplementary Motor Cortex (Area 6)</h4>
+<ul class="hy-list">
+<li>Located anterior to Area 4.</li>
+</ul>
+<h4 class="hy-label">Primary Visual Cortex (Area 17)</h4>
+<ul class="hy-list">
+<li>Located in the occipital lobe (calcarine sulcus).</li>
+<li><b>Mnemonic:</b> <b>S</b>eeing is <b>V</b>isual </li>
+<li class="cont"><span class="arrow">→</span> <b>S</b>eeing = <b>S</b>eventeen (<b>Area 17</b>).</li>
+</ul>
+<h3 class="hy-sec" id="sec10"><span class="secn">4</span>Quadrigeminal Cistern &amp; Vein of Galen</h3>
+<div class="hy-mcq"><div class="mcq-tag">📝 Exam Check</div><p class="mcq-q">Quadrigeminal cistern contains:</p><ol class="mcq-opts"><li><span class="optl">A.</span> Occipital artery</li><li><span class="optl">B.</span> Middle cerebral artery</li><li><span class="optl">C.</span> Vein of Galen</li><li><span class="optl">D.</span> Superior sagittal sinus</li></ol><div class="mcq-ans">✔ Answer: C. Vein of Galen</div></div>
+<h4 class="hy-sub">Anatomy of the Cistern</h4>
+<ul class="hy-list">
+<li><b>Boundaries:</b> Located dorsal to the midbrain colliculi (quadrigeminal plate / tectum) and inferior to the splenium of the corpus callosum.</li>
+<li><b>Content:</b> <b>Great Cerebral Vein of Galen</b>.</li>
+<li><b>Venous Drainage Pathway:</b><br></li>
+</ul>
+<div class="hy-formula">Two Internal Cerebral Veins (ICVs)+Basal Veins (of Rosenthal) <span class="arrow">→</span> Vein of Galen <span class="arrow">→</span> Straight SinusTwo Internal Cerebral Veins (ICVs)+Basal Veins (of Rosenthal) <span class="arrow">→</span> Vein of Galen <span class="arrow">→</span> Straight Sinus</div>
+<h4 class="hy-sub">High-Yield Clinical Pearl: Vein of Galen Malformation (VGAM)</h4>
+<ul class="hy-list">
+<li>An intracranial arteriovenous fistula (AVF) causing dilatation of the median prosencephalic vein.</li>
+</ul>
+<h4 class="hy-label">Classic Presentation in a Newborn</h4>
+<ul class="hy-list">
+<li>High-output <b>congestive heart failure</b> (due to severe arteriovenous shunting).</li>
+<li>Non-communicating <b>hydrocephalus</b> (aqueductal compression).</li>
+<li>Cranial bruit.</li>
+</ul>
+<h3 class="hy-sec" id="sec11"><span class="secn">5</span>Anatomical Relations of the Oculomotor Nerve (CN III)</h3>
+<div class="hy-mcq"><div class="mcq-tag">📝 Exam Check</div><p class="mcq-q">Identify the nerve emerging between the Posterior Cerebral Artery (PCA) and Superior Cerebellar Artery (SCA):</p><ol class="mcq-opts"><li><span class="optl">A.</span> Optic nerve</li><li><span class="optl">B.</span> Oculomotor nerve</li><li><span class="optl">C.</span> Trigeminal nerve</li><li><span class="optl">D.</span> Trochlear nerve</li></ol><div class="mcq-ans">✔ Answer: B. Oculomotor nerve</div></div>
+<h4 class="hy-sub">Key Anatomical Relations on the Ventral Brainstem</h4>
+<ul class="hy-list">
+<li><b>CN III (</b><b>Oculomotor</b><b>):</b> Emerges from the interpeduncular fossa of the midbrain and courses directly between the <b>Posterior Cerebral Artery (PCA)</b> above and the <b>Superior Cerebellar Artery (SCA)</b> below.</li>
+</ul>
+<h4 class="hy-label">Clinical Significance</h4>
+<ul class="hy-list">
+<li>An aneurysm of the <b>Posterior Communicating Artery (</b><b>PCoA</b><b>)</b> or <b>PCA/SCA</b> compresses the outer parasympathetic fibers of CN III first </li>
+<li class="cont"><span class="arrow">→</span> <b>pupillomotor</b><b> dysfunction (blown/dilated pupil)</b>, followed by complete "down and out" ophthalmoplegia.</li>
+</ul>
+<h4 class="hy-label">Other Nerves on Ventral Brainstem Inspection</h4>
+<ul class="hy-list">
+<li><b>CN II (Optic):</b> Forms the optic chiasm anteriorly.</li>
+<li><b>CN V (Trigeminal):</b> The thickest cranial nerve, exiting laterally from the mid-pons.</li>
+<li><b>CN IV (Trochlear):</b> The <i>only</i> cranial nerve emerging from the <b>dorsal</b> aspect of the brainstem.</li>
+</ul>
+<h3 class="hy-sec" id="sec12"><span class="secn">6</span>Basilar Artery Branches vs. Vertebral Artery Branches</h3>
+<div class="hy-mcq"><div class="mcq-tag">📝 Exam Check</div><p class="mcq-q">Identify the labeled vessel arising from the inferior third of the Basilar Artery:</p><ol class="mcq-opts"><li><span class="optl">A.</span> Basilar artery</li><li><span class="optl">B.</span> PICA</li><li><span class="optl">C.</span> AICA</li><li><span class="optl">D.</span> SCA</li></ol><div class="mcq-ans">✔ Answer: C. AICA</div></div>
+<h4 class="hy-sub">Mnemonic for Basilar Artery Branches: "PAS-ilar"</h4>
+<p class="hy-p">From superior to inferior:</p>
+<ul class="hy-list">
+<li><b>P</b>CA (Posterior Cerebral Artery) – terminal bifurcation</li>
+<li><b>S</b>CA (Superior Cerebellar Artery) – arises just before termination</li>
+<li><b>A</b>ICA (Anterior Inferior Cerebellar Artery) – arises from the inferior basilar trunk</li>
+</ul>
+<pre class="hy-code">PCA (Terminal bifurcation)
+\  /
+||  &lt;--- (CN III passes between PCA &amp; SCA)
+/  \
+SCA
+|  |
+BASILAR ARTERY (Runs on ventral pons)
+|  |
+AICA (Gives rise to Labyrinthine artery)
+|  |
+/    \
+Vertebral Arteries (Join to form Basilar)
+/            \
+PICA</pre>
+<h4 class="hy-label">Critical Distinction</h4>
+<ul class="hy-list">
+<li><b>AICA</b> arises from the <b>Basilar Artery</b>.</li>
+<li><b>PICA</b> (Posterior Inferior Cerebellar Artery) arises from the <b>Vertebral Artery</b>.</li>
+<li>Occlusion of PICA </li>
+<li class="cont"><span class="arrow">→</span> <b>Lateral Medullary (Wallenberg) Syndrome</b>.</li>
+</ul>
+<h3 class="hy-sec" id="sec13"><span class="secn">7</span>Ventricular System &amp; Axial Midbrain Anatomy</h3>
+<div class="hy-mcq"><div class="mcq-tag">📝 Exam Check</div><p class="mcq-q">Cavity of the mesencephalon is the:</p><ol class="mcq-opts"><li><span class="optl">A.</span> Lateral ventricle</li><li><span class="optl">B.</span> Third ventricle</li><li><span class="optl">C.</span> Aqueduct of Sylvius</li><li><span class="optl">D.</span> Fourth ventricle</li></ol><div class="mcq-ans">✔ Answer: C. Aqueduct of Sylvius</div></div>
+<h4 class="hy-sub">Brain Vesicles and Their Cavities</h4>
+<ul class="hy-list">
+<li><b>Telencephalon:</b> Lateral ventricles</li>
+<li><b>Diencephalon:</b> Third ventricle</li>
+<li><b>Mesencephalon (Midbrain):</b> <b>Cerebral Aqueduct of </b><b>Sylvius</b> (connects 3rd and 4th ventricles)</li>
+<li><b>Rhombencephalon</b><b> (Pons/Medulla/Cerebellum):</b> Fourth ventricle</li>
+</ul>
+<h4 class="hy-sub">Axial Midbrain on MRI ("Mickey Mouse" Appearance)</h4>
+<ul class="hy-list">
+<li><b>Cerebral Peduncles:</b> Mickey's "ears".</li>
+<li><b>Aqueduct of </b><b>Sylvius</b><b>:</b> Small rounded opening in the midline posterior tegmentum.</li>
+</ul>
+<h4 class="hy-label">Mammillary Bodies</h4>
+<ul class="hy-list">
+<li>Located immediately anterior to the midbrain.</li>
+<li><b>Mnemonic:</b> <b>MB</b> is in front of <b>MB</b> </li>
+<li class="cont"><span class="arrow">→</span> <b>M</b>ammillary <b>B</b>odies are in front of the <b>M</b>id<b>B</b>rain.</li>
+<li><b>Pineal Gland:</b> Located posterior to the midbrain / above the tectal plate.</li>
+</ul>
+<h3 class="hy-sec" id="sec14"><span class="secn">8</span>Hypothalamic Nuclei Functions</h3>
+<div class="hy-mcq"><div class="mcq-tag">📝 Exam Check</div><p class="mcq-q">All of the following pairs are correct for nuclei of the hypothalamus EXCEPT:</p><ol class="mcq-opts"><li><span class="optl">A.</span> Ventromedial: Hunger</li><li><span class="optl">B.</span> Supra-optic: Water conservation</li><li><span class="optl">C.</span> Posterior nucleus: Shivering center</li><li><span class="optl">D.</span> Suprachiasmatic: Circadian rhythm</li></ol><div class="mcq-ans">✔ Answer: A. Ventromedial: Hunger (Incorrect; Ventromedial = Satiety)</div></div>
+<h4 class="hy-sub">High-Yield Mnemonics for Hypothalamic Nuclei</h4>
+<pre class="hy-code">- Lateral Nucleus: Hunger (Eat wide/lateral)
+- Ventromedial Nucleus: Satiety (Full inside/medial)</pre>
+<h4 class="hy-label">Feeding Centers</h4>
+<ul class="hy-list">
+<li><b>Lateral Nucleus:</b> Controls <b>Hunger</b> / appetite stimulation.<br><i>(Destruction </i></li>
+<li class="cont"><span class="arrow">→</span> <i>Anorexia, starvation).</i></li>
+<li><b>Ventromedial Nucleus:</b> Controls <b>Satiety</b>.<br><i>(Destruction </i></li>
+<li class="cont"><span class="arrow">→</span> <i>Hyperphagia</i><i>, obesity).</i></li>
+</ul>
+<h4 class="hy-sub">Posterior Pituitary Hormone Secretion ("V for O and O for V"):</h4>
+<ul class="hy-list">
+<li><b>V</b>entricular (<b>Paraventricular</b>) </li>
+<li class="cont"><span class="arrow">→</span> Secretes <b>O</b>xytocin.</li>
+<li><b>O</b>ptic (<b>Supraoptic</b>) </li>
+<li class="cont"><span class="arrow">→</span> Secretes <b>V</b>asopressin (ADH </li>
+<li class="cont"><span class="arrow">→</span> water conservation).</li>
+</ul>
+<h4 class="hy-label">Temperature Regulation</h4>
+<ul class="hy-list">
+<li><b>A</b>nterior Nucleus: Detects <b>Heat</b> </li>
+<li class="cont"><span class="arrow">→</span> Dissipates heat (cooling center / Parasympathetic).<br><i>Mnemonic:</i> <b>HeANT</b> </li>
+<li class="cont"><span class="arrow">→</span> <b>Heat</b> is controlled by <b>Ant</b>erior (A/C).</li>
+<li><b>P</b>osterior Nucleus: Detects <b>Cold</b> </li>
+<li class="cont"><span class="arrow">→</span> Conserves heat (shivering center / Sympathetic).</li>
+</ul>
+<h4 class="hy-label">Circadian Rhythm</h4>
+<ul class="hy-list">
+<li><b>Suprachiasmatic</b><b> Nucleus (SCN):</b><br><i>Mnemonic:</i> <b>Ch</b>iasmatic </li>
+<li class="cont"><span class="arrow">→</span> <b>C</b>ircadian rhythm (driven by light inputs from the retina).</li>
+</ul>
+<h3 class="hy-sec" id="sec15"><span class="secn">9</span>The Auditory Pathway</h3>
+<div class="hy-mcq"><div class="mcq-tag">📝 Exam Check</div><p class="mcq-q">Which of the following is NOT a component of the auditory pathway?</p><ol class="mcq-opts"><li><span class="optl">A.</span> Inferior colliculus</li><li><span class="optl">B.</span> Lateral geniculate body</li><li><span class="optl">C.</span> Superior olivary nucleus</li><li><span class="optl">D.</span> Lateral lemniscus</li></ol><div class="mcq-ans">✔ Answer: B. Lateral geniculate body (LGB is Visual)</div></div>
+<h4 class="hy-sub">Mnemonics for the Auditory Pathway: "E. COLI MA" / "SLIM"</h4>
+<pre class="hy-code">Cochlear Nerve ---&gt; Superior Olivary Complex ---&gt; Lateral Lemniscus ---&gt; Inferior Colliculus ---&gt; Medial Geniculate Body ---&gt; Auditory Cortex</pre>
+<ul class="hy-list">
+<li><b>S</b>uperior olivary complex</li>
+<li><b>L</b>ateral lemniscus</li>
+<li><b>I</b>nferior colliculus</li>
+<li><b>M</b>edial geniculate body (MGB)</li>
+</ul>
+<h4 class="hy-sub">Geniculate Body Mnemonic</h4>
+<ul class="hy-list">
+<li><b>MGB (Medial Geniculate Body):</b> <b>M</b>edial = <b>M</b>usic / <b>G</b>aana </li>
+<li class="cont"><span class="arrow">→</span> <b>Hearing (Auditory)</b>.</li>
+<li><b>LGB (Lateral Geniculate Body):</b> <b>L</b>ateral = <b>L</b>ight </li>
+<li class="cont"><span class="arrow">→</span> <b>Vision (Visual)</b>.</li>
+</ul>
+<h3 class="hy-sec" id="sec16"><span class="secn">10</span>Brown-Séquard Syndrome (Spinal Cord Hemisection)</h3>
+<div class="hy-mcq"><div class="mcq-tag">📝 Exam Check</div><p class="mcq-q">In Brown-Séquard syndrome, which of the following is FALSE?</p><ol class="mcq-opts"><li><span class="optl">A.</span> Ipsilateral loss of vibration</li><li><span class="optl">B.</span> Ipsilateral loss of pain &amp; temperature</li><li><span class="optl">C.</span> Ipsilateral loss of motor function</li><li><span class="optl">D.</span> Ipsilateral loss of fine touch</li></ol><div class="mcq-ans">✔ Answer: B. Ipsilateral loss of pain &amp; temperature (It is Contralateral)</div></div>
+<h4 class="hy-sub">High-Yield Rule: "OPT"</h4>
+<ul class="hy-list">
+<li><b>Mnemonic:</b> <b>OPT</b> </li>
+<li class="cont"><span class="arrow">→</span> <b>OP</b>posite side loses <b>P</b>ain and <b>T</b>emperature.</li>
+<li><b>Mechanism:</b> The lateral spinothalamic tract decussates 1–2 segments above entry in the spinal cord; therefore, a unilateral lesion damages fibers that ascended from the contralateral side.</li>
+</ul>
+<h4 class="hy-sub">Deficit Patterns in Cord Hemisection</h4>
+<div class="hy-tblwrap"><table><tr><th>Modality / Pathway</th><th>Side of Deficit Relative to Lesion</th><th>Level of Deficit</th></tr><tr><td>Pain &amp; Temperature (Spinothalamic)</td><td>Contralateral (Opposite)</td><td>1–2 segments below the lesion level</td></tr><tr><td>Motor / Voluntary Movement (Corticospinal)</td><td>Ipsilateral (Same side)</td><td>Below lesion level (UMN signs); at level (LMN signs)</td></tr><tr><td>Vibration, Proprioception, Fine Touch (Dorsal Columns)</td><td>Ipsilateral (Same side)</td><td>Below lesion level</td></tr></table></div>
+<h4 class="hy-sub">Quick Summary Cheat Sheet</h4>
+<ul class="hy-list">
+<li><b>Heschl’s</b><b> </b><b>Gyrus</b><b>:</b> Area 41, 42 </li>
+<li class="cont"><span class="arrow">→</span> Primary Auditory.</li>
+<li><b>Wernicke’s:</b> Area 22 </li>
+<li class="cont"><span class="arrow">→</span> Superior Temporal (<b>WEST</b>).</li>
+<li><b>Broca’s</b><b>:</b> Area 44, 45 </li>
+<li class="cont"><span class="arrow">→</span> Inferior Frontal (<b>BIF</b>).</li>
+<li><b>Frontal Eye Field:</b> Area 8 (Spectacles shape).</li>
+<li><b>Primary Visual:</b> Area 17 (<b>S</b>eeing = <b>S</b>eventeen).</li>
+<li><b>Quadrigeminal</b><b> Cistern:</b> Houses <b>Vein of Galen</b> (drains to Straight Sinus).</li>
+<li><b>CN III Location:</b> Sandwiched between <b>PCA</b> and <b>SCA</b>.</li>
+<li><b>Basilar Branches:</b> <b>PAS</b> (<b>P</b>CA, <b>A</b>ICA, <b>S</b>CA); <b>PICA</b> is from Vertebral.</li>
+<li><b>Aqueduct of </b><b>Sylvius</b><b>:</b> Cavity of the midbrain (<b>mesencephalon</b>).</li>
+<li><b>Hypothalamus:</b> <b>L</b>ateral = <b>L</b>unch (Hunger); <b>M</b>edial = Satiety; <b>V for O</b> (Paraventricular = Oxytocin); <b>O for V</b> (Supraoptic = Vasopressin).</li>
+<li><b>Auditory Pathway:</b> <b>SLIM</b>; <b>M</b>GB = <b>M</b>usic (Auditory); <b>L</b>GB = <b>L</b>ight (Vision).</li>
+<li><b>Brown-</b><b>Séquard</b><b>:</b> <b>OPT</b> (Opposite = Pain &amp; Temperature); all others are Ipsilateral.</li>
+</ul>
+      <div class="foot-note"><b>Source:</b> High-yield neurology lecture notes — Brainstem Syndromes &amp; Neuroanatomy Mnemonics. Compiled for MedArena's Very High Yield series. Free to read, share and revise.</div>
+    </article>
+  </div>
+</div>
+
+<script>
+(function(){
+  var bar = document.getElementById("readbar");
+  var links = [].slice.call(document.querySelectorAll(".toc-card a.toc-sec, .toc-card a.toc-part"));
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + "%";
+  }
+  window.addEventListener("scroll", onScroll, {passive:true});
+  onScroll();
+
+  var secs = [].slice.call(document.querySelectorAll(".hy-sec[id], .hy-part[id]"));
+  if ("IntersectionObserver" in window && secs.length){
+    var visible = {};
+    var io = new IntersectionObserver(function(ents){
+      ents.forEach(function(en){ visible[en.target.id] = en.isIntersecting; });
+      var first = null;
+      for (var i = 0; i < secs.length; i++){
+        if (visible[secs[i].id]){ first = secs[i]; break; }
+      }
+      links.forEach(function(a){
+        a.classList.toggle("hl", !!first && a.getAttribute("href") === "#" + first.id);
+      });
+    }, {rootMargin: "-70px 0px -70% 0px"});
+    secs.forEach(function(s){ io.observe(s); });
+  }
+})();
+</script>
+</body>
+</html>
