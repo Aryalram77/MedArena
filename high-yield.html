@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Very High Yield — Neurology | MedArena</title>
-<meta name="description" content="Very High Yield notes: brainstem syndromes, neuroanatomy mnemonics, exam checks and high-yield tables for Loksewa and CEE MD/MS preparation.">
+<title>Very High Yield — MedArena</title>
+<meta name="description" content="Very High Yield notes: Neurology brainstem syndromes, neuroanatomy mnemonics and HLA-disease associations — exam-gold notes for Loksewa and CEE MD/MS preparation.">
 <style>
   :root{
     --bg:#f1f5f9; --card:#ffffff; --ink:#0f172a; --muted:#64748b;
@@ -33,11 +33,12 @@
   .hero::after{content:"\2726";position:absolute;right:110px;bottom:8px;font-size:30px;opacity:.18}
   .hero .kicker{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);padding:5px 13px;border-radius:99px;font-size:11.5px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase}
   .hero h1{margin:12px 0 8px;font-size:34px;letter-spacing:-.8px;line-height:1.15}
-  .hero p{margin:0;max-width:640px;color:#fff3;font-size:14.5px}
+  .hero p{margin:0;max-width:660px;color:#fff3;font-size:14.5px}
   .hero p b{color:#fff}
 
   .chips{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 18px}
-  .chip{padding:9px 15px;border-radius:99px;font-size:13.5px;font-weight:700;border:1px solid var(--line);background:#fff;color:#475569;text-decoration:none}
+  .chip{padding:9px 15px;border-radius:99px;font-size:13.5px;font-weight:700;border:1px solid var(--line);background:#fff;color:#475569;font-family:inherit;cursor:pointer;transition:transform .15s,box-shadow .15s}
+  button.chip:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(15,23,42,.1)}
   .chip.active{background:#0f172a;border-color:#0f172a;color:#fbbf24;box-shadow:0 6px 16px rgba(15,23,42,.22)}
   .chip.soon{opacity:.55;border-style:dashed;cursor:default}
 
@@ -70,7 +71,6 @@
   .hy-list li{margin:6px 0;font-size:14.3px;color:#1e293b;padding-left:3px}
   .hy-list li::marker{color:var(--violet)}
   .hy-list li.cont{list-style:none;margin-left:-22px;padding-left:22px}
-  .hy-list li.cont::before{content:""}
   .hy-p b,.hy-list b{color:#0f172a;background:linear-gradient(transparent 62%,rgba(253,224,71,.75) 62%);border-radius:2px;padding:0 1px}
   .arrow{color:var(--violet);font-weight:800}
   .hy-formula{display:inline-block;background:#eef2ff;border:1px solid #c7d2fe;border-radius:10px;padding:8px 15px;font-weight:700;color:#3730a3;margin:8px 0;font-size:14px}
@@ -122,13 +122,14 @@
     <p>The highest-yield facts, mnemonics, syndromes and <b>exam-check MCQs</b> — distilled from high-yield lectures and organised for rapid revision. <b>Free for everyone.</b></p>
   </div>
 
-  <div class="chips">
-    <span class="chip active">&#129504; Neurology</span>
+  <div class="chips" id="topicChips">
+    <button class="chip active" data-topic="neuro">&#129504; Neurology</button>
+    <button class="chip" data-topic="hla">&#129516; HLA Association</button>
     <span class="chip soon">&#10133; More topics coming soon</span>
   </div>
 
-  <details class="toc-mobile">
-    <summary>&#128202; On this page</summary>
+  <details class="toc-mobile" id="tocm-neuro">
+    <summary>&#128202; On this page — Neurology</summary>
     <a class="toc-part" href="#part1">🧠 Brainstem Syndromes &amp; Mnemonics</a>
       <a class="toc-sec" href="#sec1">1. Fundamental Rules of Brainstem Localization</a>
       <a class="toc-sec" href="#sec2">2. Midbrain Syndromes</a>
@@ -148,11 +149,31 @@
       <a class="toc-sec" href="#sec15">9. The Auditory Pathway</a>
       <a class="toc-sec" href="#sec16">10. Brown-Séquard Syndrome (Spinal Cord Hemisection)</a>
   </details>
+  <details class="toc-mobile" id="tocm-hla" hidden>
+    <summary>&#128202; On this page — HLA Association</summary>
+    <a class="toc-part" href="#hspart1">🧬 HLA &amp; Diseases: High-Yield Mnemonics</a>
+      <a class="toc-sec" href="#hssec1">1. Why HLA Associations Matter in Exams</a>
+      <a class="toc-sec" href="#hssec2">2. Core Mnemonics &amp; Disease Associations</a>
+      <a class="toc-sec" href="#hssec3">1. AK-47 → HLA-B47 (Adrenal Insufficiency &amp; CAH)</a>
+      <a class="toc-sec" href="#hssec4">2. A "Room" Has 4 Walls → HLA-DR4 (Rheumatoid Arthritis)</a>
+      <a class="toc-sec" href="#hssec5">3. "Just Married 27 Years Ago" → HLA-B27 (Seronegative Spondyloarthropathies)</a>
+      <a class="toc-sec" href="#hssec6">4. Journey from "Doctor to MS" → HLA-DR2</a>
+      <a class="toc-sec" href="#hssec7">5. Mahatma Gandhi’s Spectacles → HLA-B8 (Myasthenia Gravis &amp; Graves' Disease)</a>
+      <a class="toc-sec" href="#hssec8">6. "Sugar-Free" → HLA-DR3 &amp; DR4 (Type 1 Diabetes Mellitus)</a>
+      <a class="toc-sec" href="#hssec9">7. "Hum Paanch" → HLA-DR5 (Hashimoto's &amp; Pernicious Anemia)</a>
+      <a class="toc-sec" href="#hssec10">8. Iron Man's 3-Tier Abs → HLA-A3 (Hemochromatosis)</a>
+      <a class="toc-sec" href="#hssec11">9. Behçet's Disease → HLA-B51</a>
+      <a class="toc-sec" href="#hssec12">10. The Ascending "B" Series: B47, B51, B57</a>
+      <a class="toc-sec" href="#hssec13">11. Psoriasis Vulgaris → HLA-Cw6</a>
+      <a class="toc-sec" href="#hssec14">12. Celiac Disease → HLA-DQ2 &amp; HLA-DQ8</a>
+      <a class="toc-sec" href="#hssec15">3. Master Summary Table</a>
+  </details>
 
   <div class="grid">
     <aside class="toc-card">
-      <h3>On this page</h3>
-      <a class="toc-part" href="#part1">🧠 Brainstem Syndromes &amp; Mnemonics</a>
+      <div id="toc-neuro">
+        <h3>On this page — Neurology</h3>
+        <a class="toc-part" href="#part1">🧠 Brainstem Syndromes &amp; Mnemonics</a>
       <a class="toc-sec" href="#sec1">1. Fundamental Rules of Brainstem Localization</a>
       <a class="toc-sec" href="#sec2">2. Midbrain Syndromes</a>
       <a class="toc-sec" href="#sec3">3. Pontine Syndromes</a>
@@ -170,9 +191,29 @@
       <a class="toc-sec" href="#sec14">8. Hypothalamic Nuclei Functions</a>
       <a class="toc-sec" href="#sec15">9. The Auditory Pathway</a>
       <a class="toc-sec" href="#sec16">10. Brown-Séquard Syndrome (Spinal Cord Hemisection)</a>
+      </div>
+      <div id="toc-hla" hidden>
+        <h3>On this page — HLA Association</h3>
+        <a class="toc-part" href="#hspart1">🧬 HLA &amp; Diseases: High-Yield Mnemonics</a>
+      <a class="toc-sec" href="#hssec1">1. Why HLA Associations Matter in Exams</a>
+      <a class="toc-sec" href="#hssec2">2. Core Mnemonics &amp; Disease Associations</a>
+      <a class="toc-sec" href="#hssec3">1. AK-47 → HLA-B47 (Adrenal Insufficiency &amp; CAH)</a>
+      <a class="toc-sec" href="#hssec4">2. A "Room" Has 4 Walls → HLA-DR4 (Rheumatoid Arthritis)</a>
+      <a class="toc-sec" href="#hssec5">3. "Just Married 27 Years Ago" → HLA-B27 (Seronegative Spondyloarthropathies)</a>
+      <a class="toc-sec" href="#hssec6">4. Journey from "Doctor to MS" → HLA-DR2</a>
+      <a class="toc-sec" href="#hssec7">5. Mahatma Gandhi’s Spectacles → HLA-B8 (Myasthenia Gravis &amp; Graves' Disease)</a>
+      <a class="toc-sec" href="#hssec8">6. "Sugar-Free" → HLA-DR3 &amp; DR4 (Type 1 Diabetes Mellitus)</a>
+      <a class="toc-sec" href="#hssec9">7. "Hum Paanch" → HLA-DR5 (Hashimoto's &amp; Pernicious Anemia)</a>
+      <a class="toc-sec" href="#hssec10">8. Iron Man's 3-Tier Abs → HLA-A3 (Hemochromatosis)</a>
+      <a class="toc-sec" href="#hssec11">9. Behçet's Disease → HLA-B51</a>
+      <a class="toc-sec" href="#hssec12">10. The Ascending "B" Series: B47, B51, B57</a>
+      <a class="toc-sec" href="#hssec13">11. Psoriasis Vulgaris → HLA-Cw6</a>
+      <a class="toc-sec" href="#hssec14">12. Celiac Disease → HLA-DQ2 &amp; HLA-DQ8</a>
+      <a class="toc-sec" href="#hssec15">3. Master Summary Table</a>
+      </div>
     </aside>
 
-    <article class="content">
+    <article class="content" id="topic-neuro">
       <div class="hy-part" id="part1"><span class="part-icon">🧠</span>Brainstem Syndromes &amp; Mnemonics</div>
 <h3 class="hy-sec" id="sec1"><span class="secn">1</span>Fundamental Rules of Brainstem Localization</h3>
 <h4 class="hy-sub">A. The "Rule of 4" (Cranial Nerve Levels)</h4>
@@ -660,6 +701,184 @@ PICA</pre>
 </ul>
       <div class="foot-note"><b>Source:</b> High-yield neurology lecture notes — Brainstem Syndromes &amp; Neuroanatomy Mnemonics. Compiled for MedArena's Very High Yield series. Free to read, share and revise.</div>
     </article>
+
+    <article class="content" id="topic-hla" hidden>
+      <div class="hy-part" id="hspart1"><span class="part-icon">🧬</span>HLA &amp; Diseases: High-Yield Mnemonics</div>
+<h3 class="hy-sec" id="hssec1"><span class="secn">1</span>Why HLA Associations Matter in Exams</h3>
+<p class="hy-p">Questions on Human Leukocyte Antigen (HLA) associations are tested in two main ways:</p>
+<ul class="hy-list">
+<li><b>Direct association:</b> Asking which HLA allele is linked to a specific disorder.</li>
+<li><b>Clinical vignette clue:</b> Providing an HLA subtype within a clinical stem to help you deduce the underlying pathology or confirm a diagnosis.</li>
+</ul>
+<h3 class="hy-sec" id="hssec2"><span class="secn">2</span>Core Mnemonics &amp; Disease Associations</h3>
+<h3 class="hy-sec" id="hssec3"><span class="secn">1</span>AK-47 → HLA-B47 (Adrenal Insufficiency &amp; CAH)</h3>
+<ul class="hy-list">
+<li><b>Visual Mnemonic:</b> <b>AK-47</b> rifle.</li>
+<ul class="hy-list">
+<li><b>AK</b> = <b>A</b>drenal <b>K</b>ami (<i>Hindi for "deficiency"</i> </li>
+<li class="cont"><span class="arrow">→</span> Adrenal Insufficiency).</li>
+<li><b>47</b> = <b>HLA-B47</b>.</li>
+</ul>
+</ul>
+<h4 class="hy-label">Associated Conditions</h4>
+<h4 class="hy-sub">Adrenal insufficiency</h4>
+<ul class="hy-list">
+<li><b>Congenital Adrenal Hyperplasia (CAH)</b> due to <b>21-<b>α</b><b>-hydroxylase deficiency</b>.</b></li>
+</ul>
+<h3 class="hy-sec" id="hssec4"><span class="secn">2</span>A "Room" Has 4 Walls → HLA-DR4 (Rheumatoid Arthritis)</h3>
+<ul class="hy-list">
+<li><b>Visual Mnemonic:</b> A <b>Room</b> has <b>4</b> walls.</li>
+<ul class="hy-list">
+<li><b>Room</b> = <b>Rheum</b>atoid arthritis.</li>
+<li><b>4</b> = <b>HLA-DR4</b>.</li>
+</ul>
+<li><b>Associated Condition:</b> <b>Rheumatoid Arthritis (RA)</b>.</li>
+</ul>
+<h3 class="hy-sec" id="hssec5"><span class="secn">3</span>"Just Married 27 Years Ago" → HLA-B27 (Seronegative Spondyloarthropathies)</h3>
+<ul class="hy-list">
+<li><b>Visual Mnemonic:</b> Marriage creates a <b>PAIR</b> at age <b>27</b>.</li>
+<ul class="hy-list">
+<li><b>27</b> = <b>HLA-B27</b>.</li>
+<li><b>PAIR</b> = Seronegative Spondyloarthropathies (all negative for Rheumatoid Factor):</li>
+<ul class="hy-list">
+<li><b>P:</b> <b>P</b>soriatic arthritis</li>
+<li><b>A:</b> <b>A</b>nkylosing spondylitis <i>(Strongest association, </i></li>
+</ul>
+</ul>
+</ul>
+<p class="hy-p"><i>&gt;90%</i></p>
+<p class="hy-p"><i>)</i></p>
+<ul class="hy-list">
+<li><b>I:</b> <b>I</b>BD-associated enteropathic arthritis (Crohn’s / Ulcerative colitis)</li>
+<li><b>R:</b> <b>R</b>eactive arthritis / <b>R</b>eiter’s syndrome</li>
+</ul>
+<h4 class="hy-label">Clinical Vignette Clues for Ankylosing Spondylitis</h4>
+<ul class="hy-list">
+<li>Young male presenting with chronic <b>inflammatory lower backache</b>, morning stiffness improving with activity, and recurrent <b>anterior uveitis</b>.</li>
+</ul>
+<h3 class="hy-sec" id="hssec6"><span class="secn">4</span>Journey from "Doctor to MS" → HLA-DR2</h3>
+<h4 class="hy-label">Mnemonic Story</h4>
+<ul class="hy-list">
+<li><b>Dr</b><b> to MS:</b> Clearing NEET-PG transforms you from a <b>DR</b> (MBBS) to an <b>MS</b> (Postgraduate).</li>
+<ul class="hy-list">
+<li><b>DR2</b> </li>
+<li class="cont"><span class="arrow">→</span> <b>M</b>ultiple <b>S</b>clerosis (<b>MS</b>).</li>
+</ul>
+<li><b>"</b><b>Nako</b><b>" (No):</b> During the grueling preparation, students feel like saying <i>"</i><i>Nako</i><i>"</i> (<i>Marathi for "No/I don't want this"</i>):</li>
+<ul class="hy-list">
+<li><b>Nako</b> </li>
+</ul>
+</ul>
+<p class="hy-p">≈</p>
+<p class="hy-p"><b>Narco</b>lepsy </p>
+<p class="hy-p"><span class="arrow">→</span> <b>HLA-DR2</b>.</p>
+<ul class="hy-list">
+<li><b>"It's a Good Thing":</b> Parents encourage you that pursuing post-graduation is a <i>good</i> thing:</li>
+<ul class="hy-list">
+<li><b>Good</b> </li>
+<li class="cont"><span class="arrow">→</span> <b>Goodpasture</b><b> syndrome</b> </li>
+<li class="cont"><span class="arrow">→</span> <b>HLA-DR2</b>.</li>
+</ul>
+</ul>
+<h4 class="hy-label">Summary for HLA-DR2</h4>
+<ul class="hy-list">
+<li><b>M</b>ultiple <b>S</b>clerosis</li>
+</ul>
+<h4 class="hy-sub">Narcolepsy</h4>
+<h4 class="hy-sub">Goodpasture syndrome</h4>
+<h3 class="hy-sec" id="hssec7"><span class="secn">5</span>Mahatma Gandhi’s Spectacles → HLA-B8 (Myasthenia Gravis &amp; Graves' Disease)</h3>
+<ul class="hy-list">
+<li><b>Visual Mnemonic:</b> <b>M</b>ahatma <b>G</b>andhi (<b>MG</b>) wore round glasses shaped like the number <b>8</b>.</li>
+<ul class="hy-list">
+<li><b>MG</b> = <b>M</b>yasthenia <b>G</b>ravis </li>
+<li class="cont"><span class="arrow">→</span> <b>HLA-B8</b>.</li>
+<li><b>Gravis</b> goes with <b>Graves' Disease</b> </li>
+<li class="cont"><span class="arrow">→</span> Both are <b>HLA-B8</b> <i>(and both are Type V / stimulating/blocking Type II hypersensitivity reactions)</i>.</li>
+</ul>
+</ul>
+<h4 class="hy-label">Clinical Vignette Clues for Myasthenia Gravis</h4>
+<ul class="hy-list">
+<li>Fatigable weakness, ptosis, and diplopia that <b>worsen toward the evening</b> or after exertion; associated with <b>thymoma</b> or thymic hyperplasia.</li>
+</ul>
+<h3 class="hy-sec" id="hssec8"><span class="secn">6</span>"Sugar-Free" → HLA-DR3 &amp; DR4 (Type 1 Diabetes Mellitus)</h3>
+<h4 class="hy-label">Mnemonic</h4>
+<ul class="hy-list">
+<li>"Sugar" (Diabetes) </li>
+<li class="cont"><span class="arrow">→</span> Use <b>Sugar-Free</b> </li>
+</ul>
+<p class="hy-p">≈</p>
+<p class="hy-p"><b>Three (DR3)</b>.</p>
+<ul class="hy-list">
+<li>Patients with diabetes count calories: <b>3 and 4</b> </li>
+<li class="cont"><span class="arrow">→</span> <b>HLA-DR3</b> and <b>HLA-DR4</b>.</li>
+<li><b>Associated Condition:</b> <b>Type 1 Diabetes Mellitus (IDDM)</b> <i>(HLA association is strong for Type 1, NOT Type 2)</i>.</li>
+<li><b>Bonus Association for HLA-DR3:</b> <b>Systemic Lupus </b><b>Erythematosus</b><b> (SLE)</b>.</li>
+</ul>
+<h3 class="hy-sec" id="hssec9"><span class="secn">7</span>"Hum Paanch" → HLA-DR5 (Hashimoto's &amp; Pernicious Anemia)</h3>
+<ul class="hy-list">
+<li><b>Visual Mnemonic:</b> The classic TV show <b>"Hum </b><b>Paanch</b><b>"</b> (<b>H-P-5</b>).</li>
+<ul class="hy-list">
+<li><b>H</b> = <b>H</b>ashimoto's thyroiditis</li>
+<li><b>P</b> = <b>P</b>ernicious anemia</li>
+<li><b>5</b> = <b>HLA-DR5</b></li>
+</ul>
+</ul>
+<h3 class="hy-sec" id="hssec10"><span class="secn">8</span>Iron Man's 3-Tier Abs → HLA-A3 (Hemochromatosis)</h3>
+<ul class="hy-list">
+<li><b>Visual Mnemonic:</b> <b>Iron Man</b> with <b>3</b> horizontal tiers of abdominal muscles.</li>
+<ul class="hy-list">
+<li><b>Iron</b> = Primary <b>Hemochromatosis</b> (iron overload).</li>
+<li><b>Abs (3 tiers)</b> = <b>HLA-A3</b>.</li>
+</ul>
+<li><b>Genetic Pearl:</b> The <b>HFE</b> gene for hemochromatosis is located on <b>Chromosome 6</b> <i>(like a 6-pack)</i>.</li>
+</ul>
+<h3 class="hy-sec" id="hssec11"><span class="secn">9</span>Behçet's Disease → HLA-B51</h3>
+<ul class="hy-list">
+<li><b>Mnemonic:</b> Look at the spelling of <b>B-E-</b><b>hçet</b>:</li>
+<ul class="hy-list">
+<li>Letter <b>E</b> is the <b>5th</b> letter of the alphabet.</li>
+<li>Combine <b>B</b> + <b>5</b> + <b>1</b> </li>
+<li class="cont"><span class="arrow">→</span> <b>HLA-B51</b>.</li>
+</ul>
+</ul>
+<h4 class="hy-label">Classic Clinical Triad</h4>
+<ul class="hy-list">
+<li>Recurrent, painful <b>oral </b><b>aphthous</b><b> ulcers</b></li>
+<li>Recurrent <b>genital ulcers</b></li>
+<li>Relapsing <b>uveitis</b> (hypopyon uveitis)</li>
+</ul>
+<h3 class="hy-sec" id="hssec12"><span class="secn">10</span>The Ascending "B" Series: B47, B51, B57</h3>
+<p class="hy-p">A high-yield pattern to link numerical order with alphabetical order:</p>
+<div class="hy-tblwrap"><table><tr><th>Numerical Sequence</th><th>Formula</th><th>Associated Disease / Drug</th></tr><tr><td>HLA-B47</td><td>A</td><td>Adrenal insufficiency (AK-47)</td></tr><tr><td>HLA-B51</td><td>B</td><td>Behçet's disease</td></tr><tr><td>HLA-B57</td><td>AB<br>(A+B)</td><td>Abacavir hypersensitivity</td></tr></table></div>
+<h4 class="hy-label">Clinical Pearl for Abacavir</h4>
+<ul class="hy-list">
+<li>Abacavir is an NRTI used in HIV.</li>
+<li>Testing for <b>HLA-B*5701</b> is mandatory before starting treatment to avoid life-threatening multisystem hypersensitivity reactions.</li>
+</ul>
+<h3 class="hy-sec" id="hssec13"><span class="secn">11</span>Psoriasis Vulgaris → HLA-Cw6</h3>
+<ul class="hy-list">
+<li><b>Mnemonic:</b> Phonetically, <b>Pso</b>riasis starts with the sound of <b>"C"</b> (or <i>Coriasis</i>):</li>
+<ul class="hy-list">
+<li><b>C</b> </li>
+<li class="cont"><span class="arrow">→</span> <b>HLA-Cw6</b>.</li>
+</ul>
+</ul>
+<h3 class="hy-sec" id="hssec14"><span class="secn">12</span>Celiac Disease → HLA-DQ2 &amp; HLA-DQ8</h3>
+<ul class="hy-list">
+<li><b>Mnemonic:</b> <i>"Wheat DQ-</i><i>tu</i><i>?"</i> (Hindi phrase: <i>"Wheat de </i><i>kyun</i><i> </i><i>tu</i><i>?"</i> </li>
+<li class="cont"><span class="arrow">→</span> "Why would you give wheat to a celiac patient?"):</li>
+<ul class="hy-list">
+<li><b>DQ-</b><b>tu</b> = <b>DQ2</b> and <b>DQ8</b>.</li>
+</ul>
+<li><b>Associated Skin Condition:</b> <b>Dermatitis </b><b>Herpetiformis</b><b> (DH)</b>:</li>
+<ul class="hy-list">
+<li>Intensely pruritic vesicular lesions over extensor surfaces (elbows, knees, buttocks) showing granular IgA deposits on direct immunofluorescence.</li>
+</ul>
+</ul>
+<h3 class="hy-sec" id="hssec15"><span class="secn">3</span>Master Summary Table</h3>
+<div class="hy-tblwrap"><table><tr><th>HLA Allele</th><th>Associated Disease(s)</th><th>Memory Hook / Mnemonic</th></tr><tr><td>HLA-A3</td><td>Primary Hemochromatosis</td><td>Iron Man with 3-level Abs (HFE on Chromosome 6)</td></tr><tr><td>HLA-B8</td><td>Myasthenia Gravis, Graves' Disease</td><td>Mahatma Gandhi’s round spectacles shape of 8</td></tr><tr><td>HLA-B27</td><td>Ankylosing Spondylitis, Psoriatic Arthritis, IBD Arthritis, Reactive Arthritis</td><td>PAIR married at age 27</td></tr><tr><td>HLA-B47</td><td>Adrenal Insufficiency, 21-<br>α<br>-hydroxylase CAH</td><td>AK-47<br>→<br>Adrenal Kami</td></tr><tr><td>HLA-B51</td><td>Behçet's Disease</td><td>B-E-hçet<br>→<br>E is 5th letter<br>→<br>B51</td></tr><tr><td>HLA-B57</td><td>Abacavir Hypersensitivity</td><td>Combination of A (47) + B (51)<br>→<br>ABacavir (57)</td></tr><tr><td>HLA-Cw6</td><td>Psoriasis Vulgaris</td><td>Psoriasis phonetic "C"<br>→<br>Cw6</td></tr><tr><td>HLA-DR2</td><td>Multiple Sclerosis, Narcolepsy, Goodpasture Syndrome</td><td>DR to MS; "Nako" (Narco); it's a Good thing</td></tr><tr><td>HLA-DR3</td><td>Type 1 Diabetes Mellitus, SLE</td><td>Sugar-Free (3); DR3 &amp; DR4</td></tr><tr><td>HLA-DR4</td><td>Rheumatoid Arthritis, Type 1 Diabetes Mellitus</td><td>A Room has 4 walls<br>→<br>Rheumatoid</td></tr><tr><td>HLA-DR5</td><td>Hashimoto's Thyroiditis, Pernicious Anemia</td><td>H-P-5<br>→<br>TV show "Hum Paanch"</td></tr><tr><td>HLA-DQ2 / DQ8</td><td>Celiac Disease</td><td>"Wheat DQ-tu?"<br>→<br>DQ2 &amp; DQ8</td></tr></table></div>
+      <div class="foot-note"><b>Source:</b> High-yield immunology lecture notes — HLA &amp; Diseases: High-Yield Mnemonics. Compiled for MedArena's Very High Yield series. Free to read, share and revise.</div>
+    </article>
   </div>
 </div>
 
@@ -673,7 +892,28 @@ PICA</pre>
     bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + "%";
   }
   window.addEventListener("scroll", onScroll, {passive:true});
-  onScroll();
+
+  var chips = [].slice.call(document.querySelectorAll(".chip[data-topic]"));
+  var topics = ["neuro", "hla"];
+  function showTopic(t, noscroll){
+    chips.forEach(function(c){ c.classList.toggle("active", c.getAttribute("data-topic") === t); });
+    topics.forEach(function(k){
+      var a = document.getElementById("topic-" + k);
+      var n = document.getElementById("toc-" + k);
+      var m = document.getElementById("tocm-" + k);
+      if (a) a.hidden = (k !== t);
+      if (n) n.hidden = (k !== t);
+      if (m) m.hidden = (k !== t);
+    });
+    try { history.replaceState(null, "", "#topic=" + t); } catch(e){}
+    if (!noscroll) window.scrollTo(0, 0);
+    onScroll();
+  }
+  chips.forEach(function(c){
+    c.addEventListener("click", function(){ showTopic(c.getAttribute("data-topic")); });
+  });
+  var mh = (location.hash || "").match(/^#topic=(\w+)$/);
+  if (mh && topics.indexOf(mh[1]) !== -1) showTopic(mh[1], true);
 
   var secs = [].slice.call(document.querySelectorAll(".hy-sec[id], .hy-part[id]"));
   if ("IntersectionObserver" in window && secs.length){
