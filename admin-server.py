@@ -855,8 +855,10 @@ class Handler(BaseHTTPRequestHandler):
                              "log": load_subs_log()})
             return
         if path == "/api/auth/config":
-            self._send_json({"client_id": google_client_id(),
-                             "ready": bool(google_client_id()),
+            cid = google_client_id()
+            self._send_json({"client_id": cid,
+                             "ready": bool(cid),
+                             "origin": self.headers.get("Origin", "") or "",
                              "password_login": True})
             return
         if path == "/api/me":

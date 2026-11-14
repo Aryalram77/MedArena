@@ -22,7 +22,7 @@ const MA = {
   set(k, v) { try { localStorage.setItem(k, v); } catch (e) { window.__maMem = window.__maMem || {}; window.__maMem[k] = v; } }
 };
 
-const CLOUD = { online: false, clientId: "", user: null, gsi: 0, gsiInit: false, pending: {}, banks: null };
+const CLOUD = { online: false, clientId: "", user: null, gsi: 0, gsiInit: false, googlePending: false, pending: {}, banks: null };
 window.MACLOUD = CLOUD;
 window.maSyncCloud = null;   // set below; practice-page hooks guard on it
 
@@ -202,6 +202,9 @@ function maRender() {
       }
       el.innerHTML = "";
       google.accounts.id.renderButton(el, { theme: "outline", size: "large", shape: "pill", text: "continue_with", logo_alignment: "left", width: 300 });
+      /* Mark that a Google round-trip is in flight, so returning to this tab
+         without a credential can be explained (see maGoogleOriginHelp). */
+      el.addEventListener("click", function () { CLOUD.googlePending = true; }, true);
     });
   }
 }
@@ -409,7 +412,15 @@ function maEnsureGsi(cb) {
 }
 function maGsiInit() {
   if (!CLOUD.gsiInit) {
-    window.google.accounts.id.initialize({ client_id: CLOUD.clientId, callback: maCredential });
+    window.google.accounts.id.initialize({
+      client_id: CLOUD.clientId,
+      callback: maCredential,
+      /* ux_mode popup keeps the flow in a popup rather than a redirect. The
+         locale hint is best-effort: Google renders this button in the signed-in
+         account's language, so it does not always force English. */
+      ux_mode: "popup",
+      locale: "en"
+    });
     CLOUD.gsiInit = true;
   }
 }
@@ -419,6 +430,27 @@ function maCredential(resp) {
     .then(r => { if (r.ok && r.data.user) maAfterSignin(r.data.user, false); else maToast(r.data.error || "Sign-in failed."); })
     .catch(() => maToast("Network error during sign-in."));
 }
+
+/* Google renders its button even when the OAuth client has no authorized
+   origin for this page, so the click dead-ends on Google's own
+   "Error 401: invalid_client / no registered origin" page. Detect that the
+   user came back from Google without a credential and explain the real cause
+   instead of leaving them guessing. */
+function maGoogleOriginHelp() {
+  maErr = "Google refused the sign-in for " + location.origin + ". " +
+    "Add that exact origin under APIs & Services > Credentials > OAuth 2.0 Client IDs " +
+    "in Google Cloud Console (Authorized JavaScript origins), then reload. " +
+    "E-mail sign-in below works right now.";
+  maRender();
+}
+window.addEventListener("focus", function () {
+  if (CLOUD.googlePending && !CLOUD.user) {
+    CLOUD.googlePending = false;
+    setTimeout(function () {
+      if (!CLOUD.user) maGoogleOriginHelp();
+    }, 1200);
+  }
+});
 
 function maSubmitForgot(e) {
   e.preventDefault();
