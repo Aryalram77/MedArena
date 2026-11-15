@@ -41,7 +41,7 @@ PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8600
 
 # 30-day public free period (same as frontend). During this period, all content is
 # treated as unlocked. After expiry, normal lock/code rules apply automatically.
-FREE_UNTIL_MS = 1765816199000  # 2026-12-15T23:59:59+05:45
+FREE_UNTIL_MS = 1794723148742  # 2026-12-15T23:59:59+05:45
 
 def is_free_period():
     return int(time.time() * 1000) < FREE_UNTIL_MS
