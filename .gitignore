@@ -36,6 +36,10 @@ surgery-part2.js
 # Perch's own working files.
 .perch/
 
+# Local build / extraction folders (not part of the published site).
+medarena-apk/
+anatomy-extract/
+
 # NOTE: admin-server.py, admin.html and start-admin.bat ARE committed on purpose.
 # GitHub Pages cannot run Python, so they do nothing on the live site, but they
 # are your only backup of the server and the editor. They contain no secrets:
