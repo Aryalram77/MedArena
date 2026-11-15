@@ -55,7 +55,7 @@
   .toc-mobile a{display:block;padding:6px 4px;font-size:13.5px;color:#334155;text-decoration:none;border-bottom:1px dashed var(--line)}
   .toc-mobile a.toc-part{font-weight:800;color:#172640}
 
-  .content{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 30px 30px;box-shadow:0 10px 30px rgba(31,55,93,.06)}
+  .content{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 30px 30px;box-shadow:0 10px 30px rgba(31,55,93,.06);min-width:0}
 
   .hy-part{position:relative;overflow:hidden;background:linear-gradient(120deg,#1e3a8a,#4338ca 55%,#7c3aed);color:#fff;border-radius:15px;padding:19px 22px;margin:34px 0 18px;font-size:20px;font-weight:800;letter-spacing:-.3px;box-shadow:0 12px 30px rgba(67,56,202,.28);display:flex;align-items:center;gap:12px}
   .hy-part:first-child{margin-top:0}
@@ -85,6 +85,12 @@
   .mcq-opts li:hover{background:rgba(255,255,255,.7)}
   .optl{display:inline-grid;place-items:center;min-width:22px;height:22px;border-radius:7px;background:#fff;border:1px solid #fcd34d;font-weight:800;font-size:12px;color:#92400e;margin-right:8px}
   .mcq-ans{margin-top:11px;background:#dcfce7;color:#166534;border-radius:9px;padding:8px 13px;font-weight:800;font-size:13.5px;display:inline-block}
+  .mcq-exp{margin:10px 0 0;font-size:13.6px;color:#3f3f46;line-height:1.62}
+  .mcq-exp b,.exp-list b{color:#78350f}
+  .exp-list{margin:7px 0 0;padding-left:20px}
+  .exp-list li{margin:5px 0;font-size:13.6px;color:#3f3f46;line-height:1.55}
+  .exp-list li::marker{color:#d97706}
+  .hy-mcq .hy-tblwrap{background:#fff;margin:12px 0}
 
   .hy-tblwrap{overflow-x:auto;margin:14px 0;border-radius:13px;border:1px solid var(--line);box-shadow:0 6px 16px rgba(31,55,93,.07)}
   .hy-tblwrap table{border-collapse:collapse;width:100%;font-size:13.4px;min-width:620px}
@@ -221,11 +227,11 @@
   <div class="hero">
     <span class="kicker">&#11088; Very High Yield Series</span>
     <h1>Read less. Score more.</h1>
-    <p>The highest-yield facts, mnemonics, syndromes and <b>exam-check MCQs</b> — distilled from high-yield lectures and organised for rapid revision. <b>Neurology is free for everyone</b> — the other topics unlock with MedArena lifetime access.</p>
+    <p>The highest-yield facts, mnemonics, syndromes and <b>exam-check MCQs</b> — distilled from high-yield lectures and organised for rapid revision. <b>Neurology and Acid-Base Disorders are free for everyone</b> — the other topics unlock with MedArena lifetime access.</p>
   </div>
 
   <div class="chips" id="topicChips">
-    <button class="chip active" data-topic="neuro", "acidbase">&#129504; Neurology</button>
+    <button class="chip active" data-topic="neuro">&#129504; Neurology</button>
     <button class="chip" data-topic="hla">&#129516; HLA Association</button>
     <button class="chip" data-topic="inh">&#128106; Inheritance Patterns</button>
     <button class="chip" data-topic="acidbase">⚕️ Acid Base Disorders</button>
@@ -286,12 +292,13 @@
   <details class="toc-mobile" id="tocm-acidbase" hidden>
     <summary>&#128202; On this page — Acid Base Disorders</summary>
     <a class="toc-part" href="#acidpart1">⚕️ Acid-Base Disorders — Complete Guide</a>
-    <a class="toc-sec" href="#acidsec1">1. The ROME Mnemonic &amp; Fundamentals</a>
-    <a class="toc-sec" href="#acidsec2">2. Normal Values &amp; Primary Disorders</a>
-    <a class="toc-sec" href="#acidsec3">3. Compensation Mechanisms</a>
-    <a class="toc-sec" href="#acidsec4">4. Anion Gap &amp; Key Clinical Pearls</a>
-    <a class="toc-sec" href="#acidsec5">5. ABG Interpretation — Practice Cases</a>
-    <a class="toc-sec" href="#acidsec6">6. MCQ Bank — Questions &amp; Explanations</a>
+    <a class="toc-sec" href="#acidsec1">1. Questions 1–3: The ROME Mnemonic &amp; Fundamentals</a>
+    <a class="toc-sec" href="#acidsec2">2. Concept Check 1: Normal Values &amp; Primary Disorders</a>
+    <a class="toc-sec" href="#acidsec3">3. Concept Check 2: Respiratory &amp; Renal Compensation</a>
+    <a class="toc-sec" href="#acidsec4">4. Questions 4–6: Causes, Anion Gap &amp; Compensation</a>
+    <a class="toc-sec" href="#acidsec5">5. Questions 7–9: ABG Case Patterns</a>
+    <a class="toc-sec" href="#acidsec6">6. Questions 10–21: ABG Practice &amp; Mixed Disorders</a>
+    <a class="toc-sec" href="#acidsec7">7. Concept Check 3: Predicted Compensation &amp; Winter's Formula</a>
   </details>
 
 
@@ -351,12 +358,13 @@
   <div id="toc-acidbase" hidden>
         <h3>On this page — Acid Base Disorders</h3>
         <a class="toc-part" href="#acidpart1">⚕️ Acid-Base Disorders — Complete Guide</a>
-        <a class="toc-sec" href="#acidsec1">1. The ROME Mnemonic &amp; Fundamentals</a>
-        <a class="toc-sec" href="#acidsec2">2. Normal Values &amp; Primary Disorders</a>
-        <a class="toc-sec" href="#acidsec3">3. Compensation Mechanisms</a>
-        <a class="toc-sec" href="#acidsec4">4. Anion Gap &amp; Key Clinical Pearls</a>
-        <a class="toc-sec" href="#acidsec5">5. ABG Interpretation — Practice Cases</a>
-        <a class="toc-sec" href="#acidsec6">6. MCQ Bank — Questions &amp; Explanations</a>
+        <a class="toc-sec" href="#acidsec1">1. Questions 1–3: The ROME Mnemonic &amp; Fundamentals</a>
+        <a class="toc-sec" href="#acidsec2">2. Concept Check 1: Normal Values &amp; Primary Disorders</a>
+        <a class="toc-sec" href="#acidsec3">3. Concept Check 2: Respiratory &amp; Renal Compensation</a>
+        <a class="toc-sec" href="#acidsec4">4. Questions 4–6: Causes, Anion Gap &amp; Compensation</a>
+        <a class="toc-sec" href="#acidsec5">5. Questions 7–9: ABG Case Patterns</a>
+        <a class="toc-sec" href="#acidsec6">6. Questions 10–21: ABG Practice &amp; Mixed Disorders</a>
+        <a class="toc-sec" href="#acidsec7">7. Concept Check 3: Predicted Compensation &amp; Winter's Formula</a>
       </div>
 
     </aside>
@@ -1184,6 +1192,490 @@ Husband Bruton (Bruton's Agammaglobulinemia)
 <div class="hy-tblwrap"><table><tr><th>Disorder A</th><th>Pattern</th><th>vs.</th><th>Disorder B</th><th>Pattern</th><th>Memory Hook</th></tr><tr><td>Wilson Disease</td><td>AR</td><td>vs.</td><td>Menkes Disease</td><td>XLR</td><td>Wilson is recessive; Menkes has the X-factor</td></tr><tr><td>Hemophilia A &amp; B</td><td>XLR</td><td>vs.</td><td>Hemophilia C</td><td>AR</td><td>A &amp; B are X-linked; C is AR (Wilson is a homo)</td></tr><tr><td>Hunter Syndrome</td><td>XLR</td><td>vs.</td><td>Hurler Syndrome</td><td>AR</td><td>A Hunter needs an Ax (X-linked)</td></tr><tr><td>Huntington Chorea</td><td>AD</td><td>vs.</td><td>Friedreich Ataxia</td><td>AR</td><td>Hunting in the AD fight; Friedreich rides in a taxi</td></tr><tr><td>Hereditary Hemorrhagic Telangiectasia</td><td>AD</td><td>vs.</td><td>Ataxia-Telangiectasia</td><td>AR</td><td>Hereditary is AD; Ataxia is AR (rides in a taxi)</td></tr><tr><td>Sickle Cell / Thalassemia</td><td>AR</td><td>vs.</td><td>G6PD Deficiency</td><td>XLR</td><td>C-side / Thalaiva is AR; 6 goons are XLR</td></tr></table></div>
       <div class="foot-note"><b>Source:</b> High-yield genetics lecture notes — Genetic Inheritance Patterns &amp; High-Yield Mnemonics. Part of the Very High Yield premium series — included in MedArena lifetime access.</div>
     </article>
+
+    <article class="content" id="topic-acidbase" hidden>
+      <div class="hy-part" id="acidpart1"><span class="part-icon">⚕️</span>Acid-Base Disorders — Complete Guide</div>
+
+      <h3 class="hy-sec" id="acidsec1"><span class="secn">1</span>Questions 1–3: The ROME Mnemonic &amp; Fundamentals</h3>
+
+      <div class="hy-mcq">
+        <div class="mcq-tag">Question 1 · ROME</div>
+        <p class="mcq-q">The primary change in metabolic acidosis is:</p>
+        <ol class="mcq-opts">
+          <li><span class="optl">A.</span> Increase in bicarbonate</li>
+          <li><span class="optl">B.</span> Decrease in pCO₂</li>
+          <li><span class="optl">C.</span> Decrease in bicarbonate</li>
+          <li><span class="optl">D.</span> Increase in pCO₂</li>
+        </ol>
+        <p class="mcq-exp">The very first thing to learn and remember is the mnemonic <b>ROME</b> in acid-base disorders — it solves the majority of questions:</p>
+        <ul class="exp-list">
+          <li><b>R</b>espiratory — <b>O</b>pposite</li>
+          <li><b>M</b>etabolic — <b>E</b>qual</li>
+        </ul>
+        <p class="mcq-exp">Look at the changes in three parameters: <b>pH</b>, <b>HCO₃⁻</b> (bicarbonate) and <b>pCO₂</b>. In compensated disorders, <b>HCO₃⁻ and pCO₂ go in the same direction</b> — like siblings, both rise together or both fall together.</p>
+        <p class="mcq-exp">Now correlate this with pH: in <b>acidosis</b> pH decreases; in <b>alkalosis</b> pH increases.</p>
+        <ul class="exp-list">
+          <li><b>Respiratory (Opposite):</b> in respiratory acidosis, pH decreases — so HCO₃⁻ and pCO₂ increase.</li>
+          <li><b>Metabolic (Equal):</b> in metabolic acidosis, pH decreases — everything moves the same way, so after compensation <b>pH ↓, HCO₃⁻ ↓, pCO₂ ↓</b>.</li>
+        </ul>
+        <p class="mcq-exp">How do you know what the primary change is? <b>Respiratory</b> literally means the problem is in the lungs (ventilation), so the <b>pCO₂</b> change is primary. <b>Metabolic</b> means a non-lung problem (e.g., kidneys), so the <b>HCO₃⁻</b> change is primary.</p>
+        <p class="mcq-exp">In this question: acidosis → pH decreases; metabolic → equal → HCO₃⁻ and pCO₂ also decrease; metabolic → the primary change is in bicarbonate.</p>
+        <div class="mcq-ans">Answer: C — Decrease in bicarbonate</div>
+      </div>
+
+      <div class="hy-mcq">
+        <div class="mcq-tag">Question 2 · Respiratory</div>
+        <p class="mcq-q">Compensatory change in respiratory acidosis is:</p>
+        <ol class="mcq-opts">
+          <li><span class="optl">A.</span> Increase in bicarbonate</li>
+          <li><span class="optl">B.</span> Decrease in pCO₂</li>
+          <li><span class="optl">C.</span> Decrease in bicarbonate</li>
+          <li><span class="optl">D.</span> Increase in pCO₂</li>
+        </ol>
+        <p class="mcq-exp">Break it down step-by-step:</p>
+        <ul class="exp-list">
+          <li>It is <b>acidosis</b> → pH decreases.</li>
+          <li>It is a <b>respiratory</b> disorder → the primary change is in <b>pCO₂</b>, and the compensatory change is in <b>HCO₃⁻</b> (so options B and D are immediately ruled out).</li>
+          <li>According to ROME, respiratory is <b>opposite</b>. Since pH is decreasing, HCO₃⁻ (and pCO₂) will increase.</li>
+        </ul>
+        <div class="mcq-ans">Answer: A — Increase in bicarbonate</div>
+      </div>
+
+      <div class="hy-mcq">
+        <div class="mcq-tag">Question 3 · Metabolic</div>
+        <p class="mcq-q">Primary change in metabolic alkalosis is:</p>
+        <ol class="mcq-opts">
+          <li><span class="optl">A.</span> Increase in bicarbonate</li>
+          <li><span class="optl">B.</span> Decrease in pCO₂</li>
+          <li><span class="optl">C.</span> Decrease in bicarbonate</li>
+          <li><span class="optl">D.</span> Increase in pCO₂</li>
+        </ol>
+        <p class="mcq-exp">Break it down step-by-step:</p>
+        <ul class="exp-list">
+          <li>It is <b>metabolic</b> → the primary change is in bicarbonate (options B and D, which involve pCO₂, are gone).</li>
+          <li>It is <b>alkalosis</b> → pH increases.</li>
+          <li>Metabolic is <b>equal</b> (all increase or all decrease) → bicarbonate will also increase.</li>
+        </ul>
+        <div class="mcq-ans">Answer: A — Increase in bicarbonate</div>
+      </div>
+
+      <h3 class="hy-sec" id="acidsec2"><span class="secn">2</span>Concept Check 1: Normal Values &amp; Primary Disorders</h3>
+      <p class="hy-p">Let's fill out this table for normal values and the four primary acid-base disorders.</p>
+      <h4 class="hy-label">Mnemonic for Normal Values</h4>
+      <p class="hy-p">All normal values contain the number <b>4</b>:</p>
+      <ul class="hy-list">
+        <li><b>pH:</b> 7.4</li>
+        <li><b>HCO₃⁻:</b> 24 mEq/L <i>(Bicarbonate → "Bi" = 2 and 4 → 24)</i></li>
+        <li><b>PaCO₂:</b> 40 mmHg</li>
+      </ul>
+      <p class="hy-p">Now apply ROME to fill in the directions:</p>
+      <div class="hy-tblwrap"><table>
+        <tr><th>Disorder</th><th>pH</th><th>HCO₃⁻ (mEq/L)</th><th>PaCO₂ (mmHg)</th></tr>
+        <tr><td><b>Normal</b></td><td>7.40</td><td>24</td><td>40</td></tr>
+        <tr><td><b>Metabolic acidosis</b></td><td>Decreased (↓)</td><td>Decreased (↓)</td><td>Decreased (↓)</td></tr>
+        <tr><td><b>Metabolic alkalosis</b></td><td>Increased (↑)</td><td>Increased (↑)</td><td>Increased (↑)</td></tr>
+        <tr><td><b>Respiratory acidosis</b></td><td>Decreased (↓)</td><td>Increased (↑)</td><td>Increased (↑)</td></tr>
+        <tr><td><b>Respiratory alkalosis</b></td><td>Increased (↑)</td><td>Decreased (↓)</td><td>Decreased (↓)</td></tr>
+      </table></div>
+
+      <h3 class="hy-sec" id="acidsec3"><span class="secn">3</span>Concept Check 2: Respiratory &amp; Renal Compensation</h3>
+      <p class="hy-p">In <b>metabolic</b> disorders you get <b>respiratory compensation</b>; in <b>respiratory</b> disorders you get <b>metabolic (renal) compensation</b>. Also pay attention to H⁺ vs pH: when pH decreases, H⁺ increases.</p>
+
+      <h4 class="hy-sub">Metabolic Acidosis</h4>
+      <ul class="hy-list">
+        <li>pH ↓ (↑ H⁺), primary ↓ HCO₃⁻</li>
+        <li><b>Compensation:</b> pCO₂ needs to decrease. How does CO₂ leave the body? By <b>hyperventilation</b> — this is why you see <b>Kussmaul's breathing</b> in Diabetic Ketoacidosis (DKA).</li>
+      </ul>
+
+      <h4 class="hy-sub">Metabolic Alkalosis</h4>
+      <ul class="hy-list">
+        <li>pH ↑ (↓ H⁺), primary ↑ HCO₃⁻</li>
+        <li><b>Compensation:</b> pCO₂ needs to increase. How do you retain CO₂? By <b>hypoventilation</b>.</li>
+      </ul>
+
+      <h4 class="hy-sub">Respiratory Acidosis</h4>
+      <ul class="hy-list">
+        <li>pH ↓ (↑ H⁺), primary ↑ pCO₂</li>
+        <li><b>Renal compensation:</b> there is already too much acid in the body, so the kidneys push acid out and keep alkali in → <b>↑ H⁺ excretion</b> and <b>↑ HCO₃⁻ reabsorption</b>.</li>
+      </ul>
+
+      <h4 class="hy-sub">Respiratory Alkalosis</h4>
+      <ul class="hy-list">
+        <li>pH ↑ (↓ H⁺), primary ↓ pCO₂</li>
+        <li><b>Renal compensation:</b> the body has too much alkali, so the kidneys do the opposite → <b>↓ H⁺ excretion</b> and <b>↓ HCO₃⁻ reabsorption</b>.</li>
+      </ul>
+      <p class="hy-p"><i>Notice that H⁺ excretion and HCO₃⁻ reabsorption always move in the same direction!</i></p>
+
+      <h3 class="hy-sec" id="acidsec4"><span class="secn">4</span>Questions 4–6: Causes, Anion Gap &amp; Compensation</h3>
+
+      <div class="hy-mcq">
+        <div class="mcq-tag">Question 4 · Causes</div>
+        <p class="mcq-q">Which of the following is a cause of metabolic alkalosis?</p>
+        <ol class="mcq-opts">
+          <li><span class="optl">A.</span> Diarrhea</li>
+          <li><span class="optl">B.</span> Chronic renal failure</li>
+          <li><span class="optl">C.</span> Ethylene glycol ingestion</li>
+          <li><span class="optl">D.</span> Treatment with acetazolamide</li>
+          <li><span class="optl">E.</span> Hyperaldosteronism</li>
+          <li><span class="optl">F.</span> Salicylate poisoning</li>
+        </ol>
+        <p class="mcq-exp"><b>Mnemonic:</b> Aldosterone causes Alkalosis! And whenever there is alkalosis, remember it is <b>"al-K-loss"</b> → potassium (K⁺) generally decreases, so alkalosis is associated with <b>hypokalemia</b>.</p>
+        <p class="mcq-exp">Why the other options are incorrect — they cause acidosis:</p>
+        <ul class="exp-list">
+          <li><b>(A) Diarrhea vs. vomiting:</b> in vomiting, stomach acid goes out → alkali remains → alkalosis. In diarrhea, intestinal bicarbonate (alkali) goes out → acidosis. <i>Mnemonic: Diarrhea → D causes aciDosis.</i> Diarrhea causes <b>Normal Anion Gap Metabolic Acidosis (NAGMA)</b>.</li>
+          <li><b>High-yield pearl — GI vs. renal NAGMA:</b> causes of NAGMA are essentially "diarrhea" — either GI diarrhea or renal diarrhea (Renal Tubular Acidosis / RTA). Differentiate by checking the <b>urinary anion gap (UAG)</b>. <i>Urine and renal go together</i> → UAG is <b>positive</b> in RTA and <b>negative</b> in GI diarrhea.</li>
+          <li><b>(B) Chronic renal failure:</b> H⁺ cannot go out → acidosis.</li>
+          <li><b>(C) Ethylene glycol ingestion:</b> exam clues are a history of antifreeze ingestion and oxaluria (oxalic acid in urine) → acidosis.</li>
+          <li><b>(D) Acetazolamide:</b> causes acidosis. Brand name Diamox (<i>Di = 2</i>) → <b>RTA Type 2</b>.</li>
+          <li><b>(F) Salicylate poisoning:</b> salicylate is salicylic acid → metabolic acidosis. It simultaneously stimulates the respiratory center (hyperventilation, CO₂ washout) → <b>respiratory alkalosis</b> as well.</li>
+        </ul>
+        <div class="mcq-ans">Answer: E — Hyperaldosteronism</div>
+      </div>
+
+      <div class="hy-mcq">
+        <div class="mcq-tag">Question 5 · Anion Gap</div>
+        <p class="mcq-q">Choose the incorrect statement about anion gap:</p>
+        <ol class="mcq-opts">
+          <li><span class="optl">A.</span> In lactic acidosis anion gap is increased</li>
+          <li><span class="optl">B.</span> Anion gap is decreased in hypercalcemia</li>
+          <li><span class="optl">C.</span> Anion gap is decreased in lithium toxicity</li>
+          <li><span class="optl">D.</span> Anion gap is decreased in ketoacidosis</li>
+        </ol>
+        <p class="mcq-exp"><b>Exam strategy:</b> when you are 100% sure one statement is clearly wrong, don't waste time overthinking the others. Everyone knows DKA is a High Anion Gap Metabolic Acidosis (HAGMA) — so saying the anion gap is decreased in ketoacidosis is definitely incorrect.</p>
+        <p class="mcq-exp">Revise the concept behind the anion gap (AG):</p>
+        <ul class="exp-list">
+          <li><b>What is it?</b> The gap due to unmeasured anions (like organic acids and phosphates).</li>
+          <li><b>Formula:</b> <span class="hy-formula">AG = Na⁺ − (Cl⁻ + HCO₃⁻)</span> <i>(sometimes K⁺ is added to Na⁺)</i>.</li>
+          <li><b>Normal anion gap:</b> 8–12 mEq/L.</li>
+          <li><b>Increased in (A) &amp; (D):</b> lactic acid and ketoacids are organic acids (unmeasured anions) → they increase the anion gap.</li>
+          <li><b>Decreased in (B) &amp; (C):</b> calcium (Ca²⁺ in hypercalcemia) and lithium (Li⁺ in lithium toxicity) are <b>unmeasured cations</b>. When unmeasured cations increase, the anion gap decreases.</li>
+        </ul>
+        <div class="mcq-ans">Answer: D — Anion gap is decreased in ketoacidosis</div>
+      </div>
+
+      <div class="hy-mcq">
+        <div class="mcq-tag">Question 6 · Compensated Alkalosis</div>
+        <p class="mcq-q">Which laboratory results indicate compensated metabolic alkalosis?</p>
+        <ol class="mcq-opts">
+          <li><span class="optl">A.</span> Low pCO₂, normal bicarbonate, high pH</li>
+          <li><span class="optl">B.</span> Low pCO₂, low bicarbonate, low pH</li>
+          <li><span class="optl">C.</span> High pCO₂, normal bicarbonate, low pH</li>
+          <li><span class="optl">D.</span> High pCO₂, high bicarbonate, high pH</li>
+        </ol>
+        <p class="mcq-exp">Use ROME: metabolic means <b>equal</b> (everything moves in the same direction). Since it is alkalosis, pH is high — so both bicarbonate and pCO₂ must also be high.</p>
+        <div class="mcq-ans">Answer: D — High pCO₂, high bicarbonate, high pH</div>
+      </div>
+
+      <h3 class="hy-sec" id="acidsec5"><span class="secn">5</span>Questions 7–9: ABG Case Patterns</h3>
+
+      <div class="hy-mcq">
+        <div class="mcq-tag">Question 7 · Emphysema</div>
+        <p class="mcq-q">Which set of arterial blood values describes a heavy smoker with a history of emphysema and chronic bronchitis who is becoming increasingly somnolent?</p>
+        <div class="hy-tblwrap"><table>
+          <tr><th>Option</th><th>pH</th><th>HCO₃⁻ (mEq/L)</th><th>PaCO₂ (mmHg)</th></tr>
+          <tr><td>(A)</td><td>7.65</td><td>48</td><td>45</td></tr>
+          <tr><td>(B)</td><td>7.50</td><td>15</td><td>20</td></tr>
+          <tr><td>(C)</td><td>7.40</td><td>24</td><td>40</td></tr>
+          <tr><td>(D)</td><td>7.32</td><td>30</td><td>60</td></tr>
+          <tr><td>(E)</td><td>7.31</td><td>16</td><td>33</td></tr>
+        </table></div>
+        <p class="mcq-exp">Work through it:</p>
+        <ul class="exp-list">
+          <li>Heavy smoker with emphysema and chronic bronchitis = obstructive lung disease → CO₂ retention (↑ CO₂).</li>
+          <li>↑ CO₂ causes <b>respiratory acidosis</b> → pH decreases, while CO₂ and HCO₃⁻ increase (opposite to pH).</li>
+          <li>Rule out options by looking at pH first: (A) 7.65 and (B) 7.50 are alkalosis, and (C) 7.40 is normal. That leaves (D) and (E).</li>
+          <li>Compare against normal HCO₃⁻ (24) and pCO₂ (40): in (D) HCO₃⁻ is 30 (↑) and pCO₂ is 60 (↑); in (E) HCO₃⁻ is 16 (↓) and pCO₂ is 33 (↓).</li>
+        </ul>
+        <div class="mcq-ans">Answer: D — pH 7.32, HCO₃⁻ 30, PaCO₂ 60</div>
+      </div>
+
+      <div class="hy-mcq">
+        <div class="mcq-tag">Question 8 · Hyperventilation</div>
+        <p class="mcq-q">A student is nervous for a big exam and is breathing rapidly. What do you expect?</p>
+        <ol class="mcq-opts">
+          <li><span class="optl">A.</span> Metabolic acidosis</li>
+          <li><span class="optl">B.</span> Metabolic alkalosis</li>
+          <li><span class="optl">C.</span> Respiratory acidosis</li>
+          <li><span class="optl">D.</span> Respiratory alkalosis</li>
+        </ol>
+        <p class="mcq-exp">"Breathing rapidly" is the major clue — it is a breathing/ventilation issue, so it must be <b>respiratory</b> (rule out the metabolic options). Rapid breathing = hyperventilation → CO₂ is washed out (CO₂ ↓). Since respiratory is opposite (ROME), pH ↑ → <b>respiratory alkalosis</b>.</p>
+        <div class="mcq-ans">Answer: D — Respiratory alkalosis</div>
+      </div>
+
+      <div class="hy-mcq">
+        <div class="mcq-tag">Question 9 · Vomiting</div>
+        <p class="mcq-q">Which set of arterial blood values describes a patient with a 5-day history of vomiting?</p>
+        <div class="hy-tblwrap"><table>
+          <tr><th>Option</th><th>pH</th><th>HCO₃⁻ (mEq/L)</th><th>PaCO₂ (mmHg)</th></tr>
+          <tr><td>(A)</td><td>7.65</td><td>48</td><td>45</td></tr>
+          <tr><td>(B)</td><td>7.50</td><td>15</td><td>20</td></tr>
+          <tr><td>(C)</td><td>7.40</td><td>24</td><td>40</td></tr>
+          <tr><td>(D)</td><td>7.32</td><td>30</td><td>60</td></tr>
+          <tr><td>(E)</td><td>7.31</td><td>16</td><td>33</td></tr>
+        </table></div>
+        <p class="mcq-exp">Vomiting means stomach acid is lost → <b>metabolic alkalosis</b>. Since it is metabolic (equal) and alkalosis (pH ↑), everything must be high.</p>
+        <ul class="exp-list">
+          <li>Options (C), (D) and (E) are ruled out by pH.</li>
+          <li>Between (A) and (B), only (A) has elevated HCO₃⁻ (48) and pCO₂ (45).</li>
+        </ul>
+        <div class="mcq-ans">Answer: A — pH 7.65, HCO₃⁻ 48, PaCO₂ 45</div>
+      </div>
+
+      <h3 class="hy-sec" id="acidsec6"><span class="secn">6</span>Questions 10–21: ABG Practice &amp; Mixed Disorders</h3>
+
+      <div class="hy-mcq">
+        <div class="mcq-tag">Question 10 · Diarrhea</div>
+        <p class="mcq-q">A 45-year-old woman develops severe diarrhea while on vacation. pH 7.25, pCO₂ 24 mmHg, [HCO₃⁻] 10 mEq/L. Venous blood shows decreased K⁺ and a normal anion gap. What is the diagnosis?</p>
+        <ol class="mcq-opts">
+          <li><span class="optl">A.</span> Metabolic acidosis</li>
+          <li><span class="optl">B.</span> Metabolic alkalosis</li>
+          <li><span class="optl">C.</span> Respiratory acidosis</li>
+          <li><span class="optl">D.</span> Respiratory alkalosis</li>
+          <li><span class="optl">E.</span> Normal acid-base status</li>
+        </ol>
+        <p class="mcq-exp">Always check the values rather than guessing from the history alone:</p>
+        <ul class="exp-list">
+          <li>pH 7.25 (↓)</li>
+          <li>pCO₂ 24 (↓ from 40)</li>
+          <li>HCO₃⁻ 10 (↓ from 24)</li>
+        </ul>
+        <p class="mcq-exp">All values move in the same direction (all decreased) → <b>metabolic acidosis</b> — and as expected with diarrhea, it has a <b>normal anion gap</b> (NAGMA).</p>
+        <div class="mcq-ans">Answer: A — Metabolic acidosis</div>
+      </div>
+
+      <div class="hy-mcq">
+        <div class="mcq-tag">Question 11 · Coma</div>
+        <p class="mcq-q">A person is admitted in a coma. Arterial blood shows pCO₂ 16 mmHg, HCO₃⁻ 5 mmol/L and pH 7.1. What is the underlying acid-base disorder?</p>
+        <ol class="mcq-opts">
+          <li><span class="optl">A.</span> Metabolic acidosis</li>
+          <li><span class="optl">B.</span> Metabolic alkalosis</li>
+          <li><span class="optl">C.</span> Respiratory acidosis</li>
+          <li><span class="optl">D.</span> Respiratory alkalosis</li>
+        </ol>
+        <p class="mcq-exp">Work through it:</p>
+        <ul class="exp-list">
+          <li>First check pH: 7.1 (↓) → acidosis (alkalosis options are out).</li>
+          <li>Next, check the other values: pCO₂ is 16 (↓) and HCO₃⁻ is 5 (↓).</li>
+          <li>Everything is decreased (equal direction) → <b>metabolic acidosis</b>.</li>
+        </ul>
+        <div class="mcq-ans">Answer: A — Metabolic acidosis</div>
+      </div>
+
+      <div class="hy-mcq">
+        <div class="mcq-tag">Question 12 · GI Aspiration</div>
+        <p class="mcq-q">A man undergoing surgery needed aspiration of the upper GI tract. After surgery: pH 7.55, pCO₂ 52 mmHg, HCO₃⁻ 40 mmol/L. What is the underlying disorder?</p>
+        <ol class="mcq-opts">
+          <li><span class="optl">A.</span> Metabolic acidosis</li>
+          <li><span class="optl">B.</span> Metabolic alkalosis</li>
+          <li><span class="optl">C.</span> Respiratory acidosis</li>
+          <li><span class="optl">D.</span> Respiratory alkalosis</li>
+        </ol>
+        <p class="mcq-exp">Work through it:</p>
+        <ul class="exp-list">
+          <li>pH 7.55 (↑) → alkalosis (acidosis options are out).</li>
+          <li>pCO₂ 52 (↑ from 40), HCO₃⁻ 40 (↑ from 24).</li>
+          <li>All values are increased (same direction) → <b>metabolic alkalosis</b> — also matches loss of gastric acid.</li>
+        </ul>
+        <div class="mcq-ans">Answer: B — Metabolic alkalosis</div>
+      </div>
+
+      <div class="hy-mcq">
+        <div class="mcq-tag">Question 13 · Ionized Calcium</div>
+        <p class="mcq-q">A patient has pH 7.52, pCO₂ 20 mmHg and [HCO₃⁻] 16 mEq/L. Which statement about this patient is most likely correct?</p>
+        <ol class="mcq-opts">
+          <li><span class="optl">A.</span> He is hypoventilating</li>
+          <li><span class="optl">B.</span> He has decreased ionized [Ca²⁺] in blood</li>
+          <li><span class="optl">C.</span> He has almost complete respiratory compensation</li>
+          <li><span class="optl">D.</span> He has an acid-base disorder caused by overproduction of fixed acid</li>
+          <li><span class="optl">E.</span> Appropriate renal compensation would cause arterial [HCO₃⁻] to increase</li>
+        </ol>
+        <p class="mcq-exp">First, diagnose the disorder:</p>
+        <ul class="exp-list">
+          <li>pH 7.52 (↑) → alkalosis.</li>
+          <li>pCO₂ 20 (↓), HCO₃⁻ 16 (↓).</li>
+          <li>Direction is opposite to pH → <b>respiratory alkalosis</b>.</li>
+        </ul>
+        <p class="mcq-exp">Now evaluate each option:</p>
+        <ul class="exp-list">
+          <li><b>(A) Hypoventilating:</b> in hypoventilation CO₂ increases. Here pCO₂ is 20 (decreased), meaning he is <b>hyperventilating</b>. Incorrect.</li>
+          <li><b>(B) Decreased ionized [Ca²⁺]:</b> this is the key concept — in alkalosis, H⁺ ions are busy compensating and are unavailable to bind negatively charged albumin. Albumin then binds free calcium instead, so free (ionized) calcium decreases. This is why hyperventilating patients can present with tetany. <b>Correct.</b></li>
+          <li><b>(C) Almost complete respiratory compensation:</b> this is already a respiratory disorder, so compensation is renal, not respiratory. Incorrect.</li>
+          <li><b>(D) Overproduction of fixed acid:</b> that would cause acidosis, not alkalosis. Incorrect.</li>
+          <li><b>(E) Renal compensation would increase [HCO₃⁻]:</b> bicarbonate is an alkali, and the patient already has alkalosis — we do not want more alkali. Renal compensation <b>decreases</b> HCO₃⁻ reabsorption. Incorrect.</li>
+        </ul>
+        <div class="mcq-ans">Answer: B — Decreased ionized [Ca²⁺] in blood</div>
+      </div>
+
+      <div class="hy-mcq">
+        <div class="mcq-tag">Question 14 · Renal Failure</div>
+        <p class="mcq-q">A 45-year-old female with renal failure missed her dialysis and is feeling sick. What could be the reason?</p>
+        <ol class="mcq-opts">
+          <li><span class="optl">A.</span> Metabolic acidosis</li>
+          <li><span class="optl">B.</span> Metabolic alkalosis</li>
+          <li><span class="optl">C.</span> Respiratory acidosis</li>
+          <li><span class="optl">D.</span> Respiratory alkalosis</li>
+        </ol>
+        <p class="mcq-exp">Chronic renal failure causes retention of acids that the kidneys fail to excrete → <b>metabolic acidosis</b>.</p>
+        <div class="mcq-ans">Answer: A — Metabolic acidosis</div>
+      </div>
+
+      <div class="hy-mcq">
+        <div class="mcq-tag">Question 15 · Chest Infection</div>
+        <p class="mcq-q">An 80-year-old man had a bad cold. After two weeks: "It went into my chest — tightness, coughing, suffocated and unable to breathe!" What could be the reason?</p>
+        <ol class="mcq-opts">
+          <li><span class="optl">A.</span> Metabolic acidosis</li>
+          <li><span class="optl">B.</span> Metabolic alkalosis</li>
+          <li><span class="optl">C.</span> Respiratory acidosis</li>
+          <li><span class="optl">D.</span> Respiratory alkalosis</li>
+        </ol>
+        <p class="mcq-exp">"Unable to breathe" → hypoventilation → CO₂ cannot get out (↑ CO₂). Opposite to CO₂, pH decreases → <b>respiratory acidosis</b>.</p>
+        <div class="mcq-ans">Answer: C — Respiratory acidosis</div>
+      </div>
+
+      <div class="hy-mcq">
+        <div class="mcq-tag">Question 16 · DKA</div>
+        <p class="mcq-q">A female with insulin-dependent diabetes mellitus has pH 7.2, HCO₃⁻ 17 mmol/L and pCO₂ 20 mmHg. What is most appropriate?</p>
+        <ol class="mcq-opts">
+          <li><span class="optl">A.</span> Metabolic acidosis</li>
+          <li><span class="optl">B.</span> Metabolic alkalosis</li>
+          <li><span class="optl">C.</span> Respiratory acidosis</li>
+          <li><span class="optl">D.</span> Respiratory alkalosis</li>
+        </ol>
+        <p class="mcq-exp">Work through it:</p>
+        <ul class="exp-list">
+          <li>pH 7.2 (↓) → acidosis (alkalosis ruled out).</li>
+          <li>HCO₃⁻ 17 (↓), pCO₂ 20 (↓).</li>
+          <li>All decreased → <b>metabolic acidosis</b> (DKA).</li>
+        </ul>
+        <div class="mcq-ans">Answer: A — Metabolic acidosis</div>
+      </div>
+
+      <div class="hy-mcq">
+        <div class="mcq-tag">Question 17 · Metabolic Alkalosis Causes</div>
+        <p class="mcq-q">Causes of metabolic alkalosis include all the following EXCEPT:</p>
+        <ol class="mcq-opts">
+          <li><span class="optl">A.</span> Mineralocorticoid deficiency</li>
+          <li><span class="optl">B.</span> Hypokalemia</li>
+          <li><span class="optl">C.</span> Thiazide diuretic therapy</li>
+          <li><span class="optl">D.</span> Recurrent vomiting</li>
+        </ol>
+        <p class="mcq-exp">Evaluate each option:</p>
+        <ul class="exp-list">
+          <li><b>(A) Mineralocorticoid deficiency:</b> aldosterone is decreased. Aldosterone causes alkalosis, so decreased aldosterone causes <b>acidosis</b> — this is the exception.</li>
+          <li><b>(B) Hypokalemia:</b> alkalosis is "al-K-loss" (↓ K⁺).</li>
+          <li><b>(C) Thiazide diuretic therapy:</b> causes hypokalemia → alkalosis.</li>
+          <li><b>(D) Recurrent vomiting:</b> stomach acid goes out → alkalosis.</li>
+        </ul>
+        <div class="mcq-ans">Answer: A — Mineralocorticoid deficiency</div>
+      </div>
+
+      <div class="hy-mcq">
+        <div class="mcq-tag">Question 18 · Respiratory Alkalosis</div>
+        <p class="mcq-q">Which of the following conditions will NOT cause respiratory alkalosis?</p>
+        <ol class="mcq-opts">
+          <li><span class="optl">A.</span> Fever</li>
+          <li><span class="optl">B.</span> Anxiety</li>
+          <li><span class="optl">C.</span> Laryngeal obstruction</li>
+          <li><span class="optl">D.</span> Salicylate toxicity</li>
+        </ol>
+        <p class="mcq-exp">Evaluate each option:</p>
+        <ul class="exp-list">
+          <li><b>(C) Laryngeal obstruction:</b> the airway is blocked, so CO₂ cannot get out (↑ CO₂). This causes ↓ pH → <b>respiratory acidosis</b> — it will not cause alkalosis.</li>
+          <li><b>(A) Fever &amp; (B) Anxiety:</b> both cause tachypnea/hyperventilation → CO₂ washout → respiratory alkalosis.</li>
+          <li><b>(D) Salicylate toxicity:</b> causes metabolic acidosis (salicylic acid) plus respiratory alkalosis (it stimulates the respiratory center).</li>
+        </ul>
+        <div class="mcq-ans">Answer: C — Laryngeal obstruction</div>
+      </div>
+
+      <div class="hy-mcq">
+        <div class="mcq-tag">Question 19 · Alkalosis Facts</div>
+        <p class="mcq-q">All are true about metabolic alkalosis EXCEPT:</p>
+        <ol class="mcq-opts">
+          <li><span class="optl">A.</span> Associated with hyperkalemia</li>
+          <li><span class="optl">B.</span> Associated with decreased ionic calcium concentration</li>
+          <li><span class="optl">C.</span> Can be caused by primary hyperaldosteronism</li>
+          <li><span class="optl">D.</span> Can be caused by a renin-secreting tumor</li>
+        </ol>
+        <p class="mcq-exp">Evaluate each option:</p>
+        <ul class="exp-list">
+          <li><b>(A) Associated with hyperkalemia:</b> false! Remember "al-K-loss" → metabolic alkalosis is associated with <b>hypokalemia</b>.</li>
+          <li><b>(B) Decreased ionic calcium:</b> true — in alkalosis, Ca²⁺ decreases → tetany.</li>
+          <li><b>(C) Primary hyperaldosteronism:</b> true — aldosterone → alkalosis.</li>
+          <li><b>(D) Renin-secreting tumor:</b> true — ↑ renin activates RAAS → ↑ aldosterone → alkalosis. Any cause of increased aldosterone causes alkalosis.</li>
+        </ul>
+        <div class="mcq-ans">Answer: A — Associated with hyperkalemia</div>
+      </div>
+
+      <div class="hy-mcq">
+        <div class="mcq-tag">Question 20 · Renal Acid Handling</div>
+        <p class="mcq-q">All are true for renal handling of acids in metabolic acidosis EXCEPT:</p>
+        <ol class="mcq-opts">
+          <li><span class="optl">A.</span> Hydrogen ion secretion is increased</li>
+          <li><span class="optl">B.</span> Bicarbonate reabsorption is decreased</li>
+          <li><span class="optl">C.</span> Urinary acidity is increased</li>
+          <li><span class="optl">D.</span> Urinary ammonia is increased</li>
+        </ol>
+        <p class="mcq-exp">Think logically: in metabolic acidosis, blood acids are already increased, so the kidneys push acid into the urine and keep alkali in the blood.</p>
+        <ul class="exp-list">
+          <li><b>(C) Urinary acidity is increased:</b> true — acid goes into the urine.</li>
+          <li><b>(A) Hydrogen ion secretion is increased:</b> true — H⁺ is acid, secreted into urine.</li>
+          <li><b>(B) Bicarbonate reabsorption is decreased:</b> notice that (A) and (B) are contradictory, because H⁺ secretion and HCO₃⁻ reabsorption go in the <b>same direction</b>. HCO₃⁻ is an alkali needed to neutralize the excess acid in blood, so bicarbonate reabsorption must <b>increase</b>, not decrease. This is the false statement.</li>
+          <li><b>(D) Urinary ammonia is increased:</b> true — H⁺ secreted into urine combines with ammonia (NH₃) to form ammonium (NH₄⁺), so it is not reabsorbed.</li>
+        </ul>
+        <p class="mcq-exp"><b>Bonus exam pearl:</b> urine phosphate also increases in metabolic acidosis, because phosphate acts as a buffer for the excreted H⁺ in urine.</p>
+        <div class="mcq-ans">Answer: B — Bicarbonate reabsorption is decreased</div>
+      </div>
+
+      <div class="hy-mcq">
+        <div class="mcq-tag">Question 21 · Mixed Disorder</div>
+        <p class="mcq-q">A patient with CKD presents with vomiting and diarrhea. Blood gas: pH 7.4, HCO₃⁻ 23 mEq/L, Na⁺ 145 mEq/L, Cl⁻ 100 mEq/L. What is the probable diagnosis?</p>
+        <ol class="mcq-opts">
+          <li><span class="optl">A.</span> No acid-base abnormality</li>
+          <li><span class="optl">B.</span> Respiratory acidosis</li>
+          <li><span class="optl">C.</span> Metabolic alkalosis</li>
+          <li><span class="optl">D.</span> HAGMA with metabolic alkalosis</li>
+        </ol>
+        <p class="mcq-exp">Do not get trapped when an exam question gives a normal pH of 7.4! Notice that along with pH 7.4, the examiner specifically gave Na⁺, Cl⁻ and HCO₃⁻ values — because they want you to <b>calculate the anion gap</b>:</p>
+        <div class="hy-formula">AG = Na⁺ − (Cl⁻ + HCO₃⁻) = 145 − (100 + 23) = 22</div>
+        <ul class="exp-list">
+          <li>Normal anion gap is 8–12, so an AG of 22 is <b>increased</b>.</li>
+          <li>This indicates a <b>High Anion Gap Metabolic Acidosis (HAGMA)</b> from CKD, but the pH is normalized to 7.4 because there is a <b>mixed acid-base disorder</b> — specifically metabolic alkalosis (from vomiting) balancing it out. These mixed-disorder questions used to be frequently asked in AIIMS exams.</li>
+        </ul>
+        <div class="mcq-ans">Answer: D — HAGMA with metabolic alkalosis</div>
+      </div>
+
+      <h3 class="hy-sec" id="acidsec7"><span class="secn">7</span>Concept Check 3: Predicted Compensation &amp; Winter's Formula</h3>
+      <p class="hy-p">Let's look at the exact numbers for compensation. Remember:</p>
+      <ul class="hy-list">
+        <li>Metabolic disorders have <b>no acute/chronic division</b> (respiratory compensation happens early).</li>
+        <li>Respiratory disorders are divided into <b>acute</b> and <b>chronic</b>.</li>
+      </ul>
+
+      <h4 class="hy-sub">1. Per 1-Unit vs. Per 10-Unit Change</h4>
+      <p class="hy-p">Memorise this sequence of numbers for every 10-unit change: <b>"13, 6, 1, 4, 2, 4"</b> (13 and its rough half 6, then 1–4, 2–4).</p>
+      <div class="hy-tblwrap"><table>
+        <tr><th>Acid-Base Disturbance</th><th>Primary Disturbance</th><th>Compensation</th><th>Predicted Compensatory Response</th></tr>
+        <tr><td>Metabolic acidosis</td><td>↓ [HCO₃⁻]</td><td>↓ pCO₂</td><td>1 mEq/L ↓ in HCO₃⁻ → 1.3 mmHg ↓ in pCO₂ <i>(13 per 10)</i></td></tr>
+        <tr><td>Metabolic alkalosis</td><td>↑ [HCO₃⁻]</td><td>↑ pCO₂</td><td>1 mEq/L ↑ in HCO₃⁻ → 0.6–0.7 mmHg ↑ in pCO₂ <i>(6 per 10)</i></td></tr>
+        <tr><td>Respiratory acidosis (Acute)</td><td>↑ pCO₂</td><td>↑ [HCO₃⁻]</td><td>1 mmHg ↑ in pCO₂ → 0.1 mEq/L ↑ in HCO₃⁻ <i>(1 per 10)</i></td></tr>
+        <tr><td>Respiratory acidosis (Chronic)</td><td>↑ pCO₂</td><td>↑ [HCO₃⁻]</td><td>1 mmHg ↑ in pCO₂ → 0.4 mEq/L ↑ in HCO₃⁻ <i>(4 per 10)</i></td></tr>
+        <tr><td>Respiratory alkalosis (Acute)</td><td>↓ pCO₂</td><td>↓ [HCO₃⁻]</td><td>1 mmHg ↓ in pCO₂ → 0.2 mEq/L ↓ in HCO₃⁻ <i>(2 per 10)</i></td></tr>
+        <tr><td>Respiratory alkalosis (Chronic)</td><td>↓ pCO₂</td><td>↓ [HCO₃⁻]</td><td>1 mmHg ↓ in pCO₂ → 0.4 mEq/L ↓ in HCO₃⁻ <i>(4 per 10)</i></td></tr>
+      </table></div>
+
+      <h4 class="hy-sub">2. Winter's Formula (Metabolic Acidosis)</h4>
+      <p class="hy-p">Another way to calculate predicted PaCO₂ in metabolic acidosis is Winter's formula:</p>
+      <div class="hy-formula">PaCO₂ = (1.5 × HCO₃⁻) + 8 ± 2</div>
+      <h4 class="hy-label">Practice Calculation</h4>
+      <p class="hy-p">Suppose a patient has metabolic acidosis and their HCO₃⁻ drops to 14 mEq/L. What should their pCO₂ be for full compensation?</p>
+      <ul class="hy-list">
+        <li><b>Method 1 (13-rule):</b> normal HCO₃⁻ is 24, so it decreased by 10 (24 − 14 = 10). In metabolic acidosis, for every 10 decrease in HCO₃⁻, pCO₂ decreases by 13. Normal pCO₂ is 40 → 40 − 13 = <b>27 mmHg</b>.</li>
+        <li><b>Method 2 (Winter's formula):</b> (1.5 × 14) + 8 ± 2 = 21 + 8 ± 2 = <b>29 ± 2 mmHg</b> (27–31 mmHg).</li>
+      </ul>
+      <p class="hy-p">That completes acid-base disorders — you now have all the mnemonics, tricks and formulas needed to diagnose and solve any ABG question with confidence.</p>
+
+      <div class="foot-note"><b>Source:</b> Acid-Base Disorders lecture &amp; MCQ bank — 21 questions with explanations, the ROME mnemonic, compensation formulas and four reference tables. Part of MedArena's Very High Yield series.</div>
+    </article>
   </div>
 </div>
 
@@ -1226,7 +1718,7 @@ const ESEWA_QR = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAMCAgM
    code unlocks everything: master code hash or device-bound cloud code. */
 window.HYLock = (function(){
   var LOCK = {"rev":"a7f3e9b2-1c4d8e6f","updated":"14 Nov 2026","subs":[]};
-  var FREE_UNTIL = Date.parse('2026-11-15T20:37:14+05:45'); /* 1-minute test period; after this, normal lock rules apply */
+  var FREE_UNTIL = Date.parse('2026-11-25T23:59:59+05:45'); /* free usage period; after this, normal lock rules apply */
   var FREE = ["neuro", "acidbase"];   /* free topics — everything else is locked by default */
   var NAMES = {"neuro":"Neurology", "hla":"HLA Association", "inh":"Inheritance Patterns", "acidbase":"Acid Base Disorders"};
   function medArenaHash(s){
@@ -1389,232 +1881,9 @@ window.HYLock = (function(){
 })();
 </script>
 
-  <article class="content"   <article class="content" id="topic-acidbase" hidden>
-    <div class="hy-part" id="acidpart1"><span class="part-icon">⚕️</span>Acid-Base Disorders — Complete Guide</div>
-
-    <h3 class="hy-sec" id="acidsec1"><span class="secn">1</span>The ROME Mnemonic &amp; Fundamentals</h3>
-    <p class="hy-p">The <b>ROME</b> mnemonic is the foundation for solving the majority of acid-base disorder questions. Look at the changes in three parameters: <b>pH</b>, <b>HCO₃⁻</b> (bicarbonate), and <b>pCO₂</b>.</p>
-    <pre class="hy-code">R — Respiratory → Opposite
-O
-M — Metabolic  → Equal
-E</pre>
-    <h4 class="hy-sub">How ROME Works</h4>
-    <ul class="hy-list">
-      <li><b>Respiratory disorders (Opposite):</b> pH moves in the <i>opposite</i> direction to pCO₂ and HCO₃⁻.
-        <ul class="hy-list">
-          <li><b>Respiratory Acidosis:</b> pH ↓ → pCO₂ ↑, HCO₃⁻ ↑ (compensatory)</li>
-          <li><b>Respiratory Alkalosis:</b> pH ↑ → pCO₂ ↓, HCO₃⁻ ↓ (compensatory)</li>
-        </ul>
-      </li>
-      <li><b>Metabolic disorders (Equal):</b> pH, HCO₃⁻, and pCO₂ all move in the <i>same</i> direction.
-        <ul class="hy-list">
-          <li><b>Metabolic Acidosis:</b> pH ↓ → HCO₃⁻ ↓ (primary), pCO₂ ↓ (compensatory)</li>
-          <li><b>Metabolic Alkalosis:</b> pH ↑ → HCO₃⁻ ↑ (primary), pCO₂ ↑ (compensatory)</li>
-        </ul>
-      </li>
-    </ul>
-    <h4 class="hy-sub">Primary vs. Compensatory Change</h4>
-    <ul class="hy-list">
-      <li><b>Respiratory</b> = lung/ventilation problem → <b>pCO₂ change is primary</b>, HCO₃⁻ change is compensatory.</li>
-      <li><b>Metabolic</b> = non-lung problem (e.g., kidneys, GI) → <b>HCO₃⁻ change is primary</b>, pCO₂ change is compensatory.</li>
-      <li>In compensated disorders, <b>HCO₃⁻ and pCO₂ go in the same direction</b> (like siblings — both increase together or both decrease together).</li>
-    </ul>
-
-    <h3 class="hy-sec" id="acidsec2"><span class="secn">2</span>Normal Values &amp; Primary Disorders</h3>
-    <h4 class="hy-sub">Mnemonic for Normal Values — "All normal values contain the number 4"</h4>
-    <ul class="hy-list">
-      <li><b>pH:</b> 7.4</li>
-      <li><b>HCO₃⁻:</b> 24 mEq/L <i>(Bicarbonate → "Bi" = 2 and 4 → 24)</i></li>
-      <li><b>PaCO₂:</b> 40 mmHg</li>
-    </ul>
-    <div class="hy-tblwrap"><table>
-      <tr><th>Disorder</th><th>pH</th><th>HCO₃⁻ (mEq/L)</th><th>PaCO₂ (mmHg)</th></tr>
-      <tr><td><b>Normal</b></td><td>7.40</td><td>24</td><td>40</td></tr>
-      <tr><td><b>Metabolic acidosis</b></td><td>↓ Decreased</td><td>↓ Decreased (primary)</td><td>↓ Decreased (compensatory)</td></tr>
-      <tr><td><b>Metabolic alkalosis</b></td><td>↑ Increased</td><td>↑ Increased (primary)</td><td>↑ Increased (compensatory)</td></tr>
-      <tr><td><b>Respiratory acidosis</b></td><td>↓ Decreased</td><td>↑ Increased (compensatory)</td><td>↑ Increased (primary)</td></tr>
-      <tr><td><b>Respiratory alkalosis</b></td><td>↑ Increased</td><td>↓ Decreased (compensatory)</td><td>↓ Decreased (primary)</td></tr>
-    </table></div>
-
-    <h3 class="hy-sec" id="acidsec3"><span class="secn">3</span>Compensation Mechanisms</h3>
-    <p class="hy-p">In metabolic disorders, you get <b>respiratory compensation</b>; in respiratory disorders, you get <b>metabolic (renal) compensation</b>. Remember: when pH decreases, H⁺ increases (and vice versa).</p>
-    
-    <h4 class="hy-sub">Metabolic Acidosis</h4>
-    <ul class="hy-list">
-      <li>pH ↓ (↑H⁺), Primary ↓HCO₃⁻</li>
-      <li><b>Compensation:</b> pCO₂ needs to decrease → <b>Hyperventilation</b> (e.g., Kussmaul's breathing in Diabetic Ketoacidosis/DKA)</li>
-    </ul>
-    <h4 class="hy-sub">Metabolic Alkalosis</h4>
-    <ul class="hy-list">
-      <li>pH ↑ (↓H⁺), Primary ↑HCO₃⁻</li>
-      <li><b>Compensation:</b> pCO₂ needs to increase → <b>Hypoventilation</b> (retain CO₂)</li>
-    </ul>
-    <h4 class="hy-sub">Respiratory Acidosis</h4>
-    <ul class="hy-list">
-      <li>pH ↓ (↑H⁺), Primary ↑pCO₂</li>
-      <li><b>Renal Compensation:</b> Too much acid in body → kidneys excrete acid and retain alkali → <b>↑H⁺ excretion</b> and <b>↑HCO₃⁻ reabsorption</b></li>
-    </ul>
-    <h4 class="hy-sub">Respiratory Alkalosis</h4>
-    <ul class="hy-list">
-      <li>pH ↑ (↓H⁺), Primary ↓pCO₂</li>
-      <li><b>Renal Compensation:</b> Too much alkali → kidneys do the opposite → <b>↓H⁺ excretion</b> and <b>↓HCO₃⁻ reabsorption</b></li>
-    </ul>
-    <p class="hy-p"><i>Note: H⁺ excretion and HCO₃⁻ reabsorption always move in the same direction!</i></p>
-
-    <h4 class="hy-sub">Predicted Compensatory Response</h4>
-    <p class="hy-p">Metabolic disorders have no acute/chronic division (respiratory compensation happens early). Respiratory disorders are divided into <b>Acute</b> and <b>Chronic</b>.</p>
-    <p class="hy-p"><b>Memory aid for per 10-unit changes:</b> "13, 6, 1, 4, 2, 4"</p>
-    <div class="hy-tblwrap"><table>
-      <tr><th>Acid-Base Disturbance</th><th>Primary Disturbance</th><th>Compensation</th><th>Predicted Compensatory Response</th></tr>
-      <tr><td>Metabolic acidosis</td><td>↓[HCO₃⁻]</td><td>↓pCO₂</td><td>1 mEq/L ↓ in HCO₃⁻ → 1.3 mmHg ↓ in pCO₂ <i>(13 per 10)</i></td></tr>
-      <tr><td>Metabolic alkalosis</td><td>↑[HCO₃⁻]</td><td>↑pCO₂</td><td>1 mEq/L ↑ in HCO₃⁻ → 0.6–0.7 mmHg ↑ in pCO₂ <i>(6 per 10)</i></td></tr>
-      <tr><td>Respiratory acidosis (Acute)</td><td>↑pCO₂</td><td>↑[HCO₃⁻]</td><td>1 mmHg ↑ in pCO₂ → 0.1 mEq/L ↑ in HCO₃⁻ <i>(1 per 10)</i></td></tr>
-      <tr><td>Respiratory acidosis (Chronic)</td><td>↑pCO₂</td><td>↑[HCO₃⁻]</td><td>1 mmHg ↑ in pCO₂ → 0.4 mEq/L ↑ in HCO₃⁻ <i>(4 per 10)</i></td></tr>
-      <tr><td>Respiratory alkalosis (Acute)</td><td>↓pCO₂</td><td>↓[HCO₃⁻]</td><td>1 mmHg ↓ in pCO₂ → 0.2 mEq/L ↓ in HCO₃⁻ <i>(2 per 10)</i></td></tr>
-      <tr><td>Respiratory alkalosis (Chronic)</td><td>↓pCO₂</td><td>↓[HCO₃⁻]</td><td>1 mmHg ↓ in pCO₂ → 0.4 mEq/L ↓ in HCO₃⁻ <i>(4 per 10)</i></td></tr>
-    </table></div>
-
-    <h4 class="hy-sub">Winter's Formula (Metabolic Acidosis)</h4>
-    <pre class="hy-code">PaCO₂ = (1.5 × HCO₃⁻) + 8 ± 2</pre>
-    <p class="hy-p"><b>Practice:</b> If HCO₃⁻ drops to 14 mEq/L (↓10 from 24):</p>
-    <ul class="hy-list">
-      <li><b>13-rule:</b> pCO₂ ↓ by 13 → 40 − 13 = <b>27 mmHg</b></li>
-      <li><b>Winter's:</b> (1.5 × 14) + 8 ± 2 = 29 ± 2 → <b>27–31 mmHg</b></li>
-    </ul>
-
-    <h3 class="hy-sec" id="acidsec4"><span class="secn">4</span>Anion Gap &amp; Key Clinical Pearls</h3>
-    <h4 class="hy-sub">Anion Gap (AG)</h4>
-    <ul class="hy-list">
-      <li><b>Definition:</b> Gap due to unmeasured anions (organic acids, phosphates)</li>
-      <li><b>Formula:</b> <b>AG = Na⁺ − (Cl⁻ + HCO₃⁻)</b> <i>(sometimes K⁺ added to Na⁺)</i></li>
-      <li><b>Normal:</b> 8–12 mEq/L</li>
-      <li><b>Increased AG:</b> Lactic acidosis, ketoacidosis (DKA), ethylene glycol, salicylates, uremia — unmeasured <i>anions</i> ↑</li>
-      <li><b>Decreased AG:</b> Hypercalcemia (Ca²⁺), Lithium toxicity (Li⁺) — unmeasured <i>cations</i> ↑</li>
-    </ul>
-
-    <h4 class="hy-sub">High-Yield Mnemonics &amp; Pearls</h4>
-    <ul class="hy-list">
-      <li><b>Aldosterone causes Alkalosis!</b> ("al-K-loss" → alkalosis associated with hypokalemia)</li>
-      <li><b>Diarrhea → aciDosis</b> (intestinal bicarbonate lost) — causes <b>Normal Anion Gap Metabolic Acidosis (NAGMA)</b></li>
-      <li><b>Vomiting → Alkalosis</b> (stomach acid lost)</li>
-      <li><b>GI vs Renal NAGMA:</b> Differentiate by Urinary Anion Gap (UAG). "Urine and Renal go together" → UAG <b>Positive</b> in RTA, <b>Negative</b> in GI diarrhea</li>
-      <li><b>Acetazolamide causes acidosis</b> — brand name Diamox (Di = 2) → <b>RTA Type 2</b></li>
-      <li><b>Salicylate poisoning:</b> Mixed disorder — Metabolic Acidosis (salicylic acid) + Respiratory Alkalosis (respiratory center stimulation)</li>
-      <li><b>Alkalosis &amp; Calcium:</b> In alkalosis, H⁺ unavailable to bind albumin → albumin binds free Ca²⁺ → <b>↓ ionized Ca²⁺</b> → tetany (seen in hyperventilation)</li>
-      <li><b>Renal failure:</b> Retention of acids → Metabolic Acidosis</li>
-      <li><b>Chronic renal failure + vomiting + diarrhea with normal pH:</b> Always calculate AG — may be <b>mixed HAGMA + metabolic alkalosis</b></li>
-    </ul>
-
-    <h3 class="hy-sec" id="acidsec5"><span class="secn">5</span>ABG Interpretation — Practice Cases</h3>
-    <p class="hy-p">Use ROME and compare against normals (pH 7.4, HCO₃⁻ 24, pCO₂ 40). Rule out by pH first, then check direction of all values.</p>
-    <div class="hy-tblwrap"><table>
-      <tr><th>Option</th><th>pH</th><th>HCO₃⁻ (mEq/L)</th><th>pCO₂ (mmHg)</th><th>Interpretation</th></tr>
-      <tr><td>(A)</td><td>7.65</td><td>48</td><td>45</td><td>Metabolic alkalosis (all ↑)</td></tr>
-      <tr><td>(B)</td><td>7.50</td><td>15</td><td>20</td><td>Respiratory alkalosis (pH ↑, others ↓)</td></tr>
-      <tr><td>(C)</td><td>7.40</td><td>24</td><td>40</td><td>Normal</td></tr>
-      <tr><td>(D)</td><td>7.32</td><td>30</td><td>60</td><td>Respiratory acidosis (pH ↓, others ↑)</td></tr>
-      <tr><td>(E)</td><td>7.31</td><td>16</td><td>33</td><td>Metabolic acidosis (all ↓)</td></tr>
-    </table></div>
-
-    <h4 class="hy-sub">Classic Case Patterns</h4>
-    <ul class="hy-list">
-      <li><b>Heavy smoker, emphysema/COPD, somnolent:</b> CO₂ retention → Respiratory Acidosis → pH ↓, pCO₂ ↑, HCO₃⁻ ↑ → <b>Option (D)</b> pattern</li>
-      <li><b>5-day history of vomiting:</b> Loss of gastric acid → Metabolic Alkalosis → all ↑ → <b>Option (A)</b> pattern</li>
-      <li><b>Anxiety, rapid breathing (hyperventilation):</b> CO₂ washout → Respiratory Alkalosis → pH ↑, pCO₂ ↓, HCO₃⁻ ↓</li>
-      <li><b>Severe diarrhea:</b> Bicarbonate loss → Metabolic Acidosis (NAGMA) → all ↓</li>
-      <li><b>DKA (Insulin-dependent DM):</b> Ketoacids → Metabolic Acidosis → all ↓</li>
-      <li><b>Upper GI aspiration / NG suction:</b> Loss of gastric acid → Metabolic Alkalosis → all ↑</li>
-    </ul>
-
-    <h3 class="hy-sec" id="acidsec6"><span class="secn">6</span>MCQ Bank — Questions &amp; Explanations</h3>
-
-    <h4 class="hy-sub">Q1. Primary change in metabolic acidosis is:</h4>
-    <p class="hy-p">a) Increase in bicarbonate &nbsp; b) Decrease in pCO₂ &nbsp; c) Decrease in bicarbonate &nbsp; d) Increase in pCO₂</p>
-    <p class="hy-p"><b>Explanation:</b> Metabolic → Equal (all decrease in acidosis). Metabolic means primary change is in bicarbonate. <b>Answer: c) Decrease in bicarbonate</b></p>
-
-    <h4 class="hy-sub">Q2. Compensatory change in respiratory acidosis is:</h4>
-    <p class="hy-p">a) Increase in bicarbonate &nbsp; b) Decrease in pCO₂ &nbsp; c) Decrease in bicarbonate &nbsp; d) Increase in pCO₂</p>
-    <p class="hy-p"><b>Explanation:</b> Respiratory disorder → primary change in pCO₂, compensatory in HCO₃⁻. ROME: Respiratory is Opposite. Since pH ↓, HCO₃⁻ (and pCO₂) will increase. <b>Answer: a) Increase in bicarbonate</b></p>
-
-    <h4 class="hy-sub">Q3. Primary change in metabolic alkalosis is:</h4>
-    <p class="hy-p">a) Increase in bicarbonate &nbsp; b) Decrease in pCO₂ &nbsp; c) Decrease in bicarbonate &nbsp; d) Increase in pCO₂</p>
-    <p class="hy-p"><b>Explanation:</b> Metabolic → primary change in bicarbonate. Alkalosis → pH ↑. Metabolic is Equal → bicarbonate increases. <b>Answer: a) Increase in bicarbonate</b></p>
-
-    <h4 class="hy-sub">Q4. Which of the following is a cause of metabolic alkalosis?</h4>
-    <p class="hy-p">(A) Diarrhea &nbsp; (B) Chronic renal failure &nbsp; (C) Ethylene glycol ingestion &nbsp; (D) Treatment with acetazolamide &nbsp; (E) Hyperaldosteronism &nbsp; (F) Salicylate poisoning</p>
-    <p class="hy-p"><b>Explanation:</b> <b>Aldosterone causes Alkalosis!</b> (al-K-loss → hypokalemia). Others: Diarrhea → NAGMA (aciDosis); CRF → acidosis; Ethylene glycol → acidosis; Acetazolamide (Diamox, Di=2) → RTA Type 2 acidosis; Salicylate → metabolic acidosis + respiratory alkalosis. <b>Answer: (E) Hyperaldosteronism</b></p>
-
-    <h4 class="hy-sub">Q5. Choose the incorrect statement about anion gap:</h4>
-    <p class="hy-p">a) In lactic acidosis anion gap is increased &nbsp; b) Anion gap is decreased in Hypercalcemia &nbsp; c) Anion gap is decreased in Lithium toxicity &nbsp; d) Anion gap is decreased in ketoacidosis</p>
-    <p class="hy-p"><b>Explanation:</b> DKA is HAGMA (high AG). Lactic acid and ketoacids are unmeasured anions → ↑AG. Ca²⁺ and Li⁺ are unmeasured cations → ↓AG. <b>Answer: d) Anion gap is decreased in ketoacidosis</b></p>
-
-    <h4 class="hy-sub">Q6. Which laboratory results indicate compensated metabolic alkalosis?</h4>
-    <p class="hy-p">a) Low pCO₂, normal bicarbonate, high pH &nbsp; b) Low pCO₂, low bicarbonate, low pH &nbsp; c) High pCO₂, normal bicarbonate, low pH &nbsp; d) High pCO₂, high bicarbonate, high pH</p>
-    <p class="hy-p"><b>Explanation:</b> ROME: Metabolic = Equal. Alkalosis → pH high, so HCO₃⁻ and pCO₂ must also be high. <b>Answer: d) High pCO₂, high bicarbonate and high pH</b></p>
-
-    <h4 class="hy-sub">Q7. ABG in heavy smoker with emphysema and chronic bronchitis becoming somnolent:</h4>
-    <p class="hy-p"><b>Explanation:</b> Obstructive lung disease → CO₂ retention → Respiratory Acidosis. pH ↓, pCO₂ ↑, HCO₃⁻ ↑. <b>Answer: (D) pH 7.32, HCO₃⁻ 30, pCO₂ 60</b></p>
-
-    <h4 class="hy-sub">Q8. Student nervous for exam, breathing rapidly — expected ABG?</h4>
-    <p class="hy-p">a) Metabolic Acidosis &nbsp; b) Metabolic Alkalosis &nbsp; c) Respiratory Acidosis &nbsp; d) Respiratory Alkalosis</p>
-    <p class="hy-p"><b>Explanation:</b> Rapid breathing → hyperventilation → CO₂ washout → pH ↑ → Respiratory Alkalosis. <b>Answer: d) Respiratory Alkalosis</b></p>
-
-    <h4 class="hy-sub">Q9. ABG in patient with 5-day history of vomiting:</h4>
-    <p class="hy-p"><b>Explanation:</b> Vomiting → loss of gastric acid → Metabolic Alkalosis. All values ↑. <b>Answer: (A) pH 7.65, HCO₃⁻ 48, pCO₂ 45</b></p>
-
-    <h4 class="hy-sub">Q10. Severe diarrhea on vacation: pH 7.25, pCO₂ 24 mmHg, [HCO₃⁻] 10 mEq/L, ↓K⁺, normal AG. Diagnosis?</h4>
-    <p class="hy-p">(A) metabolic acidosis &nbsp; (B) metabolic alkalosis &nbsp; (C) respiratory acidosis &nbsp; (D) respiratory alkalosis &nbsp; (E) normal acid-base status</p>
-    <p class="hy-p"><b>Explanation:</b> All values ↓ (equal direction) → Metabolic Acidosis. Diarrhea causes NAGMA. <b>Answer: (A) metabolic acidosis</b></p>
-
-    <h4 class="hy-sub">Q11. Coma: pCO₂ 16 mmHg, HCO₃⁻ 5 mmol/L, pH 7.1. Underlying disorder?</h4>
-    <p class="hy-p">a) Metabolic Acidosis &nbsp; b) Metabolic Alkalosis &nbsp; c) Respiratory Acidosis &nbsp; d) Respiratory Alkalosis</p>
-    <p class="hy-p"><b>Explanation:</b> pH ↓ (acidosis). pCO₂ ↓ and HCO₃⁻ ↓ — all decreased (equal) → Metabolic Acidosis. <b>Answer: a) Metabolic Acidosis</b></p>
-
-    <h4 class="hy-sub">Q12. Post-upper GI aspiration: pH 7.55, pCO₂ 52 mmHg, HCO₃⁻ 40 mmol/L. Underlying disorder?</h4>
-    <p class="hy-p">a) Metabolic Acidosis &nbsp; b) Metabolic Alkalosis &nbsp; c) Respiratory Acidosis &nbsp; d) Respiratory Alkalosis</p>
-    <p class="hy-p"><b>Explanation:</b> pH ↑ (alkalosis). pCO₂ ↑, HCO₃⁻ ↑ — all increased (same direction) → Metabolic Alkalosis (loss of gastric acid). <b>Answer: b) Metabolic Alkalosis</b></p>
-
-    <h4 class="hy-sub">Q13. ABG: pH 7.52, pCO₂ 20 mmHg, [HCO₃⁻] 16 mEq/L. Most likely correct statement?</h4>
-    <p class="hy-p">(A) He is hypoventilating &nbsp; (B) He has decreased ionized [Ca²⁺] in blood &nbsp; (C) He has almost complete respiratory compensation &nbsp; (D) Acid-base disorder caused by overproduction of fixed acid &nbsp; (E) Appropriate renal compensation would cause arterial [HCO₃⁻] to increase</p>
-    <p class="hy-p"><b>Explanation:</b> pH ↑, pCO₂ ↓, HCO₃⁻ ↓ → Respiratory Alkalosis (hyperventilation). In alkalosis, H⁺ unavailable to bind albumin → albumin binds free Ca²⁺ → ↓ ionized Ca²⁺ → tetany risk. Renal compensation decreases HCO₃⁻ reabsorption (not increase). <b>Answer: (B) He has decreased ionized [Ca²⁺] in blood</b></p>
-
-    <h4 class="hy-sub">Q14. 45-year-old female with renal failure, missed dialysis, feeling sick — reason?</h4>
-    <p class="hy-p">a) Metabolic Acidosis &nbsp; b) Metabolic Alkalosis &nbsp; c) Respiratory Acidosis &nbsp; d) Respiratory Alkalosis</p>
-    <p class="hy-p"><b>Explanation:</b> CRF → retention of acids → Metabolic Acidosis. <b>Answer: a) Metabolic Acidosis</b></p>
-
-    <h4 class="hy-sub">Q15. 80-year-old with chest tightness, coughing, suffocated, unable to breathe — possible reason?</h4>
-    <p class="hy-p">a) Metabolic Acidosis &nbsp; b) Metabolic Alkalosis &nbsp; c) Respiratory Acidosis &nbsp; d) Respiratory Alkalosis</p>
-    <p class="hy-p"><b>Explanation:</b> Unable to breathe → hypoventilation → CO₂ retention → pH ↓ → Respiratory Acidosis. <b>Answer: c) Respiratory Acidosis</b></p>
-
-    <h4 class="hy-sub">Q16. Insulin-dependent DM, pH 7.2, HCO₃⁻ 17 mmol/L, pCO₂ 20 mmHg — most appropriate?</h4>
-    <p class="hy-p">a) Metabolic Acidosis &nbsp; b) Metabolic Alkalosis &nbsp; c) Respiratory Acidosis &nbsp; d) Respiratory Alkalosis</p>
-    <p class="hy-p"><b>Explanation:</b> pH ↓, HCO₃⁻ ↓, pCO₂ ↓ — all decreased → Metabolic Acidosis (DKA). <b>Answer: a) Metabolic Acidosis</b></p>
-
-    <h4 class="hy-sub">Q17. Causes of metabolic alkalosis include all EXCEPT:</h4>
-    <p class="hy-p">a) Mineralocorticoid deficiency &nbsp; b) Hypokalemia &nbsp; c) Thiazide diuretic therapy &nbsp; d) Recurrent vomiting</p>
-    <p class="hy-p"><b>Explanation:</b> Aldosterone causes alkalosis; deficiency → acidosis (exception). Hypokalemia = "al-K-loss" (alkalosis). Thiazides → hypokalemia → alkalosis. Vomiting → alkalosis. <b>Answer: a) Mineralocorticoid deficiency</b></p>
-
-    <h4 class="hy-sub">Q18. Which will NOT cause respiratory alkalosis?</h4>
-    <p class="hy-p">a) Fever &nbsp; b) Anxiety &nbsp; c) Laryngeal obstruction &nbsp; d) Salicylate toxicity</p>
-    <p class="hy-p"><b>Explanation:</b> Laryngeal obstruction → CO₂ cannot exit → Respiratory Acidosis. Fever/anxiety → hyperventilation → alkalosis. Salicylate → respiratory alkalosis + metabolic acidosis. <b>Answer: c) Laryngeal obstruction</b></p>
-
-    <h4 class="hy-sub">Q19. All true about metabolic alkalosis EXCEPT:</h4>
-    <p class="hy-p">a) Associated with hyperkalemia &nbsp; b) Associated with decreased ionic calcium concentration &nbsp; c) Can be caused by Primary hyperaldosteronism &nbsp; d) Can be caused by Renin secreting tumor</p>
-    <p class="hy-p"><b>Explanation:</b> "al-K-loss" → hypokalemia (not hyperkalemia). ↓ ionized Ca²⁺ → tetany (true). Hyperaldosteronism &amp; renin-secreting tumor → ↑aldosterone → alkalosis (true). <b>Answer: a) Associated with hyperkalemia</b></p>
-
-    <h4 class="hy-sub">Q20. Renal handling of acids in metabolic acidosis — all true EXCEPT:</h4>
-    <p class="hy-p">a) Hydrogen ion secretion is increased &nbsp; b) Bicarbonate reabsorption is decreased &nbsp; c) Urinary acidity is increased &nbsp; d) Urinary ammonia is increased</p>
-    <p class="hy-p"><b>Explanation:</b> In metabolic acidosis, kidneys excrete acid and retain alkali: ↑H⁺ secretion, ↑HCO₃⁻ reabsorption (same direction), ↑urinary acidity, ↑urinary ammonia (NH₃ buffers H⁺ as NH₄⁺). Bicarbonate reabsorption must <b>increase</b>, not decrease. <b>Answer: b) Bicarbonate reabsorption is decreased</b></p>
-    <p class="hy-p"><i>Bonus: Urinary phosphate also increases in metabolic acidosis as a buffer for excreted H⁺.</i></p>
-
-    <h4 class="hy-sub">Q21. CKD patient with vomiting and diarrhea: pH 7.4, HCO₃⁻ 23 mEq/L, Na⁺ 145 mEq/L, Cl⁻ 100 mEq/L. Probable diagnosis?</h4>
-    <p class="hy-p">a) No acid base abnormality &nbsp; b) Respiratory acidosis &nbsp; c) Metabolic alkalosis &nbsp; d) HAGMA with metabolic alkalosis</p>
-    <p class="hy-p"><b>Explanation:</b> Normal pH is a trap — calculate Anion Gap! <b>AG = Na⁺ − (Cl⁻ + HCO₃⁻) = 145 − (100 + 23) = 22</b> (↑, normal 8–12). Indicates HAGMA (from CKD), but pH normalized by concurrent metabolic alkalosis (from vomiting) → mixed disorder. <b>Answer: d) HAGMA with metabolic alkalosis</b></p>
-
-    <div class="foot-note"><b>Source:</b> Acid-Base Disorders MCQ Bank (C:\Users\pc\Desktop\Acidbase.docx) — 21 questions with explanations, ROME mnemonic, compensation formulas, and 4 reference tables. Content rendered preserving source flow. Part of MedArena's Very High Yield series.</div>
-  </article><script>
+<script>
 (function(){
-  var FREE_UNTIL = Date.parse('2026-11-15T20:37:14+05:45');
+  var FREE_UNTIL = Date.parse('2026-11-25T23:59:59+05:45');
   var banner = document.getElementById('freeUsageBanner');
   var timerEl = document.getElementById('freeUsageTimer');
   if (!banner || !timerEl) return;
