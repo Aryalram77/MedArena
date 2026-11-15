@@ -213,6 +213,10 @@
   <a class="back-link" href="index.html">&larr; Back to MedArena</a>
 </div>
 
+<div id="freeUsageBanner" style="display:none;background:linear-gradient(90deg,#0ea5e9,#2563eb);color:#fff;padding:10px 16px;text-align:center;font-size:14px;font-weight:600;letter-spacing:.2px">
+  Free Usage Limits in <span id="freeUsageTimer" style="font-variant-numeric:tabular-nums;background:rgba(255,255,255,.18);padding:3px 10px;border-radius:999px;margin-left:6px;display:inline-block;min-width:180px"></span>
+</div>
+
 <div class="wrap">
   <div class="hero">
     <span class="kicker">&#11088; Very High Yield Series</span>
@@ -1608,5 +1612,26 @@ E</pre>
     <p class="hy-p"><b>Explanation:</b> Normal pH is a trap — calculate Anion Gap! <b>AG = Na⁺ − (Cl⁻ + HCO₃⁻) = 145 − (100 + 23) = 22</b> (↑, normal 8–12). Indicates HAGMA (from CKD), but pH normalized by concurrent metabolic alkalosis (from vomiting) → mixed disorder. <b>Answer: d) HAGMA with metabolic alkalosis</b></p>
 
     <div class="foot-note"><b>Source:</b> Acid-Base Disorders MCQ Bank (C:\Users\pc\Desktop\Acidbase.docx) — 21 questions with explanations, ROME mnemonic, compensation formulas, and 4 reference tables. Content rendered preserving source flow. Part of MedArena's Very High Yield series.</div>
-  </article></body>
+  </article><script>
+(function(){
+  var FREE_UNTIL = Date.parse('2026-12-15T23:59:59+05:45');
+  var banner = document.getElementById('freeUsageBanner');
+  var timerEl = document.getElementById('freeUsageTimer');
+  if (!banner || !timerEl) return;
+  function pad(n){ return String(n).padStart(2,'0'); }
+  function tick(){
+    var ms = FREE_UNTIL - Date.now();
+    if (ms <= 0){ banner.style.display = 'none'; return; }
+    var s = Math.floor(ms/1000);
+    var d = Math.floor(s/86400); s %= 86400;
+    var h = Math.floor(s/3600); s %= 3600;
+    var m = Math.floor(s/60); s %= 60;
+    timerEl.textContent = d + 'd ' + pad(h) + 'h ' + pad(m) + 'm ' + pad(s) + 's';
+    banner.style.display = 'block';
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
+</body>
 </html>

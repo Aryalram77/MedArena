@@ -334,6 +334,10 @@ pre{white-space:pre-wrap;word-break:break-word;overflow-x:auto;}
   <div class="tag" id="hdrTag">Categories: Loksewa · Surgery · CEE MD/MS — banks embedded</div>
 </header>
 
+<div id="freeUsageBanner" style="display:none;background:linear-gradient(90deg,#0ea5e9,#2563eb);color:#fff;padding:10px 16px;text-align:center;font-size:14px;font-weight:600;letter-spacing:.2px">
+  Free Usage Limits in <span id="freeUsageTimer" style="font-variant-numeric:tabular-nums;background:rgba(255,255,255,.18);padding:3px 10px;border-radius:999px;margin-left:6px;display:inline-block;min-width:180px"></span>
+</div>
+
 <main class="container">
 
 <section id="examOrchestrator" style="display:none">
@@ -1379,6 +1383,27 @@ function medArenaHash(s){
   s.src = "auth.js";
   s.onerror = function () { console.warn("[MedArena] auth.js unavailable - running without accounts."); };
   document.head.appendChild(s);
+})();
+</script>
+<script>
+(function(){
+  var FREE_UNTIL = Date.parse('2026-12-15T23:59:59+05:45');
+  var banner = document.getElementById('freeUsageBanner');
+  var timerEl = document.getElementById('freeUsageTimer');
+  if (!banner || !timerEl) return;
+  function pad(n){ return String(n).padStart(2,'0'); }
+  function tick(){
+    var ms = FREE_UNTIL - Date.now();
+    if (ms <= 0){ banner.style.display = 'none'; return; }
+    var s = Math.floor(ms/1000);
+    var d = Math.floor(s/86400); s %= 86400;
+    var h = Math.floor(s/3600); s %= 3600;
+    var m = Math.floor(s/60); s %= 60;
+    timerEl.textContent = d + 'd ' + pad(h) + 'h ' + pad(m) + 'm ' + pad(s) + 's';
+    banner.style.display = 'block';
+  }
+  tick();
+  setInterval(tick, 1000);
 })();
 </script>
 </body>
