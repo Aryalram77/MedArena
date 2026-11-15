@@ -187,7 +187,7 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
   </form>
 </div>
 <header>
-  <div class="logo"><a class="home-brand-link" href="/home" aria-label="MedArena homepage">✚ <span class="brand">MedArena</span></a> <span style="color:var(--muted);font-weight:400;font-size:13px">Admin</span></div>
+  <div class="logo"><a class="home-brand-link" href="index.html" aria-label="MedArena homepage">✚ <span class="brand">MedArena</span></a> <span style="color:var(--muted);font-weight:400;font-size:13px">Admin</span></div>
   <div class="tag">content editor · edits <b>surgery-practice.html</b> + homepage · backups kept in <b>backups/</b></div>
   <button id="adminSignOut" style="margin-left:auto;padding:7px 14px;background:#e2e8f0;color:#0f172a;border:none;border-radius:8px;font-weight:600;font-size:12.5px;cursor:pointer">Sign out</button>
 </header>
@@ -207,7 +207,7 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
     </div>
     <div class="toolbar">
       <button class="ghost" id="reloadBtn">↻ Reload from disk</button>
-      <a href="/" target="_blank" style="margin-left:auto"><button class="ghost">▶ Open user site</button></a>
+      <a href="index.html" target="_blank" style="margin-left:auto"><button class="ghost">▶ Open user site</button></a>
     </div>
   </div>
 
@@ -269,7 +269,7 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
   </div>
   <div class="toolbar">
     <button id="hSave">💾 Save homepage</button>
-    <a href="/home" target="_blank" style="margin-left:auto"><button class="ghost">▶ Preview homepage</button></a>
+    <a href="index.html" target="_blank" style="margin-left:auto"><button class="ghost">▶ Preview homepage</button></a>
   </div>
   <div class="meta" id="hMeta" style="margin-top:6px"></div>
 </div>
@@ -286,7 +286,7 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
   </div>
   <div class="toolbar">
     <button id="nSave">💾 Save notification</button>
-    <a href="/home" target="_blank" style="margin-left:auto"><button class="ghost">▶ Preview homepage</button></a>
+    <a href="index.html" target="_blank" style="margin-left:auto"><button class="ghost">▶ Preview homepage</button></a>
   </div>
   <div class="meta" id="nMeta" style="margin-top:6px"></div>
 </div>
@@ -611,7 +611,20 @@ bindLive();
 (async function adminGate(){
   let st = null;
   try { st = await api("/api/admin/status"); }
-  catch (e) { toast("Cannot reach the server: " + e.message, true); return; }
+  catch (e) {
+    document.querySelector("main").style.display = "none";
+    const g = document.getElementById("adminGate");
+    if (g) {
+      g.style.display = "flex";
+      document.getElementById("gateTitle").textContent = "Admin panel unavailable";
+      document.getElementById("gateHint").innerHTML = "This admin panel requires the local admin server (<code>admin-server.py</code>). It does not work on GitHub Pages. Run <code>python admin-server.py</code> locally and open <code>http://localhost:8600/admin</code>.";
+      const form = document.getElementById("gateForm"); if (form) form.style.display = "none";
+      const err = document.getElementById("gateErr"); if (err) err.textContent = "";
+    } else {
+      document.body.innerHTML = '<div style="padding:24px;font-family:system-ui;color:#0f172a"><h2>Admin panel unavailable</h2><p>This admin panel requires the local admin server (<code>admin-server.py</code>). It does not work on GitHub Pages.</p><p>Run <code>python admin-server.py</code> locally and open <code>http://localhost:8600/admin</code>.</p></div>';
+    }
+    return;
+  }
 
   const showGate = (mode) => {
     document.querySelector("main").style.display = "none";
