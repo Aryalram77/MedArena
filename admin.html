@@ -120,9 +120,17 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
   "use strict";
   var base = "";
   var ls = "";
-  /* Admin is always local: ignore any stored cloud base so a leftover
-     localStorage value cannot re-point this page at the worker. */
-  base = "";
+  /* Allow cloud/remote backend URL for GitHub Pages deployment.
+     Set via ?api=https://your-backend.example.com or localStorage "ma_api_base".
+     Leave empty for local admin-server.py (default). */
+  try {
+    var qp = new URLSearchParams(location.search);
+    if (qp.get("api")) { base = qp.get("api").replace(/\/+$/, ""); localStorage.setItem("ma_api_base", base); }
+    else { base = (localStorage.getItem("ma_api_base") || "").replace(/\/+$/, ""); }
+  } catch (e) { base = ""; }
+  // Only enable cloud fetch rewriting when base is set and we're not on localhost
+  var isLocal = /^(localhost|127\.0\.0\.1)(:\d+)?$/.test(location.host);
+  if (isLocal) base = "";
   if (!base) return;
 
   function tokFor(path) {
@@ -617,9 +625,21 @@ bindLive();
     if (g) {
       g.style.display = "flex";
       document.getElementById("gateTitle").textContent = "Admin panel unavailable";
-      document.getElementById("gateHint").innerHTML = "This admin panel requires the local admin server (<code>admin-server.py</code>). It does not work on GitHub Pages. Run <code>python admin-server.py</code> locally and open <code>http://localhost:8600/admin</code>.";
+      document.getElementById("gateHint").innerHTML = "This admin panel needs a backend API. For local use, run <code>python admin-server.py</code> and open <code>http://localhost:8600/admin</code>.<br><br><b>For GitHub Pages:</b> enter your deployed backend URL below (or append <code>?api=...</code> to the URL)." +
+        '<div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap"><input id="apiBaseInput" type="text" placeholder="https://your-backend.example.com" style="flex:1;min-width:220px;padding:10px;border:1px solid #cbd5e1;border-radius:8px;font-size:14px"><button id="apiBaseSave" style="padding:10px 14px;border:none;border-radius:8px;background:#2563eb;color:#fff;cursor:pointer;font-weight:600">Connect</button></div>' +
+        '<div style="margin-top:8px;font-size:12px;color:#64748b">Backend must implement the admin API (e.g. deploy <code>admin-server.py</code>). Current saved: <code id="apiBaseCurrent">' + (localStorage.getItem("ma_api_base")||"(none)") + '</code></div>';
       const form = document.getElementById("gateForm"); if (form) form.style.display = "none";
       const err = document.getElementById("gateErr"); if (err) err.textContent = "";
+      setTimeout(function(){
+        var inp = document.getElementById("apiBaseInput"); if (inp) inp.value = localStorage.getItem("ma_api_base") || "";
+        var btn = document.getElementById("apiBaseSave");
+        if (btn) btn.onclick = function(){
+          var v = ((document.getElementById("apiBaseInput")||{}).value||"").replace(/\/+$/,"");
+          if (!v) { alert("Enter backend URL"); return; }
+          localStorage.setItem("ma_api_base", v);
+          location.href = location.pathname + "?api=" + encodeURIComponent(v);
+        };
+      }, 0);
     } else {
       document.body.innerHTML = '<div style="padding:24px;font-family:system-ui;color:#0f172a"><h2>Admin panel unavailable</h2><p>This admin panel requires the local admin server (<code>admin-server.py</code>). It does not work on GitHub Pages.</p><p>Run <code>python admin-server.py</code> locally and open <code>http://localhost:8600/admin</code>.</p></div>';
     }
