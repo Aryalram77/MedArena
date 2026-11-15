@@ -1316,7 +1316,7 @@ window.HYLock = (function(){
   window.addEventListener("scroll", onScroll, {passive:true});
 
   var chips = [].slice.call(document.querySelectorAll(".chip[data-topic]"));
-  var topics = ["neuro", "hla", "inh"];
+  var topics = ["neuro", "hla", "inh", "acidbase"];
   function showTopic(t, noscroll){
     if (window.HYLock && HYLock.isLockedTopic(t) && !HYLock.unlocked()){ HYLock.open(t); return; }
     chips.forEach(function(c){ c.classList.toggle("active", c.getAttribute("data-topic") === t); });
@@ -1356,5 +1356,52 @@ window.HYLock = (function(){
   }
 })();
 </script>
+
+  <article class="content" id="topic-acidbase" hidden>
+    <div class="hy-part" id="acidpart1"><span class="part-icon">⚕️</span>Acid Base Disorders</div>
+<h3 class="hy-sec" id="acidsec1"><span class="secn">1</span>Disorders of Acid-Base Balance</h3>
+<h4 class="hy-sub">Primary Disorders</h4>
+<ul class="hy-list">
+<li><b>Metabolic acidosis</b> — increased anion gap (AG > 12) or normal AG; caused by gastrointestinal bicarbonate loss, renal bicarbonate loss, or non-metabolic acid gain</li>
+<li><b>Metabolic alkalosis</b> — elevated bicarbonate; caused by gastrointestinal H+ loss, renal H+ loss, or exogenous base gain</li>
+<li><b>Respiratory acidosis</b> — CO2 retention; caused by hypoventilation (CNS depression, COPD, neuromuscular disease)</li>
+<li><b>Respiratory alkalosis</b> — CO2 depletion; caused by hyperventilation (fever, pain, anxiety, pulmonary embolism)</li>
+</ul>
+<h4 class="hy-sub">Derangements</h4>
+<ul class="hy-list">
+<li><b>High anion gap metabolic acidosis</b>: MUDPILES (Methanol, Uremia, DKA, Paraldehyde/Propanol, Isopropyl alcohol, Lactic acidosis, Ethylene glycol, Salicylate)</li>
+<li><b>Normal anion gap (hyperchloremic) metabolic acidosis</b>: Diarrhea, renal tubular acidosis, factitious (enemas, HCl ingestion)</li>
+<li><b>Metabolic alkalosis</b>: Chloride-responsive (vomiting, NG suction, diuretics) vs. chloride-resistant (mineralocorticoid excess, Cushing syndrome)</li>
+<li><b>Respiratory acidosis</b>: Acute (compensation: HCO3- increases by 1 mEq/L for every 10 mmHg CO2 increase) vs. Chronic (compensation: HCO3- increases by 3.5 mEq/L for every 10 mmHg CO2 increase)</li>
+<li><b>Respiratory alkalosis</b>: Acute (compensation: HCO3- decreases by 2 mEq/L for every 10 mmHg CO2 decrease) vs. Chronic (compensation: HCO3- decreases by 5 mEq/L for every 10 mmHg CO2 decrease)</li>
+</ul>
+<h4 class="hy-sub">Key Formulas</h4>
+<p><b>Anion Gap = Na+ — (Cl- + HCO3-)</b> (normal 8‑12 mEq/L)</p>
+<p><b>Expected respiratory compensation (metabolic acidosis)</b>:</p>
+<ul>
+<li>Acute: <b>PaCO2 = 1.5 × HCO3- + 8 ± 2</b></li>
+<li>Chronic: <b>PaCO2 = 1.5 × HCO3- + 15 ± 2</b></li>
+</ul>
+<p><b>Winter's formula for expected PaCO2 (metabolic acidosis)</b>: <b>PaCO2 = 1.5 × HCO3- + 8 ± 2</b></p>
+<p><b>Base deficit</b> = 24 — [HCO3-]; indicates severity of metabolic acidosis</p>
+<p><b> pH </b>= 6.1 + log([HCO3-] / (0.03 × PaCO2))</p>
+</article>
+
+  <div id="toc-acidbase" hidden>
+    <h3>On this page — Acid Base Disorders</h3>
+    <a class="toc-part" href="#acidsec1">💡 Primary Disorders</a>
+    <a class="toc-sec" href="#acidsec1">1. Primary Disorders</a>
+    <a class="toc-sec" href="#acidsec2">2. Derangements</a>
+    <a class="toc-sec" href="#acidsec3">3. Key Formulas</a>
+  </div>
+
+  <div id="tocm-acidbase" hidden>
+    <summary>&#128202; On this page — Acid Base Disorders</summary>
+    <a class="toc-part" href="#acidsec1">💡 Primary Disorders</a>
+    <a class="toc-sec" href="#acidsec1">1. Primary Disorders</a>
+    <a class="toc-sec" href="#acidsec2">2. Derangements</a>
+    <a class="toc-sec" href="#acidsec3">3. Key Formulas</a>
+  </div>
+
 </body>
 </html>
