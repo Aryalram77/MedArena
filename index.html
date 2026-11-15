@@ -417,11 +417,15 @@ html,body{overflow-x:hidden;}
 <section class="home-countdown" aria-labelledby="cdTitle">
   <div class="cd-inner">
     <div class="cd-left">
-      <div class="cd-eyebrow">⏳ Free Trial</div>
-      <div class="cd-title" id="cdTitle">Try MedArena free for 1 minute</div>
-      <div class="cd-sub">Explore practice sets. Unlock lifetime access (Rs 1,000) for all sets.</div>
+      <div class="cd-eyebrow">⏳ Exam Countdown</div>
+      <div class="cd-title" id="cdTitle">Federal Loksewa — Medical Officer</div>
+      <div class="cd-sub">Stay focused. Practice daily, track your progress.</div>
     </div>
     <div class="cd-timer" id="cdTimer">
+      <div class="cd-unit"><b id="cdD">00</b><span>Days</span></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><b id="cdH">00</b><span>Hours</span></div>
+      <div class="cd-sep">:</div>
       <div class="cd-unit"><b id="cdM">00</b><span>Minutes</span></div>
       <div class="cd-sep">:</div>
       <div class="cd-unit"><b id="cdS">00</b><span>Seconds</span></div>
@@ -430,26 +434,22 @@ html,body{overflow-x:hidden;}
 </section>
 <script>
 (function(){
-  const KEY="medarena.freeTrial.deadline";
-  const DURATION=60000; // 1 minute
-  let deadline=0;
-  try { deadline=parseInt(localStorage.getItem(KEY)||"0",10)||0; } catch(e){ deadline=0; }
-  const now=Date.now();
-  if(!deadline || deadline < now - 86400000 || deadline > now + DURATION){
-    deadline = now + DURATION;
-    try { localStorage.setItem(KEY, String(deadline)); } catch(e){}
-  }
-  const mEl=document.getElementById("cdM"),sEl=document.getElementById("cdS"),timer=document.getElementById("cdTimer");
+  const target = new Date("2027-02-12T00:00:00").getTime();
+  const dEl=document.getElementById("cdD"),hEl=document.getElementById("cdH"),mEl=document.getElementById("cdM"),sEl=document.getElementById("cdS"),timer=document.getElementById("cdTimer");
   function pad(n){return String(n).padStart(2,"0");}
   function tick(){
-    const diff=deadline-Date.now();
+    const now=Date.now();
+    let diff=target-now;
     if(diff<=0){
-      if(timer) timer.innerHTML='<div class="cd-done">🔒 Free trial ended — <a href="#" id="cdAccess" style="color:#fde68a;text-decoration:underline">Get lifetime access (Rs 1,000)</a></div>';
-      const a=document.getElementById("cdAccess");
-      if(a) a.onclick=(e)=>{e.preventDefault();const l=document.getElementById("ppOpenLink");if(l)l.click();else window.location.hash="#access";};
+      if(timer) timer.innerHTML='<div class="cd-done">🎉 Exam day is here — best of luck!</div>';
       clearInterval(iv); return;
     }
-    const m=Math.floor(diff/60000); const s=Math.floor((diff%60000)/1000);
+    const d=Math.floor(diff/86400000); diff%=86400000;
+    const h=Math.floor(diff/3600000); diff%=3600000;
+    const m=Math.floor(diff/60000); diff%=60000;
+    const s=Math.floor(diff/1000);
+    if(dEl) dEl.textContent=pad(d);
+    if(hEl) hEl.textContent=pad(h);
     if(mEl) mEl.textContent=pad(m);
     if(sEl) sEl.textContent=pad(s);
   }
@@ -1968,7 +1968,7 @@ initDB().then(async () => {
 </script>
 <script>
 (function(){
-  var FREE_UNTIL = Date.parse('2026-11-25T23:59:59+05:45');
+  var FREE_UNTIL = Date.parse('2026-11-15T22:34:38+05:45');
   var banner = document.getElementById('freeUsageBanner');
   var timerEl = document.getElementById('freeUsageTimer');
   if (!banner || !timerEl) return;
