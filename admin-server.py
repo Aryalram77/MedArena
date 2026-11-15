@@ -39,6 +39,13 @@ SESSION_COOKIE = "ma_sess"
 SESSION_TTL = 60 * 24 * 3600  # 60 days
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8600
 
+# 30-day public free period (same as frontend). During this period, all content is
+# treated as unlocked. After expiry, normal lock/code rules apply automatically.
+FREE_UNTIL_MS = 1765816199000  # 2026-12-15T23:59:59+05:45
+
+def is_free_period():
+    return int(time.time() * 1000) < FREE_UNTIL_MS
+
 CTYPE = {
     ".html": "text/html; charset=utf-8",
     ".css": "text/css; charset=utf-8",
@@ -868,6 +875,9 @@ class Handler(BaseHTTPRequestHandler):
             # It used to hit only the Cloudflare worker, so locally it 404'd.
             dev = (unquote(self.path.split("dev=")[-1].split("&")[0]) if "dev=" in self.path else "").strip().upper()
             lk = load_lock() or {}
+            # During the 30-day public free period, treat all devices as unlocked.
+            if is_free_period():
+                self._send_json({"dev": dev, "rev": lk.get("rev", "free-period"), "freePeriod": True}); return
             rev = ""
             for s in (lk.get("subs") or []):
                 if s.get("id") == dev and s.get("rev"):
