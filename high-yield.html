@@ -224,6 +224,7 @@
     <button class="chip active" data-topic="neuro">&#129504; Neurology</button>
     <button class="chip" data-topic="hla">&#129516; HLA Association</button>
     <button class="chip" data-topic="inh">&#128106; Inheritance Patterns</button>
+    <button class="chip" data-topic="acidbase">⚕️ Acid Base Disorders</button>
     <span class="chip soon">&#10133; More topics coming soon</span>
   </div>
 
@@ -1200,7 +1201,7 @@ const ESEWA_QR = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAMCAgM
 window.HYLock = (function(){
   var LOCK = {"rev":"a7f3e9b2-1c4d8e6f","updated":"14 Nov 2026","subs":[]};
   var FREE = ["neuro"];   /* free topics — everything else is locked by default */
-  var NAMES = {"neuro":"Neurology", "hla":"HLA Association", "inh":"Inheritance Patterns"};
+  var NAMES = {"neuro":"Neurology", "hla":"HLA Association", "inh":"Inheritance Patterns", "acidbase":"Acid Base Disorders"};
   function medArenaHash(s){
     var fnv = function(str){ var h = 0x811c9dc5; for (var i = 0; i < str.length; i++){ h ^= str.charCodeAt(i); h = Math.imul(h, 16777619) >>> 0; } return h >>> 0; };
     var a = fnv(s), b = fnv(s.split("").reverse().join(""));
