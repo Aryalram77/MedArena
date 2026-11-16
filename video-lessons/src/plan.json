@@ -1,0 +1,107 @@
+{
+  "fps": 30,
+  "voice": "af_heart",
+  "lesson_title": "Gandaki Loksewa 2080 \u00b7 Medical Officer",
+  "segments": [
+    {
+      "type": "cover",
+      "frames": 105
+    },
+    {
+      "type": "question",
+      "n": 1,
+      "chapter": "Forensic",
+      "frames": {
+        "intro": 194,
+        "question": 195,
+        "options": 324,
+        "reveal": 152,
+        "explanation": 1756
+      },
+      "audio": {
+        "intro": "q01_forensic_intro.wav",
+        "question": "q01_forensic_question.wav",
+        "options": "q01_forensic_options.wav",
+        "answer": "q01_forensic_answer.wav",
+        "explanation": "q01_forensic_explanation.wav"
+      }
+    },
+    {
+      "type": "question",
+      "n": 3,
+      "chapter": "Pharmacology",
+      "frames": {
+        "intro": 203,
+        "question": 168,
+        "options": 229,
+        "reveal": 119,
+        "explanation": 1399
+      },
+      "audio": {
+        "intro": "q03_pharmacology_intro.wav",
+        "question": "q03_pharmacology_question.wav",
+        "options": "q03_pharmacology_options.wav",
+        "answer": "q03_pharmacology_answer.wav",
+        "explanation": "q03_pharmacology_explanation.wav"
+      }
+    },
+    {
+      "type": "question",
+      "n": 4,
+      "chapter": "PSM",
+      "frames": {
+        "intro": 197,
+        "question": 144,
+        "options": 395,
+        "reveal": 161,
+        "explanation": 1044
+      },
+      "audio": {
+        "intro": "q04_psm_intro.wav",
+        "question": "q04_psm_question.wav",
+        "options": "q04_psm_options.wav",
+        "answer": "q04_psm_answer.wav",
+        "explanation": "q04_psm_explanation.wav"
+      }
+    },
+    {
+      "type": "question",
+      "n": 5,
+      "chapter": "PSM",
+      "frames": {
+        "intro": 198,
+        "question": 246,
+        "options": 265,
+        "reveal": 129,
+        "explanation": 1577
+      },
+      "audio": {
+        "intro": "q05_psm_intro.wav",
+        "question": "q05_psm_question.wav",
+        "options": "q05_psm_options.wav",
+        "answer": "q05_psm_answer.wav",
+        "explanation": "q05_psm_explanation.wav"
+      }
+    },
+    {
+      "type": "question",
+      "n": 2,
+      "chapter": "Forensic",
+      "frames": {
+        "intro": 195,
+        "question": 140,
+        "options": 249,
+        "reveal": 117,
+        "explanation": 1113
+      },
+      "audio": {
+        "intro": "q02_forensic_intro.wav",
+        "question": "q02_forensic_question.wav",
+        "options": "q02_forensic_options.wav",
+        "answer": "q02_forensic_answer.wav",
+        "explanation": "q02_forensic_explanation.wav"
+      }
+    }
+  ],
+  "outro_frames": 90
+}

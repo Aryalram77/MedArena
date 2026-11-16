@@ -1,0 +1,2702 @@
+[
+  {
+    "n": 1,
+    "chapter": "Forensic",
+    "stem": "In determining the age of a skeleton at the time of death, one of the following are useful, except:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Ossification centers"
+      },
+      {
+        "letter": "B",
+        "text": "Epiphyseal union"
+      },
+      {
+        "letter": "C",
+        "text": "Secondary sexual characteristics"
+      },
+      {
+        "letter": "D",
+        "text": "Sexual configuration of pelvis"
+      }
+    ],
+    "answerLetter": "D",
+    "answerText": "Sexual configuration of pelvis",
+    "explanation": "DETERMINATION OF AGE/SEX FROM SKELETON:\n- Sexual configuration of pelvis is useful for determination of sex, not age at the time of death.\nUseful features:\n| Aspect | Features |\n| Race | Skull: cephalic/cranial index (dolichocephalic, mesaticephalic, brachycephalic). Teeth: shovel incisor, enamel pearl, Carabelli's cusp, taurodontism (bull tooth). Hair: mongoloid, negro, caucasian. Other: crural index, brachial index, humero-femoral index. |\n| Sex | Bone: medullary index. Other: sciatic notch index, Washburn index, corporo-basal index of sacrum (male only), sternal index. |\n| Age (teeth) | Temporary teeth: 20 in number (I-2, C-1, PM-0, M-2 in each quadrant). Permanent: 32 (I-2, C-1, PM-2, M-3 in each quadrant). Less than 25 years: Boyde's method, Stack's method, dental eruption. More than 25 years: Gustafson's method, Miles' method, radiocarbon dating of tooth enamel. |\n| Age (secondary sexual characters/general) | Secondary sexual characteristics and general physical appearance. |\n| Age (radiological) | Fusion of bone/joint in male: 16 years elbow joint, 16-17 years ankle joint, 17-18 years hip joint, 18-19 years knee, shoulder, wrist joint, 20-21 years fusion of iliac crest, ischial tuberosity, inner end of clavicle. In female, fusion of bones occurs about one year earlier than male. |\n- Ref: The Essentials of Forensic Medicine and Toxicology by KSN Reddy 34th ed p. 55-80.",
+    "explanationSpoken": "DETERMINATION OF AGE/SEX FROM SKELETON:. - Sexual configuration of pelvis is useful for determination of sex, not age at the time of death.. Useful features:. Aspect. Features. Race. Skull: cephalic/cranial index (dolichocephalic, mesaticephalic, brachycephalic). Teeth: shovel incisor, enamel pearl, Carabelli's cusp, taurodontism (bull tooth). Hair: mongoloid, negro, caucasian. Other: crural index, brachial index, humero-femoral index.. Sex. Bone: medullary index. Other: sciatic notch index, Washburn index, corporo-basal index of sacrum (male only), sternal index.. Age (teeth). Temporary teeth: 20 in number (I-2, C-1, PM-0, M-2 in each quadrant). Permanent: 32 (I-2, C-1, PM-2, M-3 in each quadrant). Less than 25 years: Boyde's method, Stack's method, dental eruption. More than 25 years: Gustafson's method, Miles' method, radiocarbon dating of tooth enamel.. Age (secondary sexual characters/general). Secondary sexual characteristics and general physical appearance.. Age (radiological). Fusion of bone/joint in male: 16 years elbow joint, 16-17 years ankle joint, 17-18 years hip joint, 18-19 years knee, shoulder, wrist joint, 20-21 years fusion of iliac crest, ischial tuberosity, inner end of clavicle. In female, fusion of bones occurs about one year earlier than male.. - Ref: The Essentials of Forensic Medicine and Toxicology by KSN Reddy 34th ed p. 55-80."
+  },
+  {
+    "n": 2,
+    "chapter": "Forensic",
+    "stem": "Professional negligence is failure on the part of the doctor for:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Wrong diagnosis"
+      },
+      {
+        "letter": "B",
+        "text": "Wrong treatment"
+      },
+      {
+        "letter": "C",
+        "text": "Absence of reasonable care and skill"
+      },
+      {
+        "letter": "D",
+        "text": "All of the above"
+      }
+    ],
+    "answerLetter": "D",
+    "answerText": "All of the above",
+    "explanation": "PROFESSIONAL MALPRAXIS/MEDICAL NEGLIGENCE:\n- Absence of reasonable care and skill by a doctor in treating the patient, resulting in bodily injury or death of the patient.\n- Essential components of negligence (4 D's): Duty of care, Dereliction of duty, Direct causation, Damage.\nTypes of negligence:\n- Civil negligence\n- Criminal negligence\n- Contributory negligence\n- Corporate negligence\n- Ethical negligence\n- Composite negligence\n- Ref: The Essentials of Forensic Medicine and Toxicology by KSN Reddy 34th ed p. 34.",
+    "explanationSpoken": "PROFESSIONAL MALPRAXIS/MEDICAL NEGLIGENCE:. - Absence of reasonable care and skill by a doctor in treating the patient, resulting in bodily injury or death of the patient.. - Essential components of negligence (4 D's): Duty of care, Dereliction of duty, Direct causation, Damage.. Types of negligence:. - Civil negligence. - Criminal negligence. - Contributory negligence. - Corporate negligence. - Ethical negligence. - Composite negligence. - Ref: The Essentials of Forensic Medicine and Toxicology by KSN Reddy 34th ed p. 34."
+  },
+  {
+    "n": 3,
+    "chapter": "Pharmacology",
+    "stem": "In clinical trials, test of a new drug dosage in healthy volunteers is:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Phase I trial"
+      },
+      {
+        "letter": "B",
+        "text": "Phase II trial"
+      },
+      {
+        "letter": "C",
+        "text": "Phase III trial"
+      },
+      {
+        "letter": "D",
+        "text": "Phase IV trial"
+      }
+    ],
+    "answerLetter": "A",
+    "answerText": "Phase I trial",
+    "explanation": "DRUG TRIALS (PHASES):\n| Phase | Study sample | Purpose |\n| Phase 0 | Very small healthy volunteers or patients with disease | Initial pharmacokinetics and pharmacodynamics |\n| Phase I | Small number of healthy volunteers or patients of interest | Assess safety, toxicity, dosage, pharmacokinetics, pharmacodynamics |\n| Phase II | Moderate number of patients with disease of interest | Assess efficacy, adverse effects |\n| Phase III | Large number of patients under investigation or placebo | Compare treatment (new) to current standard |\n| Phase IV | Post-marketing surveillance | Detect long-term adverse effects or complications |\n- Ref: First Aid 2021 p. 261.",
+    "explanationSpoken": "DRUG TRIALS (PHASES):. Phase. Study sample. Purpose. Phase 0. Very small healthy volunteers or patients with disease. Initial pharmacokinetics and pharmacodynamics. Phase I. Small number of healthy volunteers or patients of interest. Assess safety, toxicity, dosage, pharmacokinetics, pharmacodynamics. Phase II. Moderate number of patients with disease of interest. Assess efficacy, adverse effects. Phase III. Large number of patients under investigation or placebo. Compare treatment (new) to current standard. Phase IV. Post-marketing surveillance. Detect long-term adverse effects or complications. - Ref: First Aid 2021 p. 261."
+  },
+  {
+    "n": 4,
+    "chapter": "PSM",
+    "stem": "Specificity of a diagnostic test is best described as:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Disease is absent, test is negative"
+      },
+      {
+        "letter": "B",
+        "text": "Disease is present, test is positive"
+      },
+      {
+        "letter": "C",
+        "text": "Disease is absent, test is positive"
+      },
+      {
+        "letter": "D",
+        "text": "Disease is present, test is negative"
+      }
+    ],
+    "answerLetter": "A",
+    "answerText": "Disease is absent, test is negative",
+    "explanation": "SENSITIVITY AND SPECIFICITY:\n1. Sensitivity:\n- Proportion of all people with disease who test positive.\n- It is the true positive rate.\n- High sensitivity test is used for screening.\n2. Specificity:\n- Proportion of all people without disease who test negative.\n- It is the true negative rate.\n- Specificity = True negative / (True negative + False positive).\n- High specificity test is used for confirmation after a positive screening test.\n- Ref: First Aid for the USMLE Step 1, Public Health Sciences.",
+    "explanationSpoken": "SENSITIVITY AND SPECIFICITY:. 1. Sensitivity:. - Proportion of all people with disease who test positive.. - It is the true positive rate.. - High sensitivity test is used for screening.. 2. Specificity:. - Proportion of all people without disease who test negative.. - It is the true negative rate.. - Specificity = True negative / (True negative + False positive).. - High specificity test is used for confirmation after a positive screening test.. - Ref: First Aid for the USMLE Step 1, Public Health Sciences."
+  },
+  {
+    "n": 5,
+    "chapter": "PSM",
+    "stem": "Prevention of rheumatic fever by effectively treating streptococcal sore throat with antibiotics is an example of:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Primordial prevention"
+      },
+      {
+        "letter": "B",
+        "text": "Primary prevention"
+      },
+      {
+        "letter": "C",
+        "text": "Secondary prevention"
+      },
+      {
+        "letter": "D",
+        "text": "Tertiary prevention"
+      }
+    ],
+    "answerLetter": "B",
+    "answerText": "Primary prevention",
+    "explanation": "LEVELS OF PREVENTION:\n- Prevention of rheumatic fever by effectively treating streptococcal sore throat with antibiotics (e.g. benzathine penicillin single dose or oral penicillin/erythromycin) is primary prevention.\n- Prevention of recurrence of rheumatic fever by long-term benzathine penicillin every 3 weeks is secondary prevention.\n1. Primordial prevention: prevention of the emergence or development of risk factors in countries or population groups in which they have not yet appeared.\n2. Primary prevention: action taken prior to the onset of disease, which removes the possibility that a disease will ever occur. It signifies intervention in the pre-pathogenesis phase of a disease or health problem.\n3. Secondary prevention: action which halts the progress of a disease at its incipient stage and prevents complications. Specific interventions are early diagnosis (e.g. screening tests, case finding programmes) and adequate treatment.\n4. Tertiary prevention: all measures available to reduce or limit impairments and disabilities and minimize suffering caused by existing departures from good health and to promote the patient's adjustment to irremediable conditions.\n- Ref: Park's Textbook of Preventive and Social Medicine.",
+    "explanationSpoken": "LEVELS OF PREVENTION:. - Prevention of rheumatic fever by effectively treating streptococcal sore throat with antibiotics (e.g. benzathine penicillin single dose or oral penicillin/erythromycin) is primary prevention.. - Prevention of recurrence of rheumatic fever by long-term benzathine penicillin every 3 weeks is secondary prevention.. 1. Primordial prevention: prevention of the emergence or development of risk factors in countries or population groups in which they have not yet appeared.. 2. Primary prevention: action taken prior to the onset of disease, which removes the possibility that a disease will ever occur. It signifies intervention in the pre-pathogenesis phase of a disease or health problem.. 3. Secondary prevention: action which halts the progress of a disease at its incipient stage and prevents complications. Specific interventions are early diagnosis (e.g. screening tests, case finding programmes) and adequate treatment.. 4. Tertiary prevention: all measures available to reduce or limit impairments and disabilities and minimize suffering caused by existing departures from good health and to promote the patient's adjustment to irremediable conditions.. - Ref: Park's Textbook of Preventive and Social Medicine."
+  },
+  {
+    "n": 6,
+    "chapter": "PSM",
+    "stem": "Which of the following statements about Poisson distribution curve is true?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Mean = 2 median"
+      },
+      {
+        "letter": "B",
+        "text": "Mean = Median"
+      },
+      {
+        "letter": "C",
+        "text": "Median = Variance"
+      },
+      {
+        "letter": "D",
+        "text": "Standard deviation = 2 variance"
+      }
+    ],
+    "answerLetter": "B",
+    "answerText": "Mean = Median",
+    "explanation": "DISTRIBUTION CURVES:\n- In a Poisson distribution, the mean equals the variance. In the context of the normal distribution curve (as discussed in source), standard normal distribution curve is smooth, bell-shaped and perfectly symmetrical. Total area of curve is 1, mean is 0 and SD is 1. The mean, median and mode all coincide.\n- In right skewed curve: mean > median > mode.\n- In left skewed curve: mode > median > mean.\n- In normal standard distribution curve: mean = median = mode.\n- As per the answer key for this question: Mean = Median.\n- Ref: Park's Textbook of Preventive and Social Medicine, Health Information and Basic Medical Statistics.",
+    "explanationSpoken": "DISTRIBUTION CURVES:. - In a Poisson distribution, the mean equals the variance. In the context of the normal distribution curve (as discussed in source), standard normal distribution curve is smooth, bell-shaped and perfectly symmetrical. Total area of curve is 1, mean is 0 and SD is 1. The mean, median and mode all coincide.. - In right skewed curve: mean > median > mode.. - In left skewed curve: mode > median > mean.. - In normal standard distribution curve: mean = median = mode.. - As per the answer key for this question: Mean = Median.. - Ref: Park's Textbook of Preventive and Social Medicine, Health Information and Basic Medical Statistics."
+  },
+  {
+    "n": 7,
+    "chapter": "PSM",
+    "stem": "Subacute sclerosing pan-encephalitis is a complication of:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Mumps"
+      },
+      {
+        "letter": "B",
+        "text": "Measles"
+      },
+      {
+        "letter": "C",
+        "text": "Rubella"
+      },
+      {
+        "letter": "D",
+        "text": "Cytomegalovirus"
+      }
+    ],
+    "answerLetter": "B",
+    "answerText": "Measles",
+    "explanation": "MEASLES (RUBEOLA):\n- RNA paramyxovirus.\n- Only one serotype. Source of infection: case of measles. No carrier known.\n- Period of communicability: approximately 4 days before and 4 days after the appearance of the rash.\nComplications:\n- Most common complication: otitis media.\n- Most common cause of mortality in measles: diarrhea.\n- Least common (rare and delayed): SSPE.\n- More serious neurological complications include febrile convulsions, encephalitis and subacute sclerosing pan-encephalitis (SSPE). Subacute sclerosing pan-encephalitis is a rare complication which develops many years after the initial measles infection. It is characterized by progressive mental deterioration leading to paralysis, involuntary movements, muscle rigidity and coma, probably due to persistence of the virus in the brain.\n- Ref: Park's Textbook of Preventive and Social Medicine.",
+    "explanationSpoken": "MEASLES (RUBEOLA):. - RNA paramyxovirus.. - Only one serotype. Source of infection: case of measles. No carrier known.. - Period of communicability: approximately 4 days before and 4 days after the appearance of the rash.. Complications:. - Most common complication: otitis media.. - Most common cause of mortality in measles: diarrhea.. - Least common (rare and delayed): SSPE.. - More serious neurological complications include febrile convulsions, encephalitis and subacute sclerosing pan-encephalitis (SSPE). Subacute sclerosing pan-encephalitis is a rare complication which develops many years after the initial measles infection. It is characterized by progressive mental deterioration leading to paralysis, involuntary movements, muscle rigidity and coma, probably due to persistence of the virus in the brain.. - Ref: Park's Textbook of Preventive and Social Medicine."
+  },
+  {
+    "n": 8,
+    "chapter": "PSM",
+    "stem": "According to Health Insurance Act regulation, in the municipality level coordination committee who is the member secretary of such committee?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Health coordinator"
+      },
+      {
+        "letter": "B",
+        "text": "Section officer"
+      },
+      {
+        "letter": "C",
+        "text": "Registration officer"
+      },
+      {
+        "letter": "D",
+        "text": "Chief administrative officer"
+      }
+    ],
+    "answerLetter": "D",
+    "answerText": "Chief administrative officer",
+    "explanation": "HEALTH INSURANCE ACT (NEPAL):\n- According to Health Insurance Act regulation, in the municipality level coordination committee the chief administrative officer is the member secretary.\n- Ref: Nepal Government Health Insurance Board.",
+    "explanationSpoken": "HEALTH INSURANCE ACT (NEPAL):. - According to Health Insurance Act regulation, in the municipality level coordination committee the chief administrative officer is the member secretary.. - Ref: Nepal Government Health Insurance Board."
+  },
+  {
+    "n": 9,
+    "chapter": "PSM",
+    "stem": "The duties of the service recipient receiving service from a health institution or health worker shall be all except:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "To be aware regarding his or her own health, adopt healthy life style, profess yoga and physical exercise and use the service provided by the health institution"
+      },
+      {
+        "letter": "B",
+        "text": "To comply with the rules of the health institution by the person receiving health service"
+      },
+      {
+        "letter": "C",
+        "text": "To disrespect the health worker"
+      },
+      {
+        "letter": "D",
+        "text": "To provide the health institution with actual information related to own health condition and to help the health worker in the course of obtaining health service"
+      }
+    ],
+    "answerLetter": "C",
+    "answerText": "To disrespect the health worker",
+    "explanation": "DUTIES OF SERVICE RECIPIENT (Public Health Service Act, 2075):\nThe duties of the service recipient receiving service from a health institution or health worker shall be as follows:\n- To be aware regarding his or her own health, adopt healthy lifestyle, profess yoga and physical exercise and use the service provided by the health institution.\n- To comply with the rules of the health institution by the person receiving health service.\n- To provide the health institution with actual information related to own health condition, and to help the health worker in the course of obtaining health service.\n- To respect and honor the health worker and health institution.\n- Not to commit any act that constitutes physical, mental and gender violence against a health worker.\n- To sign on treatment or discharge card by mentioning in case of refusal made to receive partial or full treatment recommended.\n- To obtain service upon visiting the health institution referred by the health institution subject to Section 6.\n- Therefore, to disrespect the health worker is not a duty; it is contrary to the duties.\n- Ref: The Public Health Service Act, 2075 (2018).",
+    "explanationSpoken": "DUTIES OF SERVICE RECIPIENT (Public Health Service Act, 2075):. The duties of the service recipient receiving service from a health institution or health worker shall be as follows:. - To be aware regarding his or her own health, adopt healthy lifestyle, profess yoga and physical exercise and use the service provided by the health institution.. - To comply with the rules of the health institution by the person receiving health service.. - To provide the health institution with actual information related to own health condition, and to help the health worker in the course of obtaining health service.. - To respect and honor the health worker and health institution.. - Not to commit any act that constitutes physical, mental and gender violence against a health worker.. - To sign on treatment or discharge card by mentioning in case of refusal made to receive partial or full treatment recommended.. - To obtain service upon visiting the health institution referred by the health institution subject to Section 6.. - Therefore, to disrespect the health worker is not a duty; it is contrary to the duties.. - Ref: The Public Health Service Act, 2075 (2018)."
+  },
+  {
+    "n": 10,
+    "chapter": "Forensic",
+    "stem": "Lower end of the femur can help to determine the:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Stature"
+      },
+      {
+        "letter": "B",
+        "text": "Height"
+      },
+      {
+        "letter": "C",
+        "text": "Age"
+      },
+      {
+        "letter": "D",
+        "text": "Weight"
+      }
+    ],
+    "answerLetter": "C",
+    "answerText": "Age",
+    "explanation": "OSSIFICATION/EPIPHYSES (LOWER END OF FEMUR):\n- Epiphyses in lower end of femur: appears at 9 months (intrauterine), fusion at 18-19 years. Hence it helps determine age.\nAppearance of ossification centers:\n- Before birth (7th month): talus, sternum (2nd piece).\n- At birth: lower end of femur, cuboid, upper end of tibia.\n- Ref: Reddy 34th ed p. 81.",
+    "explanationSpoken": "OSSIFICATION/EPIPHYSES (LOWER END OF FEMUR):. - Epiphyses in lower end of femur: appears at 9 months (intrauterine), fusion at 18-19 years. Hence it helps determine age.. Appearance of ossification centers:. - Before birth (7th month): talus, sternum (2nd piece).. - At birth: lower end of femur, cuboid, upper end of tibia.. - Ref: Reddy 34th ed p. 81."
+  },
+  {
+    "n": 11,
+    "chapter": "Forensic",
+    "stem": "Pearson's formula is used for:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Cephalic index"
+      },
+      {
+        "letter": "B",
+        "text": "Stature"
+      },
+      {
+        "letter": "C",
+        "text": "Race"
+      },
+      {
+        "letter": "D",
+        "text": "Age"
+      }
+    ],
+    "answerLetter": "B",
+    "answerText": "Stature",
+    "explanation": "ESTIMATION OF STATURE:\n- When the skeleton is incomplete or severely disintegrated, the stature may be calculated from length of long bone.\nVarious formulae:\n- Pearson's formula: used for estimating stature.\n- Trotter and Gleser formula: most satisfactory.\n- Harrison and Dupertuis and Hadden formulae.\nKarl Pearson's formula for adult long bones (estimating stature in cm):\n| Bone | Male | Female |\n| Femur | 81.306 + 1.880 x Length of femur | 72.884 + 1.945 x Length of femur |\n| Tibia | 78.664 + 2.376 x Length of tibia | 74.774 + 2.352 x Length of tibia |\n| Humerus | 70.641 + 2.804 x Length of humerus | 71.475 + 2.754 x Length of humerus |\n| Radius | 89.925 + 2.271 x Length of radius | 81.224 + 3.343 x Length of radius |\n- Ref: Reddy 34th ed p. 123.",
+    "explanationSpoken": "ESTIMATION OF STATURE:. - When the skeleton is incomplete or severely disintegrated, the stature may be calculated from length of long bone.. Various formulae:. - Pearson's formula: used for estimating stature.. - Trotter and Gleser formula: most satisfactory.. - Harrison and Dupertuis and Hadden formulae.. Karl Pearson's formula for adult long bones (estimating stature in cm):. Bone. Male. Female. Femur. 81.306 + 1.880 x Length of femur. 72.884 + 1.945 x Length of femur. Tibia. 78.664 + 2.376 x Length of tibia. 74.774 + 2.352 x Length of tibia. Humerus. 70.641 + 2.804 x Length of humerus. 71.475 + 2.754 x Length of humerus. Radius. 89.925 + 2.271 x Length of radius. 81.224 + 3.343 x Length of radius. - Ref: Reddy 34th ed p. 123."
+  },
+  {
+    "n": 12,
+    "chapter": "Pediatrics",
+    "stem": "In ORS, the concentration of sodium chloride is:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "1.5 gm"
+      },
+      {
+        "letter": "B",
+        "text": "2.6 gm"
+      },
+      {
+        "letter": "C",
+        "text": "2.9 gm"
+      },
+      {
+        "letter": "D",
+        "text": "3.5 gm"
+      }
+    ],
+    "answerLetter": "B",
+    "answerText": "2.6 gm",
+    "explanation": "COMPOSITION OF WHO RECOMMENDED ORAL REHYDRATION SOLUTION (ORS):\n| Constituent | g/L | Osmole or ion | mmol/L |\n| Sodium chloride | 2.6 | Sodium | 75 |\n| Glucose, anhydrous | 13.5 | Chloride | 65 |\n| Potassium chloride | 1.5 | Glucose, anhydrous | 75 |\n| Trisodium citrate, dihydrate | 2.9 | Potassium | 20 |\n| — | — | Citrate | 10 |\n| Total osmolarity | — | — | 245 |\n- Note: The source key indicates option b; sodium chloride concentration is 2.6 g/L in standard WHO low-osmolarity ORS.\n- Ref: Ghai Essential Pediatrics 10th Edition.",
+    "explanationSpoken": "COMPOSITION OF WHO RECOMMENDED ORAL REHYDRATION SOLUTION (ORS):. Constituent. g/L. Osmole or ion. mmol/L. Sodium chloride. 2.6. Sodium. 75. Glucose, anhydrous. 13.5. Chloride. 65. Potassium chloride. 1.5. Glucose, anhydrous. 75. Trisodium citrate, dihydrate. 2.9. Potassium. 20. —. —. Citrate. 10. Total osmolarity. —. —. 245. - Note: The source key indicates option b; sodium chloride concentration is 2.6 g/L in standard WHO low-osmolarity ORS.. - Ref: Ghai Essential Pediatrics 10th Edition."
+  },
+  {
+    "n": 13,
+    "chapter": "PSM",
+    "stem": "Most heat sensitive vaccine is:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "BCG"
+      },
+      {
+        "letter": "B",
+        "text": "Polio"
+      },
+      {
+        "letter": "C",
+        "text": "Measles"
+      },
+      {
+        "letter": "D",
+        "text": "DPT"
+      }
+    ],
+    "answerLetter": "B",
+    "answerText": "Polio",
+    "explanation": "VACCINE SENSITIVITY:\n- OPV (polio) is the most heat sensitive vaccine (-20°C) and yellow fever (-30 to -5°C) should be kept in freezer compartment.\n- Other vaccines are maintained at cold temperature but never allowed to freeze: BCG (2-8°C), DPT, TT, typhoid, diluents (4-8°C). Other heat sensitive vaccines: MMR, varicella, reconstituted vaccines.\n- Cold sensitive vaccines: DPT, Hib, Hep A & B, flu, pneumococcal, meningococcal, JE.\n- Light sensitive vaccines: BCG, MMR, varicella, measles, rubella.",
+    "explanationSpoken": "VACCINE SENSITIVITY:. - OPV (polio) is the most heat sensitive vaccine (-20°C) and yellow fever (-30 to -5°C) should be kept in freezer compartment.. - Other vaccines are maintained at cold temperature but never allowed to freeze: BCG (2-8°C), DPT, TT, typhoid, diluents (4-8°C). Other heat sensitive vaccines: MMR, varicella, reconstituted vaccines.. - Cold sensitive vaccines: DPT, Hib, Hep A & B, flu, pneumococcal, meningococcal, JE.. - Light sensitive vaccines: BCG, MMR, varicella, measles, rubella."
+  },
+  {
+    "n": 14,
+    "chapter": "Medicine",
+    "stem": "Jones' criteria are used to diagnose:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Cretinism"
+      },
+      {
+        "letter": "B",
+        "text": "Meningitis"
+      },
+      {
+        "letter": "C",
+        "text": "Rheumatic heart disease"
+      },
+      {
+        "letter": "D",
+        "text": "Down's syndrome"
+      }
+    ],
+    "answerLetter": "C",
+    "answerText": "Rheumatic heart disease",
+    "explanation": "JONES CRITERIA FOR RHEUMATIC FEVER/RHEUMATIC HEART DISEASE:\nMajor manifestations (JONES):\n- J: Joint — polyarthritis\n- O (heart): pancarditis\n- N: Nodules (subcutaneous)\n- E: Erythema marginatum\n- S: Sydenham chorea\nMinor criteria (CRITERIA mnemonic components):\n- C: CRP increased\n- I: Increased PR interval\n- T: Temperature high (fever)\n- E: ESR raised\n- R: Raised leukocytes\n- A: Arthralgia\nSupporting evidence of a preceding streptococcal infection within the last 45 days:\n- Elevated or rising antistreptolysin-O or other streptococcal antibody, or\n- Positive throat culture, or\n- Rapid antigen test for group A streptococci, or\n- Recent scarlet fever.\n- Ref: Park's Textbook of Preventive and Social Medicine.",
+    "explanationSpoken": "JONES CRITERIA FOR RHEUMATIC FEVER/RHEUMATIC HEART DISEASE:. Major manifestations (JONES):. - J: Joint — polyarthritis. - O (heart): pancarditis. - N: Nodules (subcutaneous). - E: Erythema marginatum. - S: Sydenham chorea. Minor criteria (CRITERIA mnemonic components):. - C: CRP increased. - I: Increased PR interval. - T: Temperature high (fever). - E: ESR raised. - R: Raised leukocytes. - A: Arthralgia. Supporting evidence of a preceding streptococcal infection within the last 45 days:. - Elevated or rising antistreptolysin-O or other streptococcal antibody, or. - Positive throat culture, or. - Rapid antigen test for group A streptococci, or. - Recent scarlet fever.. - Ref: Park's Textbook of Preventive and Social Medicine."
+  },
+  {
+    "n": 15,
+    "chapter": "PSM",
+    "stem": "Pattern of relationships between persons in a society is known as:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Social structure"
+      },
+      {
+        "letter": "B",
+        "text": "Socialisation"
+      },
+      {
+        "letter": "C",
+        "text": "Social stratification"
+      },
+      {
+        "letter": "D",
+        "text": "Medical sociology"
+      }
+    ],
+    "answerLetter": "A",
+    "answerText": "Social structure",
+    "explanation": "SOCIAL CONCEPTS:\n- Social structure refers to the pattern of inter-relations between persons. Every society has a social structure: a complex of major institutions, groups, power structure and status hierarchy.\n- Socialization: every society has its beliefs, customs, traditions and prejudices. A man acquires these in his everyday social interaction with the people of the society. This is called socialization, the process by which an individual gradually acquires culture and becomes a member of a social group.\n- Medical sociology: professional endeavour devoted to social epidemiology, the study of cultural factors and social relations in connection with illness, and the social principles in medical organization and treatment. Its main interest is in the study of health, health behaviour and medical institutions.\n- Ref: Park's Textbook of Preventive and Social Medicine.",
+    "explanationSpoken": "SOCIAL CONCEPTS:. - Social structure refers to the pattern of inter-relations between persons. Every society has a social structure: a complex of major institutions, groups, power structure and status hierarchy.. - Socialization: every society has its beliefs, customs, traditions and prejudices. A man acquires these in his everyday social interaction with the people of the society. This is called socialization, the process by which an individual gradually acquires culture and becomes a member of a social group.. - Medical sociology: professional endeavour devoted to social epidemiology, the study of cultural factors and social relations in connection with illness, and the social principles in medical organization and treatment. Its main interest is in the study of health, health behaviour and medical institutions.. - Ref: Park's Textbook of Preventive and Social Medicine."
+  },
+  {
+    "n": 16,
+    "chapter": "Pediatrics",
+    "stem": "Neonatal period extends up to:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "15 days of life"
+      },
+      {
+        "letter": "B",
+        "text": "30 days of life"
+      },
+      {
+        "letter": "C",
+        "text": "28 days of life"
+      },
+      {
+        "letter": "D",
+        "text": "21 days of life"
+      }
+    ],
+    "answerLetter": "C",
+    "answerText": "28 days of life",
+    "explanation": "NEONATAL PERIOD:\n- Neonatal period: from birth to under four weeks (0 to 27 days or 1 to 28 days, depending on whether the first day is taken as day 0 or day 1 of life).\n- First week of life (<7 days or <168 hours) is known as early neonatal period.\n- Late neonatal period extends from 7th to <28th days.\n- Postneonatal period: period of infancy from 28 to <365 days (<1 year) of life.\n- Term neonate: born between 37 and 42 weeks (259-293 days) of gestation.\n- Preterm neonate: born before 37 weeks (<259 days) of gestation irrespective of birth weight.\n- Post-term neonate: born at gestational age of 42 weeks or more (294 days or more).\n- Ref: Ghai Essential Pediatrics, 10th Edition (Newborn Infants).",
+    "explanationSpoken": "NEONATAL PERIOD:. - Neonatal period: from birth to under four weeks (0 to 27 days or 1 to 28 days, depending on whether the first day is taken as day 0 or day 1 of life).. - First week of life (<7 days or <168 hours) is known as early neonatal period.. - Late neonatal period extends from 7th to <28th days.. - Postneonatal period: period of infancy from 28 to <365 days (<1 year) of life.. - Term neonate: born between 37 and 42 weeks (259-293 days) of gestation.. - Preterm neonate: born before 37 weeks (<259 days) of gestation irrespective of birth weight.. - Post-term neonate: born at gestational age of 42 weeks or more (294 days or more).. - Ref: Ghai Essential Pediatrics, 10th Edition (Newborn Infants)."
+  },
+  {
+    "n": 17,
+    "chapter": "Forensic",
+    "stem": "Fabricated (self-inflicted) wounds are mostly:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Abrasions"
+      },
+      {
+        "letter": "B",
+        "text": "Lacerations"
+      },
+      {
+        "letter": "C",
+        "text": "Contusions"
+      },
+      {
+        "letter": "D",
+        "text": "Incised wounds"
+      }
+    ],
+    "answerLetter": "D",
+    "answerText": "Incised wounds",
+    "explanation": "FABRICATED/SELF-INFLICTED (FORGED/FICTITIOUS/INVENTED) WOUNDS:\n- Self-inflicted wounds are those inflicted by a person on his own body. They are generally incised wounds, sometimes contusions, stab wounds, or burns.\n- Lacerated wounds are rarely fabricated.\n- Incised wounds are generally superficial, multiple, parallel, of equal depth at origin and termination. They avoid vital and sensitive areas like eye, lip, nose, ear.\n- Direction: from behind forward on top of head, from above downward on outer side of upper arm, from below upwards on front of forearms, variable on leg, vertical on chest and abdomen.\n- Some paranoid schizophrenics with strong religious delusions may remove penis, scrotum, or testis. Stab wounds are usually multiple and superficial and seen about the left arm or shoulder and sometimes on chest.\n- Ref: The Essentials of Forensic Medicine and Toxicology by KSN Reddy, 34th ed p. 196.",
+    "explanationSpoken": "FABRICATED/SELF-INFLICTED (FORGED/FICTITIOUS/INVENTED) WOUNDS:. - Self-inflicted wounds are those inflicted by a person on his own body. They are generally incised wounds, sometimes contusions, stab wounds, or burns.. - Lacerated wounds are rarely fabricated.. - Incised wounds are generally superficial, multiple, parallel, of equal depth at origin and termination. They avoid vital and sensitive areas like eye, lip, nose, ear.. - Direction: from behind forward on top of head, from above downward on outer side of upper arm, from below upwards on front of forearms, variable on leg, vertical on chest and abdomen.. - Some paranoid schizophrenics with strong religious delusions may remove penis, scrotum, or testis. Stab wounds are usually multiple and superficial and seen about the left arm or shoulder and sometimes on chest.. - Ref: The Essentials of Forensic Medicine and Toxicology by KSN Reddy, 34th ed p. 196."
+  },
+  {
+    "n": 18,
+    "chapter": "PSM",
+    "stem": "Disciplinary control over registered medical practitioner is under:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Ministry of Health and Population"
+      },
+      {
+        "letter": "B",
+        "text": "Nepal Medical Council"
+      },
+      {
+        "letter": "C",
+        "text": "Public Health Service Act/Regulation"
+      },
+      {
+        "letter": "D",
+        "text": "Nepal Medical Association"
+      }
+    ],
+    "answerLetter": "B",
+    "answerText": "Nepal Medical Council",
+    "explanation": "DISCIPLINARY CONTROL (NEPAL):\n- The Nepal Medical Council has a Code of Ethics and Professional Conduct that all registered medical practitioners must abide by.\n- The code outlines duties of medical practitioners to patients and colleagues, guidelines on proper prescription and dispensing of dangerous drugs, and examples of violations that are punishable.\n- The council is mandated to regulate the medical profession and violations may render a registered medical practitioner liable to disciplinary proceedings.\n- Nepal Health Professional Council has also established rules for registered health professionals to observe professional conduct in a disciplined and honest manner.\n- Ref: Nepal Medical Council Act, 2020 (nmc.org.np).",
+    "explanationSpoken": "DISCIPLINARY CONTROL (NEPAL):. - The Nepal Medical Council has a Code of Ethics and Professional Conduct that all registered medical practitioners must abide by.. - The code outlines duties of medical practitioners to patients and colleagues, guidelines on proper prescription and dispensing of dangerous drugs, and examples of violations that are punishable.. - The council is mandated to regulate the medical profession and violations may render a registered medical practitioner liable to disciplinary proceedings.. - Nepal Health Professional Council has also established rules for registered health professionals to observe professional conduct in a disciplined and honest manner.. - Ref: Nepal Medical Council Act, 2020 (nmc.org.np)."
+  },
+  {
+    "n": 19,
+    "chapter": "Forensic",
+    "stem": "In a suicide case, a pistol was found tightly gripped in hand. This is suggestive of which post-mortem change?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Hypostasis"
+      },
+      {
+        "letter": "B",
+        "text": "Algor mortis"
+      },
+      {
+        "letter": "C",
+        "text": "Cadaveric spasm"
+      },
+      {
+        "letter": "D",
+        "text": "Rigor mortis"
+      }
+    ],
+    "answerLetter": "C",
+    "answerText": "Cadaveric spasm",
+    "explanation": "CADAVERIC SPASM (INSTANTANEOUS RIGOR):\n- Cadaveric spasm is a condition wherein stiffening occurs in certain groups of muscles which were already in a state of contraction at the time of death.\n- It is a rare form of virtually instantaneous rigor that develops at the time of death with no prior phase of primary flaccidity.\n- Mechanism may be neurogenic, not chemical as in rigor mortis. Muscles involved are generally a single group of voluntary muscles (e.g. hand).\n- It may indicate the mode of death (suicide, homicide, or accident), e.g. weapon tightly gripped in hand in suicide.\n- Ref: The Essentials of Forensic Medicine and Toxicology by KSN Reddy, 34th ed p. 154-155.",
+    "explanationSpoken": "CADAVERIC SPASM (INSTANTANEOUS RIGOR):. - Cadaveric spasm is a condition wherein stiffening occurs in certain groups of muscles which were already in a state of contraction at the time of death.. - It is a rare form of virtually instantaneous rigor that develops at the time of death with no prior phase of primary flaccidity.. - Mechanism may be neurogenic, not chemical as in rigor mortis. Muscles involved are generally a single group of voluntary muscles (e.g. hand).. - It may indicate the mode of death (suicide, homicide, or accident), e.g. weapon tightly gripped in hand in suicide.. - Ref: The Essentials of Forensic Medicine and Toxicology by KSN Reddy, 34th ed p. 154-155."
+  },
+  {
+    "n": 20,
+    "chapter": "PSM",
+    "stem": "Health Insurance Act of Nepal was enacted in the year (B.S.):",
+    "options": [
+      {
+        "letter": "A",
+        "text": "2070"
+      },
+      {
+        "letter": "B",
+        "text": "2072"
+      },
+      {
+        "letter": "C",
+        "text": "2074"
+      },
+      {
+        "letter": "D",
+        "text": "2076"
+      }
+    ],
+    "answerLetter": "C",
+    "answerText": "2074",
+    "explanation": "HEALTH INSURANCE ACT, NEPAL (2074 B.S.):\n- Health Insurance Act of Nepal was enacted/passed in 2074 B.S. (approved 2074/07/01 by the President) and is the sole document covering how health insurance systems are delivered across the country.\n- The system is based on the capitation method. Health Insurance Board is set up under the act.\n- Ref: Health Insurance Act, 2074.",
+    "explanationSpoken": "HEALTH INSURANCE ACT, NEPAL (2074 B.S.):. - Health Insurance Act of Nepal was enacted/passed in 2074 B.S. (approved 2074/07/01 by the President) and is the sole document covering how health insurance systems are delivered across the country.. - The system is based on the capitation method. Health Insurance Board is set up under the act.. - Ref: Health Insurance Act, 2074."
+  },
+  {
+    "n": 21,
+    "chapter": "ENT",
+    "stem": "In conductive deafness, Weber test is lateralized to:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Deaf ear"
+      },
+      {
+        "letter": "B",
+        "text": "Both ears"
+      },
+      {
+        "letter": "C",
+        "text": "Normal ear"
+      },
+      {
+        "letter": "D",
+        "text": "None of the above"
+      }
+    ],
+    "answerLetter": "A",
+    "answerText": "Deaf ear",
+    "explanation": "TUNING FORK TESTS:\n| Test | Normal | Conductive deafness | Sensorineural deafness |\n| Rinne | AC > BC (positive) | BC > AC (negative) | AC > BC (positive) |\n| Weber | Not lateralized | Lateralized to poorer (deaf) ear | Lateralized to better ear |\n| ABC | Same as examiner | Same as examiner | Reduced |\n| Schwabach | Equal | Lengthened | Shortened |\n- In conductive deafness, Weber test lateralizes to the affected/deaf ear.\n- Ref: Diseases of Ear, Nose and Throat & Head and Neck Surgery by PL Dhingra, 8th ed.",
+    "explanationSpoken": "TUNING FORK TESTS:. Test. Normal. Conductive deafness. Sensorineural deafness. Rinne. AC > BC (positive). BC > AC (negative). AC > BC (positive). Weber. Not lateralized. Lateralized to poorer (deaf) ear. Lateralized to better ear. ABC. Same as examiner. Same as examiner. Reduced. Schwabach. Equal. Lengthened. Shortened. - In conductive deafness, Weber test lateralizes to the affected/deaf ear.. - Ref: Diseases of Ear, Nose and Throat & Head and Neck Surgery by PL Dhingra, 8th ed."
+  },
+  {
+    "n": 22,
+    "chapter": "ENT",
+    "stem": "A toddler presents with fever and earache. On examination there is congested tympanic membrane with slight bulge. The treatment of choice is:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Wait and watch"
+      },
+      {
+        "letter": "B",
+        "text": "Antibiotics only"
+      },
+      {
+        "letter": "C",
+        "text": "Myringotomy with grommet"
+      },
+      {
+        "letter": "D",
+        "text": "Myringotomy with penicillins"
+      }
+    ],
+    "answerLetter": "D",
+    "answerText": "Myringotomy with penicillins",
+    "explanation": "ACUTE SUPPURATIVE OTITIS MEDIA (ASOM) — MYRINGOTOMY:\n- Indications for myringotomy (tympanostomy): ASOM with earache and bulging tympanic membrane, complicated case, recurrent cases; OME; aero-otitis media; atelectatic ear; hemotympanum.\n- It is incision of the tympanic membrane to drain suppurative or non-suppurative effusion of the middle ear or to provide aeration in case of malfunctioning Eustachian tube.\n- Antibiotics are useful in cases of upper respiratory tract infections or unresolved acute suppurative otitis media.\n- Grommet (ventilation/pressure-equalizing tube) is inserted if fluid recurs after myringotomy and aspiration combined with medical measures.\n- As per source key for this presentation: myringotomy with penicillins.\n- Ref: Diseases of Ear, Nose and Throat & Head and Neck Surgery by PL Dhingra, 8th ed.",
+    "explanationSpoken": "ACUTE SUPPURATIVE OTITIS MEDIA (ASOM) — MYRINGOTOMY:. - Indications for myringotomy (tympanostomy): ASOM with earache and bulging tympanic membrane, complicated case, recurrent cases; OME; aero-otitis media; atelectatic ear; hemotympanum.. - It is incision of the tympanic membrane to drain suppurative or non-suppurative effusion of the middle ear or to provide aeration in case of malfunctioning Eustachian tube.. - Antibiotics are useful in cases of upper respiratory tract infections or unresolved acute suppurative otitis media.. - Grommet (ventilation/pressure-equalizing tube) is inserted if fluid recurs after myringotomy and aspiration combined with medical measures.. - As per source key for this presentation: myringotomy with penicillins.. - Ref: Diseases of Ear, Nose and Throat & Head and Neck Surgery by PL Dhingra, 8th ed."
+  },
+  {
+    "n": 23,
+    "chapter": "Ophthalmology",
+    "stem": "The etiology of a stye is:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Herpes simplex"
+      },
+      {
+        "letter": "B",
+        "text": "Toxoplasma"
+      },
+      {
+        "letter": "C",
+        "text": "Chlamydia trachomatis"
+      },
+      {
+        "letter": "D",
+        "text": "Staphylococcus"
+      }
+    ],
+    "answerLetter": "D",
+    "answerText": "Staphylococcus",
+    "explanation": "STYE (HORDEOLUM EXTERNUM):\n- Acute suppurative staphylococcal infection of gland of Zeis or gland of Moll and lash follicle.\n- Recurrent stye is common in patients with asthenopia, diabetes mellitus, and chronic blepharitis.\n- Causative organism commonly involved is Staphylococcus aureus.\n- Ref: Comprehensive Ophthalmology by AK Khurana, 9th ed.",
+    "explanationSpoken": "STYE (HORDEOLUM EXTERNUM):. - Acute suppurative staphylococcal infection of gland of Zeis or gland of Moll and lash follicle.. - Recurrent stye is common in patients with asthenopia, diabetes mellitus, and chronic blepharitis.. - Causative organism commonly involved is Staphylococcus aureus.. - Ref: Comprehensive Ophthalmology by AK Khurana, 9th ed."
+  },
+  {
+    "n": 24,
+    "chapter": "Surgery",
+    "stem": "The most common hernia in women is:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Femoral hernia"
+      },
+      {
+        "letter": "B",
+        "text": "Direct inguinal hernia"
+      },
+      {
+        "letter": "C",
+        "text": "Indirect inguinal hernia"
+      },
+      {
+        "letter": "D",
+        "text": "Umbilical hernia"
+      }
+    ],
+    "answerLetter": "C",
+    "answerText": "Indirect inguinal hernia",
+    "explanation": "HERNIAS — EPIDEMIOLOGY:\n- Indirect inguinal hernia is the most common type of hernia in both males and females.\n- Femoral hernias are more common in females than in males (but still less common overall than indirect inguinal hernia in women).\n- Direct inguinal hernia is more common in elderly; women practically never develop direct inguinal hernia.\n- Ref: Surgery Essence by Pritesh Singh, 10th ed (Hernia and Abdominal Wall).",
+    "explanationSpoken": "HERNIAS — EPIDEMIOLOGY:. - Indirect inguinal hernia is the most common type of hernia in both males and females.. - Femoral hernias are more common in females than in males (but still less common overall than indirect inguinal hernia in women).. - Direct inguinal hernia is more common in elderly; women practically never develop direct inguinal hernia.. - Ref: Surgery Essence by Pritesh Singh, 10th ed (Hernia and Abdominal Wall)."
+  },
+  {
+    "n": 25,
+    "chapter": "Emergency Medicine",
+    "stem": "Which maneuver is generally not performed early before chest compression in basic life support outside the hospital?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Call for help"
+      },
+      {
+        "letter": "B",
+        "text": "Obtain airway"
+      },
+      {
+        "letter": "C",
+        "text": "Electrical cardioversion"
+      },
+      {
+        "letter": "D",
+        "text": "Ventilation"
+      }
+    ],
+    "answerLetter": "C",
+    "answerText": "Electrical cardioversion",
+    "explanation": "BASIC LIFE SUPPORT (BLS) OUTSIDE HOSPITAL:\n- In emergency outside hospital: ensure safety, check responsiveness, call for help/shout for help, open airway, check breathing, give rescue breaths/ventilation as appropriate, and start chest compressions (CPR).\n- Early transfer to hospital is arranged. Defibrillation/AED use is part of BLS when available, but electrical cardioversion (DC cardioversion) as a hospital procedure is not performed early before chest compressions in basic life support outside hospital.\n- Adult BLS sequence: danger/responsiveness/help/airway/breathing → 30 chest compressions → 2 rescue breaths → attach AED as soon as available → continue CPR.\n- Ref: Standard Treatment Protocol of Emergency Health Service Package.",
+    "explanationSpoken": "BASIC LIFE SUPPORT (BLS) OUTSIDE HOSPITAL:. - In emergency outside hospital: ensure safety, check responsiveness, call for help/shout for help, open airway, check breathing, give rescue breaths/ventilation as appropriate, and start chest compressions (CPR).. - Early transfer to hospital is arranged. Defibrillation/AED use is part of BLS when available, but electrical cardioversion (DC cardioversion) as a hospital procedure is not performed early before chest compressions in basic life support outside hospital.. - Adult BLS sequence: danger/responsiveness/help/airway/breathing → 30 chest compressions → 2 rescue breaths → attach AED as soon as available → continue CPR.. - Ref: Standard Treatment Protocol of Emergency Health Service Package."
+  },
+  {
+    "n": 26,
+    "chapter": "Surgery",
+    "stem": "Which of the following statement is correct concerning the vascular response to injury?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Vasoconstriction is an early event in the response to injury"
+      },
+      {
+        "letter": "B",
+        "text": "Vasodilatation is a detrimental response to injury with normal body processes working to avoid this process"
+      },
+      {
+        "letter": "C",
+        "text": "Vascular permeability is maintained to prevent further cellular injury"
+      },
+      {
+        "letter": "D",
+        "text": "Histamine, prostaglandin E2 (PGE2) and prostacyclin (PGI2) are important mediators of local vasoconstriction"
+      }
+    ],
+    "answerLetter": "A",
+    "answerText": "Vasoconstriction is an early event in the response to injury",
+    "explanation": "WOUND HEALING — HAEMOSTASIS AND VASCULAR RESPONSE:\n- Haemostasis: disruption of vascular endothelium following injury causes vasoconstriction and exposure of subendothelial extracellular matrix. Platelet adhesion and aggregation occur resulting in thrombin formation.\n- Inflammation: early phase (days 1-2) involves platelet activation and influx of inflammatory cells (neutrophils); late phase (days 2-3) monocytes differentiate into macrophages.\n- Proliferative phase (day 3 to 2-4 weeks): fibroblast activity, ground substance and collagen production, angiogenesis, epithelialisation.\n- Remodelling phase (2-3 weeks to >1 year): collagen maturation (type III replaced by type I).\n- Vasodilatation and increased vascular permeability are part of inflammatory response mediated by factors such as histamine and prostaglandins; vasoconstriction is the early haemostatic event.\n- Ref: Bailey & Love's Short Practice of Surgery, 28th ed.",
+    "explanationSpoken": "WOUND HEALING — HAEMOSTASIS AND VASCULAR RESPONSE:. - Haemostasis: disruption of vascular endothelium following injury causes vasoconstriction and exposure of subendothelial extracellular matrix. Platelet adhesion and aggregation occur resulting in thrombin formation.. - Inflammation: early phase (days 1-2) involves platelet activation and influx of inflammatory cells (neutrophils); late phase (days 2-3) monocytes differentiate into macrophages.. - Proliferative phase (day 3 to 2-4 weeks): fibroblast activity, ground substance and collagen production, angiogenesis, epithelialisation.. - Remodelling phase (2-3 weeks to >1 year): collagen maturation (type III replaced by type I).. - Vasodilatation and increased vascular permeability are part of inflammatory response mediated by factors such as histamine and prostaglandins; vasoconstriction is the early haemostatic event.. - Ref: Bailey & Love's Short Practice of Surgery, 28th ed."
+  },
+  {
+    "n": 27,
+    "chapter": "Surgery",
+    "stem": "The most important factor that influences the outcome of penetrating cardiac injuries is:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Comminuted wound of a single chamber"
+      },
+      {
+        "letter": "B",
+        "text": "Multiple-chamber injuries"
+      },
+      {
+        "letter": "C",
+        "text": "Coronary artery injury"
+      },
+      {
+        "letter": "D",
+        "text": "Tangential injuries"
+      }
+    ],
+    "answerLetter": "B",
+    "answerText": "Multiple-chamber injuries",
+    "explanation": "PENETRATING CARDIAC INJURIES:\n- Heart injury severity is graded (AAST). Multiple penetrating wounds to a single chamber or multiple-chamber involvement advance the grade/severity and significantly worsen outcome.\n- Among listed factors, multiple-chamber injuries are the most important determinant of outcome.\n- Ref: AAST heart injury scale / penetrating cardiac injury data.",
+    "explanationSpoken": "PENETRATING CARDIAC INJURIES:. - Heart injury severity is graded (AAST). Multiple penetrating wounds to a single chamber or multiple-chamber involvement advance the grade/severity and significantly worsen outcome.. - Among listed factors, multiple-chamber injuries are the most important determinant of outcome.. - Ref: AAST heart injury scale / penetrating cardiac injury data."
+  },
+  {
+    "n": 28,
+    "chapter": "Emergency Medicine",
+    "stem": "Which is false about AEDs (Automated External Defibrillators)?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Early defibrillation is the most important factor in surviving cardiac arrest"
+      },
+      {
+        "letter": "B",
+        "text": "AEDs will immediately shock automatically if VT or VF is detected"
+      },
+      {
+        "letter": "C",
+        "text": "AEDs are designed to advise shock only if tachycardias are of a rate >180 beats/min in VT, VF and SVT"
+      },
+      {
+        "letter": "D",
+        "text": "AEDs do not have monitor screens to visualize rhythm"
+      }
+    ],
+    "answerLetter": "C",
+    "answerText": "AEDs are designed to advise shock only if tachycardias are of a rate >180 beats/min in VT, VF and SVT",
+    "explanation": "AUTOMATED EXTERNAL DEFIBRILLATORS (AEDs):\n- Early defibrillation is critical for survival in shockable cardiac arrest (VF/pulseless VT).\n- AEDs analyze rhythm and advise/ deliver shock for shockable rhythms (VF/pulseless VT) as per device protocol; they are not designed to advise shock based on a simple rate threshold such as >180/min for VT, VF and SVT.\n- AEDs assess rhythm (shockable vs non-shockable) rather than treating all tachycardias by rate alone; SVT is not a shockable arrest rhythm.\n- Many AEDs do not display rhythm screens for visualization.\n- Ref: Standard resuscitation/AED principles.",
+    "explanationSpoken": "AUTOMATED EXTERNAL DEFIBRILLATORS (AEDs):. - Early defibrillation is critical for survival in shockable cardiac arrest (VF/pulseless VT).. - AEDs analyze rhythm and advise/ deliver shock for shockable rhythms (VF/pulseless VT) as per device protocol; they are not designed to advise shock based on a simple rate threshold such as >180/min for VT, VF and SVT.. - AEDs assess rhythm (shockable vs non-shockable) rather than treating all tachycardias by rate alone; SVT is not a shockable arrest rhythm.. - Many AEDs do not display rhythm screens for visualization.. - Ref: Standard resuscitation/AED principles."
+  },
+  {
+    "n": 29,
+    "chapter": "Surgery",
+    "stem": "The best material (suture) for a simple interrupted closure is:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Catgut"
+      },
+      {
+        "letter": "B",
+        "text": "Silk"
+      },
+      {
+        "letter": "C",
+        "text": "Polypropylene"
+      },
+      {
+        "letter": "D",
+        "text": "None of the above"
+      }
+    ],
+    "answerLetter": "C",
+    "answerText": "Polypropylene",
+    "explanation": "SUTURE MATERIALS:\n- Catgut has tensile strength of only about a week, while polydioxanone (PDS) remains strong in tissues for several weeks.\n- Non-absorbable synthetic sutures such as polypropylene probably retain tensile strength indefinitely, whereas non-absorbable biological materials such as silk fragment with time and lose strength; silk should never be used in vascular anastomoses for fear of late fistula formation.\n- Polypropylene uses: herniorrhaphy (repair of posterior wall of inguinal canal), closure of midline abdominal incision, repair of incisional hernia, tendon repair (2-0/3-0), vascular anastomosis and nerve repair (finer sutures).\n- Ref: Bailey & Love's Short Practice of Surgery, 28th ed.",
+    "explanationSpoken": "SUTURE MATERIALS:. - Catgut has tensile strength of only about a week, while polydioxanone (PDS) remains strong in tissues for several weeks.. - Non-absorbable synthetic sutures such as polypropylene probably retain tensile strength indefinitely, whereas non-absorbable biological materials such as silk fragment with time and lose strength; silk should never be used in vascular anastomoses for fear of late fistula formation.. - Polypropylene uses: herniorrhaphy (repair of posterior wall of inguinal canal), closure of midline abdominal incision, repair of incisional hernia, tendon repair (2-0/3-0), vascular anastomosis and nerve repair (finer sutures).. - Ref: Bailey & Love's Short Practice of Surgery, 28th ed."
+  },
+  {
+    "n": 30,
+    "chapter": "Surgery",
+    "stem": "Which of the following statement is false regarding hernias?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "An inguinal hernia is superomedial to pubic tubercle"
+      },
+      {
+        "letter": "B",
+        "text": "A femoral hernia is inferolateral to pubic tubercle"
+      },
+      {
+        "letter": "C",
+        "text": "Men are more likely to get femoral hernia than women"
+      },
+      {
+        "letter": "D",
+        "text": "Inguinal hernia is the commonest hernia in women"
+      }
+    ],
+    "answerLetter": "C",
+    "answerText": "Men are more likely to get femoral hernia than women",
+    "explanation": "INGUINAL AND FEMORAL HERNIAS:\n- Inguinal hernia: neck of sac lies above and medial to the pubic tubercle.\n- Femoral hernia: neck of sac lies below and lateral to the pubic tubercle.\n- Femoral hernias are more common in females than in males, more common on right side and in multipara.\n- Indirect inguinal hernia is the most common type of hernia in both males and females.\n- Therefore, \"Men are more likely to get femoral hernia than women\" is false.\n- Contents of femoral canal: fat, lymphatic vessels, lymph node of Cloquet. Femoral sheath compartments (medial to lateral): femoral canal, femoral vein, femoral artery (nerve outside sheath).\n- Ref: Surgery Essence by Pritesh Singh, 10th ed (Hernia and Abdominal Wall).",
+    "explanationSpoken": "INGUINAL AND FEMORAL HERNIAS:. - Inguinal hernia: neck of sac lies above and medial to the pubic tubercle.. - Femoral hernia: neck of sac lies below and lateral to the pubic tubercle.. - Femoral hernias are more common in females than in males, more common on right side and in multipara.. - Indirect inguinal hernia is the most common type of hernia in both males and females.. - Therefore, \"Men are more likely to get femoral hernia than women\" is false.. - Contents of femoral canal: fat, lymphatic vessels, lymph node of Cloquet. Femoral sheath compartments (medial to lateral): femoral canal, femoral vein, femoral artery (nerve outside sheath).. - Ref: Surgery Essence by Pritesh Singh, 10th ed (Hernia and Abdominal Wall)."
+  },
+  {
+    "n": 31,
+    "chapter": "Surgery",
+    "stem": "The development of peptic ulcer has been associated with all of the following, except:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Caffeine"
+      },
+      {
+        "letter": "B",
+        "text": "Zollinger-Ellison syndrome"
+      },
+      {
+        "letter": "C",
+        "text": "Aspirin"
+      },
+      {
+        "letter": "D",
+        "text": "Mallory-Weiss syndrome"
+      }
+    ],
+    "answerLetter": "D",
+    "answerText": "Mallory-Weiss syndrome",
+    "explanation": "PEPTIC ULCER DISEASE — ASSOCIATIONS:\n- Strong associations: systemic mastocytosis, chronic pulmonary disease, chronic renal failure, cirrhosis, nephrolithiasis, alpha-1-antitrypsin deficiency.\n- Possible associations: hyperparathyroidism, coronary artery disease, polycythemia vera, chronic pancreatitis.\n- Gastric ulcer associations: atrophic gastritis, H. pylori (~75%), smoking, alcohol, NSAIDs.\n- Duodenal ulcer associations: H. pylori (~90%), smoking, alcohol, NSAIDs, steroids, Zollinger-Ellison syndrome, MEN-1, Cushing syndrome, hyperparathyroidism, blood group O positive, cirrhosis, chronic pancreatitis.\n- Mallory-Weiss tear is a longitudinal tear at the gastro-oesophageal junction induced by repetitive and strenuous vomiting; it is not a cause/association of peptic ulcer disease.\n- Ref: Bailey & Love's Short Practice of Surgery, 28th ed (Stomach and Duodenum).",
+    "explanationSpoken": "PEPTIC ULCER DISEASE — ASSOCIATIONS:. - Strong associations: systemic mastocytosis, chronic pulmonary disease, chronic renal failure, cirrhosis, nephrolithiasis, alpha-1-antitrypsin deficiency.. - Possible associations: hyperparathyroidism, coronary artery disease, polycythemia vera, chronic pancreatitis.. - Gastric ulcer associations: atrophic gastritis, H. pylori (~75%), smoking, alcohol, NSAIDs.. - Duodenal ulcer associations: H. pylori (~90%), smoking, alcohol, NSAIDs, steroids, Zollinger-Ellison syndrome, MEN-1, Cushing syndrome, hyperparathyroidism, blood group O positive, cirrhosis, chronic pancreatitis.. - Mallory-Weiss tear is a longitudinal tear at the gastro-oesophageal junction induced by repetitive and strenuous vomiting; it is not a cause/association of peptic ulcer disease.. - Ref: Bailey & Love's Short Practice of Surgery, 28th ed (Stomach and Duodenum)."
+  },
+  {
+    "n": 32,
+    "chapter": "Surgery",
+    "stem": "Most common type of teratoma of testis is:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Teratoma differentiated"
+      },
+      {
+        "letter": "B",
+        "text": "Teratoma (malignant) anaplastic"
+      },
+      {
+        "letter": "C",
+        "text": "Teratoma (malignant) intermediate"
+      },
+      {
+        "letter": "D",
+        "text": "Teratoma (malignant) trophoblastic"
+      }
+    ],
+    "answerLetter": "A",
+    "answerText": "Teratoma differentiated",
+    "explanation": "TESTICULAR TERATOMA:\n- Teratomas contain well or incompletely differentiated elements of at least two of the three germ cell layers (endoderm, mesoderm, ectoderm), with components intermixed.\n- Well-differentiated tumors are mature (differentiated) teratomas; incompletely differentiated are immature teratomas.\n- Mature teratomas may include elements of mature bone, cartilage, teeth, hair, and squamous epithelium.\n- In men, teratomas may have histologically benign appearance but can be found at metastatic sites in advanced NSGCT; teratoma is resistant to chemotherapy.\n- Most common histological type of teratoma of testis (as per source key): teratoma differentiated.\n- High-yield: most common tumor of testis overall is seminoma (in many contexts mixed germ cell tumor common); testicular tumor in pre-pubertal children commonly teratoma/yolk sac tumor varies by age group.\n- Ref: Campbell-Walsh-Wein Urology, 12th ed.",
+    "explanationSpoken": "TESTICULAR TERATOMA:. - Teratomas contain well or incompletely differentiated elements of at least two of the three germ cell layers (endoderm, mesoderm, ectoderm), with components intermixed.. - Well-differentiated tumors are mature (differentiated) teratomas; incompletely differentiated are immature teratomas.. - Mature teratomas may include elements of mature bone, cartilage, teeth, hair, and squamous epithelium.. - In men, teratomas may have histologically benign appearance but can be found at metastatic sites in advanced NSGCT; teratoma is resistant to chemotherapy.. - Most common histological type of teratoma of testis (as per source key): teratoma differentiated.. - High-yield: most common tumor of testis overall is seminoma (in many contexts mixed germ cell tumor common); testicular tumor in pre-pubertal children commonly teratoma/yolk sac tumor varies by age group.. - Ref: Campbell-Walsh-Wein Urology, 12th ed."
+  },
+  {
+    "n": 33,
+    "chapter": "Ophthalmology",
+    "stem": "All of the following are used in the treatment of open angle glaucoma, except:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Steroids"
+      },
+      {
+        "letter": "B",
+        "text": "Parasympathomimetics"
+      },
+      {
+        "letter": "C",
+        "text": "Beta blockers"
+      },
+      {
+        "letter": "D",
+        "text": "Alpha agonists"
+      }
+    ],
+    "answerLetter": "A",
+    "answerText": "Steroids",
+    "explanation": "DRUGS USED FOR OPEN ANGLE GLAUCOMA:\n| Class | Drugs |\n| Beta blockers | Timolol, Betaxolol |\n| Prostaglandin analogues | Latanoprost, Bimatoprost etc. |\n| Alpha agonists | Apraclonidine, Brimonidine |\n| Carbonic anhydrase inhibitors | Acetazolamide, Dorzolamide, Brinzolamide |\n| Cholinergic agonists (parasympathomimetics) | Pilocarpine |\n- Steroids are not used to treat open angle glaucoma; they can raise intraocular pressure and precipitate/worsen glaucoma.\n- Ref: Comprehensive Ophthalmology by AK Khurana, 9th ed (Glaucoma).",
+    "explanationSpoken": "DRUGS USED FOR OPEN ANGLE GLAUCOMA:. Class. Drugs. Beta blockers. Timolol, Betaxolol. Prostaglandin analogues. Latanoprost, Bimatoprost etc.. Alpha agonists. Apraclonidine, Brimonidine. Carbonic anhydrase inhibitors. Acetazolamide, Dorzolamide, Brinzolamide. Cholinergic agonists (parasympathomimetics). Pilocarpine. - Steroids are not used to treat open angle glaucoma; they can raise intraocular pressure and precipitate/worsen glaucoma.. - Ref: Comprehensive Ophthalmology by AK Khurana, 9th ed (Glaucoma)."
+  },
+  {
+    "n": 34,
+    "chapter": "ENT",
+    "stem": "First step in management of epistaxis:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Pinching nose"
+      },
+      {
+        "letter": "B",
+        "text": "Adrenaline"
+      },
+      {
+        "letter": "C",
+        "text": "Nasal packs"
+      },
+      {
+        "letter": "D",
+        "text": "Non-interference"
+      }
+    ],
+    "answerLetter": "A",
+    "answerText": "Pinching nose",
+    "explanation": "MANAGEMENT OF EPISTAXIS:\n- Bleeding from Little's area can often be controlled by pinching the nose with thumb and index finger for about 5 minutes, compressing vessels of Little's area.\n- Trotter's method: patient sits leaning slightly forward over a basin to spit blood and breathe quietly from mouth.\n- Cold compresses to nose may cause reflex vasoconstriction.\n- Further steps if needed: cauterization, anterior nasal packing, posterior nasal packing.\n- Ref: Diseases of Ear, Nose and Throat & Head and Neck Surgery by PL Dhingra, 8th ed (Epistaxis).",
+    "explanationSpoken": "MANAGEMENT OF EPISTAXIS:. - Bleeding from Little's area can often be controlled by pinching the nose with thumb and index finger for about 5 minutes, compressing vessels of Little's area.. - Trotter's method: patient sits leaning slightly forward over a basin to spit blood and breathe quietly from mouth.. - Cold compresses to nose may cause reflex vasoconstriction.. - Further steps if needed: cauterization, anterior nasal packing, posterior nasal packing.. - Ref: Diseases of Ear, Nose and Throat & Head and Neck Surgery by PL Dhingra, 8th ed (Epistaxis)."
+  },
+  {
+    "n": 35,
+    "chapter": "Dental",
+    "stem": "The possible consequences of leaving dental caries (deciduous teeth) untreated do not include which one of the following?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Pain"
+      },
+      {
+        "letter": "B",
+        "text": "Increased risk of dry socket after extraction"
+      },
+      {
+        "letter": "C",
+        "text": "Otitis media"
+      },
+      {
+        "letter": "D",
+        "text": "Brain abscess"
+      }
+    ],
+    "answerLetter": "B",
+    "answerText": "Increased risk of dry socket after extraction",
+    "explanation": "UNTREATED DENTAL CARIES (DECIDUOUS TEETH):\n- Consequences include pain, abscess, space infections which may lead to loss of function and school hours; severe infections can spread (e.g. intracranial complications such as brain abscess in some contexts) and may be associated with other regional infections.\n- Dry socket (alveolar osteitis) is a painful condition that may occur after tooth extraction when a blood clot at the extraction site does not form, dislodges, or dissolves before healing. It is related to extraction, not to leaving deciduous caries untreated without extraction.\n- Ref: Consequences of untreated dental caries (pufa/PUFA index).",
+    "explanationSpoken": "UNTREATED DENTAL CARIES (DECIDUOUS TEETH):. - Consequences include pain, abscess, space infections which may lead to loss of function and school hours; severe infections can spread (e.g. intracranial complications such as brain abscess in some contexts) and may be associated with other regional infections.. - Dry socket (alveolar osteitis) is a painful condition that may occur after tooth extraction when a blood clot at the extraction site does not form, dislodges, or dissolves before healing. It is related to extraction, not to leaving deciduous caries untreated without extraction.. - Ref: Consequences of untreated dental caries (pufa/PUFA index)."
+  },
+  {
+    "n": 36,
+    "chapter": "Orthopedics",
+    "stem": "Medial meniscus is more vulnerable to injury because of:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Its fixity to tibial collateral ligament"
+      },
+      {
+        "letter": "B",
+        "text": "Its semicircular shape"
+      },
+      {
+        "letter": "C",
+        "text": "Action of adductor magnus"
+      },
+      {
+        "letter": "D",
+        "text": "Its attachment in fibrous capsule"
+      }
+    ],
+    "answerLetter": "A",
+    "answerText": "Its fixity to tibial collateral ligament",
+    "explanation": "MENISCAL INJURIES:\n- Medial meniscus is torn more often because it is less mobile, being fixed to the medial (tibial) collateral ligament.\n- Its attachments to the capsule make it less mobile compared to lateral meniscus.\n- Ref: Essential Orthopaedics by J Maheshwari; Apley and Solomon's System of Orthopaedics and Trauma.",
+    "explanationSpoken": "MENISCAL INJURIES:. - Medial meniscus is torn more often because it is less mobile, being fixed to the medial (tibial) collateral ligament.. - Its attachments to the capsule make it less mobile compared to lateral meniscus.. - Ref: Essential Orthopaedics by J Maheshwari; Apley and Solomon's System of Orthopaedics and Trauma."
+  },
+  {
+    "n": 37,
+    "chapter": "Anesthesia",
+    "stem": "What mixture of gases are used in anesthesia?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "O2 and N2O"
+      },
+      {
+        "letter": "B",
+        "text": "O2 and CO2"
+      },
+      {
+        "letter": "C",
+        "text": "CO2 and N2O"
+      },
+      {
+        "letter": "D",
+        "text": "O2, CO2 and N2O"
+      }
+    ],
+    "answerLetter": "A",
+    "answerText": "O2 and N2O",
+    "explanation": "ENTONOX AND ANESTHETIC GASES:\n- Entonox is a 50:50 mixture of oxygen and nitrous oxide, produced by bubbling oxygen through liquid nitrous oxide.\n- Uses: inhalational anesthetic agent (with volatile agent), inhalational analgesic (labour, breakthrough pain, painful short procedures such as dressing changes/manipulations in pediatric patients).\n- Ref: Smith and Aitkenhead's Textbook of Anaesthesia, 7th ed.",
+    "explanationSpoken": "ENTONOX AND ANESTHETIC GASES:. - Entonox is a 50:50 mixture of oxygen and nitrous oxide, produced by bubbling oxygen through liquid nitrous oxide.. - Uses: inhalational anesthetic agent (with volatile agent), inhalational analgesic (labour, breakthrough pain, painful short procedures such as dressing changes/manipulations in pediatric patients).. - Ref: Smith and Aitkenhead's Textbook of Anaesthesia, 7th ed."
+  },
+  {
+    "n": 38,
+    "chapter": "Pathology/Surgery",
+    "stem": "Tissue composed of macrophages, capillaries and fibroblast is called:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Granuloma"
+      },
+      {
+        "letter": "B",
+        "text": "Keloid"
+      },
+      {
+        "letter": "C",
+        "text": "Granulation"
+      },
+      {
+        "letter": "D",
+        "text": "Scar tissue"
+      }
+    ],
+    "answerLetter": "C",
+    "answerText": "Granulation",
+    "explanation": "WOUND HEALING TISSUE:\n- Granulation tissue: if a wound is left open, it heals by secondary intention through formation of granulation tissue composed of capillaries, fibroblasts and inflammatory cells.\n- Granuloma: collection of epithelioid histiocytes (macrophages with abundant pink cytoplasm), usually surrounded by giant cells and a rim of lymphocytes.\n- Keloid: excess production of scar tissue out of proportion to the wound, with excess type III collagen.\n- Ref: Bailey & Love's Short Practice of Surgery, 28th ed.",
+    "explanationSpoken": "WOUND HEALING TISSUE:. - Granulation tissue: if a wound is left open, it heals by secondary intention through formation of granulation tissue composed of capillaries, fibroblasts and inflammatory cells.. - Granuloma: collection of epithelioid histiocytes (macrophages with abundant pink cytoplasm), usually surrounded by giant cells and a rim of lymphocytes.. - Keloid: excess production of scar tissue out of proportion to the wound, with excess type III collagen.. - Ref: Bailey & Love's Short Practice of Surgery, 28th ed."
+  },
+  {
+    "n": 39,
+    "chapter": "Obstetrics",
+    "stem": "All of the following maneuvers are used in shoulder dystocia except:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Woods corkscrew maneuver"
+      },
+      {
+        "letter": "B",
+        "text": "McRoberts maneuver"
+      },
+      {
+        "letter": "C",
+        "text": "Suprapubic pressure"
+      },
+      {
+        "letter": "D",
+        "text": "Mauriceau-Smellie-Veit maneuver"
+      }
+    ],
+    "answerLetter": "D",
+    "answerText": "Mauriceau-Smellie-Veit maneuver",
+    "explanation": "SHOULDER DYSTOCIA — MANAGEMENT:\n- McRoberts maneuver\n- Suprapubic pressure\n- Woods corkscrew maneuver\n- Zavanelli maneuver (as indicated)\n- Mauriceau-Smellie-Veit maneuver is used for delivery of the after-coming head in breech presentation, not for shoulder dystocia.\n- Ref: DC Dutta's Textbook of Obstetrics, 10th ed.",
+    "explanationSpoken": "SHOULDER DYSTOCIA — MANAGEMENT:. - McRoberts maneuver. - Suprapubic pressure. - Woods corkscrew maneuver. - Zavanelli maneuver (as indicated). - Mauriceau-Smellie-Veit maneuver is used for delivery of the after-coming head in breech presentation, not for shoulder dystocia.. - Ref: DC Dutta's Textbook of Obstetrics, 10th ed."
+  },
+  {
+    "n": 40,
+    "chapter": "Forensic/Medicine",
+    "stem": "Miosis is found in the following poisoning except:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Amphetamines"
+      },
+      {
+        "letter": "B",
+        "text": "Opioids"
+      },
+      {
+        "letter": "C",
+        "text": "Clonidine"
+      },
+      {
+        "letter": "D",
+        "text": "Organophosphorus compounds"
+      }
+    ],
+    "answerLetter": "A",
+    "answerText": "Amphetamines",
+    "explanation": "PUPILLARY CHANGES IN POISONING:\n| Mydriasis (ABCD) | Miosis (OPC-OPC) |\n| Alcohol, Amphetamine | Organophosphorus compounds |\n| Belladonna | Opium (morphine/opioids) |\n| Corrosives (except phenol), Carbon monoxide | Phenol |\n| Deliriants: Datura, Cannabis, Cocaine | Coma, Caffeine, Carbamates, Clonidine |\n- Amphetamines cause mydriasis, not miosis.\n- Ref: Rapid Review of Toxicology by Tanuj Kanchan.",
+    "explanationSpoken": "PUPILLARY CHANGES IN POISONING:. Mydriasis (ABCD). Miosis (OPC-OPC). Alcohol, Amphetamine. Organophosphorus compounds. Belladonna. Opium (morphine/opioids). Corrosives (except phenol), Carbon monoxide. Phenol. Deliriants: Datura, Cannabis, Cocaine. Coma, Caffeine, Carbamates, Clonidine. - Amphetamines cause mydriasis, not miosis.. - Ref: Rapid Review of Toxicology by Tanuj Kanchan."
+  },
+  {
+    "n": 41,
+    "chapter": "Anatomy/ENT",
+    "stem": "Frontonasal duct opens into:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Middle meatus"
+      },
+      {
+        "letter": "B",
+        "text": "Superior meatus"
+      },
+      {
+        "letter": "C",
+        "text": "Inferior meatus"
+      },
+      {
+        "letter": "D",
+        "text": "Inferior turbinate"
+      }
+    ],
+    "answerLetter": "A",
+    "answerText": "Middle meatus",
+    "explanation": "OPENINGS IN NASAL MEATUS:\n| Meatus/Region | Structures opening |\n| Superior meatus | Posterior ethmoidal cells |\n| Middle meatus | Anterior ethmoidal cells, frontal sinus (frontonasal duct), middle ethmoidal cells, maxillary sinus |\n| Spheno-ethmoidal recess | Sphenoidal sinus |\n| Inferior meatus | Nasolacrimal duct |\n- Frontal sinus drains via frontonasal duct into the middle meatus.\n- Ref: Diseases of Ear, Nose and Throat & Head and Neck Surgery by PL Dhingra, 8th ed.",
+    "explanationSpoken": "OPENINGS IN NASAL MEATUS:. Meatus/Region. Structures opening. Superior meatus. Posterior ethmoidal cells. Middle meatus. Anterior ethmoidal cells, frontal sinus (frontonasal duct), middle ethmoidal cells, maxillary sinus. Spheno-ethmoidal recess. Sphenoidal sinus. Inferior meatus. Nasolacrimal duct. - Frontal sinus drains via frontonasal duct into the middle meatus.. - Ref: Diseases of Ear, Nose and Throat & Head and Neck Surgery by PL Dhingra, 8th ed."
+  },
+  {
+    "n": 42,
+    "chapter": "ENT",
+    "stem": "Ceruminous glands present in ear are:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Modified apocrine glands"
+      },
+      {
+        "letter": "B",
+        "text": "Modified eccrine glands"
+      },
+      {
+        "letter": "C",
+        "text": "Mucous gland"
+      },
+      {
+        "letter": "D",
+        "text": "Modified holocrine glands"
+      }
+    ],
+    "answerLetter": "A",
+    "answerText": "Modified apocrine glands",
+    "explanation": "EXTERNAL EAR — GLANDS:\n- Sebaceous and ceruminous (modified sweat glands) open into the space of the hair follicle. Ceruminous glands are apocrine in nature.\n- Secretions of both glands mix with desquamated epithelial cells and keratin shed from tympanic membrane and deep bony meatus to form wax.\n- Wax lubricates the ear canal, entraps foreign material, has acidic pH and is bacteriostatic and fungistatic.\n- Ref: Diseases of Ear, Nose and Throat & Head and Neck Surgery by PL Dhingra, 8th ed.",
+    "explanationSpoken": "EXTERNAL EAR — GLANDS:. - Sebaceous and ceruminous (modified sweat glands) open into the space of the hair follicle. Ceruminous glands are apocrine in nature.. - Secretions of both glands mix with desquamated epithelial cells and keratin shed from tympanic membrane and deep bony meatus to form wax.. - Wax lubricates the ear canal, entraps foreign material, has acidic pH and is bacteriostatic and fungistatic.. - Ref: Diseases of Ear, Nose and Throat & Head and Neck Surgery by PL Dhingra, 8th ed."
+  },
+  {
+    "n": 43,
+    "chapter": "Ophthalmology",
+    "stem": "Lesion in the optic chiasma leads to the following visual field defect:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Left homonymous hemianopia"
+      },
+      {
+        "letter": "B",
+        "text": "Bitemporal hemianopia"
+      },
+      {
+        "letter": "C",
+        "text": "Right upper quadrant defect"
+      },
+      {
+        "letter": "D",
+        "text": "Right homonymous upper quadrant defect"
+      }
+    ],
+    "answerLetter": "B",
+    "answerText": "Bitemporal hemianopia",
+    "explanation": "VISUAL PATHWAY LESIONS:\n| Lesion | Visual defect |\n| Optic nerve | Complete loss of vision in ipsilateral side |\n| Optic chiasma (central/medial) | Bitemporal hemianopia |\n| Optic tract/lateral geniculate body/optic radiation | Contralateral homonymous hemianopia |\n| Temporal lobe (Meyer's loop, inferior fibers) | Contralateral superior quadrantanopia (\"pie in the sky\") |\n| Parietal lobe (superior fibers) | Contralateral inferior quadrantanopia (\"pie on the floor\") |\n- Classic lesion at optic chiasma causes bitemporal hemianopia.\n- Ref: Comprehensive Ophthalmology by AK Khurana, 9th ed (Neuro-ophthalmology).",
+    "explanationSpoken": "VISUAL PATHWAY LESIONS:. Lesion. Visual defect. Optic nerve. Complete loss of vision in ipsilateral side. Optic chiasma (central/medial). Bitemporal hemianopia. Optic tract/lateral geniculate body/optic radiation. Contralateral homonymous hemianopia. Temporal lobe (Meyer's loop, inferior fibers). Contralateral superior quadrantanopia (\"pie in the sky\"). Parietal lobe (superior fibers). Contralateral inferior quadrantanopia (\"pie on the floor\"). - Classic lesion at optic chiasma causes bitemporal hemianopia.. - Ref: Comprehensive Ophthalmology by AK Khurana, 9th ed (Neuro-ophthalmology)."
+  },
+  {
+    "n": 44,
+    "chapter": "Surgery",
+    "stem": "True statement regarding primary malignant tumors of the appendix:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Are most commonly neuroendocrine (carcinoid) tumors"
+      },
+      {
+        "letter": "B",
+        "text": "Should prompt right colectomy in nearly all patients"
+      },
+      {
+        "letter": "C",
+        "text": "Are the most common etiology of appendicitis"
+      },
+      {
+        "letter": "D",
+        "text": "Usually present due to liver metastases"
+      }
+    ],
+    "answerLetter": "A",
+    "answerText": "Are most commonly neuroendocrine (carcinoid) tumors",
+    "explanation": "APPENDICEAL NEOPLASMS:\n- Tumors of appendix may occur in up to ~0.97 per 100,000. Neuroendocrine tumors (NETs/carcinoids) account for a large proportion (commonly cited as most common primary appendiceal tumor type in many sources; epithelial tumors account for most others overall depending on classification) and often arise at the appendix tip.\n- Most patients are asymptomatic; tumor commonly incidental at appendicectomy.\n- Fully resected low-grade tumors <1 cm with minimal invasion may be treated by appendicectomy alone. Right hemicolectomy considered for larger tumors (>2 cm), incomplete resection, higher grade, T4 disease or vascular invasion.\n- Carcinoid may occasionally obstruct lumen like fecolith causing acute appendicitis but is not the most common etiology of appendicitis overall.\n- Ref: Bailey & Love's Short Practice of Surgery, 28th ed.",
+    "explanationSpoken": "APPENDICEAL NEOPLASMS:. - Tumors of appendix may occur in up to ~0.97 per 100,000. Neuroendocrine tumors (NETs/carcinoids) account for a large proportion (commonly cited as most common primary appendiceal tumor type in many sources; epithelial tumors account for most others overall depending on classification) and often arise at the appendix tip.. - Most patients are asymptomatic; tumor commonly incidental at appendicectomy.. - Fully resected low-grade tumors <1 cm with minimal invasion may be treated by appendicectomy alone. Right hemicolectomy considered for larger tumors (>2 cm), incomplete resection, higher grade, T4 disease or vascular invasion.. - Carcinoid may occasionally obstruct lumen like fecolith causing acute appendicitis but is not the most common etiology of appendicitis overall.. - Ref: Bailey & Love's Short Practice of Surgery, 28th ed."
+  },
+  {
+    "n": 45,
+    "chapter": "Surgery/Medicine",
+    "stem": "All statements regarding the management of acute pancreatitis in the first 72 hours are true except:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Adequate intravenous fluid, preferably Ringer's lactate"
+      },
+      {
+        "letter": "B",
+        "text": "Opioid analgesic"
+      },
+      {
+        "letter": "C",
+        "text": "Early feeding, if tolerated by the patient"
+      },
+      {
+        "letter": "D",
+        "text": "Antibiotics"
+      }
+    ],
+    "answerLetter": "D",
+    "answerText": "Antibiotics",
+    "explanation": "ACUTE PANCREATITIS — EARLY MANAGEMENT:\n- Aggressive fluid resuscitation: fluid of choice Ringer's lactate.\n- Supplemental oxygen as needed.\n- Analgesia: NSAID (e.g. metamizole) or opioid (buprenorphine/morphine as appropriate).\n- Nutrition: enteral nutrition started early (within 24 hours) via NG/nasojejunal route if tolerated; TPN for selected severe cases/shock.\n- Prophylactic antibiotics are not preferred/routine.\n- ERCP for severe acute biliary pancreatitis with cholangitis.\n- Laparoscopic cholecystectomy indicated for mild acute biliary pancreatitis.\n- Antibiotics indicated only for infected pancreatic necrosis or specific infections.\n- Ref: Surgery Essence by Pritesh Singh, 10th ed (Pancreas).",
+    "explanationSpoken": "ACUTE PANCREATITIS — EARLY MANAGEMENT:. - Aggressive fluid resuscitation: fluid of choice Ringer's lactate.. - Supplemental oxygen as needed.. - Analgesia: NSAID (e.g. metamizole) or opioid (buprenorphine/morphine as appropriate).. - Nutrition: enteral nutrition started early (within 24 hours) via NG/nasojejunal route if tolerated; TPN for selected severe cases/shock.. - Prophylactic antibiotics are not preferred/routine.. - ERCP for severe acute biliary pancreatitis with cholangitis.. - Laparoscopic cholecystectomy indicated for mild acute biliary pancreatitis.. - Antibiotics indicated only for infected pancreatic necrosis or specific infections.. - Ref: Surgery Essence by Pritesh Singh, 10th ed (Pancreas)."
+  },
+  {
+    "n": 46,
+    "chapter": "Medicine/Surgery",
+    "stem": "Management of duodenal ulcers:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Is mostly managed surgically in an attempt to reduce gastric acid secretion"
+      },
+      {
+        "letter": "B",
+        "text": "Consists of multimodal medical treatment including triple and quadruple therapy"
+      },
+      {
+        "letter": "C",
+        "text": "Requires surgical resection of duodenal ulcers"
+      },
+      {
+        "letter": "D",
+        "text": "Can be discontinued after 6 months of medical treatment"
+      }
+    ],
+    "answerLetter": "B",
+    "answerText": "Consists of multimodal medical treatment including triple and quadruple therapy",
+    "explanation": "DUODENAL ULCER — MANAGEMENT:\n- Eradication therapy is recommended for patients with duodenal ulcer disease associated with H. pylori.\n- H. pylori is treated with antibiotic regimens combined with PPI: triple therapy (e.g. amoxicillin, clarithromycin, PPI) and quadruple therapy as indicated.\n- Most duodenal ulcers are managed medically; surgery reserved for complications/intractable cases (e.g. vagotomy procedures, surgery for obstruction/perforation).\n- Ref: Bailey & Love's Short Practice of Surgery, 28th ed (Stomach and Duodenum).",
+    "explanationSpoken": "DUODENAL ULCER — MANAGEMENT:. - Eradication therapy is recommended for patients with duodenal ulcer disease associated with H. pylori.. - H. pylori is treated with antibiotic regimens combined with PPI: triple therapy (e.g. amoxicillin, clarithromycin, PPI) and quadruple therapy as indicated.. - Most duodenal ulcers are managed medically; surgery reserved for complications/intractable cases (e.g. vagotomy procedures, surgery for obstruction/perforation).. - Ref: Bailey & Love's Short Practice of Surgery, 28th ed (Stomach and Duodenum)."
+  },
+  {
+    "n": 47,
+    "chapter": "Pharmacology/Toxicology",
+    "stem": "Multiple doses of activated charcoal are useful in the treatment of patients with poisoning involving which one of the following?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Pesticides"
+      },
+      {
+        "letter": "B",
+        "text": "Dapsone"
+      },
+      {
+        "letter": "C",
+        "text": "Lithium carbonate"
+      },
+      {
+        "letter": "D",
+        "text": "Ferrous sulfate"
+      }
+    ],
+    "answerLetter": "B",
+    "answerText": "Dapsone",
+    "explanation": "ACTIVATED CHARCOAL:\n- Activated charcoal adsorbs many toxins (best within 1 hour of ingestion in general).\n- Repeated doses of activated charcoal every 4 hours enhance elimination of substances that undergo enterohepatic circulation, e.g. carbamazepine, dapsone, phenobarbital, quinine, theophylline.\n- Not adsorbed/ineffective: metal salts (iron, lithium, potassium), alcohols (ethanol, ethylene glycol, methanol), cyanide, hydrocarbons, solvents, acids, alkalies, fluoride.\n- Ref: Forensic Toxicology / General Principles.",
+    "explanationSpoken": "ACTIVATED CHARCOAL:. - Activated charcoal adsorbs many toxins (best within 1 hour of ingestion in general).. - Repeated doses of activated charcoal every 4 hours enhance elimination of substances that undergo enterohepatic circulation, e.g. carbamazepine, dapsone, phenobarbital, quinine, theophylline.. - Not adsorbed/ineffective: metal salts (iron, lithium, potassium), alcohols (ethanol, ethylene glycol, methanol), cyanide, hydrocarbons, solvents, acids, alkalies, fluoride.. - Ref: Forensic Toxicology / General Principles."
+  },
+  {
+    "n": 48,
+    "chapter": "Obstetrics",
+    "stem": "The cardinal movements of labor and delivery involve a sequence of events in an orderly fashion. Which of the following sequences is correct?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Descent, internal rotation, flexion"
+      },
+      {
+        "letter": "B",
+        "text": "Engagement, flexion, descent"
+      },
+      {
+        "letter": "C",
+        "text": "Engagement, internal rotation, descent"
+      },
+      {
+        "letter": "D",
+        "text": "Engagement, descent, flexion"
+      }
+    ],
+    "answerLetter": "D",
+    "answerText": "Engagement, descent, flexion",
+    "explanation": "MECHANISM OF LABOR (CARDINAL MOVEMENTS, OCCIPITO-ANTERIOR/LATERAL CONTEXT):\n- Cardinal movements classically include: engagement, descent, flexion, internal rotation, extension, external rotation (restitution), and expulsion.\n- Therefore a correct early sequence among options is engagement, descent, flexion.\n- Ref: DC Dutta's Textbook of Obstetrics, 10th ed (Normal Labor).",
+    "explanationSpoken": "MECHANISM OF LABOR (CARDINAL MOVEMENTS, OCCIPITO-ANTERIOR/LATERAL CONTEXT):. - Cardinal movements classically include: engagement, descent, flexion, internal rotation, extension, external rotation (restitution), and expulsion.. - Therefore a correct early sequence among options is engagement, descent, flexion.. - Ref: DC Dutta's Textbook of Obstetrics, 10th ed (Normal Labor)."
+  },
+  {
+    "n": 49,
+    "chapter": "Obstetrics",
+    "stem": "An ultrasound examination of a 30-year primigravida reveals the following findings all of which are suggestive of erythroblastosis fetalis, except:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "A head measurement that is large for gestational age"
+      },
+      {
+        "letter": "B",
+        "text": "Fetal ascites"
+      },
+      {
+        "letter": "C",
+        "text": "Thickening of the placenta"
+      },
+      {
+        "letter": "D",
+        "text": "Bowing of the fetal femur"
+      }
+    ],
+    "answerLetter": "D",
+    "answerText": "Bowing of the fetal femur",
+    "explanation": "HYDROPS FETALIS (Rh HEMOLYTIC DISEASE / ERYTHROBLASTOSIS FETALIS):\n- Diagnostic features: Rh-negative mother with Rh antibody, polyhydramnios, previous affected baby, sonographic findings of skin/scalp edema, pleural or pericardial effusion, echogenic bowel, ascites, enlarged liver/spleen, placentomegaly (large, pale, edematous placenta).\n- X-ray may show \"Buddha\" position with halo due to edematous scalp.\n- Bowing of fetal femur is not a feature of erythroblastosis fetalis.\n- Ref: DC Dutta's Textbook of Obstetrics, 10th ed.",
+    "explanationSpoken": "HYDROPS FETALIS (Rh HEMOLYTIC DISEASE / ERYTHROBLASTOSIS FETALIS):. - Diagnostic features: Rh-negative mother with Rh antibody, polyhydramnios, previous affected baby, sonographic findings of skin/scalp edema, pleural or pericardial effusion, echogenic bowel, ascites, enlarged liver/spleen, placentomegaly (large, pale, edematous placenta).. - X-ray may show \"Buddha\" position with halo due to edematous scalp.. - Bowing of fetal femur is not a feature of erythroblastosis fetalis.. - Ref: DC Dutta's Textbook of Obstetrics, 10th ed."
+  },
+  {
+    "n": 50,
+    "chapter": "Obstetrics",
+    "stem": "Likely reasons for the establishment of a tubal pregnancy include all of the following except:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Uterine myoma"
+      },
+      {
+        "letter": "B",
+        "text": "Pelvic infection"
+      },
+      {
+        "letter": "C",
+        "text": "Peritubal adhesions"
+      },
+      {
+        "letter": "D",
+        "text": "Tubal anastomosis"
+      }
+    ],
+    "answerLetter": "A",
+    "answerText": "Uterine myoma",
+    "explanation": "CAUSES/RISK FACTORS FOR ECTOPIC (TUBAL) PREGNANCY:\n- Pelvic inflammatory disease, STIs with salpingitis, post-abortal/puerperal sepsis, appendicitis, genital TB.\n- Peritubal/intrapelvic adhesions, tubal surgery including tubal anastomosis, tubectomy failure.\n- Congenital tubal abnormalities (tortuosity, accessory ostia, diverticula), in-utero DES exposure.\n- Assisted reproductive technology, endometriosis, smoking, previous ectopic, induced abortion, failed contraception (IUCD, POP).\n- Uterine myoma is not a typical cause of tubal pregnancy establishment.\n- Ref: DC Dutta's Textbook of Obstetrics, 10th ed (Hemorrhage in Early Pregnancy).",
+    "explanationSpoken": "CAUSES/RISK FACTORS FOR ECTOPIC (TUBAL) PREGNANCY:. - Pelvic inflammatory disease, STIs with salpingitis, post-abortal/puerperal sepsis, appendicitis, genital TB.. - Peritubal/intrapelvic adhesions, tubal surgery including tubal anastomosis, tubectomy failure.. - Congenital tubal abnormalities (tortuosity, accessory ostia, diverticula), in-utero DES exposure.. - Assisted reproductive technology, endometriosis, smoking, previous ectopic, induced abortion, failed contraception (IUCD, POP).. - Uterine myoma is not a typical cause of tubal pregnancy establishment.. - Ref: DC Dutta's Textbook of Obstetrics, 10th ed (Hemorrhage in Early Pregnancy)."
+  },
+  {
+    "n": 51,
+    "chapter": "PSM/Pediatrics",
+    "stem": "Shakir tape is used for:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Measurement of height"
+      },
+      {
+        "letter": "B",
+        "text": "Measurement of head circumference"
+      },
+      {
+        "letter": "C",
+        "text": "Measurement of mid-arm circumference"
+      },
+      {
+        "letter": "D",
+        "text": "Measurement of skinfold thickness"
+      }
+    ],
+    "answerLetter": "C",
+    "answerText": "Measurement of mid-arm circumference",
+    "explanation": "MID-UPPER ARM CIRCUMFERENCE (MUAC):\n- Measured between acromion and olecranon (middle of upper arm) using Shakir's tape.\n- Tape color zones: Green >13.5 cm (normal), Yellow 12.5-13.5 cm (borderline malnutrition), Red <12.5 cm (severe malnutrition).\n- Kanawati index = MUAC/HC; normal >0.32, less indicates malnutrition.\n- Ref: Community medicine/nutrition assessment.",
+    "explanationSpoken": "MID-UPPER ARM CIRCUMFERENCE (MUAC):. - Measured between acromion and olecranon (middle of upper arm) using Shakir's tape.. - Tape color zones: Green >13.5 cm (normal), Yellow 12.5-13.5 cm (borderline malnutrition), Red <12.5 cm (severe malnutrition).. - Kanawati index = MUAC/HC; normal >0.32, less indicates malnutrition.. - Ref: Community medicine/nutrition assessment."
+  },
+  {
+    "n": 52,
+    "chapter": "Pediatrics",
+    "stem": "The most common cause of food protein induced enteropathy is:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Peanuts"
+      },
+      {
+        "letter": "B",
+        "text": "Fish"
+      },
+      {
+        "letter": "C",
+        "text": "Cow's milk"
+      },
+      {
+        "letter": "D",
+        "text": "Eggs"
+      }
+    ],
+    "answerLetter": "C",
+    "answerText": "Cow's milk",
+    "explanation": "FOOD PROTEIN-INDUCED ENTEROPATHY/ENTEROCOLITIS:\n- The two most common foods associated with FPIES/food protein-induced enteropathy are cow's milk and soy; in approximately 40% of cases affected individuals may react to both cow's milk and soy.\n- Ref: Pediatric gastroenterology/nutrition.",
+    "explanationSpoken": "FOOD PROTEIN-INDUCED ENTEROPATHY/ENTEROCOLITIS:. - The two most common foods associated with FPIES/food protein-induced enteropathy are cow's milk and soy; in approximately 40% of cases affected individuals may react to both cow's milk and soy.. - Ref: Pediatric gastroenterology/nutrition."
+  },
+  {
+    "n": 53,
+    "chapter": "Pediatrics",
+    "stem": "Earliest sign of rickets is:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Rickety rosary"
+      },
+      {
+        "letter": "B",
+        "text": "Craniotabes"
+      },
+      {
+        "letter": "C",
+        "text": "Bow legs"
+      },
+      {
+        "letter": "D",
+        "text": "Harrison's groove"
+      }
+    ],
+    "answerLetter": "B",
+    "answerText": "Craniotabes",
+    "explanation": "CLINICAL FEATURES OF RICKETS:\n- From head to toe: frontal bossing, delayed closure of anterior fontanelle, craniotabes (soft skull bones) — earliest sign, delayed dentition, beaded appearance of anterior costochondral junctions (rachitic rosary).\n- Harrison sulcus/depression along lower border of chest at insertion of diaphragm.\n- Limb deformities: swelling of wrists/ankles, bow legs (genu varum) or knock-knees (genu valgum).\n- Other features: hypocalcemic seizures, muscle weakness, hypotonia, failure to thrive, irritability, increased fracture risk, pelvic deformities.\n- Ref: Ghai Essential Pediatrics, 10th ed.",
+    "explanationSpoken": "CLINICAL FEATURES OF RICKETS:. - From head to toe: frontal bossing, delayed closure of anterior fontanelle, craniotabes (soft skull bones) — earliest sign, delayed dentition, beaded appearance of anterior costochondral junctions (rachitic rosary).. - Harrison sulcus/depression along lower border of chest at insertion of diaphragm.. - Limb deformities: swelling of wrists/ankles, bow legs (genu varum) or knock-knees (genu valgum).. - Other features: hypocalcemic seizures, muscle weakness, hypotonia, failure to thrive, irritability, increased fracture risk, pelvic deformities.. - Ref: Ghai Essential Pediatrics, 10th ed."
+  },
+  {
+    "n": 54,
+    "chapter": "Pediatrics",
+    "stem": "Significant difference of blood pressure in upper and lower limb is found in:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Tetralogy of Fallot"
+      },
+      {
+        "letter": "B",
+        "text": "Kawasaki disease"
+      },
+      {
+        "letter": "C",
+        "text": "Patent ductus arteriosus"
+      },
+      {
+        "letter": "D",
+        "text": "Coarctation of aorta"
+      }
+    ],
+    "answerLetter": "D",
+    "answerText": "Coarctation of aorta",
+    "explanation": "COARCTATION OF AORTA:\n- Hallmarks: absent/weak femoral pulses and difference in blood pressure between arms and legs (high BP in upper extremities, low/normal in lower limbs).\n- Symptoms: headache, dizziness, epistaxis, cold extremities, leg weakness/claudication with exercise.\n- Most common site: distal to origin of left subclavian artery.\n- Most common associated cardiac anomaly: bicuspid aortic valve; may be associated with Turner syndrome.\n- Ref: Pediatric cardiology.",
+    "explanationSpoken": "COARCTATION OF AORTA:. - Hallmarks: absent/weak femoral pulses and difference in blood pressure between arms and legs (high BP in upper extremities, low/normal in lower limbs).. - Symptoms: headache, dizziness, epistaxis, cold extremities, leg weakness/claudication with exercise.. - Most common site: distal to origin of left subclavian artery.. - Most common associated cardiac anomaly: bicuspid aortic valve; may be associated with Turner syndrome.. - Ref: Pediatric cardiology."
+  },
+  {
+    "n": 55,
+    "chapter": "Pediatrics/PSM",
+    "stem": "Stunting is diagnosed if:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Height-for-age < -2 SD of the WHO child growth standards median"
+      },
+      {
+        "letter": "B",
+        "text": "Height-for-weight < -2 SD of the WHO child growth standards median"
+      },
+      {
+        "letter": "C",
+        "text": "Weight-for-height < -2 SD of the WHO child growth standards median"
+      },
+      {
+        "letter": "D",
+        "text": "Weight-for-age < -2 SD of the WHO child growth standards median"
+      }
+    ],
+    "answerLetter": "A",
+    "answerText": "Height-for-age < -2 SD of the WHO child growth standards median",
+    "explanation": "WHO CLASSIFICATION OF UNDERNUTRITION:\n| Classification | Criterion |\n| Underweight | Low weight-for-age: < -2 SD |\n| Stunting | Low height/length-for-age: < -2 SD |\n| Wasting | Low weight-for-height: < -2 SD |\n- Moderate: below -2 SD and up to -3 SD. Severe: below -3 SD.\n- Ref: Ghai Essential Pediatrics, 10th ed (Nutrition).",
+    "explanationSpoken": "WHO CLASSIFICATION OF UNDERNUTRITION:. Classification. Criterion. Underweight. Low weight-for-age: < -2 SD. Stunting. Low height/length-for-age: < -2 SD. Wasting. Low weight-for-height: < -2 SD. - Moderate: below -2 SD and up to -3 SD. Severe: below -3 SD.. - Ref: Ghai Essential Pediatrics, 10th ed (Nutrition)."
+  },
+  {
+    "n": 56,
+    "chapter": "Pediatrics",
+    "stem": "A neonate delivered at 37 weeks of gestation with a birth weight of 1.9 kg develops intolerance to feed, lethargy, abdominal distension on the 2nd day. Sepsis screen is negative. Physical examination is unremarkable. PCV is observed to be 72%. Which of the following represents the best management?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Hydration with IV fluids"
+      },
+      {
+        "letter": "B",
+        "text": "Partial exchange transfusion"
+      },
+      {
+        "letter": "C",
+        "text": "Presumptive treatment for sepsis"
+      },
+      {
+        "letter": "D",
+        "text": "Medical management for intestinal obstruction"
+      }
+    ],
+    "answerLetter": "B",
+    "answerText": "Partial exchange transfusion",
+    "explanation": "NEONATAL POLYCYTHEMIA (HYPERVISCOSITY SYNDROME):\n- Polycythemia: excessively high hematocrit (≥65%) which may lead to hyperviscosity causing vascular stasis, hypoperfusion, and ischemia.\n- Symptoms: seizures, lethargy, irritability, hyperbilirubinemia, respiratory distress/PPHN, NEC, hypoglycemia, thrombocytopenia, feeding intolerance.\n- Symptomatic infants are treated with partial exchange transfusion (removes whole blood and replaces with normal saline) to reduce viscosity and prevent neurodevelopmental sequelae.\n- PCV 72% with symptoms and negative sepsis screen indicates symptomatic polycythemia → partial exchange transfusion.\n- Ref: Nelson's Essentials of Pediatrics.",
+    "explanationSpoken": "NEONATAL POLYCYTHEMIA (HYPERVISCOSITY SYNDROME):. - Polycythemia: excessively high hematocrit (≥65%) which may lead to hyperviscosity causing vascular stasis, hypoperfusion, and ischemia.. - Symptoms: seizures, lethargy, irritability, hyperbilirubinemia, respiratory distress/PPHN, NEC, hypoglycemia, thrombocytopenia, feeding intolerance.. - Symptomatic infants are treated with partial exchange transfusion (removes whole blood and replaces with normal saline) to reduce viscosity and prevent neurodevelopmental sequelae.. - PCV 72% with symptoms and negative sepsis screen indicates symptomatic polycythemia → partial exchange transfusion.. - Ref: Nelson's Essentials of Pediatrics."
+  },
+  {
+    "n": 57,
+    "chapter": "Obstetrics",
+    "stem": "Which is incorrect with regards to Rhesus isoimmunisation?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "The chance of a Rh-negative mother developing anti-D antibodies with Rh-positive fetus is less than 20% (even if not given anti-D)"
+      },
+      {
+        "letter": "B",
+        "text": "Anti-D must be given within 24 hours to have any substantial effect"
+      },
+      {
+        "letter": "C",
+        "text": "It is a blood product"
+      },
+      {
+        "letter": "D",
+        "text": "The IgM anti-D antibodies cannot cross the placenta but the IgG antibodies can"
+      }
+    ],
+    "answerLetter": "B",
+    "answerText": "Anti-D must be given within 24 hours to have any substantial effect",
+    "explanation": "Rh ISOIMMUNISATION:\n- Risk of alloimmunisation in Rh-negative woman with Rh-incompatible pregnancy is significant but not universal; prophylaxis reduces risk substantially.\n- Postpartum anti-D (Rh IgG) is best given within 72 hours after delivery but can be given up to 28 days after delivery; it reduces alloimmunisation by ~90%. It is not required to be given within 24 hours only.\n- Anti-D immunoglobulin is a blood product.\n- IgM is larger and cannot cross placental barrier; IgG is smaller, crosses placenta and can cause fetal damage.\n- Ref: DC Dutta's Textbook of Obstetrics, 10th ed.",
+    "explanationSpoken": "Rh ISOIMMUNISATION:. - Risk of alloimmunisation in Rh-negative woman with Rh-incompatible pregnancy is significant but not universal; prophylaxis reduces risk substantially.. - Postpartum anti-D (Rh IgG) is best given within 72 hours after delivery but can be given up to 28 days after delivery; it reduces alloimmunisation by ~90%. It is not required to be given within 24 hours only.. - Anti-D immunoglobulin is a blood product.. - IgM is larger and cannot cross placental barrier; IgG is smaller, crosses placenta and can cause fetal damage.. - Ref: DC Dutta's Textbook of Obstetrics, 10th ed."
+  },
+  {
+    "n": 58,
+    "chapter": "Anatomy/Embryology",
+    "stem": "The ligamentum teres represents the obliterated:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Ductus arteriosus"
+      },
+      {
+        "letter": "B",
+        "text": "Umbilical vein"
+      },
+      {
+        "letter": "C",
+        "text": "Ductus venosus"
+      },
+      {
+        "letter": "D",
+        "text": "Umbilical artery"
+      }
+    ],
+    "answerLetter": "B",
+    "answerText": "Umbilical vein",
+    "explanation": "FETAL STRUCTURES AND ADULT REMNANTS:\n| Fetal structure | Adult remnant |\n| Umbilical vein | Ligamentum teres hepatis (round ligament of liver) |\n| Umbilical arteries | Medial umbilical ligaments (distal); superior vesical arteries (proximal) |\n| Ductus venosus | Ligamentum venosum |\n| Ductus arteriosus | Ligamentum arteriosum |\n- Ref: Langman's Medical Embryology.",
+    "explanationSpoken": "FETAL STRUCTURES AND ADULT REMNANTS:. Fetal structure. Adult remnant. Umbilical vein. Ligamentum teres hepatis (round ligament of liver). Umbilical arteries. Medial umbilical ligaments (distal); superior vesical arteries (proximal). Ductus venosus. Ligamentum venosum. Ductus arteriosus. Ligamentum arteriosum. - Ref: Langman's Medical Embryology."
+  },
+  {
+    "n": 59,
+    "chapter": "Obstetrics",
+    "stem": "What is the preferred surgical treatment for an unruptured tubal pregnancy?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Salpingectomy"
+      },
+      {
+        "letter": "B",
+        "text": "Salpingotomy"
+      },
+      {
+        "letter": "C",
+        "text": "Salpingostomy"
+      },
+      {
+        "letter": "D",
+        "text": "Segmental resection with re-anastomosis"
+      }
+    ],
+    "answerLetter": "C",
+    "answerText": "Salpingostomy",
+    "explanation": "MANAGEMENT OF UNRUPTURED TUBAL PREGNANCY:\n- Expectant: observation in selected cases.\n- Medical: methotrexate, etc.\n- Surgical: extirpative (salpingectomy) or conservative (salpingostomy).\n- Salpingostomy is the preferred conservative surgery when patient is stable and wishes to retain future fertility.\n- Salpingectomy is indicated in ruptured tube, damaged tube, uncontrolled bleeding, large sac (>5 cm) or when family completed.\n- Segmental resection and anastomosis seldom done (sometimes for isthmic pregnancy). Fimbrial expression has recurrence risk.\n- Ref: DC Dutta's Textbook of Obstetrics, 10th ed.",
+    "explanationSpoken": "MANAGEMENT OF UNRUPTURED TUBAL PREGNANCY:. - Expectant: observation in selected cases.. - Medical: methotrexate, etc.. - Surgical: extirpative (salpingectomy) or conservative (salpingostomy).. - Salpingostomy is the preferred conservative surgery when patient is stable and wishes to retain future fertility.. - Salpingectomy is indicated in ruptured tube, damaged tube, uncontrolled bleeding, large sac (>5 cm) or when family completed.. - Segmental resection and anastomosis seldom done (sometimes for isthmic pregnancy). Fimbrial expression has recurrence risk.. - Ref: DC Dutta's Textbook of Obstetrics, 10th ed."
+  },
+  {
+    "n": 60,
+    "chapter": "Pathology",
+    "stem": "Annexin V is used as a marker for:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Gangrene"
+      },
+      {
+        "letter": "B",
+        "text": "Apoptosis"
+      },
+      {
+        "letter": "C",
+        "text": "Necrosis"
+      },
+      {
+        "letter": "D",
+        "text": "Fatty change"
+      }
+    ],
+    "answerLetter": "B",
+    "answerText": "Apoptosis",
+    "explanation": "APOPTOSIS — DETECTION:\n- Apoptosis is energy-dependent, genetically programmed cell death involving single or small groups of cells.\n- Methods to detect apoptosis/DNA breaks: TUNEL, ISEL, caspase activity assays, Annexin V/Propidium iodide.\n- Annexin V binds to exposed phosphatidylserine on the outer surface of plasma membrane in apoptotic cells.\n- Ref: Pathology (apoptosis).",
+    "explanationSpoken": "APOPTOSIS — DETECTION:. - Apoptosis is energy-dependent, genetically programmed cell death involving single or small groups of cells.. - Methods to detect apoptosis/DNA breaks: TUNEL, ISEL, caspase activity assays, Annexin V/Propidium iodide.. - Annexin V binds to exposed phosphatidylserine on the outer surface of plasma membrane in apoptotic cells.. - Ref: Pathology (apoptosis)."
+  },
+  {
+    "n": 61,
+    "chapter": "Anesthesia/Pharmacology",
+    "stem": "Contraindications of propofol as IV anesthesia include all except:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "<17 years for sedation"
+      },
+      {
+        "letter": "B",
+        "text": "Eggs or soy allergy"
+      },
+      {
+        "letter": "C",
+        "text": "Extremes of age"
+      },
+      {
+        "letter": "D",
+        "text": "Hypnotic"
+      }
+    ],
+    "answerLetter": "D",
+    "answerText": "Hypnotic",
+    "explanation": "PROPOFOL — CONTRAINDICATIONS/CAUTIONS:\n- Propofol is an intravenous anesthetic used for procedural sedation, monitored anesthesia care, or induction of general anesthesia.\n- Contraindications/cautions include: egg and soy allergy, caution in extremes of age (elderly, infants) due to increased sensitivity and adverse effects, and restrictions/caution for prolonged sedation in children (risk of propofol infusion syndrome; age limits vary by guideline/text).\n- \"Hypnotic\" describes its action/use, not a contraindication.\n- Ref: Anesthesia pharmacology (propofol).",
+    "explanationSpoken": "PROPOFOL — CONTRAINDICATIONS/CAUTIONS:. - Propofol is an intravenous anesthetic used for procedural sedation, monitored anesthesia care, or induction of general anesthesia.. - Contraindications/cautions include: egg and soy allergy, caution in extremes of age (elderly, infants) due to increased sensitivity and adverse effects, and restrictions/caution for prolonged sedation in children (risk of propofol infusion syndrome; age limits vary by guideline/text).. - \"Hypnotic\" describes its action/use, not a contraindication.. - Ref: Anesthesia pharmacology (propofol)."
+  },
+  {
+    "n": 62,
+    "chapter": "Orthopedics",
+    "stem": "In transverse fractures of the patella, the treatment is:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Wire fixation"
+      },
+      {
+        "letter": "B",
+        "text": "Plaster cylinder"
+      },
+      {
+        "letter": "C",
+        "text": "Patellectomy"
+      },
+      {
+        "letter": "D",
+        "text": "Excision of small fragment"
+      }
+    ],
+    "answerLetter": "A",
+    "answerText": "Wire fixation",
+    "explanation": "PATELLA FRACTURE — MANAGEMENT:\n| Type | Management |\n| Undisplaced fracture | Cylinder cast for ~3 weeks followed by physiotherapy |\n| Clean break with separation of fragments (2-part/transverse with displacement) | Tension band wiring (TBW) |\n| Comminuted fracture | Partial patellectomy / patellectomy as indicated |\n- Displaced transverse fractures are typically treated with tension band wiring.\n- Ref: Essential Orthopaedics by Maheshwari.",
+    "explanationSpoken": "PATELLA FRACTURE — MANAGEMENT:. Type. Management. Undisplaced fracture. Cylinder cast for ~3 weeks followed by physiotherapy. Clean break with separation of fragments (2-part/transverse with displacement). Tension band wiring (TBW). Comminuted fracture. Partial patellectomy / patellectomy as indicated. - Displaced transverse fractures are typically treated with tension band wiring.. - Ref: Essential Orthopaedics by Maheshwari."
+  },
+  {
+    "n": 63,
+    "chapter": "Pediatrics/Microbiology",
+    "stem": "The most common manifestation of congenital toxoplasmosis is:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Hydrocephalus"
+      },
+      {
+        "letter": "B",
+        "text": "Chorioretinitis"
+      },
+      {
+        "letter": "C",
+        "text": "Hepatosplenomegaly"
+      },
+      {
+        "letter": "D",
+        "text": "Thrombocytopenia"
+      }
+    ],
+    "answerLetter": "B",
+    "answerText": "Chorioretinitis",
+    "explanation": "CONGENITAL TOXOPLASMOSIS:\n- Caused by Toxoplasma gondii (intracellular protozoan).\n- Classic triad: chorioretinitis (most common manifestation), hydrocephalus, intracranial calcifications.\n- Other features may include hepatosplenomegaly, thrombocytopenia, jaundice.\n- Ref: Nelson's Essentials of Pediatrics (Congenital Infections).",
+    "explanationSpoken": "CONGENITAL TOXOPLASMOSIS:. - Caused by Toxoplasma gondii (intracellular protozoan).. - Classic triad: chorioretinitis (most common manifestation), hydrocephalus, intracranial calcifications.. - Other features may include hepatosplenomegaly, thrombocytopenia, jaundice.. - Ref: Nelson's Essentials of Pediatrics (Congenital Infections)."
+  },
+  {
+    "n": 64,
+    "chapter": "Obstetrics",
+    "stem": "Which of the following is the most common type of conjoined twins?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Craniopagus"
+      },
+      {
+        "letter": "B",
+        "text": "Thoracopagus"
+      },
+      {
+        "letter": "C",
+        "text": "Ischiopagus"
+      },
+      {
+        "letter": "D",
+        "text": "Pygopagus"
+      }
+    ],
+    "answerLetter": "B",
+    "answerText": "Thoracopagus",
+    "explanation": "CONJOINED TWINS — TYPES:\n| Type | Site of fusion | Approx. frequency |\n| Thoracopagus | Fusion at chest (most common) | ~40% |\n| Omphalopagus (xiphopagus) | Anterior abdominal wall | ~33% |\n| Pygopagus | Fusion at buttock | ~18% |\n| Ischiopagus | Fusion at ischium | ~6% |\n| Craniopagus | Fusion of head | ~2% |\n- Conjoined twins result from incomplete division of embryonic disc (division after ~13 days).\n- Ref: DC Dutta's Textbook of Obstetrics, 10th ed.",
+    "explanationSpoken": "CONJOINED TWINS — TYPES:. Type. Site of fusion. Approx. frequency. Thoracopagus. Fusion at chest (most common). ~40%. Omphalopagus (xiphopagus). Anterior abdominal wall. ~33%. Pygopagus. Fusion at buttock. ~18%. Ischiopagus. Fusion at ischium. ~6%. Craniopagus. Fusion of head. ~2%. - Conjoined twins result from incomplete division of embryonic disc (division after ~13 days).. - Ref: DC Dutta's Textbook of Obstetrics, 10th ed."
+  },
+  {
+    "n": 65,
+    "chapter": "Obstetrics",
+    "stem": "What is the most common chromosomal abnormality associated with spontaneous abortion?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "47,XXY"
+      },
+      {
+        "letter": "B",
+        "text": "45,X"
+      },
+      {
+        "letter": "C",
+        "text": "47,XXX"
+      },
+      {
+        "letter": "D",
+        "text": "Trisomy"
+      }
+    ],
+    "answerLetter": "D",
+    "answerText": "Trisomy",
+    "explanation": "SPONTANEOUS ABORTION — CHROMOSOMAL CAUSES:\n- Most common cause of spontaneous abortion is chromosomal defect/aneuploidy (genetic factor).\n- Trisomy is the most common chromosomal abnormality group (≈50-60%), followed by monosomy X (45,X; ~9-13%) and triploidy (~11-12%). Trisomy 16 is the most common single trisomy.\n- 45,X (Turner syndrome) is the single most frequent specific chromosomal abnormality in some datasets, but overall autosomal trisomies are most common; answer per source key: Trisomy.\n- Ref: DC Dutta's Textbook of Obstetrics, 10th ed.",
+    "explanationSpoken": "SPONTANEOUS ABORTION — CHROMOSOMAL CAUSES:. - Most common cause of spontaneous abortion is chromosomal defect/aneuploidy (genetic factor).. - Trisomy is the most common chromosomal abnormality group (≈50-60%), followed by monosomy X (45,X; ~9-13%) and triploidy (~11-12%). Trisomy 16 is the most common single trisomy.. - 45,X (Turner syndrome) is the single most frequent specific chromosomal abnormality in some datasets, but overall autosomal trisomies are most common; answer per source key: Trisomy.. - Ref: DC Dutta's Textbook of Obstetrics, 10th ed."
+  },
+  {
+    "n": 66,
+    "chapter": "Physiology/Medicine",
+    "stem": "Magnesium is excreted from:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Lungs"
+      },
+      {
+        "letter": "B",
+        "text": "Liver"
+      },
+      {
+        "letter": "C",
+        "text": "Gastrointestinal tract"
+      },
+      {
+        "letter": "D",
+        "text": "Kidney"
+      }
+    ],
+    "answerLetter": "D",
+    "answerText": "Kidney",
+    "explanation": "MAGNESIUM HOMEOSTASIS:\n- Magnesium is a major intracellular divalent cation. Most total body magnesium is in bone.\n- Dietary magnesium is absorbed in jejunum and ileum (stimulated by 1,25(OH)2D).\n- Urinary magnesium excretion normally matches net intestinal absorption; kidneys regulate excretion (reabsorption in proximal tubule, thick ascending limb, DCT) and can excrete large amounts.\n- Primary route of excretion/regulation: kidney.\n- Ref: Harrison's Principles of Internal Medicine.",
+    "explanationSpoken": "MAGNESIUM HOMEOSTASIS:. - Magnesium is a major intracellular divalent cation. Most total body magnesium is in bone.. - Dietary magnesium is absorbed in jejunum and ileum (stimulated by 1,25(OH)2D).. - Urinary magnesium excretion normally matches net intestinal absorption; kidneys regulate excretion (reabsorption in proximal tubule, thick ascending limb, DCT) and can excrete large amounts.. - Primary route of excretion/regulation: kidney.. - Ref: Harrison's Principles of Internal Medicine."
+  },
+  {
+    "n": 67,
+    "chapter": "Obstetrics/Gynecology",
+    "stem": "What is the pH range of vaginal secretions before puberty?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "6.8 to 7.2"
+      },
+      {
+        "letter": "B",
+        "text": "2.0 to 3.4"
+      },
+      {
+        "letter": "C",
+        "text": "3.6 to 4.2"
+      },
+      {
+        "letter": "D",
+        "text": "4.0 to 7.2"
+      }
+    ],
+    "answerLetter": "A",
+    "answerText": "6.8 to 7.2",
+    "explanation": "VAGINAL pH AND EPITHELIUM AT DIFFERENT AGES:\n- Before puberty (and after menopause) estrogen effect is low: epithelium thin, glycogen scant, Doderlein's bacilli absent/scant, vaginal secretion neutral to alkaline (around 6-7 or higher).\n- Reproductive period: estrogen stimulates thick stratified squamous epithelium with glycogen, Doderlein's bacilli produce lactic acid, pH acidic (~3.5-4.5).\n- Prepubertal pH range (per source): 6.8 to 7.2.\n- Ref: DC Dutta's Textbook of Gynaecology.",
+    "explanationSpoken": "VAGINAL pH AND EPITHELIUM AT DIFFERENT AGES:. - Before puberty (and after menopause) estrogen effect is low: epithelium thin, glycogen scant, Doderlein's bacilli absent/scant, vaginal secretion neutral to alkaline (around 6-7 or higher).. - Reproductive period: estrogen stimulates thick stratified squamous epithelium with glycogen, Doderlein's bacilli produce lactic acid, pH acidic (~3.5-4.5).. - Prepubertal pH range (per source): 6.8 to 7.2.. - Ref: DC Dutta's Textbook of Gynaecology."
+  },
+  {
+    "n": 68,
+    "chapter": "Emergency Medicine",
+    "stem": "Basic airway management involves:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Endotracheal intubation"
+      },
+      {
+        "letter": "B",
+        "text": "Laryngeal mask insertion"
+      },
+      {
+        "letter": "C",
+        "text": "Bag and mask ventilation"
+      },
+      {
+        "letter": "D",
+        "text": "Needle cricothyrotomy"
+      }
+    ],
+    "answerLetter": "C",
+    "answerText": "Bag and mask ventilation",
+    "explanation": "AIRWAY MANAGEMENT:\n- Basic airway management: initial steps to ensure patent airway and adequate ventilation without advanced procedures — head-tilt chin-lift/jaw thrust, and bag-mask ventilation.\n- Endotracheal intubation, laryngeal mask insertion, and needle cricothyrotomy are advanced airway techniques.\n- Ref: Emergency health service protocols / BLS.",
+    "explanationSpoken": "AIRWAY MANAGEMENT:. - Basic airway management: initial steps to ensure patent airway and adequate ventilation without advanced procedures — head-tilt chin-lift/jaw thrust, and bag-mask ventilation.. - Endotracheal intubation, laryngeal mask insertion, and needle cricothyrotomy are advanced airway techniques.. - Ref: Emergency health service protocols / BLS."
+  },
+  {
+    "n": 69,
+    "chapter": "Emergency Medicine",
+    "stem": "AHA (American Heart Association) emphasizes early administration of epinephrine in:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Symptomatic bradycardia"
+      },
+      {
+        "letter": "B",
+        "text": "PEA (pulseless electrical activity)"
+      },
+      {
+        "letter": "C",
+        "text": "Shockable rhythm"
+      },
+      {
+        "letter": "D",
+        "text": "All of the above"
+      }
+    ],
+    "answerLetter": "D",
+    "answerText": "All of the above",
+    "explanation": "EPINEPHRINE IN RESUSCITATION (AHA):\n- In cardiac arrest with nonshockable rhythm (asystole/PEA), administer epinephrine as soon as feasible.\n- In cardiac arrest with shockable rhythm (VF/pVT), epinephrine may be given after initial defibrillation attempts fail.\n- Epinephrine is also used in symptomatic bradycardia and anaphylaxis/cardiac arrest scenarios as indicated.\n- Thus early/appropriate administration is emphasized across relevant ACLS contexts listed.\n- Ref: AHA Guidelines for CPR and ECC.",
+    "explanationSpoken": "EPINEPHRINE IN RESUSCITATION (AHA):. - In cardiac arrest with nonshockable rhythm (asystole/PEA), administer epinephrine as soon as feasible.. - In cardiac arrest with shockable rhythm (VF/pVT), epinephrine may be given after initial defibrillation attempts fail.. - Epinephrine is also used in symptomatic bradycardia and anaphylaxis/cardiac arrest scenarios as indicated.. - Thus early/appropriate administration is emphasized across relevant ACLS contexts listed.. - Ref: AHA Guidelines for CPR and ECC."
+  },
+  {
+    "n": 70,
+    "chapter": "Emergency Medicine",
+    "stem": "Once advanced airway is in place during ACLS in an adult:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Continue compression-ventilation at 30:2 ratio"
+      },
+      {
+        "letter": "B",
+        "text": "Continue ventilation at 15:18 per minute"
+      },
+      {
+        "letter": "C",
+        "text": "Ventilate every 5-6 seconds"
+      },
+      {
+        "letter": "D",
+        "text": "Continue compression-ventilation at 15:2 ratio"
+      }
+    ],
+    "answerLetter": "C",
+    "answerText": "Ventilate every 5-6 seconds",
+    "explanation": "ACLS WITH ADVANCED AIRWAY:\n- Without advanced airway: compression-ventilation ratio 30:2 (adults).\n- With advanced airway in place: provide continuous chest compressions (100-120/min) and give 1 breath every 6 seconds (10 breaths/min) without pausing compressions for breaths.\n- \"Ventilate every 5-6 seconds\" corresponds to ~10-12 breaths/min (current recommendation 1 breath every 6 seconds).\n- Ref: AHA CPR/ECC guidelines.",
+    "explanationSpoken": "ACLS WITH ADVANCED AIRWAY:. - Without advanced airway: compression-ventilation ratio 30:2 (adults).. - With advanced airway in place: provide continuous chest compressions (100-120/min) and give 1 breath every 6 seconds (10 breaths/min) without pausing compressions for breaths.. - \"Ventilate every 5-6 seconds\" corresponds to ~10-12 breaths/min (current recommendation 1 breath every 6 seconds).. - Ref: AHA CPR/ECC guidelines."
+  },
+  {
+    "n": 71,
+    "chapter": "Psychiatry",
+    "stem": "Psychoanalysis was introduced by:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Freud"
+      },
+      {
+        "letter": "B",
+        "text": "Bleuler"
+      },
+      {
+        "letter": "C",
+        "text": "Delay and Deniker"
+      },
+      {
+        "letter": "D",
+        "text": "Kraepelin"
+      }
+    ],
+    "answerLetter": "A",
+    "answerText": "Freud",
+    "explanation": "PSYCHIATRY — CONTRIBUTORS:\n- Sigmund Freud: psychoanalysis.\n- Eugen Bleuler: coined term schizophrenia.\n- Emil Kraepelin: classification of psychiatric disorders (dementia praecox/manic-depressive illness).\n- Delay and Deniker: introduced chlorpromazine in psychiatry.\n- Ref: Psychiatry history.",
+    "explanationSpoken": "PSYCHIATRY — CONTRIBUTORS:. - Sigmund Freud: psychoanalysis.. - Eugen Bleuler: coined term schizophrenia.. - Emil Kraepelin: classification of psychiatric disorders (dementia praecox/manic-depressive illness).. - Delay and Deniker: introduced chlorpromazine in psychiatry.. - Ref: Psychiatry history."
+  },
+  {
+    "n": 72,
+    "chapter": "Psychiatry/Pediatrics",
+    "stem": "Lesion in autistic disorder is in:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Corpus callosum"
+      },
+      {
+        "letter": "B",
+        "text": "Frontal lobe"
+      },
+      {
+        "letter": "C",
+        "text": "Temporal lobe"
+      },
+      {
+        "letter": "D",
+        "text": "Cerebellum"
+      }
+    ],
+    "answerLetter": "C",
+    "answerText": "Temporal lobe",
+    "explanation": "AUTISM SPECTRUM DISORDER (ASD):\n- ASD is a pervasive developmental disorder with abnormalities in social and communicative skills; etiology largely genetic with neurobiological correlates.\n- Proposed abnormalities involve brain connectivity and regions including limbic system, temporal and frontal lobes. fMRI studies show hypoactivity in areas involved in face processing/social cognition (e.g. fusiform gyrus/amygdala circuits).\n- As per source key: temporal lobe.\n- Ref: Nelson's Essentials of Pediatrics (ASD).",
+    "explanationSpoken": "AUTISM SPECTRUM DISORDER (ASD):. - ASD is a pervasive developmental disorder with abnormalities in social and communicative skills; etiology largely genetic with neurobiological correlates.. - Proposed abnormalities involve brain connectivity and regions including limbic system, temporal and frontal lobes. fMRI studies show hypoactivity in areas involved in face processing/social cognition (e.g. fusiform gyrus/amygdala circuits).. - As per source key: temporal lobe.. - Ref: Nelson's Essentials of Pediatrics (ASD)."
+  },
+  {
+    "n": 73,
+    "chapter": "Dermatology",
+    "stem": "An acute eruption of intensely itchy papules or wheals is called:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Acne"
+      },
+      {
+        "letter": "B",
+        "text": "Pityriasis rosea"
+      },
+      {
+        "letter": "C",
+        "text": "Psoriasis"
+      },
+      {
+        "letter": "D",
+        "text": "Urticaria"
+      }
+    ],
+    "answerLetter": "D",
+    "answerText": "Urticaria",
+    "explanation": "URTICARIA:\n- Heterogeneous group of disorders characterized by itchy wheals due to transient dermal (and sometimes subcutaneous) edema.\n- Acne vulgaris: disorder of pilosebaceous unit with comedones, papules, pustules, nodules, cysts.\n- Pityriasis rosea: self-limiting with herald patch followed by secondary eruption (oval plaques with collarette of scale in fir-tree pattern).\n- Psoriasis: chronic relapsing erythematous plaques with silvery scales, nail/joint involvement.\n- Ref: Dermatology.",
+    "explanationSpoken": "URTICARIA:. - Heterogeneous group of disorders characterized by itchy wheals due to transient dermal (and sometimes subcutaneous) edema.. - Acne vulgaris: disorder of pilosebaceous unit with comedones, papules, pustules, nodules, cysts.. - Pityriasis rosea: self-limiting with herald patch followed by secondary eruption (oval plaques with collarette of scale in fir-tree pattern).. - Psoriasis: chronic relapsing erythematous plaques with silvery scales, nail/joint involvement.. - Ref: Dermatology."
+  },
+  {
+    "n": 74,
+    "chapter": "Dermatology/Infectious Disease",
+    "stem": "Which of the following drug also considered a last line drug for treatment has shown resistance to gonorrhoea in recent years?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Gentamycin"
+      },
+      {
+        "letter": "B",
+        "text": "Ceftriaxone"
+      },
+      {
+        "letter": "C",
+        "text": "Hydroxychloroquine"
+      },
+      {
+        "letter": "D",
+        "text": "Sulphonamides"
+      }
+    ],
+    "answerLetter": "B",
+    "answerText": "Ceftriaxone",
+    "explanation": "GONORRHEA — TREATMENT AND RESISTANCE:\n- Gonorrhea treatment has evolved due to resistance; ceftriaxone (third-generation cephalosporin) is a key/last-line agent in many regimens and resistance/emerging decreased susceptibility has been reported in recent years.\n- Historical/other agents include cefixime, ciprofloxacin (resistance common), spectinomycin, etc.\n- Ref: Sexually transmitted infections.",
+    "explanationSpoken": "GONORRHEA — TREATMENT AND RESISTANCE:. - Gonorrhea treatment has evolved due to resistance; ceftriaxone (third-generation cephalosporin) is a key/last-line agent in many regimens and resistance/emerging decreased susceptibility has been reported in recent years.. - Historical/other agents include cefixime, ciprofloxacin (resistance common), spectinomycin, etc.. - Ref: Sexually transmitted infections."
+  },
+  {
+    "n": 75,
+    "chapter": "Pharmacology",
+    "stem": "What is called the relationship between drug concentration and time?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Pharmacodynamics"
+      },
+      {
+        "letter": "B",
+        "text": "Pharmacogenomics"
+      },
+      {
+        "letter": "C",
+        "text": "Pharmacokinetics"
+      },
+      {
+        "letter": "D",
+        "text": "Pharmacovigilance"
+      }
+    ],
+    "answerLetter": "C",
+    "answerText": "Pharmacokinetics",
+    "explanation": "PHARMACOLOGY TERMS:\n| Term | Meaning |\n| Pharmacodynamics | What the drug does to the body (effects and mechanisms of action) |\n| Pharmacokinetics | What the body does to the drug — absorption, distribution, metabolism, excretion; relationship between drug concentration and time |\n| Pharmacogenomics | Use of genetic information to guide drug choice and dose |\n| Pharmacovigilance | Science/activities for detection, assessment, understanding and prevention of adverse effects or drug-related problems |\n- Ref: Essentials of Medical Pharmacology by KD Tripathi.",
+    "explanationSpoken": "PHARMACOLOGY TERMS:. Term. Meaning. Pharmacodynamics. What the drug does to the body (effects and mechanisms of action). Pharmacokinetics. What the body does to the drug — absorption, distribution, metabolism, excretion; relationship between drug concentration and time. Pharmacogenomics. Use of genetic information to guide drug choice and dose. Pharmacovigilance. Science/activities for detection, assessment, understanding and prevention of adverse effects or drug-related problems. - Ref: Essentials of Medical Pharmacology by KD Tripathi."
+  },
+  {
+    "n": 76,
+    "chapter": "Obstetrics/Gynecology",
+    "stem": "Which of the following is not a cause of primary amenorrhea?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Sheehan's syndrome"
+      },
+      {
+        "letter": "B",
+        "text": "Kallmann's syndrome"
+      },
+      {
+        "letter": "C",
+        "text": "Turner's syndrome"
+      },
+      {
+        "letter": "D",
+        "text": "Rokitansky syndrome (Mullerian agenesis)"
+      }
+    ],
+    "answerLetter": "A",
+    "answerText": "Sheehan's syndrome",
+    "explanation": "PRIMARY AMENORRHEA — CAUSES:\n- Primary amenorrhea: absence of menstruation by age ~16 years.\n- Causes include: hypogonadotropic hypogonadism (delayed puberty, Kallmann syndrome, craniopharyngioma), hypergonadotropic hypogonadism (primary ovarian failure, resistant ovary syndrome, gonadal dysgenesis), chromosomal abnormalities (Turner syndrome, androgen insensitivity), developmental defects (Mullerian agenesis/Rokitansky syndrome, imperforate hymen, absent vagina), endocrine/metabolic/systemic causes, unresponsive endometrium.\n- Sheehan's syndrome is postpartum pituitary necrosis causing hypopituitarism and usually secondary amenorrhea/failure of lactation after obstetric hemorrhage, not a cause of primary amenorrhea.\n- Ref: DC Dutta's Textbook of Gynaecology.",
+    "explanationSpoken": "PRIMARY AMENORRHEA — CAUSES:. - Primary amenorrhea: absence of menstruation by age ~16 years.. - Causes include: hypogonadotropic hypogonadism (delayed puberty, Kallmann syndrome, craniopharyngioma), hypergonadotropic hypogonadism (primary ovarian failure, resistant ovary syndrome, gonadal dysgenesis), chromosomal abnormalities (Turner syndrome, androgen insensitivity), developmental defects (Mullerian agenesis/Rokitansky syndrome, imperforate hymen, absent vagina), endocrine/metabolic/systemic causes, unresponsive endometrium.. - Sheehan's syndrome is postpartum pituitary necrosis causing hypopituitarism and usually secondary amenorrhea/failure of lactation after obstetric hemorrhage, not a cause of primary amenorrhea.. - Ref: DC Dutta's Textbook of Gynaecology."
+  },
+  {
+    "n": 77,
+    "chapter": "PSM/Surgery",
+    "stem": "Trauma is the highest cause of death in which age group?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "All ages"
+      },
+      {
+        "letter": "B",
+        "text": ">60 years"
+      },
+      {
+        "letter": "C",
+        "text": "40-60 years"
+      },
+      {
+        "letter": "D",
+        "text": "0-40 years"
+      }
+    ],
+    "answerLetter": "D",
+    "answerText": "0-40 years",
+    "explanation": "TRAUMA EPIDEMIOLOGY:\n- Trauma is a leading cause of death in children and young adults (often cited up to ~45 years). Road traffic accidents are common in young age groups.\n- Therefore, among given options, 0-40 years is most appropriate.\n- Ref: Trauma epidemiology.",
+    "explanationSpoken": "TRAUMA EPIDEMIOLOGY:. - Trauma is a leading cause of death in children and young adults (often cited up to ~45 years). Road traffic accidents are common in young age groups.. - Therefore, among given options, 0-40 years is most appropriate.. - Ref: Trauma epidemiology."
+  },
+  {
+    "n": 78,
+    "chapter": "Pharmacology/Toxicology",
+    "stem": "Which of the following is the most effective therapy for acute arsenic poisoning?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Activated charcoal"
+      },
+      {
+        "letter": "B",
+        "text": "Dimercaprol"
+      },
+      {
+        "letter": "C",
+        "text": "Penicillamine"
+      },
+      {
+        "letter": "D",
+        "text": "Deferoxamine"
+      }
+    ],
+    "answerLetter": "B",
+    "answerText": "Dimercaprol",
+    "explanation": "CHELATING AGENTS:\n| Agent | Uses (examples) | Route/notes |\n| Dimercaprol (BAL) | Arsenic, mercury, lead | IM; hepatotoxic |\n| EDTA (CaNa2EDTA) | Lead, etc. | IV infusion |\n| D-penicillamine | Copper, lead, mercury | Oral |\n| Deferoxamine | Iron, aluminum | IM/IV |\n| DMPS/DMSA | Lead, mercury, arsenic | Oral |\n- Dimercaprol (BAL) is a classic effective chelator for acute arsenic poisoning.\n- Ref: Toxicology.",
+    "explanationSpoken": "CHELATING AGENTS:. Agent. Uses (examples). Route/notes. Dimercaprol (BAL). Arsenic, mercury, lead. IM; hepatotoxic. EDTA (CaNa2EDTA). Lead, etc.. IV infusion. D-penicillamine. Copper, lead, mercury. Oral. Deferoxamine. Iron, aluminum. IM/IV. DMPS/DMSA. Lead, mercury, arsenic. Oral. - Dimercaprol (BAL) is a classic effective chelator for acute arsenic poisoning.. - Ref: Toxicology."
+  },
+  {
+    "n": 79,
+    "chapter": "Medicine",
+    "stem": "Which of the following is an indication/sign of infective endocarditis?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Splinter haemorrhage"
+      },
+      {
+        "letter": "B",
+        "text": "Petechiae"
+      },
+      {
+        "letter": "C",
+        "text": "Osler's node"
+      },
+      {
+        "letter": "D",
+        "text": "All of the above"
+      }
+    ],
+    "answerLetter": "D",
+    "answerText": "All of the above",
+    "explanation": "INFECTIVE ENDOCARDITIS — CLINICAL FEATURES:\n- Peripheral manifestations: Osler's nodes, Janeway lesions, Roth spots, splinter (subungual) hemorrhages, petechiae.\n- Other features: fever/chills, new/worsened regurgitant murmur, arterial emboli, splenomegaly, clubbing, neurologic manifestations; lab findings include anemia, leukocytosis, hematuria, raised ESR/CRP, rheumatoid factor, immune complexes.\n- All listed are associated with infective endocarditis.\n- Ref: Harrison's Principles of Internal Medicine (Infective Endocarditis).",
+    "explanationSpoken": "INFECTIVE ENDOCARDITIS — CLINICAL FEATURES:. - Peripheral manifestations: Osler's nodes, Janeway lesions, Roth spots, splinter (subungual) hemorrhages, petechiae.. - Other features: fever/chills, new/worsened regurgitant murmur, arterial emboli, splenomegaly, clubbing, neurologic manifestations; lab findings include anemia, leukocytosis, hematuria, raised ESR/CRP, rheumatoid factor, immune complexes.. - All listed are associated with infective endocarditis.. - Ref: Harrison's Principles of Internal Medicine (Infective Endocarditis)."
+  },
+  {
+    "n": 80,
+    "chapter": "Pathology/Medicine",
+    "stem": "Leucocyte alkaline phosphatase (LAP) score is elevated in:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "AML"
+      },
+      {
+        "letter": "B",
+        "text": "CML"
+      },
+      {
+        "letter": "C",
+        "text": "Myeloid metaplasia"
+      },
+      {
+        "letter": "D",
+        "text": "Myeloid leukaemoid reaction"
+      }
+    ],
+    "answerLetter": "D",
+    "answerText": "Myeloid leukaemoid reaction",
+    "explanation": "LEUKOCYTE ALKALINE PHOSPHATASE (LAP/NAP):\n- Decreased LAP: chronic myeloid leukemia (CML), paroxysmal nocturnal hemoglobinuria (PNH).\n- Increased LAP: leukemoid reaction, polycythemia vera, infections/inflammation, pregnancy, etc.\n- LAP score helps differentiate CML (low) from leukemoid reaction (high).\n- Ref: Hematology.",
+    "explanationSpoken": "LEUKOCYTE ALKALINE PHOSPHATASE (LAP/NAP):. - Decreased LAP: chronic myeloid leukemia (CML), paroxysmal nocturnal hemoglobinuria (PNH).. - Increased LAP: leukemoid reaction, polycythemia vera, infections/inflammation, pregnancy, etc.. - LAP score helps differentiate CML (low) from leukemoid reaction (high).. - Ref: Hematology."
+  },
+  {
+    "n": 81,
+    "chapter": "Medicine",
+    "stem": "The best test for estimation of mean plasma glucose concentration of previous 8-10 weeks is:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Hemoglobin A1c (HbA1c)"
+      },
+      {
+        "letter": "B",
+        "text": "OGTT"
+      },
+      {
+        "letter": "C",
+        "text": "Serum fructosamine test"
+      },
+      {
+        "letter": "D",
+        "text": "Fasting plasma glucose"
+      }
+    ],
+    "answerLetter": "A",
+    "answerText": "Hemoglobin A1c (HbA1c)",
+    "explanation": "GLYCEMIC MONITORING:\n- HbA1c reflects average glycemic control over previous ~2-3 months (8-12 weeks) and is used for long-term assessment.\n- Self-monitoring of plasma glucose reflects short-term control.\n- Serum fructosamine reflects shorter period (~2-3 weeks). HbA1c may be unreliable in uremia, hemolytic anemia, hemoglobinopathies.\n- Ref: Harrison's Principles of Internal Medicine (Diabetes Mellitus).",
+    "explanationSpoken": "GLYCEMIC MONITORING:. - HbA1c reflects average glycemic control over previous ~2-3 months (8-12 weeks) and is used for long-term assessment.. - Self-monitoring of plasma glucose reflects short-term control.. - Serum fructosamine reflects shorter period (~2-3 weeks). HbA1c may be unreliable in uremia, hemolytic anemia, hemoglobinopathies.. - Ref: Harrison's Principles of Internal Medicine (Diabetes Mellitus)."
+  },
+  {
+    "n": 82,
+    "chapter": "Dermatology",
+    "stem": "All are used in treatment of moderate to severe acne vulgaris except:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Isotretinoin (13-cis-retinoic acid)"
+      },
+      {
+        "letter": "B",
+        "text": "Calcipotriol"
+      },
+      {
+        "letter": "C",
+        "text": "Carbon dioxide laser/microdermabrasion"
+      },
+      {
+        "letter": "D",
+        "text": "UVB phototherapy or PDT"
+      }
+    ],
+    "answerLetter": "B",
+    "answerText": "Calcipotriol",
+    "explanation": "ACNE VULGARIS — TREATMENT:\n- Moderate to severe acne: topical retinoid + benzoyl peroxide ± topical/oral antibiotics; oral isotretinoin for severe/nodulocystic or refractory cases. Physical modalities include intralesional steroids, cryotherapy, laser therapy, photodynamic therapy, dermabrasion, fillers.\n- Calcipotriol is a vitamin D analogue used in psoriasis, not acne vulgaris.\n- Ref: Dermatology.",
+    "explanationSpoken": "ACNE VULGARIS — TREATMENT:. - Moderate to severe acne: topical retinoid + benzoyl peroxide ± topical/oral antibiotics; oral isotretinoin for severe/nodulocystic or refractory cases. Physical modalities include intralesional steroids, cryotherapy, laser therapy, photodynamic therapy, dermabrasion, fillers.. - Calcipotriol is a vitamin D analogue used in psoriasis, not acne vulgaris.. - Ref: Dermatology."
+  },
+  {
+    "n": 83,
+    "chapter": "Pharmacology",
+    "stem": "Which among the following drug can be obtained from flowers?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Strychnine"
+      },
+      {
+        "letter": "B",
+        "text": "Tubocurarine"
+      },
+      {
+        "letter": "C",
+        "text": "Quinine"
+      },
+      {
+        "letter": "D",
+        "text": "Vincristine"
+      }
+    ],
+    "answerLetter": "D",
+    "answerText": "Vincristine",
+    "explanation": "PLANT SOURCES OF DRUGS:\n- Vincristine and vinblastine are obtained from Catharanthus roseus (Madagascar periwinkle), a flowering plant.\n- Strychnine: seeds of Strychnos nux-vomica.\n- Tubocurarine: bark/stems of Chondrodendron tomentosum.\n- Quinine: bark of Cinchona tree.\n- Ref: Pharmacognosy/medical pharmacology.",
+    "explanationSpoken": "PLANT SOURCES OF DRUGS:. - Vincristine and vinblastine are obtained from Catharanthus roseus (Madagascar periwinkle), a flowering plant.. - Strychnine: seeds of Strychnos nux-vomica.. - Tubocurarine: bark/stems of Chondrodendron tomentosum.. - Quinine: bark of Cinchona tree.. - Ref: Pharmacognosy/medical pharmacology."
+  },
+  {
+    "n": 84,
+    "chapter": "Dermatology/Medicine",
+    "stem": "Acute skin failure can cause all except:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Failure of thermoregulation"
+      },
+      {
+        "letter": "B",
+        "text": "Failure of fluid balance control"
+      },
+      {
+        "letter": "C",
+        "text": "Losing barrier to infection"
+      },
+      {
+        "letter": "D",
+        "text": "Low output cardiac failure"
+      }
+    ],
+    "answerLetter": "D",
+    "answerText": "Low output cardiac failure",
+    "explanation": "ACUTE SKIN FAILURE — CONSEQUENCES:\n- Altered hemodynamics: high-output cardiac failure.\n- Altered thermoregulation: hypothermia, fever.\n- Metabolic abnormalities, fluid and electrolyte imbalance, loss of nutrients/protein, peripheral edema.\n- Pulmonary complications, altered immune function, increased risk of infection.\n- Loss of barrier function to infection and impaired fluid/thermoregulation occur; cardiac failure if present is typically high-output, not low-output.\n- Causes include erythroderma, SJS/TEN, acute generalized pustular psoriasis, immunobullous disorders, infections (SSSS).\n- Ref: Acute skin failure (dermatology).",
+    "explanationSpoken": "ACUTE SKIN FAILURE — CONSEQUENCES:. - Altered hemodynamics: high-output cardiac failure.. - Altered thermoregulation: hypothermia, fever.. - Metabolic abnormalities, fluid and electrolyte imbalance, loss of nutrients/protein, peripheral edema.. - Pulmonary complications, altered immune function, increased risk of infection.. - Loss of barrier function to infection and impaired fluid/thermoregulation occur; cardiac failure if present is typically high-output, not low-output.. - Causes include erythroderma, SJS/TEN, acute generalized pustular psoriasis, immunobullous disorders, infections (SSSS).. - Ref: Acute skin failure (dermatology)."
+  },
+  {
+    "n": 85,
+    "chapter": "Psychiatry",
+    "stem": "These are criteria for alcohol dependence EXCEPT:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Subjective compulsion to drink"
+      },
+      {
+        "letter": "B",
+        "text": "Priority of other activities (salience) over drinking"
+      },
+      {
+        "letter": "C",
+        "text": "Relief of withdrawal symptoms by further drinking"
+      },
+      {
+        "letter": "D",
+        "text": "Reinstatement of drinking behavior after abstinence"
+      }
+    ],
+    "answerLetter": "B",
+    "answerText": "Priority of other activities (salience) over drinking",
+    "explanation": "ALCOHOL/SUBSTANCE DEPENDENCE (ICD concepts):\n- Features include: strong desire/compulsion to take substance; difficulties controlling use; physiological withdrawal state and use to relieve/avoid withdrawal; tolerance; progressive neglect of alternative pleasures/interests because of substance use (salience of substance use), increased time to obtain/use/recover; persistence despite harm.\n- \"Priority of other activities over drinking\" is opposite of salience (where drinking/substance takes priority over other activities).\n- Reinstatement after abstinence can occur as part of dependence course.\n- Ref: ICD-10/psychiatry (substance dependence).",
+    "explanationSpoken": "ALCOHOL/SUBSTANCE DEPENDENCE (ICD concepts):. - Features include: strong desire/compulsion to take substance; difficulties controlling use; physiological withdrawal state and use to relieve/avoid withdrawal; tolerance; progressive neglect of alternative pleasures/interests because of substance use (salience of substance use), increased time to obtain/use/recover; persistence despite harm.. - \"Priority of other activities over drinking\" is opposite of salience (where drinking/substance takes priority over other activities).. - Reinstatement after abstinence can occur as part of dependence course.. - Ref: ICD-10/psychiatry (substance dependence)."
+  },
+  {
+    "n": 86,
+    "chapter": "Psychiatry",
+    "stem": "A delusion is a false belief, out of keeping with a person's social and cultural background, which is held with conviction despite evidence to the contrary. Which of the following is NOT a type of delusion?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Persecutory"
+      },
+      {
+        "letter": "B",
+        "text": "Hypnagogic"
+      },
+      {
+        "letter": "C",
+        "text": "Grandiose"
+      },
+      {
+        "letter": "D",
+        "text": "Nihilistic"
+      }
+    ],
+    "answerLetter": "B",
+    "answerText": "Hypnagogic",
+    "explanation": "DELUSIONS AND RELATED PHENOMENA:\n- Delusions: false, fixed, idiosyncratic beliefs (e.g. persecutory, grandiose, jealous, somatic/hypochondriacal, erotomanic, nihilistic).\n- Hypnagogic phenomena occur just before falling asleep (and hypnopompic after waking) and include illusions/simple hallucinations, myoclonic jerks, depersonalization/derealization — not delusions.\n- Ref: Psychiatry.",
+    "explanationSpoken": "DELUSIONS AND RELATED PHENOMENA:. - Delusions: false, fixed, idiosyncratic beliefs (e.g. persecutory, grandiose, jealous, somatic/hypochondriacal, erotomanic, nihilistic).. - Hypnagogic phenomena occur just before falling asleep (and hypnopompic after waking) and include illusions/simple hallucinations, myoclonic jerks, depersonalization/derealization — not delusions.. - Ref: Psychiatry."
+  },
+  {
+    "n": 87,
+    "chapter": "Orthopedics/Neurology",
+    "stem": "Clinical features of radicular pain are all EXCEPT:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Pain radiates beyond knee and paraesthesia in same distribution"
+      },
+      {
+        "letter": "B",
+        "text": "Unilateral leg pain worse than low back pain"
+      },
+      {
+        "letter": "C",
+        "text": "Pain radiates beyond knee and paraesthesia in contralateral distribution"
+      },
+      {
+        "letter": "D",
+        "text": "Nerve irritation signs (positive straight leg raising that reproduces leg pain)"
+      }
+    ],
+    "answerLetter": "C",
+    "answerText": "Pain radiates beyond knee and paraesthesia in contralateral distribution",
+    "explanation": "LUMBAR RADICULAR PAIN:\n- Neuropathic pain caused by pathology of sensory lumbar nerve roots, producing radiating pain in a dermatomal pattern, often shooting/lancinating, traveling from back/buttock to leg, usually unilateral.\n- May be associated with paraesthesia/sensory deficits in the same affected dermatome.\n- Unilateral leg pain often worse than low back pain. Straight leg raise (and crossed SLR) may reproduce radicular pain (nerve irritation signs).\n- Contralateral distribution of pain/paraesthesia is not typical.\n- Ref: Lumbar radiculopathy.",
+    "explanationSpoken": "LUMBAR RADICULAR PAIN:. - Neuropathic pain caused by pathology of sensory lumbar nerve roots, producing radiating pain in a dermatomal pattern, often shooting/lancinating, traveling from back/buttock to leg, usually unilateral.. - May be associated with paraesthesia/sensory deficits in the same affected dermatome.. - Unilateral leg pain often worse than low back pain. Straight leg raise (and crossed SLR) may reproduce radicular pain (nerve irritation signs).. - Contralateral distribution of pain/paraesthesia is not typical.. - Ref: Lumbar radiculopathy."
+  },
+  {
+    "n": 88,
+    "chapter": "Medicine/Hematology",
+    "stem": "Macrocytosis (MCV >100 fL) is found in:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Iron deficiency"
+      },
+      {
+        "letter": "B",
+        "text": "Thalassemia"
+      },
+      {
+        "letter": "C",
+        "text": "Folate deficiency"
+      },
+      {
+        "letter": "D",
+        "text": "Sideroblastic anemia"
+      }
+    ],
+    "answerLetter": "C",
+    "answerText": "Folate deficiency",
+    "explanation": "MACROCYTIC ANEMIA:\n- Megaloblastic: vitamin B12 deficiency, folate deficiency, drugs (methotrexate), orotic aciduria, some myelodysplasia.\n- Non-megaloblastic: liver disease, alcoholism, hypothyroidism, myelodysplasia, reticulocytosis.\n- Iron deficiency, thalassemia, and sideroblastic anemia are causes of microcytic anemia (SITS mnemonic: sideroblastic, iron deficiency, thalassemia, severe chronic disease in some cases).\n- Ref: Hematology.",
+    "explanationSpoken": "MACROCYTIC ANEMIA:. - Megaloblastic: vitamin B12 deficiency, folate deficiency, drugs (methotrexate), orotic aciduria, some myelodysplasia.. - Non-megaloblastic: liver disease, alcoholism, hypothyroidism, myelodysplasia, reticulocytosis.. - Iron deficiency, thalassemia, and sideroblastic anemia are causes of microcytic anemia (SITS mnemonic: sideroblastic, iron deficiency, thalassemia, severe chronic disease in some cases).. - Ref: Hematology."
+  },
+  {
+    "n": 89,
+    "chapter": "Medicine",
+    "stem": "In treating uncomplicated community acquired pneumonia, which one is the best treatment?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Amoxicillin 500 mg 3 times daily orally or clarithromycin 500 mg twice daily orally or erythromycin 500 mg 4 times daily orally"
+      },
+      {
+        "letter": "B",
+        "text": "Flucloxacillin 1-2 g 4 times daily IV"
+      },
+      {
+        "letter": "C",
+        "text": "Rifampicin 600 mg twice daily"
+      },
+      {
+        "letter": "D",
+        "text": "Cefuroxime 1.5 g 3 times daily IV"
+      }
+    ],
+    "answerLetter": "A",
+    "answerText": "Amoxicillin 500 mg 3 times daily orally or clarithromycin 500 mg twice daily orally or erythromycin 500 mg 4 times daily orally",
+    "explanation": "UNCOMPLICATED COMMUNITY-ACQUIRED PNEUMONIA (OUTPATIENT):\n- Previously healthy, no recent antibiotics: macrolide (azithromycin/clarithromycin) or doxycycline; amoxicillin is also used in many guidelines for typical coverage.\n- As per source options/key: oral amoxicillin or macrolide options are appropriate for uncomplicated CAP.\n- IV flucloxacillin, rifampicin, or IV cefuroxime alone are not standard first-line for uncomplicated outpatient CAP.\n- Ref: Harrison's Principles of Internal Medicine (Pneumonia).",
+    "explanationSpoken": "UNCOMPLICATED COMMUNITY-ACQUIRED PNEUMONIA (OUTPATIENT):. - Previously healthy, no recent antibiotics: macrolide (azithromycin/clarithromycin) or doxycycline; amoxicillin is also used in many guidelines for typical coverage.. - As per source options/key: oral amoxicillin or macrolide options are appropriate for uncomplicated CAP.. - IV flucloxacillin, rifampicin, or IV cefuroxime alone are not standard first-line for uncomplicated outpatient CAP.. - Ref: Harrison's Principles of Internal Medicine (Pneumonia)."
+  },
+  {
+    "n": 90,
+    "chapter": "Pharmacology/Medicine",
+    "stem": "Mechanism of action of vonoprazan is:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Proton pump inhibition"
+      },
+      {
+        "letter": "B",
+        "text": "Potassium-competitive acid blocker"
+      },
+      {
+        "letter": "C",
+        "text": "H1-receptor blocker"
+      },
+      {
+        "letter": "D",
+        "text": "H2-receptor blocker"
+      }
+    ],
+    "answerLetter": "B",
+    "answerText": "Potassium-competitive acid blocker",
+    "explanation": "VONOPRAZAN:\n- Potassium-competitive acid blocker (P-CAB) used in acid-related disorders and H. pylori eradication regimens.\n- Competitively blocks K+ binding to H+/K+-ATPase in gastric parietal cells, inhibiting final step of acid secretion.\n- Different mechanism from irreversible PPIs (e.g. omeprazole).\n- Ref: Pharmacology.",
+    "explanationSpoken": "VONOPRAZAN:. - Potassium-competitive acid blocker (P-CAB) used in acid-related disorders and H. pylori eradication regimens.. - Competitively blocks K+ binding to H+/K+-ATPase in gastric parietal cells, inhibiting final step of acid secretion.. - Different mechanism from irreversible PPIs (e.g. omeprazole).. - Ref: Pharmacology."
+  },
+  {
+    "n": 91,
+    "chapter": "Pharmacology",
+    "stem": "Which of the following is a prodrug that depends on hepatic metabolism for conversion to its active form?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Atorvastatin"
+      },
+      {
+        "letter": "B",
+        "text": "Clopidogrel"
+      },
+      {
+        "letter": "C",
+        "text": "Amlodipine"
+      },
+      {
+        "letter": "D",
+        "text": "Metoprolol"
+      }
+    ],
+    "answerLetter": "B",
+    "answerText": "Clopidogrel",
+    "explanation": "PRODRUGS:\n- A prodrug is inactive and requires conversion in the body to active metabolite(s).\n- Clopidogrel is a prodrug activated in liver (notably via CYP2C19) to its active metabolite; a fraction is inactivated by other enzymes.\n- Examples of prodrugs: levodopa → dopamine, enalapril → enalaprilat, cyclophosphamide → active metabolites, clopidogrel → active thiol metabolite, etc.\n- Ref: Essentials of Medical Pharmacology by KD Tripathi.",
+    "explanationSpoken": "PRODRUGS:. - A prodrug is inactive and requires conversion in the body to active metabolite(s).. - Clopidogrel is a prodrug activated in liver (notably via CYP2C19) to its active metabolite; a fraction is inactivated by other enzymes.. - Examples of prodrugs: levodopa → dopamine, enalapril → enalaprilat, cyclophosphamide → active metabolites, clopidogrel → active thiol metabolite, etc.. - Ref: Essentials of Medical Pharmacology by KD Tripathi."
+  },
+  {
+    "n": 92,
+    "chapter": "Pediatrics/Medicine",
+    "stem": "All statements regarding tuberous sclerosis are true, except:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "The hallmark of the disease is hamartomas in many systems"
+      },
+      {
+        "letter": "B",
+        "text": "Classic triad of learning disability, epilepsy and skin lesions"
+      },
+      {
+        "letter": "C",
+        "text": "Shagreen patches"
+      },
+      {
+        "letter": "D",
+        "text": "Autosomal recessive inheritance"
+      }
+    ],
+    "answerLetter": "D",
+    "answerText": "Autosomal recessive inheritance",
+    "explanation": "TUBEROUS SCLEROSIS COMPLEX (TSC):\n- Autosomal dominant neurocutaneous disorder (TSC1 on chr 9 hamartin, TSC2 on chr 16 tuberin) with variable expressivity.\n- Hallmark: hamartomas in multiple organs/systems.\n- Classic features: seizures (epilepsy), intellectual disability/learning difficulties, and skin lesions (adenoma sebaceum/facial angiofibromas).\n- Skin lesions: ash-leaf macules, shagreen patch, facial angiofibromas, ungual/periungual fibromas (Koenen tumors).\n- Systemic: cortical tubers, renal angiomyolipoma, cardiac rhabdomyoma, retinal hamartomas.\n- Inheritance is autosomal dominant, not autosomal recessive.\n- Ref: Dermatology/genetics.",
+    "explanationSpoken": "TUBEROUS SCLEROSIS COMPLEX (TSC):. - Autosomal dominant neurocutaneous disorder (TSC1 on chr 9 hamartin, TSC2 on chr 16 tuberin) with variable expressivity.. - Hallmark: hamartomas in multiple organs/systems.. - Classic features: seizures (epilepsy), intellectual disability/learning difficulties, and skin lesions (adenoma sebaceum/facial angiofibromas).. - Skin lesions: ash-leaf macules, shagreen patch, facial angiofibromas, ungual/periungual fibromas (Koenen tumors).. - Systemic: cortical tubers, renal angiomyolipoma, cardiac rhabdomyoma, retinal hamartomas.. - Inheritance is autosomal dominant, not autosomal recessive.. - Ref: Dermatology/genetics."
+  },
+  {
+    "n": 93,
+    "chapter": "Dermatology",
+    "stem": "The following statement regarding dermatitis herpetiformis is not true:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Intense itching"
+      },
+      {
+        "letter": "B",
+        "text": "Intraepidermal vesicles and granular IgA in the papillary dermis"
+      },
+      {
+        "letter": "C",
+        "text": "Subepidermal vesicles and granular IgA in the papillary dermis"
+      },
+      {
+        "letter": "D",
+        "text": "Often associated with celiac disease"
+      }
+    ],
+    "answerLetter": "B",
+    "answerText": "Intraepidermal vesicles and granular IgA in the papillary dermis",
+    "explanation": "DERMATITIS HERPETIFORMIS (DUHRING DISEASE):\n- Gluten-sensitive enteropathy-associated blistering disorder with intensely itchy grouped erythematous papulovesicles/excoriations, often on extensor surfaces.\n- Histology: subepidermal split with neutrophilic microabscesses at dermal papillary tips.\n- Direct immunofluorescence: granular IgA deposits at dermal papillary tips.\n- Strongly associated with celiac disease; dramatic response to dapsone.\n- Therefore \"intraepidermal vesicles\" is not true.\n- Ref: Dermatology (bullous disorders).",
+    "explanationSpoken": "DERMATITIS HERPETIFORMIS (DUHRING DISEASE):. - Gluten-sensitive enteropathy-associated blistering disorder with intensely itchy grouped erythematous papulovesicles/excoriations, often on extensor surfaces.. - Histology: subepidermal split with neutrophilic microabscesses at dermal papillary tips.. - Direct immunofluorescence: granular IgA deposits at dermal papillary tips.. - Strongly associated with celiac disease; dramatic response to dapsone.. - Therefore \"intraepidermal vesicles\" is not true.. - Ref: Dermatology (bullous disorders)."
+  },
+  {
+    "n": 94,
+    "chapter": "Psychiatry",
+    "stem": "Delusional parasitosis is a classical example of:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Somatisation disorder"
+      },
+      {
+        "letter": "B",
+        "text": "Hypochondriacal disorder"
+      },
+      {
+        "letter": "C",
+        "text": "Body dysmorphic disorder"
+      },
+      {
+        "letter": "D",
+        "text": "Dissociative conversion disorder"
+      }
+    ],
+    "answerLetter": "B",
+    "answerText": "Hypochondriacal disorder",
+    "explanation": "DELUSIONAL PARASITOSIS:\n- A delusional disorder in which the person has a fixed false belief of being infested with parasites/insects despite evidence to the contrary; classically discussed under hypochondriacal/delusional somatic themes in some classifications and exam sources.\n- Somatic (hypochondriacal) delusions include beliefs such as \"there are insects crawling in my scalp.\"\n- As per source key: hypochondriacal disorder.\n- Ref: Psychiatry.",
+    "explanationSpoken": "DELUSIONAL PARASITOSIS:. - A delusional disorder in which the person has a fixed false belief of being infested with parasites/insects despite evidence to the contrary; classically discussed under hypochondriacal/delusional somatic themes in some classifications and exam sources.. - Somatic (hypochondriacal) delusions include beliefs such as \"there are insects crawling in my scalp.\". - As per source key: hypochondriacal disorder.. - Ref: Psychiatry."
+  },
+  {
+    "n": 95,
+    "chapter": "Psychiatry/Medicine",
+    "stem": "All of the following statements regarding dementia are true, except:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Loss of previously acquired intellectual function"
+      },
+      {
+        "letter": "B",
+        "text": "Affects 25% of people above 85 years of age"
+      },
+      {
+        "letter": "C",
+        "text": "Typically progressive and non-reversible"
+      },
+      {
+        "letter": "D",
+        "text": "The arousal function of the affected person is impaired"
+      }
+    ],
+    "answerLetter": "D",
+    "answerText": "The arousal function of the affected person is impaired",
+    "explanation": "DEMENTIA:\n- Chronic, usually progressive decline in previously acquired intellectual functions including memory, cognition, personality/behavior, and daily functioning.\n- Consciousness/arousal is typically preserved (especially early), unlike delirium where consciousness is clouded and arousal/attention grossly disturbed.\n- Prevalence increases markedly with age (high in very elderly, including >85 years).\n- Most common forms are progressive and largely irreversible, though some causes are reversible.\n- Ref: Psychiatry/neurology.",
+    "explanationSpoken": "DEMENTIA:. - Chronic, usually progressive decline in previously acquired intellectual functions including memory, cognition, personality/behavior, and daily functioning.. - Consciousness/arousal is typically preserved (especially early), unlike delirium where consciousness is clouded and arousal/attention grossly disturbed.. - Prevalence increases markedly with age (high in very elderly, including >85 years).. - Most common forms are progressive and largely irreversible, though some causes are reversible.. - Ref: Psychiatry/neurology."
+  },
+  {
+    "n": 96,
+    "chapter": "Medicine",
+    "stem": "What is the drug of choice for a patient with an acute attack of gout?",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Colchicine"
+      },
+      {
+        "letter": "B",
+        "text": "Allopurinol"
+      },
+      {
+        "letter": "C",
+        "text": "Febuxostat"
+      },
+      {
+        "letter": "D",
+        "text": "Probenecid"
+      }
+    ],
+    "answerLetter": "A",
+    "answerText": "Colchicine",
+    "explanation": "GOUT — MANAGEMENT:\n- Acute gout: anti-inflammatory treatment — NSAIDs are commonly first-line; colchicine and glucocorticoids are alternatives/options depending on context and contraindications.\n- Chronic gout/hyperuricemia management (urate-lowering): allopurinol, febuxostat, probenecid, etc. Allopurinol should not be started during an acute attack without appropriate cover as it may precipitate/worsen attacks.\n- As per source key for this question: colchicine.\n- Ref: Harrison's Principles of Internal Medicine (Gout).",
+    "explanationSpoken": "GOUT — MANAGEMENT:. - Acute gout: anti-inflammatory treatment — NSAIDs are commonly first-line; colchicine and glucocorticoids are alternatives/options depending on context and contraindications.. - Chronic gout/hyperuricemia management (urate-lowering): allopurinol, febuxostat, probenecid, etc. Allopurinol should not be started during an acute attack without appropriate cover as it may precipitate/worsen attacks.. - As per source key for this question: colchicine.. - Ref: Harrison's Principles of Internal Medicine (Gout)."
+  },
+  {
+    "n": 97,
+    "chapter": "Medicine/Surgery",
+    "stem": "Intestinal angina refers to:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Acute mesenteric ischemia"
+      },
+      {
+        "letter": "B",
+        "text": "Chronic mesenteric ischemia"
+      },
+      {
+        "letter": "C",
+        "text": "Ischemic colitis"
+      },
+      {
+        "letter": "D",
+        "text": "Any form of non-occlusive mesenteric ischemia"
+      }
+    ],
+    "answerLetter": "B",
+    "answerText": "Chronic mesenteric ischemia",
+    "explanation": "CHRONIC MESENTERIC ISCHEMIA (INTESTINAL ANGINA):\n- Due to atherosclerotic narrowing at origin of celiac artery, SMA, or IMA.\n- Presents with postprandial abdominal pain (\"intestinal angina\"), fear of eating (sitophobia), and progressive weight loss.\n- Acute mesenteric ischemia is usually embolic/thrombotic with severe pain out of proportion early and risk of necrosis/peritonitis.\n- Colonic ischemia presents with crampy abdominal pain followed by hematochezia; thumbprint sign may be seen.\n- Ref: Bailey & Love's Short Practice of Surgery, 28th ed.",
+    "explanationSpoken": "CHRONIC MESENTERIC ISCHEMIA (INTESTINAL ANGINA):. - Due to atherosclerotic narrowing at origin of celiac artery, SMA, or IMA.. - Presents with postprandial abdominal pain (\"intestinal angina\"), fear of eating (sitophobia), and progressive weight loss.. - Acute mesenteric ischemia is usually embolic/thrombotic with severe pain out of proportion early and risk of necrosis/peritonitis.. - Colonic ischemia presents with crampy abdominal pain followed by hematochezia; thumbprint sign may be seen.. - Ref: Bailey & Love's Short Practice of Surgery, 28th ed."
+  },
+  {
+    "n": 98,
+    "chapter": "Medicine",
+    "stem": "Severe lactic acidosis (10 mmol/L) is characteristic of the following scenarios EXCEPT:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Metformin use with acute kidney injury"
+      },
+      {
+        "letter": "B",
+        "text": "Ingestion of ethylene glycol (anti-freeze)"
+      },
+      {
+        "letter": "C",
+        "text": "Adrenaline infusion for anaphylaxis"
+      },
+      {
+        "letter": "D",
+        "text": "Sulfonylurea overdose"
+      }
+    ],
+    "answerLetter": "D",
+    "answerText": "Sulfonylurea overdose",
+    "explanation": "LACTIC ACIDOSIS — CAUSES:\n- Type A (tissue hypoxia/hypoperfusion): shock, circulatory failure, severe anemia, respiratory failure, etc.\n- Type B: malignancies, diabetes, liver/renal failure, severe infections, seizures, toxins/drugs (biguanides like metformin/phenformin, methanol, ethanol, INH, linezolid, etc.), mitochondrial defects.\n- Ethylene glycol ingestion can cause severe metabolic acidosis (including lactic acidosis). Epinephrine/adrenaline can increase lactate. Metformin-associated lactic acidosis occurs especially with renal impairment.\n- Sulfonylureas primarily cause hypoglycemia; lactic acidosis is not a characteristic complication.\n- Ref: Medicine/endocrinology.",
+    "explanationSpoken": "LACTIC ACIDOSIS — CAUSES:. - Type A (tissue hypoxia/hypoperfusion): shock, circulatory failure, severe anemia, respiratory failure, etc.. - Type B: malignancies, diabetes, liver/renal failure, severe infections, seizures, toxins/drugs (biguanides like metformin/phenformin, methanol, ethanol, INH, linezolid, etc.), mitochondrial defects.. - Ethylene glycol ingestion can cause severe metabolic acidosis (including lactic acidosis). Epinephrine/adrenaline can increase lactate. Metformin-associated lactic acidosis occurs especially with renal impairment.. - Sulfonylureas primarily cause hypoglycemia; lactic acidosis is not a characteristic complication.. - Ref: Medicine/endocrinology."
+  },
+  {
+    "n": 99,
+    "chapter": "Medicine",
+    "stem": "An opening snap of mitral stenosis is best heard:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "By the diaphragm at the apex"
+      },
+      {
+        "letter": "B",
+        "text": "By the bell at the apex"
+      },
+      {
+        "letter": "C",
+        "text": "By the diaphragm at the parasternal area (lower left sternal border)"
+      },
+      {
+        "letter": "D",
+        "text": "By the bell at the parasternal area"
+      }
+    ],
+    "answerLetter": "C",
+    "answerText": "By the diaphragm at the parasternal area (lower left sternal border)",
+    "explanation": "MITRAL STENOSIS — AUSCULTATION:\n- S1 accentuated; P2 accentuated with pulmonary hypertension.\n- Murmur: low-pitched, rumbling mid-diastolic with presystolic accentuation best heard with bell at apex in left lateral position.\n- Opening snap (OS): brief, high-pitched early diastolic sound, best heard with the diaphragm at the lower left sternal border; heard during expiration; indicates pliable valve and organic MS.\n- Timing of OS relates to severity (closer to S2 in more severe MS).\n- Ref: Cardiology/medicine.",
+    "explanationSpoken": "MITRAL STENOSIS — AUSCULTATION:. - S1 accentuated; P2 accentuated with pulmonary hypertension.. - Murmur: low-pitched, rumbling mid-diastolic with presystolic accentuation best heard with bell at apex in left lateral position.. - Opening snap (OS): brief, high-pitched early diastolic sound, best heard with the diaphragm at the lower left sternal border; heard during expiration; indicates pliable valve and organic MS.. - Timing of OS relates to severity (closer to S2 in more severe MS).. - Ref: Cardiology/medicine."
+  },
+  {
+    "n": 100,
+    "chapter": "Forensic",
+    "stem": "Rigor mortis is tested by:",
+    "options": [
+      {
+        "letter": "A",
+        "text": "Lifting the eyelids"
+      },
+      {
+        "letter": "B",
+        "text": "Depressing the jaw"
+      },
+      {
+        "letter": "C",
+        "text": "Bending various joints"
+      },
+      {
+        "letter": "D",
+        "text": "All of the above"
+      }
+    ],
+    "answerLetter": "D",
+    "answerText": "All of the above",
+    "explanation": "RIGOR MORTIS:\n- Postmortem stiffening/rigidity of muscles in a dead body.\n- Tested by trying to open eyelids, depressing the jaw, gently bending the neck and various joints of the body, and noting degree (complete, partial, absent) and distribution.\n- Begins ~1-2 hours, progresses over ~3-4 hours, complete in ~6-12 hours (variable). First site internally is myocardium; first external site commonly eyelids.\n- Ref: The Essentials of Forensic Medicine and Toxicology by KSN Reddy, 34th ed.",
+    "explanationSpoken": "RIGOR MORTIS:. - Postmortem stiffening/rigidity of muscles in a dead body.. - Tested by trying to open eyelids, depressing the jaw, gently bending the neck and various joints of the body, and noting degree (complete, partial, absent) and distribution.. - Begins ~1-2 hours, progresses over ~3-4 hours, complete in ~6-12 hours (variable). First site internally is myocardium; first external site commonly eyelids.. - Ref: The Essentials of Forensic Medicine and Toxicology by KSN Reddy, 34th ed."
+  }
+]

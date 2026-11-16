@@ -1,0 +1,21 @@
+{
+  "name": "video-lessons",
+  "version": "1.0.0",
+  "description": "MedArena classical video lessons generated from MCQ banks (Remotion + Kokoro TTS)",
+  "main": "src/index.jsx",
+  "scripts": {
+    "render": "npx remotion render src/index.jsx Lesson out/gandaki2080-medical-officer-lesson.mp4 --codec=h264 --crf=18",
+    "studio": "npx remotion studio src/index.jsx"
+  },
+  "keywords": [],
+  "author": "Dr. Ram - MedArena",
+  "license": "MIT",
+  "type": "module",
+  "private": "true",
+  "dependencies": {
+    "@remotion/cli": "^4.0.543",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "remotion": "^4.0.543"
+  }
+}

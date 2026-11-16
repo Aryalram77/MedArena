@@ -44,3 +44,8 @@ anatomy-extract/
 # GitHub Pages cannot run Python, so they do nothing on the live site, but they
 # are your only backup of the server and the editor. They contain no secrets:
 # the admin password lives in admin-auth.json, which is ignored above.
+
+# Video lesson pipeline (node packages + intermediate render output)
+video-lessons/node_modules/
+video-lessons/out/
+video-lessons/node_modules
