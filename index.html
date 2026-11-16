@@ -423,6 +423,64 @@ html,body{overflow-x:hidden;}
 .home-countdown.gandaki .cd-done{color:#fef08a}
 .home-countdown.gandaki .cd-sub{color:#fde68a}
 .home-countdown.gandaki .cd-ghost{position:absolute;right:-8px;bottom:-18px;font-size:96px;opacity:.08;pointer-events:none;user-select:none;font-weight:900;letter-spacing:-2px}
+<style>
+.sp-section{margin:0 0 30px}
+.sp-live{display:inline-flex;align-items:center;gap:10px;background:#0b1224;color:#f5c451;font-size:11px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;padding:8px 16px;border-radius:999px;border:1px solid rgba(245,196,81,.35)}
+.sp-dot{width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 0 0 rgba(52,211,153,.6);animation:spPulse 1.8s ease-in-out infinite}
+@keyframes spPulse{0%{box-shadow:0 0 0 0 rgba(52,211,153,.55)}70%{box-shadow:0 0 0 9px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
+.sp-sub{color:#63718a;font-size:14px;max-width:560px;margin:2px 0 0}
+.sp-card{position:relative;overflow:hidden;padding:26px 28px;border-radius:22px;color:#eaf1ff;border:1px solid rgba(148,183,255,.22);background:radial-gradient(1000px 640px at -8% -18%,rgba(245,196,81,.22) 0%,transparent 55%),radial-gradient(900px 700px at 108% 118%,rgba(66,108,224,.30) 0%,transparent 55%),linear-gradient(150deg,#0c1430 0%,#101f3f 55%,#16295a 100%);box-shadow:0 20px 50px rgba(7,16,43,.45);display:grid;grid-template-columns:minmax(300px,390px) 1fr;gap:30px}
+.sp-card::after{content:"";position:absolute;right:-140px;top:-140px;width:420px;height:420px;border-radius:50%;border:1px solid rgba(245,196,81,.13);pointer-events:none}
+.sp-card::before{content:"";position:absolute;left:-120px;bottom:-130px;width:380px;height:380px;border-radius:50%;border:1px solid rgba(66,108,224,.16);pointer-events:none}
+.sp-summary{position:relative;display:flex;flex-direction:column;gap:16px}
+.sp-gauge-wrap{position:relative;display:flex;justify-content:center}
+.sp-gauge{width:168px;height:168px}
+.sp-gauge #spGaugeArc{transition:stroke-dashoffset 1.6s cubic-bezier(.2,.8,.2,1)}
+.sp-gauge-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:1px}
+.sp-gauge-pct{font-size:40px;font-weight:800;letter-spacing:-1px;color:#fff}
+.sp-gauge-pct small{font-size:18px;font-weight:800;color:#f5c451;margin-left:2px}
+.sp-gauge-label{font-size:10px;letter-spacing:2.2px;text-transform:uppercase;color:#9db4e6;font-weight:700}
+.sp-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.sp-stat{background:rgba(148,183,255,.06);border:1px solid rgba(148,183,255,.14);border-radius:12px;padding:12px 8px;text-align:center}
+.sp-stat-n{font-size:26px;font-weight:800;color:#f5c451;letter-spacing:-0.5px;font-variant-numeric:tabular-nums}
+.sp-stat-l{font-size:9px;letter-spacing:1.2px;text-transform:uppercase;color:#adc1ee;font-weight:700;margin-top:2px}
+.sp-callout{background:rgba(245,196,81,.13);border:1px solid rgba(245,196,81,.35);border-radius:12px;padding:11px 14px;font-size:13px;line-height:1.55;color:#fde68a}
+.sp-callout b{color:#fff}
+.sp-callout.weak{background:rgba(239,68,68,.12);border-color:rgba(248,113,113,.4);color:#fecaca}
+.sp-callout.weak b{color:#ffffff}
+.sp-cta{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;background:linear-gradient(92deg,#f5c451,#e8a53d);color:#1a1304;text-decoration:none;font-weight:800;font-size:13px;letter-spacing:.4px;padding:11px 18px;border-radius:10px;box-shadow:0 8px 20px rgba(245,196,81,.28)}
+.sp-cta:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.sp-list-head{display:grid;grid-template-columns:1fr 150px 96px;gap:12px;padding:6px 14px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#9db4e6;font-weight:800;border-bottom:1px solid rgba(148,183,255,.15)}
+.sp-list{display:flex;flex-direction:column;gap:12px;max-height:440px;overflow-y:auto;padding-right:6px;scrollbar-width:thin;scrollbar-color:rgba(245,196,81,.4) transparent}
+.sp-list::-webkit-scrollbar{width:7px}
+.sp-list::-webkit-scrollbar-track{background:transparent}
+.sp-list::-webkit-scrollbar-thumb{background:rgba(245,196,81,.35);border-radius:4px}
+.sp-row{display:grid;grid-template-columns:1fr 150px 96px;gap:12px;align-items:center;padding:11px 14px;background:rgba(255,255,255,.028);border:1px solid rgba(148,183,255,.13);border-radius:14px;transition:background .25s,border-color .25s}
+.sp-row:hover{background:rgba(255,255,255,.05);border-color:rgba(245,196,81,.35)}
+.sp-name{display:flex;align-items:center;gap:11px;min-width:0}
+.sp-chip{flex:none;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:15px;font-weight:800;color:#1a1304}
+.sp-subject{min-width:0}
+.sp-subject b{display:block;font-size:14.5px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sp-subject span{display:block;font-size:10.5px;color:#adc1ee;margin-top:2px;letter-spacing:.6px;text-transform:uppercase;font-weight:700}
+.sp-bar{height:9px;border-radius:6px;background:rgba(148,183,255,.14);overflow:hidden}
+.sp-bar-fill{display:block;height:100%;width:0%;border-radius:6px;background:linear-gradient(90deg,#3b82f6,#f5c451);transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+.sp-count{text-align:right;font-variant-numeric:tabular-nums}
+.sp-count b{font-size:16px;color:#fff}
+.sp-count span{display:block;font-size:10px;color:#adc1ee;letter-spacing:1px;text-transform:uppercase;font-weight:700;margin-top:1px}
+.sp-acc{margin-left:6px;font-size:11px;font-weight:800;letter-spacing:.6px;padding:5px 9px;border-radius:999px;white-space:nowrap;text-align:center}
+.sp-acc.ok{background:rgba(52,211,153,.16);color:#7bf0c4;border:1px solid rgba(52,211,153,.35)}
+.sp-acc.warn{background:rgba(251,191,36,.13);color:#fcd34d;border:1px solid rgba(251,191,36,.32)}
+.sp-acc.bad{background:rgba(248,113,113,.14);color:#fca5a5;border:1px solid rgba(248,113,113,.35)}
+.sp-footnote{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:2px;padding-top:14px;border-top:1px solid rgba(148,183,255,.12);font-size:11.5px;color:#9db4e6;letter-spacing:.3px}
+.sp-empty{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:34px 20px;border:1px dashed rgba(148,183,255,.3);border-radius:16px;background:rgba(148,183,255,.05)}
+.sp-empty-orb{width:74px;height:74px;border-radius:50%;display:grid;place-items:center;font-size:34px;background:radial-gradient(circle at 35% 35%,#f5c451,#e8a53d 70%);box-shadow:0 12px 30px rgba(245,196,81,.33);animation:spFloat 3.4s ease-in-out infinite}
+@keyframes spFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.sp-empty b{font-size:17px;color:#fff;letter-spacing:-.2px}
+.sp-empty p{margin:0;max-width:380px;font-size:13px;line-height:1.6;color:#adc1ee}
+.sp-footnote b{color:#fff}
+@media(max-width:980px){.sp-card{grid-template-columns:1fr;gap:20px;padding:22px}.sp-summary{flex-direction:row;flex-wrap:wrap;align-items:center}.sp-gauge-wrap{flex:none}.sp-stats{flex:1;min-width:220px}.sp-cta{align-self:stretch;justify-content:center}.sp-list-head{grid-template-columns:1fr auto auto}.sp-row{grid-template-columns:1fr auto auto;gap:10px}.sp-name{grid-column:1/-1}.sp-list{max-height:none}}
+@media(max-width:560px){.sp-stats{grid-template-columns:repeat(3,1fr)}.sp-stat-n{font-size:22px}}
+</style>
 </style>
 <section class="home-countdown" aria-labelledby="cdTitle">
   <div class="cd-inner">
@@ -504,6 +562,34 @@ html,body{overflow-x:hidden;}
     <div class="bank-loading"><span class="loading-pulse"></span> Loading leaderboard...</div>
   </div>
 </section>
+<section class="sp-section" id="spSection" aria-labelledby="spTitle" hidden>
+  <div class="bank-section-head"><div><div class="section-eyebrow">YOUR PROGRESS REPORT</div><h2 id="spTitle">Subject&minus;wise mastery at a glance</h2><p class="sp-sub">Every question you have attempted, charted by subject &mdash; so you can spot your weakest link and fix it first.</p></div><div class="sp-live"><span class="sp-dot"></span> LIVE</div></div>
+  <div class="sp-card">
+    <aside class="sp-summary" aria-label="Summary">
+      <div class="sp-gauge-wrap">
+        <svg class="sp-gauge" viewBox="0 0 132 132" role="img" aria-label="Overall accuracy">
+          <circle cx="66" cy="66" r="54" fill="none" stroke="rgba(148,183,255,.14)" stroke-width="13"/>
+          <circle id="spGaugeArc" cx="66" cy="66" r="54" fill="none" stroke="url(#spGrad)" stroke-width="13" stroke-linecap="round" transform="rotate(-90 66 66)" stroke-dasharray="339.29" stroke-dashoffset="339.29"/>
+          <defs><linearGradient id="spGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7dd3fc"/><stop offset="55%" stop-color="#f5c451"/><stop offset="100%" stop-color="#f97316"/></linearGradient></defs>
+        </svg>
+        <div class="sp-gauge-center"><div class="sp-gauge-pct"><span id="spGaugePct">0</span><small>%</small></div><div class="sp-gauge-label">Overall accuracy</div></div>
+      </div>
+      <div class="sp-stats">
+        <div class="sp-stat"><div class="sp-stat-n" id="spAttempted">0</div><div class="sp-stat-l">Questions attempted</div></div>
+        <div class="sp-stat"><div class="sp-stat-n" id="spCorrect">0</div><div class="sp-stat-l">Answered correctly</div></div>
+        <div class="sp-stat"><div class="sp-stat-n" id="spSubjects">0</div><div class="sp-stat-l">Subjects touched</div></div>
+      </div>
+      <div class="sp-callout" id="spCallout">Solve a few sessions and your weakest subject will surface here.</div>
+      <a class="sp-cta" href="surgery-practice.html">Back to practice <span aria-hidden="true">&rarr;</span></a>
+    </aside>
+    <div class="sp-list-wrap">
+      <div class="sp-list-head"><span>Subject</span><span>Attempted</span><span>Accuracy</span></div>
+      <div class="sp-list" id="spList" aria-live="polite"></div>
+      <div class="sp-footnote" id="spFootnote"></div>
+    </div>
+  </div>
+</section>
+
 <section class="home-banks" aria-labelledby="homeBankTitle">
   <div class="bank-section-head"><div><div class="section-eyebrow" id="homeBankEyebrow">CHOOSE YOUR TRACK</div><h2 id="homeBankTitle">Your question banks</h2><p id="homeBankSubtitle">Jump into a set and build exam-day confidence.</p></div><div class="bank-total" id="bankTotal"><strong>18,441</strong><span>questions ready</span></div></div>
   <div id="embeddedBankGroups" class="embedded-groups">
@@ -2018,6 +2104,122 @@ initDB().then(async () => {
   setInterval(tick, 1000);
 })();
 </script>
+
+<script>
+(function(){
+  try{
+    var idbOpen = indexedDB.open("medarena", 2);
+    idbOpen.onupgradeneeded = function(e){ var db = e.target.result; if(!db.objectStoreNames.contains("attempts")) db.createObjectStore("attempts", { keyPath: "id" }); if(!db.objectStoreNames.contains("banks")) db.createObjectStore("banks", { keyPath: "id" }); };
+    idbOpen.onsuccess = function(e){
+      var db = e.target.result;
+      try{ idbAll("attempts").then(render).catch(function(){}) ;}catch(_){}
+      function idbAll(st){ return new Promise(function(res,rej){ var t=db.transaction(st,"readonly").objectStore(st).getAll(); t.onsuccess=function(){res(t.result)}; t.onerror=function(){rej(t.error)} ;}); }
+      function $(id){ return document.getElementById(id); }
+      function esc(t){ return String(t).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];}); }
+      var ACC = {grad:"#f5c451", track:"rgba(148,183,255,.14)"};
+      function render(attempts){
+        var finished = (attempts||[]).filter(function(a){ return a && a.snapshot && a.snapshot.pool && a.snapshot.pool.length; });
+        var cards = [].slice.call(document.querySelectorAll(".home-bank-card"));
+        var meta = {};
+        cards.forEach(function(card){
+          var actionEl = card.querySelector(".home-bank-action");
+          var href = (actionEl && actionEl.getAttribute("href")) || card.getAttribute("href") || "";
+          var m = href.match(/[?&]bank=([^&]+)/); if(!m) return;
+          var id = m[1];
+          var name = (card.querySelector(".home-bank-name")||{}).textContent || "Bank";
+          var cntEl = card.querySelector(".home-bank-meta b");
+          var total = parseInt((cntEl ? cntEl.textContent : "0").replace(/,/g,"")) || 0;
+          var style = card.getAttribute("style") || "";
+          var toneM = style.match(/--tone:(#[0-9a-fA-F]+)/);
+          var tone = toneM ? toneM[1] : "#3b82f6";
+          meta[id] = meta[id] || { name: name.trim(), total: total, tone: tone, icon: "✚" };
+        });
+        var agg = {};
+        finished.forEach(function(a){
+          var b = a.bankId, m2 = meta[b] || (meta[b] = { name: a.bankName || "Bank", total: 0, tone: "#3b82f6" });
+          var row = agg[b] || (agg[b] = { answers: 0, correct: 0, stems: {}, sessions: 0, total: m2.total, name: m2.name, tone: m2.tone });
+          row.sessions++;
+          var pool = a.snapshot.pool, sel = a.snapshot.sel || [];
+          pool.forEach(function(q,i){
+            var chosen = sel[i];
+            if (chosen == null) return;
+            row.answers++; row.stems[q.stem]=1;
+            var correctText = (q.options||[]).find(function(o){return o.correct===1;});
+            if (correctText && chosen === correctText.text) row.correct++;
+          });
+        });
+        var allIds = Object.keys(meta);
+        var rows = allIds.map(function(id){ return agg[id] ? Object.assign({id:id}, agg[id]) : { id:id, answers:0, correct:0, stems:{}, sessions:0, total: (meta[id]||{}).total||0, name:(meta[id]||{}).name||"", tone:(meta[id]||{}).tone||"#3b82f6" }; })
+          .sort(function(a,b){ return b.answers - a.answers || b.total - a.total; });
+        var displayRows = rows.filter(function(r){ return r.answers > 0; });
+        var section = $("spSection"); if (!section) return;
+        section.hidden = false;
+        var totAns = rows.reduce(function(s,r){return s+r.answers;},0);
+        var totOK  = rows.reduce(function(s,r){return s+r.correct;},0);
+        var pct = totAns ? Math.round(totOK/totAns*100) : 0;
+        var pctEl = $("spGaugePct"); if (pctEl) pctEl.textContent = pct;
+        var arc = $("spGaugeArc"); if (arc){ var C = 2*Math.PI*54; arc.style.strokeDasharray = C; requestAnimationFrame(function(){ arc.style.strokeDashoffset = String(C*(1 - pct/100)); }); }
+        var setT = function(id, v){ var el=$(id); if(el) el.textContent = v; };
+        setT("spAttempted", totAns); setT("spCorrect", totOK); setT("spSubjects", displayRows.length);
+        var weakest = rows.filter(function(r){return r.answers>=5;}).sort(function(a,b){return (a.answers? a.correct/a.answers:1) - (b.answers? b.correct/b.answers:1);})[0];
+        var strongest = rows.filter(function(r){return r.answers>=5;}).sort(function(a,b){return (b.correct/b.answers) - (a.correct/a.answers);})[0];
+        var co = $("spCallout");
+        if (co){
+          var wAcc = weakest ? Math.round(weakest.correct/weakest.answers*100) : 0;
+          var sAcc = strongest ? Math.round(strongest.correct/strongest.answers*100) : 0;
+          if (weakest && strongest && weakest !== strongest){
+            co.className = "sp-callout weak";
+            co.innerHTML = "Rev up <b>" + esc(weakest.name) + "</b> — your weakest subject at <b>" + wAcc + "%</b> accuracy. <b>" + esc(strongest.name) + "</b> leads at " + sAcc + "%.";
+          } else if (weakest){
+            co.className = "sp-callout";
+            co.innerHTML = "Focus on <b>" + esc(weakest.name) + "</b> — <b>" + wAcc + "%</b> accuracy. One more focused block will move the needle.";
+          } else {
+            co.className = "sp-callout";
+            co.textContent = "Great start — keep going to unlock sharper insights.";
+          }
+        }
+        var list = $("spList");
+        if (list){
+          if (!displayRows.length){
+            list.innerHTML = '<div class="sp-empty"><div class="sp-empty-orb">&#128218;</div><b>Your charted report is waiting</b><p>Pick any bank above and start your first session &mdash; every subject you touch will light up here with its own accuracy bar.</p><a class="sp-cta" href="surgery-practice.html">Start practicing <span aria-hidden="true">&rarr;</span></a></div>';
+          } else {
+          list.innerHTML = displayRows.map(function(r){
+            var acc = r.answers ? Math.round(r.correct/r.answers*100) : 0;
+            var cov = r.total ? Math.round((r.stems ? Object.keys(r.stems).length : 0) / r.total * 100) : 0;
+            var accCls = acc >= 70 ? "ok" : acc >= 50 ? "warn" : "bad";
+            var width = Math.max(4, acc);
+            var safeName = esc(r.name);
+            var chipLetter = safeName.replace(/^[^A-Za-z0-9]+/,"").charAt(0) || "Q";
+            var tone = r.tone || "#3b82f6";
+            return '<div class="sp-row">'
+              + '  <div class="sp-name"><div class="sp-chip" style="background:linear-gradient(135deg,'+tone+','+tone+'cc)">'+esc(chipLetter)+'</div>'
+              + '    <div class="sp-subject"><b>'+safeName+'</b><span>'+cov+'% covered &middot; '+Object.keys(r.stems||{}).length+' unique attempted</span></div></div>'
+              + '  <div class="sp-count"><b>'+r.answers+'</b><span>/ '+r.total+' attempted</span></div>'
+              + '  <span class="sp-acc '+accCls+'">'+acc+'%</span>'
+              + '</div>'
+              + '<div class="sp-bar"><span class="sp-bar-fill" data-w="'+width+'" style="background:linear-gradient(90deg,'+tone+','+tone+'aa)"></span></div>';
+          }).join("");
+          requestAnimationFrame(function(){ list.querySelectorAll(".sp-bar-fill").forEach(function(b){ b.style.width = b.getAttribute("data-w") + "%"; }); });
+          }
+        }
+        var foot = $("spFootnote");
+        if (foot){
+          if (!totAns){
+            foot.innerHTML = '<span>No attempts yet — your charted report fills in after your first session.</span><span>Master a subject and it will light up right here.</span>';
+          } else {
+            var footRight = (weakest && strongest && weakest !== strongest)
+              ? 'Weakest: <b>'+esc(weakest.name)+'</b> ('+Math.round(weakest.correct/weakest.answers*100)+'%) &middot; Strongest: <b>'+esc(strongest.name)+'</b> ('+Math.round(strongest.correct/strongest.answers*100)+'%)'
+              : 'Attempt 5+ answers in a subject to unlock its insight';
+            foot.innerHTML = '<span>'+finished.length+' session'+(finished.length===1?"":"s")+' completed &middot; <b>'+totAns+'</b> answers across <b>'+displayRows.length+'</b> subjects</span><span>'+footRight+'</span>';
+          }
+        }
+      }
+    };
+    idbOpen.onerror = function(){ /* silent: no history yet */ };
+  }catch(e){ /* silent */ }
+})();
+</script>
+
 </body>
 </html>
 
