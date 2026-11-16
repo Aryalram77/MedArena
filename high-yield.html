@@ -3137,7 +3137,7 @@ window.HYLock = (function(){
   var LOCK = {"rev":"a7f3e9b2-1c4d8e6f","updated":"15 Nov 2026, 20:26","subs":[{"id":"MA-A753-GQSS","rev":"5914827c-9ff89b5c","at":"15 Nov 2026, 20:26"}]};
   var FREE_UNTIL = Date.parse('2026-11-25T23:59:59+05:45'); /* used only when MEDARENA_FREE_TRIAL is true */
   var FREE = ["neuro", "acidbase"];   /* free topics — everything else is locked by default */
-  var NAMES = {"neuro":"Neurology", "hla":"HLA Association", "inh":"Inheritance Patterns", "acidbase":"Acid Base Disorders", "radiology":"One-Shot Radiology", "nerveortho":"Nerve Injury Ortho"};
+  var NAMES = {"neuro":"Neurology", "hla":"HLA Association", "inh":"Inheritance Patterns", "acidbase":"Acid Base Disorders", "radiology":"One-Shot Radiology", "nerveortho":"Nerve Injury Ortho", "pedmile":"Milestone Pediatrics"};
   function medArenaHash(s){
     var fnv = function(str){ var h = 0x811c9dc5; for (var i = 0; i < str.length; i++){ h ^= str.charCodeAt(i); h = Math.imul(h, 16777619) >>> 0; } return h >>> 0; };
     var a = fnv(s), b = fnv(s.split("").reverse().join(""));
@@ -3257,7 +3257,7 @@ window.HYLock = (function(){
   window.addEventListener("scroll", onScroll, {passive:true});
 
   var chips = [].slice.call(document.querySelectorAll(".chip[data-topic]"));
-  var topics = ["neuro", "hla", "inh", "acidbase", "radiology", "nerveortho"];
+  var topics = ["neuro", "hla", "inh", "acidbase", "radiology", "nerveortho", "pedmile"];
   function showTopic(t, noscroll){
     if (window.HYLock && HYLock.isLockedTopic(t) && !HYLock.unlocked()){ HYLock.open(t); return; }
     chips.forEach(function(c){ c.classList.toggle("active", c.getAttribute("data-topic") === t); });
