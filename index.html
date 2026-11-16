@@ -1460,15 +1460,18 @@ function renderAttempts(){
     const bank = state.bank;
     const perStem = {};
     let totQ = 0, totC = 0;
-    rows.filter(a => a.finishedAt && a.snapshot).forEach(a => {
+    rows.filter(a => a && a.snapshot && a.snapshot.pool).forEach(a => {
       a.snapshot.pool.forEach((q, i) => {
+        const chosen = a.snapshot.sel[i];
+        if (chosen == null) return; // count attempted questions only
         const k = q.stem;
         const r = perStem[k] || (perStem[k] = { stem: q.stem, seen: 0, right: 0 });
         r.seen++; totQ++;
-        if(a.snapshot.sel[i] === q.options.find(o => o.correct === 1).text){ r.right++; totC++; }
+        const cor = (q.options || []).find(o => o.correct === 1);
+        if (cor && chosen === cor.text) { r.right++; totC++; }
       });
     });
-    const done = rows.filter(a => a.finishedAt && a.snapshot);
+    const done = rows.filter(a => a && a.snapshot && a.snapshot.pool && (a.snapshot.sel || []).some(s => s != null));
     const errorKeys = Object.keys(perStem).filter(k => {
       const r = perStem[k]; return r.seen > 0 && r.right < r.seen;
     });
@@ -1487,7 +1490,7 @@ function renderAttempts(){
           <div class="rowflex" style="flex-direction:column;gap:4px">
             <div style="font-size:34px;font-weight:800;color:${overall == null ? "var(--muted)" : overall >= 70 ? "var(--ok)" : overall >= 50 ? "var(--flag)" : "var(--bad)"}">${overall == null ? "—" : overall + "%"}</div>
             <div class="mut">overall accuracy</div>
-            <div class="mut">${totQ} answers · ${done.length} completed session(s) · ${totQ - totC} incorrect</div>
+            <div class="mut">${totQ} answers · ${done.length} session(s) with answers · ${totQ - totC} incorrect</div>
           </div>
           <div style="flex:1;min-width:260px">
             <div class="mut" style="margin-bottom:6px"><b style="color:var(--bad)">Needs attention</b> — most-missed questions:</div>`;
@@ -2112,8 +2115,14 @@ initDB().then(async () => {
     idbOpen.onupgradeneeded = function(e){ var db = e.target.result; if(!db.objectStoreNames.contains("attempts")) db.createObjectStore("attempts", { keyPath: "id" }); if(!db.objectStoreNames.contains("banks")) db.createObjectStore("banks", { keyPath: "id" }); };
     idbOpen.onsuccess = function(e){
       var db = e.target.result;
-      try{ idbAll("attempts").then(render).catch(function(){}) ;}catch(_){}
       function idbAll(st){ return new Promise(function(res,rej){ var t=db.transaction(st,"readonly").objectStore(st).getAll(); t.onsuccess=function(){res(t.result)}; t.onerror=function(){rej(t.error)} ;}); }
+      var refreshBusy = false, lastSig = null;
+      function refresh(){
+        if (refreshBusy) return; refreshBusy = true;
+        try {
+          idbAll("attempts").then(render).catch(function(){}).finally(function(){ refreshBusy = false; });
+        } catch (_) { refreshBusy = false; }
+      }
       function $(id){ return document.getElementById(id); }
       function esc(t){ return String(t).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];}); }
       var ACC = {grad:"#f5c451", track:"rgba(148,183,255,.14)"};
@@ -2149,6 +2158,7 @@ initDB().then(async () => {
           });
         });
         var allIds = Object.keys(meta);
+        var answeredSessions = finished.filter(function(a){ return (a.snapshot.sel||[]).some(function(x){ return x != null; }); }).length;
         var rows = allIds.map(function(id){ return agg[id] ? Object.assign({id:id}, agg[id]) : { id:id, answers:0, correct:0, stems:{}, sessions:0, total: (meta[id]||{}).total||0, name:(meta[id]||{}).name||"", tone:(meta[id]||{}).tone||"#3b82f6" }; })
           .sort(function(a,b){ return b.answers - a.answers || b.total - a.total; });
         var displayRows = rows.filter(function(r){ return r.answers > 0; });
@@ -2156,7 +2166,9 @@ initDB().then(async () => {
         section.hidden = false;
         var totAns = rows.reduce(function(s,r){return s+r.answers;},0);
         var totOK  = rows.reduce(function(s,r){return s+r.correct;},0);
-        var pct = totAns ? Math.round(totOK/totAns*100) : 0;
+        var sig = finished.length + "|" + answeredSessions + "|" + rows.map(function(r){ return r.id + ":" + r.answers + ":" + r.correct; }).join(",");
+        if (sig === lastSig) return;
+        lastSig = sig;        var pct = totAns ? Math.round(totOK/totAns*100) : 0;
         var pctEl = $("spGaugePct"); if (pctEl) pctEl.textContent = pct;
         var arc = $("spGaugeArc"); if (arc){ var C = 2*Math.PI*54; arc.style.strokeDasharray = C; requestAnimationFrame(function(){ arc.style.strokeDashoffset = String(C*(1 - pct/100)); }); }
         var setT = function(id, v){ var el=$(id); if(el) el.textContent = v; };
@@ -2210,10 +2222,14 @@ initDB().then(async () => {
             var footRight = (weakest && strongest && weakest !== strongest)
               ? 'Weakest: <b>'+esc(weakest.name)+'</b> ('+Math.round(weakest.correct/weakest.answers*100)+'%) &middot; Strongest: <b>'+esc(strongest.name)+'</b> ('+Math.round(strongest.correct/strongest.answers*100)+'%)'
               : 'Attempt 5+ answers in a subject to unlock its insight';
-            foot.innerHTML = '<span>'+finished.length+' session'+(finished.length===1?"":"s")+' completed &middot; <b>'+totAns+'</b> answers across <b>'+displayRows.length+'</b> subjects</span><span>'+footRight+'</span>';
+            foot.innerHTML = '<span>'+answeredSessions+' session'+(answeredSessions===1?"":"s")+' with answers &middot; <b>'+totAns+'</b> answers across <b>'+displayRows.length+'</b> subjects</span><span>'+footRight+'</span>';
           }
         }
       }
+      refresh();
+      window.addEventListener("visibilitychange", function(){ if (!document.hidden) refresh(); });
+      window.addEventListener("focus", refresh);
+      setInterval(refresh, 30000);
     };
     idbOpen.onerror = function(){ /* silent: no history yet */ };
   }catch(e){ /* silent */ }
