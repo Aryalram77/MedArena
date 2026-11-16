@@ -415,6 +415,14 @@ html,body{overflow-x:hidden;}
 .cd-sep{font-size:22px;font-weight:800;color:#f5c451;opacity:.7}
 .cd-done{font-size:16px;font-weight:800;color:#fde68a}
 @media(max-width:560px){.cd-inner{flex-direction:column;align-items:flex-start}.cd-timer{width:100%;justify-content:space-between}.cd-unit{min-width:0;flex:1}}
+.home-countdown.gandaki{background:linear-gradient(135deg,#241004 0%,#3a1c08 55%,#4a2410 100%);border:1px solid rgba(250,204,21,.35)}
+.home-countdown.gandaki .cd-eyebrow{color:#fcd34d}
+.home-countdown.gandaki .cd-unit{background:rgba(250,204,21,.10);border:1px solid rgba(250,204,21,.28)}
+.home-countdown.gandaki .cd-unit b{color:#fef08a}
+.home-countdown.gandaki .cd-sep{color:#fcd34d}
+.home-countdown.gandaki .cd-done{color:#fef08a}
+.home-countdown.gandaki .cd-sub{color:#fde68a}
+.home-countdown.gandaki .cd-ghost{position:absolute;right:-8px;bottom:-18px;font-size:96px;opacity:.08;pointer-events:none;user-select:none;font-weight:900;letter-spacing:-2px}
 </style>
 <section class="home-countdown" aria-labelledby="cdTitle">
   <div class="cd-inner">
@@ -434,29 +442,48 @@ html,body{overflow-x:hidden;}
     </div>
   </div>
 </section>
+<section class="home-countdown gandaki" aria-labelledby="cdGTitle">
+  <div class="cd-ghost" aria-hidden="true">2083</div>
+  <div class="cd-inner">
+    <div class="cd-left">
+      <div class="cd-eyebrow">⏰ Gandaki Loksewa</div>
+      <div class="cd-title" id="cdGTitle">Gandaki Loksewa — Medical Officer</div>
+      <div class="cd-sub">Mangsir 19, 2083 BS · 5 Dec 2026. Stay sharp. Practice daily.</div>
+    </div>
+    <div class="cd-timer" id="cdGTimer">
+      <div class="cd-unit"><b id="cdGD">00</b><span>Days</span></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><b id="cdGH">00</b><span>Hours</span></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><b id="cdGM">00</b><span>Minutes</span></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><b id="cdGS">00</b><span>Seconds</span></div>
+    </div>
+  </div>
+</section>
 <script>
 (function(){
-  const target = new Date("2027-02-12T00:00:00").getTime();
-  const dEl=document.getElementById("cdD"),hEl=document.getElementById("cdH"),mEl=document.getElementById("cdM"),sEl=document.getElementById("cdS"),timer=document.getElementById("cdTimer");
   function pad(n){return String(n).padStart(2,"0");}
-  function tick(){
-    const now=Date.now();
-    let diff=target-now;
-    if(diff<=0){
-      if(timer) timer.innerHTML='<div class="cd-done">🎉 Exam day is here — best of luck!</div>';
-      clearInterval(iv); return;
+  function makeCountdown(targetIso, ids) {
+    const target = new Date(targetIso).getTime();
+    const dEl=document.getElementById(ids[0]),hEl=document.getElementById(ids[1]),mEl=document.getElementById(ids[2]),sEl=document.getElementById(ids[3]),timer=document.getElementById(ids[4]);
+    let iv;
+    function tick(){
+      const diff = target - Date.now();
+      if(diff <= 0){
+        if(timer) timer.innerHTML='<div class="cd-done">🎉 Exam day is here — best of luck!</div>';
+        if(iv) clearInterval(iv);
+        return;
+      }
+      if(dEl) dEl.textContent=pad(Math.floor(diff/86400000));
+      if(hEl) hEl.textContent=pad(Math.floor(diff/3600000)%24);
+      if(mEl) mEl.textContent=pad(Math.floor(diff/60000)%60);
+      if(sEl) sEl.textContent=pad(Math.floor(diff/1000)%60);
     }
-    const d=Math.floor(diff/86400000); diff%=86400000;
-    const h=Math.floor(diff/3600000); diff%=3600000;
-    const m=Math.floor(diff/60000); diff%=60000;
-    const s=Math.floor(diff/1000);
-    if(dEl) dEl.textContent=pad(d);
-    if(hEl) hEl.textContent=pad(h);
-    if(mEl) mEl.textContent=pad(m);
-    if(sEl) sEl.textContent=pad(s);
+    tick(); iv=setInterval(tick,1000);
   }
-  tick();
-  const iv=setInterval(tick,1000);
+  makeCountdown("2027-02-12T00:00:00", ["cdD","cdH","cdM","cdS","cdTimer"]);
+  makeCountdown("2026-12-05T00:00:00", ["cdGD","cdGH","cdGM","cdGS","cdGTimer"]);
 })();
 </script>
 <section id="maProgressHost" aria-live="polite" hidden></section>
