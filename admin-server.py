@@ -103,9 +103,54 @@ def discover_banks(html: str):
     return out
 
 
+_HTML_CACHE = {}   # (path, mtime_ns, size) -> text
+_BANKS_CACHE = {}  # (mtime_ns, size) -> metadata list
+
+
+def _file_sig(path):
+    try:
+        st = os.stat(path)
+        return (st.st_mtime_ns, st.st_size)
+    except OSError:
+        return None
+
+
 def load_html(path=HTML_PATH):
+    """Cached by file signature — the practice file is ~24 MB and is read by
+    many requests at once; re-reading it every time made the panel time out."""
+    key = (os.path.abspath(path), _file_sig(path))
+    hit = _HTML_CACHE.get(key)
+    if hit is not None:
+        return hit
     with open(path, "r", encoding="utf-8") as f:
-        return f.read()
+        text = f.read()
+    if len(_HTML_CACHE) > 4:
+        _HTML_CACHE.clear()
+    _HTML_CACHE[key] = text
+    return text
+
+
+def bank_meta_list():
+    """Lightweight id/name/count list, cached until surgery-practice.html changes."""
+    sig = _file_sig(HTML_PATH)
+    hit = _BANKS_CACHE.get(sig)
+    if hit is not None:
+        return hit
+    html = load_html()
+    banks = []
+    for e in discover_banks(html):
+        span = find_const(html, e["const"])
+        if not span:
+            continue
+        try:
+            data = json.loads(html[html.find("{", span[0]):span[1]])
+            banks.append({"id": e["id"], "cat": e["cat"], "name": data.get("name", e["id"]),
+                          "count": len(data.get("questions", []))})
+        except Exception:
+            banks.append({"id": e["id"], "cat": e["cat"], "name": e["const"], "count": -1})
+    _BANKS_CACHE.clear()
+    _BANKS_CACHE[sig] = banks
+    return banks
 
 
 def load_concept():
@@ -919,21 +964,8 @@ class Handler(BaseHTTPRequestHandler):
             self._send_json({"configured": admin_configured(),
                              "signed_in": admin_session_ok(self),
                              "loopback": self._is_loopback()}); return
-        if path.startswith("/api/banks"):
-            with _lock:
-                html = load_html()
-                banks = []
-                for e in discover_banks(html):
-                    span = find_const(html, e["const"])
-                    if not span:
-                        continue
-                    try:
-                        data = json.loads(html[html.find("{", span[0]):span[1]])
-                        banks.append({"id": e["id"], "cat": e["cat"], "name": data.get("name", e["id"]),
-                                      "count": len(data.get("questions", []))})
-                    except Exception:
-                        banks.append({"id": e["id"], "cat": e["cat"], "name": e["const"], "count": -1})
-                self._send_json(banks); return
+        if path == "/api/banks":
+            self._send_json(bank_meta_list()); return
         if path.startswith("/api/bank/"):
             bid = path[len("/api/bank/"):].strip("/")
             with _lock:

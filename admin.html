@@ -380,7 +380,7 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
 
 <script>
 const $ = id => document.getElementById(id);
-const API_TIMEOUT_MS = 15000;
+const API_TIMEOUT_MS = 60000;
 let META = null;              // [{id, name, count}]
 let bank = null;              // working copy of current bank
 let bankId = null;
@@ -711,7 +711,9 @@ bindLive();
     document.getElementById("gateHint").textContent =
       mode === "set"
         ? "Choose a password for this panel. At least 8 characters. It is stored hashed, never in plain text."
-        : "Enter the admin password to edit the site.";
+        : (/^(localhost|127\.0\.0\.1|\[::1\])$/i.test(location.hostname)
+            ? "Enter the admin password to edit the site."
+            : "This hosted panel can only read. To edit, issue codes, or publish changes, run <code>python admin-server.py</code> on this PC and open <code>http://localhost:8600/admin</code>.");
     document.getElementById("gateCurrentRow").style.display =
       mode === "change" ? "block" : "none";
     document.getElementById("gateSubmit").textContent =
