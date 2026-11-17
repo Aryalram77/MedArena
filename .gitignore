@@ -49,3 +49,8 @@ anatomy-extract/
 video-lessons/node_modules/
 video-lessons/out/
 video-lessons/node_modules
+
+# Study-buddy offline generator: downloaded model weights + generator script stay local.
+# The two generated PUBLISHED assets (study-map.json, study-embeddings.bin) ARE committed.
+_study_model/
+build_study_index.py
