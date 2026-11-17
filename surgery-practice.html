@@ -1315,7 +1315,7 @@ try {
     }
   }
 } catch (e) {}
-const LOCK = {"rev":"a7f3e9b2-1c4d8e6f","updated":"15 Nov 2026, 20:26","subs":[{"id":"MA-A753-GQSS","rev":"5914827c-9ff89b5c","at":"15 Nov 2026, 20:26"}]};
+const LOCK = {"rev":"a7f3e9b2-1c4d8e6f","updated":"17 Nov 2026, 15:30","subs":[{"id":"MA-A753-GQSS","rev":"5914827c-9ff89b5c","at":"15 Nov 2026, 20:26"},{"id":"MA-R732-YT7W","rev":"8f3f1108-dc83edb8","at":"17 Nov 2026, 15:30"}]};
 var MEDARENA_FREE_TRIAL = false; /* free-usage countdown OFF — normal locks apply; set true to re-enable */
 const FREE_UNTIL = Date.parse('2026-11-25T23:59:59+05:45'); /* used only when MEDARENA_FREE_TRIAL is true */
 const isFreePeriod = () => MEDARENA_FREE_TRIAL && Date.now() < FREE_UNTIL;
@@ -1389,13 +1389,23 @@ function medArenaHash(s){
   form.onsubmit = e => {
     e.preventDefault();
     if (!rev) { showApp(); return; }
-    const code = input.value.trim();
-    if (!code){ err.textContent = "Enter the access code."; input.select(); return; }
-    if (medArenaHash(code) === rev){
+    const typed = input.value.trim();
+    if (!typed){ err.textContent = "Enter the access code."; input.select(); return; }
+    /* Codes are issued in capitals; accept any case and ignore stray spaces. */
+    const code = typed.toUpperCase().replace(/\s+/g, "");
+    if (medArenaHash(code) === rev || medArenaHash(typed) === rev){
       saved = { rev: rev };               /* owner's master code */
     } else {
-      const hit = allSubs().find(s => s.id === devId && s.rev && medArenaHash(devId + "#" + code) === s.rev);
-      if (!hit){ err.textContent = "That code didn\u2019t match. Try again."; input.select(); return; }
+      const hit = allSubs().find(s => s.id === devId && s.rev &&
+        (medArenaHash(devId + "#" + code) === s.rev || medArenaHash(devId + "#" + typed) === s.rev));
+      if (!hit){
+        const other = allSubs().find(s => s.id && s.id !== devId && s.rev &&
+          medArenaHash(s.id + "#" + code) === s.rev);
+        err.textContent = other
+          ? "That code was issued for " + other.id + ", not this device. Send the seller this Device ID: " + devId
+          : "That code didn\u2019t match. Type it exactly as issued (MA-XXXX-XXXX) and make sure it was issued for this Device ID: " + devId;
+        input.select(); return;
+      }
       saved = { rev: hit.rev };           /* lifetime code — bound to this device */
     }
     try { localStorage.setItem("medarena.practiceAccess", JSON.stringify(saved)); } catch (e) {}
