@@ -129,11 +129,11 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
   } catch (e) {}
   var onLocal = /^(localhost|127\.0\.0\.1|\[::1\])$/i.test(location.hostname);
   var cloud = (window.MA_API_BASE || "").trim();
-  /* Precedence: ?api= (and localStorage override, "-" disables) → localhost (local server) → baked-in worker */
-  if (ls === "-") base = "";
-  else if (ls) base = ls;
-  else if (onLocal) base = "";
-  else base = cloud;
+  /* On localhost, "-" means "don't talk to any API — use the panel offline".
+     On a hosted site there is no local server, so "-" is meaningless and would
+     permanently strand the panel; there, the baked-in worker always wins. */
+  if (onLocal) { base = (ls === "-" ? "" : (ls || "")); }
+  else { base = (ls === "-" || !ls) ? cloud : ls; }
   base = base.replace(/\/+$/, "");
   if (!base && !cloud) return;
 
