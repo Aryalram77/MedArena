@@ -94,11 +94,13 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
 .u-bbar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#22c55e,#16a34a)}
 @media(max-width:900px){.u-row{grid-template-columns:minmax(140px,1.6fr) 70px 56px 56px 50px;}.u-row span:nth-child(6),.u-row span:nth-child(7){display:none}.u-brow{grid-template-columns:1fr 90px}.u-brow b{grid-column:1/-1;text-align:left}}
 </style>
+<script>window.MA_API_BASE = "https://medarena-api.medarena-ram.workers.dev"; // cloud API baked into this page — set localStorage.ma_api_base="-" to use the local server instead
+</script>
 <script>
-/* The admin panel edits files on this computer and is loopback-only, so it
-   always talks to admin-server.py. It must never use the cloud worker: every
-   admin call there 403s (no admin token) and the panel hangs on "Loading sets".
-   MA_API_BASE is deliberately left unset on this page. */
+/* MedArena API bridge — admin.html talks to the deployed Cloudflare Worker on
+ * GitHub Pages, and to the local admin-server.py when served from localhost.
+ * On the cloud every fetch("/api/...") is routed to the worker and the admin
+ * bearer token from localStorage["ma_admin_token"] is attached after sign-in. */
 /* MedArena API bridge — lets the local pages talk to the Cloudflare Worker.
  *
  * Active only when an external API base is configured. Precedence:
@@ -120,18 +122,21 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
   "use strict";
   var base = "";
   var ls = "";
-  /* Allow cloud/remote backend URL for GitHub Pages deployment.
-     Set via ?api=https://your-backend.example.com or localStorage "ma_api_base".
-     Leave empty for local admin-server.py (default). */
   try {
     var qp = new URLSearchParams(location.search);
-    if (qp.get("api")) { base = qp.get("api").replace(/\/+$/, ""); localStorage.setItem("ma_api_base", base); }
-    else { base = (localStorage.getItem("ma_api_base") || "").replace(/\/+$/, ""); }
-  } catch (e) { base = ""; }
-  // Only enable cloud fetch rewriting when base is set and we're not on localhost
-  var isLocal = /^(localhost|127\.0\.0\.1)(:\d+)?$/.test(location.host);
-  if (isLocal) base = "";
-  if (!base) return;
+    if (qp.get("api")) { localStorage.setItem("ma_api_base", qp.get("api").replace(/\/+$/, "")); ls = qp.get("api").replace(/\/+$/, ""); }
+    else { ls = (localStorage.getItem("ma_api_base") || "").trim(); }
+  } catch (e) {}
+  var onLocal = /^(localhost|127\.0\.0\.1|\[::1\])$/i.test(location.hostname);
+  var cloud = (window.MA_API_BASE || "").trim();
+  /* On localhost the admin server IS the backend — code generation, saves, lock
+     changes all happen there, so never route to the worker from localhost.
+     On the hosted site the worker serves reads; admin writes (sub-generate,
+     saves) 403 there — the panel warns and points to localhost instead. */
+  if (onLocal) { base = ""; }
+  else { base = (ls === "-" || !ls) ? cloud : ls; }
+  base = base.replace(/\/+$/, "");
+  if (!base && !cloud) return;
 
   function tokFor(path) {
     try {
@@ -143,6 +148,11 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
 
   var orig = window.fetch && window.fetch.bind(window);
   if (!orig) return;
+  /* Local admin: same-origin requests to admin-server.py, which authenticates
+     with the HttpOnly `ma_admin` cookie. Wrapping fetch here would force
+     credentials:"omit" (a cloud-worker need) and the browser would drop the
+     login cookie — every write would then 403. Leave local fetch untouched. */
+  if (!base) return;
   window.fetch = function (input, init) {
     try {
       var url = typeof input === "string" ? input : (input && input.url) || "";
@@ -321,6 +331,12 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
 <div class="panel" id="subsPanel" style="margin:0 22px 20px;max-width:1456px">
   <h2>💳 Lifetime subscriptions — Rs 1,000 (eSewa)</h2>
   <div class="meta" style="margin:-4px 0 12px">Buyer scans the eSewa QR shown on the homepage / practice gate and pays Rs 1,000, then sends you the screenshot together with their <b>Device ID</b>. Generate one personal code per device — it unlocks all locked sets on that device forever. Removing the lock removes all codes with it.</div>
+  <div id="subsLocalWarn" class="meta" style="margin:-4px 0 12px;padding:9px 12px;border:1px solid #fcd34d;background:#fef3c7;border-radius:8px;color:#92400e;display:none">⚠ This hosted panel can only <b>read</b>; codes cannot be issued from here. Run <code>python admin-server.py</code> on this PC and open <code>http://localhost:8600/admin</code> (password: your local admin password) — everything works there.</div>
+  <div id="publishState" class="meta" style="margin:-4px 0 10px"></div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px">
+    <button class="ghost small" id="publishNow">🚀 Publish to live site</button>
+    <span class="meta" style="align-self:center">A code only works on the live site after these files are published.</span>
+  </div>
   <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end">
     <label class="f" style="max-width:260px">Device ID (shown on buyer's screen)<input type="text" id="subDevId" placeholder="MA-AB2C-D3EF" style="text-transform:uppercase"></label>
     <label class="f" style="flex:1;min-width:200px">Note (buyer name / phone / eSewa txn)<input type="text" id="subNote" placeholder="optional"></label>
@@ -364,6 +380,7 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
 
 <script>
 const $ = id => document.getElementById(id);
+const API_TIMEOUT_MS = 60000;
 let META = null;              // [{id, name, count}]
 let bank = null;              // working copy of current bank
 let bankId = null;
@@ -384,10 +401,49 @@ function setDirty(v){
   $("dirtyFlag").style.display = v ? "block" : "none";
 }
 
+async function promptRelogin(msg){
+  // session expired / never signed in — drop into the sign-in screen.
+  try {
+    document.querySelectorAll("main").forEach(m => m.style.display = "none");
+    const g = document.getElementById("adminGate");
+    if (g) {
+      g.style.display = "flex";
+      document.getElementById("gateTitle").textContent = "Admin sign in";
+      document.getElementById("gateHint").textContent = msg || "Your admin session expired — sign in again to keep editing.";
+      document.getElementById("gateCurrentRow").style.display = "none";
+      document.getElementById("gateSubmit").textContent = "Sign in";
+      document.getElementById("gatePw").value = "";
+      document.getElementById("gateErr").textContent = "";
+      g.dataset.mode = "login";
+      document.getElementById("gatePw").focus();
+      document.querySelectorAll("div#homepagePanel, div#notificationPanel, div#accessPanel, div#subsPanel, div#googlePanel, div#usersPanel, div#qotdPanel").forEach(p => p.style.display = "none");
+    }
+  } catch (e) {}
+}
+
+// keep the re-login path consistent whether they reload mid-session or hit 403 on a request
+window.promptRelogin = promptRelogin;
+
 async function api(path, opts){
-  const r = await fetch(path, opts);
-  if (!r.ok){ let m = ""; try { m = (await r.json()).error; } catch(e){} throw new Error(m || r.status); }
-  return r.json();
+  const o = Object.assign({}, opts || {});
+  const timeoutMs = Number(o.timeoutMs) || API_TIMEOUT_MS;
+  delete o.timeoutMs;
+  const ctl = new AbortController();
+  const timer = setTimeout(() => ctl.abort(), timeoutMs);
+  try {
+    const r = await fetch(path, Object.assign({}, o, { signal: ctl.signal }));
+    let m = "";
+    try { m = (await r.clone().json()).error || ""; } catch (e) {}
+    if (r.status === 403 && /admin password|Need the admin/i.test(m)) {
+      promptRelogin("Your admin session expired — sign in again.");
+      throw new Error("Admin changes need the admin password — sign in again.");
+    }
+    if (!r.ok){ throw new Error(m || String(r.status)); }
+    return r.json();
+  } catch (e) {
+    if (e && e.name === "AbortError") throw new Error("Request timed out — is the admin server running?");
+    throw e;
+  } finally { clearTimeout(timer); }
 }
 
 async function loadBanks(){
@@ -655,7 +711,9 @@ bindLive();
     document.getElementById("gateHint").textContent =
       mode === "set"
         ? "Choose a password for this panel. At least 8 characters. It is stored hashed, never in plain text."
-        : "Enter the admin password to edit the site.";
+        : (/^(localhost|127\.0\.0\.1|\[::1\])$/i.test(location.hostname)
+            ? "Enter the admin password to edit the site."
+            : "This hosted panel can only read. To edit, issue codes, or publish changes, run <code>python admin-server.py</code> on this PC and open <code>http://localhost:8600/admin</code>.");
     document.getElementById("gateCurrentRow").style.display =
       mode === "change" ? "block" : "none";
     document.getElementById("gateSubmit").textContent =
@@ -667,6 +725,7 @@ bindLive();
   const boot = () => {
     document.getElementById("adminGate").style.display = "none";
     document.querySelector("main").style.display = "";
+    document.querySelectorAll("#homepagePanel, #notificationPanel, #accessPanel, #subsPanel, #googlePanel, #usersPanel, #qotdPanel").forEach(p => { p.style.display = ""; });
     loadBanks().then(() => toast("Loaded " + META.length + " banks from surgery-practice.html"))
                .catch(e => toast("Load failed: " + e.message, true));
   };
@@ -690,6 +749,14 @@ bindLive();
             body: JSON.stringify({ password: pw, current: cur }) });
       // cloud mode: the Worker returns a bearer token — keep it on this device
       if (out && out.token) { try { localStorage.setItem("ma_admin_token", out.token); } catch (e) {} }
+      // local mode: confirm the HttpOnly session cookie actually stuck
+      try {
+        const st2 = await api("/api/admin/status");
+        if (st2 && st2.configured && !st2.signed_in) {
+          errEl.textContent = "Password accepted, but the browser dropped the session cookie. Allow cookies / site data for this address and try again.";
+          return;
+        }
+      } catch (e) { /* status is best-effort */ }
       document.getElementById("gatePw").value = "";
       document.getElementById("gateCurrent").value = "";
       boot();
@@ -778,6 +845,45 @@ loadAccessSettings().catch(e=>toast("Access settings load failed: "+e.message,tr
 
 /* ===== lifetime subscriptions ===== */
 let subCodeCopy=null;
+
+/* Publishing: GitHub Pages serves the committed files, so a freshly issued code
+   does not exist on the live site until surgery-practice.html is pushed. */
+async function loadPublishState(){
+  const el=$("publishState");
+  if(!el) return;
+  try{
+    const st=await api("/api/publish-status");
+    if(st.error){ el.innerHTML="⚠ "+esc(st.error); el.style.color="#92400e"; return; }
+    if((st.changed||[]).length || st.ahead){
+      const bits=[];
+      if((st.changed||[]).length) bits.push((st.changed||[]).length+" file(s) changed locally");
+      if(st.ahead) bits.push(st.ahead+" commit(s) not pushed");
+      el.innerHTML="⚠ <b>Not published</b> — "+esc(bits.join(" · "))+" — codes/banks won't work on the live site yet.";
+      el.style.color="#92400e";
+    }else{
+      el.innerHTML="✅ Live site is up to date (branch "+esc(st.branch||"main")+") — issued codes work immediately.";
+      el.style.color="#065f46";
+    }
+  }catch(e){ el.textContent=""; }
+}
+async function publishNow(reason){
+  const el=$("publishState");
+  if(el){ el.textContent="Publishing to the live site…"; el.style.color="#475569"; }
+  try{
+    const out=await api("/api/publish",{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({message:reason?("Lifetime code: "+reason):""}),timeoutMs:120000});
+    if(el){ el.innerHTML="✅ "+esc(out.msg); el.style.color="#065f46"; }
+    const r=$("subResult");
+    if(r && /✅/.test(r.innerHTML)) r.innerHTML+="<div class='meta' style='margin-top:6px;color:#065f46'>🚀 "+esc(out.msg)+"</div>";
+  }catch(e){
+    if(el){ el.innerHTML="❌ Publish failed: "+esc(e.message)+" — click 🚀 Publish to live site to retry."; el.style.color="#b91c1c"; }
+  }
+  loadPublishState().catch(()=>{});
+}
+const publishBtn=$("publishNow");
+if(publishBtn) publishBtn.onclick=()=>publishNow("");
+loadPublishState().catch(()=>{});
+
 async function loadSubs(){
   try{
     const out=await api("/api/subs");
@@ -792,10 +898,18 @@ async function loadSubs(){
     box.innerHTML=rows.length?rows.join(""):"<span class='meta'>No codes issued yet.</span>";
     box.querySelectorAll("[data-revoke]").forEach(b=>b.onclick=async()=>{
       if(!confirm("Revoke the code for "+b.dataset.revoke+"? That device will re-lock immediately."))return;
-      try{ await api("/api/sub-revoke",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({devId:b.dataset.revoke})}); toast("Code revoked"); loadSubs(); }
+      try{ await api("/api/sub-revoke",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({devId:b.dataset.revoke})}); toast("Code revoked"); loadSubs(); publishNow("revoke "+b.dataset.revoke); }
       catch(e){ toast("Revoke failed: "+e.message,true); }
     });
-  }catch(e){ $("subsList").textContent="Load failed: "+e.message; }
+  }catch(e){
+    const hosted = !/^(localhost|127\.0\.0\.1|\[::1\])$/i.test(location.hostname);
+    if (hosted && /403|forbidden/i.test(e.message||"")) {
+      if ($("subsLocalWarn")) $("subsLocalWarn").style.display="block";
+      $("subsList").innerHTML="<span class='meta'>Code list is only available on localhost. Run <code>python admin-server.py</code> → http://localhost:8600/admin (password: local admin password).</span>";
+    } else {
+      $("subsList").textContent="Load failed: "+e.message;
+    }
+  }
 }
 $("subGenerate").onclick=async()=>{
   const devId=$("subDevId").value.trim().toUpperCase();
@@ -809,8 +923,17 @@ $("subGenerate").onclick=async()=>{
       $("subCopyCode").onclick=()=>{ try{navigator.clipboard&&navigator.clipboard.writeText(subCodeCopy);}catch(e){} $("subCopyCode").textContent="Copied!"; setTimeout(()=>$("subCopyCode").textContent="Copy code",1600); };
       $("subDevId").value=""; $("subNote").value="";
       loadSubs();
+      publishNow(out.devId);
     } else { $("subResult").textContent=(out&&out.error)||"Generation failed"; }
-  }catch(e){ $("subResult").textContent="Generation failed: "+e.message; }
+  }catch(e){
+    const hosted = !/^(localhost|127\.0\.0\.1|\[::1\])$/i.test(location.hostname);
+    if (hosted && /403|forbidden/i.test(e.message||"")) {
+      $("subsLocalWarn").style.display="block";
+      $("subResult").textContent="Code generation is localhost-only — the hosted panel can't write to the backend. Open http://localhost:8600/admin on this PC (password: your local admin password) and generate the code there.";
+    } else {
+      $("subResult").textContent="Generation failed: "+e.message;
+    }
+  }
 };
 loadSubs().catch(()=>{});
 

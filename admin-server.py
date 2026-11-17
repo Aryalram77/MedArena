@@ -20,6 +20,7 @@ import re
 import secrets
 import shutil
 import socket
+import subprocess
 import sys
 import threading
 import time
@@ -102,9 +103,54 @@ def discover_banks(html: str):
     return out
 
 
+_HTML_CACHE = {}   # (path, mtime_ns, size) -> text
+_BANKS_CACHE = {}  # (mtime_ns, size) -> metadata list
+
+
+def _file_sig(path):
+    try:
+        st = os.stat(path)
+        return (st.st_mtime_ns, st.st_size)
+    except OSError:
+        return None
+
+
 def load_html(path=HTML_PATH):
+    """Cached by file signature — the practice file is ~24 MB and is read by
+    many requests at once; re-reading it every time made the panel time out."""
+    key = (os.path.abspath(path), _file_sig(path))
+    hit = _HTML_CACHE.get(key)
+    if hit is not None:
+        return hit
     with open(path, "r", encoding="utf-8") as f:
-        return f.read()
+        text = f.read()
+    if len(_HTML_CACHE) > 4:
+        _HTML_CACHE.clear()
+    _HTML_CACHE[key] = text
+    return text
+
+
+def bank_meta_list():
+    """Lightweight id/name/count list, cached until surgery-practice.html changes."""
+    sig = _file_sig(HTML_PATH)
+    hit = _BANKS_CACHE.get(sig)
+    if hit is not None:
+        return hit
+    html = load_html()
+    banks = []
+    for e in discover_banks(html):
+        span = find_const(html, e["const"])
+        if not span:
+            continue
+        try:
+            data = json.loads(html[html.find("{", span[0]):span[1]])
+            banks.append({"id": e["id"], "cat": e["cat"], "name": data.get("name", e["id"]),
+                          "count": len(data.get("questions", []))})
+        except Exception:
+            banks.append({"id": e["id"], "cat": e["cat"], "name": e["const"], "count": -1})
+    _BANKS_CACHE.clear()
+    _BANKS_CACHE[sig] = banks
+    return banks
 
 
 def load_concept():
@@ -446,6 +492,77 @@ def update_lock_subs(subs):
         with open(INDEX_PATH, "w", encoding="utf-8", newline="") as f:
             f.write(ih2)
         return lk
+
+
+# ---------- publishing (codes/banks only work live once pushed) ----------
+# GitHub Pages serves the committed HTML, so a lifetime code written into the
+# local LOCK does nothing on the live site until those files are pushed.
+PUBLISH_FILES = ("surgery-practice.html", "index.html", "admin.html")
+
+
+def _git(*args, timeout=300):
+    kw = dict(cwd=ROOT, capture_output=True, text=True, encoding="utf-8", errors="replace",
+              timeout=timeout)
+    if os.name == "nt":
+        kw["creationflags"] = 0x08000000  # CREATE_NO_WINDOW — no console flash on each call
+    return subprocess.run(["git"] + list(args), **kw)
+
+
+def _git_branch():
+    r = _git("rev-parse", "--abbrev-ref", "HEAD", timeout=30)
+    return (r.stdout or "").strip() if r.returncode == 0 else ""
+
+
+def publish_status():
+    st = {"branch": "", "changed": [], "ahead": 0, "remote": "", "git": True}
+    try:
+        st["branch"] = _git_branch()
+        if not st["branch"]:
+            st["git"] = False
+            st["error"] = "this folder is not a git repository — publish manually"
+            return st
+        d = _git("status", "--porcelain", "--", *PUBLISH_FILES, timeout=90)
+        st["changed"] = [ln[3:].strip() for ln in (d.stdout or "").splitlines() if ln.strip()]
+        a = _git("rev-list", "--count", "origin/%s..HEAD" % st["branch"], timeout=30)
+        if a.returncode == 0 and (a.stdout or "").strip().isdigit():
+            st["ahead"] = int(a.stdout.strip())
+        r = _git("remote", "get-url", "origin", timeout=30)
+        st["remote"] = (r.stdout or "").strip() if r.returncode == 0 else ""
+    except Exception as ex:
+        st["error"] = str(ex)
+    return st
+
+
+def publish_site(message=""):
+    """Commit + push the pages the panel edits, so changes (and issued codes) go live."""
+    with _lock:
+        branch = _git_branch()
+        if not branch:
+            raise RuntimeError("this folder is not a git repository — publish manually")
+        files = [f for f in PUBLISH_FILES if os.path.exists(os.path.join(ROOT, f))]
+        add = _git("add", "--", *files, timeout=120)
+        if add.returncode != 0:
+            raise RuntimeError((add.stderr or add.stdout or "git add failed").strip())
+        staged = _git("diff", "--cached", "--name-only", timeout=90)
+        changed = [x.strip() for x in (staged.stdout or "").splitlines() if x.strip()]
+        out = {"files": changed, "commit": "", "pushed": False, "branch": branch}
+        if changed:
+            msg = (message or "").strip() or (
+                "Publish from admin panel — " + time.strftime("%d %b %Y, %H:%M"))
+            c = _git("commit", "-m", msg, timeout=180)
+            if c.returncode != 0:
+                raise RuntimeError(((c.stdout or "") + "\n" + (c.stderr or "")).strip()
+                                   or "git commit failed")
+            r = _git("rev-parse", "--short", "HEAD", timeout=30)
+            out["commit"] = (r.stdout or "").strip()
+        push = _git("push", "origin", "HEAD:main", timeout=300)
+        if push.returncode != 0:
+            raise RuntimeError((push.stderr or push.stdout or "git push failed").strip())
+        out["pushed"] = True
+        out["msg"] = (("Published %d file(s)%s — GitHub Pages updates in about a minute."
+                       % (len(changed), (" (commit " + out["commit"] + ")") if out["commit"] else ""))
+                      if changed else "Already up to date — nothing to publish.")
+        return out
 
 
 def generate_sub(dev_id, note):
@@ -847,21 +964,8 @@ class Handler(BaseHTTPRequestHandler):
             self._send_json({"configured": admin_configured(),
                              "signed_in": admin_session_ok(self),
                              "loopback": self._is_loopback()}); return
-        if path.startswith("/api/banks"):
-            with _lock:
-                html = load_html()
-                banks = []
-                for e in discover_banks(html):
-                    span = find_const(html, e["const"])
-                    if not span:
-                        continue
-                    try:
-                        data = json.loads(html[html.find("{", span[0]):span[1]])
-                        banks.append({"id": e["id"], "cat": e["cat"], "name": data.get("name", e["id"]),
-                                      "count": len(data.get("questions", []))})
-                    except Exception:
-                        banks.append({"id": e["id"], "cat": e["cat"], "name": e["const"], "count": -1})
-                self._send_json(banks); return
+        if path == "/api/banks":
+            self._send_json(bank_meta_list()); return
         if path.startswith("/api/bank/"):
             bid = path[len("/api/bank/"):].strip("/")
             with _lock:
@@ -912,6 +1016,10 @@ class Handler(BaseHTTPRequestHandler):
             self._send_json({"enabled": bool(lk.get("rev")), "subs": lk.get("subs", []),
                              "log": load_subs_log()})
             return
+        if path == "/api/publish-status":
+            if not (self._is_loopback() or admin_session_ok(self)):
+                self._send_json({"error": "admin only"}, 403); return
+            self._send_json(publish_status()); return
         if path == "/api/auth/config":
             cid = google_client_id()
             self._send_json({"client_id": cid,
@@ -1268,6 +1376,12 @@ class Handler(BaseHTTPRequestHandler):
                                  "createdAt": entry["createdAt"]})
             except Exception as ex:
                 self._send_json({"error": "%s" % ex}, 400)
+            return
+        if path == "/api/publish":
+            try:
+                self._send_json({"ok": True, **publish_site(payload.get("message"))})
+            except Exception as ex:
+                self._send_json({"error": "%s" % ex}, 500)
             return
         if path == "/api/sub-revoke":
             try:
