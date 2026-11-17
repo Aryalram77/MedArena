@@ -2030,6 +2030,10 @@ renderEmbeddedBanks();
   document.addEventListener("visibilitychange", refresh);
   window.addEventListener("focus", refresh);
   refresh();
+  /* Study buddy "Unlock here" link lands here when the practice gate is hidden. */
+  if(new URLSearchParams(location.search).get("lifetime")==="1"){
+    setTimeout(function(){ try{ window.__maOpenPremium(); }catch(err){} },300);
+  }
 })();
 
 /* ============ init ============ */

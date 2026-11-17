@@ -1366,6 +1366,10 @@ function medArenaHash(s){
     .catch(() => {});
   /* unlocked: owner's master code, or a lifetime code issued for THIS device */
   const unlocked = () => isFreePeriod() || (!!rev && !!saved && (saved.rev === rev || allSubs().some(s => s.rev && s.rev === saved.rev && s.id === devId)));
+  /* Share the live unlock state with the study buddy so it never shows a
+     locked answer on a device that practice already treats as unlocked
+     (including cloud-issued codes returned by /api/sub-verify). */
+  window.MA_PRACTICE_UNLOCKED = function(){ return unlocked(); };
   /* legacy lock (no banks array) => every set; otherwise only the listed ids */
   const onlyBanks = () => (LOCK && Array.isArray(LOCK.banks)) ? LOCK.banks : null;
   const entryNow = () => BANKS.find(b => b.bank === CUR) || BANKS[0];
@@ -1632,19 +1636,28 @@ function medArenaHash(s){
     var list=Array.isArray(LOCK.banks)?LOCK.banks:null;
     return list?list.indexOf(id)>=0:true;
   }
-  function deviceUnlocked(){
+  async function deviceUnlocked(){
+    /* Prefer the practice page's own live state — it already accounts for
+       cloud-issued codes fetched from /api/sub-verify. */
+    try{ if(typeof window.MA_PRACTICE_UNLOCKED==="function"&&window.MA_PRACTICE_UNLOCKED()) return true; }catch(err){}
     try{ if(typeof isFreePeriod==="function"&&isFreePeriod()) return true; }catch(err){}
     if(typeof LOCK==="undefined"||!LOCK||!LOCK.rev) return true;
     var saved=null; try{saved=JSON.parse(localStorage.getItem("medarena.practiceAccess")||"null");}catch(err){}
-    if(saved&&saved.rev===LOCK.rev) return true;
+    if(!saved) return false;
+    if(saved.rev===LOCK.rev) return true;
     var dev=""; try{dev=localStorage.getItem("medarena.deviceId")||"";}catch(err){}
     var subs=Array.isArray(LOCK.subs)?LOCK.subs:[];
-    for(var i=0;i<subs.length;i++){var s=subs[i];if(s.id===dev&&s.rev&&saved&&s.rev===saved.rev) return true;}
+    for(var i=0;i<subs.length;i++){var s=subs[i];if(s.id===dev&&s.rev&&s.rev===saved.rev) return true;}
+    /* Cloud-issued code (Worker + Supabase) — same check the gate performs. */
+    try{
+      var vr=await fetch("/api/sub-verify?dev="+encodeURIComponent(dev),{cache:"no-store"});
+      if(vr.ok){var vd=await vr.json(); if(vd&&vd.rev&&vd.rev===saved.rev) return true;}
+    }catch(err){}
     return false;
   }
 
-  function render(q,hits){
-    var unlocked=deviceUnlocked();
+  async function render(q,hits){
+    var unlocked=await deviceUnlocked();
     var h="<b>Closest matches</b> for “"+e(q)+"” from your MedArena banks:";
     h+='<div class="ma-b-cards">';
     hits.forEach(function(hit){
@@ -1675,8 +1688,13 @@ function medArenaHash(s){
     for(var i=0;i<links.length;i++) links[i].onclick=function(ev){
       ev.preventDefault();
       var gate=$("accessGate");
-      if(gate){PANEL.style.display="none";gate.scrollIntoView({block:"center"});var inp=$("accessCodeInput");if(inp)setTimeout(function(){inp.focus();},120);}
-      else window.location.href="index.html";
+      if(gate&&gate.style.display==="grid"){
+        PANEL.style.display="none";gate.scrollIntoView({block:"center"});
+        var inp=$("accessCodeInput");if(inp)setTimeout(function(){inp.focus();},120);
+      }else{
+        /* Gate hidden (e.g. free mock selected) — open the lifetime panel on the homepage. */
+        window.location.href="index.html?lifetime=1";
+      }
     };
   }
 
@@ -1692,7 +1710,7 @@ function medArenaHash(s){
       if(thinking&&thinking.parentNode) thinking.parentNode.removeChild(thinking);
       var hits=MODE==="ai"?await aiSearch(text,4):kwSearch(text,4);
       if(!hits.length) sys("I couldn't find a close match in your banks. Try a shorter question or a key term, e.g. <b>Addison disease</b>.");
-      else render(text,hits);
+      else await render(text,hits);
     }catch(err){ sys("Sorry, something went wrong: "+e(err&&err.message||err)); }
     SEND.disabled=false; INPUT.focus(); MSGS.scrollTop=MSGS.scrollHeight;
   }
