@@ -564,6 +564,18 @@ def publish_site(message=""):
                                    or "git commit failed")
             r = _git("rev-parse", "--short", "HEAD", timeout=30)
             out["commit"] = (r.stdout or "").strip()
+        # Rebase onto the live branch before pushing. If another folder edited
+        # this repo in the meantime, our new commit is replayed on top of it
+        # instead of being rejected as non-fast-forward (the old silent failure
+        # that left locally-issued codes unpublished).
+        fetch = _git("fetch", "origin", timeout=180)
+        if fetch.returncode != 0:
+            raise RuntimeError((fetch.stderr or fetch.stdout or "git fetch failed").strip())
+        reb = _git("rebase", "--autostash", "origin/%s" % branch, timeout=180)
+        if reb.returncode != 0:
+            _git("rebase", "--abort", timeout=60)
+            raise RuntimeError("Publish blocked: this PC and GitHub diverged. "
+                               "Run `git pull --rebase origin main` in this folder, then retry.")
         push = _git("push", "origin", "HEAD:main", timeout=300)
         if push.returncode != 0:
             raise RuntimeError((push.stderr or push.stdout or "git push failed").strip())
