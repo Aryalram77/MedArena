@@ -129,10 +129,11 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
   } catch (e) {}
   var onLocal = /^(localhost|127\.0\.0\.1|\[::1\])$/i.test(location.hostname);
   var cloud = (window.MA_API_BASE || "").trim();
-  /* On localhost, "-" means "don't talk to any API — use the panel offline".
-     On a hosted site there is no local server, so "-" is meaningless and would
-     permanently strand the panel; there, the baked-in worker always wins. */
-  if (onLocal) { base = (ls === "-" ? "" : (ls || "")); }
+  /* On localhost the admin server IS the backend — code generation, saves, lock
+     changes all happen there, so never route to the worker from localhost.
+     On the hosted site the worker serves reads; admin writes (sub-generate,
+     saves) 403 there — the panel warns and points to localhost instead. */
+  if (onLocal) { base = ""; }
   else { base = (ls === "-" || !ls) ? cloud : ls; }
   base = base.replace(/\/+$/, "");
   if (!base && !cloud) return;
@@ -325,6 +326,7 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
 <div class="panel" id="subsPanel" style="margin:0 22px 20px;max-width:1456px">
   <h2>💳 Lifetime subscriptions — Rs 1,000 (eSewa)</h2>
   <div class="meta" style="margin:-4px 0 12px">Buyer scans the eSewa QR shown on the homepage / practice gate and pays Rs 1,000, then sends you the screenshot together with their <b>Device ID</b>. Generate one personal code per device — it unlocks all locked sets on that device forever. Removing the lock removes all codes with it.</div>
+  <div id="subsLocalWarn" class="meta" style="margin:-4px 0 12px;padding:9px 12px;border:1px solid #fcd34d;background:#fef3c7;border-radius:8px;color:#92400e;display:none">⚠ This hosted panel can only <b>read</b>; codes cannot be issued from here. Run <code>python admin-server.py</code> on this PC and open <code>http://localhost:8600/admin</code> (password: your local admin password) — everything works there.</div>
   <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end">
     <label class="f" style="max-width:260px">Device ID (shown on buyer's screen)<input type="text" id="subDevId" placeholder="MA-AB2C-D3EF" style="text-transform:uppercase"></label>
     <label class="f" style="flex:1;min-width:200px">Note (buyer name / phone / eSewa txn)<input type="text" id="subNote" placeholder="optional"></label>
@@ -807,7 +809,15 @@ async function loadSubs(){
       try{ await api("/api/sub-revoke",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({devId:b.dataset.revoke})}); toast("Code revoked"); loadSubs(); }
       catch(e){ toast("Revoke failed: "+e.message,true); }
     });
-  }catch(e){ $("subsList").textContent="Load failed: "+e.message; }
+  }catch(e){
+    const hosted = !/^(localhost|127\.0\.0\.1|\[::1\])$/i.test(location.hostname);
+    if (hosted && /403|forbidden/i.test(e.message||"")) {
+      if ($("subsLocalWarn")) $("subsLocalWarn").style.display="block";
+      $("subsList").innerHTML="<span class='meta'>Code list is only available on localhost. Run <code>python admin-server.py</code> → http://localhost:8600/admin (password: local admin password).</span>";
+    } else {
+      $("subsList").textContent="Load failed: "+e.message;
+    }
+  }
 }
 $("subGenerate").onclick=async()=>{
   const devId=$("subDevId").value.trim().toUpperCase();
@@ -822,7 +832,15 @@ $("subGenerate").onclick=async()=>{
       $("subDevId").value=""; $("subNote").value="";
       loadSubs();
     } else { $("subResult").textContent=(out&&out.error)||"Generation failed"; }
-  }catch(e){ $("subResult").textContent="Generation failed: "+e.message; }
+  }catch(e){
+    const hosted = !/^(localhost|127\.0\.0\.1|\[::1\])$/i.test(location.hostname);
+    if (hosted && /403|forbidden/i.test(e.message||"")) {
+      $("subsLocalWarn").style.display="block";
+      $("subResult").textContent="Code generation is localhost-only — the hosted panel can't write to the backend. Open http://localhost:8600/admin on this PC (password: your local admin password) and generate the code there.";
+    } else {
+      $("subResult").textContent="Generation failed: "+e.message;
+    }
+  }
 };
 loadSubs().catch(()=>{});
 
