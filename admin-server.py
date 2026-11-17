@@ -20,6 +20,7 @@ import re
 import secrets
 import shutil
 import socket
+import subprocess
 import sys
 import threading
 import time
@@ -446,6 +447,77 @@ def update_lock_subs(subs):
         with open(INDEX_PATH, "w", encoding="utf-8", newline="") as f:
             f.write(ih2)
         return lk
+
+
+# ---------- publishing (codes/banks only work live once pushed) ----------
+# GitHub Pages serves the committed HTML, so a lifetime code written into the
+# local LOCK does nothing on the live site until those files are pushed.
+PUBLISH_FILES = ("surgery-practice.html", "index.html", "admin.html")
+
+
+def _git(*args, timeout=300):
+    kw = dict(cwd=ROOT, capture_output=True, text=True, encoding="utf-8", errors="replace",
+              timeout=timeout)
+    if os.name == "nt":
+        kw["creationflags"] = 0x08000000  # CREATE_NO_WINDOW — no console flash on each call
+    return subprocess.run(["git"] + list(args), **kw)
+
+
+def _git_branch():
+    r = _git("rev-parse", "--abbrev-ref", "HEAD", timeout=30)
+    return (r.stdout or "").strip() if r.returncode == 0 else ""
+
+
+def publish_status():
+    st = {"branch": "", "changed": [], "ahead": 0, "remote": "", "git": True}
+    try:
+        st["branch"] = _git_branch()
+        if not st["branch"]:
+            st["git"] = False
+            st["error"] = "this folder is not a git repository — publish manually"
+            return st
+        d = _git("status", "--porcelain", "--", *PUBLISH_FILES, timeout=90)
+        st["changed"] = [ln[3:].strip() for ln in (d.stdout or "").splitlines() if ln.strip()]
+        a = _git("rev-list", "--count", "origin/%s..HEAD" % st["branch"], timeout=30)
+        if a.returncode == 0 and (a.stdout or "").strip().isdigit():
+            st["ahead"] = int(a.stdout.strip())
+        r = _git("remote", "get-url", "origin", timeout=30)
+        st["remote"] = (r.stdout or "").strip() if r.returncode == 0 else ""
+    except Exception as ex:
+        st["error"] = str(ex)
+    return st
+
+
+def publish_site(message=""):
+    """Commit + push the pages the panel edits, so changes (and issued codes) go live."""
+    with _lock:
+        branch = _git_branch()
+        if not branch:
+            raise RuntimeError("this folder is not a git repository — publish manually")
+        files = [f for f in PUBLISH_FILES if os.path.exists(os.path.join(ROOT, f))]
+        add = _git("add", "--", *files, timeout=120)
+        if add.returncode != 0:
+            raise RuntimeError((add.stderr or add.stdout or "git add failed").strip())
+        staged = _git("diff", "--cached", "--name-only", timeout=90)
+        changed = [x.strip() for x in (staged.stdout or "").splitlines() if x.strip()]
+        out = {"files": changed, "commit": "", "pushed": False, "branch": branch}
+        if changed:
+            msg = (message or "").strip() or (
+                "Publish from admin panel — " + time.strftime("%d %b %Y, %H:%M"))
+            c = _git("commit", "-m", msg, timeout=180)
+            if c.returncode != 0:
+                raise RuntimeError(((c.stdout or "") + "\n" + (c.stderr or "")).strip()
+                                   or "git commit failed")
+            r = _git("rev-parse", "--short", "HEAD", timeout=30)
+            out["commit"] = (r.stdout or "").strip()
+        push = _git("push", "origin", "HEAD:main", timeout=300)
+        if push.returncode != 0:
+            raise RuntimeError((push.stderr or push.stdout or "git push failed").strip())
+        out["pushed"] = True
+        out["msg"] = (("Published %d file(s)%s — GitHub Pages updates in about a minute."
+                       % (len(changed), (" (commit " + out["commit"] + ")") if out["commit"] else ""))
+                      if changed else "Already up to date — nothing to publish.")
+        return out
 
 
 def generate_sub(dev_id, note):
@@ -912,6 +984,10 @@ class Handler(BaseHTTPRequestHandler):
             self._send_json({"enabled": bool(lk.get("rev")), "subs": lk.get("subs", []),
                              "log": load_subs_log()})
             return
+        if path == "/api/publish-status":
+            if not (self._is_loopback() or admin_session_ok(self)):
+                self._send_json({"error": "admin only"}, 403); return
+            self._send_json(publish_status()); return
         if path == "/api/auth/config":
             cid = google_client_id()
             self._send_json({"client_id": cid,
@@ -1268,6 +1344,12 @@ class Handler(BaseHTTPRequestHandler):
                                  "createdAt": entry["createdAt"]})
             except Exception as ex:
                 self._send_json({"error": "%s" % ex}, 400)
+            return
+        if path == "/api/publish":
+            try:
+                self._send_json({"ok": True, **publish_site(payload.get("message"))})
+            except Exception as ex:
+                self._send_json({"error": "%s" % ex}, 500)
             return
         if path == "/api/sub-revoke":
             try:

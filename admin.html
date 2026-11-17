@@ -332,6 +332,11 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
   <h2>💳 Lifetime subscriptions — Rs 1,000 (eSewa)</h2>
   <div class="meta" style="margin:-4px 0 12px">Buyer scans the eSewa QR shown on the homepage / practice gate and pays Rs 1,000, then sends you the screenshot together with their <b>Device ID</b>. Generate one personal code per device — it unlocks all locked sets on that device forever. Removing the lock removes all codes with it.</div>
   <div id="subsLocalWarn" class="meta" style="margin:-4px 0 12px;padding:9px 12px;border:1px solid #fcd34d;background:#fef3c7;border-radius:8px;color:#92400e;display:none">⚠ This hosted panel can only <b>read</b>; codes cannot be issued from here. Run <code>python admin-server.py</code> on this PC and open <code>http://localhost:8600/admin</code> (password: your local admin password) — everything works there.</div>
+  <div id="publishState" class="meta" style="margin:-4px 0 10px"></div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px">
+    <button class="ghost small" id="publishNow">🚀 Publish to live site</button>
+    <span class="meta" style="align-self:center">A code only works on the live site after these files are published.</span>
+  </div>
   <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end">
     <label class="f" style="max-width:260px">Device ID (shown on buyer's screen)<input type="text" id="subDevId" placeholder="MA-AB2C-D3EF" style="text-transform:uppercase"></label>
     <label class="f" style="flex:1;min-width:200px">Note (buyer name / phone / eSewa txn)<input type="text" id="subNote" placeholder="optional"></label>
@@ -420,10 +425,13 @@ async function promptRelogin(msg){
 window.promptRelogin = promptRelogin;
 
 async function api(path, opts){
+  const o = Object.assign({}, opts || {});
+  const timeoutMs = Number(o.timeoutMs) || API_TIMEOUT_MS;
+  delete o.timeoutMs;
   const ctl = new AbortController();
-  const timer = setTimeout(() => ctl.abort(), API_TIMEOUT_MS);
+  const timer = setTimeout(() => ctl.abort(), timeoutMs);
   try {
-    const r = await fetch(path, Object.assign({}, opts || {}, { signal: ctl.signal }));
+    const r = await fetch(path, Object.assign({}, o, { signal: ctl.signal }));
     let m = "";
     try { m = (await r.clone().json()).error || ""; } catch (e) {}
     if (r.status === 403 && /admin password|Need the admin/i.test(m)) {
@@ -835,6 +843,45 @@ loadAccessSettings().catch(e=>toast("Access settings load failed: "+e.message,tr
 
 /* ===== lifetime subscriptions ===== */
 let subCodeCopy=null;
+
+/* Publishing: GitHub Pages serves the committed files, so a freshly issued code
+   does not exist on the live site until surgery-practice.html is pushed. */
+async function loadPublishState(){
+  const el=$("publishState");
+  if(!el) return;
+  try{
+    const st=await api("/api/publish-status");
+    if(st.error){ el.innerHTML="⚠ "+esc(st.error); el.style.color="#92400e"; return; }
+    if((st.changed||[]).length || st.ahead){
+      const bits=[];
+      if((st.changed||[]).length) bits.push((st.changed||[]).length+" file(s) changed locally");
+      if(st.ahead) bits.push(st.ahead+" commit(s) not pushed");
+      el.innerHTML="⚠ <b>Not published</b> — "+esc(bits.join(" · "))+" — codes/banks won't work on the live site yet.";
+      el.style.color="#92400e";
+    }else{
+      el.innerHTML="✅ Live site is up to date (branch "+esc(st.branch||"main")+") — issued codes work immediately.";
+      el.style.color="#065f46";
+    }
+  }catch(e){ el.textContent=""; }
+}
+async function publishNow(reason){
+  const el=$("publishState");
+  if(el){ el.textContent="Publishing to the live site…"; el.style.color="#475569"; }
+  try{
+    const out=await api("/api/publish",{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({message:reason?("Lifetime code: "+reason):""}),timeoutMs:120000});
+    if(el){ el.innerHTML="✅ "+esc(out.msg); el.style.color="#065f46"; }
+    const r=$("subResult");
+    if(r && /✅/.test(r.innerHTML)) r.innerHTML+="<div class='meta' style='margin-top:6px;color:#065f46'>🚀 "+esc(out.msg)+"</div>";
+  }catch(e){
+    if(el){ el.innerHTML="❌ Publish failed: "+esc(e.message)+" — click 🚀 Publish to live site to retry."; el.style.color="#b91c1c"; }
+  }
+  loadPublishState().catch(()=>{});
+}
+const publishBtn=$("publishNow");
+if(publishBtn) publishBtn.onclick=()=>publishNow("");
+loadPublishState().catch(()=>{});
+
 async function loadSubs(){
   try{
     const out=await api("/api/subs");
@@ -849,7 +896,7 @@ async function loadSubs(){
     box.innerHTML=rows.length?rows.join(""):"<span class='meta'>No codes issued yet.</span>";
     box.querySelectorAll("[data-revoke]").forEach(b=>b.onclick=async()=>{
       if(!confirm("Revoke the code for "+b.dataset.revoke+"? That device will re-lock immediately."))return;
-      try{ await api("/api/sub-revoke",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({devId:b.dataset.revoke})}); toast("Code revoked"); loadSubs(); }
+      try{ await api("/api/sub-revoke",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({devId:b.dataset.revoke})}); toast("Code revoked"); loadSubs(); publishNow("revoke "+b.dataset.revoke); }
       catch(e){ toast("Revoke failed: "+e.message,true); }
     });
   }catch(e){
@@ -874,6 +921,7 @@ $("subGenerate").onclick=async()=>{
       $("subCopyCode").onclick=()=>{ try{navigator.clipboard&&navigator.clipboard.writeText(subCodeCopy);}catch(e){} $("subCopyCode").textContent="Copied!"; setTimeout(()=>$("subCopyCode").textContent="Copy code",1600); };
       $("subDevId").value=""; $("subNote").value="";
       loadSubs();
+      publishNow(out.devId);
     } else { $("subResult").textContent=(out&&out.error)||"Generation failed"; }
   }catch(e){
     const hosted = !/^(localhost|127\.0\.0\.1|\[::1\])$/i.test(location.hostname);
