@@ -94,11 +94,13 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
 .u-bbar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#22c55e,#16a34a)}
 @media(max-width:900px){.u-row{grid-template-columns:minmax(140px,1.6fr) 70px 56px 56px 50px;}.u-row span:nth-child(6),.u-row span:nth-child(7){display:none}.u-brow{grid-template-columns:1fr 90px}.u-brow b{grid-column:1/-1;text-align:left}}
 </style>
+<script>window.MA_API_BASE = "https://medarena-api.medarena-ram.workers.dev"; // cloud API baked into this page — set localStorage.ma_api_base="-" to use the local server instead
+</script>
 <script>
-/* The admin panel edits files on this computer and is loopback-only, so it
-   always talks to admin-server.py. It must never use the cloud worker: every
-   admin call there 403s (no admin token) and the panel hangs on "Loading sets".
-   MA_API_BASE is deliberately left unset on this page. */
+/* MedArena API bridge — admin.html talks to the deployed Cloudflare Worker on
+ * GitHub Pages, and to the local admin-server.py when served from localhost.
+ * On the cloud every fetch("/api/...") is routed to the worker and the admin
+ * bearer token from localStorage["ma_admin_token"] is attached after sign-in. */
 /* MedArena API bridge — lets the local pages talk to the Cloudflare Worker.
  *
  * Active only when an external API base is configured. Precedence:
@@ -120,18 +122,20 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
   "use strict";
   var base = "";
   var ls = "";
-  /* Allow cloud/remote backend URL for GitHub Pages deployment.
-     Set via ?api=https://your-backend.example.com or localStorage "ma_api_base".
-     Leave empty for local admin-server.py (default). */
   try {
     var qp = new URLSearchParams(location.search);
-    if (qp.get("api")) { base = qp.get("api").replace(/\/+$/, ""); localStorage.setItem("ma_api_base", base); }
-    else { base = (localStorage.getItem("ma_api_base") || "").replace(/\/+$/, ""); }
-  } catch (e) { base = ""; }
-  // Only enable cloud fetch rewriting when base is set and we're not on localhost
-  var isLocal = /^(localhost|127\.0\.0\.1)(:\d+)?$/.test(location.host);
-  if (isLocal) base = "";
-  if (!base) return;
+    if (qp.get("api")) { localStorage.setItem("ma_api_base", qp.get("api").replace(/\/+$/, "")); ls = qp.get("api").replace(/\/+$/, ""); }
+    else { ls = (localStorage.getItem("ma_api_base") || "").trim(); }
+  } catch (e) {}
+  var onLocal = /^(localhost|127\.0\.0\.1|\[::1\])$/i.test(location.hostname);
+  var cloud = (window.MA_API_BASE || "").trim();
+  /* Precedence: ?api= (and localStorage override, "-" disables) → localhost (local server) → baked-in worker */
+  if (ls === "-") base = "";
+  else if (ls) base = ls;
+  else if (onLocal) base = "";
+  else base = cloud;
+  base = base.replace(/\/+$/, "");
+  if (!base && !cloud) return;
 
   function tokFor(path) {
     try {
@@ -364,6 +368,7 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
 
 <script>
 const $ = id => document.getElementById(id);
+const API_TIMEOUT_MS = 15000;
 let META = null;              // [{id, name, count}]
 let bank = null;              // working copy of current bank
 let bankId = null;
@@ -385,9 +390,16 @@ function setDirty(v){
 }
 
 async function api(path, opts){
-  const r = await fetch(path, opts);
-  if (!r.ok){ let m = ""; try { m = (await r.json()).error; } catch(e){} throw new Error(m || r.status); }
-  return r.json();
+  const ctl = new AbortController();
+  const timer = setTimeout(() => ctl.abort(), API_TIMEOUT_MS);
+  try {
+    const r = await fetch(path, Object.assign({}, opts || {}, { signal: ctl.signal }));
+    if (!r.ok){ let m = ""; try { m = (await r.json()).error; } catch(e){} throw new Error(m || r.status); }
+    return r.json();
+  } catch (e) {
+    if (e && e.name === "AbortError") throw new Error("Request timed out — is the admin server running?");
+    throw e;
+  } finally { clearTimeout(timer); }
 }
 
 async function loadBanks(){
