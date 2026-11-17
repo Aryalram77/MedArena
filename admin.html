@@ -391,12 +391,41 @@ function setDirty(v){
   $("dirtyFlag").style.display = v ? "block" : "none";
 }
 
+async function promptRelogin(msg){
+  // session expired / never signed in — drop into the sign-in screen.
+  try {
+    document.querySelectorAll("main").forEach(m => m.style.display = "none");
+    const g = document.getElementById("adminGate");
+    if (g) {
+      g.style.display = "flex";
+      document.getElementById("gateTitle").textContent = "Admin sign in";
+      document.getElementById("gateHint").textContent = msg || "Your admin session expired — sign in again to keep editing.";
+      document.getElementById("gateCurrentRow").style.display = "none";
+      document.getElementById("gateSubmit").textContent = "Sign in";
+      document.getElementById("gatePw").value = "";
+      document.getElementById("gateErr").textContent = "";
+      g.dataset.mode = "login";
+      document.getElementById("gatePw").focus();
+      document.querySelectorAll("div#homepagePanel, div#notificationPanel, div#accessPanel, div#subsPanel, div#googlePanel, div#usersPanel, div#qotdPanel").forEach(p => p.style.display = "none");
+    }
+  } catch (e) {}
+}
+
+// keep the re-login path consistent whether they reload mid-session or hit 403 on a request
+window.promptRelogin = promptRelogin;
+
 async function api(path, opts){
   const ctl = new AbortController();
   const timer = setTimeout(() => ctl.abort(), API_TIMEOUT_MS);
   try {
     const r = await fetch(path, Object.assign({}, opts || {}, { signal: ctl.signal }));
-    if (!r.ok){ let m = ""; try { m = (await r.json()).error; } catch(e){} throw new Error(m || r.status); }
+    let m = "";
+    try { m = (await r.clone().json()).error || ""; } catch (e) {}
+    if (r.status === 403 && /admin password|Need the admin/i.test(m)) {
+      promptRelogin("Your admin session expired — sign in again.");
+      throw new Error("Admin changes need the admin password — sign in again.");
+    }
+    if (!r.ok){ throw new Error(m || String(r.status)); }
     return r.json();
   } catch (e) {
     if (e && e.name === "AbortError") throw new Error("Request timed out — is the admin server running?");
@@ -681,6 +710,7 @@ bindLive();
   const boot = () => {
     document.getElementById("adminGate").style.display = "none";
     document.querySelector("main").style.display = "";
+    document.querySelectorAll("#homepagePanel, #notificationPanel, #accessPanel, #subsPanel, #googlePanel, #usersPanel, #qotdPanel").forEach(p => { p.style.display = ""; });
     loadBanks().then(() => toast("Loaded " + META.length + " banks from surgery-practice.html"))
                .catch(e => toast("Load failed: " + e.message, true));
   };
