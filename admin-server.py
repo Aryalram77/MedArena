@@ -491,13 +491,22 @@ def update_lock_subs(subs):
             raise RuntimeError("could not replace PLOCK in index.html")
         with open(INDEX_PATH, "w", encoding="utf-8", newline="") as f:
             f.write(ih2)
+        # Keep Very High Yield notes in sync — the same lifetime code unlocks them.
+        hy_path = os.path.join(ROOT, "high-yield.html")
+        if os.path.exists(hy_path):
+            hy_html = load_html(hy_path)
+            hy_line = "  var LOCK = %s;" % json.dumps(pobj, separators=(",", ":"))
+            hy2 = re.sub(r"var LOCK = [^\n]*", lambda _m, s=hy_line: s, hy_html, count=1)
+            if hy2 != hy_html:
+                with open(hy_path, "w", encoding="utf-8", newline="") as f:
+                    f.write(hy2)
         return lk
 
 
 # ---------- publishing (codes/banks only work live once pushed) ----------
 # GitHub Pages serves the committed HTML, so a lifetime code written into the
 # local LOCK does nothing on the live site until those files are pushed.
-PUBLISH_FILES = ("surgery-practice.html", "index.html", "admin.html")
+PUBLISH_FILES = ("surgery-practice.html", "index.html", "high-yield.html", "admin.html")
 
 
 def _git(*args, timeout=300):
