@@ -148,6 +148,11 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
 
   var orig = window.fetch && window.fetch.bind(window);
   if (!orig) return;
+  /* Local admin: same-origin requests to admin-server.py, which authenticates
+     with the HttpOnly `ma_admin` cookie. Wrapping fetch here would force
+     credentials:"omit" (a cloud-worker need) and the browser would drop the
+     login cookie — every write would then 403. Leave local fetch untouched. */
+  if (!base) return;
   window.fetch = function (input, init) {
     try {
       var url = typeof input === "string" ? input : (input && input.url) || "";
@@ -734,6 +739,14 @@ bindLive();
             body: JSON.stringify({ password: pw, current: cur }) });
       // cloud mode: the Worker returns a bearer token — keep it on this device
       if (out && out.token) { try { localStorage.setItem("ma_admin_token", out.token); } catch (e) {} }
+      // local mode: confirm the HttpOnly session cookie actually stuck
+      try {
+        const st2 = await api("/api/admin/status");
+        if (st2 && st2.configured && !st2.signed_in) {
+          errEl.textContent = "Password accepted, but the browser dropped the session cookie. Allow cookies / site data for this address and try again.";
+          return;
+        }
+      } catch (e) { /* status is best-effort */ }
       document.getElementById("gatePw").value = "";
       document.getElementById("gateCurrent").value = "";
       boot();
