@@ -65,6 +65,21 @@
   .note{margin-top:26px;text-align:center;font-size:13px;color:var(--muted)}
   .backlink{display:inline-block;margin-top:14px;color:var(--navy);text-decoration:none;border:1px solid var(--gold);padding:9px 20px;border-radius:2px;font-size:13px;letter-spacing:2px;text-transform:uppercase}
   .backlink:hover{background:var(--gold);color:#fff}
+  .reel-section{
+    background:#FFFDF8;
+    border:1px solid rgba(176,141,47,.55);
+    border-radius:4px;
+    box-shadow:0 14px 40px rgba(90,70,30,.15), inset 0 0 40px rgba(176,141,47,.06);
+    padding:24px;margin-bottom:28px;
+  }
+  .reel-section h2{
+    font-family:"Bodoni MT","Bodoni 72",Georgia,serif;
+    font-size:26px;color:var(--navy);text-align:center;margin:2px 0 4px;
+  }
+  .reel-video{
+    display:block;width:min(100%,380px);aspect-ratio:9/16;margin:18px auto 0;
+    background:#0b1420;border:1px solid rgba(176,141,47,.6);border-radius:6px;
+  }
 </style>
 </head>
 <body>
@@ -83,6 +98,55 @@
     <div class="sub">Generative explanations. Exam-first. Built for Loksewa &amp; CEE.</div>
     <div class="meta">Gandaki Loksewa 2080 · Medical Officer · High-Yield edition</div>
   </div>
+
+  <section class="reel-section" aria-label="Curling ulcer short reel">
+    <h2>Short Reel · Curling Ulcer Mechanism</h2>
+    <div class="sub">Burns → ischaemia → barrier breakdown → acute stress ulcer</div>
+    <video class="reel-video" controls playsinline preload="metadata"
+           src="videos/curling-ulcer-reel.mp4">
+      Your browser does not support the video tag.
+      Download: <a href="videos/curling-ulcer-reel.mp4">Curling ulcer mechanism reel (MP4)</a>.
+    </video>
+    <div class="chips">
+      <span class="chip">39-second vertical reel</span>
+      <span class="chip">Cartoon presenter</span>
+      <span class="chip">Natural female narration</span>
+      <span class="chip">Distinct exam pearl</span>
+      <span class="chip">Curling vs Cushing</span>
+    </div>
+    <div class="desc">
+      <div><b>Mechanism:</b> Severe burns → plasma loss &amp; stress response → splanchnic vasoconstriction → mucosal ischaemia → mucus/HCO₃⁻ barrier loss → acid erosion → acute ulcer.</div>
+      <div><b>Pearl:</b> Curling = burns → ischaemia; Cushing = brain injury → vagal acid hypersecretion.</div>
+      <div><b>Length:</b> ≈ 39 seconds · 1080×1920 · 9:16.</div>
+      <div><b>Outro:</b> Silent link card with a soothing chime — <a href="https://aryalram77.github.io/MedArena/index.html" target="_blank" rel="noopener">aryalram77.github.io/MedArena/index.html</a>.</div>
+    </div>
+    <p class="note">Code-drawn SVG cartoon + frame-accurate lip-sync + natural female narration · rendered locally with Remotion.</p>
+  </section>
+
+  <section class="reel-section" aria-label="Locked-in syndrome two-doctor reel">
+    <h2>Two-Doctor Reel · Locked-in Syndrome</h2>
+    <div class="sub">Awake mind · still body · the pons disconnect</div>
+    <video class="reel-video" controls playsinline preload="metadata"
+           src="videos/locked-in-syndrome-reel.mp4">
+      Your browser does not support the video tag.
+      Download: <a href="videos/locked-in-syndrome-reel.mp4">Locked-in syndrome reel (MP4)</a>.
+    </video>
+    <div class="chips">
+      <span class="chip">103-second vertical reel</span>
+      <span class="chip">Two cartoon doctors</span>
+      <span class="chip">Male + female voices</span>
+      <span class="chip">Charming intro</span>
+      <span class="chip">Not a coma</span>
+    </div>
+    <div class="desc">
+      <div><b>Mechanism:</b> Ventral pontine stroke → corticospinal + corticobulbar pathways interrupted → quadriplegia and mutism, with consciousness preserved.</div>
+      <div><b>Communication:</b> Vertical gaze and blinking are often preserved — look up for yes, blink for no, or use an alphabet board.</div>
+      <div><b>Pearl:</b> A motionless body does not mean a motionless mind.</div>
+      <div><b>Length:</b> ≈ 103 seconds · 1080×1920 · 9:16.</div>
+      <div><b>Outro:</b> Silent link card with a soothing chime — <a href="https://aryalram77.github.io/MedArena/index.html" target="_blank" rel="noopener">aryalram77.github.io/MedArena/index.html</a>.</div>
+    </div>
+    <p class="note">Two code-drawn SVG doctors · alternating natural male and female narration · frame-accurate lip-sync · rendered locally with Remotion.</p>
+  </section>
 
   <section class="lesson" aria-label="Lesson video">
     <video controls preload="metadata"
