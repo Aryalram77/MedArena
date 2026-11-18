@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Loksewa Topic Analyzer &amp; Predictor — MedArena</title>
+<style>
+:root{--teal:#0f766e;--ink:#172640;--mut:#64748b;--line:#e2e8f0;--bg:#f6f9fc}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.55 system-ui,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 18px 60px}
+header{background:linear-gradient(135deg,#0f766e,#1d4ed8);color:#fff;border-radius:18px;padding:26px 28px;box-shadow:0 14px 34px rgba(15,118,110,.25)}
+header h1{margin:0;font-size:26px;letter-spacing:-.5px}
+header p{margin:8px 0 0;opacity:.92;max-width:800px}
+.back{display:inline-block;margin-bottom:14px;color:var(--teal);font-weight:700;text-decoration:none}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:18px 0}
+.stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.stat b{display:block;font-size:24px;color:var(--teal);line-height:1.2}
+.stat span{font-size:12px;color:var(--mut)}
+section.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin-top:18px;box-shadow:0 2px 10px rgba(15,23,42,.03)}
+h2{margin:0 0 4px;font-size:19px}
+.note{color:var(--mut);font-size:12.5px;margin:0 0 14px}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.chip{background:#f1f5f9;border:1px solid var(--line);border-radius:999px;padding:5px 10px;font-size:11.5px;color:#475569}
+.chip b{color:var(--teal)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{text-align:left;color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.04em;padding:8px 7px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:8px 7px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
+tr:hover td{background:#fbfdff}
+.rank{color:var(--mut);width:28px}
+.tname{font-weight:700;min-width:150px}
+.sub{color:var(--mut)}
+.num{text-align:right;white-space:nowrap}
+.score{font-weight:800;color:var(--teal)}
+.bar{display:inline-block;width:110px;height:8px;background:#eef2f6;border-radius:99px;overflow:hidden;vertical-align:middle}
+.bar-fill{display:block;height:100%;border-radius:99px}
+.trend{font-size:10.5px;font-weight:800;padding:3px 7px;border-radius:99px;white-space:nowrap}
+.trend.up{background:#dcfce7;color:#166534}
+.trend.down{background:#fef3c7;color:#92400e}
+.trend.flat{background:#f1f5f9;color:#475569}
+.ycell{display:inline-flex;width:30px;height:20px;align-items:center;justify-content:center;border-radius:5px;font-size:10px;font-weight:700;margin-right:2px}
+.y0{background:#f1f5f9;color:#cbd5e1}
+.y1{background:#ccfbf1;color:#115e59}
+.y2{background:#5eead4;color:#134e4a}
+.y3{background:#0f766e;color:#fff}
+.pred{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:12px}
+.pcard{border:1px solid var(--line);border-radius:13px;padding:14px 16px;background:linear-gradient(180deg,#fff,#fbfdff)}
+.ph{display:flex;align-items:center;gap:9px}
+.prank{background:#0f766e;color:#fff;font-weight:800;font-size:11px;border-radius:7px;padding:3px 7px}
+.pname{font-weight:800;font-size:14.5px;flex:1}
+.pscore{color:var(--teal);font-weight:800}
+.pwhy{color:var(--mut);font-size:11.5px;margin:6px 0 8px}
+.qlist{margin:0;padding-left:18px}
+.qlist li{margin-bottom:9px;font-size:12.5px}
+.qlist a{color:#1e293b;text-decoration:none}
+.qlist a:hover{color:var(--teal);text-decoration:underline}
+.qmeta{color:var(--mut);font-size:10.5px;margin-top:2px}
+.scroll{overflow-x:auto}
+footer{color:var(--mut);font-size:11.5px;text-align:center;margin-top:22px}
+@media(max-width:640px){.bar{width:70px}.ycell{width:24px}header h1{font-size:21px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="index.html">← Back to MedArena</a>
+<header>
+  <h1>🏛️ Loksewa Topic Analyzer &amp; Predictor</h1>
+  <p>Scans every real Loksewa paper in MedArena, normalises inconsistent chapter labels, and ranks topics by
+     how often they appear, how widely they spread across papers, and how common they are in recent exams.
+     “Possible next topics” are ranked from that evidence; the questions shown are <b>real past questions</b>,
+     never invented. The aggregated Loksewa mock is excluded to avoid double counting.</p>
+</header>
+
+<div class="stats">
+  <div class="stat"><b>13</b><span>Loksewa exam papers scanned</span></div>
+  <div class="stat"><b>1,287</b><span>questions analysed</span></div>
+  <div class="stat"><b>22</b><span>normalised topics</span></div>
+  <div class="stat"><b>46</b><span>recurring concepts tracked</span></div>
+  <div class="stat"><b>2081, 2082, 2083</b><span>recent years weighted for trends</span></div>
+</div>
+
+<section class="card">
+  <h2>Papers included</h2>
+  <p class="note">Sorted by exam year. Counts are the questions actually in each bank.</p>
+  <div class="chips"><span class="chip">Central Loksewa 2062 <b>100</b></span><span class="chip">Central Loksewa 2069 <b>100</b></span><span class="chip">Loksewa Federal 2070 <b>100</b></span><span class="chip">Central Loksewa 2072 <b>100</b></span><span class="chip">Central Loksewa 2073 <b>99</b></span><span class="chip">Gandaki Loksewa 2078 <b>100</b></span><span class="chip">Gandaki Loksewa 2080 <b>100</b></span><span class="chip">Central Loksewa 2081 <b>100</b></span><span class="chip">Koshi Loksewa 2081 <b>100</b></span><span class="chip">Karnali Loksewa 2082 <b>100</b></span><span class="chip">Federal Loksewa — Medical Officer (2083-01-04) <b>88</b></span><span class="chip">Gandaki Province Loksewa Set 2083 <b>100</b></span><span class="chip">Loksewa Lumbini Province 2083 <b>100</b></span></div>
+</section>
+
+<section class="card">
+  <h2>1 · Which topics are asked most?</h2>
+  <p class="note">Score = 45% volume + 35% spread across papers + 20% recent-paper frequency. Rising/Cooling compares a topic's share in the last three years with its overall share.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>#</th><th>Topic</th><th class="num">Qs</th><th>Volume</th><th class="num">Share</th><th class="num">Papers</th><th class="num">Recent</th><th>By year</th><th>Trend</th><th class="num">Score</th></tr></thead>
+    <tbody><tr>
+<td class="rank">1</td>
+<td class="tname">Medicine</td>
+<td class="num">197</td>
+<td><span class="bar"><span class="bar-fill" style="width:100.0%;background:#168a78"></span></span></td>
+<td class="num">15.3%</td>
+<td class="num">13/13</td>
+<td class="num">106</td>
+<td><span class="ycell y1" title="2062: 2 questions">2</span><span class="ycell y3" title="2069: 16 questions">16</span><span class="ycell y3" title="2070: 19 questions">19</span><span class="ycell y3" title="2072: 17 questions">17</span><span class="ycell y3" title="2073: 12 questions">12</span><span class="ycell y2" title="2078: 9 questions">9</span><span class="ycell y3" title="2080: 16 questions">16</span><span class="ycell y3" title="2081: 36 questions">36</span><span class="ycell y3" title="2082: 13 questions">13</span><span class="ycell y3" title="2083: 57 questions">57</span></td>
+<td><span class="trend up">Rising</span></td>
+<td class="num score">100</td>
+</tr><tr>
+<td class="rank">2</td>
+<td class="tname">Community Medicine &amp; Public Health</td>
+<td class="num">153</td>
+<td><span class="bar"><span class="bar-fill" style="width:77.7%;background:#168a78"></span></span></td>
+<td class="num">11.9%</td>
+<td class="num">13/13</td>
+<td class="num">79</td>
+<td><span class="ycell y2" title="2062: 7 questions">7</span><span class="ycell y3" title="2069: 11 questions">11</span><span class="ycell y3" title="2070: 10 questions">10</span><span class="ycell y2" title="2072: 9 questions">9</span><span class="ycell y3" title="2073: 14 questions">14</span><span class="ycell y3" title="2078: 10 questions">10</span><span class="ycell y3" title="2080: 13 questions">13</span><span class="ycell y3" title="2081: 36 questions">36</span><span class="ycell y3" title="2082: 18 questions">18</span><span class="ycell y3" title="2083: 25 questions">25</span></td>
+<td><span class="trend flat">Steady</span></td>
+<td class="num score">85</td>
+</tr><tr>
+<td class="rank">3</td>
+<td class="tname">Paediatrics</td>
+<td class="num">131</td>
+<td><span class="bar"><span class="bar-fill" style="width:66.5%;background:#168a78"></span></span></td>
+<td class="num">10.2%</td>
+<td class="num">13/13</td>
+<td class="num">54</td>
+<td><span class="ycell y2" title="2062: 7 questions">7</span><span class="ycell y2" title="2069: 9 questions">9</span><span class="ycell y2" title="2070: 6 questions">6</span><span class="ycell y3" title="2072: 13 questions">13</span><span class="ycell y2" title="2073: 9 questions">9</span><span class="ycell y3" title="2078: 24 questions">24</span><span class="ycell y2" title="2080: 9 questions">9</span><span class="ycell y3" title="2081: 22 questions">22</span><span class="ycell y3" title="2082: 13 questions">13</span><span class="ycell y3" title="2083: 19 questions">19</span></td>
+<td><span class="trend flat">Steady</span></td>
+<td class="num score">75</td>
+</tr><tr>
+<td class="rank">4</td>
+<td class="tname">Obstetrics &amp; Gynaecology</td>
+<td class="num">115</td>
+<td><span class="bar"><span class="bar-fill" style="width:58.4%;background:#168a78"></span></span></td>
+<td class="num">8.9%</td>
+<td class="num">13/13</td>
+<td class="num">50</td>
+<td><span class="ycell y3" title="2062: 10 questions">10</span><span class="ycell y3" title="2069: 11 questions">11</span><span class="ycell y2" title="2070: 8 questions">8</span><span class="ycell y2" title="2072: 9 questions">9</span><span class="ycell y3" title="2073: 11 questions">11</span><span class="ycell y2" title="2078: 6 questions">6</span><span class="ycell y3" title="2080: 10 questions">10</span><span class="ycell y3" title="2081: 18 questions">18</span><span class="ycell y2" title="2082: 9 questions">9</span><span class="ycell y3" title="2083: 23 questions">23</span></td>
+<td><span class="trend flat">Steady</span></td>
+<td class="num score">71</td>
+</tr><tr>
+<td class="rank">5</td>
+<td class="tname">Surgery</td>
+<td class="num">103</td>
+<td><span class="bar"><span class="bar-fill" style="width:52.3%;background:#168a78"></span></span></td>
+<td class="num">8.0%</td>
+<td class="num">13/13</td>
+<td class="num">42</td>
+<td><span class="ycell y1" title="2062: 3 questions">3</span><span class="ycell y3" title="2069: 11 questions">11</span><span class="ycell y1" title="2070: 4 questions">4</span><span class="ycell y2" title="2072: 9 questions">9</span><span class="ycell y2" title="2073: 9 questions">9</span><span class="ycell y3" title="2078: 17 questions">17</span><span class="ycell y2" title="2080: 8 questions">8</span><span class="ycell y3" title="2081: 14 questions">14</span><span class="ycell y2" title="2082: 7 questions">7</span><span class="ycell y3" title="2083: 21 questions">21</span></td>
+<td><span class="trend flat">Steady</span></td>
+<td class="num score">66</td>
+</tr><tr>
+<td class="rank">6</td>
+<td class="tname">Orthopaedics</td>
+<td class="num">77</td>
+<td><span class="bar"><span class="bar-fill" style="width:39.1%;background:#168a78"></span></span></td>
+<td class="num">6.0%</td>
+<td class="num">13/13</td>
+<td class="num">49</td>
+<td><span class="ycell y2" title="2062: 7 questions">7</span><span class="ycell y2" title="2069: 5 questions">5</span><span class="ycell y1" title="2070: 2 questions">2</span><span class="ycell y1" title="2072: 1 questions">1</span><span class="ycell y2" title="2073: 5 questions">5</span><span class="ycell y2" title="2078: 5 questions">5</span><span class="ycell y1" title="2080: 3 questions">3</span><span class="ycell y3" title="2081: 18 questions">18</span><span class="ycell y3" title="2082: 14 questions">14</span><span class="ycell y3" title="2083: 17 questions">17</span></td>
+<td><span class="trend up">Rising</span></td>
+<td class="num score">62</td>
+</tr><tr>
+<td class="rank">7</td>
+<td class="tname">Pharmacology</td>
+<td class="num">83</td>
+<td><span class="bar"><span class="bar-fill" style="width:42.1%;background:#168a78"></span></span></td>
+<td class="num">6.4%</td>
+<td class="num">13/13</td>
+<td class="num">36</td>
+<td><span class="ycell y3" title="2062: 13 questions">13</span><span class="ycell y1" title="2069: 3 questions">3</span><span class="ycell y2" title="2070: 7 questions">7</span><span class="ycell y1" title="2072: 4 questions">4</span><span class="ycell y2" title="2073: 7 questions">7</span><span class="ycell y2" title="2078: 6 questions">6</span><span class="ycell y2" title="2080: 7 questions">7</span><span class="ycell y3" title="2081: 14 questions">14</span><span class="ycell y2" title="2082: 9 questions">9</span><span class="ycell y3" title="2083: 13 questions">13</span></td>
+<td><span class="trend flat">Steady</span></td>
+<td class="num score">61</td>
+</tr><tr>
+<td class="rank">8</td>
+<td class="tname">Forensic Medicine</td>
+<td class="num">66</td>
+<td><span class="bar"><span class="bar-fill" style="width:33.5%;background:#168a78"></span></span></td>
+<td class="num">5.1%</td>
+<td class="num">12/13</td>
+<td class="num">18</td>
+<td><span class="ycell y2" title="2062: 5 questions">5</span><span class="ycell y2" title="2069: 6 questions">6</span><span class="ycell y2" title="2070: 7 questions">7</span><span class="ycell y2" title="2072: 6 questions">6</span><span class="ycell y2" title="2073: 5 questions">5</span><span class="ycell y3" title="2078: 11 questions">11</span><span class="ycell y2" title="2080: 8 questions">8</span><span class="ycell y3" title="2081: 12 questions">12</span><span class="ycell y1" title="2082: 1 questions">1</span><span class="ycell y2" title="2083: 5 questions">5</span></td>
+<td><span class="trend down">Cooling</span></td>
+<td class="num score">51</td>
+</tr><tr>
+<td class="rank">9</td>
+<td class="tname">Ophthalmology</td>
+<td class="num">46</td>
+<td><span class="bar"><span class="bar-fill" style="width:23.4%;background:#168a78"></span></span></td>
+<td class="num">3.6%</td>
+<td class="num">13/13</td>
+<td class="num">16</td>
+<td><span class="ycell y2" title="2062: 6 questions">6</span><span class="ycell y2" title="2069: 5 questions">5</span><span class="ycell y2" title="2070: 5 questions">5</span><span class="ycell y1" title="2072: 4 questions">4</span><span class="ycell y1" title="2073: 3 questions">3</span><span class="ycell y1" title="2078: 4 questions">4</span><span class="ycell y1" title="2080: 3 questions">3</span><span class="ycell y2" title="2081: 5 questions">5</span><span class="ycell y1" title="2082: 3 questions">3</span><span class="ycell y2" title="2083: 8 questions">8</span></td>
+<td><span class="trend down">Cooling</span></td>
+<td class="num score">49</td>
+</tr><tr>
+<td class="rank">10</td>
+<td class="tname">Psychiatry</td>
+<td class="num">48</td>
+<td><span class="bar"><span class="bar-fill" style="width:24.4%;background:#168a78"></span></span></td>
+<td class="num">3.7%</td>
+<td class="num">12/13</td>
+<td class="num">22</td>
+<td><span class="ycell y1" title="2062: 1 questions">1</span><span class="ycell y2" title="2069: 5 questions">5</span><span class="ycell y1" title="2070: 3 questions">3</span><span class="ycell y2" title="2072: 7 questions">7</span><span class="ycell y2" title="2073: 5 questions">5</span><span class="ycell y0" title="2078: 0 questions">·</span><span class="ycell y2" title="2080: 5 questions">5</span><span class="ycell y2" title="2081: 8 questions">8</span><span class="ycell y1" title="2082: 4 questions">4</span><span class="ycell y3" title="2083: 10 questions">10</span></td>
+<td><span class="trend flat">Steady</span></td>
+<td class="num score">47</td>
+</tr><tr>
+<td class="rank">11</td>
+<td class="tname">Dermatology</td>
+<td class="num">46</td>
+<td><span class="bar"><span class="bar-fill" style="width:23.4%;background:#168a78"></span></span></td>
+<td class="num">3.6%</td>
+<td class="num">12/13</td>
+<td class="num">22</td>
+<td><span class="ycell y1" title="2062: 1 questions">1</span><span class="ycell y2" title="2069: 5 questions">5</span><span class="ycell y1" title="2070: 4 questions">4</span><span class="ycell y1" title="2072: 4 questions">4</span><span class="ycell y2" title="2073: 5 questions">5</span><span class="ycell y0" title="2078: 0 questions">·</span><span class="ycell y2" title="2080: 5 questions">5</span><span class="ycell y2" title="2081: 6 questions">6</span><span class="ycell y2" title="2082: 6 questions">6</span><span class="ycell y3" title="2083: 10 questions">10</span></td>
+<td><span class="trend flat">Steady</span></td>
+<td class="num score">47</td>
+</tr><tr>
+<td class="rank">12</td>
+<td class="tname">ENT</td>
+<td class="num">43</td>
+<td><span class="bar"><span class="bar-fill" style="width:21.8%;background:#168a78"></span></span></td>
+<td class="num">3.3%</td>
+<td class="num">12/13</td>
+<td class="num">21</td>
+<td><span class="ycell y2" title="2062: 5 questions">5</span><span class="ycell y2" title="2069: 5 questions">5</span><span class="ycell y0" title="2070: 0 questions">·</span><span class="ycell y1" title="2072: 2 questions">2</span><span class="ycell y1" title="2073: 2 questions">2</span><span class="ycell y1" title="2078: 3 questions">3</span><span class="ycell y2" title="2080: 5 questions">5</span><span class="ycell y2" title="2081: 5 questions">5</span><span class="ycell y1" title="2082: 3 questions">3</span><span class="ycell y3" title="2083: 13 questions">13</span></td>
+<td><span class="trend flat">Steady</span></td>
+<td class="num score">46</td>
+</tr><tr>
+<td class="rank">13</td>
+<td class="tname">Anaesthesia</td>
+<td class="num">27</td>
+<td><span class="bar"><span class="bar-fill" style="width:13.7%;background:#168a78"></span></span></td>
+<td class="num">2.1%</td>
+<td class="num">10/13</td>
+<td class="num">11</td>
+<td><span class="ycell y0" title="2062: 0 questions">·</span><span class="ycell y1" title="2069: 4 questions">4</span><span class="ycell y1" title="2070: 2 questions">2</span><span class="ycell y1" title="2072: 3 questions">3</span><span class="ycell y1" title="2073: 2 questions">2</span><span class="ycell y1" title="2078: 3 questions">3</span><span class="ycell y1" title="2080: 2 questions">2</span><span class="ycell y2" title="2081: 5 questions">5</span><span class="ycell y0" title="2082: 0 questions">·</span><span class="ycell y2" title="2083: 6 questions">6</span></td>
+<td><span class="trend flat">Steady</span></td>
+<td class="num score">35</td>
+</tr><tr>
+<td class="rank">14</td>
+<td class="tname">Microbiology</td>
+<td class="num">34</td>
+<td><span class="bar"><span class="bar-fill" style="width:17.3%;background:#168a78"></span></span></td>
+<td class="num">2.6%</td>
+<td class="num">8/13</td>
+<td class="num">8</td>
+<td><span class="ycell y3" title="2062: 13 questions">13</span><span class="ycell y1" title="2069: 2 questions">2</span><span class="ycell y1" title="2070: 4 questions">4</span><span class="ycell y1" title="2072: 4 questions">4</span><span class="ycell y1" title="2073: 1 questions">1</span><span class="ycell y1" title="2078: 2 questions">2</span><span class="ycell y0" title="2080: 0 questions">·</span><span class="ycell y0" title="2081: 0 questions">·</span><span class="ycell y0" title="2082: 0 questions">·</span><span class="ycell y2" title="2083: 8 questions">8</span></td>
+<td><span class="trend down">Cooling</span></td>
+<td class="num score">31</td>
+</tr><tr>
+<td class="rank">15</td>
+<td class="tname">Pathology</td>
+<td class="num">33</td>
+<td><span class="bar"><span class="bar-fill" style="width:16.8%;background:#168a78"></span></span></td>
+<td class="num">2.6%</td>
+<td class="num">8/13</td>
+<td class="num">7</td>
+<td><span class="ycell y3" title="2062: 10 questions">10</span><span class="ycell y0" title="2069: 0 questions">·</span><span class="ycell y1" title="2070: 4 questions">4</span><span class="ycell y1" title="2072: 3 questions">3</span><span class="ycell y2" title="2073: 6 questions">6</span><span class="ycell y0" title="2078: 0 questions">·</span><span class="ycell y1" title="2080: 3 questions">3</span><span class="ycell y0" title="2081: 0 questions">·</span><span class="ycell y0" title="2082: 0 questions">·</span><span class="ycell y2" title="2083: 7 questions">7</span></td>
+<td><span class="trend down">Cooling</span></td>
+<td class="num score">30</td>
+</tr><tr>
+<td class="rank">16</td>
+<td class="tname">Anatomy</td>
+<td class="num">12</td>
+<td><span class="bar"><span class="bar-fill" style="width:6.1%;background:#168a78"></span></span></td>
+<td class="num">0.9%</td>
+<td class="num">8/13</td>
+<td class="num">4</td>
+<td><span class="ycell y1" title="2062: 4 questions">4</span><span class="ycell y0" title="2069: 0 questions">·</span><span class="ycell y0" title="2070: 0 questions">·</span><span class="ycell y1" title="2072: 2 questions">2</span><span class="ycell y1" title="2073: 1 questions">1</span><span class="ycell y0" title="2078: 0 questions">·</span><span class="ycell y1" title="2080: 1 questions">1</span><span class="ycell y1" title="2081: 1 questions">1</span><span class="ycell y0" title="2082: 0 questions">·</span><span class="ycell y1" title="2083: 3 questions">3</span></td>
+<td><span class="trend down">Cooling</span></td>
+<td class="num score">25</td>
+</tr><tr>
+<td class="rank">17</td>
+<td class="tname">General Health Services</td>
+<td class="num">29</td>
+<td><span class="bar"><span class="bar-fill" style="width:14.7%;background:#168a78"></span></span></td>
+<td class="num">2.3%</td>
+<td class="num">4/13</td>
+<td class="num">22</td>
+<td><span class="ycell y0" title="2062: 0 questions">·</span><span class="ycell y0" title="2069: 0 questions">·</span><span class="ycell y2" title="2070: 7 questions">7</span><span class="ycell y0" title="2072: 0 questions">·</span><span class="ycell y0" title="2073: 0 questions">·</span><span class="ycell y0" title="2078: 0 questions">·</span><span class="ycell y0" title="2080: 0 questions">·</span><span class="ycell y0" title="2081: 0 questions">·</span><span class="ycell y0" title="2082: 0 questions">·</span><span class="ycell y3" title="2083: 22 questions">22</span></td>
+<td><span class="trend up">Rising</span></td>
+<td class="num score">22</td>
+</tr><tr>
+<td class="rank">18</td>
+<td class="tname">Dentistry</td>
+<td class="num">11</td>
+<td><span class="bar"><span class="bar-fill" style="width:5.6%;background:#168a78"></span></span></td>
+<td class="num">0.9%</td>
+<td class="num">7/13</td>
+<td class="num">6</td>
+<td><span class="ycell y0" title="2062: 0 questions">·</span><span class="ycell y1" title="2069: 2 questions">2</span><span class="ycell y1" title="2070: 1 questions">1</span><span class="ycell y0" title="2072: 0 questions">·</span><span class="ycell y1" title="2073: 1 questions">1</span><span class="ycell y0" title="2078: 0 questions">·</span><span class="ycell y1" title="2080: 1 questions">1</span><span class="ycell y0" title="2081: 0 questions">·</span><span class="ycell y0" title="2082: 0 questions">·</span><span class="ycell y2" title="2083: 6 questions">6</span></td>
+<td><span class="trend up">Rising</span></td>
+<td class="num score">22</td>
+</tr><tr>
+<td class="rank">19</td>
+<td class="tname">Physiology</td>
+<td class="num">12</td>
+<td><span class="bar"><span class="bar-fill" style="width:6.1%;background:#168a78"></span></span></td>
+<td class="num">0.9%</td>
+<td class="num">5/13</td>
+<td class="num">2</td>
+<td><span class="ycell y2" title="2062: 6 questions">6</span><span class="ycell y0" title="2069: 0 questions">·</span><span class="ycell y1" title="2070: 1 questions">1</span><span class="ycell y1" title="2072: 2 questions">2</span><span class="ycell y0" title="2073: 0 questions">·</span><span class="ycell y0" title="2078: 0 questions">·</span><span class="ycell y1" title="2080: 1 questions">1</span><span class="ycell y0" title="2081: 0 questions">·</span><span class="ycell y0" title="2082: 0 questions">·</span><span class="ycell y1" title="2083: 2 questions">2</span></td>
+<td><span class="trend down">Cooling</span></td>
+<td class="num score">17</td>
+</tr><tr>
+<td class="rank">20</td>
+<td class="tname">Radiology</td>
+<td class="num">9</td>
+<td><span class="bar"><span class="bar-fill" style="width:4.6%;background:#168a78"></span></span></td>
+<td class="num">0.7%</td>
+<td class="num">5/13</td>
+<td class="num">7</td>
+<td><span class="ycell y0" title="2062: 0 questions">·</span><span class="ycell y0" title="2069: 0 questions">·</span><span class="ycell y1" title="2070: 1 questions">1</span><span class="ycell y0" title="2072: 0 questions">·</span><span class="ycell y1" title="2073: 1 questions">1</span><span class="ycell y0" title="2078: 0 questions">·</span><span class="ycell y0" title="2080: 0 questions">·</span><span class="ycell y0" title="2081: 0 questions">·</span><span class="ycell y0" title="2082: 0 questions">·</span><span class="ycell y2" title="2083: 7 questions">7</span></td>
+<td><span class="trend up">Rising</span></td>
+<td class="num score">17</td>
+</tr><tr>
+<td class="rank">21</td>
+<td class="tname">Biochemistry</td>
+<td class="num">7</td>
+<td><span class="bar"><span class="bar-fill" style="width:3.6%;background:#168a78"></span></span></td>
+<td class="num">0.5%</td>
+<td class="num">4/13</td>
+<td class="num">4</td>
+<td><span class="ycell y0" title="2062: 0 questions">·</span><span class="ycell y0" title="2069: 0 questions">·</span><span class="ycell y1" title="2070: 2 questions">2</span><span class="ycell y1" title="2072: 1 questions">1</span><span class="ycell y0" title="2073: 0 questions">·</span><span class="ycell y0" title="2078: 0 questions">·</span><span class="ycell y0" title="2080: 0 questions">·</span><span class="ycell y0" title="2081: 0 questions">·</span><span class="ycell y0" title="2082: 0 questions">·</span><span class="ycell y1" title="2083: 4 questions">4</span></td>
+<td><span class="trend up">Rising</span></td>
+<td class="num score">13</td>
+</tr><tr>
+<td class="rank">22</td>
+<td class="tname">Health Policy</td>
+<td class="num">5</td>
+<td><span class="bar"><span class="bar-fill" style="width:2.5%;background:#168a78"></span></span></td>
+<td class="num">0.4%</td>
+<td class="num">3/13</td>
+<td class="num">2</td>
+<td><span class="ycell y0" title="2062: 0 questions">·</span><span class="ycell y0" title="2069: 0 questions">·</span><span class="ycell y1" title="2070: 3 questions">3</span><span class="ycell y0" title="2072: 0 questions">·</span><span class="ycell y0" title="2073: 0 questions">·</span><span class="ycell y0" title="2078: 0 questions">·</span><span class="ycell y0" title="2080: 0 questions">·</span><span class="ycell y0" title="2081: 0 questions">·</span><span class="ycell y0" title="2082: 0 questions">·</span><span class="ycell y1" title="2083: 2 questions">2</span></td>
+<td><span class="trend flat">Steady</span></td>
+<td class="num score">10</td>
+</tr></tbody>
+  </table></div>
+</section>
+
+<section class="card">
+  <h2>2 · Topic-by-year heatmap</h2>
+  <p class="note">Darker cell = more questions from that topic in that paper. Top 16 topics shown.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Topic</th><th>2062</th><th>2069</th><th>2070</th><th>2072</th><th>2073</th><th>2078</th><th>2080</th><th>2081</th><th>2082</th><th>2083</th></tr></thead>
+    <tbody><tr><td class="tname">Medicine</td><span class="ycell y1" title="2062: 2 questions">2</span><span class="ycell y3" title="2069: 16 questions">16</span><span class="ycell y3" title="2070: 19 questions">19</span><span class="ycell y3" title="2072: 17 questions">17</span><span class="ycell y3" title="2073: 12 questions">12</span><span class="ycell y2" title="2078: 9 questions">9</span><span class="ycell y3" title="2080: 16 questions">16</span><span class="ycell y3" title="2081: 36 questions">36</span><span class="ycell y3" title="2082: 13 questions">13</span><span class="ycell y3" title="2083: 57 questions">57</span></tr><tr><td class="tname">Community Medicine &amp; Public Health</td><span class="ycell y2" title="2062: 7 questions">7</span><span class="ycell y3" title="2069: 11 questions">11</span><span class="ycell y3" title="2070: 10 questions">10</span><span class="ycell y2" title="2072: 9 questions">9</span><span class="ycell y3" title="2073: 14 questions">14</span><span class="ycell y3" title="2078: 10 questions">10</span><span class="ycell y3" title="2080: 13 questions">13</span><span class="ycell y3" title="2081: 36 questions">36</span><span class="ycell y3" title="2082: 18 questions">18</span><span class="ycell y3" title="2083: 25 questions">25</span></tr><tr><td class="tname">Paediatrics</td><span class="ycell y2" title="2062: 7 questions">7</span><span class="ycell y2" title="2069: 9 questions">9</span><span class="ycell y2" title="2070: 6 questions">6</span><span class="ycell y3" title="2072: 13 questions">13</span><span class="ycell y2" title="2073: 9 questions">9</span><span class="ycell y3" title="2078: 24 questions">24</span><span class="ycell y2" title="2080: 9 questions">9</span><span class="ycell y3" title="2081: 22 questions">22</span><span class="ycell y3" title="2082: 13 questions">13</span><span class="ycell y3" title="2083: 19 questions">19</span></tr><tr><td class="tname">Obstetrics &amp; Gynaecology</td><span class="ycell y3" title="2062: 10 questions">10</span><span class="ycell y3" title="2069: 11 questions">11</span><span class="ycell y2" title="2070: 8 questions">8</span><span class="ycell y2" title="2072: 9 questions">9</span><span class="ycell y3" title="2073: 11 questions">11</span><span class="ycell y2" title="2078: 6 questions">6</span><span class="ycell y3" title="2080: 10 questions">10</span><span class="ycell y3" title="2081: 18 questions">18</span><span class="ycell y2" title="2082: 9 questions">9</span><span class="ycell y3" title="2083: 23 questions">23</span></tr><tr><td class="tname">Surgery</td><span class="ycell y1" title="2062: 3 questions">3</span><span class="ycell y3" title="2069: 11 questions">11</span><span class="ycell y1" title="2070: 4 questions">4</span><span class="ycell y2" title="2072: 9 questions">9</span><span class="ycell y2" title="2073: 9 questions">9</span><span class="ycell y3" title="2078: 17 questions">17</span><span class="ycell y2" title="2080: 8 questions">8</span><span class="ycell y3" title="2081: 14 questions">14</span><span class="ycell y2" title="2082: 7 questions">7</span><span class="ycell y3" title="2083: 21 questions">21</span></tr><tr><td class="tname">Orthopaedics</td><span class="ycell y2" title="2062: 7 questions">7</span><span class="ycell y2" title="2069: 5 questions">5</span><span class="ycell y1" title="2070: 2 questions">2</span><span class="ycell y1" title="2072: 1 questions">1</span><span class="ycell y2" title="2073: 5 questions">5</span><span class="ycell y2" title="2078: 5 questions">5</span><span class="ycell y1" title="2080: 3 questions">3</span><span class="ycell y3" title="2081: 18 questions">18</span><span class="ycell y3" title="2082: 14 questions">14</span><span class="ycell y3" title="2083: 17 questions">17</span></tr><tr><td class="tname">Pharmacology</td><span class="ycell y3" title="2062: 13 questions">13</span><span class="ycell y1" title="2069: 3 questions">3</span><span class="ycell y2" title="2070: 7 questions">7</span><span class="ycell y1" title="2072: 4 questions">4</span><span class="ycell y2" title="2073: 7 questions">7</span><span class="ycell y2" title="2078: 6 questions">6</span><span class="ycell y2" title="2080: 7 questions">7</span><span class="ycell y3" title="2081: 14 questions">14</span><span class="ycell y2" title="2082: 9 questions">9</span><span class="ycell y3" title="2083: 13 questions">13</span></tr><tr><td class="tname">Forensic Medicine</td><span class="ycell y2" title="2062: 5 questions">5</span><span class="ycell y2" title="2069: 6 questions">6</span><span class="ycell y2" title="2070: 7 questions">7</span><span class="ycell y2" title="2072: 6 questions">6</span><span class="ycell y2" title="2073: 5 questions">5</span><span class="ycell y3" title="2078: 11 questions">11</span><span class="ycell y2" title="2080: 8 questions">8</span><span class="ycell y3" title="2081: 12 questions">12</span><span class="ycell y1" title="2082: 1 questions">1</span><span class="ycell y2" title="2083: 5 questions">5</span></tr><tr><td class="tname">Ophthalmology</td><span class="ycell y2" title="2062: 6 questions">6</span><span class="ycell y2" title="2069: 5 questions">5</span><span class="ycell y2" title="2070: 5 questions">5</span><span class="ycell y1" title="2072: 4 questions">4</span><span class="ycell y1" title="2073: 3 questions">3</span><span class="ycell y1" title="2078: 4 questions">4</span><span class="ycell y1" title="2080: 3 questions">3</span><span class="ycell y2" title="2081: 5 questions">5</span><span class="ycell y1" title="2082: 3 questions">3</span><span class="ycell y2" title="2083: 8 questions">8</span></tr><tr><td class="tname">Psychiatry</td><span class="ycell y1" title="2062: 1 questions">1</span><span class="ycell y2" title="2069: 5 questions">5</span><span class="ycell y1" title="2070: 3 questions">3</span><span class="ycell y2" title="2072: 7 questions">7</span><span class="ycell y2" title="2073: 5 questions">5</span><span class="ycell y0" title="2078: 0 questions">·</span><span class="ycell y2" title="2080: 5 questions">5</span><span class="ycell y2" title="2081: 8 questions">8</span><span class="ycell y1" title="2082: 4 questions">4</span><span class="ycell y3" title="2083: 10 questions">10</span></tr><tr><td class="tname">Dermatology</td><span class="ycell y1" title="2062: 1 questions">1</span><span class="ycell y2" title="2069: 5 questions">5</span><span class="ycell y1" title="2070: 4 questions">4</span><span class="ycell y1" title="2072: 4 questions">4</span><span class="ycell y2" title="2073: 5 questions">5</span><span class="ycell y0" title="2078: 0 questions">·</span><span class="ycell y2" title="2080: 5 questions">5</span><span class="ycell y2" title="2081: 6 questions">6</span><span class="ycell y2" title="2082: 6 questions">6</span><span class="ycell y3" title="2083: 10 questions">10</span></tr><tr><td class="tname">ENT</td><span class="ycell y2" title="2062: 5 questions">5</span><span class="ycell y2" title="2069: 5 questions">5</span><span class="ycell y0" title="2070: 0 questions">·</span><span class="ycell y1" title="2072: 2 questions">2</span><span class="ycell y1" title="2073: 2 questions">2</span><span class="ycell y1" title="2078: 3 questions">3</span><span class="ycell y2" title="2080: 5 questions">5</span><span class="ycell y2" title="2081: 5 questions">5</span><span class="ycell y1" title="2082: 3 questions">3</span><span class="ycell y3" title="2083: 13 questions">13</span></tr><tr><td class="tname">Anaesthesia</td><span class="ycell y0" title="2062: 0 questions">·</span><span class="ycell y1" title="2069: 4 questions">4</span><span class="ycell y1" title="2070: 2 questions">2</span><span class="ycell y1" title="2072: 3 questions">3</span><span class="ycell y1" title="2073: 2 questions">2</span><span class="ycell y1" title="2078: 3 questions">3</span><span class="ycell y1" title="2080: 2 questions">2</span><span class="ycell y2" title="2081: 5 questions">5</span><span class="ycell y0" title="2082: 0 questions">·</span><span class="ycell y2" title="2083: 6 questions">6</span></tr><tr><td class="tname">Microbiology</td><span class="ycell y3" title="2062: 13 questions">13</span><span class="ycell y1" title="2069: 2 questions">2</span><span class="ycell y1" title="2070: 4 questions">4</span><span class="ycell y1" title="2072: 4 questions">4</span><span class="ycell y1" title="2073: 1 questions">1</span><span class="ycell y1" title="2078: 2 questions">2</span><span class="ycell y0" title="2080: 0 questions">·</span><span class="ycell y0" title="2081: 0 questions">·</span><span class="ycell y0" title="2082: 0 questions">·</span><span class="ycell y2" title="2083: 8 questions">8</span></tr><tr><td class="tname">Pathology</td><span class="ycell y3" title="2062: 10 questions">10</span><span class="ycell y0" title="2069: 0 questions">·</span><span class="ycell y1" title="2070: 4 questions">4</span><span class="ycell y1" title="2072: 3 questions">3</span><span class="ycell y2" title="2073: 6 questions">6</span><span class="ycell y0" title="2078: 0 questions">·</span><span class="ycell y1" title="2080: 3 questions">3</span><span class="ycell y0" title="2081: 0 questions">·</span><span class="ycell y0" title="2082: 0 questions">·</span><span class="ycell y2" title="2083: 7 questions">7</span></tr><tr><td class="tname">Anatomy</td><span class="ycell y1" title="2062: 4 questions">4</span><span class="ycell y0" title="2069: 0 questions">·</span><span class="ycell y0" title="2070: 0 questions">·</span><span class="ycell y1" title="2072: 2 questions">2</span><span class="ycell y1" title="2073: 1 questions">1</span><span class="ycell y0" title="2078: 0 questions">·</span><span class="ycell y1" title="2080: 1 questions">1</span><span class="ycell y1" title="2081: 1 questions">1</span><span class="ycell y0" title="2082: 0 questions">·</span><span class="ycell y1" title="2083: 3 questions">3</span></tr></tbody>
+  </table></div>
+</section>
+
+<section class="card">
+  <h2>3 · Predicted focus for the next Loksewa</h2>
+  <p class="note">Top six topics by priority score, with the highest-signal real questions from past papers. Open any question link to revise it in its original set.</p>
+  <div class="pred"><div class="pcard">
+<div class="ph"><span class="prank">#1</span><span class="pname">Medicine</span><span class="pscore">100</span></div>
+<div class="pwhy">appears in 13 of 13 papers · share is rising in recent papers · 197 questions in total</div>
+<ol class="qlist"><li><a href="surgery-practice.html?bank=loksewa2070" title="HbA1c level in blood explains:">HbA1c level in blood explains:</a>
+<div class="qmeta">Diabetes / HbA1c · Loksewa Federal 2070 · 2070, 2081 · Q55</div></li><li><a href="surgery-practice.html?bank=central2073" title="Which one of the following is the most common type of diabetic neuropathy?">Which one of the following is the most common type of diabetic neuropathy?</a>
+<div class="qmeta">Diabetes / HbA1c · Central Loksewa 2073 · 2073, 2081 · Q79</div></li><li><a href="surgery-practice.html?bank=central2069" title="Pulsus paradoxus is seen in:">Pulsus paradoxus is seen in:</a>
+<div class="qmeta">Asthma / COPD · Central Loksewa 2069 · 2069, 2073 · Q86</div></li></ol>
+</div><div class="pcard">
+<div class="ph"><span class="prank">#2</span><span class="pname">Community Medicine &amp; Public Health</span><span class="pscore">85</span></div>
+<div class="pwhy">appears in 13 of 13 papers · 153 questions in total</div>
+<ol class="qlist"><li><a href="surgery-practice.html?bank=gandaki2080" title="Most heat sensitive vaccine is:">Most heat sensitive vaccine is:</a>
+<div class="qmeta">Vaccination / immunization · Gandaki Loksewa 2080 · 2080, 2081 · Q13</div></li><li><a href="surgery-practice.html?bank=loksewa" title="Which one is the most common cancer among female in Nepal?">Which one is the most common cancer among female in Nepal?</a>
+<div class="qmeta">Breast cancer · Federal Loksewa — Medical Officer (2083-01-04) · 2083 · Q16</div></li><li><a href="surgery-practice.html?bank=loksewa" title="What method is appropriate to promote ORS use in communities?">What method is appropriate to promote ORS use in communities?</a>
+<div class="qmeta">Diarrhoea / ORS · Federal Loksewa — Medical Officer (2083-01-04) · 2083 · Q31</div></li></ol>
+</div><div class="pcard">
+<div class="ph"><span class="prank">#3</span><span class="pname">Paediatrics</span><span class="pscore">75</span></div>
+<div class="pwhy">appears in 13 of 13 papers · 131 questions in total</div>
+<ol class="qlist"><li><a href="surgery-practice.html?bank=gandaki2080" title="Neonatal period extends up to:">Neonatal period extends up to:</a>
+<div class="qmeta">Paediatrics · Gandaki Loksewa 2080 · 2080, 2081 · Q16</div></li><li><a href="surgery-practice.html?bank=loksewa" title="Exclusive breastfeeding for new born baby means feed with only:">Exclusive breastfeeding for new born baby means feed with only:</a>
+<div class="qmeta">Paediatrics · Federal Loksewa — Medical Officer (2083-01-04) · 2083 · Q21</div></li><li><a href="surgery-practice.html?bank=loksewa" title="Infant body weight is tripled by the age of:">Infant body weight is tripled by the age of:</a>
+<div class="qmeta">Paediatrics · Federal Loksewa — Medical Officer (2083-01-04) · 2083 · Q22</div></li></ol>
+</div><div class="pcard">
+<div class="ph"><span class="prank">#4</span><span class="pname">Obstetrics &amp; Gynaecology</span><span class="pscore">71</span></div>
+<div class="pwhy">appears in 13 of 13 papers · 115 questions in total</div>
+<ol class="qlist"><li><a href="surgery-practice.html?bank=central2069" title="Most common site of ectopic pregnancy is:">Most common site of ectopic pregnancy is:</a>
+<div class="qmeta">Obstetrics &amp; Gynaecology · Central Loksewa 2069 · 2069, 2070, 2072 · Q34</div></li><li><a href="surgery-practice.html?bank=loksewa2070" title="Commonest cause of PPH is :">Commonest cause of PPH is :</a>
+<div class="qmeta">Postpartum haemorrhage · Loksewa Federal 2070 · 2070, 2081 · Q37</div></li><li><a href="surgery-practice.html?bank=loksewa" title="Following vaginal delivery, the uterus is no longer palpated on abdominal examination:">Following vaginal delivery, the uterus is no longer palpated on abdominal examination:</a>
+<div class="qmeta">Obstetrics &amp; Gynaecology · Federal Loksewa — Medical Officer (2083-01-04) · 2083 · Q11</div></li></ol>
+</div><div class="pcard">
+<div class="ph"><span class="prank">#5</span><span class="pname">Surgery</span><span class="pscore">66</span></div>
+<div class="pwhy">appears in 13 of 13 papers · 103 questions in total</div>
+<ol class="qlist"><li><a href="surgery-practice.html?bank=loksewa" title="Early detection of breast cancer is important for treatment. Which simple screening method is accepted widely?">Early detection of breast cancer is important for treatment. Which simple screening method is accepted widely?</a>
+<div class="qmeta">Breast cancer · Federal Loksewa — Medical Officer (2083-01-04) · 2083 · Q15</div></li><li><a href="surgery-practice.html?bank=loksewa" title="Gastric cancer is strongly associated with which one of the following?">Gastric cancer is strongly associated with which one of the following?</a>
+<div class="qmeta">Surgery · Federal Loksewa — Medical Officer (2083-01-04) · 2083 · Q75</div></li><li><a href="surgery-practice.html?bank=loksewa" title="A patient with obstructive jaundice due to pancreatic carcinoma might have all of the following clinical findings EXCEPT:">A patient with obstructive jaundice due to pancreatic carcinoma might have all of the following clinical findings EXCEPT:</a>
+<div class="qmeta">Hepatitis / jaundice · Federal Loksewa — Medical Officer (2083-01-04) · 2083 · Q81</div></li></ol>
+</div><div class="pcard">
+<div class="ph"><span class="prank">#6</span><span class="pname">Orthopaedics</span><span class="pscore">62</span></div>
+<div class="pwhy">appears in 13 of 13 papers · share is rising in recent papers · 77 questions in total</div>
+<ol class="qlist"><li><a href="surgery-practice.html?bank=gandaki2080" title="Medial meniscus is more vulnerable to injury because of:">Medial meniscus is more vulnerable to injury because of:</a>
+<div class="qmeta">Fracture / trauma · Gandaki Loksewa 2080 · 2080, 2081 · Q36</div></li><li><a href="surgery-practice.html?bank=loksewa" title="The earliest radiological change seen in a case of acute osteomyelitis is:">The earliest radiological change seen in a case of acute osteomyelitis is:</a>
+<div class="qmeta">Orthopaedics · Federal Loksewa — Medical Officer (2083-01-04) · 2083 · Q3</div></li><li><a href="surgery-practice.html?bank=loksewa" title="In transverse fracture of the patella, the treatment is:">In transverse fracture of the patella, the treatment is:</a>
+<div class="qmeta">Fracture / trauma · Federal Loksewa — Medical Officer (2083-01-04) · 2083 · Q4</div></li></ol>
+</div></div>
+</section>
+
+<section class="card">
+  <h2>4 · Recurring concepts (fine-grained)</h2>
+  <p class="note">Detected from question stems using a fixed medical keyword dictionary — repeated across papers means higher exam yield.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>#</th><th>Concept</th><th>Parent topic</th><th class="num">Mentions</th><th>Frequency</th><th class="num">Papers</th><th>By year</th><th class="num">Score</th></tr></thead>
+    <tbody><tr>
+<td class="rank">1</td>
+<td class="tname">Fracture / trauma</td>
+<td class="sub">Orthopaedics</td>
+<td class="num">60</td>
+<td><span class="bar"><span class="bar-fill" style="width:100.0%;background:#7c3aed"></span></span></td>
+<td class="num">13/13</td>
+<td><span class="ycell y1" title="2062: 4 questions">4</span><span class="ycell y2" title="2069: 7 questions">7</span><span class="ycell y1" title="2070: 2 questions">2</span><span class="ycell y1" title="2072: 3 questions">3</span><span class="ycell y2" title="2073: 5 questions">5</span><span class="ycell y1" title="2078: 2 questions">2</span><span class="ycell y1" title="2080: 3 questions">3</span><span class="ycell y3" title="2081: 12 questions">12</span><span class="ycell y2" title="2082: 5 questions">5</span><span class="ycell y3" title="2083: 17 questions">17</span></td>
+<td class="num score">100</td>
+</tr><tr>
+<td class="rank">2</td>
+<td class="tname">Diabetes / HbA1c</td>
+<td class="sub">Medicine</td>
+<td class="num">31</td>
+<td><span class="bar"><span class="bar-fill" style="width:51.7%;background:#7c3aed"></span></span></td>
+<td class="num">13/13</td>
+<td><span class="ycell y1" title="2062: 2 questions">2</span><span class="ycell y1" title="2069: 3 questions">3</span><span class="ycell y1" title="2070: 3 questions">3</span><span class="ycell y1" title="2072: 1 questions">1</span><span class="ycell y2" title="2073: 5 questions">5</span><span class="ycell y1" title="2078: 1 questions">1</span><span class="ycell y1" title="2080: 3 questions">3</span><span class="ycell y2" title="2081: 5 questions">5</span><span class="ycell y1" title="2082: 1 questions">1</span><span class="ycell y2" title="2083: 7 questions">7</span></td>
+<td class="num score">73</td>
+</tr><tr>
+<td class="rank">3</td>
+<td class="tname">Vaccination / immunization</td>
+<td class="sub">Community Medicine &amp; Public Health</td>
+<td class="num">29</td>
+<td><span class="bar"><span class="bar-fill" style="width:48.3%;background:#7c3aed"></span></span></td>
+<td class="num">13/13</td>
+<td><span class="ycell y1" title="2062: 2 questions">2</span><span class="ycell y1" title="2069: 3 questions">3</span><span class="ycell y1" title="2070: 1 questions">1</span><span class="ycell y1" title="2072: 4 questions">4</span><span class="ycell y1" title="2073: 1 questions">1</span><span class="ycell y1" title="2078: 2 questions">2</span><span class="ycell y1" title="2080: 1 questions">1</span><span class="ycell y2" title="2081: 6 questions">6</span><span class="ycell y1" title="2082: 3 questions">3</span><span class="ycell y2" title="2083: 6 questions">6</span></td>
+<td class="num score">73</td>
+</tr><tr>
+<td class="rank">4</td>
+<td class="tname">Hypertension / BP</td>
+<td class="sub">Medicine</td>
+<td class="num">25</td>
+<td><span class="bar"><span class="bar-fill" style="width:41.7%;background:#7c3aed"></span></span></td>
+<td class="num">13/13</td>
+<td><span class="ycell y1" title="2062: 3 questions">3</span><span class="ycell y1" title="2069: 3 questions">3</span><span class="ycell y1" title="2070: 1 questions">1</span><span class="ycell y1" title="2072: 2 questions">2</span><span class="ycell y1" title="2073: 2 questions">2</span><span class="ycell y1" title="2078: 1 questions">1</span><span class="ycell y1" title="2080: 2 questions">2</span><span class="ycell y1" title="2081: 4 questions">4</span><span class="ycell y1" title="2082: 1 questions">1</span><span class="ycell y2" title="2083: 6 questions">6</span></td>
+<td class="num score">69</td>
+</tr><tr>
+<td class="rank">5</td>
+<td class="tname">Diarrhoea / ORS</td>
+<td class="sub">Community Medicine &amp; Public Health</td>
+<td class="num">28</td>
+<td><span class="bar"><span class="bar-fill" style="width:46.7%;background:#7c3aed"></span></span></td>
+<td class="num">12/13</td>
+<td><span class="ycell y1" title="2062: 2 questions">2</span><span class="ycell y1" title="2069: 4 questions">4</span><span class="ycell y0" title="2070: 0 questions">·</span><span class="ycell y1" title="2072: 2 questions">2</span><span class="ycell y1" title="2073: 3 questions">3</span><span class="ycell y1" title="2078: 3 questions">3</span><span class="ycell y1" title="2080: 2 questions">2</span><span class="ycell y1" title="2081: 3 questions">3</span><span class="ycell y1" title="2082: 2 questions">2</span><span class="ycell y2" title="2083: 7 questions">7</span></td>
+<td class="num score">67</td>
+</tr><tr>
+<td class="rank">6</td>
+<td class="tname">Hepatitis / jaundice</td>
+<td class="sub">Medicine</td>
+<td class="num">23</td>
+<td><span class="bar"><span class="bar-fill" style="width:38.3%;background:#7c3aed"></span></span></td>
+<td class="num">12/13</td>
+<td><span class="ycell y1" title="2062: 4 questions">4</span><span class="ycell y1" title="2069: 3 questions">3</span><span class="ycell y1" title="2070: 3 questions">3</span><span class="ycell y1" title="2072: 1 questions">1</span><span class="ycell y1" title="2073: 2 questions">2</span><span class="ycell y1" title="2078: 1 questions">1</span><span class="ycell y1" title="2080: 1 questions">1</span><span class="ycell y1" title="2081: 1 questions">1</span><span class="ycell y1" title="2082: 1 questions">1</span><span class="ycell y2" title="2083: 6 questions">6</span></td>
+<td class="num score">62</td>
+</tr><tr>
+<td class="rank">7</td>
+<td class="tname">Pneumonia</td>
+<td class="sub">Medicine</td>
+<td class="num">20</td>
+<td><span class="bar"><span class="bar-fill" style="width:33.3%;background:#7c3aed"></span></span></td>
+<td class="num">12/13</td>
+<td><span class="ycell y1" title="2062: 2 questions">2</span><span class="ycell y1" title="2069: 2 questions">2</span><span class="ycell y1" title="2070: 2 questions">2</span><span class="ycell y1" title="2072: 2 questions">2</span><span class="ycell y1" title="2073: 2 questions">2</span><span class="ycell y0" title="2078: 0 questions">·</span><span class="ycell y1" title="2080: 1 questions">1</span><span class="ycell y2" title="2081: 5 questions">5</span><span class="ycell y1" title="2082: 1 questions">1</span><span class="ycell y1" title="2083: 3 questions">3</span></td>
+<td class="num score">61</td>
+</tr><tr>
+<td class="rank">8</td>
+<td class="tname">Anaemia</td>
+<td class="sub">Medicine</td>
+<td class="num">20</td>
+<td><span class="bar"><span class="bar-fill" style="width:33.3%;background:#7c3aed"></span></span></td>
+<td class="num">11/13</td>
+<td><span class="ycell y1" title="2062: 2 questions">2</span><span class="ycell y1" title="2069: 4 questions">4</span><span class="ycell y1" title="2070: 1 questions">1</span><span class="ycell y0" title="2072: 0 questions">·</span><span class="ycell y1" title="2073: 1 questions">1</span><span class="ycell y1" title="2078: 1 questions">1</span><span class="ycell y1" title="2080: 4 questions">4</span><span class="ycell y1" title="2081: 3 questions">3</span><span class="ycell y1" title="2082: 1 questions">1</span><span class="ycell y1" title="2083: 3 questions">3</span></td>
+<td class="num score">56</td>
+</tr><tr>
+<td class="rank">9</td>
+<td class="tname">Tuberculosis / TB</td>
+<td class="sub">Medicine</td>
+<td class="num">23</td>
+<td><span class="bar"><span class="bar-fill" style="width:38.3%;background:#7c3aed"></span></span></td>
+<td class="num">10/13</td>
+<td><span class="ycell y1" title="2062: 4 questions">4</span><span class="ycell y1" title="2069: 4 questions">4</span><span class="ycell y1" title="2070: 1 questions">1</span><span class="ycell y1" title="2072: 4 questions">4</span><span class="ycell y1" title="2073: 1 questions">1</span><span class="ycell y1" title="2078: 2 questions">2</span><span class="ycell y1" title="2080: 1 questions">1</span><span class="ycell y1" title="2081: 1 questions">1</span><span class="ycell y1" title="2082: 2 questions">2</span><span class="ycell y1" title="2083: 3 questions">3</span></td>
+<td class="num score">53</td>
+</tr><tr>
+<td class="rank">10</td>
+<td class="tname">Poisoning / toxicology</td>
+<td class="sub">Forensic Medicine</td>
+<td class="num">24</td>
+<td><span class="bar"><span class="bar-fill" style="width:40.0%;background:#7c3aed"></span></span></td>
+<td class="num">9/13</td>
+<td><span class="ycell y1" title="2062: 1 questions">1</span><span class="ycell y1" title="2069: 2 questions">2</span><span class="ycell y1" title="2070: 2 questions">2</span><span class="ycell y1" title="2072: 2 questions">2</span><span class="ycell y0" title="2073: 0 questions">·</span><span class="ycell y1" title="2078: 2 questions">2</span><span class="ycell y2" title="2080: 5 questions">5</span><span class="ycell y2" title="2081: 9 questions">9</span><span class="ycell y0" title="2082: 0 questions">·</span><span class="ycell y1" title="2083: 1 questions">1</span></td>
+<td class="num score">52</td>
+</tr><tr>
+<td class="rank">11</td>
+<td class="tname">Nepal health policy / acts</td>
+<td class="sub">Health Policy</td>
+<td class="num">17</td>
+<td><span class="bar"><span class="bar-fill" style="width:28.3%;background:#7c3aed"></span></span></td>
+<td class="num">9/13</td>
+<td><span class="ycell y1" title="2062: 1 questions">1</span><span class="ycell y0" title="2069: 0 questions">·</span><span class="ycell y1" title="2070: 3 questions">3</span><span class="ycell y1" title="2072: 2 questions">2</span><span class="ycell y0" title="2073: 0 questions">·</span><span class="ycell y0" title="2078: 0 questions">·</span><span class="ycell y1" title="2080: 1 questions">1</span><span class="ycell y1" title="2081: 4 questions">4</span><span class="ycell y1" title="2082: 4 questions">4</span><span class="ycell y1" title="2083: 2 questions">2</span></td>
+<td class="num score">49</td>
+</tr><tr>
+<td class="rank">12</td>
+<td class="tname">HIV / AIDS</td>
+<td class="sub">Medicine</td>
+<td class="num">17</td>
+<td><span class="bar"><span class="bar-fill" style="width:28.3%;background:#7c3aed"></span></span></td>
+<td class="num">9/13</td>
+<td><span class="ycell y1" title="2062: 1 questions">1</span><span class="ycell y1" title="2069: 1 questions">1</span><span class="ycell y1" title="2070: 4 questions">4</span><span class="ycell y1" title="2072: 3 questions">3</span><span class="ycell y0" title="2073: 0 questions">·</span><span class="ycell y1" title="2078: 1 questions">1</span><span class="ycell y0" title="2080: 0 questions">·</span><span class="ycell y1" title="2081: 2 questions">2</span><span class="ycell y1" title="2082: 2 questions">2</span><span class="ycell y1" title="2083: 3 questions">3</span></td>
+<td class="num score">47</td>
+</tr><tr>
+<td class="rank">13</td>
+<td class="tname">Epilepsy / seizures</td>
+<td class="sub">Medicine</td>
+<td class="num">13</td>
+<td><span class="bar"><span class="bar-fill" style="width:21.7%;background:#7c3aed"></span></span></td>
+<td class="num">9/13</td>
+<td><span class="ycell y0" title="2062: 0 questions">·</span><span class="ycell y1" title="2069: 1 questions">1</span><span class="ycell y0" title="2070: 0 questions">·</span><span class="ycell y1" title="2072: 1 questions">1</span><span class="ycell y1" title="2073: 4 questions">4</span><span class="ycell y1" title="2078: 1 questions">1</span><span class="ycell y1" title="2080: 1 questions">1</span><span class="ycell y1" title="2081: 3 questions">3</span><span class="ycell y1" title="2082: 1 questions">1</span><span class="ycell y1" title="2083: 1 questions">1</span></td>
+<td class="num score">44</td>
+</tr><tr>
+<td class="rank">14</td>
+<td class="tname">Leukaemia / lymphoma</td>
+<td class="sub">Medicine</td>
+<td class="num">12</td>
+<td><span class="bar"><span class="bar-fill" style="width:20.0%;background:#7c3aed"></span></span></td>
+<td class="num">9/13</td>
+<td><span class="ycell y1" title="2062: 1 questions">1</span><span class="ycell y1" title="2069: 1 questions">1</span><span class="ycell y0" title="2070: 0 questions">·</span><span class="ycell y1" title="2072: 1 questions">1</span><span class="ycell y1" title="2073: 3 questions">3</span><span class="ycell y1" title="2078: 1 questions">1</span><span class="ycell y1" title="2080: 1 questions">1</span><span class="ycell y1" title="2081: 3 questions">3</span><span class="ycell y1" title="2082: 1 questions">1</span><span class="ycell y0" title="2083: 0 questions">·</span></td>
+<td class="num score">43</td>
+</tr><tr>
+<td class="rank">15</td>
+<td class="tname">Cataract</td>
+<td class="sub">Ophthalmology</td>
+<td class="num">13</td>
+<td><span class="bar"><span class="bar-fill" style="width:21.7%;background:#7c3aed"></span></span></td>
+<td class="num">8/13</td>
+<td><span class="ycell y1" title="2062: 3 questions">3</span><span class="ycell y1" title="2069: 1 questions">1</span><span class="ycell y1" title="2070: 3 questions">3</span><span class="ycell y1" title="2072: 2 questions">2</span><span class="ycell y0" title="2073: 0 questions">·</span><span class="ycell y1" title="2078: 1 questions">1</span><span class="ycell y0" title="2080: 0 questions">·</span><span class="ycell y0" title="2081: 0 questions">·</span><span class="ycell y0" title="2082: 0 questions">·</span><span class="ycell y1" title="2083: 3 questions">3</span></td>
+<td class="num score">39</td>
+</tr><tr>
+<td class="rank">16</td>
+<td class="tname">Hernia</td>
+<td class="sub">Surgery</td>
+<td class="num">13</td>
+<td><span class="bar"><span class="bar-fill" style="width:21.7%;background:#7c3aed"></span></span></td>
+<td class="num">8/13</td>
+<td><span class="ycell y1" title="2062: 1 questions">1</span><span class="ycell y1" title="2069: 2 questions">2</span><span class="ycell y1" title="2070: 1 questions">1</span><span class="ycell y0" title="2072: 0 questions">·</span><span class="ycell y1" title="2073: 2 questions">2</span><span class="ycell y1" title="2078: 2 questions">2</span><span class="ycell y1" title="2080: 2 questions">2</span><span class="ycell y1" title="2081: 2 questions">2</span><span class="ycell y0" title="2082: 0 questions">·</span><span class="ycell y1" title="2083: 1 questions">1</span></td>
+<td class="num score">39</td>
+</tr><tr>
+<td class="rank">17</td>
+<td class="tname">Asthma / COPD</td>
+<td class="sub">Medicine</td>
+<td class="num">11</td>
+<td><span class="bar"><span class="bar-fill" style="width:18.3%;background:#7c3aed"></span></span></td>
+<td class="num">8/13</td>
+<td><span class="ycell y1" title="2062: 1 questions">1</span><span class="ycell y1" title="2069: 3 questions">3</span><span class="ycell y1" title="2070: 1 questions">1</span><span class="ycell y1" title="2072: 1 questions">1</span><span class="ycell y1" title="2073: 1 questions">1</span><span class="ycell y0" title="2078: 0 questions">·</span><span class="ycell y0" title="2080: 0 questions">·</span><span class="ycell y1" title="2081: 2 questions">2</span><span class="ycell y0" title="2082: 0 questions">·</span><span class="ycell y1" title="2083: 2 questions">2</span></td>
+<td class="num score">39</td>
+</tr><tr>
+<td class="rank">18</td>
+<td class="tname">Meningitis</td>
+<td class="sub">Medicine</td>
+<td class="num">10</td>
+<td><span class="bar"><span class="bar-fill" style="width:16.7%;background:#7c3aed"></span></span></td>
+<td class="num">8/13</td>
+<td><span class="ycell y1" title="2062: 1 questions">1</span><span class="ycell y1" title="2069: 1 questions">1</span><span class="ycell y1" title="2070: 1 questions">1</span><span class="ycell y0" title="2072: 0 questions">·</span><span class="ycell y1" title="2073: 2 questions">2</span><span class="ycell y1" title="2078: 1 questions">1</span><span class="ycell y0" title="2080: 0 questions">·</span><span class="ycell y1" title="2081: 3 questions">3</span><span class="ycell y0" title="2082: 0 questions">·</span><span class="ycell y1" title="2083: 1 questions">1</span></td>
+<td class="num score">38</td>
+</tr><tr>
+<td class="rank">19</td>
+<td class="tname">Burns</td>
+<td class="sub">Surgery</td>
+<td class="num">12</td>
+<td><span class="bar"><span class="bar-fill" style="width:20.0%;background:#7c3aed"></span></span></td>
+<td class="num">7/13</td>
+<td><span class="ycell y0" title="2062: 0 questions">·</span><span class="ycell y1" title="2069: 2 questions">2</span><span class="ycell y0" title="2070: 0 questions">·</span><span class="ycell y1" title="2072: 2 questions">2</span><span class="ycell y1" title="2073: 2 questions">2</span><span class="ycell y1" title="2078: 2 questions">2</span><span class="ycell y1" title="2080: 1 questions">1</span><span class="ycell y1" title="2081: 2 questions">2</span><span class="ycell y0" title="2082: 0 questions">·</span><span class="ycell y1" title="2083: 1 questions">1</span></td>
+<td class="num score">35</td>
+</tr><tr>
+<td class="rank">20</td>
+<td class="tname">Pre-eclampsia / eclampsia</td>
+<td class="sub">Obstetrics &amp; Gynaecology</td>
+<td class="num">10</td>
+<td><span class="bar"><span class="bar-fill" style="width:16.7%;background:#7c3aed"></span></span></td>
+<td class="num">7/13</td>
+<td><span class="ycell y0" title="2062: 0 questions">·</span><span class="ycell y0" title="2069: 0 questions">·</span><span class="ycell y1" title="2070: 1 questions">1</span><span class="ycell y1" title="2072: 1 questions">1</span><span class="ycell y1" title="2073: 3 questions">3</span><span class="ycell y0" title="2078: 0 questions">·</span><span class="ycell y0" title="2080: 0 questions">·</span><span class="ycell y1" title="2081: 2 questions">2</span><span class="ycell y1" title="2082: 2 questions">2</span><span class="ycell y1" title="2083: 1 questions">1</span></td>
+<td class="num score">35</td>
+</tr><tr>
+<td class="rank">21</td>
+<td class="tname">Psoriasis</td>
+<td class="sub">Dermatology</td>
+<td class="num">9</td>
+<td><span class="bar"><span class="bar-fill" style="width:15.0%;background:#7c3aed"></span></span></td>
+<td class="num">7/13</td>
+<td><span class="ycell y0" title="2062: 0 questions">·</span><span class="ycell y1" title="2069: 1 questions">1</span><span class="ycell y0" title="2070: 0 questions">·</span><span class="ycell y0" title="2072: 0 questions">·</span><span class="ycell y1" title="2073: 2 questions">2</span><span class="ycell y0" title="2078: 0 questions">·</span><span class="ycell y1" title="2080: 2 questions">2</span><span class="ycell y1" title="2081: 2 questions">2</span><span class="ycell y0" title="2082: 0 questions">·</span><span class="ycell y1" title="2083: 2 questions">2</span></td>
+<td class="num score">34</td>
+</tr><tr>
+<td class="rank">22</td>
+<td class="tname">Renal failure / AKI</td>
+<td class="sub">Medicine</td>
+<td class="num">9</td>
+<td><span class="bar"><span class="bar-fill" style="width:15.0%;background:#7c3aed"></span></span></td>
+<td class="num">7/13</td>
+<td><span class="ycell y0" title="2062: 0 questions">·</span><span class="ycell y1" title="2069: 1 questions">1</span><span class="ycell y0" title="2070: 0 questions">·</span><span class="ycell y0" title="2072: 0 questions">·</span><span class="ycell y1" title="2073: 1 questions">1</span><span class="ycell y1" title="2078: 1 questions">1</span><span class="ycell y1" title="2080: 1 questions">1</span><span class="ycell y1" title="2081: 2 questions">2</span><span class="ycell y1" title="2082: 2 questions">2</span><span class="ycell y1" title="2083: 1 questions">1</span></td>
+<td class="num score">34</td>
+</tr><tr>
+<td class="rank">23</td>
+<td class="tname">Leprosy</td>
+<td class="sub">Dermatology</td>
+<td class="num">9</td>
+<td><span class="bar"><span class="bar-fill" style="width:15.0%;background:#7c3aed"></span></span></td>
+<td class="num">6/13</td>
+<td><span class="ycell y0" title="2062: 0 questions">·</span><span class="ycell y1" title="2069: 1 questions">1</span><span class="ycell y1" title="2070: 1 questions">1</span><span class="ycell y1" title="2072: 1 questions">1</span><span class="ycell y1" title="2073: 2 questions">2</span><span class="ycell y0" title="2078: 0 questions">·</span><span class="ycell y0" title="2080: 0 questions">·</span><span class="ycell y1" title="2081: 2 questions">2</span><span class="ycell y0" title="2082: 0 questions">·</span><span class="ycell y1" title="2083: 2 questions">2</span></td>
+<td class="num score">30</td>
+</tr><tr>
+<td class="rank">24</td>
+<td class="tname">Glaucoma</td>
+<td class="sub">Ophthalmology</td>
+<td class="num">7</td>
+<td><span class="bar"><span class="bar-fill" style="width:11.7%;background:#7c3aed"></span></span></td>
+<td class="num">6/13</td>
+<td><span class="ycell y1" title="2062: 1 questions">1</span><span class="ycell y0" title="2069: 0 questions">·</span><span class="ycell y1" title="2070: 2 questions">2</span><span class="ycell y0" title="2072: 0 questions">·</span><span class="ycell y1" title="2073: 1 questions">1</span><span class="ycell y0" title="2078: 0 questions">·</span><span class="ycell y1" title="2080: 1 questions">1</span><span class="ycell y1" title="2081: 1 questions">1</span><span class="ycell y0" title="2082: 0 questions">·</span><span class="ycell y1" title="2083: 1 questions">1</span></td>
+<td class="num score">28</td>
+</tr><tr>
+<td class="rank">25</td>
+<td class="tname">Poliomyelitis</td>
+<td class="sub">Community Medicine &amp; Public Health</td>
+<td class="num">7</td>
+<td><span class="bar"><span class="bar-fill" style="width:11.7%;background:#7c3aed"></span></span></td>
+<td class="num">6/13</td>
+<td><span class="ycell y0" title="2062: 0 questions">·</span><span class="ycell y0" title="2069: 0 questions">·</span><span class="ycell y1" title="2070: 2 questions">2</span><span class="ycell y1" title="2072: 1 questions">1</span><span class="ycell y1" title="2073: 1 questions">1</span><span class="ycell y1" title="2078: 1 questions">1</span><span class="ycell y0" title="2080: 0 questions">·</span><span class="ycell y1" title="2081: 1 questions">1</span><span class="ycell y0" title="2082: 0 questions">·</span><span class="ycell y1" title="2083: 1 questions">1</span></td>
+<td class="num score">28</td>
+</tr><tr>
+<td class="rank">26</td>
+<td class="tname">Conjunctivitis / pink eye</td>
+<td class="sub">Ophthalmology</td>
+<td class="num">6</td>
+<td><span class="bar"><span class="bar-fill" style="width:10.0%;background:#7c3aed"></span></span></td>
+<td class="num">6/13</td>
+<td><span class="ycell y0" title="2062: 0 questions">·</span><span class="ycell y1" title="2069: 1 questions">1</span><span class="ycell y0" title="2070: 0 questions">·</span><span class="ycell y1" title="2072: 1 questions">1</span><span class="ycell y0" title="2073: 0 questions">·</span><span class="ycell y0" title="2078: 0 questions">·</span><span class="ycell y0" title="2080: 0 questions">·</span><span class="ycell y1" title="2081: 2 questions">2</span><span class="ycell y1" title="2082: 1 questions">1</span><span class="ycell y1" title="2083: 1 questions">1</span></td>
+<td class="num score">28</td>
+</tr><tr>
+<td class="rank">27</td>
+<td class="tname">Heart failure</td>
+<td class="sub">Medicine</td>
+<td class="num">6</td>
+<td><span class="bar"><span class="bar-fill" style="width:10.0%;background:#7c3aed"></span></span></td>
+<td class="num">6/13</td>
+<td><span class="ycell y0" title="2062: 0 questions">·</span><span class="ycell y1" title="2069: 1 questions">1</span><span class="ycell y1" title="2070: 1 questions">1</span><span class="ycell y1" title="2072: 1 questions">1</span><span class="ycell y1" title="2073: 1 questions">1</span><span class="ycell y0" title="2078: 0 questions">·</span><span class="ycell y1" title="2080: 1 questions">1</span><span class="ycell y0" title="2081: 0 questions">·</span><span class="ycell y0" title="2082: 0 questions">·</span><span class="ycell y1" title="2083: 1 questions">1</span></td>
+<td class="num score">27</td>
+</tr><tr>
+<td class="rank">28</td>
+<td class="tname">Peptic ulcer / gastritis</td>
+<td class="sub">Medicine</td>
+<td class="num">6</td>
+<td><span class="bar"><span class="bar-fill" style="width:10.0%;background:#7c3aed"></span></span></td>
+<td class="num">5/13</td>
+<td><span class="ycell y0" title="2062: 0 questions">·</span><span class="ycell y0" title="2069: 0 questions">·</span><span class="ycell y1" title="2070: 1 questions">1</span><span class="ycell y0" title="2072: 0 questions">·</span><span class="ycell y0" title="2073: 0 questions">·</span><span class="ycell y0" title="2078: 0 questions">·</span><span class="ycell y1" title="2080: 1 questions">1</span><span class="ycell y1" title="2081: 2 questions">2</span><span class="ycell y1" title="2082: 1 questions">1</span><span class="ycell y1" title="2083: 1 questions">1</span></td>
+<td class="num score">25</td>
+</tr><tr>
+<td class="rank">29</td>
+<td class="tname">Appendicitis</td>
+<td class="sub">Surgery</td>
+<td class="num">5</td>
+<td><span class="bar"><span class="bar-fill" style="width:8.3%;background:#7c3aed"></span></span></td>
+<td class="num">5/13</td>
+<td><span class="ycell y0" title="2062: 0 questions">·</span><span class="ycell y1" title="2069: 1 questions">1</span><span class="ycell y0" title="2070: 0 questions">·</span><span class="ycell y1" title="2072: 1 questions">1</span><span class="ycell y1" title="2073: 1 questions">1</span><span class="ycell y1" title="2078: 1 questions">1</span><span class="ycell y1" title="2080: 1 questions">1</span><span class="ycell y0" title="2081: 0 questions">·</span><span class="ycell y0" title="2082: 0 questions">·</span><span class="ycell y0" title="2083: 0 questions">·</span></td>
+<td class="num score">22</td>
+</tr><tr>
+<td class="rank">30</td>
+<td class="tname">Malaria</td>
+<td class="sub">Medicine</td>
+<td class="num">9</td>
+<td><span class="bar"><span class="bar-fill" style="width:15.0%;background:#7c3aed"></span></span></td>
+<td class="num">4/13</td>
+<td><span class="ycell y0" title="2062: 0 questions">·</span><span class="ycell y1" title="2069: 3 questions">3</span><span class="ycell y0" title="2070: 0 questions">·</span><span class="ycell y1" title="2072: 2 questions">2</span><span class="ycell y1" title="2073: 2 questions">2</span><span class="ycell y0" title="2078: 0 questions">·</span><span class="ycell y0" title="2080: 0 questions">·</span><span class="ycell y0" title="2081: 0 questions">·</span><span class="ycell y1" title="2082: 2 questions">2</span><span class="ycell y0" title="2083: 0 questions">·</span></td>
+<td class="num score">21</td>
+</tr></tbody>
+  </table></div>
+</section>
+
+<footer>Generated 18 Nov 2026 from MedArena question banks · static, browser-free analysis · stems shown as previews only (answers and explanations stay locked).</footer>
+</div>
+</body>
+</html>
