@@ -427,62 +427,42 @@ html,body{overflow-x:hidden;}
 .home-countdown.gandaki .cd-sub{color:#fde68a}
 .home-countdown.gandaki .cd-ghost{position:absolute;right:-8px;bottom:-18px;font-size:96px;opacity:.08;pointer-events:none;user-select:none;font-weight:900;letter-spacing:-2px}
 <style>
-.sp-section{margin:0 0 30px}
-.sp-live{display:inline-flex;align-items:center;gap:10px;background:#0b1224;color:#f5c451;font-size:11px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;padding:8px 16px;border-radius:999px;border:1px solid rgba(245,196,81,.35)}
-.sp-dot{width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 0 0 rgba(52,211,153,.6);animation:spPulse 1.8s ease-in-out infinite}
-@keyframes spPulse{0%{box-shadow:0 0 0 0 rgba(52,211,153,.55)}70%{box-shadow:0 0 0 9px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
-.sp-sub{color:#63718a;font-size:14px;max-width:560px;margin:2px 0 0}
-.sp-card{position:relative;overflow:hidden;padding:26px 28px;border-radius:22px;color:#eaf1ff;border:1px solid rgba(148,183,255,.22);background:radial-gradient(1000px 640px at -8% -18%,rgba(245,196,81,.22) 0%,transparent 55%),radial-gradient(900px 700px at 108% 118%,rgba(66,108,224,.30) 0%,transparent 55%),linear-gradient(150deg,#0c1430 0%,#101f3f 55%,#16295a 100%);box-shadow:0 20px 50px rgba(7,16,43,.45);display:grid;grid-template-columns:minmax(300px,390px) 1fr;gap:30px}
-.sp-card::after{content:"";position:absolute;right:-140px;top:-140px;width:420px;height:420px;border-radius:50%;border:1px solid rgba(245,196,81,.13);pointer-events:none}
-.sp-card::before{content:"";position:absolute;left:-120px;bottom:-130px;width:380px;height:380px;border-radius:50%;border:1px solid rgba(66,108,224,.16);pointer-events:none}
-.sp-summary{position:relative;display:flex;flex-direction:column;gap:16px}
-.sp-gauge-wrap{position:relative;display:flex;justify-content:center}
-.sp-gauge{width:168px;height:168px}
-.sp-gauge #spGaugeArc{transition:stroke-dashoffset 1.6s cubic-bezier(.2,.8,.2,1)}
-.sp-gauge-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:1px}
-.sp-gauge-pct{font-size:40px;font-weight:800;letter-spacing:-1px;color:#fff}
-.sp-gauge-pct small{font-size:18px;font-weight:800;color:#f5c451;margin-left:2px}
-.sp-gauge-label{font-size:10px;letter-spacing:2.2px;text-transform:uppercase;color:#9db4e6;font-weight:700}
-.sp-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.sp-stat{background:rgba(148,183,255,.06);border:1px solid rgba(148,183,255,.14);border-radius:12px;padding:12px 8px;text-align:center}
-.sp-stat-n{font-size:26px;font-weight:800;color:#f5c451;letter-spacing:-0.5px;font-variant-numeric:tabular-nums}
-.sp-stat-l{font-size:9px;letter-spacing:1.2px;text-transform:uppercase;color:#adc1ee;font-weight:700;margin-top:2px}
-.sp-callout{background:rgba(245,196,81,.13);border:1px solid rgba(245,196,81,.35);border-radius:12px;padding:11px 14px;font-size:13px;line-height:1.55;color:#fde68a}
-.sp-callout b{color:#fff}
-.sp-callout.weak{background:rgba(239,68,68,.12);border-color:rgba(248,113,113,.4);color:#fecaca}
-.sp-callout.weak b{color:#ffffff}
-.sp-cta{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;background:linear-gradient(92deg,#f5c451,#e8a53d);color:#1a1304;text-decoration:none;font-weight:800;font-size:13px;letter-spacing:.4px;padding:11px 18px;border-radius:10px;box-shadow:0 8px 20px rgba(245,196,81,.28)}
-.sp-cta:hover{filter:brightness(1.06);transform:translateY(-1px)}
-.sp-list-head{display:grid;grid-template-columns:1fr 150px 96px;gap:12px;padding:6px 14px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#9db4e6;font-weight:800;border-bottom:1px solid rgba(148,183,255,.15)}
-.sp-list{display:flex;flex-direction:column;gap:12px;max-height:440px;overflow-y:auto;padding-right:6px;scrollbar-width:thin;scrollbar-color:rgba(245,196,81,.4) transparent}
-.sp-list::-webkit-scrollbar{width:7px}
-.sp-list::-webkit-scrollbar-track{background:transparent}
-.sp-list::-webkit-scrollbar-thumb{background:rgba(245,196,81,.35);border-radius:4px}
-.sp-row{display:grid;grid-template-columns:1fr 150px 96px;gap:12px;align-items:center;padding:11px 14px;background:rgba(255,255,255,.028);border:1px solid rgba(148,183,255,.13);border-radius:14px;transition:background .25s,border-color .25s}
-.sp-row:hover{background:rgba(255,255,255,.05);border-color:rgba(245,196,81,.35)}
-.sp-name{display:flex;align-items:center;gap:11px;min-width:0}
-.sp-chip{flex:none;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:15px;font-weight:800;color:#1a1304}
-.sp-subject{min-width:0}
-.sp-subject b{display:block;font-size:14.5px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sp-subject span{display:block;font-size:10.5px;color:#adc1ee;margin-top:2px;letter-spacing:.6px;text-transform:uppercase;font-weight:700}
-.sp-bar{height:9px;border-radius:6px;background:rgba(148,183,255,.14);overflow:hidden}
-.sp-bar-fill{display:block;height:100%;width:0%;border-radius:6px;background:linear-gradient(90deg,#3b82f6,#f5c451);transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
-.sp-count{text-align:right;font-variant-numeric:tabular-nums}
-.sp-count b{font-size:16px;color:#fff}
-.sp-count span{display:block;font-size:10px;color:#adc1ee;letter-spacing:1px;text-transform:uppercase;font-weight:700;margin-top:1px}
-.sp-acc{margin-left:6px;font-size:11px;font-weight:800;letter-spacing:.6px;padding:5px 9px;border-radius:999px;white-space:nowrap;text-align:center}
-.sp-acc.ok{background:rgba(52,211,153,.16);color:#7bf0c4;border:1px solid rgba(52,211,153,.35)}
-.sp-acc.warn{background:rgba(251,191,36,.13);color:#fcd34d;border:1px solid rgba(251,191,36,.32)}
-.sp-acc.bad{background:rgba(248,113,113,.14);color:#fca5a5;border:1px solid rgba(248,113,113,.35)}
-.sp-footnote{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:2px;padding-top:14px;border-top:1px solid rgba(148,183,255,.12);font-size:11.5px;color:#9db4e6;letter-spacing:.3px}
-.sp-empty{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:34px 20px;border:1px dashed rgba(148,183,255,.3);border-radius:16px;background:rgba(148,183,255,.05)}
-.sp-empty-orb{width:74px;height:74px;border-radius:50%;display:grid;place-items:center;font-size:34px;background:radial-gradient(circle at 35% 35%,#f5c451,#e8a53d 70%);box-shadow:0 12px 30px rgba(245,196,81,.33);animation:spFloat 3.4s ease-in-out infinite}
-@keyframes spFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
-.sp-empty b{font-size:17px;color:#fff;letter-spacing:-.2px}
-.sp-empty p{margin:0;max-width:380px;font-size:13px;line-height:1.6;color:#adc1ee}
-.sp-footnote b{color:#fff}
-@media(max-width:980px){.sp-card{grid-template-columns:1fr;gap:20px;padding:22px}.sp-summary{flex-direction:row;flex-wrap:wrap;align-items:center}.sp-gauge-wrap{flex:none}.sp-stats{flex:1;min-width:220px}.sp-cta{align-self:stretch;justify-content:center}.sp-list-head{grid-template-columns:1fr auto auto}.sp-row{grid-template-columns:1fr auto auto;gap:10px}.sp-name{grid-column:1/-1}.sp-list{max-height:none}}
-@media(max-width:560px){.sp-stats{grid-template-columns:repeat(3,1fr)}.sp-stat-n{font-size:22px}}
+.dc-section{margin:0 0 30px}
+.dc-live{display:inline-flex;align-items:center;gap:10px;background:#0b1224;color:#f5c451;font-size:11px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;padding:8px 16px;border-radius:999px;border:1px solid rgba(245,196,81,.35)}
+.dc-dot{width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 0 0 rgba(52,211,153,.6);animation:dcPulse 1.8s ease-in-out infinite}
+@keyframes dcPulse{0%{box-shadow:0 0 0 0 rgba(52,211,153,.55)}70%{box-shadow:0 0 0 9px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
+.dc-sub{color:#63718a;font-size:14px;max-width:620px;margin:2px 0 0}
+.dc-card{position:relative;overflow:hidden;padding:24px 26px 18px;border-radius:22px;color:#eaf1ff;border:1px solid rgba(148,183,255,.22);background:radial-gradient(900px 600px at -6% -20%,rgba(245,196,81,.18) 0%,transparent 55%),radial-gradient(800px 640px at 108% 120%,rgba(66,108,224,.28) 0%,transparent 55%),linear-gradient(150deg,#0c1430 0%,#101f3f 55%,#16295a 100%);box-shadow:0 20px 50px rgba(7,16,43,.45)}
+.dc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:14px}
+.dc-stats{display:grid;grid-template-columns:repeat(4,minmax(110px,1fr));gap:10px}
+.dc-stat{background:rgba(148,183,255,.06);border:1px solid rgba(148,183,255,.14);border-radius:12px;padding:10px 12px}
+.dc-stat b{display:block;font-size:24px;font-weight:800;color:#f5c451;letter-spacing:-.5px;font-variant-numeric:tabular-nums}
+.dc-stat span{font-size:9px;letter-spacing:1.2px;text-transform:uppercase;color:#adc1ee;font-weight:700}
+.dc-ranges{display:flex;gap:6px;flex-wrap:wrap}
+.dc-range{background:rgba(148,183,255,.07);color:#adc1ee;border:1px solid rgba(148,183,255,.2);padding:7px 12px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:1px;cursor:pointer}
+.dc-range.on{background:#f5c451;color:#1a1304;border-color:#f5c451}
+.dc-plot{position:relative;width:100%}
+.dc-svg{width:100%;height:auto;display:block;overflow:visible}
+.dc-grid{stroke:rgba(148,183,255,.14);stroke-width:1;stroke-dasharray:4 6}
+.dc-axis{fill:#9db4e6;font-size:11px;font-weight:700;letter-spacing:.4px}
+.dc-area{fill:url(#dcFill);opacity:0;animation:dcFade 1.1s .35s ease forwards}
+.dc-line{fill:none;stroke:url(#dcStroke);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 3px 10px rgba(245,196,81,.45));stroke-dasharray:1;stroke-dashoffset:1;animation:dcDraw 1.7s cubic-bezier(.25,.8,.25,1) forwards}
+@keyframes dcDraw{to{stroke-dashoffset:0}}
+@keyframes dcFade{to{opacity:1}}
+.dc-dot{fill:#0c1430;stroke:#f5c451;stroke-width:2.5;opacity:0;animation:dcPop .4s ease forwards}
+@keyframes dcPop{from{opacity:0;transform:scale(.2)}to{opacity:1;transform:scale(1)}}
+.dc-peak{fill:#f5c451;stroke:#fff7df;stroke-width:2}
+.dc-last{fill:#34d399;stroke:#d1fae5;stroke-width:2;animation:dcBeat 2s ease-in-out infinite}
+@keyframes dcBeat{0%,100%{r:5;opacity:1}50%{r:8;opacity:.45}}
+.dc-hit{fill:transparent;cursor:crosshair}
+.dc-tip{position:absolute;display:none;transform:translate(-50%,-125%);pointer-events:none;background:#f8fafc;color:#0f172a;padding:7px 11px;border-radius:9px;font-size:11.5px;font-weight:800;white-space:nowrap;box-shadow:0 8px 22px rgba(0,0,0,.35);z-index:3}
+.dc-tip b{color:#b45309}
+.dc-tip::after{content:"";position:absolute;left:50%;bottom:-5px;width:10px;height:10px;background:#f8fafc;transform:translateX(-50%) rotate(45deg)}
+.dc-foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:8px;padding-top:12px;border-top:1px solid rgba(148,183,255,.12);font-size:11.5px;color:#9db4e6}
+.dc-foot b{color:#fff}
+.dc-cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(92deg,#f5c451,#e8a53d);color:#1a1304;text-decoration:none;font-weight:800;font-size:12.5px;padding:9px 15px;border-radius:9px}
+@media(max-width:980px){.dc-stats{grid-template-columns:repeat(2,1fr)}.dc-card{padding:20px}}
+@media(max-width:560px){.dc-stats{grid-template-columns:repeat(2,1fr)}.dc-stat b{font-size:20px}}
 </style>
 </style>
 <section class="home-countdown" aria-labelledby="cdTitle">
@@ -565,31 +545,24 @@ html,body{overflow-x:hidden;}
     <div class="bank-loading"><span class="loading-pulse"></span> Loading leaderboard...</div>
   </div>
 </section>
-<section class="sp-section" id="spSection" aria-labelledby="spTitle" hidden>
-  <div class="bank-section-head"><div><div class="section-eyebrow">YOUR PROGRESS REPORT</div><h2 id="spTitle">Subject&minus;wise mastery at a glance</h2><p class="sp-sub">Every question you have attempted, charted by subject &mdash; so you can spot your weakest link and fix it first.</p></div><div class="sp-live"><span class="sp-dot"></span> LIVE</div></div>
-  <div class="sp-card">
-    <aside class="sp-summary" aria-label="Summary">
-      <div class="sp-gauge-wrap">
-        <svg class="sp-gauge" viewBox="0 0 132 132" role="img" aria-label="Overall accuracy">
-          <circle cx="66" cy="66" r="54" fill="none" stroke="rgba(148,183,255,.14)" stroke-width="13"/>
-          <circle id="spGaugeArc" cx="66" cy="66" r="54" fill="none" stroke="url(#spGrad)" stroke-width="13" stroke-linecap="round" transform="rotate(-90 66 66)" stroke-dasharray="339.29" stroke-dashoffset="339.29"/>
-          <defs><linearGradient id="spGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7dd3fc"/><stop offset="55%" stop-color="#f5c451"/><stop offset="100%" stop-color="#f97316"/></linearGradient></defs>
-        </svg>
-        <div class="sp-gauge-center"><div class="sp-gauge-pct"><span id="spGaugePct">0</span><small>%</small></div><div class="sp-gauge-label">Overall accuracy</div></div>
+<section class="dc-section" id="dcSection" aria-labelledby="dcTitle">
+  <div class="bank-section-head"><div><div class="section-eyebrow">DAILY PRACTICE TREND</div><h2 id="dcTitle">Questions solved each day</h2><p class="dc-sub">Your daily output at a glance — compare today with the last few days and keep the line climbing.</p></div><div class="dc-live"><span class="dc-dot"></span> LIVE</div></div>
+  <div class="dc-card">
+    <div class="dc-top">
+      <div class="dc-stats">
+        <div class="dc-stat"><b id="dcToday">0</b><span>Solved today</span></div>
+        <div class="dc-stat"><b id="dcBest">0</b><span>Best day</span></div>
+        <div class="dc-stat"><b id="dcAvg">0</b><span>Daily average</span></div>
+        <div class="dc-stat"><b id="dcTotal">0</b><span>In this range</span></div>
       </div>
-      <div class="sp-stats">
-        <div class="sp-stat"><div class="sp-stat-n" id="spAttempted">0</div><div class="sp-stat-l">Questions attempted</div></div>
-        <div class="sp-stat"><div class="sp-stat-n" id="spCorrect">0</div><div class="sp-stat-l">Answered correctly</div></div>
-        <div class="sp-stat"><div class="sp-stat-n" id="spSubjects">0</div><div class="sp-stat-l">Subjects touched</div></div>
+      <div class="dc-ranges" id="dcRanges">
+        <button class="dc-range on" type="button" data-days="7">7 DAYS</button>
+        <button class="dc-range" type="button" data-days="14">14 DAYS</button>
+        <button class="dc-range" type="button" data-days="30">30 DAYS</button>
       </div>
-      <div class="sp-callout" id="spCallout">Solve a few sessions and your weakest subject will surface here.</div>
-      <a class="sp-cta" href="surgery-practice.html">Back to practice <span aria-hidden="true">&rarr;</span></a>
-    </aside>
-    <div class="sp-list-wrap">
-      <div class="sp-list-head"><span>Subject</span><span>Attempted</span><span>Accuracy</span></div>
-      <div class="sp-list" id="spList" aria-live="polite"></div>
-      <div class="sp-footnote" id="spFootnote"></div>
     </div>
+    <div class="dc-plot" id="dcPlot"><div id="dcSvgHost"></div><div class="dc-tip" id="dcTip"></div></div>
+    <div class="dc-foot"><span id="dcFootLeft">Solve questions to start your daily trend.</span><a class="dc-cta" href="surgery-practice.html">Practice now <span aria-hidden="true">→</span></a></div>
   </div>
 </section>
 
@@ -2130,130 +2103,146 @@ initDB().then(async () => {
 </script>
 
 <script>
+/* Daily solved line chart — replaces the old subject-wise progress report. */
 (function(){
-  try{
-    var idbOpen = indexedDB.open("medarena", 2);
-    idbOpen.onupgradeneeded = function(e){ var db = e.target.result; if(!db.objectStoreNames.contains("attempts")) db.createObjectStore("attempts", { keyPath: "id" }); if(!db.objectStoreNames.contains("banks")) db.createObjectStore("banks", { keyPath: "id" }); };
-    idbOpen.onsuccess = function(e){
-      var db = e.target.result;
-      function idbAll(st){ return new Promise(function(res,rej){ var t=db.transaction(st,"readonly").objectStore(st).getAll(); t.onsuccess=function(){res(t.result)}; t.onerror=function(){rej(t.error)} ;}); }
-      var refreshBusy = false, lastSig = null;
-      function refresh(){
-        if (refreshBusy) return; refreshBusy = true;
-        try {
-          idbAll("attempts").then(render).catch(function(){}).finally(function(){ refreshBusy = false; });
-        } catch (_) { refreshBusy = false; }
+  var KEY_DAILY = "medarena.dailySolved.v1", KEY_SOLVED = "medarena.solved", KEY_HIST = "se1.hist";
+  var range = 7, counts = {}, extraCounts = {}, lastSig = "";
+  var $ = function(id){ return document.getElementById(id); };
+  function pad(n){ return String(n).padStart(2, "0"); }
+  function dayKey(ts){ var d = new Date(ts); return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate()); }
+  function parseDay(v){
+    if (!v) return null;
+    if (typeof v === "number") return isFinite(v) ? v : null;
+    var t = Date.parse(v);
+    return isFinite(t) ? t : null;
+  }
+  function mergeMax(dst, src){ Object.keys(src).forEach(function(k){ dst[k] = Math.max(dst[k]||0, Number(src[k])||0); }); }
+  function setText(id, v){ var el = $(id); if (el) el.textContent = v; }
+  function readLocal(){
+    var out = {};
+    /* precise per-question log written by surgery-practice.html */
+    try {
+      var d = JSON.parse(localStorage.getItem(KEY_DAILY) || "{}");
+      Object.keys(d).forEach(function(k){ var n = Number(d[k]) || 0; if (n > 0) out[k] = n; });
+    } catch (e) {}
+    /* solved-question timestamps written by auth.js */
+    var b = {};
+    try {
+      var s = JSON.parse(localStorage.getItem(KEY_SOLVED) || "{}");
+      Object.keys(s).forEach(function(k){ var v = s[k]; if (v && v.t){ var dk = dayKey(v.t); b[dk] = (b[dk]||0) + 1; } });
+    } catch (e) {}
+    mergeMax(out, b);
+    /* older session history from the practice page */
+    var c = {};
+    try {
+      var h = JSON.parse(localStorage.getItem(KEY_HIST) || "[]");
+      if (Array.isArray(h)) h.forEach(function(a){
+        var t = parseDay(a && a.d); if (!t) return;
+        var dk = dayKey(t); c[dk] = (c[dk]||0) + (Number(a.total) || 0);
+      });
+    } catch (e) {}
+    mergeMax(out, c);
+    mergeMax(out, extraCounts);
+    return out;
+  }
+  function lastDays(n){
+    var out = [], base = new Date(); base.setHours(0,0,0,0);
+    for (var i = n-1; i >= 0; i--){
+      var d = new Date(base.getTime() - i * 86400000);
+      out.push({ key: dayKey(d.getTime()), label: d.toLocaleDateString(undefined,{weekday:"short"}), date: d.toLocaleDateString(undefined,{month:"short",day:"numeric"}) });
+    }
+    return out;
+  }
+  function render(){
+    var host = $("dcSvgHost"); if (!host) return;
+    var days = lastDays(range), vals = days.map(function(d){ return counts[d.key] || 0; });
+    var total = vals.reduce(function(a,b){ return a+b; }, 0);
+    var best = Math.max.apply(null, vals.concat([0]));
+    var today = vals[vals.length-1] || 0;
+    var avg = Math.round(total / vals.length * 10) / 10;
+    setText("dcToday", today); setText("dcBest", best); setText("dcAvg", avg); setText("dcTotal", total);
+    var foot = $("dcFootLeft");
+    if (foot) foot.innerHTML = total
+      ? "Peak <b>"+best+"</b> questions in a day · <b>"+total+"</b> solved in the last "+range+" days"
+      : "No solves recorded yet — your line appears after your first answered question.";
+    var W = 960, H = 280, PL = 46, PR = 18, PT = 22, PB = 36;
+    var step = Math.max(1, Math.ceil(Math.max(best,10)/4/5)*5), max = Math.max(step*4, best);
+    var X = function(i){ return PL + (days.length === 1 ? (W-PL-PR)/2 : i*(W-PL-PR)/(days.length-1)); };
+    var Y = function(v){ return PT + (H-PT-PB) * (1 - (v||0)/max); };
+    var pts = vals.map(function(v,i){ return { x:X(i), y:Y(v), v:v, d:days[i] }; });
+    var line = pts.map(function(p,i){ return (i ? "L" : "M") + p.x.toFixed(1) + " " + p.y.toFixed(1); }).join(" ");
+    var area = line + " L " + pts[pts.length-1].x.toFixed(1) + " " + (H-PB) + " L " + pts[0].x.toFixed(1) + " " + (H-PB) + " Z";
+    var svg = ['<svg class="dc-svg" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Questions solved per day">',
+      '<defs><linearGradient id="dcStroke" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#60a5fa"/><stop offset="55%" stop-color="#f5c451"/><stop offset="100%" stop-color="#fb923c"/></linearGradient>',
+      '<linearGradient id="dcFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f5c451" stop-opacity=".38"/><stop offset="100%" stop-color="#f5c451" stop-opacity="0"/></linearGradient></defs>'];
+    for (var g = 0; g <= 4; g++){
+      var gy = PT + (H-PT-PB)*g/4, gv = Math.round(max - max*g/4);
+      svg.push('<line class="dc-grid" x1="'+PL+'" y1="'+gy.toFixed(1)+'" x2="'+(W-PR)+'" y2="'+gy.toFixed(1)+'"/>');
+      svg.push('<text class="dc-axis" x="'+(PL-8)+'" y="'+(gy+4).toFixed(1)+'" text-anchor="end">'+gv+'</text>');
+    }
+    svg.push('<path class="dc-area" d="'+area+'"/>');
+    svg.push('<path class="dc-line" pathLength="1" d="'+line+'"/>');
+    var peakIdx = vals.indexOf(best), every = Math.ceil(days.length/8);
+    pts.forEach(function(p,i){
+      var cls = "dc-dot" + (i === peakIdx && best > 0 ? " dc-peak" : "") + (i === pts.length-1 ? " dc-last" : "");
+      var r = (i === peakIdx && best > 0) ? 6 : (i === pts.length-1 ? 5 : 4);
+      svg.push('<circle class="'+cls+'" cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="'+r+'" style="animation-delay:'+(i*0.045).toFixed(2)+'s"/>');
+      svg.push('<circle class="dc-hit" data-i="'+i+'" cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="16"/>');
+      if (i % every === 0 || i === days.length-1){
+        svg.push('<text class="dc-axis" x="'+p.x.toFixed(1)+'" y="'+(H-10)+'" text-anchor="middle">'+p.d.label+' '+p.d.date.replace(/ .*/,"")+'</text>');
       }
-      function $(id){ return document.getElementById(id); }
-      function esc(t){ return String(t).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];}); }
-      var ACC = {grad:"#f5c451", track:"rgba(148,183,255,.14)"};
-      function render(attempts){
-        var finished = (attempts||[]).filter(function(a){ return a && a.snapshot && a.snapshot.pool && a.snapshot.pool.length; });
-        var cards = [].slice.call(document.querySelectorAll(".home-bank-card"));
-        var meta = {};
-        cards.forEach(function(card){
-          var actionEl = card.querySelector(".home-bank-action");
-          var href = (actionEl && actionEl.getAttribute("href")) || card.getAttribute("href") || "";
-          var m = href.match(/[?&]bank=([^&]+)/); if(!m) return;
-          var id = m[1];
-          var name = (card.querySelector(".home-bank-name")||{}).textContent || "Bank";
-          var cntEl = card.querySelector(".home-bank-meta b");
-          var total = parseInt((cntEl ? cntEl.textContent : "0").replace(/,/g,"")) || 0;
-          var style = card.getAttribute("style") || "";
-          var toneM = style.match(/--tone:(#[0-9a-fA-F]+)/);
-          var tone = toneM ? toneM[1] : "#3b82f6";
-          meta[id] = meta[id] || { name: name.trim(), total: total, tone: tone, icon: "✚" };
-        });
-        var agg = {};
-        finished.forEach(function(a){
-          var b = a.bankId, m2 = meta[b] || (meta[b] = { name: a.bankName || "Bank", total: 0, tone: "#3b82f6" });
-          var row = agg[b] || (agg[b] = { answers: 0, correct: 0, stems: {}, sessions: 0, total: m2.total, name: m2.name, tone: m2.tone });
-          row.sessions++;
-          var pool = a.snapshot.pool, sel = a.snapshot.sel || [];
-          pool.forEach(function(q,i){
-            var chosen = sel[i];
-            if (chosen == null) return;
-            row.answers++; row.stems[q.stem]=1;
-            var correctText = (q.options||[]).find(function(o){return o.correct===1;});
-            if (correctText && chosen === correctText.text) row.correct++;
-          });
-        });
-        var allIds = Object.keys(meta);
-        var answeredSessions = finished.filter(function(a){ return (a.snapshot.sel||[]).some(function(x){ return x != null; }); }).length;
-        var rows = allIds.map(function(id){ return agg[id] ? Object.assign({id:id}, agg[id]) : { id:id, answers:0, correct:0, stems:{}, sessions:0, total: (meta[id]||{}).total||0, name:(meta[id]||{}).name||"", tone:(meta[id]||{}).tone||"#3b82f6" }; })
-          .sort(function(a,b){ return b.answers - a.answers || b.total - a.total; });
-        var displayRows = rows.filter(function(r){ return r.answers > 0; });
-        var section = $("spSection"); if (!section) return;
-        section.hidden = false;
-        var totAns = rows.reduce(function(s,r){return s+r.answers;},0);
-        var totOK  = rows.reduce(function(s,r){return s+r.correct;},0);
-        var sig = finished.length + "|" + answeredSessions + "|" + rows.map(function(r){ return r.id + ":" + r.answers + ":" + r.correct; }).join(",");
-        if (sig === lastSig) return;
-        lastSig = sig;        var pct = totAns ? Math.round(totOK/totAns*100) : 0;
-        var pctEl = $("spGaugePct"); if (pctEl) pctEl.textContent = pct;
-        var arc = $("spGaugeArc"); if (arc){ var C = 2*Math.PI*54; arc.style.strokeDasharray = C; requestAnimationFrame(function(){ arc.style.strokeDashoffset = String(C*(1 - pct/100)); }); }
-        var setT = function(id, v){ var el=$(id); if(el) el.textContent = v; };
-        setT("spAttempted", totAns); setT("spCorrect", totOK); setT("spSubjects", displayRows.length);
-        var weakest = rows.filter(function(r){return r.answers>=5;}).sort(function(a,b){return (a.answers? a.correct/a.answers:1) - (b.answers? b.correct/b.answers:1);})[0];
-        var strongest = rows.filter(function(r){return r.answers>=5;}).sort(function(a,b){return (b.correct/b.answers) - (a.correct/a.answers);})[0];
-        var co = $("spCallout");
-        if (co){
-          var wAcc = weakest ? Math.round(weakest.correct/weakest.answers*100) : 0;
-          var sAcc = strongest ? Math.round(strongest.correct/strongest.answers*100) : 0;
-          if (weakest && strongest && weakest !== strongest){
-            co.className = "sp-callout weak";
-            co.innerHTML = "Rev up <b>" + esc(weakest.name) + "</b> — your weakest subject at <b>" + wAcc + "%</b> accuracy. <b>" + esc(strongest.name) + "</b> leads at " + sAcc + "%.";
-          } else if (weakest){
-            co.className = "sp-callout";
-            co.innerHTML = "Focus on <b>" + esc(weakest.name) + "</b> — <b>" + wAcc + "%</b> accuracy. One more focused block will move the needle.";
-          } else {
-            co.className = "sp-callout";
-            co.textContent = "Great start — keep going to unlock sharper insights.";
-          }
-        }
-        var list = $("spList");
-        if (list){
-          if (!displayRows.length){
-            list.innerHTML = '<div class="sp-empty"><div class="sp-empty-orb">&#128218;</div><b>Your charted report is waiting</b><p>Pick any bank above and start your first session &mdash; every subject you touch will light up here with its own accuracy bar.</p><a class="sp-cta" href="surgery-practice.html">Start practicing <span aria-hidden="true">&rarr;</span></a></div>';
-          } else {
-          list.innerHTML = displayRows.map(function(r){
-            var acc = r.answers ? Math.round(r.correct/r.answers*100) : 0;
-            var cov = r.total ? Math.round((r.stems ? Object.keys(r.stems).length : 0) / r.total * 100) : 0;
-            var accCls = acc >= 70 ? "ok" : acc >= 50 ? "warn" : "bad";
-            var width = Math.max(4, acc);
-            var safeName = esc(r.name);
-            var chipLetter = safeName.replace(/^[^A-Za-z0-9]+/,"").charAt(0) || "Q";
-            var tone = r.tone || "#3b82f6";
-            return '<div class="sp-row">'
-              + '  <div class="sp-name"><div class="sp-chip" style="background:linear-gradient(135deg,'+tone+','+tone+'cc)">'+esc(chipLetter)+'</div>'
-              + '    <div class="sp-subject"><b>'+safeName+'</b><span>'+cov+'% covered &middot; '+Object.keys(r.stems||{}).length+' unique attempted</span></div></div>'
-              + '  <div class="sp-count"><b>'+r.answers+'</b><span>/ '+r.total+' attempted</span></div>'
-              + '  <span class="sp-acc '+accCls+'">'+acc+'%</span>'
-              + '</div>'
-              + '<div class="sp-bar"><span class="sp-bar-fill" data-w="'+width+'" style="background:linear-gradient(90deg,'+tone+','+tone+'aa)"></span></div>';
-          }).join("");
-          requestAnimationFrame(function(){ list.querySelectorAll(".sp-bar-fill").forEach(function(b){ b.style.width = b.getAttribute("data-w") + "%"; }); });
-          }
-        }
-        var foot = $("spFootnote");
-        if (foot){
-          if (!totAns){
-            foot.innerHTML = '<span>No attempts yet — your charted report fills in after your first session.</span><span>Master a subject and it will light up right here.</span>';
-          } else {
-            var footRight = (weakest && strongest && weakest !== strongest)
-              ? 'Weakest: <b>'+esc(weakest.name)+'</b> ('+Math.round(weakest.correct/weakest.answers*100)+'%) &middot; Strongest: <b>'+esc(strongest.name)+'</b> ('+Math.round(strongest.correct/strongest.answers*100)+'%)'
-              : 'Attempt 5+ answers in a subject to unlock its insight';
-            foot.innerHTML = '<span>'+answeredSessions+' session'+(answeredSessions===1?"":"s")+' with answers &middot; <b>'+totAns+'</b> answers across <b>'+displayRows.length+'</b> subjects</span><span>'+footRight+'</span>';
-          }
-        }
-      }
-      refresh();
-      window.addEventListener("visibilitychange", function(){ if (!document.hidden) refresh(); });
-      window.addEventListener("focus", refresh);
-      setInterval(refresh, 30000);
+    });
+    svg.push('</svg>');
+    host.innerHTML = svg.join("");
+    var tip = $("dcTip");
+    host.querySelectorAll(".dc-hit").forEach(function(hit){
+      hit.addEventListener("mouseenter", function(){
+        var p = pts[parseInt(hit.getAttribute("data-i"),10)];
+        if (!tip || !p) return;
+        tip.innerHTML = p.d.date + ': <b>'+p.v+'</b> question'+(p.v === 1 ? "" : "s");
+        tip.style.left = Math.max(8, Math.min(92, p.x/W*100)) + "%";
+        tip.style.top = Math.max(14, p.y/H*100) + "%";
+        tip.style.display = "block";
+      });
+      hit.addEventListener("mouseleave", function(){ if (tip) tip.style.display = "none"; });
+    });
+  }
+  function refresh(){
+    var c = readLocal(), sig = JSON.stringify(c) + "|" + range;
+    if (sig === lastSig) return;
+    lastSig = sig; counts = c; render();
+  }
+  document.querySelectorAll(".dc-range").forEach(function(b){
+    b.onclick = function(){
+      range = parseInt(b.getAttribute("data-days"),10) || 7;
+      document.querySelectorAll(".dc-range").forEach(function(x){ x.classList.toggle("on", x === b); });
+      lastSig = ""; refresh();
     };
-    idbOpen.onerror = function(){ /* silent: no history yet */ };
-  }catch(e){ /* silent */ }
+  });
+  refresh();
+  /* Older homepage sessions live in IndexedDB — merge them when available. */
+  try {
+    var open = indexedDB.open("medarena", 2);
+    open.onsuccess = function(e){
+      try {
+        var t = e.target.result.transaction("attempts","readonly").objectStore("attempts").getAll();
+        t.onsuccess = function(){
+          var d = {};
+          (t.result || []).forEach(function(a){
+            if (!a || !a.snapshot) return;
+            var ts = parseDay(a.finishedAt || a.startedAt); if (!ts) return;
+            var n = (a.snapshot.sel || []).filter(function(x){ return x != null; }).length;
+            if (n > 0){ var k = dayKey(ts); d[k] = (d[k]||0) + n; }
+          });
+          extraCounts = d; lastSig = ""; refresh();
+        };
+      } catch (e2) {}
+    };
+  } catch (e) {}
+  window.addEventListener("storage", refresh);
+  window.addEventListener("focus", refresh);
+  document.addEventListener("visibilitychange", function(){ if (!document.hidden) refresh(); });
+  setInterval(refresh, 60000);
 })();
 </script>
 

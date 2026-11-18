@@ -948,6 +948,7 @@ function choose(i, oi, row){
       record_error(q, !q.options[oi].correct);
       try { if (window.MARevision) window.MARevision.record(q, !!q.options[oi].correct); } catch (e) {}
       if (!q.options[oi].correct) toast("❌ Wrong answer — added to Revisions, due now.");
+      try { if (window.MADailySolved) window.MADailySolved.mark(q); } catch (e) {}
       try { if (window.maSyncCloud && ex.bankId) window.maSyncCloud({ [ex.bankId + "|" + QKEY(q)]: { c: q.options[oi].correct ? 1 : 0, t: Date.now() } }); } catch (e) {}
     } else {
       if (ex.sel[i][0] === k) ex.sel[i] = []; else ex.sel[i] = [k];
@@ -1022,6 +1023,7 @@ function finishExam(auto){
     if (ok && !q.noKey && sel.length) record_error(q, false);
     /* Grade the revision card once per question per session (unanswered = lapse). */
     try { if (window.MARevision && !q.noKey && sel.length) window.MARevision.record(q, !!ok); } catch (e) {}
+    try { if (window.MADailySolved && sel.length) window.MADailySolved.mark(q); } catch (e) {}
     if (sel.length && ex.bankId) pItems[ex.bankId + "|" + QKEY(q)] = { c: ok ? 1 : 0, t: Date.now() };
   });
   try { if (window.maSyncCloud && Object.keys(pItems).length) window.maSyncCloud(pItems); } catch (e) {}
@@ -2096,6 +2098,33 @@ function medArenaHash(s){
   greet.appendChild(chips); MSGS.appendChild(greet);
 
   if(new URLSearchParams(location.search).get("buddy")==="1") PANEL.style.display="flex";
+})();
+</script>
+<script>
+/* Daily solved counter — powers the homepage "questions solved per day" chart.
+   Stored as { "YYYY-MM-DD": count } so the homepage can read it without an API. */
+(function(){
+  var KEY = "medarena.dailySolved.v1";
+  function dayKey(ts){
+    var d = new Date(ts || Date.now());
+    return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
+  }
+  function mark(q){
+    var ex = (typeof state !== "undefined") ? state.exam : null;
+    if (!ex || !q) return;
+    ex._dailySeen = ex._dailySeen || new Set();
+    var k = (ex.bankId || "") + "|" + QKEY(q);
+    if (ex._dailySeen.has(k)) return;   // one count per question per session
+    ex._dailySeen.add(k);
+    try {
+      var d = JSON.parse(store.getItem(KEY) || "{}");
+      if (!d || typeof d !== "object" || Array.isArray(d)) d = {};
+      var dk = dayKey(Date.now());
+      d[dk] = (Number(d[dk]) || 0) + 1;
+      store.setItem(KEY, JSON.stringify(d));
+    } catch (e) {}
+  }
+  window.MADailySolved = { mark: mark };
 })();
 </script>
 <script>
