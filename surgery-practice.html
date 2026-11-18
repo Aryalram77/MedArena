@@ -352,6 +352,13 @@ pre{white-space:pre-wrap;word-break:break-word;overflow-x:auto;}
 .rv-card.overdue{border-left:4px solid #ef4444}
 .rv-card.today{border-left:4px solid #f59e0b}
 .rv-card.later{border-left:4px solid #94a3b8}
+.rv-card.failed{border:1px solid #fca5a5;border-left:5px solid #dc2626;background:#fff1f2;box-shadow:0 2px 8px rgba(220,38,38,.08)}
+.rv-card.failed .rv-top{color:#991b1b}
+.rv-card.failed .rv-stem{color:#7f1d1d}
+.rv-need{background:#dc2626;color:#fff;padding:2px 8px;border-radius:99px;font-size:10.5px;font-weight:800;letter-spacing:.3px}
+.ans-alert{padding:9px 12px;border-radius:10px;font-size:13px;font-weight:700;margin-bottom:12px}
+.ans-alert.bad{background:#fee2e2;border:1px solid #fca5a5;color:#991b1b}
+#qBody.wrong-now{outline:2px solid #ef4444;outline-offset:-2px;border-radius:10px;background:#fffafa}
 .rv-card .rv-top{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
 .rv-card .rv-top b{color:var(--ink)}
 .rv-card .rv-stem{font-size:14px;line-height:1.5;margin:6px 0 8px;white-space:pre-wrap}
@@ -871,6 +878,9 @@ function renderQuestion(){
   const flag = ex.flags[i];
   const marks = ex.marks[i];
   const revealed = revealedView(i);
+  /* Tutor mode reveals instantly — make a wrong pick unmistakably red and tell
+     the user it just became a revision card that is due right now. */
+  const wrongNow = !!(revealed && sel.length && !q.noKey && !q.options.some(o => sel.includes(o.k) && o.correct));
   let optHtml = revealed || (marks && marks.opts ? marks.opts.slice() : baselineOpts(q));
   if (answered && ex.mode !== "tutor") {
     optHtml = (marks && marks.opts ? marks.opts.slice() : baselineOpts(q)).map(h => {
@@ -880,6 +890,7 @@ function renderQuestion(){
     });
   }
   $("qBody").innerHTML = `
+    ${wrongNow ? '<div class="ans-alert bad">❌ Incorrect — this question is now a <b>red revision card</b> and is due right now. Open <b>🔁 Revisions</b> to review it.</div>' : ""}
     <div class="qnum"><span>Question ${i + 1} of ${ex.pool.length} ${flag ? "<span style='color:var(--flag)'>⚑</span>" : ""}
       <span class="badge a">${esc(q.chapter)}</span>${q.multi ? '<span class="badge m">multi-select</span>' : ""}</span>
       <span style="display:flex;gap:8px">
@@ -894,6 +905,7 @@ function renderQuestion(){
       ${q.explanation ? fmtOrganized(q.explanation) : "No explanation available."}
       ${(q.imgs && q.imgs.length) ? '<div class="expl-imgs">' + q.imgs.map(im => '<img src="' + im.src + '" alt="figure" loading="lazy">').join("") + '</div>' : ""}
     </div>`}`;
+  $("qBody").classList.toggle("wrong-now", wrongNow);
   $("qBody").querySelectorAll(".optrow").forEach(row => {
     row.onclick = e => {
       if (e.target.classList.contains("strikebtn")) { e.stopPropagation(); toggleStrike(row, i); return; }
@@ -935,6 +947,7 @@ function choose(i, oi, row){
       ex.reveal[i] = true;
       record_error(q, !q.options[oi].correct);
       try { if (window.MARevision) window.MARevision.record(q, !!q.options[oi].correct); } catch (e) {}
+      if (!q.options[oi].correct) toast("❌ Wrong answer — added to Revisions, due now.");
       try { if (window.maSyncCloud && ex.bankId) window.maSyncCloud({ [ex.bankId + "|" + QKEY(q)]: { c: q.options[oi].correct ? 1 : 0, t: Date.now() } }); } catch (e) {}
     } else {
       if (ex.sel[i][0] === k) ex.sel[i] = []; else ex.sel[i] = [k];
@@ -2104,8 +2117,10 @@ function medArenaHash(s){
       card.lapses = (card.lapses || 0) + 1;
       card.reps = 0;
       card.ease = Math.max(1.3, Number((Number(card.ease || 2.5) - 0.25).toFixed(2)));
-      card.interval = 1;
-      card.due = ts + DAY;
+      card.interval = 0;
+      /* A wrong answer is due right now — show it as a red card immediately.
+         Answering it correctly in revision then schedules the first gap (1 day). */
+      card.due = ts;
     } else {
       card.reps = (card.reps || 0) + 1;
       var iv = Number(card.interval || 0);
@@ -2205,8 +2220,8 @@ function medArenaHash(s){
     document.getElementById("rvRetention").textContent = s.seen ? Math.round(s.correct / s.seen * 100) + "%" : "—";
     document.getElementById("rvReviews").textContent = s.seen;
     document.getElementById("rvHint").textContent = all.length
-      ? "Correct answers lengthen the gap; a wrong answer brings the card back tomorrow."
-      : "Wrong or unanswered questions appear here automatically after a practice session.";
+      ? "Correct answers lengthen the gap; a wrong answer makes the card red and due immediately."
+      : "Incorrect answers appear here automatically — red and due immediately.";
     var bar = document.getElementById("rvFilters"); bar.innerHTML = "";
     [["due", "🔴 Due now (" + due.length + ")"], ["all", "All cards (" + all.length + ")"],
      ["overdue", "⏰ Overdue (" + overdue.length + ")"], ["mastered", "🎓 Mastered (" + mastered.length + ")"]
@@ -2222,23 +2237,28 @@ function medArenaHash(s){
     var wrap = document.getElementById("rvList"); wrap.innerHTML = "";
     if (!list.length){
       wrap.innerHTML = '<div class="rv-empty"><span class="ico">🎉</span>' +
-        (all.length ? "Nothing in this filter." : "No revision cards yet — get a question wrong in practice and it will show up here.") + "</div>";
+        (all.length ? "Nothing in this filter." : "No revision cards yet — answer a question wrong in practice and it appears here in red, due now.") + "</div>";
       renderChart(); return;
     }
     var shown = list.slice(0, 200);
     shown.forEach(function(c){
       var q = findQuestion(c);
       var raw = (q && q.stem) || c.stem || "";
-      var okCount = (c.history || []).filter(function(h){ return h.ok; }).length;
+      var hist = c.history || [];
+      var okCount = hist.filter(function(h){ return h.ok; }).length;
+      /* A card whose last answer was wrong is the user's "red card" — show it
+         red with a Needs review badge the moment it is created. */
+      var lastWrong = hist.length > 0 && hist[hist.length - 1].ok === false;
       var late = Number(c.due) < Date.now() - DAY, nowDue = isDue(c);
-      var dueTxt = late ? "Overdue" : nowDue ? "Due now" : "Due " + new Date(Number(c.due)).toLocaleDateString();
-      var badgeCls = late ? "r" : nowDue ? "y" : "a";
+      var dueTxt = lastWrong ? "Needs review" : late ? "Overdue" : nowDue ? "Due now" : "Due " + new Date(Number(c.due)).toLocaleDateString();
+      var badgeCls = lastWrong || late ? "r" : nowDue ? "y" : "a";
       var div = document.createElement("div");
-      div.className = "rv-card " + (late ? "overdue" : nowDue ? "today" : "later");
+      div.className = "rv-card " + (lastWrong ? "failed" : late ? "overdue" : nowDue ? "today" : "later");
       div.innerHTML = '<div class="rv-top"><b>' + esc(bankName(c.bankId)) + "</b> · Q" + esc(c.n) +
         " · " + esc(c.chapter || "—") + ' · <span class="badge ' + badgeCls + '">' + dueTxt + "</span>" +
+        (lastWrong ? '<span class="rv-need">⚠ LAST ANSWER WRONG</span>' : "") +
         " · gap " + esc(c.interval || 0) + "d · ease " + esc(c.ease || 2.5) +
-        " · recall " + okCount + "/" + (c.history || []).length + "</div>" +
+        " · recall " + okCount + "/" + hist.length + "</div>" +
         '<div class="rv-stem">' + esc(raw.slice(0, 220)) + (raw.length > 220 ? "…" : "") + "</div>" +
         '<div class="rv-actions"><button class="btn small" data-rv-one="' + esc(c.id) + '">▶ Practice this card</button>' +
         '<button class="btn sec small" data-rv-del="' + esc(c.id) + '">Remove</button></div>';
