@@ -1590,7 +1590,7 @@ function medArenaHash(s){
   <div class="ma-b-head">
     <div class="ma-b-logo">✦</div>
     <div><div class="ma-b-title">MedArena Study Buddy</div><div class="ma-b-sub">Ask anything from your question banks</div></div>
-    <button type="button" class="ma-b-ai" id="maBuddyAi" aria-label="Toggle full AI answer" title="Full AI answer — first load downloads about 460 MB once">✦ AI</button>
+    <button type="button" class="ma-b-ai" id="maBuddyAi" aria-label="Toggle full AI answer" title="Full AI answer — first load downloads about 500–800 MB once">✦ AI</button>
     <button type="button" class="ma-b-close" id="maBuddyClose" aria-label="Close">×</button>
   </div>
   <div class="ma-b-status"><span class="ma-b-dot" id="maBuddyDot"></span><span id="maBuddyStatus">Ready — ask a question to begin</span></div>
@@ -1761,7 +1761,7 @@ function medArenaHash(s){
     if(!AIBTN) return;
     AIBTN.textContent=GENWANTED?"✦ AI on":"AI off";
     AIBTN.className="ma-b-ai"+(GENWANTED?" on":"");
-    AIBTN.title=GENWANTED?"Full AI answer on — first load downloads about 460 MB once":"Full AI answer off — showing bank facts only";
+    AIBTN.title=GENWANTED?"Full AI answer on — first load downloads about 500–800 MB once":"Full AI answer off — showing bank facts only";
   }
   function readyStatus(){
     if(GENSTATE==="ready") status("Full AI ready — answers written on this device","ok");
