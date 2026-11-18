@@ -336,12 +336,41 @@ pre{white-space:pre-wrap;word-break:break-word;overflow-x:auto;}
   .rowbtns .btn{flex:1 1 100%;width:100%;}
   .optrow{padding:10px;}
 }
+/* ===== Automatic Revision Engine ===== */
+.hdr-actions{display:flex;gap:8px;align-items:center;margin-left:auto}
+.rev-btn{background:#312e81;color:#fff;border:1px solid #6366f1;padding:7px 12px;border-radius:9px;font-weight:700;font-size:12.5px;cursor:pointer;white-space:nowrap}
+.rev-btn:hover{background:#4338ca}
+.rev-btn .due-dot{display:inline-block;min-width:19px;padding:1px 6px;margin-left:5px;border-radius:99px;background:#ef4444;color:#fff;font-size:11px;text-align:center;font-variant-numeric:tabular-nums}
+.rev-btn .due-dot.zero{background:#475569}
+.rv-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:14px 0}
+.rv-stat{background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.rv-stat .k{font-size:11.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);font-weight:800}
+.rv-stat .v{font-size:26px;font-weight:900;line-height:1.15;margin-top:3px}
+.rv-stat .v.due{color:#dc2626}.rv-stat .v.ok{color:#15803d}.rv-stat .v.blue{color:#1d4ed8}
+.rv-tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.rv-card{border:1px solid var(--line);border-radius:11px;padding:11px 13px;margin-bottom:9px;background:#fff}
+.rv-card.overdue{border-left:4px solid #ef4444}
+.rv-card.today{border-left:4px solid #f59e0b}
+.rv-card.later{border-left:4px solid #94a3b8}
+.rv-card .rv-top{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
+.rv-card .rv-top b{color:var(--ink)}
+.rv-card .rv-stem{font-size:14px;line-height:1.5;margin:6px 0 8px;white-space:pre-wrap}
+.rv-card .rv-actions{display:flex;gap:7px;flex-wrap:wrap}
+.rv-chart{display:flex;align-items:flex-end;gap:5px;height:118px;padding-top:8px;border-bottom:1px solid var(--line)}
+.rv-bar{flex:1;min-width:12px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;position:relative}
+.rv-bar i{display:block;width:100%;background:linear-gradient(180deg,#60a5fa,#1d4ed8);border-radius:4px 4px 0 0;min-height:2px}
+.rv-bar span{position:absolute;bottom:-19px;font-size:9.5px;color:var(--muted);white-space:nowrap}
+.rv-bar em{position:absolute;top:-15px;font-size:10px;font-style:normal;font-weight:800;color:#334155}
+.rv-chart-wrap{padding-bottom:24px;overflow-x:auto}
+.rv-empty{text-align:center;padding:28px 12px;color:var(--muted);font-size:14px}
+.rv-empty .ico{font-size:34px;display:block;margin-bottom:6px}
 </style>
 </head>
 <body>
 <header>
   <div class="logo"><a class="home-brand-link" href="index.html" aria-label="MedArena homepage">✚ <span class="brand">MedArena</span></a></div>
   <div class="tag" id="hdrTag">Categories: Loksewa · Surgery · CEE MD/MS</div>
+  <div class="hdr-actions"><button class="rev-btn" id="revOpenBtn" type="button">🔁 Revisions<span class="due-dot zero" id="revDueDot">0</span></button></div>
 </header>
 
 <div id="freeUsageBanner" style="display:none;background:linear-gradient(90deg,#0ea5e9,#2563eb);color:#fff;padding:10px 16px;text-align:center;font-size:14px;font-weight:600;letter-spacing:.2px">
@@ -349,6 +378,36 @@ pre{white-space:pre-wrap;word-break:break-word;overflow-x:auto;}
 </div>
 
 <main class="container">
+
+<section id="revisionView" style="display:none">
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+      <div>
+        <h1>🔁 Automatic Revision Engine</h1>
+        <div class="sub">Every incorrect MCQ becomes a card. Review it on a spaced schedule so it sticks.</div>
+      </div>
+      <button class="btn sec small" id="revBackBtn" type="button">← Back to practice</button>
+    </div>
+    <div class="rv-stats">
+      <div class="rv-stat"><div class="k">Due now</div><div class="v due" id="rvDueCount">0</div></div>
+      <div class="rv-stat"><div class="k">Total cards</div><div class="v blue" id="rvTotalCount">0</div></div>
+      <div class="rv-stat"><div class="k">Retention · 14 days</div><div class="v ok" id="rvRetention">—</div></div>
+      <div class="rv-stat"><div class="k">Reviews · 14 days</div><div class="v" id="rvReviews">0</div></div>
+    </div>
+    <div class="rv-tools">
+      <button class="btn" id="revPracticeDueBtn" type="button">▶ Practice due cards</button>
+      <button class="btn sec small" id="revRefreshBtn" type="button">↻ Refresh</button>
+      <span class="mut" id="rvHint" style="font-size:12.5px"></span>
+    </div>
+    <div class="chips" id="rvFilters"></div>
+    <div id="rvList"></div>
+  </div>
+  <div class="card">
+    <h2 style="font-size:17px;margin:0 0 4px">Retention over time</h2>
+    <p class="sub" style="margin-bottom:10px">Share of revision cards answered correctly each day, from this browser’s review log.</p>
+    <div class="rv-chart-wrap"><div class="rv-chart" id="rvChart"></div></div>
+  </div>
+</section>
 
 <section id="examOrchestrator" style="display:none">
   <div class="card">
@@ -628,7 +687,7 @@ function runtimeQuestion(q, shufO){
   const multi = correctSet.length > 1;
   let opts = q.options.map(o => ({ k: String(o.letter).toUpperCase(), text: o.text, correct: (!noKey && correctSet.includes(String(o.letter).toUpperCase())) ? 1 : 0 }));
   if (shufO) opts = shuffle(opts);
-  return { stem: q.stem, options: opts, correctSet, multi, chapter: q.chapter, src: q.src, pdfPage: q.pdfPage, explanation: CUR.noKey ? null : q.explanation, imgs: CUR.noKey ? null : (q.imgs || null), n: q.n, noKey };
+  return { stem: q.stem, options: opts, correctSet, multi, chapter: q.chapter, src: q.src, pdfPage: q.pdfPage, explanation: CUR.noKey ? null : q.explanation, imgs: CUR.noKey ? null : (q.imgs || null), n: q.n, noKey, bankId: q.bankId || "" };
 }
 
 function buildPool(){
@@ -686,12 +745,13 @@ function startExam(playerName){
   }
   let pool = $("shufQ").checked ? shuffle([...bp.src]) : [...bp.src];
   pool = pool.map(q => runtimeQuestion(q, $("shufO").checked));
-  const mode = MOCK ? "timed" : (CUR.noKey ? "timed" : $("modeSel").value);
+  const revActive = !!(window.MARevision && window.MARevision.sessionActive());
+  const mode = revActive ? "tutor" : (MOCK ? "timed" : (CUR.noKey ? "timed" : $("modeSel").value));
   const minutes = MOCK ? 75 : (mode === "tutor" ? 0 : Math.max(0, parseInt($("timerMin").value, 10) || 0));
   state.exam = { pool, label: bp.label, playerName, mode, minutes, bankId: (BANKS.find(x => x.bank === CUR) || {}).id || "", sel: pool.map(() => null), flags: pool.map(() => false), marks: {}, cur: 0, timeLeft: minutes * 60, timerInt: null };
   if (mode === "timed" && minutes > 0) { state.exam.timerInt = setInterval(tick, 1000); updateTimer(); }
   state.exam._resumeInt = setInterval(saveResumeNow, 15000);
-  ["examOrchestrator", "examResults"].forEach(id => $(`#${id}`).style.display = "none");
+  ["examOrchestrator", "examResults", "revisionView"].forEach(id => { const el = $(`#${id}`); if (el) el.style.display = "none"; });
   $("examPlay").style.display = "block";
   $("examTitle").textContent = `${CUR.name} · ${bp.label}`;
   const pill = $("examModePill");
@@ -739,7 +799,7 @@ function restoreExam(sess){
   };
   if (state.exam.mode === "timed" && state.exam.minutes > 0) { state.exam.timerInt = setInterval(tick, 1000); updateTimer(); }
   state.exam._resumeInt = setInterval(saveResumeNow, 15000);
-  ["examOrchestrator","examResults"].forEach(id => { const el = $(`#${id}`); if (el) el.style.display = "none"; });
+  ["examOrchestrator","examResults","revisionView"].forEach(id => { const el = $(`#${id}`); if (el) el.style.display = "none"; });
   $("examPlay").style.display = "block";
   $("examTitle").textContent = `${CUR.name} · ${state.exam.label}`;
   const pill = $("examModePill");
@@ -874,6 +934,7 @@ function choose(i, oi, row){
       ex.reveal = ex.reveal || {};
       ex.reveal[i] = true;
       record_error(q, !q.options[oi].correct);
+      try { if (window.MARevision) window.MARevision.record(q, !!q.options[oi].correct); } catch (e) {}
       try { if (window.maSyncCloud && ex.bankId) window.maSyncCloud({ [ex.bankId + "|" + QKEY(q)]: { c: q.options[oi].correct ? 1 : 0, t: Date.now() } }); } catch (e) {}
     } else {
       if (ex.sel[i][0] === k) ex.sel[i] = []; else ex.sel[i] = [k];
@@ -946,6 +1007,8 @@ function finishExam(auto){
     if (ok) correct++;
     else if (!q.noKey && sel.length) record_error(q, true);
     if (ok && !q.noKey && sel.length) record_error(q, false);
+    /* Grade the revision card once per question per session (unanswered = lapse). */
+    try { if (window.MARevision && !q.noKey && sel.length) window.MARevision.record(q, !!ok); } catch (e) {}
     if (sel.length && ex.bankId) pItems[ex.bankId + "|" + QKEY(q)] = { c: ok ? 1 : 0, t: Date.now() };
   });
   try { if (window.maSyncCloud && Object.keys(pItems).length) window.maSyncCloud(pItems); } catch (e) {}
@@ -982,6 +1045,7 @@ function finishExam(auto){
   if (saved) clearResume(saved.bankId || (BANKS.find(b => b.bank === CUR) || {}).id || "");
   state.exam = null;
   buildResults(ex.pool, ex.sel, a, ex.playerName);
+  try { if (window.MARevision) window.MARevision.endSession(); } catch (e) {}
   try { refreshWrongDash(); } catch (e) {}
   if (auto) toast("⏱ Time's up — block submitted.");
 }
@@ -1473,7 +1537,10 @@ function medArenaHash(s){
 .ma-b-logo{width:36px;height:36px;border-radius:11px;background:rgba(255,255,255,.18);display:grid;place-items:center;font-size:19px;flex:none}
 .ma-b-title{font-weight:800;font-size:15px;line-height:1.2}
 .ma-b-sub{font-size:11.5px;opacity:.85;margin-top:2px}
-.ma-b-close{margin-left:auto;background:rgba(255,255,255,.16);border:none;color:#fff;width:30px;height:30px;border-radius:9px;cursor:pointer;font-size:18px;line-height:1}
+.ma-b-ai{margin-left:auto;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.32);color:#fff;border-radius:9px;padding:5px 9px;font:800 10.5px/1.1 system-ui,"Segoe UI",sans-serif;cursor:pointer;white-space:nowrap}
+.ma-b-ai.on{background:#fff;color:#0f766e;border-color:#fff}
+.ma-b-ai:disabled{opacity:.6;cursor:wait}
+.ma-b-close{background:rgba(255,255,255,.16);border:none;color:#fff;width:30px;height:30px;border-radius:9px;cursor:pointer;font-size:18px;line-height:1}
 .ma-b-close:hover{background:rgba(255,255,255,.3)}
 .ma-b-status{padding:7px 14px;font-size:11.5px;color:#475569;background:#f8fafc;border-bottom:1px solid #e8eef5;display:flex;align-items:center;gap:7px}
 .ma-b-dot{width:8px;height:8px;border-radius:50%;background:#94a3b8;flex:none}
@@ -1498,6 +1565,8 @@ function medArenaHash(s){
 .ma-b-short-body{font-size:12.5px;color:#334155;line-height:1.5;margin-top:4px}
 .ma-b-short-meta{font-size:10.5px;color:#64748b;margin-top:6px}
 .ma-b-short a{color:#b45309;font-weight:800}
+.ma-b-short.ai{background:linear-gradient(135deg,#f5f3ff,#eff6ff);border-color:#c4b5fd}
+.ma-b-short.ai .ma-b-short-h{color:#6d28d9}
 .ma-b-sources{margin-top:10px}
 .ma-b-sources summary{cursor:pointer;font-size:12px;font-weight:700;color:#0f766e;outline:none}
 .ma-b-sources[open] summary{margin-bottom:7px}
@@ -1521,6 +1590,7 @@ function medArenaHash(s){
   <div class="ma-b-head">
     <div class="ma-b-logo">✦</div>
     <div><div class="ma-b-title">MedArena Study Buddy</div><div class="ma-b-sub">Ask anything from your question banks</div></div>
+    <button type="button" class="ma-b-ai" id="maBuddyAi" aria-label="Toggle full AI answer" title="Full AI answer — first load downloads about 460 MB once">✦ AI</button>
     <button type="button" class="ma-b-close" id="maBuddyClose" aria-label="Close">×</button>
   </div>
   <div class="ma-b-status"><span class="ma-b-dot" id="maBuddyDot"></span><span id="maBuddyStatus">Ready — ask a question to begin</span></div>
@@ -1536,10 +1606,12 @@ function medArenaHash(s){
 (function(){
   var FAB=$("maBuddyFab"), PANEL=$("maBuddyPanel"), MSGS=$("maBuddyMsgs"),
       INPUT=$("maBuddyInput"), SEND=$("maBuddySend"), CLOSE=$("maBuddyClose"),
-      DOT=$("maBuddyDot"), STATUS=$("maBuddyStatus");
+      DOT=$("maBuddyDot"), STATUS=$("maBuddyStatus"), AIBTN=$("maBuddyAi");
   if(!FAB||!PANEL||!MSGS||!INPUT) return;
 
   var ITEMS=[], TOKENS=[], DF=null, MAP=null, VEC=null, ENC=null, MODE="idle", INIT=null;
+  var GEN=null, GENSTATE="off", GENWANTED=true, LAST=null;
+  try{ if(localStorage.getItem("ma_buddy_gen")==="0") GENWANTED=false; }catch(err){}
   var STOP=new Set("a an the and or of in on at to for with by from is are was were be been being it its as this that these those what which who when where why how do does did can could should would may might will just about into than then there here any all some no not if but".split(" "));
 
   function e(s){return (s==null?"":String(s)).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
@@ -1684,6 +1756,106 @@ function medArenaHash(s){
   function status(txt,cls){STATUS.textContent=txt;DOT.className="ma-b-dot"+(cls?" "+cls:"");}
   function sys(html){var d=document.createElement("div");d.className="ma-b-msg bot";d.innerHTML=html;MSGS.appendChild(d);MSGS.scrollTop=MSGS.scrollHeight;return d;}
 
+  /* ---- optional local generative layer (Qwen 0.5B, grounded in retrieved bank text) ---- */
+  function setAiBtn(){
+    if(!AIBTN) return;
+    AIBTN.textContent=GENWANTED?"✦ AI on":"AI off";
+    AIBTN.className="ma-b-ai"+(GENWANTED?" on":"");
+    AIBTN.title=GENWANTED?"Full AI answer on — first load downloads about 460 MB once":"Full AI answer off — showing bank facts only";
+  }
+  function readyStatus(){
+    if(GENSTATE==="ready") status("Full AI ready — answers written on this device","ok");
+    else if(MODE==="ai") status("AI ready — "+ITEMS.length.toLocaleString()+" questions indexed","ok");
+    else status("Quick on-device search","warn");
+  }
+  async function ensureGen(){
+    if(GEN) return true;
+    if(GENSTATE==="loading"||GENSTATE==="failed") return false;
+    GENSTATE="loading"; setAiBtn();
+    try{
+      status("Loading full AI model… 0%","load");
+      var lib=await import("https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.8.1");
+      try{ lib.env.allowLocalModels=false; }catch(err){}
+      var gpu=false;
+      try{ gpu=!!(navigator.gpu&&await navigator.gpu.requestAdapter()); }catch(err){}
+      /* q4 (float32 scales) is more reliable than q4f16 on browsers whose
+         GPUs advertise shader-f16 but produce corrupted output with it. */
+      var dtypes=gpu?["q4"]:["uint8","q8"], lastErr=null;
+      for(var i=0;i<dtypes.length&&!GEN;i++){
+        try{
+          GEN=await lib.pipeline("text-generation","onnx-community/Qwen2.5-0.5B-Instruct",{
+            dtype:dtypes[i], device:gpu?"webgpu":"wasm",
+            progress_callback:function(p){
+              if(p&&p.status==="progress"&&typeof p.progress==="number") status("Loading full AI model… "+Math.round(p.progress)+"%","load");
+            }
+          });
+        }catch(err){ lastErr=err; }
+      }
+      if(!GEN) throw lastErr||new Error("model failed to load");
+      GENSTATE="ready"; setAiBtn();
+      status("Full AI ready — answers written on this device","ok");
+      return true;
+    }catch(err){
+      GENSTATE="failed"; window.__maGenErr=String(err&&err.message||err);
+      status("Full AI unavailable — using bank facts","warn");
+      return false;
+    }
+  }
+  function genContext(hits,unlocked){
+    var parts=[], used=0;
+    for(var i=0;i<hits.length&&used<5;i++){
+      var it=ITEMS[hits[i][0]];
+      if(bankLocked(it.bankId)&&!unlocked) continue;
+      var s="Source: "+it.bankName;
+      if(it.kind==="note"){
+        var body=goodSentences(it.m.body,280).join(" ");
+        if(!body) continue;
+        s+="\nNote: "+tidy(it.m.title)+"\nFacts: "+body;
+      }else{
+        var ans=answerOf(it.q); if(!ans) continue;
+        s+="\nQuestion: "+tidy(it.q.stem)+"\nAnswer: "+ans;
+        var ex=it.q.explanation?goodSentences(it.q.explanation,320).join(" "):"";
+        if(ex) s+="\nExplanation: "+ex;
+      }
+      parts.push(s); used++;
+    }
+    return parts.join("\n\n").slice(0,3600);
+  }
+  function genText(out){
+    if(typeof out==="string") return out;
+    var g=out&&out[0]&&out[0].generated_text;
+    if(typeof g==="string") return g;
+    if(Array.isArray(g)){var last=g[g.length-1];return (last&&last.content)||"";}
+    return (g&&typeof g.content==="string")?g.content:"";
+  }
+  async function generateAnswer(query,hits,unlocked){
+    if(!GENWANTED) return null;
+    var ctx=genContext(hits,unlocked);
+    if(!ctx) return null;
+    if(!await ensureGen()) return null;
+    status("Writing short answer…","load");
+    try{
+      var out=await GEN([
+        {role:"system",content:"You are MedArena's exam study assistant. Answer in at most 3 short lines and no more than 45 words. Use ONLY the facts below from MedArena question banks. Do not add outside knowledge, do not speculate, and do not mention the word context. If the answer is not clearly present, reply exactly: I couldn't find a clear answer in your MedArena banks."},
+        {role:"user",content:"Student question: "+query+"\n\nBank facts:\n"+ctx+"\n\nWrite the short answer now."}
+      ],{max_new_tokens:90,do_sample:false});
+      var txt=genText(out).replace(/<\|[^>]*\|>/g,"").replace(/^\s*(?:short answer|answer)\s*[:.]?\s*/i,"").trim();
+      if(/couldn'?t find a clear answer/i.test(txt)) return null;
+      txt=txt.split(/(?<=[.!?])\s+/).filter(Boolean).slice(0,3).join(" ").slice(0,420).trim();
+      return txt||null;
+    }catch(err){
+      window.__maGenErr=String(err&&err.message||err);
+      return null;
+    }finally{ readyStatus(); }
+  }
+  function hasVisibleContext(hits,unlocked){
+    for(var i=0;i<hits.length;i++){
+      var it=ITEMS[hits[i][0]];
+      if(!bankLocked(it.bankId)||unlocked) return true;
+    }
+    return false;
+  }
+
   function ensureInit(){
     if(INIT) return INIT;
     INIT=(async function(){
@@ -1810,7 +1982,20 @@ function medArenaHash(s){
       h+='</div></div>';
     });
     h+="</div></details>";
-    sys(h);
+    var bot=sys(h);
+    LAST={q:q,hits:hits,msg:bot};
+    if(brief&&hasVisibleContext(hits,unlocked)){
+      generateAnswer(q,hits,unlocked).then(function(txt){
+        if(!txt||!bot.parentNode||!LAST||LAST.msg!==bot) return;
+        var box=bot.querySelector(".ma-b-short");
+        if(!box) return;
+        box.className="ma-b-short ai";
+        box.innerHTML='<div class="ma-b-short-h">✦ AI answer · from your banks</div>'+
+          '<div class="ma-b-short-body">'+e(txt)+'</div>'+
+          '<div class="ma-b-short-meta">Written on this device from '+Math.min(hits.length,5)+' matching bank items</div>';
+        MSGS.scrollTop=MSGS.scrollHeight;
+      });
+    }
     var links=MSGS.querySelectorAll(".ma-b-unlock, .ma-b-short .ma-b-unlock");
     for(var i=0;i<links.length;i++) links[i].onclick=function(ev){
       ev.preventDefault();
@@ -1842,6 +2027,19 @@ function medArenaHash(s){
     SEND.disabled=false; INPUT.focus(); MSGS.scrollTop=MSGS.scrollHeight;
   }
 
+  function toggleGen(){
+    GENWANTED=!GENWANTED;
+    try{ localStorage.setItem("ma_buddy_gen",GENWANTED?"1":"0"); }catch(err){}
+    setAiBtn();
+    if(LAST&&LAST.msg&&LAST.msg.parentNode){
+      LAST.msg.parentNode.removeChild(LAST.msg);
+      render(LAST.q,LAST.hits);
+    }else if(GENWANTED) status("Full AI on — ask a question to load it","warn");
+    else readyStatus();
+  }
+  if(AIBTN) AIBTN.onclick=toggleGen;
+  setAiBtn();
+
   FAB.onclick=function(){PANEL.style.display="flex";INPUT.focus();};
   CLOSE.onclick=function(){PANEL.style.display="none";};
   SEND.onclick=ask;
@@ -1849,12 +2047,261 @@ function medArenaHash(s){
   function chip(txt){var b=document.createElement("button");b.type="button";b.className="ma-b-chip";b.textContent=txt;b.onclick=function(){INPUT.value=txt;ask();};return b;}
 
   var greet=document.createElement("div"); greet.className="ma-b-msg bot";
-  greet.innerHTML="<b>Hi! I'm your MedArena study buddy.</b><br>Ask anything and I'll give a short answer from your banks, then show the matching MCQs underneath.";
+  greet.innerHTML="<b>Hi! I'm your MedArena study buddy.</b><br>Ask anything and I'll give a short answer from your banks, then show the matching MCQs underneath. Use the ✦ AI button to switch full AI phrasing on or off.";
   var chips=document.createElement("div"); chips.className="ma-b-chips";
   ["Glaucoma emergency","Neurofibromatosis type 1","Facial nerve palsy nursing","Addison disease"].forEach(function(t){chips.appendChild(chip(t));});
   greet.appendChild(chips); MSGS.appendChild(greet);
 
   if(new URLSearchParams(location.search).get("buddy")==="1") PANEL.style.display="flex";
+})();
+</script>
+<script>
+/* ===== Automatic Revision Engine =====
+   Wrong / unanswered MCQs become cards. Each review reschedules the card with
+   an SM-2 style ease factor. Everything lives in this browser's localStorage,
+   so it works on the static GitHub Pages build with no API key or backend. */
+(function () {
+  var KEY = "medarena.revisions.v1", DAY = 86400000;
+  var data = load(), session = false, rIndex = null, filter = "due";
+
+  function load(){
+    try {
+      var d = JSON.parse(localStorage.getItem(KEY) || "{}");
+      if (!d || typeof d !== "object" || Array.isArray(d)) d = {};
+      if (!d.cards || typeof d.cards !== "object" || Array.isArray(d.cards)) d.cards = {};
+      if (!d.log || typeof d.log !== "object" || Array.isArray(d.log)) d.log = {};
+      return d;
+    } catch (e) { return { cards: {}, log: {} }; }
+  }
+  function save(){
+    try { localStorage.setItem(KEY, JSON.stringify(data)); }
+    catch (e) { console.warn("[MedArena] revision data could not be saved", e); }
+  }
+  function dayKey(ts){
+    var d = new Date(ts || Date.now());
+    return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
+  }
+  function bankIdOf(q){
+    if (q && q.bankId) return q.bankId;
+    if (typeof state !== "undefined" && state.exam && state.exam.bankId) return state.exam.bankId;
+    try { var e = BANKS.find(function(b){ return b.bank === CUR; }); return e ? e.id : ""; }
+    catch (err) { return ""; }
+  }
+  function qKey(q){ try { return QKEY(q); } catch (e) { return String((q && q.stem) || "").slice(0,120); } }
+  function cardKey(q){ return bankIdOf(q) + "|" + qKey(q); }
+  function newCard(q){
+    return { id: cardKey(q), bankId: bankIdOf(q), qk: qKey(q), n: q.n || "",
+      stem: String(q.stem || "").slice(0,180), chapter: q.chapter || "", src: q.src || "",
+      ease: 2.5, interval: 0, reps: 0, lapses: 0, due: Date.now(), last: 0, history: [] };
+  }
+  function grade(card, ok, ts){
+    ts = ts || Date.now();
+    card.last = ts;
+    card.history = card.history || [];
+    card.history.push({ t: ts, ok: !!ok });
+    if (card.history.length > 30) card.history = card.history.slice(-30);
+    if (!ok){
+      card.lapses = (card.lapses || 0) + 1;
+      card.reps = 0;
+      card.ease = Math.max(1.3, Number((Number(card.ease || 2.5) - 0.25).toFixed(2)));
+      card.interval = 1;
+      card.due = ts + DAY;
+    } else {
+      card.reps = (card.reps || 0) + 1;
+      var iv = Number(card.interval || 0);
+      if (card.reps === 1) iv = 1;
+      else if (card.reps === 2) iv = 6;
+      else iv = Math.max(1, Math.round(iv * Number(card.ease || 2.5)));
+      card.interval = iv;
+      card.ease = Math.min(3.2, Number((Number(card.ease || 2.5) + 0.08).toFixed(2)));
+      card.due = ts + iv * DAY;
+    }
+    var k = dayKey(ts), row = data.log[k] || { seen: 0, correct: 0 };
+    row.seen++; if (ok) row.correct++;
+    data.log[k] = row;
+    var keys = Object.keys(data.log).sort();
+    while (keys.length > 120) delete data.log[keys.shift()];
+  }
+  function record(q, ok){
+    if (!q) return;
+    var ex = (typeof state !== "undefined") ? state.exam : null;
+    if (ex){
+      ex._revSeen = ex._revSeen || new Set();
+      var sk = cardKey(q);
+      if (ex._revSeen.has(sk)) return;   // one grade per question per session
+      ex._revSeen.add(sk);
+    }
+    var id = cardKey(q), card = data.cards[id];
+    if (!card){
+      if (ok) return;                    // already known — nothing to revise
+      card = newCard(q);
+      data.cards[id] = card;
+    }
+    grade(card, !!ok);
+    save();
+    refreshBadge();
+  }
+  function allCards(){ return Object.keys(data.cards).map(function(k){ return data.cards[k]; }); }
+  function isDue(c){ return Number(c.due || 0) <= Date.now(); }
+  function refreshBadge(n){
+    var dot = document.getElementById("revDueDot"); if (!dot) return;
+    if (n == null) n = allCards().filter(isDue).length;
+    dot.textContent = n > 999 ? "999+" : String(n);
+    dot.className = "due-dot" + (n ? "" : " zero");
+  }
+  function buildIndex(){
+    rIndex = {};
+    try {
+      BANKS.forEach(function(b){
+        if (!b.bank || !b.bank.questions) return;
+        b.bank.questions.forEach(function(q){
+          var key = b.id + "|" + qKey(q);
+          if (!rIndex[key]) { q.bankId = b.id; rIndex[key] = q; }
+        });
+      });
+    } catch (e) {}
+  }
+  function findQuestion(card){ if (!rIndex) buildIndex(); return rIndex[card.id] || null; }
+  function bankName(bid){
+    var e = BANKS.find(function(b){ return b.id === bid; });
+    return e ? e.bank.name : (bid || "Unknown bank");
+  }
+  function lastDays(n){
+    var out = [], now = new Date(); now.setHours(0,0,0,0);
+    for (var i = n-1; i >= 0; i--){
+      var d = new Date(now.getTime() - i*DAY);
+      out.push({ key: dayKey(d.getTime()), label: (d.getMonth()+1) + "/" + d.getDate() });
+    }
+    return out;
+  }
+  function sums14(){
+    var seen = 0, correct = 0;
+    lastDays(14).forEach(function(d){ var r = data.log[d.key]; if (r){ seen += r.seen || 0; correct += r.correct || 0; } });
+    return { seen: seen, correct: correct };
+  }
+  function renderChart(){
+    var host = document.getElementById("rvChart"); if (!host) return;
+    host.innerHTML = "";
+    var days = lastDays(14), max = 1;
+    days.forEach(function(d){ var r = data.log[d.key]; if (r && r.seen) max = Math.max(max, r.correct / r.seen); });
+    days.forEach(function(d, i){
+      var r = data.log[d.key] || { seen: 0, correct: 0 };
+      var pct = r.seen ? Math.round(r.correct / r.seen * 100) : 0;
+      var h = r.seen ? Math.max(5, Math.round(pct / max * 88)) : 3;
+      var bar = document.createElement("div"); bar.className = "rv-bar";
+      bar.innerHTML = (r.seen ? "<em>" + pct + "%</em>" : "") +
+        '<i style="height:' + h + 'px;' + (r.seen ? "" : "background:#cbd5e1") + '"></i>' +
+        "<span>" + (i % 2 === 0 ? d.label : "") + "</span>";
+      host.appendChild(bar);
+    });
+  }
+  function render(){
+    var all = allCards(), due = all.filter(isDue);
+    var overdue = due.filter(function(c){ return Number(c.due) < Date.now() - DAY; });
+    var mastered = all.filter(function(c){ return Number(c.interval || 0) >= 21; });
+    var s = sums14();
+    document.getElementById("rvDueCount").textContent = due.length;
+    document.getElementById("rvTotalCount").textContent = all.length;
+    document.getElementById("rvRetention").textContent = s.seen ? Math.round(s.correct / s.seen * 100) + "%" : "—";
+    document.getElementById("rvReviews").textContent = s.seen;
+    document.getElementById("rvHint").textContent = all.length
+      ? "Correct answers lengthen the gap; a wrong answer brings the card back tomorrow."
+      : "Wrong or unanswered questions appear here automatically after a practice session.";
+    var bar = document.getElementById("rvFilters"); bar.innerHTML = "";
+    [["due", "🔴 Due now (" + due.length + ")"], ["all", "All cards (" + all.length + ")"],
+     ["overdue", "⏰ Overdue (" + overdue.length + ")"], ["mastered", "🎓 Mastered (" + mastered.length + ")"]
+    ].forEach(function(pair){
+      var c = document.createElement("div");
+      c.className = "chip" + (filter === pair[0] ? " on" : "");
+      c.textContent = pair[1];
+      c.onclick = function(){ filter = pair[0]; render(); };
+      bar.appendChild(c);
+    });
+    var list = filter === "due" ? due : filter === "overdue" ? overdue : filter === "mastered" ? mastered : all;
+    list.sort(function(a,b){ return Number(a.due || 0) - Number(b.due || 0); });
+    var wrap = document.getElementById("rvList"); wrap.innerHTML = "";
+    if (!list.length){
+      wrap.innerHTML = '<div class="rv-empty"><span class="ico">🎉</span>' +
+        (all.length ? "Nothing in this filter." : "No revision cards yet — get a question wrong in practice and it will show up here.") + "</div>";
+      renderChart(); return;
+    }
+    var shown = list.slice(0, 200);
+    shown.forEach(function(c){
+      var q = findQuestion(c);
+      var raw = (q && q.stem) || c.stem || "";
+      var okCount = (c.history || []).filter(function(h){ return h.ok; }).length;
+      var late = Number(c.due) < Date.now() - DAY, nowDue = isDue(c);
+      var dueTxt = late ? "Overdue" : nowDue ? "Due now" : "Due " + new Date(Number(c.due)).toLocaleDateString();
+      var badgeCls = late ? "r" : nowDue ? "y" : "a";
+      var div = document.createElement("div");
+      div.className = "rv-card " + (late ? "overdue" : nowDue ? "today" : "later");
+      div.innerHTML = '<div class="rv-top"><b>' + esc(bankName(c.bankId)) + "</b> · Q" + esc(c.n) +
+        " · " + esc(c.chapter || "—") + ' · <span class="badge ' + badgeCls + '">' + dueTxt + "</span>" +
+        " · gap " + esc(c.interval || 0) + "d · ease " + esc(c.ease || 2.5) +
+        " · recall " + okCount + "/" + (c.history || []).length + "</div>" +
+        '<div class="rv-stem">' + esc(raw.slice(0, 220)) + (raw.length > 220 ? "…" : "") + "</div>" +
+        '<div class="rv-actions"><button class="btn small" data-rv-one="' + esc(c.id) + '">▶ Practice this card</button>' +
+        '<button class="btn sec small" data-rv-del="' + esc(c.id) + '">Remove</button></div>';
+      wrap.appendChild(div);
+    });
+    if (list.length > shown.length){
+      var more = document.createElement("div"); more.className = "mut";
+      more.style.fontSize = "12.5px"; more.textContent = "Showing the first 200 of " + list.length + " cards.";
+      wrap.appendChild(more);
+    }
+    wrap.querySelectorAll("[data-rv-one]").forEach(function(btn){
+      btn.onclick = function(){ startCards([data.cards[btn.dataset.rvOne]].filter(Boolean), "Revision card"); };
+    });
+    wrap.querySelectorAll("[data-rv-del]").forEach(function(btn){
+      btn.onclick = function(){ delete data.cards[btn.dataset.rvDel]; save(); render(); toast("Revision card removed."); };
+    });
+    renderChart();
+  }
+  function gateBlocked(){
+    var g = document.getElementById("accessGate");
+    return !!(g && g.style.display === "grid");
+  }
+  function startCards(list, label){
+    if (gateBlocked()){
+      var g = document.getElementById("accessGate");
+      g.scrollIntoView({ block: "center" });
+      toast("Unlock practice first — revision cards use the same access.");
+      return;
+    }
+    var pool = [];
+    list.forEach(function(c){ var q = findQuestion(c); if (q) pool.push(q); });
+    if (!pool.length){ toast("Those questions are no longer in the banks."); return; }
+    session = true;
+    pendingRepractice = { pool: pool, label: label };
+    openPlayerNamePrompt();
+  }
+  function open(){
+    ["examOrchestrator", "examPlay", "examResults"].forEach(function(id){ var el = document.getElementById(id); if (el) el.style.display = "none"; });
+    var v = document.getElementById("revisionView"); v.style.display = "block";
+    render(); window.scrollTo(0, 0);
+  }
+  function close(){
+    document.getElementById("revisionView").style.display = "none";
+    document.getElementById("examOrchestrator").style.display = "block";
+    refreshBadge();
+  }
+  document.getElementById("revOpenBtn").onclick = open;
+  document.getElementById("revBackBtn").onclick = close;
+  document.getElementById("revRefreshBtn").onclick = function(){ render(); toast("Revision list refreshed."); };
+  document.getElementById("revPracticeDueBtn").onclick = function(){
+    var due = allCards().filter(isDue);
+    if (!due.length){ toast("No cards due right now. Nice work!"); return; }
+    startCards(due, "Spaced revision · " + due.length + " due");
+  };
+  window.MARevision = {
+    record: record,
+    sessionActive: function(){ return session; },
+    endSession: function(){ session = false; refreshBadge(); },
+    refreshBadge: refreshBadge,
+    open: open
+  };
+  refreshBadge();
+  try { if (new URLSearchParams(location.search).get("revision") === "1") open(); } catch (e) {}
 })();
 </script>
 </body>

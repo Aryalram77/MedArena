@@ -353,6 +353,7 @@ html,body{overflow-x:hidden;}
   <a href="syllabus.html" class="hy-toplink" title="Loksewa Medical Officer Syllabus">📄 Syllabus</a>
   <a href="video-lessons.html" class="hy-toplink" title="High-Yield Video Lessons">🎬 Video Lessons</a>
   <a href="high-yield.html" class="hy-toplink" title="Very High Yield notes">⭐ Very High Yield</a>
+  <a href="surgery-practice.html?revision=1" class="hy-toplink" title="Your spaced-repetition revision cards">🔁 Revisions<span id="revHomeDue" style="display:none;min-width:18px;padding:1px 5px;margin-left:4px;border-radius:99px;background:#dc2626;color:#fff;font-size:10px;font-weight:800;line-height:16px;text-align:center"></span></a>
   <a href="surgery-practice.html?buddy=1" class="hy-toplink" title="AI Study Buddy">✦ AI Buddy</a>
   <a href="#" id="ppOpenLink" class="pp-toplink" style="display:none">⚡ Get lifetime access here</a>
   <button type="button" id="notifBtn" class="notif-btn" aria-label="Notifications" title="Notifications" style="position:relative;background:#1e293b;color:#cbd5e1;border:none;padding:9px 12px;border-radius:8px;font-size:16px;cursor:pointer;line-height:1;margin-left:4px">
@@ -2256,6 +2257,18 @@ initDB().then(async () => {
 })();
 </script>
 
+<script>
+/* Homepage badge: how many spaced-repetition cards are due right now. */
+(function(){
+  var el=document.getElementById('revHomeDue'); if(!el) return;
+  try{
+    var d=JSON.parse(localStorage.getItem('medarena.revisions.v1')||'{}');
+    var now=Date.now(), n=0;
+    Object.keys(d.cards||{}).forEach(function(k){ var c=d.cards[k]; if(c && Number(c.due||0)<=now) n++; });
+    if(n){ el.textContent=n>999?'999+':String(n); el.style.display='inline-block'; }
+  }catch(e){}
+})();
+</script>
 </body>
 </html>
 
