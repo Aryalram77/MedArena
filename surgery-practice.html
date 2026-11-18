@@ -729,6 +729,13 @@ function runtimeQuestion(q, shufO){
 }
 
 function buildPool(){
+  /* Deep link from the Loksewa analyzer: ?bank=<id>&q=<question number>.
+     Only the linked question is opened, and only inside its original bank. */
+  const deepQ = requestedEntry && routeParams.get("q");
+  if (deepQ){
+    const target = CUR.questions.find(q => String(q.n) === String(deepQ));
+    if (target) return { src: [target], label: "Question " + target.n };
+  }
   const size = parseInt($("setSizeSel").value, 10);
   const n = CUR.questions.length;
   const val = $("setSel").value;
@@ -1496,7 +1503,27 @@ function medArenaHash(s){
     const list = onlyBanks();
     return list ? list.includes(entry.id) : true;
   }
-  const showApp = () => { gate.style.display = "none"; $("examOrchestrator").style.display = "block"; try { checkResume(); } catch (e) {} };
+  /* Analyzer deep links open the exact question as soon as access is available.
+     Locked devices stay on the gate; no answer or explanation is exposed. */
+  let deepStarted = false;
+  function startLinkedQuestion(){
+    const q = routeParams.get("q");
+    if (!q || !requestedEntry || deepStarted || state.exam) return;
+    if (!CUR.questions.some(item => String(item.n) === String(q))) return;
+    if (gate.style.display !== "none" || $("examOrchestrator").style.display === "none") return;
+    deepStarted = true;
+    try { $("modeSel").value = "tutor"; $("timerMin").disabled = true; } catch (e) {}
+    try { const rb = $("resumeBanner"); if (rb) rb.style.display = "none"; } catch (e) {}
+    let nm = ""; try { nm = sessionStorage.getItem("medarena.playerName") || ""; } catch (e) {}
+    if (!nm) { nm = "Loksewa Revision"; try { sessionStorage.setItem("medarena.playerName", nm); } catch (e) {} }
+    try { startExam(nm); } catch (e) { deepStarted = false; }
+  }
+  const showApp = () => {
+    gate.style.display = "none"; $("examOrchestrator").style.display = "block";
+    const deep = routeParams.get("q") && requestedEntry && CUR.questions.some(item => String(item.n) === String(routeParams.get("q")));
+    try { if (!deep) checkResume(); } catch (e) {}
+    try { startLinkedQuestion(); } catch (e) {}
+  };
   function refreshAccess(){
     const entry = entryNow();
     if (!setLocked(entry) || unlocked()){ showApp(); return; }

@@ -411,6 +411,25 @@ def source_text(sources, limit=4):
     return ", ".join(parts)
 
 
+def source_links_html(sources, limit=4):
+    esc = html.escape
+    out, seen_ids = [], set()
+    for b in sources:
+        if b["id"] in seen_ids:
+            continue
+        seen_ids.add(b["id"])
+        n = str(b.get("n", "") or "").strip()
+        url = ('surgery-practice.html?bank=' + esc(str(b["id"]), quote=True) +
+               '&amp;q=' + esc(n, quote=True))
+        label = b["name"] + ((" · Q" + n) if n else "")
+        out.append(f'<a class="src-link" href="{url}" '
+                   f'title="Open Q{esc(n, quote=True)} in {esc(b["name"], quote=True)}">'
+                   f'{esc(label)}</a>')
+    if len(out) > limit:
+        out = out[:limit] + ['<span class="src-more">+%d more</span>' % (len(out) - limit)]
+    return ", ".join(out)
+
+
 def render(analysis):
     sets = analysis["sets"]
     years = analysis["years"]
@@ -470,7 +489,7 @@ def render(analysis):
         for ex in t["examples"][:3]:
             years_txt = ", ".join(str(y) for y in sorted(ex["years"]))
             bank = ex["banks"][0]
-            link = f'surgery-practice.html?bank={esc(bank["id"], quote=True)}'
+            link = f'surgery-practice.html?bank={esc(str(bank["id"]), quote=True)}&amp;q={esc(str(bank["n"]), quote=True)}'
             label = " · ".join(sorted(ex["concepts"])[:2]) or t["name"]
             qs.append(f"""<li><a href="{link}" title="{esc(ex['stem'], quote=True)}">{esc(stem_text(ex['stem']))}</a>
 <div class="qmeta">{esc(label)} · {esc(bank['name'])} · {years_txt} · Q{esc(str(bank['n']))}</div></li>""")
@@ -486,20 +505,20 @@ def render(analysis):
     repeat_html = []
     for i, r in enumerate(repeat_rows, 1):
         bank = r["sources"][0]
-        link = f'surgery-practice.html?bank={esc(bank["id"], quote=True)}'
+        link = f'surgery-practice.html?bank={esc(str(bank["id"]), quote=True)}&amp;q={esc(str(bank["n"]), quote=True)}'
         repeat_html.append(f"""<tr>
 <td class="rank">{i}</td>
 <td class="tname">{esc(r['topic'])}</td>
 <td><a href="{link}" title="{esc(r['stem'], quote=True)}">{esc(stem_text(r['stem']))}</a></td>
 <td class="num"><span class="badge rep">×{r['papers']}</span></td>
 <td class="num">{esc(year_text(r['years']))}</td>
-<td class="sub">{esc(source_text(r['sources'], 4))}</td>
+<td class="sub">{source_links_html(r['sources'], 4)}</td>
 </tr>""")
 
     possible_html = []
     for r in possible_rows:
         bank = r["sources"][0]
-        link = f'surgery-practice.html?bank={esc(bank["id"], quote=True)}'
+        link = f'surgery-practice.html?bank={esc(str(bank["id"]), quote=True)}&amp;q={esc(str(bank["n"]), quote=True)}'
         if r["papers"] >= 2:
             badge = f'<span class="badge rep">Repeated ×{r["papers"]}</span>'
         else:
@@ -509,7 +528,7 @@ def render(analysis):
 <td class="tname">{esc(r['topic'])}</td>
 <td><a href="{link}" title="{esc(r['stem'], quote=True)}">{esc(stem_text(r['stem']))}</a><div class="qmeta">{esc(label)}</div></td>
 <td>{badge}<div class="qmeta">{esc(year_text(r['years']))}</div></td>
-<td class="sub">{esc(source_text(r['sources'], 3))}</td>
+<td class="sub">{source_links_html(r['sources'], 3)}</td>
 </tr>""")
 
     generated = datetime.now().strftime("%d %b %Y")
@@ -573,6 +592,9 @@ tr:hover td{{background:#fbfdff}}
 .badge{{display:inline-block;font-size:10.5px;font-weight:800;padding:3px 7px;border-radius:99px;white-space:nowrap}}
 .badge.rep{{background:#fee2e2;color:#991b1b}}
 .badge.hi{{background:#eff6ff;color:#1d4ed8}}
+.src-link{{color:#1d4ed8;text-decoration:none}}
+.src-link:hover{{text-decoration:underline}}
+.src-more{{color:var(--mut)}}
 .tall-scroll{{max-height:560px;overflow:auto;border:1px solid var(--line);border-radius:10px}}
 .scroll{{overflow-x:auto}}
 footer{{color:var(--mut);font-size:11.5px;text-align:center;margin-top:22px}}
@@ -626,7 +648,7 @@ footer{{color:var(--mut);font-size:11.5px;text-align:center;margin-top:22px}}
 
 <section class="card">
   <h2>3 · Predicted focus for the next Loksewa</h2>
-  <p class="note">Top six topics by priority score, with the highest-signal real questions from past papers. Open any question link to revise it in its original set.</p>
+  <p class="note">Top six topics by priority score, with the highest-signal real questions from past papers. Open any question link to jump straight to that exact question on an unlocked device.</p>
   <div class="pred">{''.join(prediction_cards)}</div>
 </section>
 
@@ -641,7 +663,7 @@ footer{{color:var(--mut);font-size:11.5px;text-align:center;margin-top:22px}}
 
 <section class="card">
   <h2>5 · Exact repeated questions (all papers)</h2>
-  <p class="note">{len(repeat_rows)} stems appeared word-for-word in two or more papers. × shows how many distinct papers asked it; every row links to the original set.</p>
+  <p class="note">{len(repeat_rows)} stems appeared word-for-word in two or more papers. × shows how many distinct papers asked it; every source link opens that exact question (unlocked devices only).</p>
   <div class="tall-scroll"><table>
     <thead><tr><th>#</th><th>Topic</th><th>Possible question (real past stem)</th><th class="num">Repeats</th><th>Years</th><th>Seen in</th></tr></thead>
     <tbody>{''.join(repeat_html)}</tbody>
@@ -650,7 +672,7 @@ footer{{color:var(--mut);font-size:11.5px;text-align:center;margin-top:22px}}
 
 <section class="card">
   <h2>6 · Possible questions by topic (from all {len(sets)} sets)</h2>
-  <p class="note">Top three real past questions per topic, ranked by repetition and recency. Red = exact repeat; blue = high-yield stem with strong topic evidence. Nothing here is newly written.</p>
+  <p class="note">Top three real past questions per topic, ranked by repetition and recency. Red = exact repeat; blue = high-yield stem with strong topic evidence. Source links open the exact question on unlocked devices. Nothing here is newly written.</p>
   <div class="tall-scroll"><table>
     <thead><tr><th>Topic</th><th>Possible question (real past stem)</th><th>Evidence</th><th>Seen in</th></tr></thead>
     <tbody>{''.join(possible_html)}</tbody>
