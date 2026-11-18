@@ -566,6 +566,227 @@ html,body{overflow-x:hidden;}
   </div>
 </section>
 
+<style>
+.st-section{margin:0 0 30px}
+.st-live{display:inline-flex;align-items:center;gap:10px;background:#1b1040;color:#c4b5fd;font-size:11px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;padding:8px 16px;border-radius:999px;border:1px solid rgba(167,139,250,.4)}
+.st-dot{width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 0 0 rgba(52,211,153,.6);animation:stPulse 1.6s ease-in-out infinite}
+@keyframes stPulse{0%{box-shadow:0 0 0 0 rgba(52,211,153,.55)}70%{box-shadow:0 0 0 9px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
+.st-sub{color:#63718a;font-size:14px;max-width:660px;margin:2px 0 0}
+.st-card{position:relative;overflow:hidden;padding:24px 26px 18px;border-radius:22px;color:#eef2ff;border:1px solid rgba(167,139,250,.25);background:radial-gradient(760px 520px at -8% -25%,rgba(56,189,248,.18) 0%,transparent 55%),radial-gradient(720px 560px at 108% 115%,rgba(167,139,250,.26) 0%,transparent 55%),linear-gradient(150deg,#0b1030 0%,#131a44 55%,#1a2158 100%);box-shadow:0 20px 50px rgba(9,14,43,.45)}
+.st-card::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.16;background-image:linear-gradient(rgba(148,183,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(148,183,255,.12) 1px,transparent 1px);background-size:34px 34px;mask-image:linear-gradient(180deg,#000,transparent 72%)}
+.st-card>*{position:relative;z-index:1}
+.st-hero{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-bottom:18px}
+.st-ring{position:relative;width:132px;height:132px;flex:0 0 auto}
+.st-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.st-ring-bg{fill:none;stroke:rgba(167,139,250,.16);stroke-width:10}
+.st-ring-fill{fill:none;stroke:url(#stRingGrad);stroke-width:10;stroke-linecap:round;transition:stroke-dashoffset .9s cubic-bezier(.22,.8,.25,1)}
+.st-ring-mid{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.st-ring-mid b{font-size:22px;font-weight:800;color:#f0abfc;font-variant-numeric:tabular-nums;line-height:1}
+.st-ring-mid span{font-size:9px;letter-spacing:1.1px;text-transform:uppercase;color:#b9c4ee;margin-top:4px;font-weight:700}
+.st-liveblock{flex:1;min-width:220px}
+.st-kicker{font-size:10px;letter-spacing:2.2px;text-transform:uppercase;color:#a5b4fc;font-weight:800}
+.st-time{font-size:clamp(38px,6vw,60px);font-weight:800;letter-spacing:-1.5px;line-height:1.05;color:#fff;font-variant-numeric:tabular-nums;text-shadow:0 0 28px rgba(56,189,248,.45)}
+.st-vs{margin-top:6px;font-size:12.5px;color:#b9c4ee;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.st-vs span:last-child{color:#8d9bc9}
+.st-arrow{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:7px;font-weight:900;font-size:13px}
+.st-arrow.up{background:rgba(52,211,153,.16);color:#6ee7b7}
+.st-arrow.down{background:rgba(248,113,113,.16);color:#fca5a5}
+.st-stats{display:grid;grid-template-columns:repeat(2,minmax(100px,1fr));gap:8px;flex:0 0 auto}
+.st-stat{background:rgba(148,183,255,.06);border:1px solid rgba(148,183,255,.14);border-radius:12px;padding:9px 12px}
+.st-stat b{display:block;font-size:19px;font-weight:800;color:#f0abfc;font-variant-numeric:tabular-nums;line-height:1.1}
+.st-stat b.flame{color:#fbbf24}
+.st-stat span{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#aebbee;font-weight:700}
+.st-toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:4px 0 12px}
+.st-ranges{display:flex;gap:6px;flex-wrap:wrap}
+.st-range{background:rgba(148,183,255,.07);color:#b9c4ee;border:1px solid rgba(148,183,255,.2);padding:7px 12px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:1px;cursor:pointer}
+.st-range.on{background:linear-gradient(92deg,#38bdf8,#a78bfa);color:#0b1030;border-color:transparent}
+.st-goalkey{font-size:11px;color:#9db4e6;display:flex;align-items:center;gap:7px}
+.st-goalkey i{display:inline-block;width:16px;border-top:2px dashed rgba(251,191,36,.8)}
+.st-bars{position:relative;height:190px;padding-top:10px}
+.st-plot{position:relative;height:150px;display:flex;align-items:flex-end}
+.st-colhost{display:flex;align-items:flex-end;gap:8px;width:100%;height:100%}
+.st-col{flex:1;min-width:0;height:100%;display:flex;align-items:flex-end;justify-content:center}
+.st-bar{width:100%;max-width:46px;height:var(--h,3%);min-height:3px;border-radius:7px 7px 3px 3px;background:linear-gradient(180deg,#38bdf8,#6366f1);box-shadow:0 0 16px rgba(56,189,248,.25);transform-origin:bottom;transition:height .55s cubic-bezier(.25,.8,.25,1);animation:stGrow .8s cubic-bezier(.2,.85,.25,1) backwards;animation-delay:var(--d,0s)}
+@keyframes stGrow{from{transform:scaleY(0);opacity:.2}to{transform:scaleY(1);opacity:1}}
+.st-bar.best{background:linear-gradient(180deg,#fde68a,#f59e0b);box-shadow:0 0 20px rgba(245,158,11,.4)}
+.st-bar.today{background:linear-gradient(180deg,#6ee7b7,#10b981);box-shadow:0 0 22px rgba(16,185,129,.55);animation:stGrow .8s cubic-bezier(.2,.85,.25,1) backwards,stToday 2.1s ease-in-out infinite .9s}
+@keyframes stToday{0%,100%{filter:brightness(1)}50%{filter:brightness(1.35)}}
+.st-goalline{position:absolute;left:0;right:0;border-top:2px dashed rgba(251,191,36,.6);pointer-events:none;z-index:2;transition:bottom .6s ease}
+.st-goalline em{position:absolute;right:0;top:-17px;font-style:normal;font-size:9.5px;letter-spacing:1px;text-transform:uppercase;color:#fbbf24;font-weight:800}
+.st-labels{display:flex;gap:8px;margin-top:6px}
+.st-labels>div{flex:1;min-width:0;text-align:center}
+.st-day{font-size:10.5px;font-weight:800;color:#b9c4ee}
+.st-labels>div:last-child .st-day{color:#6ee7b7}
+.st-date{font-size:9px;color:#7686b8}
+.st-tip{position:absolute;display:none;transform:translate(-50%,-115%);pointer-events:none;background:#f8fafc;color:#0f172a;padding:7px 11px;border-radius:9px;font-size:11.5px;font-weight:800;white-space:nowrap;box-shadow:0 8px 22px rgba(0,0,0,.38);z-index:5}
+.st-tip b{color:#7c3aed}
+.st-tip::after{content:"";position:absolute;left:50%;bottom:-5px;width:10px;height:10px;background:#f8fafc;transform:translateX(-50%) rotate(45deg)}
+.st-foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px solid rgba(148,183,255,.12);font-size:11.5px;color:#9db4e6}
+.st-foot b{color:#fff}
+@media(max-width:980px){.st-hero{gap:16px}.st-stats{width:100%;grid-template-columns:repeat(4,1fr)}}
+@media(max-width:620px){.st-ring{width:112px;height:112px}.st-stats{grid-template-columns:repeat(2,1fr)}.st-plot{height:118px}.st-bars{height:158px}.st-colhost,.st-labels{gap:4px}.st-bar{max-width:32px}}
+</style>
+<section class="st-section" id="stSection" aria-labelledby="stTitle">
+  <div class="bank-section-head"><div><div class="section-eyebrow">SCREEN TIME</div><h2 id="stTitle">Your time on MedArena</h2><p class="st-sub">A live look at how long you study each day — compare your days, chase the 30-minute goal and keep the streak alive.</p></div><div class="st-live"><span class="st-dot"></span> LIVE</div></div>
+  <div class="st-card">
+    <div class="st-hero">
+      <div class="st-ring">
+        <svg viewBox="0 0 132 132" aria-hidden="true">
+          <defs><linearGradient id="stRingGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#c084fc"/></linearGradient></defs>
+          <circle class="st-ring-bg" cx="66" cy="66" r="54"/>
+          <circle class="st-ring-fill" id="stRingFill" cx="66" cy="66" r="54"/>
+        </svg>
+        <div class="st-ring-mid"><b id="stGoalPct">0%</b><span>of 30m goal</span></div>
+      </div>
+      <div class="st-liveblock">
+        <div class="st-kicker">Today's screen time</div>
+        <div class="st-time" id="stToday">00:00:00</div>
+        <div class="st-vs" id="stVs"><span class="st-arrow up">↑</span> <b>First session today</b> <span>— keep it going!</span></div>
+      </div>
+      <div class="st-stats">
+        <div class="st-stat"><b id="stBest">0s</b><span>Best day</span></div>
+        <div class="st-stat"><b id="stAvg">0s</b><span>Daily average</span></div>
+        <div class="st-stat"><b id="stTotal">0s</b><span>In this range</span></div>
+        <div class="st-stat"><b class="flame" id="stStreak">0 🔥</b><span>Day streak</span></div>
+      </div>
+    </div>
+    <div class="st-toolbar">
+      <div class="st-ranges" id="stRanges">
+        <button class="st-range on" type="button" data-days="7">7 DAYS</button>
+        <button class="st-range" type="button" data-days="14">14 DAYS</button>
+        <button class="st-range" type="button" data-days="30">30 DAYS</button>
+      </div>
+      <div class="st-goalkey"><i></i> 30 minute daily goal</div>
+    </div>
+    <div class="st-bars" id="stBars">
+      <div class="st-plot"><div class="st-goalline" id="stGoalLine"><em>GOAL</em></div><div class="st-colhost" id="stBarHost"></div></div>
+      <div class="st-labels" id="stLabels"></div>
+      <div class="st-tip" id="stTip"></div>
+    </div>
+    <div class="st-foot"><span id="stFootLeft">Your screen time appears here as you study.</span><a class="dc-cta" href="surgery-practice.html">Start practicing <span aria-hidden="true">→</span></a></div>
+  </div>
+</section>
+<script>
+/* Live screen-time dashboard — reads the shared local tracker used on every page. */
+(function(){
+  "use strict";
+  var $ = function(id){ return document.getElementById(id); };
+  if (!$("stBarHost")) return;
+  var GOAL = 30 * 60, range = 7, builtSig = "";
+  function pad(n){ return String(n).padStart(2,"0"); }
+  function dayKey(ts){ var d=new Date(ts); return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate()); }
+  function setText(id,v){ var el=$(id); if(el) el.textContent=v; }
+  function readData(){
+    var d={};
+    try { var raw=JSON.parse(localStorage.getItem("medarena.screenTime.v1")||"{}"); Object.keys(raw).forEach(function(k){ d[k]=Math.max(0,Number(raw[k])||0); }); } catch(e){}
+    return d;
+  }
+  function todayValue(data){
+    var k=dayKey(Date.now()), v=data[k]||0;
+    try { if(window.__medarenaScreenTime) v=window.__medarenaScreenTime.today(); } catch(e){}
+    return Math.max(0,v);
+  }
+  function clock(sec){ sec=Math.max(0,Math.floor(sec)); return pad(Math.floor(sec/3600))+":"+pad(Math.floor(sec%3600/60))+":"+pad(sec%60); }
+  function short(sec){
+    sec=Math.max(0,Math.floor(sec));
+    if(sec<60) return sec+"s";
+    var m=Math.floor(sec/60);
+    if(m<60) return m+"m"+(sec%60?" "+(sec%60)+"s":"");
+    var h=Math.floor(m/60); m%=60;
+    return h+"h"+(m?" "+m+"m":"");
+  }
+  function lastDays(n){
+    var out=[], base=new Date(); base.setHours(0,0,0,0);
+    for(var i=n-1;i>=0;i--){
+      var d=new Date(base.getTime()-i*86400000);
+      out.push({key:dayKey(d.getTime()),label:d.toLocaleDateString(undefined,{weekday:"short"}),date:d.toLocaleDateString(undefined,{month:"short",day:"numeric"})});
+    }
+    return out;
+  }
+  function streakOf(data){
+    var n=0, base=new Date(); base.setHours(0,0,0,0);
+    for(var i=0;i<400;i++){
+      if((data[dayKey(base.getTime()-i*86400000)]||0)>=60) n++; else break;
+    }
+    return n;
+  }
+  function rebuild(days){
+    $("stBarHost").innerHTML=days.map(function(d,i){ return '<div class="st-col" data-i="'+i+'"><div class="st-bar"></div></div>'; }).join("");
+    $("stLabels").innerHTML=days.map(function(d){ return '<div><div class="st-day">'+d.label+'</div><div class="st-date">'+d.date.replace(/ .*/,"")+'</div></div>'; }).join("");
+    var tip=$("stTip"), bars=$("stBars");
+    [].forEach.call($("stBarHost").querySelectorAll(".st-col"),function(col){
+      var i=parseInt(col.getAttribute("data-i"),10), bar=col.querySelector(".st-bar");
+      col.addEventListener("mouseenter",function(){
+        if(!tip||!bar) return;
+        tip.innerHTML=days[i].date+': <b>'+short(window.__stVals?window.__stVals[i]:0)+'</b>'+(i===days.length-1?' · <span style="color:#059669">live</span>':'');
+        var r=bar.getBoundingClientRect(), p=bars.getBoundingClientRect();
+        tip.style.left=Math.max(10,Math.min(90,(r.left+r.width/2-p.left)/p.width*100))+"%";
+        tip.style.top=Math.max(14,(r.top-p.top)/p.height*100)+"%";
+        tip.style.display="block";
+      });
+      col.addEventListener("mouseleave",function(){ if(tip) tip.style.display="none"; });
+    });
+  }
+  function paint(){
+    var data=readData(), tv=todayValue(data), tk=dayKey(Date.now());
+    data[tk]=tv;
+    var days=lastDays(range), vals=days.map(function(d){ return data[d.key]||0; });
+    window.__stVals=vals;
+    var total=vals.reduce(function(a,b){return a+b;},0);
+    var best=Math.max.apply(null,vals.concat([0]));
+    var avg=Math.round(total/vals.length);
+    var yv=days.length>1?(data[days[days.length-2].key]||0):0;
+    var diff=tv-yv, streak=streakOf(data);
+    var sig=range+"|"+days.map(function(d){return d.key;}).join(",");
+    if(sig!==builtSig){ builtSig=sig; rebuild(days); }
+
+    setText("stToday",clock(tv));
+    var pct=Math.min(1,tv/GOAL), C=2*Math.PI*54, ring=$("stRingFill");
+    if(ring){ ring.style.strokeDasharray=C.toFixed(1); ring.style.strokeDashoffset=(C*(1-pct)).toFixed(1); }
+    setText("stGoalPct",Math.round(pct*100)+"%");
+    var vs=$("stVs");
+    if(vs){
+      if(yv>0){
+        var up=diff>=0;
+        vs.innerHTML='<span class="st-arrow '+(up?'up':'down')+'">'+(up?'↑':'↓')+'</span> <b>'+short(Math.abs(diff))+'</b> <span>vs yesterday</span>';
+      } else {
+        vs.innerHTML='<span class="st-arrow up">↑</span> <b>First session today</b> <span>— keep it going!</span>';
+      }
+    }
+    setText("stBest",short(best)); setText("stAvg",short(avg)); setText("stTotal",short(total));
+    setText("stStreak",streak+" 🔥");
+    var max=Math.max(GOAL,best,1), gl=$("stGoalLine");
+    if(gl) gl.style.bottom=(GOAL/max*100).toFixed(2)+"%";
+    var cols=$("stBarHost").children;
+    for(var i=0;i<cols.length;i++){
+      var bar=cols[i].querySelector(".st-bar"); if(!bar) continue;
+      bar.style.setProperty("--h",Math.max(2,vals[i]/max*100).toFixed(2)+"%");
+      bar.style.setProperty("--d",(i*0.045).toFixed(2)+"s");
+      bar.className="st-bar"+(i===days.length-1?" today":"")+(vals[i]===best&&best>0?" best":"");
+    }
+    var foot=$("stFootLeft");
+    if(foot){
+      if(total===0) foot.innerHTML='No time recorded yet — your screen time appears here as you study.';
+      else if(best>=GOAL) foot.innerHTML='Nice — you cleared the <b>30m goal</b> on your best day. Current streak: <b>'+streak+'</b> days.';
+      else foot.innerHTML='Peak <b>'+short(best)+'</b> in a day · <b>'+short(total)+'</b> across the last '+range+' days';
+    }
+  }
+  document.querySelectorAll(".st-range").forEach(function(b){
+    b.onclick=function(){
+      range=parseInt(b.getAttribute("data-days"),10)||7;
+      document.querySelectorAll(".st-range").forEach(function(x){ x.classList.toggle("on",x===b); });
+      paint();
+    };
+  });
+  window.addEventListener("medarena:screentime",paint);
+  window.addEventListener("storage",paint);
+  window.addEventListener("focus",paint);
+  document.addEventListener("visibilitychange",function(){ if(!document.hidden) paint(); });
+  paint();
+  setInterval(paint,1000);
+})();
+</script>
+
 <section class="home-banks" aria-labelledby="homeBankTitle">
   <div class="bank-section-head"><div><div class="section-eyebrow" id="homeBankEyebrow">CHOOSE YOUR TRACK</div><h2 id="homeBankTitle">Your question banks</h2><p id="homeBankSubtitle">Jump into a set and build exam-day confidence.</p></div><div class="bank-total" id="bankTotal"><strong>26,566</strong><span>questions ready</span></div></div>
   <div id="embeddedBankGroups" class="embedded-groups">
@@ -2263,6 +2484,7 @@ initDB().then(async () => {
   }catch(e){}
 })();
 </script>
+<script src="screen-time.js" defer></script>
 </body>
 </html>
 

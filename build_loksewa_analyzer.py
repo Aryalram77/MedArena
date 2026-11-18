@@ -681,6 +681,7 @@ footer{{color:var(--mut);font-size:11.5px;text-align:center;margin-top:22px}}
 
 <footer>Generated {generated} from MedArena question banks · static, browser-free analysis · stems shown as previews only (answers and explanations stay locked).</footer>
 </div>
+<script src="screen-time.js" defer></script>
 </body>
 </html>
 """
