@@ -459,7 +459,7 @@ pre{white-space:pre-wrap;word-break:break-word;overflow-x:auto;}
     <div class="chkrow">
       <label><input type="checkbox" id="shufQ" checked> 🔀 Shuffle question order</label>
       <label><input type="checkbox" id="shufO" checked> Shuffle answer options</label>
-      <label><input type="checkbox" id="autoNext" checked> ⏭ Auto-next after answer (use ← Previous to go back)</label>
+      <label><input type="checkbox" id="autoNext" checked> ⏭ Auto-next after answer (Timed only · ← Previous to go back)</label>
     </div>
     <button class="btn" id="startBtn">▶ Start session</button>
     <button class="btn btn-secondary" id="modulesBtn" type="button">📚 Chapter modules &amp; summaries</button>
@@ -692,7 +692,7 @@ const state = { exam: null, errors: new Set(JSON.parse(store.getItem("se1.errors
 let pendingRepractice = null;
 function toast(m){ const t = $("toast"); t.textContent = m; t.style.display = "block"; clearTimeout(t._h); t._h = setTimeout(() => t.style.display = "none", 3500); }
 
-/* ===== Auto-next: selecting a single answer moves on; Previous is the way back ===== */
+/* ===== Auto-next: Timed mode only — Previous is the way back ===== */
 let autoNextTimer = null;
 try { const an = store.getItem("medarena.autoNext"); if (an !== null && $("autoNext")) $("autoNext").checked = an === "1"; } catch (e) {}
 if ($("autoNext")) $("autoNext").onchange = () => { try { store.setItem("medarena.autoNext", $("autoNext").checked ? "1" : "0"); } catch (e) {} };
@@ -703,20 +703,19 @@ function goNext(){
   if (!ex) return;
   if (ex.cur < ex.pool.length - 1) { ex.cur++; renderQuestion(); renderPalette(); }
 }
-function scheduleAutoNext(i, showedFeedback){
+function scheduleAutoNext(i){
   cancelAutoNext();
-  if (!autoNextWanted() || !state.exam || state.exam.cur !== i) return;
+  /* Tutor mode reveals the answer/explanation — let the user read it and use Next. */
+  if (!autoNextWanted() || !state.exam || state.exam.mode === "tutor" || state.exam.cur !== i) return;
   const q = state.exam.pool[i];
   if (!q || q.multi || !(state.exam.sel[i] || []).length) return; // multi-select needs all picks + Next
-  /* Tutor mode shows the answer/explanation, so give it a moment before moving on. */
-  const delay = showedFeedback ? 1800 : 450;
   autoNextTimer = setTimeout(() => {
     autoNextTimer = null;
     const ex = state.exam;
-    if (!ex || ex.cur !== i || !autoNextWanted()) return;
+    if (!ex || ex.mode === "tutor" || ex.cur !== i || !autoNextWanted()) return;
     if (ex.cur < ex.pool.length - 1) { ex.cur++; renderQuestion(); renderPalette(); }
     else toast("Last question — submit to finish.");
-  }, delay);
+  }, 450);
 }
 
 function runtimeQuestion(q, shufO){
@@ -990,7 +989,7 @@ function choose(i, oi, row){
     }
   }
   renderQuestion(); renderPalette();
-  scheduleAutoNext(i, ex.mode === "tutor" && !q.noKey && !!ex.reveal && !!ex.reveal[i]);
+  scheduleAutoNext(i);
   scheduleSaveResume();
 }
 function record_error(q, wrong){
