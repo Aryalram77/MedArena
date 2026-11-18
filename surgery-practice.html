@@ -1622,7 +1622,7 @@ function medArenaHash(s){
       DOT=$("maBuddyDot"), STATUS=$("maBuddyStatus"), AIBTN=$("maBuddyAi");
   if(!FAB||!PANEL||!MSGS||!INPUT) return;
 
-  var ITEMS=[], TOKENS=[], DF=null, MAP=null, VEC=null, ENC=null, MODE="idle", INIT=null;
+  var ITEMS=[], TOKENS=[], DF=null, MAP=null, VEC=null, ENC=null, EXTRA=null, MODE="idle", INIT=null;
   var GEN=null, GENSTATE="off", GENWANTED=true, LAST=null;
   try{ if(localStorage.getItem("ma_buddy_gen")==="0") GENWANTED=false; }catch(err){}
   var STOP=new Set("a an the and or of in on at to for with by from is are was were be been being it its as this that these those what which who when where why how do does did can could should would may might will just about into than then there here any all some no not if but".split(" "));
@@ -1687,7 +1687,7 @@ function medArenaHash(s){
       var it=ITEMS[h[0]];
       if(it.kind==="note"){
         var lines=goodSentences(it.m.body,190);
-        if(lines.length) notes.push({title:tidy(it.m.title),text:lines.join(" "),bank:it.bankName});
+        if(lines.length) notes.push({title:tidy(it.m.title),text:lines.join(" "),bank:it.bankName,score:h[1]});
         return;
       }
       var stem=tidy(it.q.stem);
@@ -1699,7 +1699,7 @@ function medArenaHash(s){
         if(!seen[key].evidence&&it.q.explanation) seen[key].evidence=it.q.explanation;
         return;
       }
-      var pair={ans:ans,label:stemLabel(stem),stem:stem,evidence:it.q.explanation||"",bank:it.bankName};
+      var pair={ans:ans,label:stemLabel(stem),stem:stem,evidence:it.q.explanation||"",bank:it.bankName,score:h[1]};
       seen[key]=pair;pairs.push(pair);
     });
     /* Keep only answers that actually relate to the student's question. */
@@ -1717,8 +1717,14 @@ function medArenaHash(s){
       });
     }
     if(!pairs.length&&!notes.length) return null;
+    /* A clearly stronger note (e.g. High Yield / PDF) should lead the answer,
+       even when a weaker MCQ also matches. */
+    var bestPair=0,bestNote=0;
+    pairs.forEach(function(p){if(p.score>bestPair) bestPair=p.score;});
+    notes.forEach(function(n){if(n.score>bestNote) bestNote=n.score;});
+    var leadNote=!!notes.length&&(!pairs.length||bestNote>bestPair*1.08);
     var s='<div class="ma-b-short"><div class="ma-b-short-h">✦ Short answer</div>';
-    if(pairs.length){
+    if(pairs.length&&!leadNote){
       s+='<div class="ma-b-short-main">'+e(pairs[0].ans)+'</div>';
       var lab=pairs[0].label?pairs[0].label.charAt(0).toLowerCase()+pairs[0].label.slice(1):"";
       var bits=[];
@@ -1738,7 +1744,8 @@ function medArenaHash(s){
     }else{
       s+='<div class="ma-b-short-main">'+e(notes[0].title)+'</div>';
       s+='<div class="ma-b-short-body">'+e(notes[0].text)+'</div>';
-      s+='<div class="ma-b-short-meta">From '+e(notes[0].bank)+' notes in your banks</div>';
+      if(pairs.length) s+='<div class="ma-b-short-body">Related MCQ: '+e(pairs[0].label)+': '+e(pairs[0].ans)+'.</div>';
+      s+='<div class="ma-b-short-meta">From '+e(notes[0].bank)+(notes.length>1?" + "+(notes.length-1)+" more matching notes":"")+' in your banks</div>';
     }
     return s+"</div>";
   }
@@ -1752,7 +1759,7 @@ function medArenaHash(s){
     var m=it.m;
     return [pystr(m.title),pystr(m.body).slice(0,600)].join(" ").trim();
   }
-  function buildItems(){
+  function buildItems(extra){
     var out=[];
     for(var i=0;i<BANKS.length;i++){
       var en=BANKS[i], b=en.bank;
@@ -1763,6 +1770,11 @@ function medArenaHash(s){
         out.push({bankId:en.id,bankName:b.name||en.id,cat:en.cat||"",kind:"note",ref:mi,m:m});
       });
     }
+    /* Very High Yield notes + uploaded PDFs, in the same order as the index. */
+    if(extra&&Array.isArray(extra.items)) extra.items.forEach(function(it){
+      out.push({bankId:it.bankId||"",bankName:it.bankName||"",cat:it.cat||"",
+                kind:it.kind||"note",ref:it.ref,m:it.m||{title:"",body:""}});
+    });
     return out;
   }
   function tokenize(s){return (String(s).toLowerCase().match(/[a-z0-9]+/g)||[]).filter(function(w){return w.length>1&&!STOP.has(w);});}
@@ -1815,24 +1827,35 @@ function medArenaHash(s){
     }
   }
   function genContext(hits,unlocked){
+    /* Notes (High Yield / PDF / chapter summaries) lead; MCQs only supplement. */
+    var visible=[];
+    hits.forEach(function(h){
+      var it=ITEMS[h[0]];
+      if(bankLocked(it.bankId)&&!unlocked) return;
+      visible.push({it:it,score:h[1]});
+    });
+    visible.sort(function(a,b){
+      var an=a.it.kind==="note"?0:1, bn=b.it.kind==="note"?0:1;
+      if(an!==bn) return an-bn;
+      return b.score-a.score;
+    });
     var parts=[], used=0;
-    for(var i=0;i<hits.length&&used<5;i++){
-      var it=ITEMS[hits[i][0]];
-      if(bankLocked(it.bankId)&&!unlocked) continue;
+    for(var i=0;i<visible.length&&used<5;i++){
+      var it=visible[i].it;
       var s="Source: "+it.bankName;
       if(it.kind==="note"){
-        var body=goodSentences(it.m.body,280).join(" ");
+        var body=goodSentences(it.m.body,360).join(" ");
         if(!body) continue;
-        s+="\nNote: "+tidy(it.m.title)+"\nFacts: "+body;
+        s+="\nStudy note: "+tidy(it.m.title)+"\nFacts: "+body;
       }else{
         var ans=answerOf(it.q); if(!ans) continue;
-        s+="\nQuestion: "+tidy(it.q.stem)+"\nAnswer: "+ans;
+        s+="\nMCQ: "+tidy(it.q.stem)+"\nAnswer: "+ans;
         var ex=it.q.explanation?goodSentences(it.q.explanation,320).join(" "):"";
         if(ex) s+="\nExplanation: "+ex;
       }
       parts.push(s); used++;
     }
-    return parts.join("\n\n").slice(0,3600);
+    return parts.join("\n\n").slice(0,4200);
   }
   function genText(out){
     if(typeof out==="string") return out;
@@ -1849,11 +1872,13 @@ function medArenaHash(s){
     status("Writing short answer…","load");
     try{
       var out=await GEN([
-        {role:"system",content:"You are MedArena's exam study assistant. Answer in at most 3 short lines and no more than 45 words. Use ONLY the facts below from MedArena question banks. Do not add outside knowledge, do not speculate, and do not mention the word context. If the answer is not clearly present, reply exactly: I couldn't find a clear answer in your MedArena banks."},
+        {role:"system",content:"You are MedArena's exam study assistant. Answer in at most 3 short lines and no more than 45 words. Use ONLY the facts below from MedArena question banks. Prefer Study note entries over MCQs. Never reply with just an option letter. Do not add outside knowledge, do not speculate, and do not mention the word context. If the answer is not clearly present, reply exactly: I couldn't find a clear answer in your MedArena banks."},
         {role:"user",content:"Student question: "+query+"\n\nBank facts:\n"+ctx+"\n\nWrite the short answer now."}
       ],{max_new_tokens:90,do_sample:false});
       var txt=genText(out).replace(/<\|[^>]*\|>/g,"").replace(/^\s*(?:short answer|answer)\s*[:.]?\s*/i,"").trim();
+      window.__maGenRaw=txt;
       if(/couldn'?t find a clear answer/i.test(txt)) return null;
+      if(/^(?:option\s+)?[A-E]\s*[-.)]\s/i.test(txt)) return null; /* keep extractive answer instead */
       txt=txt.split(/(?<=[.!?])\s+/).filter(Boolean).slice(0,3).join(" ").slice(0,420).trim();
       return txt||null;
     }catch(err){
@@ -1873,8 +1898,9 @@ function medArenaHash(s){
     if(INIT) return INIT;
     INIT=(async function(){
       status("Preparing your question banks…","load");
+      try{var x=await fetch("study-extra.json",{cache:"no-cache"});if(x.ok) EXTRA=await x.json();}catch(err){}
       try{var r=await fetch("study-map.json",{cache:"no-cache"});if(r.ok) MAP=await r.json();}catch(err){}
-      ITEMS=buildItems();
+      ITEMS=buildItems(EXTRA);
       if(MAP&&MAP.count!==ITEMS.length){
         sys("<b>Note:</b> the study index is out of date ("+MAP.count+" indexed vs "+ITEMS.length+" current), so I'm using quick on-device search.");
         MODE="kw";
@@ -1939,6 +1965,9 @@ function medArenaHash(s){
   function bankLocked(id){
     try{ if(typeof isFreePeriod==="function"&&isFreePeriod()) return false; }catch(err){}
     if(id==="loksewamock") return false;
+    /* Public Very High Yield topics and uploaded PDFs stay searchable for all. */
+    if(id==="hy_neuro"||id==="hy_acidbase") return false;
+    if(String(id).indexOf("pdf_")===0) return false;
     if(typeof LOCK==="undefined"||!LOCK||!LOCK.rev) return false;
     var list=Array.isArray(LOCK.banks)?LOCK.banks:null;
     return list?list.indexOf(id)>=0:true;
@@ -2062,7 +2091,8 @@ function medArenaHash(s){
   var greet=document.createElement("div"); greet.className="ma-b-msg bot";
   greet.innerHTML="<b>Hi! I'm your MedArena study buddy.</b><br>Ask anything and I'll give a short answer from your banks, then show the matching MCQs underneath. Use the ✦ AI button to switch full AI phrasing on or off.";
   var chips=document.createElement("div"); chips.className="ma-b-chips";
-  ["Glaucoma emergency","Neurofibromatosis type 1","Facial nerve palsy nursing","Addison disease"].forEach(function(t){chips.appendChild(chip(t));});
+  ["Glaucoma emergency","Neurofibromatosis type 1","Facial nerve palsy nursing","Addison disease",
+   "Weber syndrome midbrain","HLA B27 mnemonic","STP anaphylaxis protocol"].forEach(function(t){chips.appendChild(chip(t));});
   greet.appendChild(chips); MSGS.appendChild(greet);
 
   if(new URLSearchParams(location.search).get("buddy")==="1") PANEL.style.display="flex";
