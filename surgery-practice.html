@@ -2077,6 +2077,20 @@ function medArenaHash(s){
   var KEY = "medarena.revisions.v1", DAY = 86400000;
   var data = load(), session = false, rIndex = null, filter = "due";
 
+  /* Older cards were scheduled a day out after a wrong answer. Bring any card
+     whose latest review was wrong straight into "Due now" so the red-card
+     behaviour also applies to decks saved before this fix. */
+  (function migrateWrongToDue(){
+    var changed = false, now = Date.now();
+    Object.keys(data.cards).forEach(function(k){
+      var c = data.cards[k], h = c && c.history;
+      if (h && h.length && h[h.length - 1].ok === false && Number(c.due) > now){
+        c.due = now; c.interval = 0; changed = true;
+      }
+    });
+    if (changed) save();
+  })();
+
   function load(){
     try {
       var d = JSON.parse(localStorage.getItem(KEY) || "{}");
