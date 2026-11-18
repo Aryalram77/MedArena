@@ -1546,7 +1546,7 @@ function medArenaHash(s){
 })();
 </script>
 
-<!-- ============ MedArena AI Study Buddy — fully on-device, no API key ============ -->
+<!-- ============ MedArena Study Buddy — instant bank-only search, no downloads ============ -->
 <style>
 .ma-b-fab{position:fixed;right:22px;bottom:22px;z-index:9000;border:none;cursor:pointer;display:flex;align-items:center;gap:9px;padding:13px 18px;border-radius:999px;background:linear-gradient(135deg,#0f766e,#1d4ed8);color:#fff;font:700 14px/1 system-ui,"Segoe UI",sans-serif;box-shadow:0 10px 30px rgba(15,118,110,.42);transition:transform .18s,box-shadow .18s}
 .ma-b-fab:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(15,118,110,.55)}
@@ -1556,10 +1556,7 @@ function medArenaHash(s){
 .ma-b-logo{width:36px;height:36px;border-radius:11px;background:rgba(255,255,255,.18);display:grid;place-items:center;font-size:19px;flex:none}
 .ma-b-title{font-weight:800;font-size:15px;line-height:1.2}
 .ma-b-sub{font-size:11.5px;opacity:.85;margin-top:2px}
-.ma-b-ai{margin-left:auto;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.32);color:#fff;border-radius:9px;padding:5px 9px;font:800 10.5px/1.1 system-ui,"Segoe UI",sans-serif;cursor:pointer;white-space:nowrap}
-.ma-b-ai.on{background:#fff;color:#0f766e;border-color:#fff}
-.ma-b-ai:disabled{opacity:.6;cursor:wait}
-.ma-b-close{background:rgba(255,255,255,.16);border:none;color:#fff;width:30px;height:30px;border-radius:9px;cursor:pointer;font-size:18px;line-height:1}
+.ma-b-close{margin-left:auto;background:rgba(255,255,255,.16);border:none;color:#fff;width:30px;height:30px;border-radius:9px;cursor:pointer;font-size:18px;line-height:1}
 .ma-b-close:hover{background:rgba(255,255,255,.3)}
 .ma-b-status{padding:7px 14px;font-size:11.5px;color:#475569;background:#f8fafc;border-bottom:1px solid #e8eef5;display:flex;align-items:center;gap:7px}
 .ma-b-dot{width:8px;height:8px;border-radius:50%;background:#94a3b8;flex:none}
@@ -1583,9 +1580,6 @@ function medArenaHash(s){
 .ma-b-short-main{font-size:14.5px;font-weight:800;color:#0f2d29;line-height:1.35;margin-top:4px}
 .ma-b-short-body{font-size:12.5px;color:#334155;line-height:1.5;margin-top:4px}
 .ma-b-short-meta{font-size:10.5px;color:#64748b;margin-top:6px}
-.ma-b-short a{color:#b45309;font-weight:800}
-.ma-b-short.ai{background:linear-gradient(135deg,#f5f3ff,#eff6ff);border-color:#c4b5fd}
-.ma-b-short.ai .ma-b-short-h{color:#6d28d9}
 .ma-b-sources{margin-top:10px}
 .ma-b-sources summary{cursor:pointer;font-size:12px;font-weight:700;color:#0f766e;outline:none}
 .ma-b-sources[open] summary{margin-bottom:7px}
@@ -1603,40 +1597,37 @@ function medArenaHash(s){
 .ma-b-foot{padding:6px 12px 9px;font-size:10.5px;color:#94a3b8;background:#fff;text-align:center}
 </style>
 
-<button type="button" class="ma-b-fab" id="maBuddyFab" aria-label="Open AI Study Buddy"><span class="ma-b-spark">✦</span> Ask MedArena</button>
+<button type="button" class="ma-b-fab" id="maBuddyFab" aria-label="Open MedArena Study Buddy"><span class="ma-b-spark">✦</span> Ask MedArena</button>
 
-<div class="ma-b-panel" id="maBuddyPanel" role="dialog" aria-label="MedArena AI Study Buddy">
+<div class="ma-b-panel" id="maBuddyPanel" role="dialog" aria-label="MedArena Study Buddy">
   <div class="ma-b-head">
     <div class="ma-b-logo">✦</div>
-    <div><div class="ma-b-title">MedArena Study Buddy</div><div class="ma-b-sub">Ask anything from your question banks</div></div>
-    <button type="button" class="ma-b-ai" id="maBuddyAi" aria-label="Toggle full AI answer" title="Full AI answer — first load downloads about 500–800 MB once">✦ AI</button>
+    <div><div class="ma-b-title">MedArena Study Buddy</div><div class="ma-b-sub">Finds related MCQs in your banks</div></div>
     <button type="button" class="ma-b-close" id="maBuddyClose" aria-label="Close">×</button>
   </div>
-  <div class="ma-b-status"><span class="ma-b-dot" id="maBuddyDot"></span><span id="maBuddyStatus">Ready — ask a question to begin</span></div>
+  <div class="ma-b-status"><span class="ma-b-dot ok" id="maBuddyDot"></span><span id="maBuddyStatus">Ready — nothing to download</span></div>
   <div class="ma-b-msgs" id="maBuddyMsgs"></div>
   <div class="ma-b-sendbar">
     <input class="ma-b-input" id="maBuddyInput" placeholder="e.g. Treatment of angle closure glaucoma?" autocomplete="off">
     <button type="button" class="ma-b-send" id="maBuddySend">Ask</button>
   </div>
-  <div class="ma-b-foot">On-device AI · nothing you type leaves this browser</div>
+  <div class="ma-b-foot">Searches your question banks · nothing leaves this browser</div>
 </div>
 
 <script>
 (function(){
   var FAB=$("maBuddyFab"), PANEL=$("maBuddyPanel"), MSGS=$("maBuddyMsgs"),
       INPUT=$("maBuddyInput"), SEND=$("maBuddySend"), CLOSE=$("maBuddyClose"),
-      DOT=$("maBuddyDot"), STATUS=$("maBuddyStatus"), AIBTN=$("maBuddyAi");
+      DOT=$("maBuddyDot"), STATUS=$("maBuddyStatus");
   if(!FAB||!PANEL||!MSGS||!INPUT) return;
 
-  var ITEMS=[], TOKENS=[], DF=null, MAP=null, VEC=null, ENC=null, EXTRA=null, MODE="idle", INIT=null;
-  var GEN=null, GENSTATE="off", GENWANTED=true, LAST=null;
-  try{ if(localStorage.getItem("ma_buddy_gen")==="0") GENWANTED=false; }catch(err){}
+  var ITEMS=null, INIT=null, LAST=null;
   var STOP=new Set("a an the and or of in on at to for with by from is are was were be been being it its as this that these those what which who when where why how do does did can could should would may might will just about into than then there here any all some no not if but".split(" "));
 
   function e(s){return (s==null?"":String(s)).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
   function pystr(v){return v===null?"None":(v===undefined?"":String(v));}
 
-  /* ---- concise, bank-grounded answer (no external model, no invented facts) ---- */
+  /* ---- short answer taken only from matched bank questions ---- */
   function tidy(s){return String(s==null?"":s).replace(/\s+/g," ").replace(/^[•\-–\s]+/,"").trim();}
   function answerOf(q){
     var a=tidy(q.answerText);
@@ -1675,29 +1666,11 @@ function medArenaHash(s){
     return out;
   }
   function shortAnswer(query,hits,unlocked){
-    var qtoks=tokenize(query), visible=[], notes=[], extras=[];
-    hits.forEach(function(h,idx){
-      var it=ITEMS[h[0]], can=!bankLocked(it.bankId)||unlocked;
-      if(!can) return;
-      if(idx<4) visible.push(h);
-      /* Hits 5-8 can supply an explanation, but never introduce new answers. */
-      else if(it.kind==="mcq"&&it.q.explanation){
-        var es=tidy(it.q.stem);
-        if(/\b(except|not true|not correct|is false|least likely)\b/i.test(es)) return;
-        extras.push({ans:answerOf(it.q),stem:es,evidence:it.q.explanation,bank:it.bankName});
-      }
-    });
-    if(!visible.length) return null;
-    var pairs=[], seen={};
-    visible.forEach(function(h){
+    var qtoks=tokenize(query), pairs=[], seen={};
+    hits.forEach(function(h){
       var it=ITEMS[h[0]];
-      if(it.kind==="note"){
-        var lines=goodSentences(it.m.body,190);
-        if(lines.length) notes.push({title:tidy(it.m.title),text:lines.join(" "),bank:it.bankName,score:h[1]});
-        return;
-      }
+      if(bankLocked(it.bankId)&&!unlocked) return;
       var stem=tidy(it.q.stem);
-      /* "except / not true" questions test exceptions, not a direct answer. */
       if(/\b(except|not true|not correct|is false|least likely)\b/i.test(stem)) return;
       var ans=answerOf(it.q); if(!ans) return;
       var key=ans.toLowerCase().replace(/[^a-z0-9]+/g,"");
@@ -1708,7 +1681,7 @@ function medArenaHash(s){
       var pair={ans:ans,label:stemLabel(stem),stem:stem,evidence:it.q.explanation||"",bank:it.bankName,score:h[1]};
       seen[key]=pair;pairs.push(pair);
     });
-    /* Keep only answers that actually relate to the student's question. */
+    if(!pairs.length) return null;
     if(qtoks.length){
       pairs.forEach(function(p){
         var text=(p.stem+" "+p.ans).toLowerCase(), n=0;
@@ -1717,270 +1690,81 @@ function medArenaHash(s){
       });
       var best=0; pairs.forEach(function(p){if(p.ov>best) best=p.ov;});
       if(best>1){var min=Math.max(1,Math.ceil(best/2));pairs=pairs.filter(function(p){return p.ov>=min;});}
-      notes=notes.filter(function(n){
-        var text=(n.title+" "+n.text).toLowerCase();
-        return qtoks.some(function(t){return text.indexOf(t)>=0;});
-      });
     }
-    if(!pairs.length&&!notes.length) return null;
-    /* A clearly stronger note (e.g. High Yield / PDF) should lead the answer,
-       even when a weaker MCQ also matches. */
-    var bestPair=0,bestNote=0;
-    pairs.forEach(function(p){if(p.score>bestPair) bestPair=p.score;});
-    notes.forEach(function(n){if(n.score>bestNote) bestNote=n.score;});
-    var leadNote=!!notes.length&&(!pairs.length||bestNote>bestPair*1.08);
+    if(!pairs.length) return null;
     var s='<div class="ma-b-short"><div class="ma-b-short-h">✦ Short answer</div>';
-    if(pairs.length&&!leadNote){
-      s+='<div class="ma-b-short-main">'+e(pairs[0].ans)+'</div>';
-      var lab=pairs[0].label?pairs[0].label.charAt(0).toLowerCase()+pairs[0].label.slice(1):"";
-      var bits=[];
-      if(lab) bits.push(e(lab));
-      for(var i=1;i<Math.min(pairs.length,3);i++) bits.push(e(pairs[i].label)+": "+e(pairs[i].ans));
-      if(bits.length) s+='<div class="ma-b-short-body">'+bits.join(" · ")+'.</div>';
-      var ev="";
-      var evidencePool=pairs.concat(extras);
-      for(var j=0;j<evidencePool.length&&!ev;j++){
-        var lines=goodSentences(evidencePool[j].evidence,235), key=(evidencePool[j].ans||"").toLowerCase().slice(0,12);
-        var relevant=key?lines.filter(function(x){return x.toLowerCase().indexOf(key)>=0;}):[];
-        ev=(relevant[0]||lines[0]||"");
-      }
-      if(!ev&&notes.length) ev=notes[0].text;
-      if(ev) s+='<div class="ma-b-short-body">'+e(ev)+'</div>';
-      s+='<div class="ma-b-short-meta">From '+e(pairs[0].bank)+(pairs.length>1?" + "+(pairs.length-1)+" more matching MCQs":"")+' in your banks</div>';
-    }else{
-      s+='<div class="ma-b-short-main">'+e(notes[0].title)+'</div>';
-      s+='<div class="ma-b-short-body">'+e(notes[0].text)+'</div>';
-      if(pairs.length) s+='<div class="ma-b-short-body">Related MCQ: '+e(pairs[0].label)+': '+e(pairs[0].ans)+'.</div>';
-      s+='<div class="ma-b-short-meta">From '+e(notes[0].bank)+(notes.length>1?" + "+(notes.length-1)+" more matching notes":"")+' in your banks</div>';
+    s+='<div class="ma-b-short-main">'+e(pairs[0].ans)+'</div>';
+    var lab=pairs[0].label?pairs[0].label.charAt(0).toLowerCase()+pairs[0].label.slice(1):"";
+    var bits=[];
+    if(lab) bits.push(e(lab));
+    for(var i=1;i<Math.min(pairs.length,3);i++) bits.push(e(pairs[i].label)+": "+e(pairs[i].ans));
+    if(bits.length) s+='<div class="ma-b-short-body">'+bits.join(" · ")+'.</div>';
+    var ev="";
+    for(var j=0;j<pairs.length&&!ev;j++){
+      var lines=goodSentences(pairs[j].evidence,235), key=(pairs[j].ans||"").toLowerCase().slice(0,12);
+      var relevant=key?lines.filter(function(x){return x.toLowerCase().indexOf(key)>=0;}):[];
+      ev=(relevant[0]||lines[0]||"");
     }
+    if(ev) s+='<div class="ma-b-short-body">'+e(ev)+'</div>';
+    s+='<div class="ma-b-short-meta">From '+e(pairs[0].bank)+(pairs.length>1?" + "+(pairs.length-1)+" more matching MCQs":"")+' in your banks</div>';
     return s+"</div>";
   }
 
-  function itemText(it){
-    if(it.kind==="mcq"){
-      var q=it.q, opts=(q.options||[]).map(function(o){return pystr(o&&o.text);}).join(" ");
-      var exp=(q.explanation==null?"":String(q.explanation)).slice(0,220);
-      return [pystr(q.stem),opts,exp].join(" ").trim();
-    }
-    var m=it.m;
-    return [pystr(m.title),pystr(m.body).slice(0,600)].join(" ").trim();
-  }
-  function buildItems(extra){
+  /* ---- build a tiny index from the banks that are already on this page ---- */
+  function buildItems(){
     var out=[];
     for(var i=0;i<BANKS.length;i++){
       var en=BANKS[i], b=en.bank;
-      if(Array.isArray(b.questions)) b.questions.forEach(function(q,qi){
-        out.push({bankId:en.id,bankName:b.name||en.id,cat:en.cat||"",kind:"mcq",ref:qi,q:q});
-      });
-      if(Array.isArray(b.modules)) b.modules.forEach(function(m,mi){
-        out.push({bankId:en.id,bankName:b.name||en.id,cat:en.cat||"",kind:"note",ref:mi,m:m});
+      if(!Array.isArray(b.questions)) continue;
+      b.questions.forEach(function(q,qi){
+        var stem=String(q.stem==null?"":q.stem);
+        var opts=(q.options||[]).map(function(o){return pystr(o&&o.text);}).join(" ");
+        var exp=String(q.explanation==null?"":q.explanation).slice(0,180);
+        out.push({
+          bankId:en.id, bankName:b.name||en.id, cat:en.cat||"", ref:qi, q:q,
+          stemL:stem.toLowerCase(), textL:(stem+" "+opts+" "+exp).toLowerCase()
+        });
       });
     }
-    /* Very High Yield notes + uploaded PDFs, in the same order as the index. */
-    if(extra&&Array.isArray(extra.items)) extra.items.forEach(function(it){
-      out.push({bankId:it.bankId||"",bankName:it.bankName||"",cat:it.cat||"",
-                kind:it.kind||"note",ref:it.ref,m:it.m||{title:"",body:""}});
-    });
     return out;
   }
   function tokenize(s){return (String(s).toLowerCase().match(/[a-z0-9]+/g)||[]).filter(function(w){return w.length>1&&!STOP.has(w);});}
   function status(txt,cls){STATUS.textContent=txt;DOT.className="ma-b-dot"+(cls?" "+cls:"");}
   function sys(html){var d=document.createElement("div");d.className="ma-b-msg bot";d.innerHTML=html;MSGS.appendChild(d);MSGS.scrollTop=MSGS.scrollHeight;return d;}
 
-  /* ---- optional local generative layer (Qwen 0.5B, grounded in retrieved bank text) ---- */
-  function setAiBtn(){
-    if(!AIBTN) return;
-    AIBTN.textContent=GENWANTED?"✦ AI on":"AI off";
-    AIBTN.className="ma-b-ai"+(GENWANTED?" on":"");
-    AIBTN.title=GENWANTED?"Full AI answer on — first load downloads about 500–800 MB once":"Full AI answer off — showing bank facts only";
-  }
-  function readyStatus(){
-    if(GENSTATE==="ready") status("Full AI ready — answers written on this device","ok");
-    else if(MODE==="ai") status("AI ready — "+ITEMS.length.toLocaleString()+" questions indexed","ok");
-    else status("Quick on-device search","warn");
-  }
-  async function ensureGen(){
-    if(GEN) return true;
-    if(GENSTATE==="loading"||GENSTATE==="failed") return false;
-    GENSTATE="loading"; setAiBtn();
-    try{
-      status("Loading full AI model… 0%","load");
-      var lib=await import("https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.8.1");
-      try{ lib.env.allowLocalModels=false; }catch(err){}
-      var gpu=false;
-      try{ gpu=!!(navigator.gpu&&await navigator.gpu.requestAdapter()); }catch(err){}
-      /* q4 (float32 scales) is more reliable than q4f16 on browsers whose
-         GPUs advertise shader-f16 but produce corrupted output with it. */
-      var dtypes=gpu?["q4"]:["uint8","q8"], lastErr=null;
-      for(var i=0;i<dtypes.length&&!GEN;i++){
-        try{
-          GEN=await lib.pipeline("text-generation","onnx-community/Qwen2.5-0.5B-Instruct",{
-            dtype:dtypes[i], device:gpu?"webgpu":"wasm",
-            progress_callback:function(p){
-              if(p&&p.status==="progress"&&typeof p.progress==="number") status("Loading full AI model… "+Math.round(p.progress)+"%","load");
-            }
-          });
-        }catch(err){ lastErr=err; }
-      }
-      if(!GEN) throw lastErr||new Error("model failed to load");
-      GENSTATE="ready"; setAiBtn();
-      status("Full AI ready — answers written on this device","ok");
-      return true;
-    }catch(err){
-      GENSTATE="failed"; window.__maGenErr=String(err&&err.message||err);
-      status("Full AI unavailable — using bank facts","warn");
-      return false;
-    }
-  }
-  function genContext(hits,unlocked){
-    /* Notes (High Yield / PDF / chapter summaries) lead; MCQs only supplement. */
-    var visible=[];
-    hits.forEach(function(h){
-      var it=ITEMS[h[0]];
-      if(bankLocked(it.bankId)&&!unlocked) return;
-      visible.push({it:it,score:h[1]});
-    });
-    visible.sort(function(a,b){
-      var an=a.it.kind==="note"?0:1, bn=b.it.kind==="note"?0:1;
-      if(an!==bn) return an-bn;
-      return b.score-a.score;
-    });
-    var parts=[], used=0;
-    for(var i=0;i<visible.length&&used<5;i++){
-      var it=visible[i].it;
-      var s="Source: "+it.bankName;
-      if(it.kind==="note"){
-        var body=goodSentences(it.m.body,360).join(" ");
-        if(!body) continue;
-        s+="\nStudy note: "+tidy(it.m.title)+"\nFacts: "+body;
-      }else{
-        var ans=answerOf(it.q); if(!ans) continue;
-        s+="\nMCQ: "+tidy(it.q.stem)+"\nAnswer: "+ans;
-        var ex=it.q.explanation?goodSentences(it.q.explanation,320).join(" "):"";
-        if(ex) s+="\nExplanation: "+ex;
-      }
-      parts.push(s); used++;
-    }
-    return parts.join("\n\n").slice(0,4200);
-  }
-  function genText(out){
-    if(typeof out==="string") return out;
-    var g=out&&out[0]&&out[0].generated_text;
-    if(typeof g==="string") return g;
-    if(Array.isArray(g)){var last=g[g.length-1];return (last&&last.content)||"";}
-    return (g&&typeof g.content==="string")?g.content:"";
-  }
-  async function generateAnswer(query,hits,unlocked){
-    if(!GENWANTED) return null;
-    var ctx=genContext(hits,unlocked);
-    if(!ctx) return null;
-    if(!await ensureGen()) return null;
-    status("Writing short answer…","load");
-    try{
-      var out=await GEN([
-        {role:"system",content:"You are MedArena's exam study assistant. Answer in at most 3 short lines and no more than 45 words. Use ONLY the facts below from MedArena question banks. Prefer Study note entries over MCQs. Never reply with just an option letter. Do not add outside knowledge, do not speculate, and do not mention the word context. If the answer is not clearly present, reply exactly: I couldn't find a clear answer in your MedArena banks."},
-        {role:"user",content:"Student question: "+query+"\n\nBank facts:\n"+ctx+"\n\nWrite the short answer now."}
-      ],{max_new_tokens:90,do_sample:false});
-      var txt=genText(out).replace(/<\|[^>]*\|>/g,"").replace(/^\s*(?:short answer|answer)\s*[:.]?\s*/i,"").trim();
-      window.__maGenRaw=txt;
-      if(/couldn'?t find a clear answer/i.test(txt)) return null;
-      if(/^(?:option\s+)?[A-E]\s*[-.)]\s/i.test(txt)) return null; /* keep extractive answer instead */
-      txt=txt.split(/(?<=[.!?])\s+/).filter(Boolean).slice(0,3).join(" ").slice(0,420).trim();
-      return txt||null;
-    }catch(err){
-      window.__maGenErr=String(err&&err.message||err);
-      return null;
-    }finally{ readyStatus(); }
-  }
-  function hasVisibleContext(hits,unlocked){
-    for(var i=0;i<hits.length;i++){
-      var it=ITEMS[hits[i][0]];
-      if(!bankLocked(it.bankId)||unlocked) return true;
-    }
-    return false;
-  }
-
   function ensureInit(){
     if(INIT) return INIT;
-    INIT=(async function(){
-      status("Preparing your question banks…","load");
-      try{var x=await fetch("study-extra.json",{cache:"no-cache"});if(x.ok) EXTRA=await x.json();}catch(err){}
-      try{var r=await fetch("study-map.json",{cache:"no-cache"});if(r.ok) MAP=await r.json();}catch(err){}
-      ITEMS=buildItems(EXTRA);
-      if(MAP&&MAP.count!==ITEMS.length){
-        sys("<b>Note:</b> the study index is out of date ("+MAP.count+" indexed vs "+ITEMS.length+" current), so I'm using quick on-device search.");
-        MODE="kw";
-      }
-      TOKENS=ITEMS.map(function(it){return tokenize(itemText(it));});
-      DF=new Map();
-      TOKENS.forEach(function(arr){var seen=new Set(arr);seen.forEach(function(t){DF.set(t,(DF.get(t)||0)+1);});});
-      if(MODE!=="kw"){
-        try{
-          status("Loading AI model… 0%","load");
-          var lib=await import("https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2");
-          try{ lib.env.allowLocalModels=false; }catch(err){}
-          ENC=await lib.pipeline("feature-extraction","Xenova/all-MiniLM-L6-v2",{
-            quantized:true, dtype:"q8",
-            progress_callback:function(p){if(p&&p.status==="progress"&&typeof p.progress==="number") status("Loading AI model… "+Math.round(p.progress)+"%","load");}
-          });
-          var ver=(MAP&&MAP.fingerprint)?MAP.fingerprint:"1";
-          var br=await fetch("study-embeddings.bin?v="+encodeURIComponent(ver),{cache:"no-cache"});
-          if(!br.ok) throw new Error("index "+br.status);
-          var buf=await br.arrayBuffer(), dv=new DataView(buf);
-          var magic=String.fromCharCode(dv.getUint8(0),dv.getUint8(1),dv.getUint8(2),dv.getUint8(3));
-          if(magic!=="MAI1") throw new Error("bad index");
-          var count=dv.getUint32(4,true), dim=dv.getUint32(8,true);
-          if(count!==ITEMS.length||dim!==384) throw new Error("index mismatch");
-          VEC={count:count,dim:dim,scales:new Float32Array(buf,12,count),q:new Int8Array(buf,12+count*4)};
-          MODE="ai";
-          status("AI ready — "+ITEMS.length.toLocaleString()+" questions indexed","ok");
-        }catch(err){
-          MODE="kw";
-          window.__maBuddyErr=String(err&&err.message||err);
-          status("Quick on-device search (AI model unavailable)","warn");
-          sys("<b>Heads up:</b> the semantic model couldn't load, so I'm using fast on-device keyword search. Answers still come from your banks. <small style='color:#94a3b8'>("+e(window.__maBuddyErr)+")</small>");
-        }
-      }
-    })();
+    INIT=new Promise(function(resolve){
+      ITEMS=buildItems();
+      status("Ready — "+ITEMS.length.toLocaleString()+" questions searchable","ok");
+      resolve();
+    });
     return INIT;
   }
-
-  async function aiSearch(text,k){
-    var out=await ENC(text,{pooling:"mean",normalize:true});
-    var qv=out.data, n=VEC.count, dim=VEC.dim, sc=VEC.scales, q=VEC.q, res=[];
-    for(var i=0;i<n;i++){
-      var base=i*dim, dot=0;
-      for(var j=0;j<dim;j++) dot+=q[base+j]*qv[j];
-      dot*=sc[i]/127;
-      if(dot>0.14) res.push([i,dot]);
+  function search(text,k){
+    var toks=tokenize(text);
+    if(!toks.length||!ITEMS) return [];
+    var out=[];
+    for(var i=0;i<ITEMS.length;i++){
+      var it=ITEMS[i], s=0;
+      for(var a=0;a<toks.length;a++){
+        if(it.stemL.indexOf(toks[a])>=0) s+=3;
+        else if(it.textL.indexOf(toks[a])>=0) s+=1;
+      }
+      if(s>0) out.push([i,s]);
     }
-    res.sort(function(a,b){return b[1]-a[1];});
-    return res.slice(0,k);
-  }
-  function kwSearch(text,k){
-    var toks=tokenize(text), N=ITEMS.length, res=[];
-    for(var i=0;i<N;i++){
-      var arr=TOKENS[i], s=0;
-      for(var a=0;a<toks.length;a++) if(arr.indexOf(toks[a])>=0) s+=Math.log(1+N/(DF.get(toks[a])||1));
-      if(s>0) res.push([i,s]);
-    }
-    res.sort(function(a,b){return b[1]-a[1];});
-    return res.slice(0,k);
+    out.sort(function(a,b){return b[1]-a[1]||a[0]-b[0];});
+    return out.slice(0,k);
   }
 
   function bankLocked(id){
     try{ if(typeof isFreePeriod==="function"&&isFreePeriod()) return false; }catch(err){}
     if(id==="loksewamock") return false;
-    /* Public Very High Yield topics and uploaded PDFs stay searchable for all. */
-    if(id==="hy_neuro"||id==="hy_acidbase") return false;
-    if(String(id).indexOf("pdf_")===0) return false;
     if(typeof LOCK==="undefined"||!LOCK||!LOCK.rev) return false;
     var list=Array.isArray(LOCK.banks)?LOCK.banks:null;
     return list?list.indexOf(id)>=0:true;
   }
   async function deviceUnlocked(){
-    /* Prefer the practice page's own live state — it already accounts for
-       cloud-issued codes fetched from /api/sub-verify. */
     try{ if(typeof window.MA_PRACTICE_UNLOCKED==="function"&&window.MA_PRACTICE_UNLOCKED()) return true; }catch(err){}
     try{ if(typeof isFreePeriod==="function"&&isFreePeriod()) return true; }catch(err){}
     if(typeof LOCK==="undefined"||!LOCK||!LOCK.rev) return true;
@@ -1990,7 +1774,6 @@ function medArenaHash(s){
     var dev=""; try{dev=localStorage.getItem("medarena.deviceId")||"";}catch(err){}
     var subs=Array.isArray(LOCK.subs)?LOCK.subs:[];
     for(var i=0;i<subs.length;i++){var s=subs[i];if(s.id===dev&&s.rev&&s.rev===saved.rev) return true;}
-    /* Cloud-issued code (Worker + Supabase) — same check the gate performs. */
     try{
       var vr=await fetch("/api/sub-verify?dev="+encodeURIComponent(dev),{cache:"no-store"});
       if(vr.ok){var vd=await vr.json(); if(vd&&vd.rev&&vd.rev===saved.rev) return true;}
@@ -2009,41 +1792,24 @@ function medArenaHash(s){
     var h=brief+'<details class="ma-b-sources"><summary>Show '+cards.length+' matching questions</summary><div class="ma-b-cards">';
     cards.forEach(function(hit){
       var it=ITEMS[hit[0]], canSee=!bankLocked(it.bankId)||unlocked;
-      h+='<div class="ma-b-card"><div class="ma-b-card-h"><span>'+e(it.bankName)+(it.cat?" · "+e(it.cat):"")+'</span><span>'+(it.kind==="note"?"NOTE":"MCQ")+'</span></div><div class="ma-b-card-b">';
-      if(it.kind==="note"){
-        var body=pystr(it.m.body); if(body.length>700) body=body.slice(0,700)+"…";
-        h+='<div class="ma-b-stem">'+e(it.m.title)+'</div><div class="ma-b-exp">'+e(body)+'</div>';
+      var qu=it.q, ans=qu.answerLetter||"";
+      h+='<div class="ma-b-card"><div class="ma-b-card-h"><span>'+e(it.bankName)+(it.cat?" · "+e(it.cat):"")+'</span><span>MCQ</span></div><div class="ma-b-card-b">';
+      h+='<div class="ma-b-stem">'+e(qu.stem)+'</div>';
+      (qu.options||[]).forEach(function(o){
+        var ok=canSee&&String(o.letter||"").toUpperCase()===String(ans).toUpperCase();
+        h+='<div class="ma-b-opt'+(ok?" correct":"")+'">'+e(o.letter)+". "+e(o.text)+(ok?" ✓":"")+'</div>';
+      });
+      if(canSee){
+        h+='<div class="ma-b-ans"><b>Answer: '+e(ans)+". "+e(qu.answerText)+"</b></div>";
+        if(qu.explanation) h+='<div class="ma-b-exp">'+e(qu.explanation)+'</div>';
       }else{
-        var qu=it.q, ans=qu.answerLetter||"";
-        h+='<div class="ma-b-stem">'+e(qu.stem)+'</div>';
-        (qu.options||[]).forEach(function(o){
-          var ok=canSee&&String(o.letter||"").toUpperCase()===String(ans).toUpperCase();
-          h+='<div class="ma-b-opt'+(ok?" correct":"")+'">'+e(o.letter)+". "+e(o.text)+(ok?" ✓":"")+'</div>';
-        });
-        if(canSee){
-          h+='<div class="ma-b-ans"><b>Answer: '+e(ans)+". "+e(qu.answerText)+"</b></div>";
-          if(qu.explanation) h+='<div class="ma-b-exp">'+e(qu.explanation)+'</div>';
-        }else{
-          h+='<div class="ma-b-lock">🔒 This set is part of lifetime access. <a href="#" class="ma-b-unlock">Unlock here</a> to reveal the answer and explanation.</div>';
-        }
+        h+='<div class="ma-b-lock">🔒 This set is part of lifetime access. <a href="#" class="ma-b-unlock">Unlock here</a> to reveal the answer and explanation.</div>';
       }
       h+='</div></div>';
     });
     h+="</div></details>";
     var bot=sys(h);
     LAST={q:q,hits:hits,msg:bot};
-    if(brief&&hasVisibleContext(hits,unlocked)){
-      generateAnswer(q,hits,unlocked).then(function(txt){
-        if(!txt||!bot.parentNode||!LAST||LAST.msg!==bot) return;
-        var box=bot.querySelector(".ma-b-short");
-        if(!box) return;
-        box.className="ma-b-short ai";
-        box.innerHTML='<div class="ma-b-short-h">✦ AI answer · from your banks</div>'+
-          '<div class="ma-b-short-body">'+e(txt)+'</div>'+
-          '<div class="ma-b-short-meta">Written on this device from '+Math.min(hits.length,5)+' matching bank items</div>';
-        MSGS.scrollTop=MSGS.scrollHeight;
-      });
-    }
     var links=MSGS.querySelectorAll(".ma-b-unlock, .ma-b-short .ma-b-unlock");
     for(var i=0;i<links.length;i++) links[i].onclick=function(ev){
       ev.preventDefault();
@@ -2052,7 +1818,6 @@ function medArenaHash(s){
         PANEL.style.display="none";gate.scrollIntoView({block:"center"});
         var inp=$("accessCodeInput");if(inp)setTimeout(function(){inp.focus();},120);
       }else{
-        /* Gate hidden (e.g. free mock selected) — open the lifetime panel on the homepage. */
         window.location.href="index.html?lifetime=1";
       }
     };
@@ -2064,29 +1829,14 @@ function medArenaHash(s){
     var m=document.createElement("div"); m.className="ma-b-msg user"; m.textContent=text;
     MSGS.appendChild(m); MSGS.scrollTop=MSGS.scrollHeight;
     SEND.disabled=true;
-    var thinking=sys("<i>Thinking…</i>");
     try{
       await ensureInit();
-      if(thinking&&thinking.parentNode) thinking.parentNode.removeChild(thinking);
-      var hits=MODE==="ai"?await aiSearch(text,8):kwSearch(text,8);
+      var hits=search(text,8);
       if(!hits.length) sys("I couldn't find a close match in your banks. Try a shorter question or a key term, e.g. <b>Addison disease</b>.");
       else await render(text,hits);
     }catch(err){ sys("Sorry, something went wrong: "+e(err&&err.message||err)); }
     SEND.disabled=false; INPUT.focus(); MSGS.scrollTop=MSGS.scrollHeight;
   }
-
-  function toggleGen(){
-    GENWANTED=!GENWANTED;
-    try{ localStorage.setItem("ma_buddy_gen",GENWANTED?"1":"0"); }catch(err){}
-    setAiBtn();
-    if(LAST&&LAST.msg&&LAST.msg.parentNode){
-      LAST.msg.parentNode.removeChild(LAST.msg);
-      render(LAST.q,LAST.hits);
-    }else if(GENWANTED) status("Full AI on — ask a question to load it","warn");
-    else readyStatus();
-  }
-  if(AIBTN) AIBTN.onclick=toggleGen;
-  setAiBtn();
 
   FAB.onclick=function(){PANEL.style.display="flex";INPUT.focus();};
   CLOSE.onclick=function(){PANEL.style.display="none";};
@@ -2095,10 +1845,10 @@ function medArenaHash(s){
   function chip(txt){var b=document.createElement("button");b.type="button";b.className="ma-b-chip";b.textContent=txt;b.onclick=function(){INPUT.value=txt;ask();};return b;}
 
   var greet=document.createElement("div"); greet.className="ma-b-msg bot";
-  greet.innerHTML="<b>Hi! I'm your MedArena study buddy.</b><br>Ask anything and I'll give a short answer from your banks, then show the matching MCQs underneath. Use the ✦ AI button to switch full AI phrasing on or off.";
+  greet.innerHTML="<b>Hi! I'm your MedArena study buddy.</b><br>Ask anything and I'll find the closest questions in your banks, with a short answer from their explanations. No model download, no waiting.";
   var chips=document.createElement("div"); chips.className="ma-b-chips";
-  ["Glaucoma emergency","Neurofibromatosis type 1","Facial nerve palsy nursing","Addison disease",
-   "Weber syndrome midbrain","HLA B27 mnemonic","STP anaphylaxis protocol"].forEach(function(t){chips.appendChild(chip(t));});
+  ["Glaucoma emergency","Neurofibromatosis type 1","Facial nerve palsy","Addison disease",
+   "Weber syndrome midbrain","Rheumatic fever criteria","Cerebral hemorrhage"].forEach(function(t){chips.appendChild(chip(t));});
   greet.appendChild(chips); MSGS.appendChild(greet);
 
   if(new URLSearchParams(location.search).get("buddy")==="1") PANEL.style.display="flex";
