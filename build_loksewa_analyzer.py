@@ -234,7 +234,7 @@ def analyze(sets):
     topics = {}
     concept_stats = {}
     by_topic = defaultdict(dict)
-    seen = {}
+    question_groups = {}
 
     for st in sets:
         for q in st["questions"]:
@@ -253,7 +253,16 @@ def analyze(sets):
             item["years"].add(st["year"])
             item["concepts"].update(concepts)
             item["hits"] += 1
-            seen[key] = item
+
+            global_item = question_groups.setdefault(key, {
+                "stem": stem, "banks": [], "years": set(), "topics": Counter(),
+                "concepts": set(), "hits": 0,
+            })
+            global_item["banks"].append({"name": st["name"], "id": st["id"], "n": q.get("n", "")})
+            global_item["years"].add(st["year"])
+            global_item["topics"][topic] += 1
+            global_item["concepts"].update(concepts)
+            global_item["hits"] += 1
 
             for label in concepts:
                 c = concept_stats.setdefault(label, {
@@ -280,7 +289,8 @@ def analyze(sets):
                              0.35 * len(rec["sets"]) / max_sets +
                              0.20 * recent / max_recent))
         examples = sorted(by_topic[name].values(),
-                          key=lambda x: (-len(x["banks"]), -max(x["years"]), -x["hits"]))
+                          key=lambda x: (-len({b["id"] for b in x["banks"]}),
+                                         -max(x["years"]), -x["hits"]))
         topic_rows.append({
             "name": name, "total": rec["total"], "sets": len(rec["sets"]),
             "years": dict(sorted(rec["years"].items())), "recent": recent,
@@ -303,11 +313,66 @@ def analyze(sets):
         })
     concept_rows.sort(key=lambda r: (-r["score"], -r["sets"], -r["total"], r["name"]))
 
+    # Exact question repeats across different papers — the strongest signal.
+    repeat_rows = []
+    for key, g in question_groups.items():
+        unique_banks, seen_ids = [], set()
+        for b in g["banks"]:
+            if b["id"] in seen_ids:
+                continue
+            seen_ids.add(b["id"])
+            unique_banks.append(b)
+        if len(unique_banks) < 2:
+            continue
+        repeat_rows.append({
+            "topic": g["topics"].most_common(1)[0][0],
+            "stem": g["stem"],
+            "papers": len(unique_banks),
+            "hits": g["hits"],
+            "years": sorted(g["years"]),
+            "sources": unique_banks,
+            "concepts": sorted(g["concepts"]),
+        })
+    repeat_rows.sort(key=lambda r: (-r["papers"], -max(r["years"]),
+                                    r["topic"], r["stem"].lower()))
+
+    # Topic-wise shortlist: repeated questions first, then the highest-signal
+    # recent stems from that topic. These are real past questions only.
+    possible_rows = []
+    used_stems = set()
+    for t in topic_rows:
+        added = 0
+        for ex in t["examples"]:
+            key = norm_stem(ex["stem"])
+            if not key or key in used_stems:
+                continue
+            used_stems.add(key)
+            unique_banks, seen_ids = [], set()
+            for b in ex["banks"]:
+                if b["id"] in seen_ids:
+                    continue
+                seen_ids.add(b["id"])
+                unique_banks.append(b)
+            possible_rows.append({
+                "topic": t["name"],
+                "stem": ex["stem"],
+                "papers": len(unique_banks),
+                "hits": ex["hits"],
+                "years": sorted(ex["years"]),
+                "sources": unique_banks,
+                "concepts": sorted(ex["concepts"]),
+                "topic_score": t["score"],
+            })
+            added += 1
+            if added >= 3:
+                break
+
     return {
         "sets": [{"name": s["name"], "year": s["year"], "count": len(s["questions"]), "id": s["id"]} for s in sets],
         "years": years, "recent_years": sorted(recent_years),
         "total_questions": total_questions, "recent_questions": recent_questions,
         "topic_rows": topic_rows, "concept_rows": concept_rows,
+        "repeat_rows": repeat_rows, "possible_rows": possible_rows,
     }
 
 
@@ -330,6 +395,20 @@ def year_cells(years_map, all_years):
 def stem_text(stem, limit=190):
     one = re.sub(r"\s+", " ", stem).strip()
     return one if len(one) <= limit else one[:limit].rsplit(" ", 1)[0] + "…"
+
+
+def year_text(years):
+    return ", ".join(str(y) for y in years)
+
+
+def source_text(sources, limit=4):
+    parts = []
+    for b in sources:
+        n = str(b.get("n", "") or "").strip()
+        parts.append(b["name"] + ((" · Q" + n) if n else ""))
+    if len(parts) > limit:
+        return ", ".join(parts[:limit]) + " +%d more" % (len(parts) - limit)
+    return ", ".join(parts)
 
 
 def render(analysis):
@@ -401,6 +480,38 @@ def render(analysis):
 <ol class="qlist">{''.join(qs)}</ol>
 </div>""")
 
+    repeat_rows = analysis["repeat_rows"]
+    possible_rows = analysis["possible_rows"]
+
+    repeat_html = []
+    for i, r in enumerate(repeat_rows, 1):
+        bank = r["sources"][0]
+        link = f'surgery-practice.html?bank={esc(bank["id"], quote=True)}'
+        repeat_html.append(f"""<tr>
+<td class="rank">{i}</td>
+<td class="tname">{esc(r['topic'])}</td>
+<td><a href="{link}" title="{esc(r['stem'], quote=True)}">{esc(stem_text(r['stem']))}</a></td>
+<td class="num"><span class="badge rep">×{r['papers']}</span></td>
+<td class="num">{esc(year_text(r['years']))}</td>
+<td class="sub">{esc(source_text(r['sources'], 4))}</td>
+</tr>""")
+
+    possible_html = []
+    for r in possible_rows:
+        bank = r["sources"][0]
+        link = f'surgery-practice.html?bank={esc(bank["id"], quote=True)}'
+        if r["papers"] >= 2:
+            badge = f'<span class="badge rep">Repeated ×{r["papers"]}</span>'
+        else:
+            badge = '<span class="badge hi">High-yield</span>'
+        label = " · ".join(r["concepts"][:2]) or r["topic"]
+        possible_html.append(f"""<tr>
+<td class="tname">{esc(r['topic'])}</td>
+<td><a href="{link}" title="{esc(r['stem'], quote=True)}">{esc(stem_text(r['stem']))}</a><div class="qmeta">{esc(label)}</div></td>
+<td>{badge}<div class="qmeta">{esc(year_text(r['years']))}</div></td>
+<td class="sub">{esc(source_text(r['sources'], 3))}</td>
+</tr>""")
+
     generated = datetime.now().strftime("%d %b %Y")
     return f"""<!doctype html>
 <html lang="en">
@@ -459,6 +570,10 @@ tr:hover td{{background:#fbfdff}}
 .qlist a{{color:#1e293b;text-decoration:none}}
 .qlist a:hover{{color:var(--teal);text-decoration:underline}}
 .qmeta{{color:var(--mut);font-size:10.5px;margin-top:2px}}
+.badge{{display:inline-block;font-size:10.5px;font-weight:800;padding:3px 7px;border-radius:99px;white-space:nowrap}}
+.badge.rep{{background:#fee2e2;color:#991b1b}}
+.badge.hi{{background:#eff6ff;color:#1d4ed8}}
+.tall-scroll{{max-height:560px;overflow:auto;border:1px solid var(--line);border-radius:10px}}
 .scroll{{overflow-x:auto}}
 footer{{color:var(--mut);font-size:11.5px;text-align:center;margin-top:22px}}
 @media(max-width:640px){{.bar{{width:70px}}.ycell{{width:24px}}header h1{{font-size:21px}}}}
@@ -472,7 +587,8 @@ footer{{color:var(--mut);font-size:11.5px;text-align:center;margin-top:22px}}
   <p>Scans every real Loksewa paper in MedArena, normalises inconsistent chapter labels, and ranks topics by
      how often they appear, how widely they spread across papers, and how common they are in recent exams.
      “Possible next topics” are ranked from that evidence; the questions shown are <b>real past questions</b>,
-     never invented. The aggregated Loksewa mock is excluded to avoid double counting.</p>
+     never invented. The final section highlights exact repeats and a topic-wise possible-question shortlist from all sets.
+      The aggregated Loksewa mock is excluded to avoid double counting.</p>
 </header>
 
 <div class="stats">
@@ -480,6 +596,7 @@ footer{{color:var(--mut);font-size:11.5px;text-align:center;margin-top:22px}}
   <div class="stat"><b>{analysis['total_questions']:,}</b><span>questions analysed</span></div>
   <div class="stat"><b>{len(topics)}</b><span>normalised topics</span></div>
   <div class="stat"><b>{len(concepts)}</b><span>recurring concepts tracked</span></div>
+  <div class="stat"><b>{len(repeat_rows)}</b><span>exact questions repeated across papers</span></div>
   <div class="stat"><b>{', '.join(str(y) for y in analysis['recent_years'])}</b><span>recent years weighted for trends</span></div>
 </div>
 
@@ -522,6 +639,24 @@ footer{{color:var(--mut);font-size:11.5px;text-align:center;margin-top:22px}}
   </table></div>
 </section>
 
+<section class="card">
+  <h2>5 · Exact repeated questions (all papers)</h2>
+  <p class="note">{len(repeat_rows)} stems appeared word-for-word in two or more papers. × shows how many distinct papers asked it; every row links to the original set.</p>
+  <div class="tall-scroll"><table>
+    <thead><tr><th>#</th><th>Topic</th><th>Possible question (real past stem)</th><th class="num">Repeats</th><th>Years</th><th>Seen in</th></tr></thead>
+    <tbody>{''.join(repeat_html)}</tbody>
+  </table></div>
+</section>
+
+<section class="card">
+  <h2>6 · Possible questions by topic (from all {len(sets)} sets)</h2>
+  <p class="note">Top three real past questions per topic, ranked by repetition and recency. Red = exact repeat; blue = high-yield stem with strong topic evidence. Nothing here is newly written.</p>
+  <div class="tall-scroll"><table>
+    <thead><tr><th>Topic</th><th>Possible question (real past stem)</th><th>Evidence</th><th>Seen in</th></tr></thead>
+    <tbody>{''.join(possible_html)}</tbody>
+  </table></div>
+</section>
+
 <footer>Generated {generated} from MedArena question banks · static, browser-free analysis · stems shown as previews only (answers and explanations stay locked).</footer>
 </div>
 </body>
@@ -537,7 +672,8 @@ def main():
     OUT.write_text(render(analysis), encoding="utf-8")
     print(f"wrote {OUT.name}: {OUT.stat().st_size:,} bytes")
     print(f"sets={len(sets)} questions={analysis['total_questions']} "
-          f"topics={len(analysis['topic_rows'])} concepts={len(analysis['concept_rows'])}")
+          f"topics={len(analysis['topic_rows'])} concepts={len(analysis['concept_rows'])} "
+          f"repeats={len(analysis['repeat_rows'])} possible={len(analysis['possible_rows'])}")
     print("top topics:")
     for t in analysis["topic_rows"][:10]:
         print(f"  {t['score']:3d}  {t['total']:4d} qs  {t['sets']:2d} papers  {t['name']}")
