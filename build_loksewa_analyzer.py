@@ -3,7 +3,7 @@
 Build a static Loksewa Topic Analyzer & Predictor from the question banks
 embedded in surgery-practice.html.
 
-Scope: the 13 real Loksewa exam sets. The aggregated "Loksewa Live Mock Test"
+Scope: every real Loksewa exam set. The aggregated "Loksewa Live Mock Test"
 is excluded because its questions are copied from those sets and would
 double-count topics.
 
