@@ -29,6 +29,9 @@ button, input { font: inherit; }
 button { cursor: pointer; }
 .hidden { display: none !important; }
 
+/* Lifetime gate: the shell is visible but unreadable until access is proven. */
+body.premium-locked .app { filter: blur(9px) saturate(.6); pointer-events: none; user-select: none; }
+
 /* ---------- Shell ---------- */
 .app { display: flex; min-height: 100vh; }
 

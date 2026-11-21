@@ -128,9 +128,36 @@
     </div>
   </div>
 
-  <script src="js/data.js"></script>
-  <script src="js/validator.js"></script>
-  <script src="js/app.js"></script>
-  <script src="../screen-time.js" defer></script>
+  <!-- The 27 MB card dataset is injected only after the lifetime gate opens. -->
+  <script src="../premium-access.js"></script>
+  <script>
+    (function () {
+      var MA = window.MEDARENA_ACCESS;
+      if (!MA) {
+        document.body.innerHTML = '<p style="padding:30px;font:16px system-ui">Access service unavailable. Reload the page.</p>';
+        return;
+      }
+      var loaded = false;
+      function load(index) {
+        var s = document.createElement("script");
+        s.src = index;
+        s.async = false;          /* data.js → validator.js → app.js → tracker */
+        document.body.appendChild(s);
+      }
+      MA.mountGate({
+        title: "Medical Mahasagar is premium",
+        description: "Unlock with the same lifetime code used for the locked practice sets. Chapter cards, figures and search stay hidden until this device is unlocked.",
+        homeHref: "../index.html",
+        onUnlock: function () {
+          if (loaded) return;
+          loaded = true;
+          load("js/data.js");
+          load("js/validator.js");
+          load("js/app.js");
+          load("../screen-time.js");
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
