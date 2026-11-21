@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medical Mahasagar — Chapter Cards | MedArena</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">MM</div>
+        <div class="brand-copy">
+          <strong>Medical Mahasagar</strong>
+          <span>chapter cards · MedArena</span>
+        </div>
+      </div>
+      <a class="mm-home" href="../index.html">← Back to MedArena</a>
+
+      <div class="side-label">SUBJECTS</div>
+      <nav id="chapterList" class="chapter-list" aria-label="Chapters"></nav>
+
+      <div class="side-note">
+        <strong>Completeness rule</strong>
+        <p>Every leaf topic in the chapter outline needs at least one card. The Coverage tab will not call a chapter complete until that is true.</p>
+        <code>node tools/validate.js</code>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="topbar-title">
+          <div class="eyebrow">MEDICAL MAHASAGAR <span style="opacity:.5">/</span></div>
+          <div class="eyebrow" id="chapterEyebrow">CHAPTER —</div>
+          <h1 id="chapterTitle">Select a chapter</h1>
+          <div class="meta" id="chapterMeta"></div>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label"><span>Coverage</span><strong id="coveragePct">0%</strong></div>
+          <div class="bar"><div id="coverageBar" class="bar-fill"></div></div>
+          <div class="progress-sub" id="coverageSub">0 / 0 topics covered</div>
+        </div>
+      </header>
+
+      <nav class="tabs" role="tablist" aria-label="Views">
+        <button class="tab active" data-view="cards" role="tab">Cards <span id="cardCount" class="pill">0</span></button>
+        <button class="tab" data-view="coverage" role="tab">Coverage <span id="issueCount" class="pill">0</span></button>
+        <button class="tab" data-view="outline" role="tab">Outline</button>
+      </nav>
+
+      <section id="view-cards" class="view">
+        <div id="resumeBar" class="resume-bar hidden">
+          <div class="resume-icon" aria-hidden="true">↺</div>
+          <div class="resume-copy">
+            <strong id="resumeTitle">Resume where you left off</strong>
+            <span id="resumeDetail"></span>
+          </div>
+          <button id="resumeOpen" class="resume-btn">Resume card →</button>
+          <button id="resumeDismiss" class="resume-dismiss" title="Clear this resume point" aria-label="Clear resume point">×</button>
+        </div>
+        <div class="toolbar">
+          <div class="filters" id="typeFilters" aria-label="Card type filters"></div>
+          <input id="search" class="search" type="search" placeholder="Search cards, topics, text…" aria-label="Search cards" />
+        </div>
+        <div id="cardGrid" class="card-grid"></div>
+        <div id="emptyCards" class="empty hidden">No cards match this filter.</div>
+      </section>
+
+      <section id="view-coverage" class="view hidden">
+        <div id="coverageReport"></div>
+      </section>
+
+      <section id="view-outline" class="view hidden">
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Chapter outline (coverage units)</h2>
+            <p>These IDs come from the PDF headings. Each leaf must be referenced by at least one card.</p>
+          </div>
+          <div id="outlineTree" class="outline-tree"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <!-- Big reading card -->
+  <div id="cardModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalQuestion">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-panel">
+      <div class="modal-head">
+        <div class="modal-meta">
+          <span id="modalType" class="type-tag"></span>
+          <span id="modalTopics"></span>
+          <span id="modalCounter" class="modal-counter"></span>
+        </div>
+        <div class="head-tools">
+          <div class="hl-tools" aria-label="Text highlighter">
+            <span class="hl-tools-label">Highlight:</span>
+            <button class="swatch swatch-yellow" data-hl-color="yellow" title="Highlight selection yellow"></button>
+            <button class="swatch swatch-mint" data-hl-color="mint" title="Highlight selection green"></button>
+            <button class="swatch swatch-pink" data-hl-color="pink" title="Highlight selection pink"></button>
+            <button class="swatch swatch-clear" id="hlClear" title="Clear all highlights on this card">✕</button>
+          </div>
+          <button id="modalLink" class="big-btn" title="Copy a direct link to this card" aria-label="Copy link to this card" style="padding:6px 10px;font-size:13px">🔗</button>
+          <button id="modalClose" class="modal-close" aria-label="Close reading card">×</button>
+        </div>
+      </div>
+      <div id="modalBody" class="modal-body">
+        <p class="modal-label">QUESTION</p>
+        <h2 id="modalQuestion" class="modal-question"></h2>
+        <div id="modalAnswerWrap" class="modal-answer-wrap">
+          <p class="modal-label">ANSWER <span class="hl-hint">· select text, then click a colour</span></p>
+          <div id="modalAnswer" class="modal-answer"></div>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <span id="modalPage" class="card-page"></span>
+        <div class="modal-actions">
+          <button id="modalPrev" class="big-btn" data-modal-nav="-1">← Prev</button>
+          <button id="modalReveal" class="big-btn primary">Hide answer</button>
+          <button id="modalNext" class="big-btn" data-modal-nav="1">Next →</button>
+          <button id="modalReview" class="big-btn review">Review</button>
+          <button id="modalKnown" class="big-btn known">Got it</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/validator.js"></script>
+  <script src="js/app.js"></script>
+  <script src="../screen-time.js" defer></script>
+</body>
+</html>
