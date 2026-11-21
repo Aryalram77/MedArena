@@ -34,11 +34,6 @@ function tokens(text, weight, bag) {
     bag[w] = (bag[w] || 0) + (weight || 1);
   });
 }
-function cap(text, n) {
-  if (text.length <= n) return text;
-  return text.slice(0, n).replace(/\s+\S*$/, '') + '…';
-}
-
 const subjects = [];
 const subjectIndex = {};
 const chapters = [];
@@ -64,12 +59,16 @@ CHAPTERS.forEach(function (ch) {
       const sb = bag[b] * (1 + Math.log(b.length + 1) / 3);
       return sb - sa || a.localeCompare(b);
     }).slice(0, 12);
-    cards.push([c.id, chapterIdx, cap(front, 150), cap(back, 240), words.join(' ')]);
+    /* Keep the full front/back so a clicked card can be read instantly in the
+       practice page without navigating away or downloading the 27 MB data.js.
+       Image paths are relative to medical-mahasagar/. */
+    const imgs = Array.isArray(c.images) ? c.images.join('|') : '';
+    cards.push([c.id, chapterIdx, front, back, words.join(' '), imgs]);
     cardCount++;
   });
 });
 
-const payload = { v: 1, subjects: subjects, chapters: chapters, cards: cards };
+const payload = { v: 2, subjects: subjects, chapters: chapters, cards: cards };
 fs.writeFileSync(OUT, JSON.stringify(payload), 'utf8');
 console.log('wrote ' + path.basename(OUT) + ': ' + (fs.statSync(OUT).size / 1048576).toFixed(2) + ' MB');
 console.log('subjects=' + subjects.length + ' chapters=' + chapters.length + ' cards=' + cardCount);

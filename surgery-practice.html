@@ -111,7 +111,36 @@ details.optrow>.explain{width:100%;align-self:stretch}
 .rel-save.saved{background:#dcfce7;color:#166534;border-color:#bbf7d0;cursor:default}
 .rel-loading,.rel-empty{padding:26px;text-align:center;color:#64748b;font-size:13px}
 .rel-note{margin:0 0 12px;font-size:11.5px;color:#64748b;line-height:1.5}
-@media(max-width:620px){.rel-panel{max-height:94vh}.rel-body{padding:12px}.rel-grid{grid-template-columns:1fr}}
+/* Instant preview: open a matched question or chapter card right here, on top
+   of the results panel, without leaving the question you are solving. */
+.qv-overlay{position:fixed;inset:0;z-index:2300;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(2,6,23,.78);backdrop-filter:blur(5px)}
+.qv-overlay.open{display:flex}
+.qv-card{width:min(780px,100%);max-height:92vh;overflow:auto;background:#fff;border-radius:18px;box-shadow:0 30px 90px rgba(2,6,23,.6);font-family:system-ui,"Segoe UI",Roboto,sans-serif}
+.qv-head{position:sticky;top:0;z-index:2;padding:13px 18px;color:#fff;background:linear-gradient(135deg,#0c2340,#1c2a65);display:flex;align-items:flex-start;gap:12px}
+.qv-head b{font-size:14px;line-height:1.3}
+.qv-head span{display:block;margin-top:3px;color:#bcd7ee;font-size:11px;line-height:1.4}
+.qv-head button{margin-left:auto;flex:0 0 auto;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.24);color:#fff;border-radius:9px;width:31px;height:31px;font-size:19px;line-height:1;cursor:pointer}
+.qv-body{padding:20px 24px 8px}
+.qv-label{font-size:10px;letter-spacing:2px;font-weight:850;color:#6366f1;text-transform:uppercase;margin-bottom:8px}
+.qv-stem{margin:0 0 16px;font-size:17px;line-height:1.55;font-weight:700;color:#0f172a;white-space:pre-wrap}
+.qv-opts{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.qv-opt{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1px solid #e2e8f0;border-radius:10px;background:#f8fafc;font-size:13.5px;line-height:1.5;color:#334155}
+.qv-opt .qv-k{flex:0 0 24px;height:24px;border-radius:7px;background:#e2e8f0;color:#334155;display:grid;place-items:center;font-size:11px;font-weight:850}
+.qv-opt.correct{border-color:#86efac;background:#f0fdf4;color:#14532d}
+.qv-opt.correct .qv-k{background:#22c55e;color:#fff}
+.qv-locked{margin:10px 0 14px;padding:9px 12px;border-radius:9px;background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;font-size:12px;line-height:1.5}
+.qv-answer{display:none;margin:6px 0 14px;padding:14px 16px;border-left:4px solid #14b8a6;background:#f0fdfa;border-radius:0 10px 10px 0;font-size:14px;line-height:1.65;white-space:pre-wrap;color:#134e4a}
+.qv-answer.show{display:block}
+.qv-imgs{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 16px}
+.qv-imgs img{max-width:100%;max-height:300px;border:1px solid #e2e8f0;border-radius:8px;background:#fff}
+.qv-actions{display:flex;gap:9px;flex-wrap:wrap;padding:4px 24px 22px}
+.qv-actions button,.qv-actions a{display:inline-flex;align-items:center;justify-content:center;gap:6px;flex:1;min-width:130px;padding:11px 14px;border-radius:10px;border:1px solid #e2e8f0;background:#f8fafc;color:#334155;text-decoration:none;font:800 12.5px/1 system-ui,sans-serif;cursor:pointer}
+.qv-actions .primary{background:#4338ca;color:#fff;border-color:#4338ca}
+.qv-actions .teal{background:#0e7490;color:#fff;border-color:#0e7490}
+.qv-actions .orange{background:#fff7ed;color:#9a3412;border-color:#fed7aa}
+.qv-actions button:hover,.qv-actions a:hover{filter:brightness(.97)}
+.qv-actions .saved{background:#dcfce7;color:#166534;border-color:#bbf7d0;cursor:default}
+@media(max-width:620px){.rel-panel{max-height:94vh}.rel-body{padding:12px}.rel-grid{grid-template-columns:1fr}.qv-body{padding:16px 16px 6px}.qv-actions{padding:4px 16px 18px}.qv-stem{font-size:15.5px}}
 .mm-review{position:fixed;inset:0;z-index:2200;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(2,6,23,.75);backdrop-filter:blur(4px)}
 .mm-review.open{display:flex}
 .mm-review-card{width:min(720px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:18px;box-shadow:0 28px 80px rgba(2,6,23,.5);font-family:system-ui,"Segoe UI",Roboto,sans-serif}
@@ -1999,7 +2028,8 @@ function medArenaHash(s){
   window.MedArenaSearch = {
     ready: function(){ return ensureInit(); },
     search: function(text,k){ return search(text,k); },
-    item: function(i){ return ITEMS ? ITEMS[i] : null; }
+    item: function(i){ return ITEMS ? ITEMS[i] : null; },
+    locked: function(id){ return bankLocked(id); }
   };
 })();
 </script>
@@ -2382,8 +2412,8 @@ function medArenaHash(s){
     "one two three four five first second third last next before after between during while without within against among over under above below " +
     "find found see seen known use used using uses way ways time day year years old new good bad high low large small long short " +
     "chapter topic section part page book source text table figure image fig refs reference references answer question").split(/\s+/));
-  var PANEL = null, BODY = null, tab = "questions", ctx = null;
-  var cardIndex = null, indexPromise = null, cardById = null;
+  var PANEL = null, BODY = null, QV = null, tab = "questions", ctx = null;
+  var cardIndex = null, indexPromise = null, cardById = null, qvState = null;
 
   function esc(s){ return String(s == null ? "" : s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
   function addTokens(text, weight, bag){
@@ -2416,19 +2446,112 @@ function medArenaHash(s){
     BODY = document.getElementById("relBody");
     PANEL.addEventListener("click", function(ev){
       if (ev.target === PANEL || ev.target.closest("#relClose")){ closePanel(); return; }
+      if (QV && QV.classList.contains("open")) return;
       var t = ev.target.closest("[data-reltab]");
       if (t){ tab = t.dataset.reltab; paintTabs(); paintBody(); }
+      var view = ev.target.closest("[data-qview]");
+      if (view){ openQuick(view.dataset.qview, view.dataset.i || view.dataset.id); return; }
       var save = ev.target.closest("[data-mm-save]");
       if (save) saveCard(save);
     });
+    QV = document.createElement("div");
+    QV.className = "qv-overlay";
+    QV.innerHTML = '<div class="qv-card" role="dialog" aria-modal="true" aria-label="Instant preview">' +
+      '<div class="qv-head"><div><b id="qvTitle"></b><span id="qvSub"></span></div>' +
+      '<button type="button" id="qvClose" aria-label="Close preview">×</button></div>' +
+      '<div class="qv-body" id="qvBody"></div><div class="qv-actions" id="qvActions"></div></div>';
+    document.body.appendChild(QV);
+    QV.addEventListener("click", function(ev){
+      if (ev.target === QV || ev.target.closest("#qvClose") || ev.target.closest("[data-qv-back]")){ closeQuick(); return; }
+      if (ev.target.closest("[data-qv-reveal]")){ revealQuick(); return; }
+      var save = ev.target.closest("[data-qv-save]");
+      if (save) saveQuickCard(save);
+    });
     document.addEventListener("keydown", function(ev){
-      if (ev.key === "Escape" && PANEL && PANEL.classList.contains("open")) closePanel();
+      if (ev.key !== "Escape") return;
+      if (QV && QV.classList.contains("open")){ closeQuick(); return; }
+      if (PANEL && PANEL.classList.contains("open")) closePanel();
     });
   }
   function paintTabs(){
     PANEL.querySelectorAll(".rel-tab").forEach(function(b){ b.classList.toggle("on", b.dataset.reltab === tab); });
   }
   function closePanel(){ if (PANEL) PANEL.classList.remove("open"); }
+  function closeQuick(){ if (QV) QV.classList.remove("open"); qvState = null; }
+  function cardText(s){
+    return esc(String(s == null ? "" : s).replace(/==([^=]+)==/g,"$1").replace(/\*\*([^*]+)\*\*/g,"$1"))
+      .replace(/\r?\n/g,"<br>");
+  }
+  function openQuick(kind, key){
+    if (!QV) return;
+    var body = document.getElementById("qvBody"), actions = document.getElementById("qvActions");
+    var title = document.getElementById("qvTitle"), sub = document.getElementById("qvSub");
+    if (kind === "q"){
+      var it = window.MedArenaSearch && window.MedArenaSearch.item(Number(key)); if (!it) return;
+      var q = it.q || {};
+      var deviceOpen = false;
+      try { deviceOpen = !!(window.MA_PRACTICE_UNLOCKED && window.MA_PRACTICE_UNLOCKED()); } catch (e) {}
+      var locked = (!deviceOpen && !!(window.MedArenaSearch.locked && window.MedArenaSearch.locked(it.bankId))) || !!q.noKey;
+      var correct = (q.correctSet || (q.answerLetter ? [q.answerLetter] : []) || []).map(function(x){ return String(x).toUpperCase(); });
+      qvState = { kind:"q", item:it, locked:locked, revealed:false, correct:correct, explanation:locked ? "" : String(q.explanation || "") };
+      title.textContent = "MCQ preview";
+      sub.textContent = (it.bankName || "") + (it.cat ? " · " + it.cat : "") + " · Q" + (q.n || "") + (q.chapter ? " · " + q.chapter : "");
+      var opts = (q.options || []).map(function(o){
+        return '<div class="qv-opt" data-letter="' + esc(String(o.letter || "").toUpperCase()) + '">' +
+          '<span class="qv-k">' + esc(o.letter || "") + "</span><span>" + esc(o.text || "") + "</span></div>";
+      }).join("");
+      var h = '<div class="qv-label">Question</div><p class="qv-stem">' + cardText(q.stem) + "</p>";
+      if (opts) h += '<div class="qv-opts">' + opts + "</div>";
+      if (locked){
+        h += '<div class="qv-locked">🔒 This bank is question-only on this device. Answers and explanations stay locked.</div>';
+      } else {
+        h += '<button type="button" class="rel-find" data-qv-reveal="1" style="margin:0 0 8px"><span class="rel-spark">💡</span> Show answer &amp; explanation</button>' +
+          '<div class="qv-answer" id="qvAnswer"></div>';
+        if (q.imgs && q.imgs.length){
+          h += '<div class="qv-imgs">' + q.imgs.map(function(im){ return '<img src="' + esc(im.src) + '" alt="figure" loading="lazy">'; }).join("") + "</div>";
+        }
+      }
+      body.innerHTML = h;
+      var href = "surgery-practice.html?bank=" + encodeURIComponent(it.bankId) + "&q=" + encodeURIComponent(q.n);
+      actions.innerHTML = '<button type="button" data-qv-back="1">← Back to results</button>' +
+        '<a class="primary" href="' + href + '" target="_blank" rel="noopener">Open in full practice ↗</a>';
+    } else {
+      var c = cardById && cardById[key]; if (!c) return;
+      var ch = cardIndex.chapters[c[1]] || ["","Chapter",0];
+      var subj = cardIndex.subjects[ch[2]] || "Medical Mahasagar";
+      qvState = { kind:"card", card:c, revealed:false };
+      title.textContent = "Chapter card preview";
+      sub.textContent = subj + " · " + ch[1] + " · " + c[0];
+      var imgs = String(c[5] || "").split("|").filter(Boolean);
+      var ih = imgs.length ? '<div class="qv-imgs">' + imgs.map(function(p){
+        return '<img src="medical-mahasagar/' + esc(p) + '" alt="chapter figure" loading="lazy">';
+      }).join("") + "</div>" : "";
+      body.innerHTML = '<div class="qv-label">Front · question</div><p class="qv-stem">' + cardText(c[2]) + "</p>" +
+        '<button type="button" class="rel-find" data-qv-reveal="1" style="margin:0 0 8px"><span class="rel-spark">💡</span> Show answer</button>' +
+        '<div class="qv-answer" id="qvAnswer">' + cardText(c[3]) + "</div>" + ih;
+      actions.innerHTML = '<button type="button" data-qv-back="1">← Back to results</button>' +
+        '<button type="button" class="orange" data-qv-save="1">＋ Add to Revisions</button>' +
+        '<a class="teal" href="medical-mahasagar/index.html?card=' + encodeURIComponent(c[0]) + '" target="_blank" rel="noopener">Open full card ↗</a>';
+    }
+    QV.classList.add("open");
+    document.getElementById("qvClose").focus();
+  }
+  function revealQuick(){
+    if (!qvState || qvState.revealed) return;
+    qvState.revealed = true;
+    var a = document.getElementById("qvAnswer");
+    if (a) a.classList.add("show");
+    var btn = QV.querySelector("[data-qv-reveal]");
+    if (btn) btn.textContent = qvState.kind === "q" ? "✓ Answer shown" : "✓ Answer shown";
+    if (qvState.kind === "q" && !qvState.locked){
+      QV.querySelectorAll(".qv-opt").forEach(function(o){
+        if (qvState.correct.indexOf(String(o.dataset.letter || "").toUpperCase()) >= 0) o.classList.add("correct");
+      });
+      if (a) a.innerHTML = qvState.explanation
+        ? (typeof fmtOrganized === "function" ? fmtOrganized(qvState.explanation) : cardText(qvState.explanation))
+        : "No explanation available for this question.";
+    }
+  }
   function openPanel(q){
     ensurePanel();
     var bankId = q.bankId || (state.exam && state.exam.bankId) || "";
@@ -2451,7 +2574,7 @@ function medArenaHash(s){
       hits.forEach(function(h){
         var it = window.MedArenaSearch.item(h[0]); if (!it) return;
         if (it.bankId === ctx.bankId && it.q && it.q.n === ctx.q.n) return;
-        out.push({ it: it, score: h[1] });
+        out.push({ it: it, idx: h[0], score: h[1] });
       });
       if (!out.length){ BODY.innerHTML += '<div class="rel-empty">No close MCQ match found for these keywords.</div>'; return; }
       var seen = {};
@@ -2459,11 +2582,11 @@ function medArenaHash(s){
       out.forEach(function(row){
         var key = String(row.it.q.stem || "").slice(0,90);
         if (seen[key]) return; seen[key] = 1;
-        var it = row.it, href = "surgery-practice.html?bank=" + encodeURIComponent(it.bankId) + "&q=" + encodeURIComponent(it.q.n);
+        var it = row.it;
         html += '<div class="rel-item"><div class="rel-item-h"><span class="rel-pill">MCQ</span>' +
           '<span>' + esc(it.bankName) + (it.cat ? " · " + esc(it.cat) : "") + '</span></div>' +
           '<p class="rel-stem">' + esc(String(it.q.stem || "").replace(/\s+/g," ").slice(0,230)) + '</p>' +
-          '<div class="rel-foot"><a class="rel-link" href="' + href + '">Open this question →</a></div></div>';
+          '<div class="rel-foot"><button type="button" class="rel-link" data-qview="q" data-i="' + row.idx + '">View this question →</button></div></div>';
       });
       BODY.innerHTML = '<p class="rel-note">Closest MCQs across every bank in MedArena. Locked sets stay gated — only the stem is shown here.</p>' +
         '<div class="rel-grid">' + html + "</div>";
@@ -2501,12 +2624,11 @@ function medArenaHash(s){
       scored.slice(0, 12).forEach(function(row){
         var c = row[0], ch = cardIndex.chapters[c[1]] || ["","Chapter",0];
         var subj = cardIndex.subjects[ch[2]] || "Medical Mahasagar";
-        var href = "medical-mahasagar/index.html?card=" + encodeURIComponent(c[0]);
         html += '<div class="rel-item"><div class="rel-item-h"><span class="rel-pill card">CARD</span>' +
           '<span>' + esc(subj) + '</span></div>' +
           '<p class="rel-stem">' + esc(String(c[2] || "").replace(/\s+/g," ").slice(0,220)) + '</p>' +
           '<div class="rel-chap">' + esc(ch[1]) + '</div>' +
-          '<div class="rel-foot"><a class="rel-link" href="' + href + '">Open card →</a>' +
+          '<div class="rel-foot"><button type="button" class="rel-link" data-qview="card" data-id="' + esc(c[0]) + '">View this card →</button>' +
           '<button type="button" class="rel-save" data-mm-save="' + esc(c[0]) + '">＋ Add to Revisions</button></div></div>';
       });
       var qterm = encodeURIComponent(ctx.kws.slice(0,3).join(" "));
@@ -2518,8 +2640,8 @@ function medArenaHash(s){
       BODY.innerHTML += '<div class="rel-empty">Could not load chapter cards: ' + esc(err && err.message || err) + "</div>";
     });
   }
-  function saveCard(btn){
-    var id = btn.dataset.mmSave, c = cardById && cardById[id]; if (!c) return;
+  function addCardToRevisions(c, btn){
+    if (!c || !btn) return;
     var ch = cardIndex.chapters[c[1]] || ["","Chapter",0];
     var added = window.MARevision && window.MARevision.addChapterCard({
       id: c[0], front: c[2], back: c[3], chapter: ch[1], subject: cardIndex.subjects[ch[2]] || ""
@@ -2527,6 +2649,8 @@ function medArenaHash(s){
     btn.classList.add("saved");
     btn.textContent = added ? "✓ Added to Revisions" : "✓ Already in Revisions";
   }
+  function saveCard(btn){ addCardToRevisions(cardById && cardById[btn.dataset.mmSave], btn); }
+  function saveQuickCard(btn){ addCardToRevisions(qvState && qvState.card, btn); }
   document.addEventListener("click", function(ev){
     if (!ev.target.closest("[data-relfind]")) return;
     var ex = state.exam; if (!ex || !ex.pool || !ex.pool[ex.cur]) return;
