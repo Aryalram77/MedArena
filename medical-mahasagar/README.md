@@ -1,6 +1,6 @@
 # Chapter Cards
 
-A no-build, chapter-wise flashcard app covering **fifteen source books**, each in its
+A no-build, chapter-wise flashcard app covering **sixteen source books**, each in its
 own subject heading:
 
 1. **Surgery** — Surgery Essence, 8/e (Pritesh Kumar Singh), chapters `ch01`–`ch51`
@@ -41,8 +41,11 @@ own subject heading:
     (*First Aid for the USMLE Step 1 2025*), chapters `usmle01`–`usmle06`
     (Biochemistry: Molecular, Cellular, Laboratory Techniques, Genetics,
     Nutrition and Metabolism)
+16. **Medicine** — `medicine1_part_1.pdf` (*Self Assessment & Review: Medicine*, 9/e,
+    Mudit Khanna), chapters `med01`–`med08` (the Essential Revision Notes theory on
+    PDF pages 20–59 and 250–267; question bank and explanations excluded, no images)
 
-Cards are derived strictly from each chapter's source text. For fourteen subjects the
+Cards are derived strictly from each chapter's source text. For fifteen subjects the
 MCQ / question bank is deliberately **excluded** — those questions already live in the
 user's website. OBS is the exception: at the user's request, its in-chapter questions
 and answers and its Latest Papers section are included as teaching cards. (Three
@@ -53,8 +56,8 @@ stems/options still excluded. See "Current content" below.)
 Key anatomy, pharmacology, biochemistry, radiology and USMLE figures, tables and
 classifications are cropped from the PDFs and shown inside the relevant cards; see
 [Card figures](#card-figures) below. Forensic Medicine, Pathology and Genetics,
-Orthopedics, ENT, Psychiatry, Opthalmology, Physiology, Gynecology and OBS have **no
-cropped images** — their cards are text-only.
+Orthopedics, ENT, Psychiatry, Opthalmology, Physiology, Gynecology, OBS and Medicine
+have **no cropped images** — their cards are text-only.
 
 ## Open it
 
@@ -81,24 +84,26 @@ In the big card: `Space` shows/hides the answer, `←` / `→` move between card
 
 ### Subjects & the chapter list
 
-Chapters are grouped by subject. There are fifteen groups: **Surgery** (51
+Chapters are grouped by subject. There are sixteen groups: **Surgery** (51
 chapters), **Anatomy** (11 chapters), **Pharmacology** (15 chapters), **Biochemistry**
 (18 chapters), **Forensic Medicine** (62 chapters; original chapter 2 omitted),
 **Pathology and Genetics** (19 chapters), **Orthopedics** (20 chapters),
 **ENT** (31 chapters), **Psychiatry** (13 chapters), **Opthalmology** (12 chapters),
 **Physiology** (20 chapters), **Radiology** (8 chapters), **Gynecology** (20 chapters),
-**OBS** (29 chapters) and **USMLE** (6 chapters). Each heading is its own collapsible
-accordion: all start **collapsed**, and clicking a heading expands just that group's
-chapter list (click again to collapse it). Each group's expanded/collapsed state is
-saved independently in `localStorage`. A chapter defaults to the **Surgery** group
-unless it explicitly declares its own `subject` field — the anatomy, pharmacology,
-biochemistry, forensic, pathology, orthopedics, ENT, psychiatry, opthalmology,
-physiology, radiology, gynecology, OBS and USMLE chapters set `subject: "Anatomy"`,
-`subject: "Pharmacology"`, `subject: "Biochemistry"`, `subject: "Forensic Medicine"`,
+**OBS** (29 chapters), **USMLE** (6 chapters) and **Medicine** (8 chapters). Each
+heading is its own collapsible accordion: all start **collapsed**, and clicking a
+heading expands just that group's chapter list (click again to collapse it). Each
+group's expanded/collapsed state is saved independently in `localStorage`. A chapter
+defaults to the **Surgery** group unless it explicitly declares its own `subject`
+field — the anatomy, pharmacology, biochemistry, forensic, pathology, orthopedics,
+ENT, psychiatry, opthalmology, physiology, radiology, gynecology, OBS, USMLE and
+medicine chapters set `subject: "Anatomy"`, `subject: "Pharmacology"`,
+`subject: "Biochemistry"`, `subject: "Forensic Medicine"`,
 `subject: "Pathology and Genetics"`, `subject: "Orthopedics"`, `subject: "ENT"`,
 `subject: "Psychiatry"`, `subject: "Opthalmology"`, `subject: "Physiology"`,
-`subject: "Radiology"`, `subject: "Gynecology"`, `subject: "OBS"` and
-`subject: "USMLE"` respectively, which is what puts them in separate groups.
+`subject: "Radiology"`, `subject: "Gynecology"`, `subject: "OBS"`,
+`subject: "USMLE"` and `subject: "Medicine"` respectively, which is what puts them
+in separate groups.
 
 ## Big card & highlights
 
@@ -797,7 +802,29 @@ Across the 6 USMLE chapters: **510 cards**, **345 leaf topics**, **62 unique
 full-page plates** and **390 figure attachments**. Source bold text is preserved as
 purple `**...**` emphasis; no amber `==...==` Q markers are used.
 
-**Combined total across all fifteen subjects: 335 chapters, 47,296 cards, 30,939 leaf
+### Medicine
+
+The **Medicine** group (via `subject: "Medicine"`) comes from
+`medicine1_part_1.pdf` — *Self Assessment & Review: Medicine*, 9/e, Mudit Khanna.
+Theory only: every chapter uses the Essential Revision Notes and stops before its
+question bank and answer/explanation section. **No images were cropped or attached
+for this subject**, and no amber `==...==` Q markers are used. Every row shows
+**100% outline coverage, 0 errors**.
+
+| # | Chapter | PDF pages | Cards | Leaf topics | Figure attachments |
+|---|---------|-----------|-------|-------------|--------------------|
+| 1 | Red Cell Indices and Anemia Classification | 20–22 | 58 | 31 | 0 |
+| 2 | Hemolytic Anemias and Hemoglobinopathies | 23–29 | 80 | 41 | 0 |
+| 3 | Bone Marrow Failure, PNH and Myeloproliferative Disorders | 30–35 | 69 | 31 | 0 |
+| 4 | Lymphomas and Chronic Leukemias | 36–44 | 90 | 35 | 0 |
+| 5 | Acute Leukemias and Plasma Cell Disorders | 45–48 | 65 | 39 | 0 |
+| 6 | Coagulation, Bleeding and Transfusion | 49–59 | 84 | 43 | 0 |
+| 7 | Cardiovascular Examination: Pulses, JVP and Heart Sounds | 250–258 | 50 | 38 | 0 |
+| 8 | ECG, Arrhythmias and Valvular Disease | 259–267 | 49 | 34 | 0 |
+
+Across the 8 Medicine chapters: **545 cards** and **292 leaf topics**, all text-only.
+
+**Combined total across all sixteen subjects: 343 chapters, 47,841 cards, 31,231 leaf
 topics, 2,324 cropped figure attachments, and 12,090 amber `Q` highlights
 (surgery only).**
 

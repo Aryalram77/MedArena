@@ -627568,6 +627568,7259 @@
           ]
         }
       ]
+    },
+
+    /* ===== MEDICINE — medicine1_part_1.pdf, Essential Revision Notes only; no images ===== */
+    {
+      "id": "med01",
+      "number": 1,
+      "title": "Red Cell Indices and Anemia Classification",
+      "status": "draft",
+      "subject": "Medicine",
+      "excludeExamples": true,
+      "source": {
+        "file": "medicine1_part_1.pdf — Self Assessment & Review Medicine, 9/e, Mudit Khanna",
+        "pageRange": "PDF 20–22 — Essential Revision Notes theory only; MCQs/explanations excluded"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "Red Cell Indices",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Mean Corpuscular Volume (MCV)",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Definition, units, and normal range"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "MCV-based morphology terms"
+                }
+              ]
+            },
+            {
+              "id": "1.2",
+              "title": "Mean Corpuscular Haemoglobin Concentration (MCHC)",
+              "children": [
+                {
+                  "id": "1.2.1",
+                  "title": "Definition, units, and normal range"
+                },
+                {
+                  "id": "1.2.2",
+                  "title": "MCHC-based colour terms"
+                }
+              ]
+            },
+            {
+              "id": "1.3",
+              "title": "Morphological Classification by MCV and MCHC",
+              "children": [
+                {
+                  "id": "1.3.1",
+                  "title": "Microcytic hypochromic group"
+                },
+                {
+                  "id": "1.3.2",
+                  "title": "Macrocytic normochromic group"
+                },
+                {
+                  "id": "1.3.3",
+                  "title": "General rules and anemia of chronic disease caveat"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Classification by MCV and Red Cell Distribution Width (RDW)",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "Low MCV",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "Normal RDW"
+                },
+                {
+                  "id": "2.1.2",
+                  "title": "High RDW"
+                }
+              ]
+            },
+            {
+              "id": "2.2",
+              "title": "Normal MCV",
+              "children": [
+                {
+                  "id": "2.2.1",
+                  "title": "Normal RDW"
+                },
+                {
+                  "id": "2.2.2",
+                  "title": "High RDW"
+                }
+              ]
+            },
+            {
+              "id": "2.3",
+              "title": "High MCV",
+              "children": [
+                {
+                  "id": "2.3.1",
+                  "title": "Normal RDW"
+                },
+                {
+                  "id": "2.3.2",
+                  "title": "High RDW"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "title": "Classification by Reticulocyte Count",
+          "children": [
+            {
+              "id": "3.1",
+              "title": "High Reticulocyte Count (page 20 diagram)",
+              "children": [
+                {
+                  "id": "3.1.1",
+                  "title": "Directly listed causes"
+                },
+                {
+                  "id": "3.1.2",
+                  "title": "Intrinsic RBC defects"
+                },
+                {
+                  "id": "3.1.3",
+                  "title": "Extrinsic RBC defects"
+                }
+              ]
+            },
+            {
+              "id": "3.2",
+              "title": "Low Reticulocyte Count (page 20 diagram)",
+              "children": [
+                {
+                  "id": "3.2.1",
+                  "title": "Directly listed causes"
+                }
+              ]
+            },
+            {
+              "id": "3.3",
+              "title": "Hypoproliferative versus Hyperproliferative Scheme (page 21)",
+              "children": [
+                {
+                  "id": "3.3.1",
+                  "title": "Low reticulocyte: microcytic causes"
+                },
+                {
+                  "id": "3.3.2",
+                  "title": "Low reticulocyte: normocytic causes"
+                },
+                {
+                  "id": "3.3.3",
+                  "title": "Low reticulocyte: macrocytic causes"
+                },
+                {
+                  "id": "3.3.4",
+                  "title": "High reticulocyte: bleeding and intravascular hemolysis"
+                },
+                {
+                  "id": "3.3.5",
+                  "title": "High reticulocyte: extravascular hemolysis"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "4",
+          "title": "Microcytic Hypochromic Anemia",
+          "children": [
+            {
+              "id": "4.1",
+              "title": "Causes"
+            },
+            {
+              "id": "4.2",
+              "title": "Differential Diagnosis Table",
+              "children": [
+                {
+                  "id": "4.2.1",
+                  "title": "Smear and serum iron"
+                },
+                {
+                  "id": "4.2.2",
+                  "title": "TIBC and percentage saturation"
+                },
+                {
+                  "id": "4.2.3",
+                  "title": "Ferritin"
+                },
+                {
+                  "id": "4.2.4",
+                  "title": "Hemoglobin pattern, free erythrocyte protoporphyrin, and RDW"
+                },
+                {
+                  "id": "4.2.5",
+                  "title": "Diagnostic rules using serum iron and TIBC"
+                }
+              ]
+            },
+            {
+              "id": "4.3",
+              "title": "RDW and free erythrocyte protoporphyrin associations"
+            }
+          ]
+        },
+        {
+          "id": "5",
+          "title": "Macrocytic Anemia",
+          "children": [
+            {
+              "id": "5.1",
+              "title": "Causes"
+            },
+            {
+              "id": "5.2",
+              "title": "Morphologic rule"
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "med01-c001",
+          "type": "definition",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 20,
+          "front": "What is mean corpuscular volume (MCV)?",
+          "back": "The average size (volume) of the red blood cells.\nIt is usually expressed in femtolitres (fl)."
+        },
+        {
+          "id": "med01-c002",
+          "type": "fact",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 20,
+          "front": "What is the stated normal range for MCV?",
+          "back": "79.0 to 93.3 fl."
+        },
+        {
+          "id": "med01-c003",
+          "type": "fact",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 20,
+          "front": "How does MCV determine the morphological term for an anemia?",
+          "back": "Raised MCV: macrocytic.\nNormal MCV: normocytic.\nReduced MCV: microcytic."
+        },
+        {
+          "id": "med01-c004",
+          "type": "definition",
+          "topics": [
+            "1.2.1"
+          ],
+          "sourcePage": 20,
+          "front": "What is mean corpuscular haemoglobin concentration (MCHC)?",
+          "back": "The average concentration of haemoglobin in the red blood cell.\nMCHC describes the colour of the RBC."
+        },
+        {
+          "id": "med01-c005",
+          "type": "fact",
+          "topics": [
+            "1.2.1"
+          ],
+          "sourcePage": 20,
+          "front": "In what units is MCHC expressed, and what is its normal range?",
+          "back": "Usually expressed in g/dl.\nNormal MCHC: 32.3 to 35.9 g/dl."
+        },
+        {
+          "id": "med01-c006",
+          "type": "fact",
+          "topics": [
+            "1.2.2"
+          ],
+          "sourcePage": 20,
+          "front": "How does MCHC determine the descriptor of RBC colour?",
+          "back": "Raised MCHC: hyperchromic.\nNormal MCHC: normochromic.\nReduced MCHC: hypochromic."
+        },
+        {
+          "id": "med01-c007",
+          "type": "fact",
+          "topics": [
+            "1.3.1"
+          ],
+          "sourcePage": 20,
+          "front": "Which anemias are grouped as microcytic hypochromic by MCV and MCHC?",
+          "back": "Iron deficiency.\nThalassemia.\nSideroblastic anemia.\nLead toxicity.\nAnemia of chronic disease (+/-)."
+        },
+        {
+          "id": "med01-c008",
+          "type": "compare",
+          "topics": [
+            "1.3.1"
+          ],
+          "sourcePage": 20,
+          "front": "How is anemia of chronic disease placed in the microcytic hypochromic group?",
+          "back": "It is included with a (+/-) qualification.\nIt may present with microcytic hypochromic anemia, although the stated sequence is normocytic normochromic > microcytic hypochromic."
+        },
+        {
+          "id": "med01-c009",
+          "type": "fact",
+          "topics": [
+            "1.3.2"
+          ],
+          "sourcePage": 20,
+          "front": "Which anemias are grouped as macrocytic normochromic in the morphological classification?",
+          "back": "Vitamin B12 deficiency.\nThiamine deficiency.\nFolate deficiency."
+        },
+        {
+          "id": "med01-c010",
+          "type": "concept",
+          "topics": [
+            "1.3.3"
+          ],
+          "sourcePage": 20,
+          "front": "What general statement is made about MCV and MCHC in this section?",
+          "back": "Most of the anemias mentioned have a normal MCV and MCHC.\nHowever, macrocytic (raised MCV) and microcytic (reduced MCV) with hypochromic (reduced MCHC) cases may all be encountered."
+        },
+        {
+          "id": "med01-c011",
+          "type": "concept",
+          "topics": [
+            "1.3.3"
+          ],
+          "sourcePage": 20,
+          "front": "Why is macrocytic anemia considered normochromic as a rule?",
+          "back": "Macrocytic anemia is characterized by an increase in MCV.\nHaemoglobin content increases proportionately with erythrocyte volume, so macrocytic anemia is normochromic as a rule."
+        },
+        {
+          "id": "med01-c012",
+          "type": "fact",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 21,
+          "front": "Which conditions have low MCV with normal RDW?",
+          "back": "Thalassemia trait.\nThalassemia minor.\nAnemia of chronic disease."
+        },
+        {
+          "id": "med01-c013",
+          "type": "fact",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 21,
+          "front": "Which conditions have low MCV with high RDW?",
+          "back": "Iron deficiency anemia.\nThalassemia major."
+        },
+        {
+          "id": "med01-c014",
+          "type": "fact",
+          "topics": [
+            "2.2.1"
+          ],
+          "sourcePage": 21,
+          "front": "Which conditions have normal MCV with normal RDW?",
+          "back": "Hereditary spherocytosis.\nAnemia of chronic disease.\nNon-anemic hemoglobinopathy."
+        },
+        {
+          "id": "med01-c015",
+          "type": "compare",
+          "topics": [
+            "2.2.1",
+            "2.2.2"
+          ],
+          "sourcePage": 21,
+          "front": "How are anemic and non-anemic hemoglobinopathies separated in the MCV/RDW table?",
+          "back": "Non-anemic hemoglobinopathy: normal MCV with normal RDW.\nAnemic hemoglobinopathy (sickle cell): normal MCV with high RDW."
+        },
+        {
+          "id": "med01-c016",
+          "type": "fact",
+          "topics": [
+            "2.2.2"
+          ],
+          "sourcePage": 21,
+          "front": "Which conditions have normal MCV with high RDW?",
+          "back": "Combined deficiency.\nAnemic hemoglobinopathy (sickle cell).\nSideroblastic anemia.\nEarly iron deficiency."
+        },
+        {
+          "id": "med01-c017",
+          "type": "fact",
+          "topics": [
+            "2.2.2"
+          ],
+          "sourcePage": 21,
+          "front": "Where does early iron deficiency appear in the MCV/RDW classification?",
+          "back": "Normal MCV with high RDW.\nEstablished iron deficiency anemia is listed separately under low MCV with high RDW."
+        },
+        {
+          "id": "med01-c018",
+          "type": "fact",
+          "topics": [
+            "2.3.1"
+          ],
+          "sourcePage": 21,
+          "front": "Which condition is listed with high MCV and normal RDW?",
+          "back": "Acquired aplastic anemia in adults."
+        },
+        {
+          "id": "med01-c019",
+          "type": "fact",
+          "topics": [
+            "2.3.2"
+          ],
+          "sourcePage": 21,
+          "front": "Which conditions have high MCV with high RDW?",
+          "back": "Folate/vitamin B12 deficiency.\nAutoimmune hemolysis."
+        },
+        {
+          "id": "med01-c020",
+          "type": "compare",
+          "topics": [
+            "2.3.1",
+            "2.3.2"
+          ],
+          "sourcePage": 21,
+          "front": "What distinguishes aplastic anemia from autoimmune hemolysis in the high MCV row?",
+          "back": "Acquired aplastic anemia in adults: high MCV with normal RDW.\nAutoimmune hemolysis: high MCV with high RDW."
+        },
+        {
+          "id": "med01-c021",
+          "type": "fact",
+          "topics": [
+            "3.1.1"
+          ],
+          "sourcePage": 20,
+          "front": "Which conditions are listed directly under high reticulocyte count on page 20?",
+          "back": "Hemangioma.\nDIC.\nHemolytic anemia.\nSickle cell anemia.\nBlood loss."
+        },
+        {
+          "id": "med01-c022",
+          "type": "concept",
+          "topics": [
+            "3.1.1"
+          ],
+          "sourcePage": 20,
+          "front": "What further subdivisions are shown beneath high reticulocyte count on page 20?",
+          "back": "Intrinsic RBC defects.\nExtrinsic RBC defects.\nThese are separated from the directly listed high-reticulocyte causes."
+        },
+        {
+          "id": "med01-c023",
+          "type": "fact",
+          "topics": [
+            "3.1.2"
+          ],
+          "sourcePage": 20,
+          "front": "What are the two intrinsic RBC defect categories listed with high reticulocyte count?",
+          "back": "RBC membrane disorders.\nRBC enzyme disorders."
+        },
+        {
+          "id": "med01-c024",
+          "type": "fact",
+          "topics": [
+            "3.1.2"
+          ],
+          "sourcePage": 20,
+          "front": "Which named membrane and enzyme defects are listed under intrinsic RBC defects?",
+          "back": "Membrane: hereditary spherocytosis, hereditary elliptocytosis.\nEnzyme: G6PD deficiency, pyruvate kinase deficiency."
+        },
+        {
+          "id": "med01-c025",
+          "type": "fact",
+          "topics": [
+            "3.1.3"
+          ],
+          "sourcePage": 20,
+          "front": "Which extrinsic RBC defects are listed with high reticulocyte count?",
+          "back": "HUS syndrome.\nAutoimmune causes.\nAlloimmune causes."
+        },
+        {
+          "id": "med01-c026",
+          "type": "fact",
+          "topics": [
+            "3.2.1"
+          ],
+          "sourcePage": 20,
+          "front": "Which conditions are listed directly under low reticulocyte count on page 20?",
+          "back": "Red cell aplasia.\nMalignancy.\nFanconi anemia.\nAnemia of chronic disease.\nAnemia of renal disease."
+        },
+        {
+          "id": "med01-c027",
+          "type": "fact",
+          "topics": [
+            "3.2.1"
+          ],
+          "sourcePage": 20,
+          "front": "Which marrow/infective causes accompany red cell aplasia in the low-reticulocyte group?",
+          "back": "TEC.\nDiamond-Blackfan anemia.\nParvovirus B19 infection."
+        },
+        {
+          "id": "med01-c028",
+          "type": "fact",
+          "topics": [
+            "3.3.1"
+          ],
+          "sourcePage": 21,
+          "front": "Which microcytic anemias are listed under low reticulocyte count (hypoproliferative)?",
+          "back": "Thalassemia.\nIron deficiency.\nSideroblastic anemia.\nLead toxicity.\nAnemia of chronic disease (+/-)."
+        },
+        {
+          "id": "med01-c029",
+          "type": "fact",
+          "topics": [
+            "3.3.2"
+          ],
+          "sourcePage": 21,
+          "front": "Which normocytic anemias are listed under low reticulocyte count?",
+          "back": "Red cell aplasia.\nFanconi's anemia.\nMarrow damage: infiltration/fibrosis and malignancy."
+        },
+        {
+          "id": "med01-c030",
+          "type": "fact",
+          "topics": [
+            "3.3.2"
+          ],
+          "sourcePage": 21,
+          "front": "What 'decreased stimulation' causes are listed for normocytic hypoproliferative anemia?",
+          "back": "Kidney disease.\nChronic inflammation."
+        },
+        {
+          "id": "med01-c031",
+          "type": "fact",
+          "topics": [
+            "3.3.3"
+          ],
+          "sourcePage": 21,
+          "front": "Which macrocytic anemias are listed first under low reticulocyte count?",
+          "back": "Vitamin B12 deficiency.\nFolate deficiency.\nOrotic aciduria.\nLesch-Nyhan syndrome."
+        },
+        {
+          "id": "med01-c032",
+          "type": "fact",
+          "topics": [
+            "3.3.3"
+          ],
+          "sourcePage": 21,
+          "front": "Which additional macrocytic causes are listed in the hypoproliferative column?",
+          "back": "Liver disease/alcohol.\nHypothyroidism.\nRefractory anemia.\nCongenital dyserythropoietic anemia.\nThiamine deficiency anemia (untreated)."
+        },
+        {
+          "id": "med01-c033",
+          "type": "concept",
+          "topics": [
+            "3.3.4"
+          ],
+          "sourcePage": 21,
+          "front": "How is high reticulocyte count (hyperproliferative) anemia divided in the page 21 classification?",
+          "back": "Bleeding.\nHemolysis.\nHemolysis is further divided into intravascular and extravascular hemolysis."
+        },
+        {
+          "id": "med01-c034",
+          "type": "fact",
+          "topics": [
+            "3.3.4"
+          ],
+          "sourcePage": 21,
+          "front": "Which causes are listed under intravascular hemolysis?",
+          "back": "Transfusion reactions.\nSnake bite.\nThermal burns.\nMechanical heart valves.\nMedications.\nParoxysmal hemoglobinuria.\nPNH.\nPCH.\nOthers."
+        },
+        {
+          "id": "med01-c035",
+          "type": "fact",
+          "topics": [
+            "3.3.5"
+          ],
+          "sourcePage": 21,
+          "front": "Which causes are listed under extravascular hemolysis?",
+          "back": "Hemoglobinopathies.\nMembrane defects: spherocytosis, elliptocytosis.\nAutoimmune hemolysis.\nG6PD/GSH deficiency.\nDIC/TTP/HUS.\nEclampsia.\nOthers."
+        },
+        {
+          "id": "med01-c036",
+          "type": "compare",
+          "topics": [
+            "3.3.4",
+            "3.3.5"
+          ],
+          "sourcePage": 21,
+          "front": "How do the listed intravascular and extravascular hemolysis causes differ?",
+          "back": "Intravascular: transfusion reactions, snake bite, thermal burns, mechanical heart valves, medications, paroxysmal hemoglobinuria, PNH, PCH.\nExtravascular: hemoglobinopathies, membrane defects, autoimmune hemolysis, G6PD/GSH deficiency, DIC/TTP/HUS, eclampsia."
+        },
+        {
+          "id": "med01-c037",
+          "type": "fact",
+          "topics": [
+            "4.1"
+          ],
+          "sourcePage": 22,
+          "front": "What are the listed causes of microcytic hypochromic anemia?",
+          "back": "Iron deficiency anemia.\nThalassemia.\nSideroblastic anemia.\nLead poisoning.\nAnemia of chronic disease (+/-)."
+        },
+        {
+          "id": "med01-c038",
+          "type": "fact",
+          "topics": [
+            "4.2.1"
+          ],
+          "sourcePage": 22,
+          "front": "What is the smear appearance in iron deficiency, thalassemia, and sideroblastic anemia?",
+          "back": "Microcytic hypochromic in all three conditions."
+        },
+        {
+          "id": "med01-c039",
+          "type": "fact",
+          "topics": [
+            "4.2.1"
+          ],
+          "sourcePage": 22,
+          "front": "What is the smear appearance in anemia of chronic disease?",
+          "back": "Normocytic normochromic > micro/hypochromic.\nMicro/hypochromic changes may be present."
+        },
+        {
+          "id": "med01-c040",
+          "type": "fact",
+          "topics": [
+            "4.2.1"
+          ],
+          "sourcePage": 22,
+          "front": "What serum iron values are given in the differential diagnosis table?",
+          "back": "Normal: 50–150 µg/dl.\nIron deficiency: low (<30).\nThalassemia: normal.\nSideroblastic anemia: normal.\nAnemia of chronic disease: decreased (<50)."
+        },
+        {
+          "id": "med01-c041",
+          "type": "fact",
+          "topics": [
+            "4.2.2"
+          ],
+          "sourcePage": 22,
+          "front": "What TIBC values are given in the differential diagnosis table?",
+          "back": "Normal: 300–600 µg/dl.\nIron deficiency: high (>360).\nThalassemia: normal.\nSideroblastic anemia: normal.\nAnemia of chronic disease: decreased (<300)."
+        },
+        {
+          "id": "med01-c042",
+          "type": "fact",
+          "topics": [
+            "4.2.2"
+          ],
+          "sourcePage": 22,
+          "front": "What percentage saturation values are given for the four conditions?",
+          "back": "Normal: 30–50%.\nIron deficiency: <10.\nThalassemia: 30–80.\nSideroblastic anemia: 30–80.\nAnemia of chronic disease: 10–20."
+        },
+        {
+          "id": "med01-c043",
+          "type": "fact",
+          "topics": [
+            "4.2.3"
+          ],
+          "sourcePage": 22,
+          "front": "What ferritin findings are listed in the microcytic anemia differential?",
+          "back": "Normal: 50–200 µg/L.\nIron deficiency: <15.\nThalassemia: increased (50–300).\nSideroblastic anemia: increased (50–300).\nAnemia of chronic disease: normal or increased (30–200)."
+        },
+        {
+          "id": "med01-c044",
+          "type": "fact",
+          "topics": [
+            "4.2.4"
+          ],
+          "sourcePage": 22,
+          "front": "What is the hemoglobin pattern in the four causes of microcytic anemia?",
+          "back": "Iron deficiency: normal.\nThalassemia: abnormal.\nSideroblastic anemia: normal.\nAnemia of chronic disease: normal."
+        },
+        {
+          "id": "med01-c045",
+          "type": "fact",
+          "topics": [
+            "4.2.4"
+          ],
+          "sourcePage": 22,
+          "front": "What are the free erythrocyte protoporphyrin findings in the differential table?",
+          "back": "Iron deficiency: increased.\nThalassemia: normal.\nSideroblastic anemia: increased.\nAnemia of chronic disease: increased."
+        },
+        {
+          "id": "med01-c046",
+          "type": "fact",
+          "topics": [
+            "4.2.4"
+          ],
+          "sourcePage": 22,
+          "front": "What are the RDW findings in the differential table?",
+          "back": "Iron deficiency: increased.\nThalassemia: normal.\nSideroblastic anemia: normal.\nAnemia of chronic disease: normal."
+        },
+        {
+          "id": "med01-c047",
+          "type": "fact",
+          "topics": [
+            "4.2.5"
+          ],
+          "sourcePage": 22,
+          "front": "What does a hypochromic microcytic anemia with decreased serum iron and increased TIBC indicate?",
+          "back": "Iron deficiency anemia."
+        },
+        {
+          "id": "med01-c048",
+          "type": "fact",
+          "topics": [
+            "4.2.5"
+          ],
+          "sourcePage": 22,
+          "front": "What does a hypochromic microcytic anemia with decreased serum iron and decreased TIBC indicate?",
+          "back": "Anemia of chronic disease."
+        },
+        {
+          "id": "med01-c049",
+          "type": "fact",
+          "topics": [
+            "4.3"
+          ],
+          "sourcePage": 22,
+          "front": "Which RDW and free erythrocyte protoporphyrin patterns are typical of microcytic hypochromic anemias?",
+          "back": "Typically associated with a normal or high red cell distribution width.\nAssociated with normal or high free erythrocyte protoporphyrin.\nNot associated with low RDW or low free erythrocyte protoporphyrin."
+        },
+        {
+          "id": "med01-c050",
+          "type": "fact",
+          "topics": [
+            "5.1"
+          ],
+          "sourcePage": 22,
+          "front": "Which vitamin-related or metabolic causes of macrocytic anemia are listed?",
+          "back": "Vitamin B12 deficiency.\nFolic acid deficiency.\nOrotic aciduria.\nNitrous oxide inhalation."
+        },
+        {
+          "id": "med01-c051",
+          "type": "fact",
+          "topics": [
+            "5.1"
+          ],
+          "sourcePage": 22,
+          "front": "Which systemic and other causes of macrocytic anemia are listed?",
+          "back": "Liver disease.\nHypothyroidism.\nThiamine deficiency."
+        },
+        {
+          "id": "med01-c052",
+          "type": "concept",
+          "topics": [
+            "5.2"
+          ],
+          "sourcePage": 20,
+          "front": "What morphologic rule is stated for macrocytic anemia?",
+          "back": "Macrocytic anemia is characterized by an increase in MCV.\nAs a rule it is normochromic because haemoglobin content increases proportionately with erythrocyte volume."
+        },
+        {
+          "id": "med01-c053",
+          "type": "summary",
+          "topics": [
+            "1.1.1",
+            "1.2.1"
+          ],
+          "sourcePage": 20,
+          "front": "Summarize the two red cell indices used for morphologic classification.",
+          "back": "MCV: average RBC size, expressed in fl; normal 79.0–93.3 fl.\nMCHC: average RBC haemoglobin concentration, which describes colour; normal 32.3–35.9 g/dl.\nMCV separates macrocytic, normocytic, and microcytic; MCHC separates hyperchromic, normochromic, and hypochromic."
+        },
+        {
+          "id": "med01-c054",
+          "type": "summary",
+          "topics": [
+            "2.1.1",
+            "2.1.2",
+            "2.2.1",
+            "2.2.2",
+            "2.3.1",
+            "2.3.2"
+          ],
+          "sourcePage": 21,
+          "front": "Summarize the classification of anemia by MCV and RDW.",
+          "back": "Low MCV, normal RDW: thalassemia trait/minor, anemia of chronic disease.\nLow MCV, high RDW: iron deficiency anemia, thalassemia major.\nNormal MCV, normal RDW: hereditary spherocytosis, anemia of chronic disease, non-anemic hemoglobinopathy.\nNormal MCV, high RDW: combined deficiency, anemic hemoglobinopathy (sickle cell), sideroblastic anemia, early iron deficiency.\nHigh MCV, normal RDW: acquired aplastic anemia in adults.\nHigh MCV, high RDW: folate/vitamin B12 deficiency, autoimmune hemolysis."
+        },
+        {
+          "id": "med01-c055",
+          "type": "summary",
+          "topics": [
+            "3.3.1",
+            "3.3.2",
+            "3.3.3",
+            "3.3.4",
+            "3.3.5"
+          ],
+          "sourcePage": 21,
+          "front": "Summarize the low- versus high-reticulocyte classification on page 21.",
+          "back": "Low reticulocyte (hypoproliferative): microcytic — thalassemia, iron deficiency, sideroblastic anemia, lead toxicity, anemia of chronic disease (+/-); normocytic — red cell aplasia, Fanconi's anemia, marrow damage, decreased stimulation; macrocytic — B12/folate deficiency, orotic aciduria, Lesch-Nyhan syndrome, liver disease/alcohol, hypothyroidism, refractory anemia, congenital dyserythropoietic anemia, untreated thiamine deficiency.\nHigh reticulocyte (hyperproliferative): bleeding; hemolysis with intravascular and extravascular causes."
+        },
+        {
+          "id": "med01-c056",
+          "type": "process",
+          "topics": [
+            "4.2.5"
+          ],
+          "sourcePage": 22,
+          "front": "How does the source distinguish iron deficiency anemia from anemia of chronic disease in a hypochromic microcytic anemia?",
+          "back": "Assess serum iron and TIBC.\nDecreased serum iron with increased TIBC: iron deficiency anemia.\nDecreased serum iron with decreased TIBC: anemia of chronic disease."
+        },
+        {
+          "id": "med01-c057",
+          "type": "summary",
+          "topics": [
+            "4.2.1",
+            "4.2.2",
+            "4.2.3",
+            "4.2.4"
+          ],
+          "sourcePage": 22,
+          "front": "Summarize the differential diagnosis table for microcytic hypochromic anemia.",
+          "back": "Iron deficiency: microcytic hypochromic smear, low iron, high TIBC, saturation <10, ferritin <15, abnormal RDW and increased free erythrocyte protoporphyrin.\nThalassemia: microcytic hypochromic smear, normal iron/TIBC, abnormal hemoglobin pattern, normal RDW and normal protoporphyrin.\nSideroblastic anemia: microcytic hypochromic smear, normal iron/TIBC, increased ferritin and protoporphyrin, normal RDW.\nAnemia of chronic disease: usually normocytic normochromic, low iron, low TIBC, normal or increased ferritin, normal RDW."
+        },
+        {
+          "id": "med01-c058",
+          "type": "summary",
+          "topics": [
+            "5.1",
+            "5.2"
+          ],
+          "sourcePage": 22,
+          "front": "Summarize the causes and morphology of macrocytic anemia.",
+          "back": "Causes listed: vitamin B12 deficiency, folic acid deficiency, orotic aciduria, nitrous oxide inhalation, liver disease, hypothyroidism, thiamine deficiency.\nMCV is increased; hemoglobin content rises proportionately with erythrocyte volume, so the anemia is normochromic as a rule."
+        }
+      ]
+    },
+    {
+      "id": "med02",
+      "number": 2,
+      "title": "Hemolytic Anemias and Hemoglobinopathies",
+      "status": "draft",
+      "subject": "Medicine",
+      "excludeExamples": true,
+      "source": {
+        "file": "medicine1_part_1.pdf — Self Assessment & Review Medicine, 9/e, Mudit Khanna",
+        "pageRange": "PDF 23–29 — Essential Revision Notes theory only; MCQs/explanations excluded"
+      },
+      "outline": [
+        {
+          "id": "2.1",
+          "title": "Intravascular vs Extravascular Hemolysis",
+          "children": [
+            {
+              "id": "2.1.1",
+              "title": "General markers of hemolysis"
+            },
+            {
+              "id": "2.1.2",
+              "title": "Intravascular pathway"
+            },
+            {
+              "id": "2.1.3",
+              "title": "Extravascular pathway"
+            },
+            {
+              "id": "2.1.4",
+              "title": "Haptoglobin overlap between the two forms"
+            }
+          ]
+        },
+        {
+          "id": "2.2",
+          "title": "Laboratory Evaluation of Hemolysis",
+          "children": [
+            {
+              "id": "2.2.1",
+              "title": "Blood, reticulocyte, and marrow findings"
+            },
+            {
+              "id": "2.2.2",
+              "title": "Serum and urine findings"
+            }
+          ]
+        },
+        {
+          "id": "2.3",
+          "title": "Causes of Hemolysis",
+          "children": [
+            {
+              "id": "2.3.1",
+              "title": "Causes of intravascular hemolysis"
+            },
+            {
+              "id": "2.3.2",
+              "title": "Causes of extravascular hemolysis"
+            }
+          ]
+        },
+        {
+          "id": "2.4",
+          "title": "General Features of Hemolytic Anemia",
+          "children": [
+            {
+              "id": "2.4.1",
+              "title": "Consequences of red cell breakdown"
+            },
+            {
+              "id": "2.4.2",
+              "title": "Blood film, marrow, and X-ray findings"
+            },
+            {
+              "id": "2.4.3",
+              "title": "Reticulocyte production index"
+            }
+          ]
+        },
+        {
+          "id": "2.5",
+          "title": "Hereditary Spherocytosis",
+          "children": [
+            {
+              "id": "2.5.1",
+              "title": "Pathophysiology and inheritance"
+            },
+            {
+              "id": "2.5.2",
+              "title": "Membrane protein defects"
+            },
+            {
+              "id": "2.5.3",
+              "title": "Clinical and laboratory features"
+            },
+            {
+              "id": "2.5.4",
+              "title": "Osmotic fragility: definition and principle"
+            },
+            {
+              "id": "2.5.5",
+              "title": "Conditions with increased or decreased osmotic fragility"
+            },
+            {
+              "id": "2.5.6",
+              "title": "Treatment"
+            }
+          ]
+        },
+        {
+          "id": "2.6",
+          "title": "Sickle Cell Anemia",
+          "children": [
+            {
+              "id": "2.6.1",
+              "title": "Mutation and hemoglobin variants"
+            },
+            {
+              "id": "2.6.2",
+              "title": "Pathophysiology of sickling"
+            },
+            {
+              "id": "2.6.3",
+              "title": "Chronic clinical manifestations"
+            },
+            {
+              "id": "2.6.4",
+              "title": "Acute crises"
+            },
+            {
+              "id": "2.6.5",
+              "title": "Factors favoring sickling crisis"
+            },
+            {
+              "id": "2.6.6",
+              "title": "Copolymerization with other hemoglobins"
+            }
+          ]
+        },
+        {
+          "id": "2.7",
+          "title": "Thalassemias",
+          "children": [
+            {
+              "id": "2.7.1",
+              "title": "Definition and pathophysiology"
+            },
+            {
+              "id": "2.7.2",
+              "title": "Genetics and mutation site"
+            },
+            {
+              "id": "2.7.3",
+              "title": "Alpha and beta thalassemia traits"
+            },
+            {
+              "id": "2.7.4",
+              "title": "Clinical spectrum of beta thalassemia"
+            },
+            {
+              "id": "2.7.5",
+              "title": "Clinical severity features"
+            },
+            {
+              "id": "2.7.6",
+              "title": "Hematologic findings"
+            },
+            {
+              "id": "2.7.7",
+              "title": "Crew-cut appearance"
+            }
+          ]
+        },
+        {
+          "id": "2.8",
+          "title": "Autoimmune Hemolytic Anemias",
+          "children": [
+            {
+              "id": "2.8.1",
+              "title": "Classification"
+            },
+            {
+              "id": "2.8.2",
+              "title": "Warm antibody hemolytic anemia"
+            },
+            {
+              "id": "2.8.3",
+              "title": "Cold antibody hemolytic anemia"
+            }
+          ]
+        },
+        {
+          "id": "2.9",
+          "title": "Microangiopathic Hemolytic Anemias",
+          "children": [
+            {
+              "id": "2.9.1",
+              "title": "Primary causes"
+            },
+            {
+              "id": "2.9.2",
+              "title": "Secondary causes: DIC-associated"
+            },
+            {
+              "id": "2.9.3",
+              "title": "Secondary causes: hypertension and pregnancy"
+            },
+            {
+              "id": "2.9.4",
+              "title": "Secondary causes: malignancy, drugs, and radiation"
+            },
+            {
+              "id": "2.9.5",
+              "title": "Secondary causes: immune, congenital, and other"
+            },
+            {
+              "id": "2.9.6",
+              "title": "Important causes and thrombocytopenia"
+            }
+          ]
+        },
+        {
+          "id": "2.10",
+          "title": "Evans Syndrome",
+          "children": [
+            {
+              "id": "2.10.1",
+              "title": "Definition and presentation"
+            },
+            {
+              "id": "2.10.2",
+              "title": "Clinical behavior and distinction from MAHA"
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "med02-c001",
+          "type": "concept",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 23,
+          "front": "What general laboratory changes indicate red cell destruction and compensatory erythropoiesis in hemolysis?",
+          "back": "Increased red cell destruction produces anemia.\nIncreased compensatory erythropoiesis produces reticulocytosis.\nSerum LDH levels are increased."
+        },
+        {
+          "id": "med02-c002",
+          "type": "fact",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 23,
+          "front": "Which serum enzyme is elevated as a marker of hemolysis?",
+          "back": "Lactate dehydrogenase (LDH).\nLevels are increased in hemolysis, reflecting red cell destruction and compensatory erythropoiesis."
+        },
+        {
+          "id": "med02-c003",
+          "type": "concept",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 23,
+          "front": "Where are red cells degraded in intravascular hemolysis?",
+          "back": "Within the plasma itself, in contrast to degradation inside reticuloendothelial cells.\nFree hemoglobin is released into the plasma."
+        },
+        {
+          "id": "med02-c004",
+          "type": "process",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 23,
+          "front": "Describe the haptoglobin pathway in intravascular hemolysis.",
+          "back": "Free plasma Hb binds haptoglobin to form an Hb-haptoglobin complex.\nThe complex is rapidly cleared by the liver.\nPlasma haptoglobin levels fall.\nAfter haptoglobin is saturated, the remaining free Hb is oxidized to methemoglobin or hemosiderin."
+        },
+        {
+          "id": "med02-c005",
+          "type": "fact",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 23,
+          "front": "What urinary and plasma products appear after free hemoglobin is released in intravascular hemolysis?",
+          "back": "Methemoglobin in plasma may be excreted by the kidney, causing methemoglobinuria immediately after intravascular hemolysis.\nMethemoglobin dissociates and binds albumin to form methemalbumin, which persists in plasma for about 24 hours and is cleared by hepatocytes.\nRemaining free Hb is excreted as free hemoglobin (hemoglobinuria immediately) or as hemosiderin (hemosiderinuria several days later)."
+        },
+        {
+          "id": "med02-c006",
+          "type": "concept",
+          "topics": [
+            "2.1.3"
+          ],
+          "sourcePage": 23,
+          "front": "Where are red cells degraded in extravascular hemolysis and what examination finding is characteristic?",
+          "back": "Within cells of the reticuloendothelial system, chiefly the spleen and liver.\nSplenomegaly is seen.\nHb is degraded within the reticuloendothelial cells."
+        },
+        {
+          "id": "med02-c007",
+          "type": "process",
+          "topics": [
+            "2.1.3"
+          ],
+          "sourcePage": 23,
+          "front": "What happens to iron and globin during extravascular hemoglobin degradation?",
+          "back": "Iron is conserved and deposited within the bone marrow.\nGlobin degradation increases unconjugated bilirubin.\nUrinary urobilinogen and fecal stercobilinogen are increased."
+        },
+        {
+          "id": "med02-c008",
+          "type": "fact",
+          "topics": [
+            "2.1.4"
+          ],
+          "sourcePage": 23,
+          "front": "Does a decreased haptoglobin level uniquely indicate intravascular hemolysis?",
+          "back": "No. Decreased haptoglobin is more characteristic of intravascular hemolysis but also occurs in extravascular hemolysis.\nEven in extravascular hemolysis, enough Hb leaks from macrophages to bind and deplete haptoglobin."
+        },
+        {
+          "id": "med02-c009",
+          "type": "compare",
+          "topics": [
+            "2.2.1"
+          ],
+          "sourcePage": 23,
+          "front": "Compare routine blood film, reticulocyte count, and marrow findings in the two types of hemolysis.",
+          "back": "Routine blood film: polychromatophilia in both extravascular and intravascular hemolysis.\nReticulocyte count: increased in both.\nBone marrow: erythroid hyperplasia in both."
+        },
+        {
+          "id": "med02-c010",
+          "type": "fact",
+          "topics": [
+            "2.2.1"
+          ],
+          "sourcePage": 23,
+          "front": "What does bone marrow examination show in hemolysis?",
+          "back": "Erythroid hyperplasia.\nThis response is found in both intravascular and extravascular hemolysis."
+        },
+        {
+          "id": "med02-c011",
+          "type": "compare",
+          "topics": [
+            "2.2.2"
+          ],
+          "sourcePage": 23,
+          "front": "Compare serum bilirubin and haptoglobin in intravascular and extravascular hemolysis.",
+          "back": "Bilirubin: unconjugated bilirubin is increased in both forms.\nHaptoglobin: absent or markedly reduced in intravascular hemolysis; also decreased in extravascular hemolysis."
+        },
+        {
+          "id": "med02-c012",
+          "type": "compare",
+          "topics": [
+            "2.2.2"
+          ],
+          "sourcePage": 23,
+          "front": "Compare plasma hemoglobin and LDH in intravascular and extravascular hemolysis.",
+          "back": "Plasma hemoglobin: normal to slightly increased in extravascular hemolysis; markedly increased in intravascular hemolysis.\nLDH: increased in both, to a variable degree."
+        },
+        {
+          "id": "med02-c013",
+          "type": "fact",
+          "topics": [
+            "2.2.2"
+          ],
+          "sourcePage": 23,
+          "front": "Which urine findings distinguish intravascular from extravascular hemolysis?",
+          "back": "Urine bilirubin: absent in both.\nUrine hemosiderin: absent in extravascular; present in intravascular.\nUrine hemoglobin: absent in extravascular; present in intravascular."
+        },
+        {
+          "id": "med02-c014",
+          "type": "fact",
+          "topics": [
+            "2.3.1"
+          ],
+          "sourcePage": 24,
+          "front": "List the transfusion-related and physical causes of intravascular hemolysis.",
+          "back": "Blood transfusion: ABO-mismatched transfusion.\nInfected blood.\nThermal burns.\nSnake bites."
+        },
+        {
+          "id": "med02-c015",
+          "type": "fact",
+          "topics": [
+            "2.3.1"
+          ],
+          "sourcePage": 24,
+          "front": "Which infections can cause intravascular hemolysis?",
+          "back": "Sepsis.\nBacterial or parasitic infections.\nClostridial sepsis.\nMalaria.\nBartonellosis.\nMycoplasma pneumoniae."
+        },
+        {
+          "id": "med02-c016",
+          "type": "fact",
+          "topics": [
+            "2.3.1"
+          ],
+          "sourcePage": 24,
+          "front": "List the mechanical and paroxysmal causes of intravascular hemolysis.",
+          "back": "Mechanical heart valves.\nParoxysmal hemoglobinuria: paroxysmal nocturnal hemoglobinuria (PNH).\nParoxysmal cold hemoglobinuria (PCH)."
+        },
+        {
+          "id": "med02-c017",
+          "type": "fact",
+          "topics": [
+            "2.3.2"
+          ],
+          "sourcePage": 24,
+          "front": "Which infections and drugs cause extravascular hemolysis?",
+          "back": "Blood and viral infections: malaria, Mycoplasma pneumoniae, infectious mononucleosis.\nDrug-induced hemolysis: G6PD/GSH deficiency, autoimmune drug reactions, strong oxidant drugs or chemicals."
+        },
+        {
+          "id": "med02-c018",
+          "type": "fact",
+          "topics": [
+            "2.3.2"
+          ],
+          "sourcePage": 24,
+          "front": "Which immune and hemoglobin disorders cause extravascular hemolysis?",
+          "back": "Autoimmune hemolysis: warm-reacting (IgG) AIHA.\nCold-reacting (IgM) AIHA.\nHemoglobinopathies: thalassemia."
+        },
+        {
+          "id": "med02-c019",
+          "type": "fact",
+          "topics": [
+            "2.3.2"
+          ],
+          "sourcePage": 24,
+          "front": "Which membrane defects and environmental disorders cause extravascular hemolysis?",
+          "back": "Membrane structural defects: hereditary spherocytosis and acanthocytosis.\nEnvironmental disorders: malignancy, typhus, eclampsia or preeclampsia."
+        },
+        {
+          "id": "med02-c020",
+          "type": "concept",
+          "topics": [
+            "2.4.1"
+          ],
+          "sourcePage": 24,
+          "front": "What are the consequences of increased red cell breakdown in hemolytic anemia?",
+          "back": "Hemoglobin falls, producing anemia.\nSerum unconjugated bilirubin rises.\nUrine urobilinogen and fecal stercobilinogen increase.\nHemoglobinemia/hemoglobinuria and methemoglobinemia may appear."
+        },
+        {
+          "id": "med02-c021",
+          "type": "fact",
+          "topics": [
+            "2.4.1"
+          ],
+          "sourcePage": 24,
+          "front": "What happens to hemoglobin-binding proteins, and which enzymes rise, in hemolytic anemia?",
+          "back": "Haptoglobin and hemopexin are reduced or absent.\nHemosiderinuria occurs.\nPlasma lactate dehydrogenase (LDH) and AST are increased."
+        },
+        {
+          "id": "med02-c022",
+          "type": "fact",
+          "topics": [
+            "2.4.2"
+          ],
+          "sourcePage": 24,
+          "front": "What red cell morphological abnormalities appear on the blood film in hemolytic anemia?",
+          "back": "A variety of abnormal red cell forms, including schistocytes and spherocytes.\nMacrocytes, polychromasia, and sometimes nucleated red cells.\nIncreased reticulocytes are associated with an increased MCV."
+        },
+        {
+          "id": "med02-c023",
+          "type": "fact",
+          "topics": [
+            "2.4.2"
+          ],
+          "sourcePage": 24,
+          "front": "Describe the marrow and radiologic findings in hemolytic anemia.",
+          "back": "Bone marrow shows erythroid hyperplasia with raised iron stores.\nX-rays show expansion of marrow space, especially in tubular bones and the skull.\nBossing of the skull may be present."
+        },
+        {
+          "id": "med02-c024",
+          "type": "fact",
+          "topics": [
+            "2.4.3"
+          ],
+          "sourcePage": 24,
+          "front": "Which reticulocyte indices confirm a hemolytic response?",
+          "back": "High reticulocyte count.\nReticulocyte production index greater than 2.5.\nBoth intravascular and extravascular hemolysis show elevated reticulocyte counts."
+        },
+        {
+          "id": "med02-c025",
+          "type": "concept",
+          "topics": [
+            "2.5.1"
+          ],
+          "sourcePage": 25,
+          "front": "What is the membrane pathophysiology of hereditary spherocytosis?",
+          "back": "A defect in one of the red cell membrane cytoskeletal proteins causes loss of membrane.\nThe surface-area-to-volume ratio falls, producing spherocytosis.\nThe abnormal cells are prematurely destroyed."
+        },
+        {
+          "id": "med02-c026",
+          "type": "fact",
+          "topics": [
+            "2.5.1"
+          ],
+          "sourcePage": 25,
+          "front": "How is hereditary spherocytosis inherited?",
+          "back": "As an autosomal dominant trait."
+        },
+        {
+          "id": "med02-c027",
+          "type": "fact",
+          "topics": [
+            "2.5.2"
+          ],
+          "sourcePage": 25,
+          "front": "Which cytoskeletal proteins may be defective in hereditary spherocytosis?",
+          "back": "Ankyrin.\nProtein 3 (anion transport channel).\nSpectrin (spectrin or alpha-spectrin).\nPalladin (protein 4.2)."
+        },
+        {
+          "id": "med02-c028",
+          "type": "fact",
+          "topics": [
+            "2.5.2"
+          ],
+          "sourcePage": 25,
+          "front": "What are the relative frequencies of the membrane protein defects in hereditary spherocytosis?",
+          "back": "Ankyrin is the most common defect, found in about 50% of cases.\nProtein 3 is defective in about 25% of cases.\nSpectrin is defective in most of the remaining 25% of cases.\nPalladin (protein 4.2) is a rare defect but may cause HS."
+        },
+        {
+          "id": "med02-c029",
+          "type": "fact",
+          "topics": [
+            "2.5.3"
+          ],
+          "sourcePage": 25,
+          "front": "What is the characteristic clinical presentation of hereditary spherocytosis?",
+          "back": "Striking splenomegaly.\nThe triad of anemia, splenomegaly, and jaundice."
+        },
+        {
+          "id": "med02-c030",
+          "type": "fact",
+          "topics": [
+            "2.5.3"
+          ],
+          "sourcePage": 25,
+          "front": "Which laboratory abnormalities characterize hereditary spherocytosis?",
+          "back": "Osmotic fragility is increased.\nMCV is decreased.\nMCHC is increased."
+        },
+        {
+          "id": "med02-c031",
+          "type": "definition",
+          "topics": [
+            "2.5.4"
+          ],
+          "sourcePage": 25,
+          "front": "Define osmotic fragility.",
+          "back": "The ease with which red cells are ruptured (hemolysed) when exposed to a hypotonic solution.\nThe osmotic fragility test assesses the integrity of the red cell membrane."
+        },
+        {
+          "id": "med02-c032",
+          "type": "concept",
+          "topics": [
+            "2.5.4"
+          ],
+          "sourcePage": 25,
+          "front": "How does surface-area-to-volume ratio determine osmotic fragility?",
+          "back": "Cells with a lower surface-to-volume ratio, such as spherocytes from any cause, have increased osmotic fragility.\nCells with a higher surface-to-volume ratio, such as thin, hypochromic, or target cells, have decreased osmotic fragility."
+        },
+        {
+          "id": "med02-c033",
+          "type": "fact",
+          "topics": [
+            "2.5.5"
+          ],
+          "sourcePage": 25,
+          "front": "List the conditions with increased osmotic fragility.",
+          "back": "Hereditary spherocytosis.\nAutoimmune hemolytic anemias.\nHemolytic disease of the newborn.\nMalaria.\nSevere pyruvate kinase deficiency.\nAny other condition in which spherocytes are found in the blood."
+        },
+        {
+          "id": "med02-c034",
+          "type": "fact",
+          "topics": [
+            "2.5.5"
+          ],
+          "sourcePage": 25,
+          "front": "List the conditions with decreased osmotic fragility.",
+          "back": "Thalassemia and other hemoglobinopathies (e.g., HbC, HbS).\nIron deficiency anemia.\nSickle cell anemia.\nPost-splenectomy.\nReticulocytosis.\nOther conditions with thin or target cells in the blood."
+        },
+        {
+          "id": "med02-c035",
+          "type": "fact",
+          "topics": [
+            "2.5.6"
+          ],
+          "sourcePage": 25,
+          "front": "What is the treatment of choice for hereditary spherocytosis?",
+          "back": "Splenectomy."
+        },
+        {
+          "id": "med02-c036",
+          "type": "fact",
+          "topics": [
+            "2.6.1"
+          ],
+          "sourcePage": 26,
+          "front": "What mutation causes sickle cell anemia?",
+          "back": "A mutation in the beta-globin gene.\nThe sixth amino acid of the beta chain of HbA (alpha2-beta2) changes from glutamic acid to valine.\nThe resulting hemoglobin is HbS."
+        },
+        {
+          "id": "med02-c037",
+          "type": "fact",
+          "topics": [
+            "2.6.1"
+          ],
+          "sourcePage": 26,
+          "front": "How do HbS, HbC, and HbE differ at their beta-chain mutation sites?",
+          "back": "HbS: glutamate replaced by valine at position 6 of the beta chain.\nHbC: glutamate replaced by lysine at position 6.\nHbE: glutamate replaced by lysine at position 26."
+        },
+        {
+          "id": "med02-c038",
+          "type": "concept",
+          "topics": [
+            "2.6.2"
+          ],
+          "sourcePage": 26,
+          "front": "What two properties of sickled red cells produce the clinical effects of sickle cell disease?",
+          "back": "Increased mechanical fragility, leading to hemolysis.\nIncreased blood viscosity, leading to ischemia and infarction.\nSickle cell disease is characterized by an increased number of sickled cells in the circulation."
+        },
+        {
+          "id": "med02-c039",
+          "type": "fact",
+          "topics": [
+            "2.6.3"
+          ],
+          "sourcePage": 26,
+          "front": "List the chronic clinical manifestations of sickle cell disease.",
+          "back": "Cardiomegaly and heart failure.\nHepatomegaly.\nReactive bone marrow hyperplasia.\nStunted growth, bossing of the skull, and fish-mouth vertebra.\nChronic hemolysis with anemia.\nChronic ischemia and infarction."
+        },
+        {
+          "id": "med02-c040",
+          "type": "fact",
+          "topics": [
+            "2.6.3"
+          ],
+          "sourcePage": 26,
+          "front": "Which organs are affected by chronic ischemia and infarction in sickle cell disease?",
+          "back": "Bone: osteomyelitis.\nSpleen: hyposplenism and autosplenectomy.\nKidney: renal papillary necrosis.\nEye: retinal hemorrhage.\nLung: pulmonary hypertension due to occlusive disease in the lung.\nPriapism."
+        },
+        {
+          "id": "med02-c041",
+          "type": "fact",
+          "topics": [
+            "2.6.4"
+          ],
+          "sourcePage": 26,
+          "front": "What happens in the splenic sequestration crisis of sickle cell disease?",
+          "back": "Sudden massive sequestration of sickled cells in the spleen.\nAcute fall in hemoglobin concentration."
+        },
+        {
+          "id": "med02-c042",
+          "type": "fact",
+          "topics": [
+            "2.6.4"
+          ],
+          "sourcePage": 26,
+          "front": "What acute hemolytic and skeletal events are listed in sickle cell disease?",
+          "back": "Hemolytic crisis: an acute fall in hemoglobin concentration due to increased hemolysis.\nSevere skeletal crisis is listed among the acute manifestations.\nSickled cells raise blood viscosity and cause microvascular occlusion, which underlies acute ischemic events."
+        },
+        {
+          "id": "med02-c043",
+          "type": "fact",
+          "topics": [
+            "2.6.5"
+          ],
+          "sourcePage": 26,
+          "front": "List the factors that favor sickling crisis.",
+          "back": "Hypoxia.\nAcidosis: decreased pH enhances polymerization.\nHigh hemoglobin concentration: higher concentration increases polymerization.\nIncreased 2,3-diphosphoglycerate increases polymerization."
+        },
+        {
+          "id": "med02-c044",
+          "type": "fact",
+          "topics": [
+            "2.6.5"
+          ],
+          "sourcePage": 26,
+          "front": "Why is low fetal hemoglobin protective against sickling?",
+          "back": "HbS polymerization depends on the extent of homology with other hemoglobins.\nHbF has the least ability to copolymerize with HbS, so higher HbF reduces sickling."
+        },
+        {
+          "id": "med02-c045",
+          "type": "fact",
+          "topics": [
+            "2.6.6"
+          ],
+          "sourcePage": 26,
+          "front": "What is the descending order of ability of other hemoglobins to copolymerize with HbS?",
+          "back": "Copolymerization depends on the extent of homology with other hemoglobins.\nDescending order: HbD, HbO-Arab, and HbJ.\nCopolymerization is least with HbF."
+        },
+        {
+          "id": "med02-c046",
+          "type": "definition",
+          "topics": [
+            "2.7.1"
+          ],
+          "sourcePage": 27,
+          "front": "Define the thalassemias.",
+          "back": "Characterized by a decreased rate of synthesis of hemoglobin chains that are structurally normal.\nIn beta thalassemia there is total or near-total absence of beta-chain synthesis, with marked reduction of HbA (alpha2-beta2)."
+        },
+        {
+          "id": "med02-c047",
+          "type": "process",
+          "topics": [
+            "2.7.1"
+          ],
+          "sourcePage": 27,
+          "front": "Explain the chain imbalance and its consequences in beta thalassemia.",
+          "back": "Reduced beta-chain synthesis is accompanied by compensatory increases in other chains.\nGamma-chain synthesis persists in adult life and delta-chain synthesis increases, raising HbA2 (alpha2-delta2).\nExcess unpaired alpha chains precipitate in the cytoplasm of affected red cells.\nThe precipitated chains lead to destruction of red cells."
+        },
+        {
+          "id": "med02-c048",
+          "type": "fact",
+          "topics": [
+            "2.7.2"
+          ],
+          "sourcePage": 27,
+          "front": "Which thalassemia is most common, and what type of mutation predominates?",
+          "back": "Beta thalassemia (Cooley's anemia) is the commonest thalassemia.\nMost types are caused by point mutations affecting one or a few bases."
+        },
+        {
+          "id": "med02-c049",
+          "type": "fact",
+          "topics": [
+            "2.7.2"
+          ],
+          "sourcePage": 27,
+          "front": "What is the most common mutation site in beta thalassemia?",
+          "back": "The intervening sequence 1 (IVS-1), i.e., intron 1."
+        },
+        {
+          "id": "med02-c050",
+          "type": "compare",
+          "topics": [
+            "2.7.3"
+          ],
+          "sourcePage": 27,
+          "front": "What are the features of alpha thalassemia trait?",
+          "back": "HbA is normal.\nHbF is normal.\nMild anemia, mild microcytosis, and mild hypochromia.\nNo need for blood transfusion."
+        },
+        {
+          "id": "med02-c051",
+          "type": "compare",
+          "topics": [
+            "2.7.3"
+          ],
+          "sourcePage": 27,
+          "front": "What are the features of beta thalassemia trait (minor)?",
+          "back": "HbA2 and HbF are increased.\nMild anemia, mild microcytosis, and mild hypochromia.\nNo need for blood transfusion."
+        },
+        {
+          "id": "med02-c052",
+          "type": "fact",
+          "topics": [
+            "2.7.4"
+          ],
+          "sourcePage": 27,
+          "front": "Describe thalassemia major.",
+          "back": "Serious homozygous form.\nPresents in early infancy with hepatosplenomegaly and bony changes.\nInvariably fatal during the first few years of life if untreated.\nRequires repeated blood transfusions."
+        },
+        {
+          "id": "med02-c053",
+          "type": "fact",
+          "topics": [
+            "2.7.4"
+          ],
+          "sourcePage": 27,
+          "front": "Describe thalassemia intermedia.",
+          "back": "Homozygous patients present between the two extremes with variable manifestations.\nProgressive pallor, hepatosplenomegaly, and bony changes.\nHemoglobin is maintained between 6 and 10 g/dL and patients lead a fairly comfortable life.\nMay need occasional transfusions but are not dependent on transfusions for survival."
+        },
+        {
+          "id": "med02-c054",
+          "type": "fact",
+          "topics": [
+            "2.7.4"
+          ],
+          "sourcePage": 27,
+          "front": "Describe thalassemia minor.",
+          "back": "Heterozygous form.\nAsymptomatic; the patient leads a practically normal life apart from mild persistent anemia.\nNot dependent on blood transfusions."
+        },
+        {
+          "id": "med02-c055",
+          "type": "compare",
+          "topics": [
+            "2.7.5"
+          ],
+          "sourcePage": 28,
+          "front": "Compare the clinical severity features across thalassemia major, intermedia, and minor.",
+          "back": "Growth and development: impaired in major; essentially normal in intermedia and minor.\nSplenomegaly: marked in major, less in intermedia, absent in minor.\nJaundice and skeletal changes: pronounced in major, milder in intermedia, absent in minor.\nThalassemia facies: marked in major, present in intermedia, absent in minor."
+        },
+        {
+          "id": "med02-c056",
+          "type": "fact",
+          "topics": [
+            "2.7.6"
+          ],
+          "sourcePage": 28,
+          "front": "Describe the anemia and red cell indices across the thalassemia spectrum.",
+          "back": "Anemia is severe in major (Hb about 7 g/dL), intermediate in intermedia, and mild with Hb above 10 g/dL in minor.\nMicrocytosis and hypochromia are marked.\nBasophilic stippling and anisopoikilocytosis are present."
+        },
+        {
+          "id": "med02-c057",
+          "type": "fact",
+          "topics": [
+            "2.7.6"
+          ],
+          "sourcePage": 28,
+          "front": "Which peripheral blood findings are typical of thalassemia major and intermedia?",
+          "back": "Target cells are present.\nNucleated red cells: numerous in major, occasional in intermedia, absent in minor.\nReticulocytes: about 2–15% in major and 2–10% in intermedia."
+        },
+        {
+          "id": "med02-c058",
+          "type": "compare",
+          "topics": [
+            "2.7.6"
+          ],
+          "sourcePage": 28,
+          "front": "Compare HbF, HbA2, marrow iron, iron overload, and life expectancy in thalassemia.",
+          "back": "HbF: 30–90% in major; 20–100% in intermedia.\nHbA2: below 3.5% in major and intermedia; 3.5–8% in minor (trait).\nBone marrow iron is increased.\nIron overload occurs in major.\nLife expectancy in major is 20–28 years; it is normal in intermedia and minor."
+        },
+        {
+          "id": "med02-c059",
+          "type": "fact",
+          "topics": [
+            "2.7.7"
+          ],
+          "sourcePage": 28,
+          "front": "What is the crew-cut (hair-on-end) appearance and which conditions show it?",
+          "back": "Most characteristic of thalassemia.\nSecond most characteristic in sickle cell anemia.\nMay also be seen in other hemolytic anemias."
+        },
+        {
+          "id": "med02-c060",
+          "type": "concept",
+          "topics": [
+            "2.8.1"
+          ],
+          "sourcePage": 28,
+          "front": "How are autoimmune hemolytic anemias classified?",
+          "back": "According to the reactivity of the autoantibodies.\nWarm antibody hemolytic anemia: antibodies are mainly IgG and warm antibodies are detected in serum at 37 °C.\nCold antibody hemolytic anemia: antibodies react better at temperatures below 37 °C and are mainly IgM, with paroxysmal cold hemoglobinuria as the IgG exception."
+        },
+        {
+          "id": "med02-c061",
+          "type": "fact",
+          "topics": [
+            "2.8.2"
+          ],
+          "sourcePage": 28,
+          "front": "What are the causes of warm antibody autoimmune hemolytic anemia?",
+          "back": "Idiopathic.\nLymphomas: chronic lymphocytic leukemia, non-Hodgkin lymphoma, etc.\nSLE and other collagen vascular diseases.\nMethyldopa."
+        },
+        {
+          "id": "med02-c062",
+          "type": "process",
+          "topics": [
+            "2.8.2"
+          ],
+          "sourcePage": 28,
+          "front": "Describe the mechanism of red cell destruction in warm AIHA.",
+          "back": "Red cells coated with IgG are trapped by splenic macrophages.\nThe trapped cells are destroyed, producing hemolysis."
+        },
+        {
+          "id": "med02-c063",
+          "type": "fact",
+          "topics": [
+            "2.8.2"
+          ],
+          "sourcePage": 28,
+          "front": "How is warm antibody AIHA diagnosed?",
+          "back": "Positive indirect Coombs test at 37 °C demonstrating large quantities of warm antibodies in serum."
+        },
+        {
+          "id": "med02-c064",
+          "type": "fact",
+          "topics": [
+            "2.8.3"
+          ],
+          "sourcePage": 28,
+          "front": "What are the causes of cold antibody hemolytic anemia?",
+          "back": "Acute: Mycoplasma infection and infectious mononucleosis.\nChronic: idiopathic.\nParoxysmal cold hemoglobinuria."
+        },
+        {
+          "id": "med02-c065",
+          "type": "process",
+          "topics": [
+            "2.8.3"
+          ],
+          "sourcePage": 28,
+          "front": "Describe the mechanism of hemolysis in cold antibody AIHA.",
+          "back": "IgM antibodies bind to the red cell surface and cause agglutination.\nThe hemolytic effect is mediated by fixation of C3 on the red cell surface."
+        },
+        {
+          "id": "med02-c066",
+          "type": "fact",
+          "topics": [
+            "2.8.3"
+          ],
+          "sourcePage": 28,
+          "front": "What is the diagnostic finding in cold antibody hemolytic anemia?",
+          "back": "Positive direct Coombs test detecting C3 on the red cell surface.\nThe IgM responsible for coating the red cells is not found on the cells."
+        },
+        {
+          "id": "med02-c067",
+          "type": "fact",
+          "topics": [
+            "2.9.1"
+          ],
+          "sourcePage": 29,
+          "front": "What are the primary causes of microangiopathic hemolytic anemia?",
+          "back": "Thrombotic thrombocytopenic purpura (TTP).\nHemolytic uremic syndrome (HUS)."
+        },
+        {
+          "id": "med02-c068",
+          "type": "fact",
+          "topics": [
+            "2.9.2"
+          ],
+          "sourcePage": 29,
+          "front": "List the secondary causes of MAHA associated with disseminated intravascular coagulation.",
+          "back": "Disseminated intravascular coagulation.\nInfections (sepsis).\nShiga-type toxins.\nHIV.\nSnake venoms.\nAbruptio placentae."
+        },
+        {
+          "id": "med02-c069",
+          "type": "fact",
+          "topics": [
+            "2.9.3"
+          ],
+          "sourcePage": 29,
+          "front": "Which hypertensive and pregnancy-related states cause secondary MAHA?",
+          "back": "Malignant hypertension.\nPreeclampsia and eclampsia.\nHELLP syndrome."
+        },
+        {
+          "id": "med02-c070",
+          "type": "fact",
+          "topics": [
+            "2.9.4"
+          ],
+          "sourcePage": 29,
+          "front": "Which malignancies are associated with microangiopathic hemolytic anemia?",
+          "back": "Adenocarcinomas: gastrointestinal, breast, and lung.\nDisseminated carcinomatosis (metastasis) is listed among the important causes."
+        },
+        {
+          "id": "med02-c071",
+          "type": "fact",
+          "topics": [
+            "2.9.4"
+          ],
+          "sourcePage": 29,
+          "front": "Which drugs and radiation exposures are associated with MAHA?",
+          "back": "Antineoplastic agents.\nRadiation nephritis and chemotherapy in organ transplantation.\nTiclopidine."
+        },
+        {
+          "id": "med02-c072",
+          "type": "fact",
+          "topics": [
+            "2.9.5"
+          ],
+          "sourcePage": 29,
+          "front": "Which immunologic disorders and vasculitides cause secondary MAHA?",
+          "back": "Acute glomerulonephritis.\nSLE.\nPolyarteritis nodosa.\nScleroderma.\nOther vasculitides (collagen vascular disorders)."
+        },
+        {
+          "id": "med02-c073",
+          "type": "fact",
+          "topics": [
+            "2.9.5"
+          ],
+          "sourcePage": 29,
+          "front": "Which congenital vascular malformations cause microangiopathic hemolytic anemia?",
+          "back": "Cavernous hemangioma (Kasabach-Merritt syndrome).\nHemangioendothelioma of the liver."
+        },
+        {
+          "id": "med02-c074",
+          "type": "fact",
+          "topics": [
+            "2.9.5"
+          ],
+          "sourcePage": 29,
+          "front": "What other associations of microangiopathic hemolytic anemia are listed?",
+          "back": "Antiphospholipid syndrome (NMS Medicine).\nProsthetic valves (Harrison/CMDT); pathologically this is macroangiopathic (Rubin's Pathology)."
+        },
+        {
+          "id": "med02-c075",
+          "type": "summary",
+          "topics": [
+            "2.9.6"
+          ],
+          "sourcePage": 29,
+          "front": "Summarize the important causes of microangiopathic hemolytic anemia.",
+          "back": "TTP.\nHUS.\nDIC.\nVasculitis (collagen vascular disorders).\nMalignant hypertension, eclampsia, and HELLP syndrome.\nDisseminated carcinomatosis (metastasis).\nDrugs and radiation.\nAntiphospholipid syndrome.\nProsthetic heart valve."
+        },
+        {
+          "id": "med02-c076",
+          "type": "fact",
+          "topics": [
+            "2.9.6"
+          ],
+          "sourcePage": 29,
+          "front": "What hematologic feature usually accompanies MAHA, and why?",
+          "back": "Thrombocytopenia.\nIt results from consumption of platelets."
+        },
+        {
+          "id": "med02-c077",
+          "type": "definition",
+          "topics": [
+            "2.10.1"
+          ],
+          "sourcePage": 29,
+          "front": "Define Evans syndrome.",
+          "back": "The combination of idiopathic thrombocytopenic purpura (ITP) and autoimmune hemolytic anemia (AIHA) in the absence of an underlying cause or disease."
+        },
+        {
+          "id": "med02-c078",
+          "type": "fact",
+          "topics": [
+            "2.10.1"
+          ],
+          "sourcePage": 29,
+          "front": "How does thrombocytopenia relate to hemolysis in Evans syndrome?",
+          "back": "Thrombocytopenia may coincide with episodes of hemolysis or may arise as separate episodes.\nPresentation is thrombocytopenia plus immune hemolysis."
+        },
+        {
+          "id": "med02-c079",
+          "type": "fact",
+          "topics": [
+            "2.10.2"
+          ],
+          "sourcePage": 29,
+          "front": "What is the age distribution and treatment responsiveness of Evans syndrome?",
+          "back": "More common in children.\nTends to be resistant to the management used for warm AIHA or ITP."
+        },
+        {
+          "id": "med02-c080",
+          "type": "compare",
+          "topics": [
+            "2.10.2"
+          ],
+          "sourcePage": 29,
+          "front": "How does Evans syndrome differ from microangiopathic hemolytic anemia?",
+          "back": "Evans syndrome presents with thrombocytopenia and immune hemolysis.\nIt does not present with microangiopathic features or fragmented red cells."
+        }
+      ]
+    },
+    {
+      "id": "med03",
+      "number": 3,
+      "title": "Bone Marrow Failure, PNH and Myeloproliferative Disorders",
+      "status": "draft",
+      "subject": "Medicine",
+      "excludeExamples": true,
+      "source": {
+        "file": "medicine1_part_1.pdf — Self Assessment & Review Medicine, 9/e, Mudit Khanna",
+        "pageRange": "PDF 30–35 — Essential Revision Notes theory only; MCQs/explanations excluded"
+      },
+      "outline": [
+        {
+          "id": "3.1",
+          "title": "Paroxysmal Nocturnal Hemoglobinuria (PNH)",
+          "children": [
+            {
+              "id": "3.1.1",
+              "title": "Acquired stem-cell disorder and pathogenesis"
+            },
+            {
+              "id": "3.1.2",
+              "title": "Three common manifestations"
+            },
+            {
+              "id": "3.1.3",
+              "title": "Mechanism of nocturnal hemoglobinuria"
+            },
+            {
+              "id": "3.1.4",
+              "title": "DAF and MIRL (CD59) deficiency"
+            },
+            {
+              "id": "3.1.5",
+              "title": "Differential block listed with PNH"
+            }
+          ]
+        },
+        {
+          "id": "3.2",
+          "title": "Differential Diagnosis of Pancytopenia",
+          "children": [
+            {
+              "id": "3.2.1",
+              "title": "Pancytopenia with hypocellular bone marrow"
+            },
+            {
+              "id": "3.2.2",
+              "title": "Pancytopenia with cellular bone marrow"
+            }
+          ]
+        },
+        {
+          "id": "3.3",
+          "title": "Fanconi Anemia",
+          "children": [
+            {
+              "id": "3.3.1",
+              "title": "Inheritance and diagnosis"
+            },
+            {
+              "id": "3.3.2",
+              "title": "Progressive bone marrow failure"
+            },
+            {
+              "id": "3.3.3",
+              "title": "Congenital anomalies"
+            },
+            {
+              "id": "3.3.4",
+              "title": "Risk of malignancy"
+            }
+          ]
+        },
+        {
+          "id": "3.4",
+          "title": "Sideroblastic Anemia",
+          "children": [
+            {
+              "id": "3.4.1",
+              "title": "Sideroblasts"
+            },
+            {
+              "id": "3.4.2",
+              "title": "Ringed sideroblasts"
+            },
+            {
+              "id": "3.4.3",
+              "title": "Causes of sideroblastic anemia"
+            }
+          ]
+        },
+        {
+          "id": "3.5",
+          "title": "Myeloproliferative Disorders: General Features",
+          "children": [
+            {
+              "id": "3.5.1",
+              "title": "Classical members and comparison"
+            }
+          ]
+        },
+        {
+          "id": "3.6",
+          "title": "Polycythemia Vera",
+          "children": [
+            {
+              "id": "3.6.1",
+              "title": "Nature of the disorder"
+            },
+            {
+              "id": "3.6.2",
+              "title": "Clinical features from erythrocytosis and hyperviscosity"
+            },
+            {
+              "id": "3.6.3",
+              "title": "Clinical features from histamine and megakaryocytic elements"
+            },
+            {
+              "id": "3.6.4",
+              "title": "Clinical features from platelet abnormalities"
+            },
+            {
+              "id": "3.6.5",
+              "title": "Laboratory features"
+            },
+            {
+              "id": "3.6.6",
+              "title": "Major and minor criteria across classification systems"
+            },
+            {
+              "id": "3.6.7",
+              "title": "Revised WHO criteria (proposed)"
+            },
+            {
+              "id": "3.6.8",
+              "title": "WHO criteria (prior to proposed new criterion)"
+            },
+            {
+              "id": "3.6.9",
+              "title": "Tumors associated with polycythemia vera"
+            }
+          ]
+        },
+        {
+          "id": "3.7",
+          "title": "Myelofibrosis",
+          "children": [
+            {
+              "id": "3.7.1",
+              "title": "Marrow fibrosis, blood findings and dry tap"
+            },
+            {
+              "id": "3.7.2",
+              "title": "Extramedullary hematopoiesis"
+            },
+            {
+              "id": "3.7.3",
+              "title": "Characteristic triad and diagnosis"
+            }
+          ]
+        },
+        {
+          "id": "3.8",
+          "title": "Essential Thrombocytosis",
+          "children": [
+            {
+              "id": "3.8.1",
+              "title": "Definition"
+            },
+            {
+              "id": "3.8.2",
+              "title": "Clinical features"
+            },
+            {
+              "id": "3.8.3",
+              "title": "Laboratory diagnostic features"
+            },
+            {
+              "id": "3.8.4",
+              "title": "Management"
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "med03-c001",
+          "type": "definition",
+          "topics": [
+            "3.1.1"
+          ],
+          "sourcePage": 30,
+          "front": "What is paroxysmal nocturnal hemoglobinuria (PNH)?",
+          "back": "An acquired intravascular disorder, acquired at the stem cell level, characterized by undue sensitivity of the red blood cell membrane to complement."
+        },
+        {
+          "id": "med03-c002",
+          "type": "concept",
+          "topics": [
+            "3.1.1"
+          ],
+          "sourcePage": 30,
+          "front": "What is the basic defect underlying PNH?",
+          "back": "An acquired defect at stem cell level leads to deficient red cell membrane complement-regulatory factors.\nThis results in increased complement activation and complement-mediated red cell destruction."
+        },
+        {
+          "id": "med03-c003",
+          "type": "summary",
+          "topics": [
+            "3.1.2"
+          ],
+          "sourcePage": 30,
+          "front": "What are the three common manifestations of PNH?",
+          "back": "Hemolytic anemia\nVenous thrombosis\nDeficient hematopoiesis (pancytopenia or aplastic anemia)"
+        },
+        {
+          "id": "med03-c004",
+          "type": "concept",
+          "topics": [
+            "3.1.2"
+          ],
+          "sourcePage": 30,
+          "front": "How does hemolytic anemia arise in PNH, and what laboratory features are listed?",
+          "back": "Due to increased complement activation and complement-mediated destruction of red cells.\nFeatures: hemoglobinemia, hemoglobinuria, hemosiderinuria, elevated LDH."
+        },
+        {
+          "id": "med03-c005",
+          "type": "concept",
+          "topics": [
+            "3.1.2"
+          ],
+          "sourcePage": 30,
+          "front": "Why does venous thrombosis occur in PNH despite thrombocytopenia?",
+          "back": "Complement activation indirectly stimulates platelet aggregation and hypercoagulability, so thrombosis occurs despite thrombocytopenia."
+        },
+        {
+          "id": "med03-c006",
+          "type": "concept",
+          "topics": [
+            "3.1.2"
+          ],
+          "sourcePage": 30,
+          "front": "What causes deficient hematopoiesis in PNH?",
+          "back": "Probably due to the defect at stem cell level.\nResults in pancytopenia/aplastic anemia with reduction of granulocytes and thrombocytes (thrombocytopenia)."
+        },
+        {
+          "id": "med03-c007",
+          "type": "process",
+          "topics": [
+            "3.1.3"
+          ],
+          "sourcePage": 30,
+          "front": "Why is PNH called paroxysmal nocturnal hemoglobinuria? Trace the mechanism.",
+          "back": "Basis: acidification enhances complement activity.\nDuring sleep (nocturnal): relative hypoxia leads to acidosis, which enhances complement activity.\nComplement-mediated destruction of red cells follows, producing a paroxysm of hemoglobinuria identified by brown urine passed in the morning."
+        },
+        {
+          "id": "med03-c008",
+          "type": "fact",
+          "topics": [
+            "3.1.4"
+          ],
+          "sourcePage": 30,
+          "front": "Which two red cell membrane factors are deficient in PNH?",
+          "back": "DAF: decay accelerating factor, which activates decay of complement.\nMIRL (CD59): inhibits the membrane attack complex.\nDeficiency of both results in increased complement activation."
+        },
+        {
+          "id": "med03-c009",
+          "type": "concept",
+          "topics": [
+            "3.1.4"
+          ],
+          "sourcePage": 30,
+          "front": "How does DAF deficiency contribute to PNH?",
+          "back": "DAF normally activates decay of complement. Its loss permits increased complement activation on the red cell membrane."
+        },
+        {
+          "id": "med03-c010",
+          "type": "concept",
+          "topics": [
+            "3.1.4"
+          ],
+          "sourcePage": 30,
+          "front": "How does MIRL (CD59) deficiency contribute to PNH?",
+          "back": "MIRL/CD59 normally inhibits the membrane attack complex. Its deficiency permits complement-mediated red cell destruction."
+        },
+        {
+          "id": "med03-c011",
+          "type": "fact",
+          "topics": [
+            "3.1.5"
+          ],
+          "sourcePage": 30,
+          "front": "Which conditions appear in the differential block at the end of the PNH page?",
+          "back": "PNH, CML and infection are listed in one column; polycythemia and leukemoid reaction in the other."
+        },
+        {
+          "id": "med03-c012",
+          "type": "concept",
+          "topics": [
+            "3.2.1"
+          ],
+          "sourcePage": 31,
+          "front": "What causes pancytopenia with a hypocellular bone marrow?",
+          "back": "Acquired aplastic anemia\nConstitutional aplastic anemia (Fanconi anemia, dyskeratosis congenita)\nSome myelodysplastic syndromes\nRare aleukemic leukemia (AML), some acute lymphoid leukemia, some lymphomas of bone marrow\nQ fever, Legionnaires disease, anorexia nervosa or starvation, Mycobacteria"
+        },
+        {
+          "id": "med03-c013",
+          "type": "fact",
+          "topics": [
+            "3.2.1"
+          ],
+          "sourcePage": 31,
+          "front": "Which constitutional aplastic anemias present with hypocellular marrow and cytopenia?",
+          "back": "Fanconi anemia and dyskeratosis congenita."
+        },
+        {
+          "id": "med03-c014",
+          "type": "concept",
+          "topics": [
+            "3.2.2"
+          ],
+          "sourcePage": 31,
+          "front": "What causes pancytopenia with a cellular bone marrow?",
+          "back": "Primary bone marrow diseases: myelodysplastic syndromes, PNH, myelofibrosis, some aleukemic leukemia, myelophthisis, bone marrow lymphoma, hairy cell leukemia.\nOther causes: systemic lupus erythematosus, hypersplenism, B12 or folate deficiency (megaloblastic anemia), overwhelming infection, alcohol, brucellosis, sarcoidosis, tuberculosis, leishmaniasis."
+        },
+        {
+          "id": "med03-c015",
+          "type": "compare",
+          "topics": [
+            "3.2.1",
+            "3.2.2"
+          ],
+          "sourcePage": 31,
+          "front": "How is the differential diagnosis of pancytopenia divided by marrow cellularity?",
+          "back": "Hypocellular marrow: acquired and constitutional aplastic anemia, some MDS, aleukemic leukemia, some ALL, marrow lymphomas, Q fever, Legionnaires disease, starvation/anorexia nervosa, Mycobacteria.\nCellular marrow: MDS, PNH, myelofibrosis, aleukemic leukemia, myelophthisis, marrow lymphoma, hairy cell leukemia, SLE, hypersplenism, megaloblastic anemia, overwhelming infection, alcohol, brucellosis, sarcoidosis, tuberculosis, leishmaniasis."
+        },
+        {
+          "id": "med03-c016",
+          "type": "fact",
+          "topics": [
+            "3.2.2"
+          ],
+          "sourcePage": 31,
+          "front": "Which primary bone marrow diseases produce pancytopenia with a cellular marrow?",
+          "back": "Myelodysplastic syndromes, paroxysmal nocturnal hemoglobinuria, myelofibrosis, some aleukemic leukemia, myelophthisis, bone marrow lymphoma and hairy cell leukemia."
+        },
+        {
+          "id": "med03-c017",
+          "type": "fact",
+          "topics": [
+            "3.2.2"
+          ],
+          "sourcePage": 31,
+          "front": "Which systemic or non-marrow conditions produce pancytopenia with a cellular marrow?",
+          "back": "Systemic lupus erythematosus, hypersplenism, B12 or folate deficiency (megaloblastic anemia), overwhelming infection, alcohol, brucellosis, sarcoidosis, tuberculosis and leishmaniasis."
+        },
+        {
+          "id": "med03-c018",
+          "type": "fact",
+          "topics": [
+            "3.3.1"
+          ],
+          "sourcePage": 31,
+          "front": "What is the inheritance of Fanconi anemia?",
+          "back": "Autosomal recessive, with a positive family history. It is an inherited chromosomal instability syndrome."
+        },
+        {
+          "id": "med03-c019",
+          "type": "process",
+          "topics": [
+            "3.3.1"
+          ],
+          "sourcePage": 31,
+          "front": "How is the diagnosis of Fanconi anemia established?",
+          "back": "By demonstrating increased chromosomal breakage in the presence of DNA cross-linking agents such as mitomycin C (MMC) or diepoxybutane (DEB)."
+        },
+        {
+          "id": "med03-c020",
+          "type": "concept",
+          "topics": [
+            "3.3.2"
+          ],
+          "sourcePage": 31,
+          "front": "What hematologic finding defines progressive bone marrow failure in Fanconi anemia?",
+          "back": "Pancytopenia with a hypocellular marrow.\nAplastic anemia, usually normochromic-normocytic but may be normochromic macrocytic."
+        },
+        {
+          "id": "med03-c021",
+          "type": "summary",
+          "topics": [
+            "3.3.3"
+          ],
+          "sourcePage": 31,
+          "front": "What congenital anomaly groups are associated with Fanconi anemia?",
+          "back": "Skeletal, skin, genitourinary, craniofacial, gastrointestinal malformations and cardiac malformations."
+        },
+        {
+          "id": "med03-c022",
+          "type": "fact",
+          "topics": [
+            "3.3.3"
+          ],
+          "sourcePage": 31,
+          "front": "Which skeletal anomalies occur in Fanconi anemia?",
+          "back": "Short stature, radial ray anomalies (thumbs, hands, radii) and hip and spine anomalies."
+        },
+        {
+          "id": "med03-c023",
+          "type": "fact",
+          "topics": [
+            "3.3.3"
+          ],
+          "sourcePage": 31,
+          "front": "Which skin and genitourinary anomalies occur in Fanconi anemia?",
+          "back": "Skin: hyperpigmentation (cafe au lait spots) and hypopigmentation.\nGenitourinary: renal structural anomalies and hypogonadism."
+        },
+        {
+          "id": "med03-c024",
+          "type": "fact",
+          "topics": [
+            "3.3.3"
+          ],
+          "sourcePage": 31,
+          "front": "Which craniofacial anomalies occur in Fanconi anemia?",
+          "back": "Microcephaly; ophthalmic anomalies (microphthalmia, epicanthal folds); otic anomalies (external and middle ear anomalies, deafness)."
+        },
+        {
+          "id": "med03-c025",
+          "type": "fact",
+          "topics": [
+            "3.3.3"
+          ],
+          "sourcePage": 31,
+          "front": "Which gastrointestinal and cardiac malformations occur in Fanconi anemia?",
+          "back": "Esophageal atresia or tracheoesophageal fistula, imperforate anus and cardiac malformations."
+        },
+        {
+          "id": "med03-c026",
+          "type": "concept",
+          "topics": [
+            "3.3.4"
+          ],
+          "sourcePage": 31,
+          "front": "Why is Fanconi anemia regarded as a premalignant state?",
+          "back": "Patients have an increased risk of myelodysplasia (MDS) or acute myeloid leukemia (AML), and an increased risk of solid tumours, particularly squamous cell carcinoma of the head and neck, skin, GIT and genital tract."
+        },
+        {
+          "id": "med03-c027",
+          "type": "fact",
+          "topics": [
+            "3.3.4"
+          ],
+          "sourcePage": 31,
+          "front": "Which solid tumours are patients with Fanconi anemia at increased risk of developing?",
+          "back": "Particularly squamous cell carcinoma of the head and neck, skin, gastrointestinal tract and genital tract."
+        },
+        {
+          "id": "med03-c028",
+          "type": "definition",
+          "topics": [
+            "3.4.1"
+          ],
+          "sourcePage": 32,
+          "front": "What is a sideroblast?",
+          "back": "An erythroblast (red blood cell precursor) containing iron (ferritin) granules in its cytoplasm.\nThe iron is normally located in the cytoplasm away from the nucleus and stains positive for Prussian blue."
+        },
+        {
+          "id": "med03-c029",
+          "type": "fact",
+          "topics": [
+            "3.4.1"
+          ],
+          "sourcePage": 32,
+          "front": "What proportion of red cell precursors are sideroblasts in normal bone marrow?",
+          "back": "20 to 40 percent, approximately one-third of red blood cell precursors."
+        },
+        {
+          "id": "med03-c030",
+          "type": "definition",
+          "topics": [
+            "3.4.2"
+          ],
+          "sourcePage": 32,
+          "front": "What is a ringed sideroblast?",
+          "back": "An abnormal sideroblast seen in disturbed haem synthesis, in which iron accumulates within mitochondria, surrounds the nucleus and does not progress into haemoglobin.\nDefined as a nucleated red cell (erythroblast) with five or more granules encircling at least two-thirds of the nucleus."
+        },
+        {
+          "id": "med03-c031",
+          "type": "concept",
+          "topics": [
+            "3.4.2"
+          ],
+          "sourcePage": 32,
+          "front": "What is the significance of ringed sideroblasts?",
+          "back": "They are pathological; their presence suggests sideroblastic anemia, whether congenital or acquired.\nThey may be seen in all causes of sideroblastic anemia but are most often associated with myelodysplastic syndromes."
+        },
+        {
+          "id": "med03-c032",
+          "type": "summary",
+          "topics": [
+            "3.4.3"
+          ],
+          "sourcePage": 32,
+          "front": "What are the causes of sideroblastic anemia with ringed sideroblasts in marrow?",
+          "back": "1. Hereditary sideroblastic anemia.\n2. Acquired: primary (myelodysplastic syndromes); secondary to alcohol, lead, zinc, drugs (INH, pyrazinamide, cycloserine, chloramphenicol), other myeloproliferative disorders and myelofibrosis.\n3. Others (rare): thiamine responsive megaloblastic anemia, Pearson syndrome, hypothermia, certain hemoglobinopathies."
+        },
+        {
+          "id": "med03-c033",
+          "type": "fact",
+          "topics": [
+            "3.4.3"
+          ],
+          "sourcePage": 32,
+          "front": "Which toxins and drugs cause secondary acquired sideroblastic anemia?",
+          "back": "Alcohol, lead, zinc and drugs such as INH, pyrazinamide, cycloserine and chloramphenicol."
+        },
+        {
+          "id": "med03-c034",
+          "type": "fact",
+          "topics": [
+            "3.4.3"
+          ],
+          "sourcePage": 32,
+          "front": "Which rare conditions are listed under others as causes of sideroblastic anemia?",
+          "back": "Thiamine responsive megaloblastic anemia, Pearson syndrome, hypothermia and certain hemoglobinopathies."
+        },
+        {
+          "id": "med03-c035",
+          "type": "fact",
+          "topics": [
+            "3.5.1"
+          ],
+          "sourcePage": 33,
+          "front": "Which disorders are classically included among the myeloproliferative disorders?",
+          "back": "Polycythemia vera, idiopathic myelofibrosis, essential thrombocytosis and chronic myeloid leukemia."
+        },
+        {
+          "id": "med03-c036",
+          "type": "fact",
+          "topics": [
+            "3.5.1"
+          ],
+          "sourcePage": 33,
+          "front": "Which conditions and parameters are compared in the myeloproliferative disorders table?",
+          "back": "The table compares CML, myelofibrosis and polycythemia with respect to WBC count and hematocrit/red cell mass."
+        },
+        {
+          "id": "med03-c037",
+          "type": "definition",
+          "topics": [
+            "3.6.1"
+          ],
+          "sourcePage": 33,
+          "front": "What is polycythemia vera?",
+          "back": "A neoplasm arising from erythroid elements."
+        },
+        {
+          "id": "med03-c038",
+          "type": "concept",
+          "topics": [
+            "3.6.2"
+          ],
+          "sourcePage": 33,
+          "front": "Which clinical features of polycythemia vera result from erythrocytosis and increased blood viscosity?",
+          "back": "Patients are plethoric or cyanotic.\nNeurological symptoms: vertigo, tinnitus, headache, dizziness, visual disturbance.\nDimness of vision from blockade of retinal vessels.\nSystolic hypertension and splenomegaly."
+        },
+        {
+          "id": "med03-c039",
+          "type": "fact",
+          "topics": [
+            "3.6.2"
+          ],
+          "sourcePage": 33,
+          "front": "What causes the visual disturbance of dimness of vision in polycythemia vera?",
+          "back": "Blockade of retinal vessels."
+        },
+        {
+          "id": "med03-c040",
+          "type": "concept",
+          "topics": [
+            "3.6.3"
+          ],
+          "sourcePage": 33,
+          "front": "Which clinical features result from increased megakaryocytic elements and histamine secretion in polycythemia vera?",
+          "back": "Intense pruritus and peptic ulceration."
+        },
+        {
+          "id": "med03-c041",
+          "type": "concept",
+          "topics": [
+            "3.6.4"
+          ],
+          "sourcePage": 33,
+          "front": "What platelet-related problems occur in polycythemia vera?",
+          "back": "Increased platelets with abnormal platelet function (along with hyperviscosity), giving an increased risk of both thrombosis and bleeding."
+        },
+        {
+          "id": "med03-c042",
+          "type": "fact",
+          "topics": [
+            "3.6.4"
+          ],
+          "sourcePage": 33,
+          "front": "Which thrombotic events are listed in polycythemia vera?",
+          "back": "Deep vein thrombosis, hepatic vein thrombosis (Budd-Chiari syndrome), portal and mesenteric venous thrombosis (the most common), myocardial infarction, stroke and digital ischemia."
+        },
+        {
+          "id": "med03-c043",
+          "type": "fact",
+          "topics": [
+            "3.6.4"
+          ],
+          "sourcePage": 33,
+          "front": "What is the most common site of bleeding in polycythemia vera?",
+          "back": "Bleeding peptic ulcer."
+        },
+        {
+          "id": "med03-c044",
+          "type": "summary",
+          "topics": [
+            "3.6.5"
+          ],
+          "sourcePage": 33,
+          "front": "What are the laboratory features of polycythemia vera?",
+          "back": "Increased red cell count, hemoglobin and hematocrit; MCV, MCH and MCHC normal or low.\nIncreased blood viscosity; reduced ESR.\nMild to moderate leukocytosis with essentially normal neutrophils; increased leukocyte alkaline phosphatase.\nIncreased transcobalamin I and vitamin B12 binding capacity.\nIncreased platelets with functional abnormalities in about 80 percent of patients and abnormal platelet aggregation studies."
+        },
+        {
+          "id": "med03-c045",
+          "type": "fact",
+          "topics": [
+            "3.6.5"
+          ],
+          "sourcePage": 33,
+          "front": "What happens to the ESR in polycythemia vera?",
+          "back": "ESR is reduced."
+        },
+        {
+          "id": "med03-c046",
+          "type": "fact",
+          "topics": [
+            "3.6.5"
+          ],
+          "sourcePage": 33,
+          "front": "What are the neutrophil findings in polycythemia vera, and what is their implication?",
+          "back": "Neutrophils are essentially normal, and hence there is no increased predisposition to infection."
+        },
+        {
+          "id": "med03-c047",
+          "type": "fact",
+          "topics": [
+            "3.6.5"
+          ],
+          "sourcePage": 33,
+          "front": "Which vitamin B12 related laboratory changes occur in polycythemia vera?",
+          "back": "Increased transcobalamin I and increased vitamin B12 binding capacity."
+        },
+        {
+          "id": "med03-c048",
+          "type": "fact",
+          "topics": [
+            "3.6.5"
+          ],
+          "sourcePage": 33,
+          "front": "What platelet laboratory abnormalities are found in polycythemia vera?",
+          "back": "Increased platelet count, platelet functional abnormalities in about 80 percent of patients and abnormal platelet aggregation studies."
+        },
+        {
+          "id": "med03-c049",
+          "type": "summary",
+          "topics": [
+            "3.6.6"
+          ],
+          "sourcePage": 34,
+          "front": "Which major criteria are used for the diagnosis of polycythemia vera across the classification systems listed?",
+          "back": "JAK2 V617F mutation.\nHemoglobin greater than 18.5 g/dL in men and 16.5 g/dL in women.\nIncreased red blood cell mass.\nSplenomegaly.\nClonal genetic abnormality other than Philadelphia chromosome or BCR/ABL in marrow.\nEndogenous erythroid colony formation in vitro.\nNormal arterial O2 saturation (above 92 percent)."
+        },
+        {
+          "id": "med03-c050",
+          "type": "summary",
+          "topics": [
+            "3.6.6"
+          ],
+          "sourcePage": 34,
+          "front": "Which minor criteria are used for the diagnosis of polycythemia vera across the classification systems listed?",
+          "back": "Thrombocytosis (platelets above 400 x 10^9/L).\nLeukocytosis (WBC above 12 x 10^9/L).\nIncreased leukocyte alkaline phosphatase (above 100 U).\nIncreased serum B12/binders.\nLow serum erythropoietin levels.\nPanmyelosis with prominent erythroid and megakaryocytic hyperplasia on bone marrow biopsy."
+        },
+        {
+          "id": "med03-c051",
+          "type": "fact",
+          "topics": [
+            "3.6.6"
+          ],
+          "sourcePage": 34,
+          "front": "What serum B12 and binder values are listed as a minor criterion for polycythemia vera?",
+          "back": "B12 above 900 pg/mL and unbound B12 binding capacity above 2200 pg/mL."
+        },
+        {
+          "id": "med03-c052",
+          "type": "fact",
+          "topics": [
+            "3.6.7"
+          ],
+          "sourcePage": 34,
+          "front": "What are the major criteria in the proposed revised WHO criteria for polycythemia vera?",
+          "back": "Hemoglobin above 18.5 g/dL in men or above 16.5 g/dL in women, or evidence of increased red cell volume.\nPresence of JAK2 mutation."
+        },
+        {
+          "id": "med03-c053",
+          "type": "fact",
+          "topics": [
+            "3.6.7"
+          ],
+          "sourcePage": 34,
+          "front": "What are the minor criteria in the proposed revised WHO criteria for polycythemia vera?",
+          "back": "Hypercellular bone marrow biopsy with panmyelosis showing prominent erythroid, granulocytic and megakaryocytic hyperplasia.\nLow serum erythropoietin level.\nEndogenous erythroid colony formation in vitro."
+        },
+        {
+          "id": "med03-c054",
+          "type": "compare",
+          "topics": [
+            "3.6.7",
+            "3.6.8"
+          ],
+          "sourcePage": 34,
+          "front": "How do the major criteria differ between the proposed revised WHO and the prior WHO criteria for polycythemia vera?",
+          "back": "Proposed revised: hemoglobin thresholds or increased red cell volume plus presence of JAK2 mutation.\nPrior: red cell mass above 25 percent of mean normal predicted value or hemoglobin thresholds, plus splenomegaly on palpation, a clonal genetic abnormality other than Philadelphia chromosome or BCR/ABL in marrow, and endogenous erythroid colony formation in vitro."
+        },
+        {
+          "id": "med03-c055",
+          "type": "fact",
+          "topics": [
+            "3.6.8"
+          ],
+          "sourcePage": 34,
+          "front": "What are the major criteria in the prior WHO criteria for polycythemia vera?",
+          "back": "Red blood cell mass above 25 percent of mean normal predicted value, or hemoglobin above 18.5 g/dL in men and 16.5 g/dL in women.\nSplenomegaly on palpation.\nClonal genetic abnormality other than Philadelphia chromosome or BCR/ABL in marrow.\nEndogenous erythroid colony formation in vitro."
+        },
+        {
+          "id": "med03-c056",
+          "type": "fact",
+          "topics": [
+            "3.6.8"
+          ],
+          "sourcePage": 34,
+          "front": "What are the minor criteria in the prior WHO criteria for polycythemia vera?",
+          "back": "Thrombocytosis above 400 x 10^9/L.\nWBC above 12 x 10^9/L.\nPanmyelosis with prominent erythroid and megakaryocytic hyperplasia on bone marrow biopsy.\nLow serum erythropoietin levels."
+        },
+        {
+          "id": "med03-c057",
+          "type": "fact",
+          "topics": [
+            "3.6.9"
+          ],
+          "sourcePage": 34,
+          "front": "Which tumors are associated with polycythemia vera?",
+          "back": "Hypernephroma, hepatoma, adrenal adenoma, pheochromocytoma, cerebellar hemangioblastoma, uterine fibromyoma and meningioma."
+        },
+        {
+          "id": "med03-c058",
+          "type": "concept",
+          "topics": [
+            "3.7.1"
+          ],
+          "sourcePage": 35,
+          "front": "What is myelofibrosis?",
+          "back": "Extensive fibrosis of the bone marrow as part of a myelofibrotic/proliferative disorder."
+        },
+        {
+          "id": "med03-c059",
+          "type": "fact",
+          "topics": [
+            "3.7.1"
+          ],
+          "sourcePage": 35,
+          "front": "Which abnormal blood cells accompany myelofibrosis?",
+          "back": "Immature leukocytes, immature (nucleated) red cells and abnormal large platelets (dysplastic megakaryocytes)."
+        },
+        {
+          "id": "med03-c060",
+          "type": "fact",
+          "topics": [
+            "3.7.1"
+          ],
+          "sourcePage": 35,
+          "front": "Why does bone marrow aspiration produce a dry tap in myelofibrosis?",
+          "back": "Aspiration is unsuccessful because the marrow is extensively fibrosed."
+        },
+        {
+          "id": "med03-c061",
+          "type": "process",
+          "topics": [
+            "3.7.2"
+          ],
+          "sourcePage": 35,
+          "front": "Trace the consequences of ineffective erythropoiesis in myelofibrosis.",
+          "back": "Ineffective erythropoiesis in the marrow leads to compensatory hematopoiesis at extramedullary sites.\nThis produces a leukoerythroblastic picture and tear drop poikilocytes, since red cells made at these abnormal sites have abnormal and variable shapes.\nThe spleen is enlarged as it is the principal site of extramedullary hematopoiesis."
+        },
+        {
+          "id": "med03-c062",
+          "type": "summary",
+          "topics": [
+            "3.7.3"
+          ],
+          "sourcePage": 35,
+          "front": "What is the characteristic laboratory triad of myelofibrosis?",
+          "back": "Tear drop poikilocytes.\nLeukoerythroblastic blood, meaning immature leukocytes and nucleated (immature) red cells.\nGiant abnormal platelets."
+        },
+        {
+          "id": "med03-c063",
+          "type": "fact",
+          "topics": [
+            "3.7.3"
+          ],
+          "sourcePage": 35,
+          "front": "What is essential for the diagnosis of myelofibrosis?",
+          "back": "Biopsy of the bone marrow to detect reticular or collagen fibrosis is essential for diagnosis."
+        },
+        {
+          "id": "med03-c064",
+          "type": "definition",
+          "topics": [
+            "3.8.1"
+          ],
+          "sourcePage": 35,
+          "front": "What is essential thrombocytosis?",
+          "back": "Also termed essential thrombocythaemia or hemorrhagic thrombocythaemia; a myeloproliferative disorder characterized by overproduction of platelets without a definable cause."
+        },
+        {
+          "id": "med03-c065",
+          "type": "summary",
+          "topics": [
+            "3.8.2"
+          ],
+          "sourcePage": 35,
+          "front": "What clinical features characterize essential thrombocytosis?",
+          "back": "Symptoms: hemorrhagic tendencies such as easy bruising; thrombotic tendencies with microvascular occlusions, including erythromelalgia, migraine (headache) and transient ischemic attacks.\nSign: splenomegaly, usually mild or moderate; massive splenomegaly is more characteristic of other myeloproliferative disorders."
+        },
+        {
+          "id": "med03-c066",
+          "type": "summary",
+          "topics": [
+            "3.8.3"
+          ],
+          "sourcePage": 35,
+          "front": "What are the laboratory diagnostic features of essential thrombocytosis?",
+          "back": "Elevated platelet count is the hallmark (often above 1000 x 10^9/L).\nHematocrit and red cell morphology are normal.\nWBC count mildly elevated or normal (mild neutrophilic leukocytosis).\nLAP normal or elevated.\nPhiladelphia chromosome absent."
+        },
+        {
+          "id": "med03-c067",
+          "type": "compare",
+          "topics": [
+            "3.8.4"
+          ],
+          "sourcePage": 35,
+          "front": "How is an elevated platelet count managed in asymptomatic versus symptomatic essential thrombocytosis?",
+          "back": "Asymptomatic: no therapy is recommended, because the agents used place the patient at risk of developing acute leukemia.\nSymptomatic: symptoms must clearly be identified as a consequence of the elevated platelet count, then platelet reduction is undertaken."
+        },
+        {
+          "id": "med03-c068",
+          "type": "fact",
+          "topics": [
+            "3.8.4"
+          ],
+          "sourcePage": 35,
+          "front": "Which therapies for essential thrombocytosis carry a risk of acute leukemia?",
+          "back": "Radioactive phosphorus and alkylating agents."
+        },
+        {
+          "id": "med03-c069",
+          "type": "fact",
+          "topics": [
+            "3.8.4"
+          ],
+          "sourcePage": 35,
+          "front": "Which agents are used for platelet reduction in symptomatic essential thrombocytosis?",
+          "back": "IFN alpha and anagrelide.\nHydroxyurea should be considered only if the above agents are not effective or tolerable (Harrison)."
+        }
+      ]
+    },
+    {
+      "id": "med04",
+      "number": 4,
+      "title": "Lymphomas and Chronic Leukemias",
+      "status": "draft",
+      "subject": "Medicine",
+      "excludeExamples": true,
+      "source": {
+        "file": "medicine1_part_1.pdf — Self Assessment & Review Medicine, 9/e, Mudit Khanna",
+        "pageRange": "PDF 36–44 — Essential Revision Notes theory only; MCQs/explanations excluded"
+      },
+      "outline": [
+        {
+          "id": "4.1",
+          "title": "Hodgkin Lymphoma",
+          "children": [
+            {
+              "id": "4.1.1",
+              "title": "Classification and Subtypes"
+            },
+            {
+              "id": "4.1.2",
+              "title": "Reed–Sternberg Cell Variants"
+            },
+            {
+              "id": "4.1.3",
+              "title": "Immunophenotype and EBV Association"
+            },
+            {
+              "id": "4.1.4",
+              "title": "Prognosis by Subtype"
+            },
+            {
+              "id": "4.1.5",
+              "title": "Prognostic Factors"
+            },
+            {
+              "id": "4.1.6",
+              "title": "Treatment"
+            }
+          ]
+        },
+        {
+          "id": "4.2",
+          "title": "Non-Hodgkin Lymphoma Classification",
+          "children": [
+            {
+              "id": "4.2.1",
+              "title": "B-Cell Neoplasms"
+            },
+            {
+              "id": "4.2.2",
+              "title": "T-Cell and NK-Cell Neoplasms"
+            }
+          ]
+        },
+        {
+          "id": "4.3",
+          "title": "Burkitt Lymphoma",
+          "children": [
+            {
+              "id": "4.3.1",
+              "title": "c-myc Translocations"
+            }
+          ]
+        },
+        {
+          "id": "4.4",
+          "title": "Hairy Cell Leukemia",
+          "children": [
+            {
+              "id": "4.4.1",
+              "title": "Definition and Cytochemistry"
+            },
+            {
+              "id": "4.4.2",
+              "title": "Immunophenotype and Markers"
+            },
+            {
+              "id": "4.4.3",
+              "title": "Clinical Features"
+            },
+            {
+              "id": "4.4.4",
+              "title": "Treatment"
+            }
+          ]
+        },
+        {
+          "id": "4.5",
+          "title": "Mantle Cell Lymphoma",
+          "children": [
+            {
+              "id": "4.5.1",
+              "title": "Clinical Profile"
+            },
+            {
+              "id": "4.5.2",
+              "title": "Immunophenotype and Genetics"
+            },
+            {
+              "id": "4.5.3",
+              "title": "Mantle Cell Lymphoma versus CLL"
+            }
+          ]
+        },
+        {
+          "id": "4.6",
+          "title": "Chronic Lymphocytic Leukemia",
+          "children": [
+            {
+              "id": "4.6.1",
+              "title": "Definition and CLL/SLL Relationship"
+            },
+            {
+              "id": "4.6.2",
+              "title": "Peripheral Blood Picture"
+            },
+            {
+              "id": "4.6.3",
+              "title": "Bone Marrow Findings"
+            },
+            {
+              "id": "4.6.4",
+              "title": "Special Tests and Immunophenotype"
+            },
+            {
+              "id": "4.6.5",
+              "title": "Cytogenetic Abnormalities"
+            },
+            {
+              "id": "4.6.6",
+              "title": "Clinical Presentation"
+            },
+            {
+              "id": "4.6.7",
+              "title": "Course and Prognosis"
+            },
+            {
+              "id": "4.6.8",
+              "title": "Progression and Transformation"
+            }
+          ]
+        },
+        {
+          "id": "4.7",
+          "title": "Chronic Myeloid Leukemia",
+          "children": [
+            {
+              "id": "4.7.1",
+              "title": "Definition"
+            },
+            {
+              "id": "4.7.2",
+              "title": "Peripheral Blood Picture"
+            },
+            {
+              "id": "4.7.3",
+              "title": "Bone Marrow and Philadelphia Chromosome"
+            },
+            {
+              "id": "4.7.4",
+              "title": "Reduced LAP and Other Laboratory Findings"
+            },
+            {
+              "id": "4.7.5",
+              "title": "Clinical Presentation and Physical Signs"
+            },
+            {
+              "id": "4.7.6",
+              "title": "Treatment"
+            },
+            {
+              "id": "4.7.7",
+              "title": "Juvenile CML, CMML and Raised HbF"
+            }
+          ]
+        },
+        {
+          "id": "4.8",
+          "title": "Mycosis Fungoides",
+          "children": [
+            {
+              "id": "4.8.1",
+              "title": "Definition and Course"
+            },
+            {
+              "id": "4.8.2",
+              "title": "Skin Progression and Sézary Syndrome"
+            },
+            {
+              "id": "4.8.3",
+              "title": "Histological Hallmark"
+            },
+            {
+              "id": "4.8.4",
+              "title": "Treatment"
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "med04-c001",
+          "type": "concept",
+          "topics": [
+            "4.1.1"
+          ],
+          "sourcePage": 36,
+          "front": "What are the four Rye-classification subtypes of Hodgkin lymphoma?",
+          "back": "Nodular sclerosis\nMixed cellularity\nLymphocyte predominance\nLymphocyte depletion\nThe WHO classification also recognizes a lymphocyte-rich subtype."
+        },
+        {
+          "id": "med04-c002",
+          "type": "fact",
+          "topics": [
+            "4.1.1"
+          ],
+          "sourcePage": 36,
+          "front": "What is the relative frequency of the Hodgkin lymphoma subtypes?",
+          "back": "Incidence: nodular sclerosis > mixed cellularity > lymphocyte predominance > lymphocyte depletion.\nNodular sclerosis 30–60%; mixed cellularity 20–40%; lymphocyte predominance <10%; lymphocyte depletion <10%."
+        },
+        {
+          "id": "med04-c003",
+          "type": "fact",
+          "topics": [
+            "4.1.1"
+          ],
+          "sourcePage": 36,
+          "front": "Which Hodgkin lymphoma subtype is the most common, and what additional subtype does WHO recognize?",
+          "back": "Nodular sclerosis is the most common subtype.\nWHO additionally recognizes the lymphocyte-rich subtype."
+        },
+        {
+          "id": "med04-c004",
+          "type": "concept",
+          "topics": [
+            "4.1.2"
+          ],
+          "sourcePage": 36,
+          "front": "Describe the lacunar Reed–Sternberg variant and its typical subtype.",
+          "back": "Folded or multilobate nuclei with abundant pale cytoplasm, so the nucleus appears to sit in an empty hole (lacuna) on histology.\nCharacteristically seen in nodular sclerosis."
+        },
+        {
+          "id": "med04-c005",
+          "type": "fact",
+          "topics": [
+            "4.1.2"
+          ],
+          "sourcePage": 36,
+          "front": "What is the mononuclear Reed–Sternberg variant and where is it characteristically seen?",
+          "back": "A Reed–Sternberg variant with a single round or oblong nucleus.\nCharacteristically seen in mixed cellularity."
+        },
+        {
+          "id": "med04-c006",
+          "type": "fact",
+          "topics": [
+            "4.1.2"
+          ],
+          "sourcePage": 36,
+          "front": "What is the lymphohistiocytic (popcorn / L and H) Reed–Sternberg variant?",
+          "back": "Multiple folded or convoluted nuclear contours resembling a popcorn kernel.\nSeen in lymphocyte predominance; also listed with the lymphocyte-rich subtype."
+        },
+        {
+          "id": "med04-c007",
+          "type": "fact",
+          "topics": [
+            "4.1.2"
+          ],
+          "sourcePage": 37,
+          "front": "Which Reed–Sternberg variant characterizes lymphocyte-depleted Hodgkin lymphoma?",
+          "back": "The reticular variant (more cellular form) is characteristic of lymphocyte depletion, which carries the worst prognosis."
+        },
+        {
+          "id": "med04-c008",
+          "type": "summary",
+          "topics": [
+            "4.1.2"
+          ],
+          "sourcePage": 37,
+          "front": "Match each Hodgkin lymphoma subtype with its characteristic Reed–Sternberg variant.",
+          "back": "Nodular sclerosis → lacunar cells (occasional RS cells)\nMixed cellularity → mononuclear / classic Reed–Sternberg cells\nLymphocyte predominance → popcorn (lymphocytic) cells\nLymphocyte depletion → reticular variant\nThese notes stress remembering one variant for each subtype."
+        },
+        {
+          "id": "med04-c009",
+          "type": "concept",
+          "topics": [
+            "4.1.3"
+          ],
+          "sourcePage": 36,
+          "front": "What immunophenotype defines classical Hodgkin lymphoma?",
+          "back": "Frequent Reed–Sternberg cells with CD15 positive, CD30 positive and CD45 negative.\nEven in nodular sclerosis, where RS cells are less frequent, CD15 and CD30 are positive and CD45 negative."
+        },
+        {
+          "id": "med04-c010",
+          "type": "fact",
+          "topics": [
+            "4.1.3"
+          ],
+          "sourcePage": 36,
+          "front": "What immunophenotype characterizes nodular lymphocyte-predominant Hodgkin lymphoma?",
+          "back": "Rare Reed–Sternberg cells; frequent lymphocytic and histiocytic (popcorn) variants.\nCD15 negative, CD30 negative, CD45 positive; CD20 positive."
+        },
+        {
+          "id": "med04-c011",
+          "type": "fact",
+          "topics": [
+            "4.1.3"
+          ],
+          "sourcePage": 37,
+          "front": "What immunophenotype and EBV status are described for nodular sclerosis Hodgkin lymphoma?",
+          "back": "CD15 positive, CD30 positive; EBV negative.\nOccasional Reed–Sternberg cells / lacunar cells."
+        },
+        {
+          "id": "med04-c012",
+          "type": "compare",
+          "topics": [
+            "4.1.3"
+          ],
+          "sourcePage": 37,
+          "front": "Compare mixed cellularity and lymphocyte depletion Hodgkin lymphoma in terms of phenotype and EBV.",
+          "back": "Both are CD15 positive and CD30 positive and EBV positive.\nMixed cellularity: classic Reed–Sternberg cells, EBV positive in about 70%.\nLymphocyte depletion: frequent Reed–Sternberg cells / reticular variant."
+        },
+        {
+          "id": "med04-c013",
+          "type": "fact",
+          "topics": [
+            "4.1.3"
+          ],
+          "sourcePage": 37,
+          "front": "What immunophenotype and EBV association are given for lymphocyte-predominant Hodgkin lymphoma?",
+          "back": "CD15 negative, CD30 negative, EBV negative.\nCD20 positive and CD45 positive; popcorn cell variant."
+        },
+        {
+          "id": "med04-c014",
+          "type": "fact",
+          "topics": [
+            "4.1.4"
+          ],
+          "sourcePage": 36,
+          "front": "What are the 5-year survival figures for Hodgkin lymphoma subtypes?",
+          "back": "Lymphocyte predominance: 90%\nNodular sclerosis: 70%\nMixed cellularity: 50%\nLymphocyte depletion: 40%"
+        },
+        {
+          "id": "med04-c015",
+          "type": "summary",
+          "topics": [
+            "4.1.4"
+          ],
+          "sourcePage": 36,
+          "front": "What is the prognosis order of Hodgkin lymphoma variants?",
+          "back": "Lymphocyte predominance > nodular sclerosis > mixed cellularity > lymphocyte depletion.\nLymphocyte-predominant Hodgkin lymphoma has the best prognosis."
+        },
+        {
+          "id": "med04-c016",
+          "type": "concept",
+          "topics": [
+            "4.1.5"
+          ],
+          "sourcePage": 37,
+          "front": "List the poor prognostic factors for advanced Hodgkin lymphoma.",
+          "back": "Male gender\nAge >45 years\nStage IV disease\nAbsolute lymphocyte count <600/mm3\nSerum haemoglobin <10 g/dL\nSerum albumin <4 g/dL\nWBC count >15,000/mm3"
+        },
+        {
+          "id": "med04-c017",
+          "type": "concept",
+          "topics": [
+            "4.1.5"
+          ],
+          "sourcePage": 37,
+          "front": "List the poor prognostic factors for localized (stage I–II) Hodgkin lymphoma.",
+          "back": "Male gender\nAge >50 years\nMixed cellularity or lymphocyte depletion histology\nElevated ESR\nMediastinal mass >1/3 of thoracic diameter (mediastinal/thorax ratio >35%)\nMore than 4 involved sites on the same side of the diaphragm\nPresence of systemic (B) symptoms"
+        },
+        {
+          "id": "med04-c018",
+          "type": "fact",
+          "topics": [
+            "4.1.5"
+          ],
+          "sourcePage": 37,
+          "front": "Which Hodgkin prognostic factor set predicts relapse in advanced disease, and which predicts prognosis in stages I–II?",
+          "back": "Advanced-disease factors (male, age >45, stage IV, ALC <600/mm3, haemoglobin <10 g, albumin <4 g, WBC >15,000/mm3) predict relapse of advanced disease.\nLocalized-disease factors (male, age >50, histology, ESR, mediastinal ratio, number of involved sites, B symptoms) predict prognosis in clinical stages I and II."
+        },
+        {
+          "id": "med04-c019",
+          "type": "concept",
+          "topics": [
+            "4.1.6"
+          ],
+          "sourcePage": 38,
+          "front": "How is limited-stage classical Hodgkin lymphoma treated?",
+          "back": "Stages I–II: combined-modality treatment with radiotherapy and chemotherapy is the treatment of choice.\nChemotherapy contributes more than radiotherapy (CT > RT)."
+        },
+        {
+          "id": "med04-c020",
+          "type": "concept",
+          "topics": [
+            "4.1.6"
+          ],
+          "sourcePage": 38,
+          "front": "How is advanced-stage classical Hodgkin lymphoma managed?",
+          "back": "Primarily managed by chemotherapy, which is the treatment of choice.\nRadiotherapy may be used for bulky disease or residual disease after chemotherapy; otherwise RT is for palliation only in selected cases."
+        },
+        {
+          "id": "med04-c021",
+          "type": "concept",
+          "topics": [
+            "4.1.6"
+          ],
+          "sourcePage": 38,
+          "front": "What is the treatment of choice for limited-stage nodular lymphocyte-predominant Hodgkin lymphoma?",
+          "back": "Radiotherapy alone is the treatment of choice (involved-field or regional RT).\nSome clinicians favour no treatment and merely close follow-up."
+        },
+        {
+          "id": "med04-c022",
+          "type": "concept",
+          "topics": [
+            "4.1.6"
+          ],
+          "sourcePage": 38,
+          "front": "How is advanced-stage nodular lymphocyte-predominant Hodgkin lymphoma managed?",
+          "back": "Chemotherapy is the treatment of choice; advanced disease is primarily managed by chemotherapy.\nRadiotherapy may be used in advanced disease for palliation only and in selected cases after chemotherapy."
+        },
+        {
+          "id": "med04-c023",
+          "type": "compare",
+          "topics": [
+            "4.1.6"
+          ],
+          "sourcePage": 38,
+          "front": "How does the role of radiotherapy differ between classical and nodular lymphocyte-predominant Hodgkin lymphoma?",
+          "back": "Classical HL: limited stage uses combined CT + RT; in advanced disease RT is for bulky or residual disease, or palliation.\nNLPHL: limited stage may be treated with radiotherapy alone; in advanced disease RT is mainly palliative or used in selected cases after chemotherapy."
+        },
+        {
+          "id": "med04-c024",
+          "type": "concept",
+          "topics": [
+            "4.2.1"
+          ],
+          "sourcePage": 38,
+          "front": "How are non-Hodgkin lymphomas divided by lineage and maturity?",
+          "back": "B-cell neoplasms and T-cell neoplasms.\nEach includes neoplasms of immature (precursor) cells and of mature cells; the mature T-cell group also includes NK-cell neoplasms."
+        },
+        {
+          "id": "med04-c025",
+          "type": "fact",
+          "topics": [
+            "4.2.1"
+          ],
+          "sourcePage": 38,
+          "front": "List the mature B-cell neoplasms in the classification table.",
+          "back": "Burkitt lymphoma\nHairy cell leukemia\nMantle cell lymphoma\nSolitary plasmacytoma / multiple myeloma\nSmall lymphocytic lymphoma / chronic lymphocytic leukemia\nFollicular lymphoma\nDiffuse large B-cell lymphoma\nExtranodal marginal zone lymphoma (MALT type)"
+        },
+        {
+          "id": "med04-c026",
+          "type": "fact",
+          "topics": [
+            "4.2.1"
+          ],
+          "sourcePage": 38,
+          "front": "What immature B-cell neoplasm is listed in the NHL classification?",
+          "back": "Precursor B-cell acute lymphoblastic leukemia / lymphoma."
+        },
+        {
+          "id": "med04-c027",
+          "type": "fact",
+          "topics": [
+            "4.2.2"
+          ],
+          "sourcePage": 38,
+          "front": "What immature T-cell neoplasm is listed in the NHL classification?",
+          "back": "Precursor T-cell acute lymphoblastic leukemia / lymphoma."
+        },
+        {
+          "id": "med04-c028",
+          "type": "fact",
+          "topics": [
+            "4.2.2"
+          ],
+          "sourcePage": 38,
+          "front": "List the mature T-cell / NK-cell neoplasms given in the classification table.",
+          "back": "Mycosis fungoides (cutaneous T-cell lymphoma)\nAdult T-cell lymphoma / leukemia\nAnaplastic large T-cell / null-cell lymphoma\nPeripheral T-cell lymphoma\nAngioimmunoblastic lymphoma\nAngiocentric lymphoma (extranodal T/NK-cell lymphoma)\nEnteropathy-type intestinal lymphoma\nHepatosplenic lymphoma\nSubcutaneous panniculitis-like lymphoma\nT-cell granular lymphocytic lymphoma"
+        },
+        {
+          "id": "med04-c029",
+          "type": "concept",
+          "topics": [
+            "4.3.1"
+          ],
+          "sourcePage": 38,
+          "front": "What genetic event defines Burkitt lymphoma?",
+          "back": "Reciprocal translocations involving the c-myc gene on chromosome 8."
+        },
+        {
+          "id": "med04-c030",
+          "type": "fact",
+          "topics": [
+            "4.3.1"
+          ],
+          "sourcePage": 38,
+          "front": "What is the most common translocation in Burkitt lymphoma?",
+          "back": "t(8;14) in about 70% of cases: c-myc on chromosome 8 joined to the immunoglobulin heavy-chain gene on chromosome 14."
+        },
+        {
+          "id": "med04-c031",
+          "type": "compare",
+          "topics": [
+            "4.3.1"
+          ],
+          "sourcePage": 38,
+          "front": "What are the less common Burkitt lymphoma translocations?",
+          "back": "t(8;22): c-myc on chromosome 8 with lambda light chain on chromosome 22.\nt(2;8): c-myc on chromosome 8 with kappa light chain on chromosome 2."
+        },
+        {
+          "id": "med04-c032",
+          "type": "definition",
+          "topics": [
+            "4.4.1"
+          ],
+          "sourcePage": 39,
+          "front": "Define hairy cell leukemia.",
+          "back": "A rare but distinctive chronic B-cell leukemia named for the fine hair-like projections on the leukaemic cells (large B cells)."
+        },
+        {
+          "id": "med04-c033",
+          "type": "fact",
+          "topics": [
+            "4.4.1"
+          ],
+          "sourcePage": 39,
+          "front": "What is the characteristic cytochemical feature of hairy cell leukemia?",
+          "back": "Presence of tartrate-resistant acid phosphatase (TRAP) in the neoplastic B cells."
+        },
+        {
+          "id": "med04-c034",
+          "type": "fact",
+          "topics": [
+            "4.4.2"
+          ],
+          "sourcePage": 39,
+          "front": "Which cell-surface markers are described for hairy cells?",
+          "back": "Pan-B-cell markers CD19 and CD20, and monocyte-associated antigen CD11.\nPlasma cell-associated antigen (PCA-1) is also present (Robbins)."
+        },
+        {
+          "id": "med04-c035",
+          "type": "fact",
+          "topics": [
+            "4.4.2"
+          ],
+          "sourcePage": 39,
+          "front": "Which additional markers are reported in hairy cell leukemia?",
+          "back": "Expression of CD25, IL-2 and specific adhesion molecules (Harrison)."
+        },
+        {
+          "id": "med04-c036",
+          "type": "concept",
+          "topics": [
+            "4.4.3"
+          ],
+          "sourcePage": 39,
+          "front": "What is the typical patient profile in hairy cell leukemia?",
+          "back": "Predominantly an older age group (>40 years; mean age about 63 years).\nClinical features result largely from infiltration of bone marrow, liver and spleen."
+        },
+        {
+          "id": "med04-c037",
+          "type": "fact",
+          "topics": [
+            "4.4.3"
+          ],
+          "sourcePage": 39,
+          "front": "List the clinical features of hairy cell leukemia.",
+          "back": "Massive splenomegaly (hepatomegaly is less common)\nLymphadenopathy\nPancytopenia\nRecurrent infections"
+        },
+        {
+          "id": "med04-c038",
+          "type": "fact",
+          "topics": [
+            "4.4.4"
+          ],
+          "sourcePage": 39,
+          "front": "What is the current treatment of choice for hairy cell leukemia?",
+          "back": "Purine analogues — specifically cladribine."
+        },
+        {
+          "id": "med04-c039",
+          "type": "fact",
+          "topics": [
+            "4.4.4"
+          ],
+          "sourcePage": 39,
+          "front": "What other treatments are listed for hairy cell leukemia?",
+          "back": "Pentostatin\nInterferon alfa\nSplenectomy used to be the standard treatment earlier."
+        },
+        {
+          "id": "med04-c040",
+          "type": "fact",
+          "topics": [
+            "4.5.1"
+          ],
+          "sourcePage": 39,
+          "front": "At what age does mantle cell lymphoma typically present?",
+          "back": "Middle-aged and elderly patients; mean age 63 years (Harrison)."
+        },
+        {
+          "id": "med04-c041",
+          "type": "fact",
+          "topics": [
+            "4.5.1"
+          ],
+          "sourcePage": 39,
+          "front": "What clinical profile is given for mantle cell lymphoma?",
+          "back": "Painless lymphadenopathy\nSplenomegaly\nOccasional gastrointestinal involvement"
+        },
+        {
+          "id": "med04-c042",
+          "type": "fact",
+          "topics": [
+            "4.5.2"
+          ],
+          "sourcePage": 39,
+          "front": "Which pan-B markers are positive in mantle cell lymphoma?",
+          "back": "CD19, CD20, CD22 and CD24."
+        },
+        {
+          "id": "med04-c043",
+          "type": "fact",
+          "topics": [
+            "4.5.2"
+          ],
+          "sourcePage": 39,
+          "front": "What CD5 / CD23 / CD10 pattern supports mantle cell lymphoma?",
+          "back": "CD5 positive; CD23 negative; CD10 negative."
+        },
+        {
+          "id": "med04-c044",
+          "type": "fact",
+          "topics": [
+            "4.5.2"
+          ],
+          "sourcePage": 39,
+          "front": "What surface immunoglobulin pattern is described in mantle cell lymphoma?",
+          "back": "Moderately high levels of surface immunoglobulin heavy chains IgM and IgD.\nBright kappa positivity; either kappa or lambda light chain may be present."
+        },
+        {
+          "id": "med04-c045",
+          "type": "fact",
+          "topics": [
+            "4.5.2"
+          ],
+          "sourcePage": 39,
+          "front": "What translocation and downstream protein are characteristic of mantle cell lymphoma?",
+          "back": "t(11;14), which leads to increased expression of cyclin D1."
+        },
+        {
+          "id": "med04-c046",
+          "type": "compare",
+          "topics": [
+            "4.5.3"
+          ],
+          "sourcePage": 39,
+          "front": "What does coexpression of CD19 and CD5 suggest?",
+          "back": "A diagnosis of mantle cell lymphoma or chronic lymphocytic leukemia."
+        },
+        {
+          "id": "med04-c047",
+          "type": "compare",
+          "topics": [
+            "4.5.3"
+          ],
+          "sourcePage": 39,
+          "front": "Which markers differentiate mantle cell lymphoma from CLL?",
+          "back": "CD23, CD79b, FMC7 and cyclin D1.\nMCL is CD23 negative and cyclin D1 positive through t(11;14); CLL/SLL coexpresses CD5 and CD23."
+        },
+        {
+          "id": "med04-c048",
+          "type": "definition",
+          "topics": [
+            "4.6.1"
+          ],
+          "sourcePage": 40,
+          "front": "Define chronic lymphocytic leukemia / small lymphocytic lymphoma.",
+          "back": "A tumour composed of monomorphic small B lymphocytes in peripheral blood, bone marrow and lymphoid organs (spleen and lymph nodes)."
+        },
+        {
+          "id": "med04-c049",
+          "type": "fact",
+          "topics": [
+            "4.6.1"
+          ],
+          "sourcePage": 40,
+          "front": "How does WHO relate CLL and SLL?",
+          "back": "CLL and SLL are considered a single entity with different presentations; SLL is the tissue equivalent of CLL."
+        },
+        {
+          "id": "med04-c050",
+          "type": "fact",
+          "topics": [
+            "4.6.1"
+          ],
+          "sourcePage": 40,
+          "front": "Which antigens do CLL/SLL cells coexpress?",
+          "back": "CD5 and CD23."
+        },
+        {
+          "id": "med04-c051",
+          "type": "fact",
+          "topics": [
+            "4.6.2"
+          ],
+          "sourcePage": 40,
+          "front": "What peripheral blood counts are typical in CLL?",
+          "back": "Total leukocyte count increased, usually 20–50 x 10^9/L.\nLymphocytosis is characteristic: absolute lymphocyte count >5 x 10^9/L, and often >10 x 10^9/L at diagnosis."
+        },
+        {
+          "id": "med04-c052",
+          "type": "concept",
+          "topics": [
+            "4.6.2"
+          ],
+          "sourcePage": 40,
+          "front": "What differential count changes occur in CLL?",
+          "back": "Lymphocytes constitute >50% of white cells and may reach 90–98%, with polymorphs 2–30% and resultant neutropenia."
+        },
+        {
+          "id": "med04-c053",
+          "type": "definition",
+          "topics": [
+            "4.6.2"
+          ],
+          "sourcePage": 40,
+          "front": "What are smudge (basket) cells in CLL?",
+          "back": "Disintegrated lymphocytes with spread-out nuclear material on the peripheral blood film.\nThey result from rupture of fragile neoplastic lymphoid cells while making the smear."
+        },
+        {
+          "id": "med04-c054",
+          "type": "fact",
+          "topics": [
+            "4.6.2"
+          ],
+          "sourcePage": 40,
+          "front": "How do platelet counts change in CLL and what is their prognostic significance?",
+          "back": "Initially normal; marrow infiltration and autoimmune destruction with hypersplenism can lower the count.\nA count below 100 x 10^9/L is associated with a worse prognosis."
+        },
+        {
+          "id": "med04-c055",
+          "type": "fact",
+          "topics": [
+            "4.6.2"
+          ],
+          "sourcePage": 40,
+          "front": "What haemoglobin changes occur in CLL?",
+          "back": "Usually below 13 g/dL, and may fall below 10 g/dL as the disease progresses.\nDue to marrow failure; associated autoimmune haemolysis may also contribute when present."
+        },
+        {
+          "id": "med04-c056",
+          "type": "fact",
+          "topics": [
+            "4.6.2"
+          ],
+          "sourcePage": 40,
+          "front": "What red-cell changes are seen on the peripheral smear in CLL?",
+          "back": "Normocytic normochromic anaemia, or rarely a hemolytic blood picture."
+        },
+        {
+          "id": "med04-c057",
+          "type": "concept",
+          "topics": [
+            "4.6.3"
+          ],
+          "sourcePage": 40,
+          "front": "Describe the bone marrow findings early in CLL.",
+          "back": "Hypercellular marrow.\nErythropoiesis is normal, myelopoiesis is normal in the initial stages, and megakaryopoiesis is within normal limits."
+        },
+        {
+          "id": "med04-c058",
+          "type": "fact",
+          "topics": [
+            "4.6.3"
+          ],
+          "sourcePage": 40,
+          "front": "What marrow change accompanies autoimmune hemolytic anemia in CLL?",
+          "back": "Normoblastic erythroid hyperplasia.\nPatients are prone to autoimmune disease, most commonly directed against red cells or platelets."
+        },
+        {
+          "id": "med04-c059",
+          "type": "fact",
+          "topics": [
+            "4.6.3"
+          ],
+          "sourcePage": 40,
+          "front": "What happens in the marrow as CLL advances?",
+          "back": "Neoplastic lymphocytes replace normal erythroid, myeloid and megakaryocytic cells.\nThis produces anaemia, neutropenia and thrombocytopenia and indicates advancing disease."
+        },
+        {
+          "id": "med04-c060",
+          "type": "fact",
+          "topics": [
+            "4.6.4"
+          ],
+          "sourcePage": 40,
+          "front": "How often is the direct antiglobulin (Coombs) test positive in CLL?",
+          "back": "About 15–20% of patients manifest autoimmune hemolytic anemia and have a positive direct Coombs test."
+        },
+        {
+          "id": "med04-c061",
+          "type": "fact",
+          "topics": [
+            "4.6.4"
+          ],
+          "sourcePage": 40,
+          "front": "What immunophenotype is described for CLL/SLL cells?",
+          "back": "Pan-B-cell markers CD19 and CD20.\nWeak expression of monoclonal surface immunoglobulin with kappa or lambda light chains."
+        },
+        {
+          "id": "med04-c062",
+          "type": "fact",
+          "topics": [
+            "4.6.4"
+          ],
+          "sourcePage": 40,
+          "front": "What aberrant T-cell antigen is expressed in B-cell CLL?",
+          "back": "CD5, aberrantly expressed; it is normally found only on a small subset of normal B cells."
+        },
+        {
+          "id": "med04-c063",
+          "type": "fact",
+          "topics": [
+            "4.6.5"
+          ],
+          "sourcePage": 40,
+          "front": "Which cytogenetic deletions are associated with CLL/SLL?",
+          "back": "Deletions of 13q14.3, 11q22-23 and 17p13."
+        },
+        {
+          "id": "med04-c064",
+          "type": "fact",
+          "topics": [
+            "4.6.5"
+          ],
+          "sourcePage": 40,
+          "front": "Are chromosomal translocations common in CLL/SLL, and what numeric abnormality occurs?",
+          "back": "Translocations are rarely observed.\nAbout 20% of CLL cases show trisomy 12."
+        },
+        {
+          "id": "med04-c065",
+          "type": "fact",
+          "topics": [
+            "4.6.6"
+          ],
+          "sourcePage": 41,
+          "front": "What are the age and sex features of CLL at presentation?",
+          "back": "Most patients are between 50 and 60 years of age at diagnosis.\nMale:female ratio about 2:1."
+        },
+        {
+          "id": "med04-c066",
+          "type": "fact",
+          "topics": [
+            "4.6.6"
+          ],
+          "sourcePage": 41,
+          "front": "How often is CLL asymptomatic at presentation?",
+          "back": "About 25% of patients are asymptomatic, detected either because of nonspecific symptoms or on routine blood examination for another disease."
+        },
+        {
+          "id": "med04-c067",
+          "type": "concept",
+          "topics": [
+            "4.6.6"
+          ],
+          "sourcePage": 41,
+          "front": "List the nonspecific symptoms and lymph-node findings in CLL.",
+          "back": "Fatigue, malaise, weight loss, anorexia.\nCervical nodes are enlarged initially; later there may be generalized lymphadenopathy with rubbery, discrete, non-tender, small, mobile nodes."
+        },
+        {
+          "id": "med04-c068",
+          "type": "concept",
+          "topics": [
+            "4.6.6"
+          ],
+          "sourcePage": 41,
+          "front": "What immunological defects occur in CLL/SLL?",
+          "back": "Hypogammaglobulinemia is common and increases the risk of opportunistic infections.\nAutoimmunity may cause hemolytic anemia or thrombocytopenia; the pathogenic IgGs come from non-neoplastic self-reactive B cells rather than tumour cells."
+        },
+        {
+          "id": "med04-c069",
+          "type": "fact",
+          "topics": [
+            "4.6.6"
+          ],
+          "sourcePage": 41,
+          "front": "Where do CLL cells infiltrate to cause organ enlargement?",
+          "back": "Splenic white and red pulp and nonspecific hepatic portal tracts, producing splenomegaly and hepatomegaly (observed in very few cases)."
+        },
+        {
+          "id": "med04-c070",
+          "type": "fact",
+          "topics": [
+            "4.6.7"
+          ],
+          "sourcePage": 41,
+          "front": "List the prognostic factors for CLL given in these notes.",
+          "back": "High plasma beta-2-microglobulin: poor prognosis.\nDeletions of 11q and 17p: worse prognosis.\nNodular and interstitial marrow infiltration: better than mixed and diffuse patterns.\nLack of somatic hypermutation: worse prognosis."
+        },
+        {
+          "id": "med04-c071",
+          "type": "summary",
+          "topics": [
+            "4.6.7"
+          ],
+          "sourcePage": 41,
+          "front": "What determines the course and prognosis of CLL?",
+          "back": "The course is variable and depends on the clinical stage of disease."
+        },
+        {
+          "id": "med04-c072",
+          "type": "process",
+          "topics": [
+            "4.6.8"
+          ],
+          "sourcePage": 41,
+          "front": "Describe B-cell prolymphocytic transformation of CLL/SLL.",
+          "back": "An extremely rare transformation with >10% prolymphocytes in peripheral blood.\nProlymphocytes are large cells with a single prominent, centrally placed nucleolus.\nAssociated with worsening cytopenias and increasing splenomegaly."
+        },
+        {
+          "id": "med04-c073",
+          "type": "fact",
+          "topics": [
+            "4.6.8"
+          ],
+          "sourcePage": 41,
+          "front": "What is Richter syndrome in CLL?",
+          "back": "Transformation to diffuse large B-cell lymphoma in 5–10% of patients.\nCharacterized by a rapidly enlarging mass within a lymph node or the spleen."
+        },
+        {
+          "id": "med04-c074",
+          "type": "definition",
+          "topics": [
+            "4.7.1"
+          ],
+          "sourcePage": 42,
+          "front": "Define chronic myeloid leukemia.",
+          "back": "A chronic myeloproliferative disorder from neoplastic transformation of a bone marrow stem cell that still retains the capacity to differentiate along erythrocytic, megakaryocytic and granulocytic or monocytic lines."
+        },
+        {
+          "id": "med04-c075",
+          "type": "fact",
+          "topics": [
+            "4.7.2"
+          ],
+          "sourcePage": 42,
+          "front": "Describe the leukocytosis and maturation spectrum in the CML blood picture.",
+          "back": "Striking leucocytosis with immature and mature forms at different stages of maturation.\nThe picture is dominated by mature forms and intermediate precursors (neutrophils, metamyelocytes, myelocytes); immature forms are less numerous.\nBlasts <5%; promyelocytes <10%."
+        },
+        {
+          "id": "med04-c076",
+          "type": "fact",
+          "topics": [
+            "4.7.2"
+          ],
+          "sourcePage": 42,
+          "front": "What other blood-count abnormalities occur in CML?",
+          "back": "Basophils often elevated; eosinophils elevated less commonly.\nThrombocytosis: platelets may be normal or strikingly high.\nRed-cell morphology is normal; patients are usually not anaemic or only mildly anaemic."
+        },
+        {
+          "id": "med04-c077",
+          "type": "concept",
+          "topics": [
+            "4.7.3"
+          ],
+          "sourcePage": 42,
+          "front": "Describe the bone marrow findings in CML.",
+          "back": "Hypercellular marrow with left-shifted myelopoiesis.\nMyeloid:erythroid ratio increased.\nMyeloblasts comprise less than 5% of marrow cells."
+        },
+        {
+          "id": "med04-c078",
+          "type": "fact",
+          "topics": [
+            "4.7.3"
+          ],
+          "sourcePage": 42,
+          "front": "What is the Philadelphia chromosome and its genetic basis in CML?",
+          "back": "A small chromosome 22 produced by t(9;22).\nThe translocation results in the bcr/abl fusion gene."
+        },
+        {
+          "id": "med04-c079",
+          "type": "fact",
+          "topics": [
+            "4.7.4"
+          ],
+          "sourcePage": 42,
+          "front": "What do reduced leukocyte alkaline phosphatase and raised vitamin B12-binding proteins indicate in CML?",
+          "back": "Leukocyte alkaline phosphatase is reduced: although the total number of granulocytes is increased, they are functionally impaired.\nSerum vitamin B12-binding protein levels are raised."
+        },
+        {
+          "id": "med04-c080",
+          "type": "concept",
+          "topics": [
+            "4.7.5"
+          ],
+          "sourcePage": 42,
+          "front": "What are the common presenting features of CML?",
+          "back": "Discovered incidentally during screening tests.\nFatigue, malaise, weight loss.\nEarly satiety, heaviness or left upper quadrant pain, associated with massive splenomegaly."
+        },
+        {
+          "id": "med04-c081",
+          "type": "fact",
+          "topics": [
+            "4.7.5"
+          ],
+          "sourcePage": 42,
+          "front": "What physical signs and vaso-occlusive manifestations are described in CML?",
+          "back": "Splenomegaly (mild, moderate or massive) and sternal tenderness; mild hepatomegaly may be present; lymphadenopathy is unusual.\nVaso-occlusive manifestations from severe granulocytosis or thrombosis: cerebrovascular accidents, myocardial infarction, venous thrombosis, priapism, visual disturbance, pulmonary insufficiency.\nUncommon presentations include infection, thrombosis and bleeding."
+        },
+        {
+          "id": "med04-c082",
+          "type": "compare",
+          "topics": [
+            "4.7.6"
+          ],
+          "sourcePage": 43,
+          "front": "Compare the curative and drug treatments of choice in CML.",
+          "back": "The only curative treatment, and also the treatment of choice, is allogeneic stem cell transplantation.\nThe drug treatment of choice, and the usual initial therapy, is imatinib."
+        },
+        {
+          "id": "med04-c083",
+          "type": "process",
+          "topics": [
+            "4.7.6"
+          ],
+          "sourcePage": 43,
+          "front": "Outline the CML treatment algorithm given in these notes.",
+          "back": "Assess suitability for allogeneic SCT (acceptable end-organ function, age <65–70 years) and availability of a healthy HLA-matched donor.\nAllogeneic SCT is the treatment of choice for candidates; many clinicians still offer imatinib as first-line therapy.\nIf there is no major cytogenetic remission on imatinib: consider dasatinib, interferon alfa, transplantation from an HLA-compatible unrelated donor or autologous SCT.\nIf major cytogenetic remission is achieved: continue imatinib."
+        },
+        {
+          "id": "med04-c084",
+          "type": "fact",
+          "topics": [
+            "4.7.6"
+          ],
+          "sourcePage": 43,
+          "front": "What was the previous drug treatment of choice for CML, and what alternatives are listed?",
+          "back": "Interferon alfa was the drug of choice before imatinib was available.\nAlternatives considered after imatinib failure include dasatinib and interferon alfa."
+        },
+        {
+          "id": "med04-c085",
+          "type": "fact",
+          "topics": [
+            "4.7.7"
+          ],
+          "sourcePage": 43,
+          "front": "Which conditions are listed as presenting with raised fetal hemoglobin (HbF)?",
+          "back": "Juvenile CML\nBeta-thalassemia\nSickle cell anemia\nHereditary persistence of fetal hemoglobin (HPFH)"
+        },
+        {
+          "id": "med04-c086",
+          "type": "fact",
+          "topics": [
+            "4.7.7"
+          ],
+          "sourcePage": 42,
+          "front": "Do these theory pages describe CMML or a named CML phase classification?",
+          "back": "No separate CMML section or chronic/accelerated/blast-crisis phase classification is given.\nCML is defined as retaining monocytic differentiation capacity; the described blood picture has blasts <5% and promyelocytes <10%."
+        },
+        {
+          "id": "med04-c087",
+          "type": "definition",
+          "topics": [
+            "4.8.1"
+          ],
+          "sourcePage": 44,
+          "front": "What is mycosis fungoides and what is its typical course?",
+          "back": "Mycosis fungoides is synonymous with cutaneous T-cell lymphoma.\nIt has an indolent course: disease often remains localized to the skin for years or decades."
+        },
+        {
+          "id": "med04-c088",
+          "type": "process",
+          "topics": [
+            "4.8.2"
+          ],
+          "sourcePage": 44,
+          "front": "How do skin lesions progress in mycosis fungoides, and what is Sézary syndrome?",
+          "back": "Presentation is with localized or generalized erythematous / eczematous skin lesions.\nLesions progress from patch stage to plaque stage to cutaneous tumours.\nAdvanced stages metastasize to lymph nodes and peripheral circulation; Sézary syndrome combines erythroderma with circulating tumour cells.\nSeeding of the blood by malignant cells is accompanied by diffuse erythema and scaling of the entire body surface."
+        },
+        {
+          "id": "med04-c089",
+          "type": "fact",
+          "topics": [
+            "4.8.3"
+          ],
+          "sourcePage": 44,
+          "front": "What is the histological hallmark of mycosis fungoides?",
+          "back": "Sézary–Lutzner cells, which are CD4-positive T-helper cells.\nThey form band-like aggregates within the superficial dermis and invade the epidermis as single cells or small clusters called Pautrier's microabscesses."
+        },
+        {
+          "id": "med04-c090",
+          "type": "fact",
+          "topics": [
+            "4.8.4"
+          ],
+          "sourcePage": 44,
+          "front": "How is mycosis fungoides treated?",
+          "back": "Treatment is complex; even early and aggressive treatment has not been proved to cure or prevent progression (CMDT).\nCure with radiotherapy has been possible only in rare patients with early-stage disease.\nMost treatments are palliative."
+        }
+      ]
+    },
+    {
+      "id": "med05",
+      "number": 5,
+      "title": "Acute Leukemias and Plasma Cell Disorders",
+      "status": "draft",
+      "subject": "Medicine",
+      "excludeExamples": true,
+      "source": {
+        "file": "medicine1_part_1.pdf — Self Assessment & Review Medicine, 9/e, Mudit Khanna",
+        "pageRange": "PDF 45–48 — Essential Revision Notes theory only; MCQs/explanations excluded"
+      },
+      "outline": [
+        {
+          "id": "5.1",
+          "title": "Acute Lymphoblastic Leukemia: Classification and Immunophenotype",
+          "page": 45,
+          "children": [
+            {
+              "id": "5.1.1",
+              "title": "Immunologic subtype table: frequency and associated abnormalities",
+              "page": 45
+            },
+            {
+              "id": "5.1.2",
+              "title": "Immunophenotypic classification table: FAB versus immunologic categories",
+              "page": 45
+            },
+            {
+              "id": "5.1.3",
+              "title": "Early pre-B and pre-B cell phenotypes",
+              "page": 45
+            },
+            {
+              "id": "5.1.4",
+              "title": "Mature B-cell and T-cell phenotypes",
+              "page": 45
+            }
+          ]
+        },
+        {
+          "id": "5.2",
+          "title": "Prognostic Factors in Acute Lymphoblastic Leukemia",
+          "page": 45,
+          "children": [
+            {
+              "id": "5.2.1",
+              "title": "Clinical determinants: WBC count, age, gender, ethnicity",
+              "page": 45
+            },
+            {
+              "id": "5.2.2",
+              "title": "Organomegaly, testicular enlargement and overt CNS leukemia",
+              "page": 45
+            },
+            {
+              "id": "5.2.3",
+              "title": "FAB morphology, ploidy and DNA index",
+              "page": 45
+            },
+            {
+              "id": "5.2.4",
+              "title": "Cytogenetic markers: favourable and unfavourable",
+              "page": 45
+            },
+            {
+              "id": "5.2.5",
+              "title": "Time to remission and minimal residual disease",
+              "page": 45
+            },
+            {
+              "id": "5.2.6",
+              "title": "Favourable immunophenotype",
+              "page": 45
+            },
+            {
+              "id": "5.2.7",
+              "title": "WBC cut-offs quoted by different textbooks",
+              "page": 45
+            }
+          ]
+        },
+        {
+          "id": "5.3",
+          "title": "Prognostic Factors in Acute Myeloid Leukemia",
+          "page": 46,
+          "children": [
+            {
+              "id": "5.3.1",
+              "title": "Clinical factors: age, performance status, antecedent disease, leukocytosis, LDH",
+              "page": 46
+            },
+            {
+              "id": "5.3.2",
+              "title": "Extramedullary/CNS disease and cytoreduction",
+              "page": 46
+            },
+            {
+              "id": "5.3.3",
+              "title": "Morphological factors and FAB subtypes",
+              "page": 46
+            },
+            {
+              "id": "5.3.4",
+              "title": "Immunophenotypic factors and MDR-1",
+              "page": 46
+            },
+            {
+              "id": "5.3.5",
+              "title": "Biphenotypic leukemia",
+              "page": 46
+            },
+            {
+              "id": "5.3.6",
+              "title": "Cytogenetic factors",
+              "page": 46
+            },
+            {
+              "id": "5.3.7",
+              "title": "Molecular prognostic markers",
+              "page": 46
+            }
+          ]
+        },
+        {
+          "id": "5.4",
+          "title": "Auer Rods and Acute Myeloid Leukemia",
+          "page": 46,
+          "children": [
+            {
+              "id": "5.4.1",
+              "title": "Definition and significance",
+              "page": 46
+            },
+            {
+              "id": "5.4.2",
+              "title": "Most frequent AML subtypes: M3 and M2",
+              "page": 46
+            },
+            {
+              "id": "5.4.3",
+              "title": "Absent or usually not seen: M0, M5a and M7",
+              "page": 46
+            },
+            {
+              "id": "5.4.4",
+              "title": "May be seen in other subtypes: M1, M4 and M6",
+              "page": 46
+            }
+          ]
+        },
+        {
+          "id": "5.5",
+          "title": "Plasma Cell Dyscrasias",
+          "page": 47,
+          "children": [
+            {
+              "id": "5.5.1",
+              "title": "Definition",
+              "page": 47
+            },
+            {
+              "id": "5.5.2",
+              "title": "Spectrum: myeloma, plasmacytoma, Waldenstrom, heavy chain disease and MGUS",
+              "page": 47
+            }
+          ]
+        },
+        {
+          "id": "5.6",
+          "title": "Multiple Myeloma: Pathophysiology and Clinical Consequences",
+          "page": 47,
+          "children": [
+            {
+              "id": "5.6.1",
+              "title": "Marrow proliferation, immunoglobulin production and anemia",
+              "page": 47
+            },
+            {
+              "id": "5.6.2",
+              "title": "Osteoclast activation and bone disease",
+              "page": 47
+            },
+            {
+              "id": "5.6.3",
+              "title": "Bence Jones light chains, renal damage and amyloidosis",
+              "page": 47
+            },
+            {
+              "id": "5.6.4",
+              "title": "Clotting factor interference, bleeding and infection",
+              "page": 47
+            },
+            {
+              "id": "5.6.5",
+              "title": "Hyperviscosity and neurological manifestations",
+              "page": 47
+            },
+            {
+              "id": "5.6.6",
+              "title": "Type 1 cryoglobulinemia",
+              "page": 47
+            },
+            {
+              "id": "5.6.7",
+              "title": "The classic triad",
+              "page": 47
+            }
+          ]
+        },
+        {
+          "id": "5.7",
+          "title": "Diagnosis and Staging of Multiple Myeloma",
+          "page": 47,
+          "children": [
+            {
+              "id": "5.7.1",
+              "title": "Durie-Salmon criteria: purpose and structure",
+              "page": 47
+            },
+            {
+              "id": "5.7.2",
+              "title": "Major criteria",
+              "page": 48
+            },
+            {
+              "id": "5.7.3",
+              "title": "Minor criteria",
+              "page": 48
+            },
+            {
+              "id": "5.7.4",
+              "title": "Confirmatory combinations of criteria",
+              "page": 48
+            },
+            {
+              "id": "5.7.5",
+              "title": "Staging after diagnosis",
+              "page": 48
+            }
+          ]
+        },
+        {
+          "id": "5.8",
+          "title": "Comparison of MGUS, Smoldering Myeloma, Indolent Myeloma and Multiple Myeloma",
+          "page": 48,
+          "children": [
+            {
+              "id": "5.8.1",
+              "title": "Bone marrow plasma cells and M-component levels",
+              "page": 48
+            },
+            {
+              "id": "5.8.2",
+              "title": "Lytic lesions and symptoms",
+              "page": 48
+            },
+            {
+              "id": "5.8.3",
+              "title": "MGUS as the most common monoclonal gammopathy",
+              "page": 48
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "med05-c001",
+          "type": "concept",
+          "topics": [
+            "5.1.1"
+          ],
+          "sourcePage": 45,
+          "front": "What are the three immunologic subtypes of ALL and their approximate frequencies?",
+          "back": "Pre-B ALL: about 75% of cases\nT-cell ALL: about 20%\nB-cell ALL: about 5%\nThese percentages are listed in the immunologic subtype table."
+        },
+        {
+          "id": "med05-c002",
+          "type": "fact",
+          "topics": [
+            "5.1.1"
+          ],
+          "sourcePage": 45,
+          "front": "Which cytogenetic abnormalities are listed for the immunologic subtypes of ALL?",
+          "back": "T-cell ALL: rearrangement at 14q11 or 7q34 (T-cell receptor loci)\nB-cell ALL: t(8;14), t(2;8) and t(8;22)"
+        },
+        {
+          "id": "med05-c003",
+          "type": "concept",
+          "topics": [
+            "5.1.2"
+          ],
+          "sourcePage": 45,
+          "front": "How is the immunophenotypic classification of ALL organized?",
+          "back": "The table compares FAB classification with immunologic classification and lists the phenotype (CD markers) for each.\nCategories include early pre-B, pre-B cell, B cell and T cell."
+        },
+        {
+          "id": "med05-c004",
+          "type": "fact",
+          "topics": [
+            "5.1.3"
+          ],
+          "sourcePage": 45,
+          "front": "Which markers define early pre-B (common) ALL?",
+          "back": "CD19, CD10, CD34 and TdT are listed for early pre-B ALL."
+        },
+        {
+          "id": "med05-c005",
+          "type": "fact",
+          "topics": [
+            "5.1.3"
+          ],
+          "sourcePage": 45,
+          "front": "Which markers are listed for pre-B cell ALL?",
+          "back": "CD19 and CD20 are listed for the pre-B cell immunologic category."
+        },
+        {
+          "id": "med05-c006",
+          "type": "fact",
+          "topics": [
+            "5.1.4"
+          ],
+          "sourcePage": 45,
+          "front": "What immunophenotype is listed for mature B-cell ALL?",
+          "back": "CD19 and CD20 with surface immunoglobulin (sIg) positivity; CD10, CD34 and TdT are negative or absent."
+        },
+        {
+          "id": "med05-c007",
+          "type": "fact",
+          "topics": [
+            "5.1.4"
+          ],
+          "sourcePage": 45,
+          "front": "What T-cell marker pattern is described in the ALL immunophenotype table?",
+          "back": "T-cell ALL expresses T-cell antigens; dual CD4/CD8 co-expression is listed as a pattern."
+        },
+        {
+          "id": "med05-c008",
+          "type": "concept",
+          "topics": [
+            "5.2.1"
+          ],
+          "sourcePage": 45,
+          "front": "How does the presenting white blood cell count influence prognosis in ALL?",
+          "back": "Low WBC count is favourable; high WBC count is unfavourable.\nThe initial leukocyte count is an important prognostic factor in virtually every ALL study."
+        },
+        {
+          "id": "med05-c009",
+          "type": "fact",
+          "topics": [
+            "5.2.1"
+          ],
+          "sourcePage": 45,
+          "front": "Which demographic factors are unfavourable in the ALL prognostic table?",
+          "back": "Male gender and Black ethnicity are listed in the unfavourable column.\nAge extremes (under 1 year and over 10 years) are also unfavourable."
+        },
+        {
+          "id": "med05-c010",
+          "type": "summary",
+          "topics": [
+            "5.2.1"
+          ],
+          "sourcePage": 45,
+          "front": "What is the overall inference about WBC count and prognosis in ALL?",
+          "back": "Different textbooks quote different cut-offs, but uniformly a high WBC count at diagnosis carries a poor prognosis and a low count is favourable."
+        },
+        {
+          "id": "med05-c011",
+          "type": "fact",
+          "topics": [
+            "5.2.2"
+          ],
+          "sourcePage": 45,
+          "front": "Which organomegaly findings are unfavourable in ALL?",
+          "back": "Massive lymph node, liver and spleen enlargement is unfavourable; testicular enlargement, when present, is also unfavourable."
+        },
+        {
+          "id": "med05-c012",
+          "type": "fact",
+          "topics": [
+            "5.2.2"
+          ],
+          "sourcePage": 45,
+          "front": "How is overt CNS leukemia classified prognostically in ALL?",
+          "back": "Overt CNS leukemia (blasts plus pleocytosis) is listed as an unfavourable prognostic determinant."
+        },
+        {
+          "id": "med05-c013",
+          "type": "fact",
+          "topics": [
+            "5.2.3"
+          ],
+          "sourcePage": 45,
+          "front": "Which FAB morphological feature of ALL is unfavourable?",
+          "back": "L2 morphology is listed in the unfavourable column."
+        },
+        {
+          "id": "med05-c014",
+          "type": "compare",
+          "topics": [
+            "5.2.3"
+          ],
+          "sourcePage": 45,
+          "front": "How do ploidy and DNA index relate to prognosis in ALL?",
+          "back": "Favourable: hyperdiploidy; DNA index above 1.16.\nUnfavourable: hypodiploidy with fewer than 45 chromosomes; DNA index below 1.16."
+        },
+        {
+          "id": "med05-c015",
+          "type": "fact",
+          "topics": [
+            "5.2.4"
+          ],
+          "sourcePage": 45,
+          "front": "Which cytogenetic markers are favourable in ALL?",
+          "back": "Trisomies 4, 10 and/or 17, and t(12;21) (TEL-AML1)."
+        },
+        {
+          "id": "med05-c016",
+          "type": "fact",
+          "topics": [
+            "5.2.4"
+          ],
+          "sourcePage": 45,
+          "front": "Which cytogenetic markers are unfavourable in ALL?",
+          "back": "t(9;22) (BCR-ABL) and t(4;11) (MLL-AF4)."
+        },
+        {
+          "id": "med05-c017",
+          "type": "fact",
+          "topics": [
+            "5.2.4"
+          ],
+          "sourcePage": 45,
+          "front": "Which additional cytogenetic abnormality is listed in the ALL prognostic table?",
+          "back": "t(1;19) is also listed among the cytogenetic markers."
+        },
+        {
+          "id": "med05-c018",
+          "type": "fact",
+          "topics": [
+            "5.2.5"
+          ],
+          "sourcePage": 45,
+          "front": "What time to remission is favourable versus unfavourable in ALL?",
+          "back": "Remission within 14 days is favourable; more than 28 days is unfavourable."
+        },
+        {
+          "id": "med05-c019",
+          "type": "fact",
+          "topics": [
+            "5.2.5"
+          ],
+          "sourcePage": 45,
+          "front": "How is minimal residual disease used in the ALL prognostic table?",
+          "back": "A low minimal residual disease level (quoted as below 10^-4) is listed as favourable."
+        },
+        {
+          "id": "med05-c020",
+          "type": "fact",
+          "topics": [
+            "5.2.6"
+          ],
+          "sourcePage": 45,
+          "front": "Which immunophenotype is favourable in ALL?",
+          "back": "Early pre-B cell immunophenotype is listed as favourable."
+        },
+        {
+          "id": "med05-c021",
+          "type": "compare",
+          "topics": [
+            "5.2.7"
+          ],
+          "sourcePage": 45,
+          "front": "What WBC cut-offs do Wintrobe and Hoffman quote for ALL prognosis?",
+          "back": "Wintrobe: favourable below 10,000; unfavourable above 20,000.\nHoffman: favourable below 50,000."
+        },
+        {
+          "id": "med05-c022",
+          "type": "compare",
+          "topics": [
+            "5.2.7"
+          ],
+          "sourcePage": 45,
+          "front": "What WBC cut-off does the Manual of Clinical Oncology quote for ALL?",
+          "back": "Favourable below 30,000; unfavourable above 30,000.\nThe overall inference remains: low count favourable, high count unfavourable."
+        },
+        {
+          "id": "med05-c023",
+          "type": "fact",
+          "topics": [
+            "5.3.1"
+          ],
+          "sourcePage": 46,
+          "front": "Which clinical age and performance factors are unfavourable in AML?",
+          "back": "Age over 60 years is unfavourable; a poor ECOG performance status is unfavourable."
+        },
+        {
+          "id": "med05-c024",
+          "type": "fact",
+          "topics": [
+            "5.3.1"
+          ],
+          "sourcePage": 46,
+          "front": "How does de novo versus secondary AML affect prognosis?",
+          "back": "De novo leukemia is favourable; antecedent myelodysplasia, myeloproliferative disorder, prior chemotherapy or an antecedent hematologic disorder is unfavourable."
+        },
+        {
+          "id": "med05-c025",
+          "type": "fact",
+          "topics": [
+            "5.3.1"
+          ],
+          "sourcePage": 46,
+          "front": "Which laboratory features are unfavourable in AML?",
+          "back": "Leukocytosis above 100,000/mm3 and elevated serum LDH are unfavourable; normal LDH is favourable."
+        },
+        {
+          "id": "med05-c026",
+          "type": "fact",
+          "topics": [
+            "5.3.2"
+          ],
+          "sourcePage": 46,
+          "front": "How do extramedullary and CNS disease affect AML prognosis?",
+          "back": "Absent extramedullary disease and absent CNS disease are favourable; presence of either is unfavourable."
+        },
+        {
+          "id": "med05-c027",
+          "type": "fact",
+          "topics": [
+            "5.3.2"
+          ],
+          "sourcePage": 46,
+          "front": "What does the AML prognostic table say about cytoreduction?",
+          "back": "Rapid cytoreduction is favourable; delayed cytoreduction is unfavourable."
+        },
+        {
+          "id": "med05-c028",
+          "type": "fact",
+          "topics": [
+            "5.3.3"
+          ],
+          "sourcePage": 46,
+          "front": "Which morphological features are favourable in AML?",
+          "back": "Presence of Auer rods and eosinophils is favourable.\nAbsence of megaloblastoid erythroids and dysplastic megakaryocytes is favourable."
+        },
+        {
+          "id": "med05-c029",
+          "type": "fact",
+          "topics": [
+            "5.3.3"
+          ],
+          "sourcePage": 46,
+          "front": "Which morphological findings are unfavourable in AML?",
+          "back": "Absent Auer rods, absent eosinophils, megaloblastoid erythroids and dysplastic megakaryocytes are unfavourable."
+        },
+        {
+          "id": "med05-c030",
+          "type": "fact",
+          "topics": [
+            "5.3.3"
+          ],
+          "sourcePage": 46,
+          "front": "Which FAB AML subtypes carry an unfavourable prognosis?",
+          "back": "M0, M6 and M7 are listed among the unfavourable morphological subtypes."
+        },
+        {
+          "id": "med05-c031",
+          "type": "fact",
+          "topics": [
+            "5.3.4"
+          ],
+          "sourcePage": 46,
+          "front": "Which immunophenotypic features are favourable in AML?",
+          "back": "Myeloid marker CD33 positivity, HLA-DR negativity and absence of TdT are favourable."
+        },
+        {
+          "id": "med05-c032",
+          "type": "fact",
+          "topics": [
+            "5.3.4"
+          ],
+          "sourcePage": 46,
+          "front": "Which immunophenotypic features are unfavourable in AML?",
+          "back": "HLA-DR positivity, TdT positivity, lymphoid markers such as CD7 and CD56, and MDR-1 expression are unfavourable."
+        },
+        {
+          "id": "med05-c033",
+          "type": "definition",
+          "topics": [
+            "5.3.5"
+          ],
+          "sourcePage": 46,
+          "front": "What is biphenotypic leukemia in the AML prognostic table?",
+          "back": "Leukemia expressing two or more lymphoid markers; it is listed as an unfavourable immunophenotypic feature."
+        },
+        {
+          "id": "med05-c034",
+          "type": "fact",
+          "topics": [
+            "5.3.6"
+          ],
+          "sourcePage": 46,
+          "front": "Which chromosomal abnormalities are unfavourable in AML?",
+          "back": "Monosomy 7 or del(7q), monosomy 3 or del(3q), abnormalities at 3q21 and 3q26, and complex karyotypes."
+        },
+        {
+          "id": "med05-c035",
+          "type": "summary",
+          "topics": [
+            "5.3.6"
+          ],
+          "sourcePage": 46,
+          "front": "What is the cytogenetic bottom line for AML prognosis in this table?",
+          "back": "Adverse cytogenetics include monosomy/deletions of chromosomes 3 and 7, 3q21 or 3q26 abnormalities, and complex karyotypes."
+        },
+        {
+          "id": "med05-c036",
+          "type": "compare",
+          "topics": [
+            "5.3.7"
+          ],
+          "sourcePage": 46,
+          "front": "How do FLT3 and EVI1 status affect AML prognosis?",
+          "back": "Fms-related tyrosine kinase-3 (FLT3) mutation: absent favourable, present unfavourable.\nEcotropic viral integration site 1 (EVI1) expression: absent favourable, present unfavourable."
+        },
+        {
+          "id": "med05-c037",
+          "type": "fact",
+          "topics": [
+            "5.3.7"
+          ],
+          "sourcePage": 46,
+          "front": "What does the table say about MLL partial tandem duplication and nucleophosmin?",
+          "back": "MLL partial tandem duplication: absent favourable, present unfavourable.\nNucleophosmin (NPM1) mutation: presence is favourable, absence unfavourable."
+        },
+        {
+          "id": "med05-c038",
+          "type": "compare",
+          "topics": [
+            "5.3.7"
+          ],
+          "sourcePage": 46,
+          "front": "Which molecular markers are favourable when present versus unfavourable when expressed?",
+          "back": "CEBPA (CCAAT/enhancer-binding protein-alpha) mutation: present favourable, absent unfavourable.\nBAALC (brain and acute leukemia cytoplasmic gene) expression and VEGF expression: absent favourable, present unfavourable."
+        },
+        {
+          "id": "med05-c039",
+          "type": "definition",
+          "topics": [
+            "5.4.1"
+          ],
+          "sourcePage": 46,
+          "front": "What are Auer rods?",
+          "back": "Crystalline, refractile, azurophilic rod-shaped structures formed by alignment of granules, typically seen in AML.\nThey may also be seen in refractory anemia with excess blasts in transformation."
+        },
+        {
+          "id": "med05-c040",
+          "type": "fact",
+          "topics": [
+            "5.4.1"
+          ],
+          "sourcePage": 46,
+          "front": "What is the prognostic significance of Auer rods in AML?",
+          "back": "Their presence is a favourable morphological feature; absence is listed as unfavourable."
+        },
+        {
+          "id": "med05-c041",
+          "type": "fact",
+          "topics": [
+            "5.4.2"
+          ],
+          "sourcePage": 46,
+          "front": "In which AML subtypes are Auer rods most frequently seen?",
+          "back": "AML-M3 in 95-100% of cases and AML-M2 in about 70%."
+        },
+        {
+          "id": "med05-c042",
+          "type": "fact",
+          "topics": [
+            "5.4.3"
+          ],
+          "sourcePage": 46,
+          "front": "In which AML subtypes are Auer rods absent by definition or usually not seen?",
+          "back": "Absent by definition in AML-M0; usually not seen in AML-M5a and AML-M7."
+        },
+        {
+          "id": "med05-c043",
+          "type": "fact",
+          "topics": [
+            "5.4.4"
+          ],
+          "sourcePage": 46,
+          "front": "In which other AML subtypes may Auer rods be seen?",
+          "back": "AML-M1, M4 and M6, in about 30-50% of cases."
+        },
+        {
+          "id": "med05-c044",
+          "type": "definition",
+          "topics": [
+            "5.5.1"
+          ],
+          "sourcePage": 47,
+          "front": "What is a plasma cell dyscrasia?",
+          "back": "Expansion of a single clone of immunoglobulin-secreting cells, resulting in increased serum levels of a single homogeneous immunoglobulin or its fragments."
+        },
+        {
+          "id": "med05-c045",
+          "type": "compare",
+          "topics": [
+            "5.5.2"
+          ],
+          "sourcePage": 47,
+          "front": "How does multiple myeloma differ from solitary plasmacytoma?",
+          "back": "Multiple myeloma: diffuse infiltration of neoplastic plasma cells throughout bone marrow, with multiple tumour masses scattered in the skeleton.\nPlasmacytoma: a solitary neoplastic mass of plasma cells found in bone or soft tissue."
+        },
+        {
+          "id": "med05-c046",
+          "type": "fact",
+          "topics": [
+            "5.5.2"
+          ],
+          "sourcePage": 47,
+          "front": "What characterizes Waldenstrom macroglobulinemia, heavy chain disease and MGUS?",
+          "back": "Waldenstrom macroglobulinemia: neoplastic B cells in marrow, lymph nodes, liver and spleen producing only IgM (monoclonal component IgM).\nHeavy chain disease: elevated blood and urine levels of a specific immunoglobulin heavy chain.\nMGUS: the most common monoclonal gammopathy."
+        },
+        {
+          "id": "med05-c047",
+          "type": "concept",
+          "topics": [
+            "5.6.1"
+          ],
+          "sourcePage": 47,
+          "front": "What is the basic consequence of malignant plasma cell proliferation in myeloma?",
+          "back": "Bone marrow plasma cells proliferate and produce large numbers of complete and incomplete immunoglobulins.\nSuppression of normal hematopoiesis causes normocytic normochromic anemia."
+        },
+        {
+          "id": "med05-c048",
+          "type": "process",
+          "topics": [
+            "5.6.2"
+          ],
+          "sourcePage": 47,
+          "front": "How does myeloma produce bone disease?",
+          "back": "Plasma cells proliferate in bone and activate osteoclast-activating factor, causing lytic lesions, bone pain, pathological fractures, cord compression, hypercalcemia and osteoporosis."
+        },
+        {
+          "id": "med05-c049",
+          "type": "fact",
+          "topics": [
+            "5.6.2"
+          ],
+          "sourcePage": 47,
+          "front": "What type of calcification and what metabolic findings are listed in myeloma?",
+          "back": "Metastatic calcification (not dystrophic), hypercalcemia and osteoporosis are listed alongside lytic lesions and pathological fractures."
+        },
+        {
+          "id": "med05-c050",
+          "type": "process",
+          "topics": [
+            "5.6.3"
+          ],
+          "sourcePage": 47,
+          "front": "How does Bence Jones light-chain proteinuria lead to renal failure in myeloma?",
+          "back": "Excess abnormal immunoglobulins precipitate in the kidney, causing kidney damage; Bence Jones light-chain proteinuria and renal failure result.\nAmyloidosis may occur due to interaction of the M component."
+        },
+        {
+          "id": "med05-c051",
+          "type": "fact",
+          "topics": [
+            "5.6.3"
+          ],
+          "sourcePage": 47,
+          "front": "What is the renal amyloid note in the myeloma flowchart?",
+          "back": "Amyloidosis may occur due to interaction of the M component; renal failure follows light-chain precipitation and amyloid deposition."
+        },
+        {
+          "id": "med05-c052",
+          "type": "concept",
+          "topics": [
+            "5.6.4"
+          ],
+          "sourcePage": 47,
+          "front": "Why do bleeding tendency and recurrent infections occur in myeloma?",
+          "back": "The M component interferes with clotting factors and antibody defence; antibody-coated platelets may fail to function properly.\nThis produces a bleeding tendency and recurrent infections."
+        },
+        {
+          "id": "med05-c053",
+          "type": "fact",
+          "topics": [
+            "5.6.5"
+          ],
+          "sourcePage": 47,
+          "front": "Which neurological manifestations are attributed to hyperviscosity in myeloma?",
+          "back": "Vertigo, tinnitus, headache and visual disturbance."
+        },
+        {
+          "id": "med05-c054",
+          "type": "fact",
+          "topics": [
+            "5.6.6"
+          ],
+          "sourcePage": 47,
+          "front": "What is said about type 1 cryoglobulinemia in multiple myeloma?",
+          "back": "Monoclonal cryoglobulins are commonly seen in multiple myeloma; if the M component forms a cryoglobulin, Raynaud phenomenon and impaired circulation may result."
+        },
+        {
+          "id": "med05-c055",
+          "type": "summary",
+          "topics": [
+            "5.6.7"
+          ],
+          "sourcePage": 47,
+          "front": "What is the classic triad of multiple myeloma?",
+          "back": "Marrow plasmacytosis above 10%\nLytic bone lesions\nSerum or urine M component"
+        },
+        {
+          "id": "med05-c056",
+          "type": "concept",
+          "topics": [
+            "5.7.1"
+          ],
+          "sourcePage": 47,
+          "front": "What are the Durie-Salmon criteria used for in myeloma?",
+          "back": "They are widely used in the United States and have been validated in large multicenter trials.\nCriteria are divided into major and minor: diagnosis needs at least one major plus one minor, or three minor criteria, after which Durie-Salmon clinical staging can be applied."
+        },
+        {
+          "id": "med05-c057",
+          "type": "fact",
+          "topics": [
+            "5.7.2"
+          ],
+          "sourcePage": 48,
+          "front": "What are the three major Durie-Salmon criteria for multiple myeloma?",
+          "back": "Plasmacytoma on tissue biopsy\nBone marrow plasmacytosis above 30% plasma cells\nMonoclonal M spike on serum electrophoresis: IgG above 3.5 g/dL or IgA above 2.0 g/dL, or light-chain excretion above 1.0 g/day on 24-hour urine protein electrophoresis."
+        },
+        {
+          "id": "med05-c058",
+          "type": "fact",
+          "topics": [
+            "5.7.2"
+          ],
+          "sourcePage": 48,
+          "front": "What are the M-spike thresholds in major criterion 3?",
+          "back": "IgG above 3.5 g/dL, IgA above 2.0 g/dL, or urinary light-chain excretion above 1.0 g per day."
+        },
+        {
+          "id": "med05-c059",
+          "type": "fact",
+          "topics": [
+            "5.7.3"
+          ],
+          "sourcePage": 48,
+          "front": "What are the minor Durie-Salmon criteria for multiple myeloma?",
+          "back": "Bone marrow plasmacytosis of 10-30%\nM spike of lesser magnitude than in major criterion 3\nLytic bone lesions\nSuppressed uninvolved immunoglobulins: IgM below 50 mg/dL, IgA below 100 mg/dL or IgG below 600 mg/dL."
+        },
+        {
+          "id": "med05-c060",
+          "type": "fact",
+          "topics": [
+            "5.7.4"
+          ],
+          "sourcePage": 48,
+          "front": "Which combinations of criteria confirm the diagnosis of multiple myeloma?",
+          "back": "Any two major criteria\nMajor 1 plus minor b, c or d\nMajor 3 plus minor a or c\nMinor criteria a, b and c, or a, b and d."
+        },
+        {
+          "id": "med05-c061",
+          "type": "process",
+          "topics": [
+            "5.7.5"
+          ],
+          "sourcePage": 48,
+          "front": "What happens after the diagnostic criteria for multiple myeloma are met?",
+          "back": "Durie-Salmon clinical staging is used to determine the stage of disease."
+        },
+        {
+          "id": "med05-c062",
+          "type": "compare",
+          "topics": [
+            "5.8.1"
+          ],
+          "sourcePage": 48,
+          "front": "How do bone marrow plasma cell percentages differ across MGUS, SMM, IMM and multiple myeloma?",
+          "back": "MGUS: below 10%\nSmoldering myeloma (SMM): 10-30%\nIndolent myeloma (IMM): above 30%\nMultiple myeloma: above 30%."
+        },
+        {
+          "id": "med05-c063",
+          "type": "compare",
+          "topics": [
+            "5.8.1"
+          ],
+          "sourcePage": 48,
+          "front": "How do M-component levels differ across the plasma cell disorders?",
+          "back": "MGUS: IgG below 3.5 g/dL, IgA below 2 g/dL\nSMM: IgG above 3.5 g/dL, IgA above 2 g/dL\nIMM: IgG 3.5-7 g/dL, IgA 2-5 g/dL\nMultiple myeloma: IgG above 3.5 g/dL, IgA above 2 g/dL."
+        },
+        {
+          "id": "med05-c064",
+          "type": "compare",
+          "topics": [
+            "5.8.2"
+          ],
+          "sourcePage": 48,
+          "front": "How do lytic lesions and symptoms distinguish MGUS/SMM/IMM from multiple myeloma?",
+          "back": "MGUS and SMM: no lytic lesions and no symptoms.\nIMM: fewer than 3 lytic lesions and no symptoms.\nMultiple myeloma: lytic lesions present, with symptoms such as anemia, renal insufficiency and hypercalcemia."
+        },
+        {
+          "id": "med05-c065",
+          "type": "fact",
+          "topics": [
+            "5.8.3"
+          ],
+          "sourcePage": 48,
+          "front": "Which plasma cell disorder is the most common monoclonal gammopathy?",
+          "back": "Monoclonal gammopathy of undetermined significance (MGUS)."
+        }
+      ]
+    },
+    {
+      "id": "med06",
+      "number": 6,
+      "title": "Coagulation, Bleeding and Transfusion",
+      "status": "draft",
+      "subject": "Medicine",
+      "excludeExamples": true,
+      "source": {
+        "file": "medicine1_part_1.pdf — Self Assessment & Review Medicine, 9/e, Mudit Khanna",
+        "pageRange": "PDF 49–59 — Essential Revision Notes theory only; MCQs/explanations excluded"
+      },
+      "outline": [
+        {
+          "id": "6.1",
+          "title": "Coagulation Pathways and Screening Tests",
+          "children": [
+            {
+              "id": "6.1.1",
+              "title": "Intrinsic and common pathways: aPTT"
+            },
+            {
+              "id": "6.1.2",
+              "title": "Extrinsic and common pathways: PT"
+            },
+            {
+              "id": "6.1.3",
+              "title": "Prothrombin to cross-linked fibrin"
+            },
+            {
+              "id": "6.1.4",
+              "title": "Isolated aPTT prolongation: causes and bleeding pattern"
+            },
+            {
+              "id": "6.1.5",
+              "title": "Mixing study in isolated aPTT prolongation"
+            },
+            {
+              "id": "6.1.6",
+              "title": "Non-correcting aPTT: heparin, lupus anticoagulant, inhibitors"
+            },
+            {
+              "id": "6.1.7",
+              "title": "Isolated prolongation of PT"
+            },
+            {
+              "id": "6.1.8",
+              "title": "Combined prolongation of PT and aPTT"
+            }
+          ]
+        },
+        {
+          "id": "6.2",
+          "title": "Hemophilia and Von Willebrand Disease",
+          "children": [
+            {
+              "id": "6.2.1",
+              "title": "Bleeding patterns: hemarthrosis vs mucosal bleeding"
+            },
+            {
+              "id": "6.2.2",
+              "title": "Von Willebrand factor: components and functions"
+            },
+            {
+              "id": "6.2.3",
+              "title": "Laboratory consequences of a VWF defect"
+            },
+            {
+              "id": "6.2.4",
+              "title": "Hemophilia A versus von Willebrand disease"
+            },
+            {
+              "id": "6.2.5",
+              "title": "Hemophilia A versus hemophilia B"
+            },
+            {
+              "id": "6.2.6",
+              "title": "Ristocetin and standard agonist aggregation in VWD"
+            }
+          ]
+        },
+        {
+          "id": "6.3",
+          "title": "Platelet Number and Function Disorders",
+          "children": [
+            {
+              "id": "6.3.1",
+              "title": "Thrombocytopenia: decreased production"
+            },
+            {
+              "id": "6.3.2",
+              "title": "Thrombocytopenia: increased destruction"
+            },
+            {
+              "id": "6.3.3",
+              "title": "Classification of platelet function disorders"
+            },
+            {
+              "id": "6.3.4",
+              "title": "Wiskott-Aldrich syndrome"
+            },
+            {
+              "id": "6.3.5",
+              "title": "Bernard-Soulier syndrome"
+            },
+            {
+              "id": "6.3.6",
+              "title": "Glanzmann thrombasthenia"
+            }
+          ]
+        },
+        {
+          "id": "6.4",
+          "title": "Immune and Consumptive Thrombocytopenias",
+          "children": [
+            {
+              "id": "6.4.1",
+              "title": "ITP: mechanism and clinical features"
+            },
+            {
+              "id": "6.4.2",
+              "title": "ITP: laboratory features and negative findings"
+            },
+            {
+              "id": "6.4.3",
+              "title": "Acute versus chronic ITP"
+            },
+            {
+              "id": "6.4.4",
+              "title": "ITP treatment indications and modalities"
+            },
+            {
+              "id": "6.4.5",
+              "title": "TTP: vessel-wall lesion and pentad"
+            },
+            {
+              "id": "6.4.6",
+              "title": "TTP: normal coagulation tests"
+            },
+            {
+              "id": "6.4.7",
+              "title": "DIC: pathogenesis and stages"
+            },
+            {
+              "id": "6.4.8",
+              "title": "DIC: laboratory findings"
+            },
+            {
+              "id": "6.4.9",
+              "title": "DIC: high-yield associations"
+            },
+            {
+              "id": "6.4.10",
+              "title": "HUS in the thrombocytopenia differential"
+            }
+          ]
+        },
+        {
+          "id": "6.5",
+          "title": "Thrombosis and Hypercoagulable States",
+          "children": [
+            {
+              "id": "6.5.1",
+              "title": "Antiphospholipid syndrome: definition and types"
+            },
+            {
+              "id": "6.5.2",
+              "title": "APS: vascular thrombosis"
+            },
+            {
+              "id": "6.5.3",
+              "title": "APS: pregnancy morbidity and Evans syndrome"
+            },
+            {
+              "id": "6.5.4",
+              "title": "APS: laboratory features"
+            },
+            {
+              "id": "6.5.5",
+              "title": "APS diagnostic criteria"
+            },
+            {
+              "id": "6.5.6",
+              "title": "APS treatment"
+            },
+            {
+              "id": "6.5.7",
+              "title": "Conditions predisposing to thrombosis"
+            },
+            {
+              "id": "6.5.8",
+              "title": "Factor V Leiden high-yield facts"
+            }
+          ]
+        },
+        {
+          "id": "6.6",
+          "title": "Vitamin Deficiencies and Methaemoglobinemia",
+          "children": [
+            {
+              "id": "6.6.1",
+              "title": "Vitamin K-dependent coagulation proteins"
+            },
+            {
+              "id": "6.6.2",
+              "title": "Vitamin C versus vitamin K deficiency bleeding"
+            },
+            {
+              "id": "6.6.3",
+              "title": "Methaemoglobinemia: mechanism"
+            },
+            {
+              "id": "6.6.4",
+              "title": "Methaemoglobinemia: presentation and diagnosis"
+            },
+            {
+              "id": "6.6.5",
+              "title": "Methaemoglobinemia: management"
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "med06-c001",
+          "type": "concept",
+          "topics": [
+            "6.1.1"
+          ],
+          "sourcePage": 49,
+          "front": "Which factors does the aPTT assess, and what does it measure?",
+          "back": "It measures the time required to generate thrombin and fibrin polymers via the intrinsic and common pathways.\nIntrinsic factors: XII, XI, IX and VIII, with prekallikrein and high-molecular-weight kininogen.\nCommon pathway: X, V, II (prothrombin) and I (fibrinogen)."
+        },
+        {
+          "id": "med06-c002",
+          "type": "fact",
+          "topics": [
+            "6.1.1"
+          ],
+          "sourcePage": 49,
+          "front": "Which contact-system components are shown in the intrinsic pathway diagram?",
+          "back": "Factor XII, prekallikrein (kallikrein) and high-molecular-weight kininogen (HMWK).\nThe diagram also shows activation of factor XII to XIIa and factor XI to XIa."
+        },
+        {
+          "id": "med06-c003",
+          "type": "concept",
+          "topics": [
+            "6.1.2"
+          ],
+          "sourcePage": 49,
+          "front": "Which factors does the PT assess?",
+          "back": "It measures the time required to generate thrombin and fibrin via the extrinsic and common pathways.\nExtrinsic: tissue thromboplastin (tissue factor) with factor VII.\nCommon: factors X, V, II (prothrombin) and I (fibrinogen)."
+        },
+        {
+          "id": "med06-c004",
+          "type": "fact",
+          "topics": [
+            "6.1.2"
+          ],
+          "sourcePage": 49,
+          "front": "What factor activity does the PT assay reflect?",
+          "back": "Activity of factor VII plus the common pathway factors X, V and II, with fibrinogen as the final substrate.\nThe aPTT instead reflects XII, XI, IX and VIII plus the common pathway."
+        },
+        {
+          "id": "med06-c005",
+          "type": "process",
+          "topics": [
+            "6.1.3"
+          ],
+          "sourcePage": 49,
+          "front": "Describe the final common route from prothrombin to cross-linked fibrin.",
+          "back": "Factor Xa with factor Va converts prothrombin (factor II) to thrombin (factor IIa).\nThrombin converts fibrinogen (factor I) to fibrin (factor Ia).\nFibrin polymerises and is cross-linked to form the stable cross-linked fibrin polymer."
+        },
+        {
+          "id": "med06-c006",
+          "type": "fact",
+          "topics": [
+            "6.1.3"
+          ],
+          "sourcePage": 49,
+          "front": "Which activated factors are shown at the two conversion steps and at the fibrin end product?",
+          "back": "Xa with Va at the prothrombin-to-thrombin step.\nThrombin (IIa) at the fibrinogen-to-fibrin step.\nThe diagram ends with cross-linked fibrin polymer under XIIIa."
+        },
+        {
+          "id": "med06-c007",
+          "type": "definition",
+          "topics": [
+            "6.1.4"
+          ],
+          "sourcePage": 50,
+          "front": "What is the aPTT and what does isolated prolongation mean?",
+          "back": "The aPTT is a performance indicator measuring the efficacy of the intrinsic system and the common coagulation pathway.\nIsolated prolongation means a long aPTT with a normal PT."
+        },
+        {
+          "id": "med06-c008",
+          "type": "summary",
+          "topics": [
+            "6.1.4"
+          ],
+          "sourcePage": 50,
+          "front": "List the four categories of causes of isolated aPTT prolongation.",
+          "back": "Coagulation factor deficiency: VIII, IX, XI, XII, prekallikrein and HMWK.\nAntiphospholipid antibodies, especially lupus anticoagulant.\nHeparin use or heparin contamination of the sample.\nSpecific factor inhibitors: factor VIII, and rarely factor IX or XI."
+        },
+        {
+          "id": "med06-c009",
+          "type": "process",
+          "topics": [
+            "6.1.5"
+          ],
+          "sourcePage": 50,
+          "front": "How is a mixing study performed and interpreted in isolated aPTT prolongation?",
+          "back": "Patient plasma is mixed with normal plasma, initially at 50:50.\nCorrection of the aPTT means a factor deficiency (VIII, IX or XI) is likely.\nFailure of the abnormality to disappear means the sample probably contains an inhibitor."
+        },
+        {
+          "id": "med06-c010",
+          "type": "process",
+          "topics": [
+            "6.1.5"
+          ],
+          "sourcePage": 50,
+          "front": "How does the mixing study guide diagnosis in a bleeding patient?",
+          "back": "If it corrects: consider deficiency of VIII, IX or XI, or von Willebrand disease; take further history and send specific assays.\nIf it does not correct: consider a factor VIII inhibitor and send an incubated mixing study, factor VIII activity and Bethesda titer.\nIf studies are not consistent with a factor VIII inhibitor, consider acquired VWD or rare inhibitors to FIX or FXI."
+        },
+        {
+          "id": "med06-c011",
+          "type": "process",
+          "topics": [
+            "6.1.6"
+          ],
+          "sourcePage": 50,
+          "front": "What should be checked when an aPTT does not correct and the patient is not bleeding?",
+          "back": "Consider heparin contamination: repeat the test avoiding a heparinised line, or run TCT, anti-Xa level, heparinase treatment, heparin-binding adsorption, or TCT plus protamine.\nAlso consider lupus anticoagulant and send a lupus anticoagulant evaluation."
+        },
+        {
+          "id": "med06-c012",
+          "type": "fact",
+          "topics": [
+            "6.1.6"
+          ],
+          "sourcePage": 50,
+          "front": "If the lupus anticoagulant evaluation is negative in a non-bleeding patient, what is considered?",
+          "back": "An inhibitor to factor XII.\nIn bleeding patients without correction, a factor VIII inhibitor is the main concern; factor IX and XI inhibitors are very rare."
+        },
+        {
+          "id": "med06-c013",
+          "type": "fact",
+          "topics": [
+            "6.1.7"
+          ],
+          "sourcePage": 51,
+          "front": "What are the four causes of isolated PT prolongation?",
+          "back": "Vitamin K deficiency.\nWarfarin therapy.\nLiver disease.\nFactor VII deficiency."
+        },
+        {
+          "id": "med06-c014",
+          "type": "concept",
+          "topics": [
+            "6.1.7"
+          ],
+          "sourcePage": 51,
+          "front": "Why does factor VII deficiency prolong PT but not aPTT?",
+          "back": "Factor VII is the extrinsic-pathway factor assessed by the PT.\nThe aPTT assesses the intrinsic pathway, so an isolated PT prolongation points to the extrinsic route."
+        },
+        {
+          "id": "med06-c015",
+          "type": "summary",
+          "topics": [
+            "6.1.8"
+          ],
+          "sourcePage": 51,
+          "front": "List the causes of prolonged PT and aPTT together.",
+          "back": "Deficiency of common-pathway factors II, V, X or fibrinogen.\nOral anticoagulants (warfarin).\nDisseminated intravascular coagulation.\nSevere vitamin K deficiency.\nLiver disease with severe hepatic insufficiency."
+        },
+        {
+          "id": "med06-c016",
+          "type": "fact",
+          "topics": [
+            "6.1.8"
+          ],
+          "sourcePage": 51,
+          "front": "How does heparin typically affect PT and aPTT?",
+          "back": "Heparin is typically associated with prolonged aPTT and normal PT.\nOnly high concentrations of heparin in the sample also prolong PT."
+        },
+        {
+          "id": "med06-c017",
+          "type": "concept",
+          "topics": [
+            "6.2.1"
+          ],
+          "sourcePage": 51,
+          "front": "What bleeding pattern suggests hemophilia rather than a platelet disorder?",
+          "back": "Spontaneous hemarthrosis and spontaneous muscle hematomas are hallmarks of moderate or severe factor VIII and IX deficiency (hemophilia).\nThey can also occur in moderate or severe deficiencies of fibrinogen, prothrombin and factors V, VII and X, but are rarely seen in other bleeding disorders."
+        },
+        {
+          "id": "med06-c018",
+          "type": "concept",
+          "topics": [
+            "6.2.1"
+          ],
+          "sourcePage": 51,
+          "front": "What does spontaneous mucosal bleeding suggest?",
+          "back": "An underlying platelet disorder or von Willebrand disease.\nThese are disorders of primary hemostasis, or platelet plug disorders."
+        },
+        {
+          "id": "med06-c019",
+          "type": "concept",
+          "topics": [
+            "6.2.2"
+          ],
+          "sourcePage": 51,
+          "front": "What are the essential roles of von Willebrand factor?",
+          "back": "It is required for normal platelet adhesion and aggregation.\nIt is the plasma carrier for factor VIII and protects factor VIII from rapid proteolytic destruction, supporting the intrinsic pathway."
+        },
+        {
+          "id": "med06-c020",
+          "type": "fact",
+          "topics": [
+            "6.2.2"
+          ],
+          "sourcePage": 51,
+          "front": "Name the three functional components of VWF described in the notes.",
+          "back": "The antigen that binds factor VIII and carries/protects it in plasma.\nVWF antigen itself.\nRistocetin cofactor, or VWF activity, which mediates initial adhesion of platelets to the vessel wall."
+        },
+        {
+          "id": "med06-c021",
+          "type": "process",
+          "topics": [
+            "6.2.3"
+          ],
+          "sourcePage": 51,
+          "front": "What are the laboratory consequences of a VWF defect?",
+          "back": "Decreased factor VIII activity causes a defect in the intrinsic pathway, so PTT is prolonged; PT is normal.\nDefective platelet adhesion causes impaired ristocetin-induced platelet aggregation and prolonged bleeding time."
+        },
+        {
+          "id": "med06-c022",
+          "type": "fact",
+          "topics": [
+            "6.2.3"
+          ],
+          "sourcePage": 51,
+          "front": "Why is PT normal in von Willebrand disease?",
+          "back": "The defect is in VWF-dependent platelet adhesion and in intrinsic-pathway activity through reduced factor VIII.\nThe extrinsic pathway measured by PT is not affected."
+        },
+        {
+          "id": "med06-c023",
+          "type": "compare",
+          "topics": [
+            "6.2.4"
+          ],
+          "sourcePage": 52,
+          "front": "Compare inheritance of hemophilia A and von Willebrand disease.",
+          "back": "Hemophilia A: sex-linked; clinical disease limited to men and boys, extremely rare in females.\nVWD: autosomal, most commonly autosomal dominant; clinical disease may be seen in both boys and girls."
+        },
+        {
+          "id": "med06-c024",
+          "type": "compare",
+          "topics": [
+            "6.2.4"
+          ],
+          "sourcePage": 52,
+          "front": "Compare factor levels in hemophilia A and von Willebrand disease.",
+          "back": "Hemophilia A: decreased factor VIIIc, normal VWF, normal ristocetin cofactor.\nVWD: decreased factor VIIIc, decreased VWF, decreased ristocetin cofactor."
+        },
+        {
+          "id": "med06-c025",
+          "type": "compare",
+          "topics": [
+            "6.2.4"
+          ],
+          "sourcePage": 52,
+          "front": "Compare screening tests in hemophilia A and von Willebrand disease.",
+          "back": "Bleeding time: normal in hemophilia A, prolonged in VWD.\nAPTT: prolonged in both, but may be normal in VWD.\nPT, thrombin time and fibrinogen: normal in both.\nRistocetin platelet aggregation: normal in hemophilia A, decreased in VWD."
+        },
+        {
+          "id": "med06-c026",
+          "type": "compare",
+          "topics": [
+            "6.2.4"
+          ],
+          "sourcePage": 52,
+          "front": "Compare the clinical presentation of hemophilia A and von Willebrand disease.",
+          "back": "Hemophilia A: mainly features of a clotting disorder, with skin/mucosal bleeding mild and hemarthrosis ++.\nVWD: features of both a bleeding and a clotting disorder, with skin/mucosal bleeding + and hemarthrosis +."
+        },
+        {
+          "id": "med06-c027",
+          "type": "compare",
+          "topics": [
+            "6.2.5"
+          ],
+          "sourcePage": 52,
+          "front": "What distinguishes hemophilia A from hemophilia B?",
+          "back": "Hemophilia A (classical hemophilia): deficiency of the antihemophilic globulin subunit of factor VIII, factor VIIIc.\nHemophilia B (Christmas disease): deficiency or absence of factor IX.\nBoth affect the intrinsic pathway of coagulation."
+        },
+        {
+          "id": "med06-c028",
+          "type": "compare",
+          "topics": [
+            "6.2.5"
+          ],
+          "sourcePage": 52,
+          "front": "Which investigations are listed in the hemophilia A versus B comparison table?",
+          "back": "aPTT, PT, bleeding time, platelet count, tourniquet test, pathway affected and whole blood clotting time.\nBoth are intrinsic-pathway defects, so the aPTT is the relevant screening test."
+        },
+        {
+          "id": "med06-c029",
+          "type": "fact",
+          "topics": [
+            "6.2.6"
+          ],
+          "sourcePage": 54,
+          "front": "What is the platelet aggregation pattern in von Willebrand disease?",
+          "back": "Aggregation with standard agonists ADP, collagen and thrombin is normal.\nAggregation in response to ristocetin may be subnormal."
+        },
+        {
+          "id": "med06-c030",
+          "type": "fact",
+          "topics": [
+            "6.3.1"
+          ],
+          "sourcePage": 53,
+          "front": "Which conditions cause thrombocytopenia through decreased platelet production?",
+          "back": "Aplastic anemia with reduced marrow megakaryocytes.\nMarrow infiltration: leukemia, metastasis, radiation.\nVitamin B12 and folic acid deficiency with megaloblastic anemia.\nHereditary: the autosomal dominant form of Wiskott-Aldrich syndrome."
+        },
+        {
+          "id": "med06-c031",
+          "type": "concept",
+          "topics": [
+            "6.3.1"
+          ],
+          "sourcePage": 53,
+          "front": "How does the marrow distinguish decreased production from increased destruction of platelets?",
+          "back": "Decreased production is associated with decreased megakaryocytes in the marrow.\nIncreased destruction is associated with normal or increased megakaryocytes."
+        },
+        {
+          "id": "med06-c032",
+          "type": "fact",
+          "topics": [
+            "6.3.2"
+          ],
+          "sourcePage": 53,
+          "front": "Which immune causes of increased platelet destruction are listed?",
+          "back": "SLE.\nPost-transfusion thrombocytopenia.\nNeonatal thrombocytopenia due to maternal IgG antibodies.\nDrugs: quinine, gold and sulfonamides."
+        },
+        {
+          "id": "med06-c033",
+          "type": "fact",
+          "topics": [
+            "6.3.2"
+          ],
+          "sourcePage": 53,
+          "front": "Which non-immune or consumptive causes of increased platelet destruction are listed?",
+          "back": "TTP, listed as consumption.\nHemolytic uremic syndrome.\nDisseminated intravascular coagulation.\nValve prosthesis.\nHypersplenism."
+        },
+        {
+          "id": "med06-c034",
+          "type": "compare",
+          "topics": [
+            "6.3.3"
+          ],
+          "sourcePage": 53,
+          "front": "How are platelet-vessel wall and platelet-platelet disorders classified?",
+          "back": "Adhesion defects: von Willebrand disease (defect or deficiency of plasma vWF) and Bernard-Soulier syndrome (GPIb defect).\nAggregation defects: congenital afibrinogenemia (plasma fibrinogen deficiency) and Glanzmann thrombasthenia (GPIIb-IIIa defect)."
+        },
+        {
+          "id": "med06-c035",
+          "type": "fact",
+          "topics": [
+            "6.3.3"
+          ],
+          "sourcePage": 53,
+          "front": "Which disorders are listed under secretion/signal transduction and coagulation-protein interaction?",
+          "back": "Secretion and signal transduction: storage pool deficiency, Quebec platelet disorder, Chediak-Higashi syndrome, Gray platelet syndrome and Wiskott-Aldrich syndrome.\nCoagulation-protein interaction: Scott syndrome, a defect in the factor Va-Xa interaction on platelets."
+        },
+        {
+          "id": "med06-c036",
+          "type": "fact",
+          "topics": [
+            "6.3.4"
+          ],
+          "sourcePage": 54,
+          "front": "What is the characteristic triad and inheritance of Wiskott-Aldrich syndrome?",
+          "back": "X-linked recessive inheritance.\nEczema (eczematoid rash), thrombocytopenia with repeated bleeding episodes, and immunodeficiency with repeated infections."
+        },
+        {
+          "id": "med06-c037",
+          "type": "fact",
+          "topics": [
+            "6.3.4"
+          ],
+          "sourcePage": 54,
+          "front": "What platelet findings are characteristic of Wiskott-Aldrich syndrome?",
+          "back": "Decreased platelet count and characteristically decreased platelet size.\nImpaired platelet aggregation response.\nThe number and morphology of marrow megakaryocytes are normal."
+        },
+        {
+          "id": "med06-c038",
+          "type": "fact",
+          "topics": [
+            "6.3.4"
+          ],
+          "sourcePage": 54,
+          "front": "What immunoglobulin and T-cell findings are described in Wiskott-Aldrich syndrome?",
+          "back": "IgM is reduced and IgE is raised.\nIgA and IgG are usually normal.\nAn acquired T-cell deficiency develops and eventually becomes severe."
+        },
+        {
+          "id": "med06-c039",
+          "type": "compare",
+          "topics": [
+            "6.3.5"
+          ],
+          "sourcePage": 54,
+          "front": "What is the receptor defect in Bernard-Soulier syndrome and its aggregation pattern?",
+          "back": "Autosomal recessive deficiency or dysfunction of GPIb/IX, the receptor through which VWF mediates platelet adhesion.\nPlatelets cannot adhere to subendothelium; aggregation with standard agonists is largely normal but fails with ristocetin, which acts by a different mechanism."
+        },
+        {
+          "id": "med06-c040",
+          "type": "fact",
+          "topics": [
+            "6.3.5"
+          ],
+          "sourcePage": 54,
+          "front": "What laboratory and clinical findings are listed for Bernard-Soulier syndrome?",
+          "back": "Thrombocytopenia may be present; platelets on smear are abnormally large; bleeding time is prolonged; plasma VWF levels are normal.\nRecurrent episodes of severe mucosal hemorrhage."
+        },
+        {
+          "id": "med06-c041",
+          "type": "compare",
+          "topics": [
+            "6.3.6"
+          ],
+          "sourcePage": 54,
+          "front": "What is the receptor defect in Glanzmann thrombasthenia and its aggregation pattern?",
+          "back": "Autosomal recessive deficiency or dysfunction of the GPIIb/IIIa complex, the fibrinogen receptor that forms bridges between platelets.\nAggregation is abnormal with standard agonists ADP, collagen and thrombin, but normal with ristocetin, which causes clumping by a different mechanism."
+        },
+        {
+          "id": "med06-c042",
+          "type": "fact",
+          "topics": [
+            "6.3.6"
+          ],
+          "sourcePage": 54,
+          "front": "What laboratory and clinical findings are listed for Glanzmann thrombasthenia?",
+          "back": "Platelet number and morphology are usually normal; bleeding time is prolonged; plasma VWF levels are normal.\nRecurrent episodes of severe mucosal hemorrhage."
+        },
+        {
+          "id": "med06-c043",
+          "type": "concept",
+          "topics": [
+            "6.4.1"
+          ],
+          "sourcePage": 55,
+          "front": "What is the mechanism of immune thrombocytopenic purpura?",
+          "back": "Immune complexes containing antibodies react with platelets and lead to their immunological destruction, severely reducing platelet numbers.\nAcute ITP follows a previous viral infection; chronic ITP arises from underlying immune dysregulation."
+        },
+        {
+          "id": "med06-c044",
+          "type": "fact",
+          "topics": [
+            "6.4.1"
+          ],
+          "sourcePage": 55,
+          "front": "Which clinical features are characteristic of ITP?",
+          "back": "Bleeding from small venules or capillaries: spontaneous petechiae, ecchymoses, mucosal bleeding and easy bruising.\nThe spleen is normal in size.\nBleeding from larger veins and arteries or into joints suggests a coagulation disorder instead."
+        },
+        {
+          "id": "med06-c045",
+          "type": "fact",
+          "topics": [
+            "6.4.2"
+          ],
+          "sourcePage": 55,
+          "front": "What laboratory features support the diagnosis of ITP?",
+          "back": "Isolated thrombocytopenia, platelet antibodies, normal or increased megakaryocytes on bone marrow examination, and prolonged bleeding time.\nCoagulation tests are essentially normal: PT, aPTT, fibrinogen, fibrin degradation products and coagulation factor levels."
+        },
+        {
+          "id": "med06-c046",
+          "type": "fact",
+          "topics": [
+            "6.4.2"
+          ],
+          "sourcePage": 55,
+          "front": "Why does splenomegaly or lymphadenopathy argue against ITP?",
+          "back": "Hepatomegaly, splenomegaly and lymphadenopathy are notably absent in ITP.\nTheir presence should initiate investigation for other underlying illnesses associated with thrombocytopenia."
+        },
+        {
+          "id": "med06-c047",
+          "type": "compare",
+          "topics": [
+            "6.4.3"
+          ],
+          "sourcePage": 55,
+          "front": "Compare acute and chronic ITP in age, sex and antecedent infection.",
+          "back": "Acute: children aged 2-6 years, no sex predilection, antecedent infection common 1-3 weeks before.\nChronic: adults aged 20-40 years, female to male ratio 3:1, antecedent infection unusual."
+        },
+        {
+          "id": "med06-c048",
+          "type": "compare",
+          "topics": [
+            "6.4.3"
+          ],
+          "sourcePage": 55,
+          "front": "Compare acute and chronic ITP in onset, platelet count and outcome.",
+          "back": "Acute: abrupt onset, platelets below 20,000 per microlitre, eosinophilia and lymphocytosis common, duration 2-6 weeks, spontaneous remission in 80 percent.\nChronic: insidious onset, platelets 30,000-80,000 per microlitre, eosinophilia and lymphocytosis rare, duration months or years, spontaneous remission uncommon.\nHemorrhagic bullae in the mouth occur in severe acute cases but are usually absent in chronic ITP."
+        },
+        {
+          "id": "med06-c049",
+          "type": "fact",
+          "topics": [
+            "6.4.4"
+          ],
+          "sourcePage": 55,
+          "front": "When is ITP treated and what are the common treatment modalities?",
+          "back": "Treat when the platelet count is below 20,000 per microlitre or there is significant mucosal bleeding.\nModalities: corticosteroids, IV immunoglobulin, additional immunosuppression such as rituximab (anti-CD20 antibody), and splenectomy."
+        },
+        {
+          "id": "med06-c050",
+          "type": "concept",
+          "topics": [
+            "6.4.5"
+          ],
+          "sourcePage": 56,
+          "front": "What is the underlying vessel-wall abnormality in TTP?",
+          "back": "TTP is a disorder of the vessel wall characterised by lesions in arteriolar walls in various organs.\nThese lesions initiate localised platelet thrombi and fibrin deposits at multiple sites."
+        },
+        {
+          "id": "med06-c051",
+          "type": "summary",
+          "topics": [
+            "6.4.5"
+          ],
+          "sourcePage": 56,
+          "front": "List the five components of the TTP pentad.",
+          "back": "Microangiopathic hemolytic anemia: Coombs-negative hemolysis, RBC fragmentation and increased LDH.\nThrombocytopenia due to platelet consumption.\nRenal dysfunction due to deposits in the renal vasculature.\nDisturbed neurological function, characteristically diffuse and non-focal: confusion, aphasia, altered consciousness.\nFever."
+        },
+        {
+          "id": "med06-c052",
+          "type": "fact",
+          "topics": [
+            "6.4.6"
+          ],
+          "sourcePage": 56,
+          "front": "Which coagulation findings make TTP distinguishable from DIC?",
+          "back": "PT, aPTT, fibrinogen concentration and fibrin degradation products are essentially normal in TTP.\nThe pentad plus normal coagulation tests is described as pathognomonic of TTP."
+        },
+        {
+          "id": "med06-c053",
+          "type": "process",
+          "topics": [
+            "6.4.7"
+          ],
+          "sourcePage": 56,
+          "front": "What is the sequence of events in disseminated intravascular coagulation?",
+          "back": "Intravascular activation of coagulation by both intrinsic and extrinsic mechanisms.\nA thrombotic phase.\nA consumption phase in which most coagulation factors and platelets are consumed.\nA stage of secondary fibrinolysis."
+        },
+        {
+          "id": "med06-c054",
+          "type": "concept",
+          "topics": [
+            "6.4.7"
+          ],
+          "sourcePage": 56,
+          "front": "Why is DIC described as a thrombohaemorrhagic disorder?",
+          "back": "It combines intravascular thrombosis with bleeding because platelets and coagulation factors are consumed.\nSecondary fibrinolysis further increases the bleeding tendency."
+        },
+        {
+          "id": "med06-c055",
+          "type": "fact",
+          "topics": [
+            "6.4.8"
+          ],
+          "sourcePage": 56,
+          "front": "Which laboratory changes reflect consumption and prolonged coagulation in DIC?",
+          "back": "Platelet count, coagulation factors and fibrinogen are decreased or consumed.\nBleeding time and coagulation time are prolonged: aPTT, PT and thrombin time are increased."
+        },
+        {
+          "id": "med06-c056",
+          "type": "fact",
+          "topics": [
+            "6.4.8"
+          ],
+          "sourcePage": 56,
+          "front": "Which laboratory changes reflect secondary fibrinolysis and microangiopathy in DIC?",
+          "back": "Raised plasmin and raised fibrin degradation products reflect secondary fibrinolysis.\nThe thrombotic phase produces microangiopathic hemolytic anemia with schistocytes, spherocytes, burr cells and helmet cells on the peripheral film."
+        },
+        {
+          "id": "med06-c057",
+          "type": "fact",
+          "topics": [
+            "6.4.9"
+          ],
+          "sourcePage": 56,
+          "front": "What is the most important treatment principle in DIC, and which finding correlates best with bleeding?",
+          "back": "The most important treatment is finding and treating the reversible cause.\nThe fibrinogen level correlates best and most closely with bleeding."
+        },
+        {
+          "id": "med06-c058",
+          "type": "fact",
+          "topics": [
+            "6.4.9"
+          ],
+          "sourcePage": 56,
+          "front": "Which sites and endocrine associations are highlighted for DIC?",
+          "back": "The most common site of thrombin formation is the brain: brain over heart, lung, kidney, adrenal and liver.\nEndocrine manifestations are adrenal involvement (Waterhouse-Friderichsen syndrome) and pituitary involvement (Sheehan syndrome)."
+        },
+        {
+          "id": "med06-c059",
+          "type": "fact",
+          "topics": [
+            "6.4.10"
+          ],
+          "sourcePage": 53,
+          "front": "Where does hemolytic uremic syndrome appear in the thrombocytopenia differential?",
+          "back": "HUS is listed under increased platelet destruction by non-immune or consumptive mechanisms.\nIt is grouped with TTP, DIC, valve prosthesis and hypersplenism."
+        },
+        {
+          "id": "med06-c060",
+          "type": "definition",
+          "topics": [
+            "6.5.1"
+          ],
+          "sourcePage": 57,
+          "front": "How is antiphospholipid syndrome defined?",
+          "back": "A clinical association of antiphospholipid antibodies with hypercoagulability.\nA systemic autoimmune disease characterised by recurrent thrombosis or pregnancy complications together with antiphospholipid antibodies."
+        },
+        {
+          "id": "med06-c061",
+          "type": "compare",
+          "topics": [
+            "6.5.1"
+          ],
+          "sourcePage": 57,
+          "front": "What is the difference between primary and secondary APS?",
+          "back": "Primary APS: no underlying cause is identified.\nSecondary APS: a defined cause such as SLE is identified."
+        },
+        {
+          "id": "med06-c062",
+          "type": "fact",
+          "topics": [
+            "6.5.2"
+          ],
+          "sourcePage": 57,
+          "front": "What is the most common vascular manifestation of APS, and which type of thrombosis predominates?",
+          "back": "Venous thrombosis is more common than arterial thrombosis.\nDVT is the most common individual manifestation; pulmonary embolism and pulmonary hypertension from thromboembolic disease also occur."
+        },
+        {
+          "id": "med06-c063",
+          "type": "fact",
+          "topics": [
+            "6.5.2"
+          ],
+          "sourcePage": 57,
+          "front": "Which organ sites of thrombosis are listed in APS?",
+          "back": "CNS: stroke or cerebral vessel infarction.\nHeart: myocardial infarction or coronary occlusion.\nLungs: pulmonary hypertension or pulmonary artery occlusion.\nKidney: glomerular thrombosis or renal artery thrombosis.\nBones: avascular necrosis."
+        },
+        {
+          "id": "med06-c064",
+          "type": "fact",
+          "topics": [
+            "6.5.3"
+          ],
+          "sourcePage": 57,
+          "front": "Which pregnancy morbidity features are associated with APS?",
+          "back": "Recurrent spontaneous abortions.\nPregnancy-induced hypertension, including preeclampsia and eclampsia.\nPlacental insufficiency or abruption.\nIntrauterine growth retardation."
+        },
+        {
+          "id": "med06-c065",
+          "type": "fact",
+          "topics": [
+            "6.5.3"
+          ],
+          "sourcePage": 57,
+          "front": "What is Evans syndrome and its reported link to APS?",
+          "back": "Evans syndrome is the clinical association of autoimmune thrombocytopenia and autoimmune hemolytic anemia.\nIt has been reported in 10 percent of patients with antiphospholipid syndrome."
+        },
+        {
+          "id": "med06-c066",
+          "type": "fact",
+          "topics": [
+            "6.5.4"
+          ],
+          "sourcePage": 57,
+          "front": "Which laboratory features are associated with APS?",
+          "back": "Elevated anticardiolipin antibodies of IgG or IgM isotype.\nElevated anti-beta-2 glycoprotein-I antibody.\nLupus anticoagulant in plasma.\nThrombocytopenia and Coombs-positive hemolytic anemia."
+        },
+        {
+          "id": "med06-c067",
+          "type": "compare",
+          "topics": [
+            "6.5.4"
+          ],
+          "sourcePage": 57,
+          "front": "How does APS overlap with the isolated aPTT algorithm?",
+          "back": "Lupus anticoagulant is a cause of isolated aPTT prolongation with normal PT.\nIn APS it is one of the laboratory criteria and must be confirmed on two or more occasions at least 12 weeks apart."
+        },
+        {
+          "id": "med06-c068",
+          "type": "fact",
+          "topics": [
+            "6.5.5"
+          ],
+          "sourcePage": 57,
+          "front": "What is required for a diagnosis of definite APS?",
+          "back": "At least one clinical criterion and at least one laboratory criterion must be met."
+        },
+        {
+          "id": "med06-c069",
+          "type": "summary",
+          "topics": [
+            "6.5.5"
+          ],
+          "sourcePage": 57,
+          "front": "What are the clinical criteria for APS?",
+          "back": "Vascular thrombosis: one or more episodes of arterial, venous or small-vessel thrombosis in any tissue or organ.\nPregnancy morbidity: one or more unexplained deaths of a morphologically normal fetus at or beyond 10 weeks; one or more premature births of a morphologically normal neonate before 34 weeks because of eclampsia, severe preeclampsia or placental insufficiency; or three or more unexplained consecutive spontaneous abortions before 10 weeks after excluding maternal anatomic or hormonal and parental chromosomal causes."
+        },
+        {
+          "id": "med06-c070",
+          "type": "fact",
+          "topics": [
+            "6.5.5"
+          ],
+          "sourcePage": 57,
+          "front": "What are the laboratory criteria for APS?",
+          "back": "Anticardiolipin IgG and/or IgM, lupus anticoagulant in plasma, or anti-beta-2 glycoprotein-I IgG and/or IgM.\nEach must be present on two or more occasions at least 12 weeks apart."
+        },
+        {
+          "id": "med06-c071",
+          "type": "fact",
+          "topics": [
+            "6.5.6"
+          ],
+          "sourcePage": 57,
+          "front": "What is the mainstay of treatment for antiphospholipid syndrome?",
+          "back": "Warfarin."
+        },
+        {
+          "id": "med06-c072",
+          "type": "fact",
+          "topics": [
+            "6.5.7"
+          ],
+          "sourcePage": 58,
+          "front": "Which conditions are listed as predisposing to thrombosis?",
+          "back": "Factor V Leiden mutation.\nProthrombin mutation.\nAntithrombin III deficiency.\nProtein C deficiency.\nProtein S deficiency.\nAntiphospholipid syndrome."
+        },
+        {
+          "id": "med06-c073",
+          "type": "compare",
+          "topics": [
+            "6.5.7"
+          ],
+          "sourcePage": 58,
+          "front": "Which listed thrombotic risk factors are inherited and which is acquired?",
+          "back": "Factor V Leiden, prothrombin mutation, antithrombin III, protein C and protein S are the inherited/constitutional abnormalities in the list.\nAntiphospholipid syndrome is the acquired association."
+        },
+        {
+          "id": "med06-c074",
+          "type": "fact",
+          "topics": [
+            "6.5.8"
+          ],
+          "sourcePage": 58,
+          "front": "What three high-yield firsts are given for Factor V Leiden?",
+          "back": "Most common genetic cause of thrombophilia.\nMost common congenital cause of venous thrombosis.\nMost common hereditary blood coagulation disorder."
+        },
+        {
+          "id": "med06-c075",
+          "type": "fact",
+          "topics": [
+            "6.6.1"
+          ],
+          "sourcePage": 58,
+          "front": "Which proteins are vitamin K dependent and why?",
+          "back": "Factors II (prothrombin), VII (proconvertin), IX (Christmas factor) and X (Stuart-Prower factor), plus proteins C and S.\nThey require gamma-carboxylation of glutamic acid residues in the liver, a process that needs vitamin K before release into the circulation."
+        },
+        {
+          "id": "med06-c076",
+          "type": "fact",
+          "topics": [
+            "6.6.1"
+          ],
+          "sourcePage": 58,
+          "front": "What are the alternative names of the vitamin K-dependent factors?",
+          "back": "Factor II: prothrombin.\nFactor VII: proconvertin.\nFactor IX: Christmas factor.\nFactor X: Stuart-Prower factor."
+        },
+        {
+          "id": "med06-c077",
+          "type": "compare",
+          "topics": [
+            "6.6.2"
+          ],
+          "sourcePage": 58,
+          "front": "How does vitamin C deficiency produce bleeding?",
+          "back": "Vitamin C is needed for collagen synthesis in capillary walls, so deficiency increases capillary fragility.\nHemorrhages appear over the lower extremities, around hair follicles and in nailbeds.\nBleeding time is increased while PTT, PT, thrombin time and clotting time are normal."
+        },
+        {
+          "id": "med06-c078",
+          "type": "compare",
+          "topics": [
+            "6.6.2"
+          ],
+          "sourcePage": 58,
+          "front": "How do vitamin K and vitamin C deficiency differ in laboratory testing?",
+          "back": "Vitamin K deficiency: lack of coagulation factors gives increased clotting time and increased PTT, PT and thrombin time, with normal bleeding time.\nVitamin C deficiency: increased bleeding time with normal PTT, PT, thrombin time and clotting time."
+        },
+        {
+          "id": "med06-c079",
+          "type": "concept",
+          "topics": [
+            "6.6.3"
+          ],
+          "sourcePage": 59,
+          "front": "What is the mechanism of methemoglobinemia?",
+          "back": "A significant concentration of hemoglobin is oxidised to methemoglobin.\nThe heme iron loses an electron and switches from the ferrous (2+) to the ferric (3+) state.\nMethemoglobin binds oxygen so tightly that virtually no oxygen is delivered to tissues."
+        },
+        {
+          "id": "med06-c080",
+          "type": "fact",
+          "topics": [
+            "6.6.3"
+          ],
+          "sourcePage": 59,
+          "front": "Why does methemoglobinemia cause central cyanosis without hypoxemia?",
+          "back": "It is an uncommon but distinct cause of central cyanosis in the absence of hypoxemia or cardiovascular compromise.\nCyanosis results from the oxidised hemoglobin's inability to deliver oxygen, not from low arterial oxygen content."
+        },
+        {
+          "id": "med06-c081",
+          "type": "fact",
+          "topics": [
+            "6.6.4"
+          ],
+          "sourcePage": 59,
+          "front": "How does methemoglobinemia typically present?",
+          "back": "Cyanosis unresponsive to supplemental oxygen.\nGeneralised cyanosis with muddy brown dark mucous membranes progressing to global skin discolouration.\nFreshly drawn blood is dark brown or chocolate-brown and does not change colour with oxygen or agitation in air."
+        },
+        {
+          "id": "med06-c082",
+          "type": "fact",
+          "topics": [
+            "6.6.4"
+          ],
+          "sourcePage": 59,
+          "front": "What methemoglobin levels cause symptoms or death, and what is the best diagnostic test?",
+          "back": "Methemoglobin above 15 percent causes symptoms of cerebral ischemia.\nAbove 60 percent is usually lethal.\nThe best diagnostic test is a methemoglobin assay."
+        },
+        {
+          "id": "med06-c083",
+          "type": "fact",
+          "topics": [
+            "6.6.5"
+          ],
+          "sourcePage": 59,
+          "front": "What is the emergency management of methemoglobinemia?",
+          "back": "Intravenous methylene blue, which serves as the antidote."
+        },
+        {
+          "id": "med06-c084",
+          "type": "fact",
+          "topics": [
+            "6.6.5"
+          ],
+          "sourcePage": 59,
+          "front": "When is methylene blue ineffective or contraindicated?",
+          "back": "It is ineffective in methemoglobinemia due to hemoglobinopathy M2 (hemoglobin M).\nIt is contraindicated in G6PD deficiency because its oxidative potential can cause severe hemolysis."
+        }
+      ]
+    },
+    {
+      "id": "med07",
+      "number": 7,
+      "title": "Cardiovascular Examination: Pulses, JVP and Heart Sounds",
+      "status": "draft",
+      "subject": "Medicine",
+      "excludeExamples": true,
+      "source": {
+        "file": "medicine1_part_1.pdf — Self Assessment & Review Medicine, 9/e, Mudit Khanna",
+        "pageRange": "PDF 250–258 — Essential Revision Notes theory only; MCQs/explanations excluded"
+      },
+      "outline": [
+        {
+          "id": "7.1",
+          "title": "Arterial Pulses",
+          "children": [
+            {
+              "id": "7.1.1",
+              "title": "Pulsus alternans"
+            },
+            {
+              "id": "7.1.2",
+              "title": "Bisferiens pulse"
+            },
+            {
+              "id": "7.1.3",
+              "title": "Pulsus paradoxus"
+            },
+            {
+              "id": "7.1.4",
+              "title": "Dicrotic pulse"
+            }
+          ]
+        },
+        {
+          "id": "7.2",
+          "title": "Jugular Venous Pulse",
+          "children": [
+            {
+              "id": "7.2.1",
+              "title": "JVP waves: a, c and v"
+            },
+            {
+              "id": "7.2.2",
+              "title": "JVP descents: x, y and y-a"
+            },
+            {
+              "id": "7.2.3",
+              "title": "Large, cannon and absent a waves"
+            },
+            {
+              "id": "7.2.4",
+              "title": "Prominent x and y descents: comparative table"
+            }
+          ]
+        },
+        {
+          "id": "7.3",
+          "title": "Cardiac Auscultation: Heart Sounds",
+          "children": [
+            {
+              "id": "7.3.1",
+              "title": "Auscultation principles and heart sound comparison"
+            },
+            {
+              "id": "7.3.2",
+              "title": "First Heart Sound (S1)",
+              "children": [
+                {
+                  "id": "7.3.2.1",
+                  "title": "S1 mechanism and characteristics"
+                },
+                {
+                  "id": "7.3.2.2",
+                  "title": "Causes of soft S1"
+                },
+                {
+                  "id": "7.3.2.3",
+                  "title": "Causes of loud S1"
+                },
+                {
+                  "id": "7.3.2.4",
+                  "title": "Splitting of S1"
+                }
+              ]
+            },
+            {
+              "id": "7.3.3",
+              "title": "Second Heart Sound (S2)",
+              "children": [
+                {
+                  "id": "7.3.3.1",
+                  "title": "S2 mechanism and characteristics"
+                },
+                {
+                  "id": "7.3.3.2",
+                  "title": "Single S2"
+                },
+                {
+                  "id": "7.3.3.3",
+                  "title": "Normal physiological splitting"
+                },
+                {
+                  "id": "7.3.3.4",
+                  "title": "Wide and reversed splitting"
+                },
+                {
+                  "id": "7.3.3.5",
+                  "title": "Fixed wide splitting"
+                }
+              ]
+            },
+            {
+              "id": "7.3.4",
+              "title": "Third Heart Sound (S3)",
+              "children": [
+                {
+                  "id": "7.3.4.1",
+                  "title": "S3 features and mechanism"
+                },
+                {
+                  "id": "7.3.4.2",
+                  "title": "Physiologic and pathologic S3"
+                },
+                {
+                  "id": "7.3.4.3",
+                  "title": "Pericardial knock"
+                },
+                {
+                  "id": "7.3.4.4",
+                  "title": "Congenital causes of loud S3"
+                }
+              ]
+            },
+            {
+              "id": "7.3.5",
+              "title": "Fourth Heart Sound (S4)",
+              "children": [
+                {
+                  "id": "7.3.5.1",
+                  "title": "S4 features and mechanism"
+                },
+                {
+                  "id": "7.3.5.2",
+                  "title": "Causes of pathologic S4"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "7.4",
+          "title": "Added Heart Sounds",
+          "children": [
+            {
+              "id": "7.4.1",
+              "title": "Classification and timing of added sounds"
+            },
+            {
+              "id": "7.4.2",
+              "title": "Ejection click"
+            },
+            {
+              "id": "7.4.3",
+              "title": "Opening snap"
+            },
+            {
+              "id": "7.4.4",
+              "title": "Pericardial knock and tumor plop"
+            }
+          ]
+        },
+        {
+          "id": "7.5",
+          "title": "Cardiac Murmurs",
+          "children": [
+            {
+              "id": "7.5.1",
+              "title": "Systolic Murmurs",
+              "children": [
+                {
+                  "id": "7.5.1.1",
+                  "title": "Holosystolic and pansystolic murmurs"
+                },
+                {
+                  "id": "7.5.1.2",
+                  "title": "Midsystolic ejection murmurs"
+                },
+                {
+                  "id": "7.5.1.3",
+                  "title": "Early systolic murmurs"
+                },
+                {
+                  "id": "7.5.1.4",
+                  "title": "Effect of dynamic maneuvers"
+                }
+              ]
+            },
+            {
+              "id": "7.5.2",
+              "title": "Diastolic Murmurs",
+              "children": [
+                {
+                  "id": "7.5.2.1",
+                  "title": "Aortic regurgitation murmurs"
+                },
+                {
+                  "id": "7.5.2.2",
+                  "title": "Mitral stenosis murmur"
+                },
+                {
+                  "id": "7.5.2.3",
+                  "title": "Carey Coombs and Austin Flint murmurs"
+                }
+              ]
+            },
+            {
+              "id": "7.5.3",
+              "title": "Acute mitral regurgitation"
+            },
+            {
+              "id": "7.5.4",
+              "title": "Continuous Murmurs",
+              "children": [
+                {
+                  "id": "7.5.4.1",
+                  "title": "Blood flow and high-to-low-pressure shunts"
+                },
+                {
+                  "id": "7.5.4.2",
+                  "title": "Localized arterial obstruction"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "med07-c001",
+          "type": "concept",
+          "topics": [
+            "7.1.1"
+          ],
+          "sourcePage": 250,
+          "front": "What is pulsus alternans?",
+          "back": "Regular alternation of the pressure in the pulse with a regular rhythm.\nSeen in left ventricular failure and may occur in any condition leading to LVF."
+        },
+        {
+          "id": "med07-c002",
+          "type": "fact",
+          "topics": [
+            "7.1.2"
+          ],
+          "sourcePage": 250,
+          "front": "What is a bisferiens pulse and in which conditions is it seen?",
+          "back": "Two systolic peaks in the pulse.\nSeen in aortic regurgitation and hypertrophic cardiomyopathy; may also be seen in aortic stenosis."
+        },
+        {
+          "id": "med07-c003",
+          "type": "definition",
+          "topics": [
+            "7.1.3"
+          ],
+          "sourcePage": 250,
+          "front": "Define pulsus paradoxus.",
+          "back": "The normal decrease in systolic pressure during inspiration is accentuated.\nThe rhythm is regular and there is a single systolic peak."
+        },
+        {
+          "id": "med07-c004",
+          "type": "fact",
+          "topics": [
+            "7.1.3"
+          ],
+          "sourcePage": 250,
+          "front": "List the conditions in which pulsus paradoxus is seen in these notes.",
+          "back": "Pericardial tamponade\nSuperior vena cava obstruction\nCOPD or acute severe asthma\nConstrictive pericarditis\nPulmonary embolism\nHypovolemic shock"
+        },
+        {
+          "id": "med07-c005",
+          "type": "definition",
+          "topics": [
+            "7.1.4"
+          ],
+          "sourcePage": 250,
+          "front": "What is a dicrotic pulse and with which condition is it listed?",
+          "back": "Two palpable waves, one in systole and one in diastole.\nListed in dilated cardiomyopathy."
+        },
+        {
+          "id": "med07-c006",
+          "type": "concept",
+          "topics": [
+            "7.2.1"
+          ],
+          "sourcePage": 250,
+          "front": "What produces the a, c and v waves of the jugular venous pulse?",
+          "back": "a wave: distention produced by right atrial contraction.\nc wave: positive wave from bulging of the tricuspid valve into the right atrium during right ventricular isovolumetric contraction.\nv wave: increasing volume of blood in the right atrium during ventricular systole while the tricuspid valve is closed."
+        },
+        {
+          "id": "med07-c007",
+          "type": "process",
+          "topics": [
+            "7.2.2"
+          ],
+          "sourcePage": 250,
+          "front": "Explain the x (a-x) descent of the JVP and its modifications.",
+          "back": "Due to atrial relaxation and downward displacement of the tricuspid valve during ventricular systole.\nAccentuated: constrictive pericarditis, cardiac tamponade, restrictive cardiomyopathy.\nReduced: right ventricular dilatation.\nReversed: tricuspid regurgitation."
+        },
+        {
+          "id": "med07-c008",
+          "type": "concept",
+          "topics": [
+            "7.2.2"
+          ],
+          "sourcePage": 250,
+          "front": "Explain the y (v-y) descent of the JVP and its modifications.",
+          "back": "Opening of the tricuspid valve followed by rapid inflow of blood into the right ventricle.\nAccentuated: tricuspid regurgitation, constrictive pericarditis.\nReduced: tricuspid stenosis and right atrial myxoma, suggesting obstruction to right ventricular filling."
+        },
+        {
+          "id": "med07-c009",
+          "type": "fact",
+          "topics": [
+            "7.2.2"
+          ],
+          "sourcePage": 250,
+          "front": "What produces the y-a descent of the JVP?",
+          "back": "Continuous diastolic inflow of blood into the great veins, right atrium and right ventricle, which are all in free communication during diastole."
+        },
+        {
+          "id": "med07-c010",
+          "type": "fact",
+          "topics": [
+            "7.2.3"
+          ],
+          "sourcePage": 251,
+          "front": "List the causes of large, cannon and absent a waves in the JVP.",
+          "back": "Large a waves: tricuspid stenosis, pulmonary stenosis, pulmonary hypertension.\nCannon a waves: regular in junctional rhythm; irregular with atrioventricular dissociation and ventricular tachycardia, and in complete heart block.\nAbsent a waves: atrial fibrillation."
+        },
+        {
+          "id": "med07-c011",
+          "type": "compare",
+          "topics": [
+            "7.2.4"
+          ],
+          "sourcePage": 251,
+          "front": "Compare the x and y descents in tamponade, constrictive pericarditis and restrictive cardiomyopathy.",
+          "back": "Prominent y descent: absent in tamponade, usually present in constrictive pericarditis, rare in restrictive cardiomyopathy.\nProminent x descent: present in tamponade, usually present in constrictive pericarditis, present in restrictive cardiomyopathy."
+        },
+        {
+          "id": "med07-c012",
+          "type": "summary",
+          "topics": [
+            "7.3.1"
+          ],
+          "sourcePage": 251,
+          "front": "How do S1, S2, S3 and S4 differ in character, cause, timing and auscultation?",
+          "back": "S1: high pitched, 0.14 s, 25-45 Hz; sudden closure of mitral and tricuspid valves; start of ventricular systole; diaphragm.\nS2: high pitched, 0.11 s, about 50 Hz; closure of aortic and pulmonary valves; just after ventricular systole; diaphragm.\nS3: soft low-pitched weak rumbling, 0.1 s, under 20 Hz; rapid ventricular filling; early to mid diastole; bell.\nS4: low pitched; atrial contraction causing inthrushing of blood; presystolic; bell."
+        },
+        {
+          "id": "med07-c013",
+          "type": "fact",
+          "topics": [
+            "7.3.1"
+          ],
+          "sourcePage": 251,
+          "front": "Which stethoscope piece is preferred for each heart sound?",
+          "back": "Diaphragm: S1, S2 and opening snaps.\nBell: low-pitched sounds such as S3 and S4 (Hutchison).\nS3 and S4 often cannot be heard with a stethoscope and may require phonocardiography."
+        },
+        {
+          "id": "med07-c014",
+          "type": "definition",
+          "topics": [
+            "7.3.2.1"
+          ],
+          "sourcePage": 251,
+          "front": "What causes the first heart sound and when is it heard?",
+          "back": "Sudden closure of the mitral and tricuspid valves at the start of ventricular systole.\nHigh pitched, duration about 0.14 second, frequency 25-45 Hz."
+        },
+        {
+          "id": "med07-c015",
+          "type": "fact",
+          "topics": [
+            "7.3.2.2"
+          ],
+          "sourcePage": 251,
+          "front": "List the causes of a soft S1.",
+          "back": "Poor conduction through the chest wall: obesity, emphysema, pleural effusion, pericardial effusion.\nDecreased rate of LV pressure development: myxoedema, cardiomyopathy, acute MI, mitral regurgitation.\nProlonged PR interval, including first-degree heart block.\nReduced valve mobility: severe calcification, as in long-standing mitral stenosis."
+        },
+        {
+          "id": "med07-c016",
+          "type": "fact",
+          "topics": [
+            "7.3.2.3"
+          ],
+          "sourcePage": 252,
+          "front": "List the causes of a loud S1.",
+          "back": "Tachycardia with shortened diastole: anemia, anxiety, fever.\nIncreased AV flow from high cardiac output: thyrotoxicosis, AV fistula.\nLeft-to-right shunts: ASD, PDA and other conditions.\nShort PR interval: leaflets maximally separated by atrial contraction close with high velocity and large excursion.\nMitral and tricuspid stenosis are also listed."
+        },
+        {
+          "id": "med07-c017",
+          "type": "compare",
+          "topics": [
+            "7.3.2.4"
+          ],
+          "sourcePage": 252,
+          "front": "How do normal and reverse splitting of S1 differ, and what are their causes?",
+          "back": "Normal splitting: M1 followed by T1 after a longer gap; caused by RBBB, LV pacing, ectopic or idioventricular rhythms from the left ventricle, Ebstein anomaly.\nReverse splitting: T1 precedes M1; caused by LBBB, RV pacing, ectopic or idioventricular rhythms from the right ventricle, severe mitral stenosis and atrial myxoma."
+        },
+        {
+          "id": "med07-c018",
+          "type": "definition",
+          "topics": [
+            "7.3.3.1"
+          ],
+          "sourcePage": 251,
+          "front": "What causes the second heart sound?",
+          "back": "Closure of the aortic and pulmonary valves just after the end of ventricular systole.\nHigh pitched, duration about 0.11 second, frequency around 50 Hz; better heard with the diaphragm."
+        },
+        {
+          "id": "med07-c019",
+          "type": "concept",
+          "topics": [
+            "7.3.3.2"
+          ],
+          "sourcePage": 252,
+          "front": "How can a single S2 arise?",
+          "back": "Delayed A2 can produce a single S2 when the splitting interval falls below 30 ms.\nA single S2 also results when one component is absent or inaudible: severe tetralogy of Fallot, severe semilunar valve stenosis (aortic or pulmonary), pulmonic or tricuspid atresia, Eisenmenger syndrome.\nA faint P2 occurs in emphysema, obesity, respiratory noise, pulmonary hypertension with right heart failure, and moderate-severe pulmonic stenosis with intact septum."
+        },
+        {
+          "id": "med07-c020",
+          "type": "fact",
+          "topics": [
+            "7.3.3.2"
+          ],
+          "sourcePage": 252,
+          "front": "List the causes of delayed A2.",
+          "back": "Delayed electrical activation of the right ventricle: complete proximal RBBB, left ventricular paced beats, left ventricular ectopic beats.\nProlonged right ventricular mechanical systole: acute massive pulmonary embolus."
+        },
+        {
+          "id": "med07-c021",
+          "type": "concept",
+          "topics": [
+            "7.3.3.3"
+          ],
+          "sourcePage": 253,
+          "front": "Describe normal physiological splitting of S2.",
+          "back": "No audible splitting in expiration; audible splitting in inspiration.\nIn expiration A2 and P2 are less than 30 ms apart and are appreciated as one sound.\nIn inspiration the interval widens and two sounds are heard. Audible expiratory splitting is abnormal."
+        },
+        {
+          "id": "med07-c022",
+          "type": "compare",
+          "topics": [
+            "7.3.3.4"
+          ],
+          "sourcePage": 253,
+          "front": "How do wide physiological splitting and reversed splitting of S2 differ?",
+          "back": "Wide physiological splitting: delayed P2 or early A2; splitting audible in both expiration and inspiration.\nReversed splitting: delayed A2 or early P2; P2 moves toward A2 with inspiration so the interval narrows, a paradoxical movement."
+        },
+        {
+          "id": "med07-c023",
+          "type": "fact",
+          "topics": [
+            "7.3.3.4"
+          ],
+          "sourcePage": 253,
+          "front": "List the causes of delayed pulmonic closure producing wide splitting of S2.",
+          "back": "Delayed RV electrical activation: proximal RBBB, LV paced beats, LV ectopic beats.\nProlonged RV mechanical systole: acute massive pulmonary embolus, pulmonary hypertension with right heart failure, moderate-severe pulmonic stenosis with intact septum.\nDecreased pulmonary vascular impedance with increased hangout: normotensive ASD, idiopathic dilation of the pulmonary artery, mild pulmonic stenosis.\nEarly aortic closure: shortened LV ejection time from mitral regurgitation or VSD."
+        },
+        {
+          "id": "med07-c024",
+          "type": "fact",
+          "topics": [
+            "7.3.3.4"
+          ],
+          "sourcePage": 253,
+          "front": "List the causes of delayed aortic closure producing reversed splitting of S2.",
+          "back": "Delayed LV electrical activation: proximal LBBB, RV paced beats, RV ectopic beats.\nProlonged LV mechanical systole: peripheral LBBB, LV outflow tract obstruction, hypertensive cardiovascular disease, arteriosclerotic heart disease, chronic ischemic heart disease, angina pectoris.\nDecreased systemic vascular impedance: poststenotic dilation of the aorta with aortic stenosis or regurgitation, patent ductus arteriosus.\nEarly pulmonic closure: early electrical activation of the RV in Wolff-Parkinson-White type B."
+        },
+        {
+          "id": "med07-c025",
+          "type": "fact",
+          "topics": [
+            "7.3.3.5"
+          ],
+          "sourcePage": 254,
+          "front": "What are the causes of fixed wide splitting of S2?",
+          "back": "Atrial septal defect, the most characteristic cause.\nPulmonic stenosis.\nAcute right heart failure from pulmonary embolism."
+        },
+        {
+          "id": "med07-c026",
+          "type": "definition",
+          "topics": [
+            "7.3.4.1"
+          ],
+          "sourcePage": 254,
+          "front": "Describe the third heart sound.",
+          "back": "A low-frequency diastolic sound occurring shortly after S2 during rapid ventricular filling, at its termination.\nBest heard at the apex in the left lateral position with the bell."
+        },
+        {
+          "id": "med07-c027",
+          "type": "compare",
+          "topics": [
+            "7.3.4.2"
+          ],
+          "sourcePage": 254,
+          "front": "Contrast physiologic and pathologic causes of S3.",
+          "back": "Physiologic: children, athletes, fever, pregnancy, thyrotoxicosis, AV fistulas.\nPathologic ventricular dysfunction: poor systolic function, increased end-diastolic and end-systolic volumes, reduced ejection fraction and high filling pressure, as in idiopathic dilated cardiomyopathy, ischemic, valvular and congenital heart disease, systemic and pulmonary hypertension.\nExcessively rapid early diastolic filling: anemia, thyrotoxicosis, AV fistula, AV valve incompetence, left-to-right shunts such as VSD, PDA and ASD.\nRestrictive disease: constrictive pericarditis, restrictive cardiomyopathy, hypertrophic cardiomyopathy."
+        },
+        {
+          "id": "med07-c028",
+          "type": "definition",
+          "topics": [
+            "7.3.4.3"
+          ],
+          "sourcePage": 254,
+          "front": "What is a pericardial knock?",
+          "back": "A distinct form of S3 that occurs earlier, 0.1 to 0.12 second after A2, and is higher pitched than a normal S3.\nDue to the restrictive effect of an adherent pericardium that abruptly halts diastolic filling; characteristically associated with constrictive pericarditis."
+        },
+        {
+          "id": "med07-c029",
+          "type": "fact",
+          "topics": [
+            "7.3.4.4"
+          ],
+          "sourcePage": 254,
+          "front": "Which congenital heart diseases are associated with a loud S3?",
+          "back": "Ventricular septal defect, patent ductus arteriosus and atrial septal defect."
+        },
+        {
+          "id": "med07-c030",
+          "type": "concept",
+          "topics": [
+            "7.3.5.1"
+          ],
+          "sourcePage": 255,
+          "front": "What is the fourth heart sound and why is it usually inaudible?",
+          "back": "An atrial, presystolic heart sound caused by inrush of blood into the ventricles when the atria contract; it requires effective atrial contraction.\nLow pitched, usually 20 cycles per second or less, and weak, so it is almost never audible even with a stethoscope.\nBecomes audible when diminished ventricular compliance increases resistance to filling; best with the bell at the left ventricular apex in the left lateral position, accentuated by mild supine exercise."
+        },
+        {
+          "id": "med07-c031",
+          "type": "fact",
+          "topics": [
+            "7.3.5.2"
+          ],
+          "sourcePage": 255,
+          "front": "List the causes of a pathologic S4.",
+          "back": "Decreased ventricular compliance: ventricular hypertrophy from outflow obstruction, systemic or pulmonary hypertension, hypertrophic cardiomyopathy; ischemic heart disease with angina, acute or old MI, ventricular aneurysm; idiopathic dilated cardiomyopathy.\nExcessively rapid late diastolic filling: vigorous atrial systole, hyperkinetic states such as anemia and thyrotoxicosis, AV fistula, acute AV valve incompetence, heart block.\nPhysiologic S4 may be recordable with increasing age but is rarely audible."
+        },
+        {
+          "id": "med07-c032",
+          "type": "summary",
+          "topics": [
+            "7.4.1"
+          ],
+          "sourcePage": 256,
+          "front": "Classify added heart sounds by their timing in the cardiac cycle.",
+          "back": "Shortly after S1: ejection click.\nBetween S1 and S2: midsystolic or non-ejection click.\nShortly before S1: fourth heart sound.\nShortly after S2: opening snap, pericardial knock, tumor plop and S3.\nDiastolic sounds: opening snap, S3, S4, pericardial knock, tumor plop.\nSystolic sounds: ejection click and midsystolic click."
+        },
+        {
+          "id": "med07-c033",
+          "type": "definition",
+          "topics": [
+            "7.4.2"
+          ],
+          "sourcePage": 256,
+          "front": "Describe the ejection click.",
+          "back": "A sharp, high-pitched sound audible in early systole immediately after S1.\nSeen in aortic stenosis, pulmonary stenosis and hypertension; produced by sudden opening of the semilunar valves when their opening is delayed."
+        },
+        {
+          "id": "med07-c034",
+          "type": "summary",
+          "topics": [
+            "7.4.3"
+          ],
+          "sourcePage": 257,
+          "front": "Summarize the key features of the opening snap.",
+          "back": "Brief high-pitched sound in early diastole, about 0.05 to 0.12 second after A2.\nUsually due to stenosis of an AV valve, most often the mitral valve.\nBest heard at the lower left sternal border with radiation to the base, and best during expiration.\nFollowed by a low-pitched rumbling diastolic murmur; the A2 to opening snap interval varies inversely with the severity of mitral stenosis."
+        },
+        {
+          "id": "med07-c035",
+          "type": "fact",
+          "topics": [
+            "7.4.3"
+          ],
+          "sourcePage": 257,
+          "front": "What does an opening snap indicate, and how does the tricuspid OS differ?",
+          "back": "It indicates that mitral stenosis is organic and significant, that the valve cusps are pliable, that a high atrioventricular pressure gradient is present, and that severe AR, MR, AF and SABE are absent.\nAn opening snap may also be audible in tricuspid stenosis, where it occurs later in diastole than the mitral opening snap."
+        },
+        {
+          "id": "med07-c036",
+          "type": "compare",
+          "topics": [
+            "7.4.4"
+          ],
+          "sourcePage": 256,
+          "front": "Compare the pericardial knock and the tumor plop.",
+          "back": "Pericardial knock: a higher-pitched S3 in early diastole within 0.01 to 0.12 second after A2; constrictive pericarditis, from sudden deceleration of ventricular filling by the adherent pericardium.\nTumor plop: a characteristic low-pitched sound in early or mid diastole; atrial myxoma, produced when the tumor abruptly stops as it strikes the ventricular wall."
+        },
+        {
+          "id": "med07-c037",
+          "type": "concept",
+          "topics": [
+            "7.5.1"
+          ],
+          "sourcePage": 257,
+          "front": "How are systolic murmurs classified by timing?",
+          "back": "Holosystolic or pansystolic: begin with S1 and end after S2.\nMidsystolic or ejection systolic: start shortly after S1 and end before S2.\nEarly systolic: begin with S1 and end in midsystole."
+        },
+        {
+          "id": "med07-c038",
+          "type": "fact",
+          "topics": [
+            "7.5.1.1"
+          ],
+          "sourcePage": 257,
+          "front": "List the causes of holosystolic or pansystolic murmurs.",
+          "back": "Ventricular septal defect.\nMitral regurgitation.\nTricuspid regurgitation.\nAortopulmonary shunts.\nPatent ductus arteriosus.\nHigh output states."
+        },
+        {
+          "id": "med07-c039",
+          "type": "fact",
+          "topics": [
+            "7.5.1.2"
+          ],
+          "sourcePage": 257,
+          "front": "List the causes of midsystolic ejection murmurs.",
+          "back": "Pulmonary stenosis.\nAortic stenosis.\nCoarctation of the aorta.\nAneurysm.\nAtrial septal defect.\nHigh output states."
+        },
+        {
+          "id": "med07-c040",
+          "type": "fact",
+          "topics": [
+            "7.5.1.3"
+          ],
+          "sourcePage": 257,
+          "front": "List the causes of early systolic murmurs.",
+          "back": "Ventricular septal defect, including large VSD with pulmonary hypertension and small muscular VSD.\nTricuspid regurgitation in the absence of pulmonary hypertension.\nMitral regurgitation with a noncompliant left atrium, as in papillary muscle dysfunction."
+        },
+        {
+          "id": "med07-c041",
+          "type": "summary",
+          "topics": [
+            "7.5.1.4"
+          ],
+          "sourcePage": 257,
+          "front": "What do the dynamic maneuver tables for systolic murmurs show?",
+          "back": "Murmur intensity changes with Valsalva, standing, squatting, handgrip or transient arterial occlusion, inspiration and after a PVC.\nKey examples: HOCM increases with Valsalva and decreases with squatting; inspiration increases the right-sided tricuspid regurgitation murmur; handgrip increases mitral regurgitation and VSD murmurs.\nSymbols: increase, decrease, no predictable change."
+        },
+        {
+          "id": "med07-c042",
+          "type": "definition",
+          "topics": [
+            "7.5.2.1"
+          ],
+          "sourcePage": 258,
+          "front": "Describe the typical diastolic murmur of chronic aortic regurgitation.",
+          "back": "High-pitched, blowing, decrescendo diastolic murmur.\nHeard best at the third left sternal border; with marked poststenotic dilatation of the aorta it may be loudest in the second or third right interspace."
+        },
+        {
+          "id": "med07-c043",
+          "type": "fact",
+          "topics": [
+            "7.5.2.1"
+          ],
+          "sourcePage": 258,
+          "front": "Describe the midsystolic ejection murmur that may accompany aortic regurgitation.",
+          "back": "Resembles the murmur of aortic stenosis but is higher pitched, shorter and less rasping.\nHeard best at the base of the heart and transmitted along the carotids."
+        },
+        {
+          "id": "med07-c044",
+          "type": "concept",
+          "topics": [
+            "7.5.2.1"
+          ],
+          "sourcePage": 258,
+          "front": "What is the Austin Flint murmur?",
+          "back": "A soft, low-pitched rumbling middiastolic murmur heard best at the apex.\nProduced by diastolic displacement of the anterior leaflet of the mitral valve by the aortic regurgitant stream."
+        },
+        {
+          "id": "med07-c045",
+          "type": "definition",
+          "topics": [
+            "7.5.2.2"
+          ],
+          "sourcePage": 258,
+          "front": "Describe the murmur of mitral stenosis.",
+          "back": "Low-pitched, rumbling diastolic murmur with presystolic accentuation.\nHeard best at the apex in the left lateral recumbent position."
+        },
+        {
+          "id": "med07-c046",
+          "type": "compare",
+          "topics": [
+            "7.5.2.3"
+          ],
+          "sourcePage": 258,
+          "front": "Compare the Carey Coombs murmur and the Austin Flint murmur.",
+          "back": "Both are low-pitched, soft, delayed diastolic mitral murmurs.\nCarey Coombs: middiastolic, associated with acute rheumatic carditis; attributed to inflammation of the mitral cusps and excessive left atrial blood flow from mitral regurgitation.\nAustin Flint: middiastolic or late diastolic, associated with aortic regurgitation; attributed to the anterior mitral leaflet when blood enters the left ventricle simultaneously from the aortic route and the left atrium."
+        },
+        {
+          "id": "med07-c047",
+          "type": "fact",
+          "topics": [
+            "7.5.3"
+          ],
+          "sourcePage": 258,
+          "front": "List common conditions producing acute mitral regurgitation.",
+          "back": "Rupture of chordae tendineae.\nPapillary muscle dysfunction or rupture following myocardial infarction.\nInfective endocarditis."
+        },
+        {
+          "id": "med07-c048",
+          "type": "summary",
+          "topics": [
+            "7.5.4.1"
+          ],
+          "sourcePage": 258,
+          "front": "List continuous murmurs caused by increased blood flow.",
+          "back": "Venous hum.\nMammary souffle.\nHemangioma.\nHyperthyroidism.\nAcute alcoholic hepatitis.\nHyperemia of neoplasm: hepatoma, renal cell carcinoma, Paget disease."
+        },
+        {
+          "id": "med07-c049",
+          "type": "summary",
+          "topics": [
+            "7.5.4.1"
+          ],
+          "sourcePage": 258,
+          "front": "List continuous murmurs caused by high-to-low-pressure shunts.",
+          "back": "Patent ductus arteriosus, aortopulmonary window, truncus arteriosus, pulmonary atresia, anomalous left coronary artery, coronary artery fistula.\nBronchiectasis and sequestration of the lung.\nLeft-to-right atrial shunting, Lutembacher syndrome, mitral atresia with atrial septal defect, anomalous pulmonary veins.\nVenovenous and portosystemic shunts, systemic or pulmonary arteriovenous fistula, systemic artery to pulmonary artery, ruptured sinus of Valsalva."
+        },
+        {
+          "id": "med07-c050",
+          "type": "fact",
+          "topics": [
+            "7.5.4.2"
+          ],
+          "sourcePage": 258,
+          "front": "List continuous murmurs secondary to localized arterial obstruction.",
+          "back": "Coarctation of the aorta.\nBranch pulmonary stenosis.\nCarotid occlusion.\nCeliac mesenteric occlusion.\nRenal occlusion.\nFemoral occlusion.\nCoronary occlusion."
+        }
+      ]
+    },
+    {
+      "id": "med08",
+      "number": 8,
+      "title": "ECG, Arrhythmias and Valvular Disease",
+      "status": "draft",
+      "subject": "Medicine",
+      "excludeExamples": true,
+      "source": {
+        "file": "medicine1_part_1.pdf — Self Assessment & Review Medicine, 9/e, Mudit Khanna",
+        "pageRange": "PDF 259–267 — Essential Revision Notes theory only; MCQs/explanations excluded"
+      },
+      "outline": [
+        {
+          "id": "8.1",
+          "title": "ECG Basics and Cardiac Axis",
+          "children": [
+            {
+              "id": "8.1.1",
+              "title": "Cardiac Axis: Definition and Conventions"
+            },
+            {
+              "id": "8.1.2",
+              "title": "Axis Categories and Ranges"
+            },
+            {
+              "id": "8.1.3",
+              "title": "Axis Determination in Leads"
+            }
+          ]
+        },
+        {
+          "id": "8.2",
+          "title": "QRS Complex",
+          "children": [
+            {
+              "id": "8.2.1",
+              "title": "QRS Voltage and Low-Voltage Criteria"
+            },
+            {
+              "id": "8.2.2",
+              "title": "Causes of Low QRS Voltage"
+            },
+            {
+              "id": "8.2.3",
+              "title": "Low Voltage with a Thick Left Ventricle"
+            },
+            {
+              "id": "8.2.4",
+              "title": "QRS Duration Categories"
+            },
+            {
+              "id": "8.2.5",
+              "title": "Wide QRS Complex: Mechanisms and Clues"
+            },
+            {
+              "id": "8.2.6",
+              "title": "Causes of QRS Widening >0.12 s"
+            }
+          ]
+        },
+        {
+          "id": "8.3",
+          "title": "QT, ST Segment and Potassium Changes",
+          "children": [
+            {
+              "id": "8.3.1",
+              "title": "Prolonged QT Interval"
+            },
+            {
+              "id": "8.3.2",
+              "title": "Shortened QT Interval"
+            },
+            {
+              "id": "8.3.3",
+              "title": "ST-Segment Elevation"
+            },
+            {
+              "id": "8.3.4",
+              "title": "ST-Segment Depression"
+            },
+            {
+              "id": "8.3.5",
+              "title": "Hypokalemia"
+            },
+            {
+              "id": "8.3.6",
+              "title": "Hyperkalemia"
+            }
+          ]
+        },
+        {
+          "id": "8.4",
+          "title": "Other ECG Patterns and Tachycardias",
+          "children": [
+            {
+              "id": "8.4.1",
+              "title": "Pneumothorax"
+            },
+            {
+              "id": "8.4.2",
+              "title": "Broad vs Narrow Complex Tachycardia"
+            },
+            {
+              "id": "8.4.3",
+              "title": "VT vs SVT with Aberrancy"
+            },
+            {
+              "id": "8.4.4",
+              "title": "Torsades de Pointes"
+            },
+            {
+              "id": "8.4.5",
+              "title": "WPW Syndrome: Definition and Epidemiology"
+            },
+            {
+              "id": "8.4.6",
+              "title": "WPW Syndrome: ECG Features"
+            }
+          ]
+        },
+        {
+          "id": "8.5",
+          "title": "Cardiac Conduction Blocks",
+          "children": [
+            {
+              "id": "8.5.1",
+              "title": "First-Degree AV Block"
+            },
+            {
+              "id": "8.5.2",
+              "title": "Second-Degree AV Block: Mobitz I"
+            },
+            {
+              "id": "8.5.3",
+              "title": "Second-Degree AV Block: Mobitz II"
+            },
+            {
+              "id": "8.5.4",
+              "title": "Third-Degree (Complete) AV Block"
+            },
+            {
+              "id": "8.5.5",
+              "title": "AV Blocks Classified by PR Interval"
+            },
+            {
+              "id": "8.5.6",
+              "title": "AV Conduction Blocks Review Table"
+            }
+          ]
+        },
+        {
+          "id": "8.6",
+          "title": "Heart Failure and Valvular Heart Disease",
+          "children": [
+            {
+              "id": "8.6.1",
+              "title": "Left vs Right Heart Failure"
+            },
+            {
+              "id": "8.6.2",
+              "title": "Mitral Stenosis: Auscultatory Findings"
+            },
+            {
+              "id": "8.6.3",
+              "title": "Mitral Stenosis: X-Ray Findings"
+            },
+            {
+              "id": "8.6.4",
+              "title": "Mitral Stenosis: Severity"
+            },
+            {
+              "id": "8.6.5",
+              "title": "Mitral Regurgitation: Severity"
+            },
+            {
+              "id": "8.6.6",
+              "title": "Mitral Valve Prolapse: Overview"
+            },
+            {
+              "id": "8.6.7",
+              "title": "Mitral Valve Prolapse: Findings and Diagnosis"
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "med08-c001",
+          "type": "concept",
+          "topics": [
+            "8.1.1"
+          ],
+          "sourcePage": 259,
+          "front": "What is the cardiac axis, and how are its polarity and range defined?",
+          "back": "The mean direction of the wave of ventricular depolarization in the vertical plane, measured from a zero reference point.\nThe zero reference point views the heart from the same viewpoint as lead I.\nAn axis above this line is given a negative number; an axis below it is given a positive number.\nTheoretically the axis may lie anywhere between +180 and -180."
+        },
+        {
+          "id": "med08-c002",
+          "type": "fact",
+          "topics": [
+            "8.1.2"
+          ],
+          "sourcePage": 259,
+          "front": "What is the direction and range of a normal cardiac axis?",
+          "back": "Cardiac axis flow is down and towards the left lower aspect of the heart.\nRange: between -30 and +90.\nThis is labeled the normal axis."
+        },
+        {
+          "id": "med08-c003",
+          "type": "fact",
+          "topics": [
+            "8.1.2"
+          ],
+          "sourcePage": 259,
+          "front": "What is the direction and range of left axis deviation (LAD)?",
+          "back": "Cardiac axis flow is upward and towards the left upper half of the heart.\nRange: between -30 and -90."
+        },
+        {
+          "id": "med08-c004",
+          "type": "compare",
+          "topics": [
+            "8.1.2"
+          ],
+          "sourcePage": 259,
+          "front": "How do right axis deviation and extreme right axis deviation differ in direction and range?",
+          "back": "Right axis deviation (RAD): axis flow downwards towards the right part of the heart, between +90 and +/-180.\nExtreme right axis deviation: flow upward and to the right, between +/-180 and -90."
+        },
+        {
+          "id": "med08-c005",
+          "type": "concept",
+          "topics": [
+            "8.1.3"
+          ],
+          "sourcePage": 259,
+          "front": "How is the standard cardiac axis determined, and how is it described in the leads?",
+          "back": "The standard cardiac axis is determined using lead I and lead II.\nThe axis is recorded as positive or negative in the leads: normal axis is positive in lead I and positive in lead II.\nLAD: positive in lead I, negative in lead II.\nRAD: negative in lead I, positive or negative in lead II.\nExtreme RAD: negative in lead I and negative in lead II."
+        },
+        {
+          "id": "med08-c006",
+          "type": "definition",
+          "topics": [
+            "8.2.1"
+          ],
+          "sourcePage": 260,
+          "front": "What are the diagnostic criteria for low QRS voltage on ECG?",
+          "back": "QRS amplitude <5 mm in all limb leads (when this is so, precordial amplitude is usually <10 mm, but that is not required for the diagnosis).\nOR QRS amplitude <10 mm in all precordial leads.\nLow QRS voltage is a description, not a diagnosis; it may be a normal variant."
+        },
+        {
+          "id": "med08-c007",
+          "type": "fact",
+          "topics": [
+            "8.2.2"
+          ],
+          "sourcePage": 260,
+          "front": "Which causes of low QRS voltage are due to material between the surface and the heart?",
+          "back": "Obesity\nChronic obstructive lung disease (emphysema)\nPleural effusion\nPericardial effusion (constrictive pericarditis)"
+        },
+        {
+          "id": "med08-c008",
+          "type": "fact",
+          "topics": [
+            "8.2.2"
+          ],
+          "sourcePage": 260,
+          "front": "Which heart-muscle and miscellaneous causes produce low QRS voltage?",
+          "back": "Heart muscle (not true hypertrophy): infiltrative cardiomyopathy (amyloidosis, hemochromatosis); dilated cardiomyopathy; ischaemic cardiomyopathy.\nMiscellaneous: hypothyroidism (myxoedema)."
+        },
+        {
+          "id": "med08-c009",
+          "type": "concept",
+          "topics": [
+            "8.2.3"
+          ],
+          "sourcePage": 260,
+          "front": "What does low QRS voltage plus a thick left ventricle on echocardiogram suggest?",
+          "back": "It strongly suggests an infiltrative cardiomyopathy such as cardiac amyloidosis.\nThe increased thickness is amyloid, not muscle (not true hypertrophy).\nAmyloid does not depolarize and therefore adds nothing to QRS voltage."
+        },
+        {
+          "id": "med08-c010",
+          "type": "compare",
+          "topics": [
+            "8.2.4"
+          ],
+          "sourcePage": 260,
+          "front": "How is QRS duration categorized, and what is the rule for a duration above 0.12 s?",
+          "back": "<0.10 s (<100 ms): normal.\n0.10–0.12 s (100–120 ms): inspect for incomplete RBBB, left anterior fascicular block, left posterior fascicular block; may be normal (hyperkalemia/antiarrhythmics).\n>0.12 s (>120 ms): inspect for right bundle branch block, left bundle branch block, intraventricular conduction delay.\nAny QRS duration >0.12 s is abnormal — there are no exceptions; a duration <0.12 s may be normal."
+        },
+        {
+          "id": "med08-c011",
+          "type": "definition",
+          "topics": [
+            "8.2.5"
+          ],
+          "sourcePage": 261,
+          "front": "What does the QRS complex represent and what is the normal QRS interval?",
+          "back": "The QRS complex represents ventricular depolarization; the QRS interval is the duration of ventricular depolarization.\nNormal QRS duration is less than 0.10 to 0.11 seconds.\nWith QRS <0.12 s, ventricular depolarization occurs more or less normally over the His-Purkinje system.\nA wide QRS results from abnormal activation of the ventricles."
+        },
+        {
+          "id": "med08-c012",
+          "type": "process",
+          "topics": [
+            "8.2.5"
+          ],
+          "sourcePage": 261,
+          "front": "What mechanisms produce a wide QRS complex with a normal rate, and what are their ECG clues?",
+          "back": "Bundle branch block: block in the right or left bundle causes sequential activation of the ventricles — rSR' in V1 in RBBB, wide predominantly negative QRS in LBBB.\nAccessory pathway: ventricles activated by both AV node and accessory pathway — short PR interval and abnormal QRS from cell-to-cell activation.\nHyperkalemia: high potassium slows ventricular depolarization — prominent T waves are often seen.\nVentricular rhythm: a ventricular site drives depolarization — no P waves precede the QRS.\nVentricular paced rhythm: a pacing artifact is observed."
+        },
+        {
+          "id": "med08-c013",
+          "type": "fact",
+          "topics": [
+            "8.2.6"
+          ],
+          "sourcePage": 261,
+          "front": "List the causes of QRS widening >0.12 seconds in decreasing order of mortality.",
+          "back": "Hyperkalemia\nVentricular tachycardia (wide-complex tachycardia)\nIdioventricular rhythm including heart blocks\nDrug effects and overdoses (especially tricyclics)\nWolff-Parkinson-White syndrome\nLBBB, RBBB, intraventricular conduction delay\nVentricular premature contraction\nAberrantly conducted complexes\nA wide QRS may also be seen in Mobitz type II second-degree block and incomplete third-degree block, but this lacks certainty."
+        },
+        {
+          "id": "med08-c014",
+          "type": "fact",
+          "topics": [
+            "8.3.1"
+          ],
+          "sourcePage": 262,
+          "front": "What conditions and drugs prolong the QT interval?",
+          "back": "Heart conditions: acute rheumatic carditis, myocarditis, acute myocardial infarction, mitral valve prolapse.\nCNS insult: cerebrovascular accident.\nDrugs: antiarrhythmics (quinidine, procainamide, disopyramide, sotalol, amiodarone), phenothiazines, tricyclic antidepressants, antibiotics (erythromycin, pentamidine), some antimalarials, cisapride, probucol.\nOther: hypothermia; electrolyte disturbances (hypocalcemia, hypokalemia, hypomagnesemia)."
+        },
+        {
+          "id": "med08-c015",
+          "type": "fact",
+          "topics": [
+            "8.3.2"
+          ],
+          "sourcePage": 262,
+          "front": "What causes a shortened QT interval?",
+          "back": "Hypercalcemia\nDigitalis therapy\nVagal stimulation\nHyperthermia"
+        },
+        {
+          "id": "med08-c016",
+          "type": "compare",
+          "topics": [
+            "8.3.3",
+            "8.3.4"
+          ],
+          "sourcePage": 262,
+          "front": "How are the patterns of ST-segment elevation categorized?",
+          "back": "Elevation with convexity upwards: acute MI, left ventricular aneurysm, Prinzmetal angina.\nElevation with concavity upwards: acute pericarditis."
+        },
+        {
+          "id": "med08-c017",
+          "type": "compare",
+          "topics": [
+            "8.3.4"
+          ],
+          "sourcePage": 262,
+          "front": "How are the patterns of ST-segment depression categorized?",
+          "back": "Oblique or plane/sagging depression: coronary artery disease (angina pectoris).\nWith mirror-image change: digitalis.\nWith convexity upwards: strain pattern of ventricular hypertrophy."
+        },
+        {
+          "id": "med08-c018",
+          "type": "fact",
+          "topics": [
+            "8.3.5"
+          ],
+          "sourcePage": 262,
+          "front": "What are the characteristic ECG features of hypokalemia?",
+          "back": "ST depression\nFlattened or inverted T wave\nProminent U wave\nProlonged PR interval\nProlonged QU interval (real)\nRarely, SA block"
+        },
+        {
+          "id": "med08-c019",
+          "type": "concept",
+          "topics": [
+            "8.3.5"
+          ],
+          "sourcePage": 262,
+          "front": "Why can hypokalemia appear to prolong the QT interval?",
+          "back": "Prominent U wave, ST-segment sagging and T-wave flattening or inversion are characteristic of hypokalemia.\nThe apparently prolonged QT interval is in reality a QU interval, which mimics QT prolongation because of fusion of the T and U waves."
+        },
+        {
+          "id": "med08-c020",
+          "type": "fact",
+          "topics": [
+            "8.3.6"
+          ],
+          "sourcePage": 262,
+          "front": "What are the early ECG features of hyperkalemia?",
+          "back": "Increased T-wave amplitude — peaked T waves\nProlonged PR interval\nAV conduction delay\nProlonged QRS duration"
+        },
+        {
+          "id": "med08-c021",
+          "type": "fact",
+          "topics": [
+            "8.3.6"
+          ],
+          "sourcePage": 262,
+          "front": "What are the later ECG features of severe hyperkalemia?",
+          "back": "Loss of P waves\nSine wave pattern\nVentricular fibrillation or asystole"
+        },
+        {
+          "id": "med08-c022",
+          "type": "fact",
+          "topics": [
+            "8.4.1"
+          ],
+          "sourcePage": 263,
+          "front": "What ECG changes occur in left-sided pneumothorax?",
+          "back": "Rightward deviation of the QRS axis (right axis deviation)\nDecreased or absent R waves in the precordial leads\nT-wave inversion in precordial leads\nPathological Q waves\nDecreased QRS voltage\nElectrical alternans (alternating QRS amplitude with each heartbeat)\nThese changes are important because they may mimic acute MI."
+        },
+        {
+          "id": "med08-c023",
+          "type": "compare",
+          "topics": [
+            "8.4.2"
+          ],
+          "sourcePage": 263,
+          "front": "How do broad-complex and narrow-complex tachycardias differ?",
+          "back": "Ventricular tachycardia (broad complex): ventricular rate >100 bpm; QRS duration >0.12 s (>0.14 s per Harrison); cannot be relieved by carotid sinus massage.\nSupraventricular tachycardia (narrow complex): ventricular rate >100 bpm; QRS duration <0.12 s; can be relieved by carotid sinus massage."
+        },
+        {
+          "id": "med08-c024",
+          "type": "fact",
+          "topics": [
+            "8.4.3"
+          ],
+          "sourcePage": 263,
+          "front": "What proportion of broad-complex tachycardias are VT or SVT with aberrancy, and what causes the latter?",
+          "back": "VT is the most common cause, accounting for more than 80% of broad-complex tachycardias.\nSVT with aberrancy accounts for 15–20% of cases.\nCauses: SVT with a bundle branch block (LBBB or RBBB); atrial flutter, atrial fibrillation and AV reentrant tachycardia (AVRT) may also produce SVT with aberrancy and wide-complex tachycardia."
+        },
+        {
+          "id": "med08-c025",
+          "type": "compare",
+          "topics": [
+            "8.4.3"
+          ],
+          "sourcePage": 263,
+          "front": "Which beat and AV-dissociation features distinguish VT from SVT with aberrancy?",
+          "back": "Fusion beats: characteristic of VT; absent in SVT with aberrancy.\nCapture beats: characteristic of VT; unusual in SVT with aberrancy.\nAV dissociation: characteristic of VT; absent in SVT with aberrancy.\nIndependent P waves: may be seen in VT and are characteristic, indicating AV dissociation; not seen in SVT with aberrancy, where P wave and QRS are linked and ventricular activation depends on atrial discharge."
+        },
+        {
+          "id": "med08-c026",
+          "type": "compare",
+          "topics": [
+            "8.4.3"
+          ],
+          "sourcePage": 263,
+          "front": "Which QRS features and vagal responses distinguish VT from SVT with aberrancy?",
+          "back": "QRS duration: usually >0.14 s in VT; usually between 0.12 and 0.14 s in SVT with aberrancy.\nQRS pattern: in VT it does not resemble or mimic typical LBBB or RBBB; in SVT with aberrancy it often does.\nFrontal plane QRS axis: left axis deviation (<-30°) in VT; normal or rightward in SVT with aberrancy.\nQRS morphology in V1: monophasic or biphasic in VT; triphasic in SVT with aberrancy.\nR/S ratio in V6: <1 in VT; >1 in SVT with aberrancy.\nVagal maneuvers: no effect in VT; slowing or termination of tachycardia in SVT with aberrancy."
+        },
+        {
+          "id": "med08-c027",
+          "type": "definition",
+          "topics": [
+            "8.4.4"
+          ],
+          "sourcePage": 264,
+          "front": "What are the ECG characteristics of torsades de pointes?",
+          "back": "Polymorphic QRS complexes that change in amplitude.\nCycle length gives the appearance of oscillations around the baseline.\nMarked QT prolongation."
+        },
+        {
+          "id": "med08-c028",
+          "type": "concept",
+          "topics": [
+            "8.4.5"
+          ],
+          "sourcePage": 264,
+          "front": "What is WPW (preexcitation) syndrome?",
+          "back": "WPW syndrome is characterized by tachyarrhythmias due to an accessory conducting pathway between atrium and ventricle.\nPreexcitation means an impulse reaches the atria or ventricles earlier than expected if it travelled by the normal specialized conducting tissue.\nAn atrial impulse may activate all or part of the ventricle; a ventricular impulse may activate all or part of the atrium."
+        },
+        {
+          "id": "med08-c029",
+          "type": "fact",
+          "topics": [
+            "8.4.5"
+          ],
+          "sourcePage": 264,
+          "front": "What is the epidemiology and association profile of WPW syndrome?",
+          "back": "Incidence 0.1 to 3.0 per 1000 apparently healthy subjects (average 1.5 per 1000).\nFound at all ages, from neonates to the elderly.\nPrevalence decreases with age, apparently because of loss of preexcitation.\nMore common in males.\nMost adults with WPW have a normal heart; acquired and congenital defects may be associated, especially Ebstein's anomaly, MVP and cardiomyopathies."
+        },
+        {
+          "id": "med08-c030",
+          "type": "fact",
+          "topics": [
+            "8.4.6"
+          ],
+          "sourcePage": 264,
+          "front": "What three basic ECG features typify the usual form of WPW syndrome?",
+          "back": "Short PR interval (PR <120 ms) during sinus rhythm.\nWide QRS complex (>120 ms) with a slurred, slowly rising upstroke — the delta wave.\nSecondary ST-T changes generally directed opposite to the major delta/QRS vectors.\nThe terminal portion of the QRS is usually normal because conduction through the bundle of His catches up with preexcitation."
+        },
+        {
+          "id": "med08-c031",
+          "type": "concept",
+          "topics": [
+            "8.4.6"
+          ],
+          "sourcePage": 264,
+          "front": "Why are fusion beats and normal P waves seen in WPW syndrome?",
+          "back": "If the accessory pathway conducts antegradely, the typical QRS is a fusion beat: the ventricle is depolarized partly by the accessory pathway and partly by the wave travelling through the normal AV nodal pathway.\nThe P wave is usually normal because atrial activation is normal."
+        },
+        {
+          "id": "med08-c032",
+          "type": "definition",
+          "topics": [
+            "8.5.1"
+          ],
+          "sourcePage": 264,
+          "front": "What defines first-degree AV block and what are its features?",
+          "back": "It is characterized by delay in conduction across the conducting tissue (prolonged PR interval).\nPR interval prolonged (>0.20 s) and constant at that duration.\nRhythm is regular.\nEach P wave is followed by a QRS complex.\nQRS morphology and duration are usually normal."
+        },
+        {
+          "id": "med08-c033",
+          "type": "definition",
+          "topics": [
+            "8.5.2"
+          ],
+          "sourcePage": 265,
+          "front": "What defines second-degree AV block Mobitz type I (Wenckebach)?",
+          "back": "Second-degree AV block is intermittent failure of conduction from atria to ventricles.\nMobitz I is characterized by progressive prolongation of the PR interval before a non-conducted P wave.\nAtrial rhythm regular; ventricular rhythm irregular.\nAtrial rate exceeds ventricular rate.\nPR varies and progressively lengthens until a QRS is dropped.\nQRS morphology is often normal."
+        },
+        {
+          "id": "med08-c034",
+          "type": "definition",
+          "topics": [
+            "8.5.3"
+          ],
+          "sourcePage": 265,
+          "front": "What defines second-degree AV block Mobitz type II?",
+          "back": "It is characterized by a constant PR interval before a non-conducted P wave.\nAtrial rhythm regular; ventricular rhythm regular (unless conduction ratios vary).\nAtrial rate exceeds ventricular rate.\nPR interval does not progressively lengthen and a QRS is dropped suddenly.\nQRS morphology is usually abnormal (rarely normal)."
+        },
+        {
+          "id": "med08-c035",
+          "type": "definition",
+          "topics": [
+            "8.5.4"
+          ],
+          "sourcePage": 265,
+          "front": "What defines third-degree (complete) AV block?",
+          "back": "Complete AV block: the atria and ventricles are under the control of separate pacemakers.\nAtrial rhythm regular; ventricular rhythm regular.\nAtrial rate exceeds ventricular rate because the inherent rate of the ventricular pacemaker is slower.\nPR interval varies.\nP waves have no constant relationship to QRS complexes (AV dissociation).\nQRS morphology may be abnormal."
+        },
+        {
+          "id": "med08-c036",
+          "type": "compare",
+          "topics": [
+            "8.5.5"
+          ],
+          "sourcePage": 265,
+          "front": "How are AV blocks classified by PR interval, and what are the corresponding rhythm features?",
+          "back": "Constant PR: first-degree block and second-degree Mobitz II.\nVariable PR: second-degree Mobitz I and third-degree block.\nFirst-degree: PR prolonged but constant; one P wave per QRS; regular atrial and ventricular rhythm.\nMobitz II: PR constant (normal or prolonged); two or three (possibly more) P waves per QRS; regular atrial and ventricular rhythm.\nMobitz I: PR progressively lengthens with a dropped QRS; regular atrial rhythm, irregular ventricular rhythm.\nThird-degree: PR varies; P waves have no constant relationship to QRS and may be hidden in the QRS complexes and T waves; regular atrial and ventricular rhythm."
+        },
+        {
+          "id": "med08-c037",
+          "type": "fact",
+          "topics": [
+            "8.5.6"
+          ],
+          "sourcePage": 266,
+          "front": "In the AV conduction blocks review, how do first-degree block and Mobitz I compare?",
+          "back": "First-degree: regular atrial and ventricular rhythm; rate is that of underlying sinus rhythm, both rates the same; sinus origin with one P wave per QRS; PR prolonged (>0.20 s) and constant; QRS normal (0.10 s or less).\nMobitz I: atrial rhythm regular, ventricular irregular; atrial rate is that of sinus rhythm, ventricular rate depends on the number of impulses conducted through the AV node and is less than atrial rate; sinus P waves; PR varies and progressively lengthens until a P wave is not conducted, with a pause after the dropped QRS; QRS normal."
+        },
+        {
+          "id": "med08-c038",
+          "type": "fact",
+          "topics": [
+            "8.5.6"
+          ],
+          "sourcePage": 266,
+          "front": "In the AV conduction blocks review, how do Mobitz II and third-degree block compare?",
+          "back": "Mobitz II: atrial rhythm regular, ventricular usually regular but may be irregular if conduction ratios vary; sinus origin with two or three (sometimes more) P waves before each QRS; PR normal or prolonged but constant; QRS normal if block is at the bundle of His, wide if in the bundle branches.\nThird-degree: atrial and ventricular rhythms regular; atrial rate is that of underlying sinus rhythm; ventricular rate 40 to 60 if paced by the AV junction and 30 to 40 (sometimes less) if paced by the ventricles, less than atrial rate; sinus P waves with no constant relationship to the QRS, possibly hidden in QRS complexes and T waves; PR varies greatly; QRS normal if block is at the AV node or bundle of His, wide if in the bundle branches."
+        },
+        {
+          "id": "med08-c039",
+          "type": "summary",
+          "topics": [
+            "8.5.6"
+          ],
+          "sourcePage": 266,
+          "front": "What are the two key P wave–QRS discriminators in the AV block review table?",
+          "back": "One P wave to each QRS complex is a feature of first-degree block.\nNo constant relationship between P wave and QRS complex is a feature of third-degree (complete) heart block."
+        },
+        {
+          "id": "med08-c040",
+          "type": "compare",
+          "topics": [
+            "8.6.1"
+          ],
+          "sourcePage": 266,
+          "front": "How are left and right heart failure defined, and what happens to pulmonary capillary wedge pressure?",
+          "back": "Left heart failure: a clinical syndrome in which the dominant feature is fluid congestion in the lungs (pulmonary) rather than the systemic circulation; pulmonary capillary wedge pressure is typically elevated.\nRight heart failure: a clinical syndrome in which the dominant feature is fluid congestion in the systemic circulation; PCWP is normal unless right failure is secondary to left failure (then elevated). PCWP is not elevated in isolated right heart failure."
+        },
+        {
+          "id": "med08-c041",
+          "type": "fact",
+          "topics": [
+            "8.6.1"
+          ],
+          "sourcePage": 266,
+          "front": "What are the predominant symptoms of left heart failure?",
+          "back": "Dyspnea\nOrthopnea\nParoxysmal nocturnal dyspnea (PND)\nCough with pink frothy sputum\nRales/crackles\nThese reflect passive congestion of the lungs and pulmonary edema."
+        },
+        {
+          "id": "med08-c042",
+          "type": "fact",
+          "topics": [
+            "8.6.1"
+          ],
+          "sourcePage": 266,
+          "front": "What are the predominant features of right heart failure?",
+          "back": "Peripheral edema\nAscites\nCongestive hepatomegaly (may be pulsatile)\nCongestive splenomegaly\nWeight gain\nNocturia\nRaised JVP\nPositive hepatojugular reflex"
+        },
+        {
+          "id": "med08-c043",
+          "type": "fact",
+          "topics": [
+            "8.6.2"
+          ],
+          "sourcePage": 267,
+          "front": "What are the auscultatory findings in mitral stenosis?",
+          "back": "S1 accentuated.\nS2 normally split with accentuated P2.\nMurmur: low-pitched, rumbling diastolic murmur with presystolic accentuation, heard best at the apex in the left lateral recumbent position.\nOpening snap: brief, high-pitched early diastolic sound, best heard at the lower left sternal border."
+        },
+        {
+          "id": "med08-c044",
+          "type": "fact",
+          "topics": [
+            "8.6.3"
+          ],
+          "sourcePage": 267,
+          "front": "What are the chest X-ray findings in mitral stenosis?",
+          "back": "Straightening of the left border of the cardiac silhouette\nProminence of the main pulmonary artery\nDilation of upper lobe pulmonary veins\nKerley B lines\nBackward displacement of the esophagus"
+        },
+        {
+          "id": "med08-c045",
+          "type": "fact",
+          "topics": [
+            "8.6.4"
+          ],
+          "sourcePage": 267,
+          "front": "Which features suggest severe mitral stenosis?",
+          "back": "Proximity (a short gap) of S2 to the opening snap.\nLonger duration of the mid-diastolic murmur."
+        },
+        {
+          "id": "med08-c046",
+          "type": "fact",
+          "topics": [
+            "8.6.5"
+          ],
+          "sourcePage": 267,
+          "front": "Which features indicate increased severity of mitral regurgitation?",
+          "back": "Presence of a left ventricular S3 or an inflow rumble at the apex.\nHarsh decrescendo murmur with many low and medium frequencies.\nWide split S2 due to early A2 (not caused by P2 delay) in the presence of MR."
+        },
+        {
+          "id": "med08-c047",
+          "type": "fact",
+          "topics": [
+            "8.6.6"
+          ],
+          "sourcePage": 267,
+          "front": "What are the synonyms, demographic features and inheritance of mitral valve prolapse?",
+          "back": "Also known as Barlow's syndrome, billowing mitral valve or floppy valve syndrome.\nMost common in females and in young adults (15 to 50 years).\nIn older individuals (>50 years) most patients are male and MR is more common and severe, requiring surgical treatment.\nIn familial cases inheritance is autosomal dominant.\nThe clinical course is usually benign."
+        },
+        {
+          "id": "med08-c048",
+          "type": "fact",
+          "topics": [
+            "8.6.7"
+          ],
+          "sourcePage": 267,
+          "front": "What clinical and auscultatory findings are described in mitral valve prolapse?",
+          "back": "Patients are usually asymptomatic; they may present with non-specific chest pain, dyspnea, fatigue and palpitations.\nCharacteristic mid-systolic or late-systolic non-ejection clicks, which may be multiple.\nLate systolic murmur (often but not always).\nFindings are accentuated by Valsalva and standing and diminished by squatting and isometric exercise."
+        },
+        {
+          "id": "med08-c049",
+          "type": "fact",
+          "topics": [
+            "8.6.7"
+          ],
+          "sourcePage": 267,
+          "front": "How is mitral valve prolapse diagnosed?",
+          "back": "The investigation of choice is echocardiography.\nThe ECG is normal in most cases."
+        }
+      ]
     }
   ];
 });
