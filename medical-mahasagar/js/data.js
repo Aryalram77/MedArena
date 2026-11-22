@@ -676515,6 +676515,7632 @@
           "back": "Review these chapter themes in order: Chapter overview — Recent Questions 2016; Recent Questions 2016."
         }
       ]
+    },
+
+    /* ===== CPD — cpd book 02-07-2026 17.16.pdf, theory only; no MCQs/explanations, no images ===== */
+    {
+      "id": "cpd01",
+      "number": 1,
+      "title": "Introduction to Health Research",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 1–2 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "Foundations of Health Research",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Principles and planning",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Fundamental principles and three levels of review"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "Critical considerations in the planning phase"
+                }
+              ]
+            },
+            {
+              "id": "1.2",
+              "title": "Scope and focus",
+              "children": [
+                {
+                  "id": "1.2.1",
+                  "title": "Broad scope of health research"
+                },
+                {
+                  "id": "1.2.2",
+                  "title": "Focus of health research"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Challenges in Research Design",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "Variables and their effects",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "Confounders and effect modifiers"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd01-c001",
+          "type": "concept",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 1,
+          "front": "What are the fundamental principles of health research planning, and what reviews are essential?",
+          "back": "The planning stage is very critical: spend enough time on it and involve the right people. Teamwork is critical. Three levels of review are essential:\n1. Scientific review — novelty, rationality and justification.\n2. Ethics review — protection of human subjects.\n3. Regulatory review — foreign funding, shipment of samples, intellectual property and exchange of visitors."
+        },
+        {
+          "id": "cpd01-c002",
+          "type": "compare",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 1,
+          "front": "How do the scientific, ethics and regulatory reviews differ in health research?",
+          "back": "Scientific review judges whether the question is novel, rational and justified. Ethics review concentrates on protection of the human subjects taking part. Regulatory review deals with external and legal aspects: foreign funding, shipment of samples out of the country, intellectual property rights and exchange of visitors. All three are required before a study proceeds."
+        },
+        {
+          "id": "cpd01-c003",
+          "type": "concept",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 2,
+          "front": "What critical considerations must be addressed during the planning phase of a study?",
+          "back": "There must be adequate justification for conducting the research. The research question must have clarity and focus. Case definitions of the study variables and outcomes must be standard and unambiguous. The sample must be representative of the population (external validity/generalizability) and adequate in size (power to draw meaningful inferences)."
+        },
+        {
+          "id": "cpd01-c004",
+          "type": "fact",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 2,
+          "front": "What two sample-related requirements determine whether a planned study can produce meaningful inferences?",
+          "back": "First, the sample should be representative of the source population, which gives external validity (generalizability). Second, the sample should be adequate in size, which gives the study enough power to draw meaningful inferences. A sample deficient in either respect weakens the study even if the question is good."
+        },
+        {
+          "id": "cpd01-c005",
+          "type": "summary",
+          "topics": [
+            "1.2.1"
+          ],
+          "sourcePage": 1,
+          "front": "What are the broad scopes or purposes of health research?",
+          "back": "Health research serves five broad purposes:\n1. Getting additional or new information (e.g. changing patterns of reported disease, genome differences between organisms).\n2. Verifying and confirming available information (e.g. whether etiologies or complication rates differ between settings).\n3. Explaining cause-and-effect relationships (e.g. whether a co-receptor or an implant is associated with disease).\n4. Testing new drugs, vaccines, tools or interventions for prevention, treatment and control.\n5. Evaluating ongoing programmes and assessing their feasibility and performance."
+        },
+        {
+          "id": "cpd01-c006",
+          "type": "fact",
+          "topics": [
+            "1.2.2"
+          ],
+          "sourcePage": 2,
+          "front": "What central questions define the focus of health research?",
+          "back": "The focus is on how the health of the population can be improved; whether the occurrence of a disease can be predicted in an individual; how diseases can be prevented; how diseases can be effectively cured with reduced morbidity and mortality; and what societal, community-based and programme-level interventions can achieve disease prevention and control."
+        },
+        {
+          "id": "cpd01-c007",
+          "type": "definition",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 2,
+          "front": "Distinguish confounders from effect modifiers in a study of an exposure–outcome relationship.",
+          "back": "A confounder affects both the study variable (exposure) and the outcome; its effect can be minimized by proper study design and by stratified analysis. An effect modifier alters — generally negatively — the relationship between the study variable and outcome by independently affecting the outcome. Effect modifiers should be recognized through an adequate literature review and not included in the study."
+        },
+        {
+          "id": "cpd01-c008",
+          "type": "process",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 2,
+          "front": "How should a researcher deal with confounders and effect modifiers when designing a study?",
+          "back": "For confounders, use a proper study design and plan stratified analysis, because confounders influence both the exposure and the outcome. For effect modifiers, conduct an adequate literature review to become aware of them and avoid including them in the study, since they independently affect the outcome and distort the exposure–outcome relationship."
+        }
+      ]
+    },
+    {
+      "id": "cpd02",
+      "number": 2,
+      "title": "Research Question, Hypothesis and Objectives",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 2–6 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "Understanding the Research Question",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Meaning and purpose",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Definition: uncertainty and data needs"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "How a clear question helps"
+                }
+              ]
+            },
+            {
+              "id": "1.2",
+              "title": "Development of the question",
+              "children": [
+                {
+                  "id": "1.2.1",
+                  "title": "Life cycle of research"
+                },
+                {
+                  "id": "1.2.2",
+                  "title": "Translating uncertainty into a question"
+                },
+                {
+                  "id": "1.2.3",
+                  "title": "Sources of research questions"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Refinement and Translation",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "Categories and steps",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "Descriptive versus analytical questions"
+                },
+                {
+                  "id": "2.1.2",
+                  "title": "Steps in conceiving a research question"
+                },
+                {
+                  "id": "2.1.3",
+                  "title": "Refining the question with operational details"
+                }
+              ]
+            },
+            {
+              "id": "2.2",
+              "title": "Quality criteria and hypothesis",
+              "children": [
+                {
+                  "id": "2.2.1",
+                  "title": "The 'so what?' test"
+                },
+                {
+                  "id": "2.2.2",
+                  "title": "Statement of the research hypothesis"
+                },
+                {
+                  "id": "2.2.3",
+                  "title": "Translating questions into objectives"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd02-c001",
+          "type": "definition",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 2,
+          "front": "What is a research question?",
+          "back": "A research question is an 'uncertainty' about something in the population that the investigator wants to resolve by making measurements in the study population. Uncertainty is equivalent to 'data needs' — it identifies precisely what information the study must generate."
+        },
+        {
+          "id": "cpd02-c002",
+          "type": "concept",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 3,
+          "front": "How does a clear research question facilitate the planning of a study?",
+          "back": "A clear question helps the investigator choose the most optimal study design, and identify who should be included in the study, what the outcomes should be, and when the outcomes need to be measured."
+        },
+        {
+          "id": "cpd02-c003",
+          "type": "process",
+          "topics": [
+            "1.2.1"
+          ],
+          "sourcePage": 3,
+          "front": "What are the stages in the life cycle of research?",
+          "back": "Identify the data needs; spell out the research question; formulate the study objectives; plan the analysis; prepare the data collection instruments; collect the data; analyse the data; draw conclusions; formulate recommendations; and communicate the findings to stakeholders."
+        },
+        {
+          "id": "cpd02-c004",
+          "type": "concept",
+          "topics": [
+            "1.2.2"
+          ],
+          "sourcePage": 3,
+          "front": "What are the features of uncertainty translated into a good research question?",
+          "back": "It frames the problem in specific terms (clinical, public health and so on); focuses on one issue; is written in everyday language; may use more than one operational verb if needed; links the question to the potential action that would be taken once it is answered; and is stated as a question."
+        },
+        {
+          "id": "cpd02-c005",
+          "type": "fact",
+          "topics": [
+            "1.2.3"
+          ],
+          "sourcePage": 3,
+          "front": "What are the four sources of research questions?",
+          "back": "1. Mastering the published literature — continued review of others' work in the area of interest.\n2. Being alert to new ideas and techniques — research meetings and conferences, a skeptical attitude to prevailing beliefs, applying new technologies to old issues.\n3. Keeping the imagination roaming — careful observation, teaching and tenacity.\n4. Choosing a guide or mentor."
+        },
+        {
+          "id": "cpd02-c006",
+          "type": "compare",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 4,
+          "front": "How do descriptive and analytical research questions differ?",
+          "back": "Descriptive questions involve observations to measure a quantity, with no comparison groups and no interventions. Analytical questions involve comparisons or interventions in order to test a hypothesis."
+        },
+        {
+          "id": "cpd02-c007",
+          "type": "process",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 4,
+          "front": "What are the six steps in conceiving a research question?",
+          "back": "1. Review the state-of-the-art information.\n2. Raise a question.\n3. Decide whether it is worth investigating by peer review.\n4. Define measurable exposures and outcomes.\n5. Sharpen the initial question.\n6. Refine the question by specifying details (study population, operational definitions of variables and study design)."
+        },
+        {
+          "id": "cpd02-c008",
+          "type": "concept",
+          "topics": [
+            "2.1.3"
+          ],
+          "sourcePage": 4,
+          "front": "How are exposure and outcome defined and the question sharpened in the exercise on exercise and blood sugar?",
+          "back": "The exposure 'exercise' is defined as predetermined physical activity: any body movement produced by skeletal muscle that increases energy expenditure, at least one 60-minute session daily for one year, specified as walking, jogging, cycling or aerobic activity. The outcome is fasting blood sugar level. The sharpened question becomes: 'Among diabetics, does physical activity for one hour daily help in reducing fasting blood sugar level?'"
+        },
+        {
+          "id": "cpd02-c009",
+          "type": "summary",
+          "topics": [
+            "2.1.3"
+          ],
+          "sourcePage": 5,
+          "front": "What details are added when a research question is refined, and how does this change its type?",
+          "back": "Refinement specifies the study population, operational definitions of the variables and the study design. For example: 'What is the extent of walking practiced by patients with type 2 diabetes regularly?' is a descriptive question. 'To improve management of type 2 diabetes, does brisk walking by diabetics for at least one hour daily reduce fasting blood sugar compared with those who do not walk?' is an analytical question with a comparison group."
+        },
+        {
+          "id": "cpd02-c010",
+          "type": "concept",
+          "topics": [
+            "2.2.1"
+          ],
+          "sourcePage": 5,
+          "front": "What criteria must a good research question satisfy to pass the 'so what?' test?",
+          "back": "Feasible — adequate numbers of participants, technical expertise and resources are available. Interesting. Novel — it confirms, refutes or extends previous findings, or provides new information. Ethical — it can be studied in a way an ethics committee will approve. Relevant — it advances scientific knowledge, improves practice or influences policy."
+        },
+        {
+          "id": "cpd02-c011",
+          "type": "definition",
+          "topics": [
+            "2.2.2"
+          ],
+          "sourcePage": 5,
+          "front": "What is a research hypothesis, and for which questions is it required?",
+          "back": "A research hypothesis is a specific version of the research question: it summarizes the main elements of the study (sample, exposures and outcomes) and establishes the basis for tests of statistical significance. It is stated for analytical questions with comparison groups, using terms such as greater or less than, causes, leads to, compared with, more likely than, associated with, related to, similar to or correlated with. Purely descriptive questions do not require a hypothesis."
+        },
+        {
+          "id": "cpd02-c012",
+          "type": "process",
+          "topics": [
+            "2.2.3"
+          ],
+          "sourcePage": 5,
+          "front": "How is a research question translated into objectives?",
+          "back": "Frame it in scientific/epidemiological terms; take the question in a few limited axes; write it in scientific/epidemiological language; use no more than one verb for each objective; sort the objectives as primary and secondary; and be clear about the type of question — descriptive (measuring a quantity) or analytical/experimental (testing a hypothesis)."
+        },
+        {
+          "id": "cpd02-c013",
+          "type": "fact",
+          "topics": [
+            "2.2.3"
+          ],
+          "sourcePage": 6,
+          "front": "How is a primary objective derived from an analytical research question?",
+          "back": "If the research question asks whether brisk walking by diabetics for at least one hour daily reduces fasting blood sugar compared with those who do not walk, the primary objective is stated as the single measurable aim: to determine the effect of brisk walking for at least one hour daily on the fasting blood sugar level of patients with type 2 diabetes compared with those who do not walk. The objective uses one verb, names the study population, the exposure and the outcome, and is scientific in wording."
+        }
+      ]
+    },
+    {
+      "id": "cpd03",
+      "number": 3,
+      "title": "Study Designs: Descriptive and Analytical Studies",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 6–12 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "Study Design Framework",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Classification of designs",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Descriptive, analytical and experimental designs; decision rules"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Descriptive Study Designs",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "Case-based and ecological designs",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "Case reports and case series"
+                },
+                {
+                  "id": "2.1.2",
+                  "title": "Ecological studies"
+                }
+              ]
+            },
+            {
+              "id": "2.2",
+              "title": "Cross-sectional surveys",
+              "children": [
+                {
+                  "id": "2.2.1",
+                  "title": "Design, uses, advantages and limitations"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "title": "Analytical Study Designs",
+          "children": [
+            {
+              "id": "3.1",
+              "title": "Cohort studies",
+              "children": [
+                {
+                  "id": "3.1.1",
+                  "title": "Concept, design and types"
+                },
+                {
+                  "id": "3.1.2",
+                  "title": "Elements, comparison groups and follow-up"
+                },
+                {
+                  "id": "3.1.3",
+                  "title": "Relative risk and its interpretation"
+                },
+                {
+                  "id": "3.1.4",
+                  "title": "Strengths and weaknesses"
+                }
+              ]
+            },
+            {
+              "id": "3.2",
+              "title": "Case-control studies",
+              "children": [
+                {
+                  "id": "3.2.1",
+                  "title": "Concept and elements"
+                },
+                {
+                  "id": "3.2.2",
+                  "title": "Selection of cases and controls"
+                },
+                {
+                  "id": "3.2.3",
+                  "title": "Exposure data and odds ratio"
+                },
+                {
+                  "id": "3.2.4",
+                  "title": "Strengths and weaknesses"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd03-c001",
+          "type": "concept",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 6,
+          "front": "How are study designs classified, and what decision rules separate descriptive, analytical and experimental studies?",
+          "back": "Study designs are grouped as descriptive (case reports, case series, ecological studies, cross-sectional surveys), analytical (case-control and cohort studies, prospective or retrospective) and experimental (clinical trials). Decision rules: if the investigator assigns the exposure, the study is experimental; if not, the presence of a comparison group determines whether it is analytical or descriptive. In a cross-sectional study exposure and outcome are measured at the same time; in a cohort study exposure precedes outcome and incidence is studied; in a case-control study the outcome is present at the start and exposure is looked back at. Descriptive studies lack a comparison group."
+        },
+        {
+          "id": "cpd03-c002",
+          "type": "concept",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 6,
+          "front": "What are case reports and case series, and what are their uses and limitations?",
+          "back": "A case report is a detailed presentation of a single case; it is useful for new or unfamiliar diseases, rare manifestations, and for generating hypotheses about pathophysiological mechanisms. A case series studies a larger group of patients (for example more than 10) with a particular disease; the larger number may allow the investigator to assess the play of chance and is a common way of delineating the clinical picture of a disease. Case series suffer from the absence of a comparison group."
+        },
+        {
+          "id": "cpd03-c003",
+          "type": "definition",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 6,
+          "front": "What is an ecological study?",
+          "back": "An ecological study uses the group, not the individual, as the unit of analysis. No individual-level information is available on the distribution of exposure and disease. The study relates whether populations with high rates of disease also have a high frequency of the suspected exposure, so associations seen at group level cannot automatically be applied to individuals."
+        },
+        {
+          "id": "cpd03-c004",
+          "type": "summary",
+          "topics": [
+            "2.2.1"
+          ],
+          "sourcePage": 7,
+          "front": "Describe the design and uses of a cross-sectional survey.",
+          "back": "A cross-sectional survey observes a cross-section of a population at a single point in time; the unit of observation and analysis is the individual. Information is collected on disease burden, on one or more outcomes and on one or more exposures, in either the whole population or a population sample. It is also called a prevalence study. Uses include estimating the prevalence of disease or risk factors; describing distribution of a health problem by time, place and person; planning health care delivery; setting priorities for disease control; generating hypotheses; examining evolving trends; and before/after or iterative cross-sectional surveys."
+        },
+        {
+          "id": "cpd03-c005",
+          "type": "fact",
+          "topics": [
+            "2.2.1"
+          ],
+          "sourcePage": 7,
+          "front": "What are the advantages and limitations of cross-sectional surveys?",
+          "back": "Advantages: fairly quick and easy to perform, and less expensive. Limitations: not useful for studying disease etiology because exposure and outcome are measured simultaneously, and not suitable for studying rare diseases."
+        },
+        {
+          "id": "cpd03-c006",
+          "type": "definition",
+          "topics": [
+            "3.1.1"
+          ],
+          "sourcePage": 8,
+          "front": "What is a cohort, and how is a cohort study designed?",
+          "back": "A cohort is a group of people sharing common characteristics. In a cohort study an enumerated population is classified by exposure status — for example smokers (exposed) and non-smokers (non-exposed) — and followed forward in time. Members of each group either develop the outcome (for example cardiovascular disease) or remain non-diseased, and the incidence of disease in the exposed and unexposed groups is compared."
+        },
+        {
+          "id": "cpd03-c007",
+          "type": "fact",
+          "topics": [
+            "3.1.1"
+          ],
+          "sourcePage": 9,
+          "front": "What are the three types of cohort study?",
+          "back": "Prospective cohort study: exposure is measured first and disease is ascertained in future follow-up (exposure → disease in time). Retrospective cohort study: both exposure and disease have already occurred, and records are used to reconstruct the history. Ambispective cohort study: a combination of retrospective and prospective observation, with some outcomes already occurred and others occurring during follow-up."
+        },
+        {
+          "id": "cpd03-c008",
+          "type": "process",
+          "topics": [
+            "3.1.2"
+          ],
+          "sourcePage": 9,
+          "front": "What are the elements of a cohort study, how is the comparison group chosen, and what are the objectives of follow-up?",
+          "back": "Elements: 1. selection of the study populations; 2. gathering baseline information; 3. follow-up; 4. analysis. The comparison group may be internal — unexposed persons within the study population — or external, used when an internal group is not available (for example observed bladder cancer deaths in aniline dye workers compared with expected cases). Follow-up objectives: uniform and complete follow-up of all cohort members; uniform surveillance in exposed and unexposed groups; complete ascertainment of exposures and outcomes; and standardized diagnosis of outcome events."
+        },
+        {
+          "id": "cpd03-c009",
+          "type": "concept",
+          "topics": [
+            "3.1.3"
+          ],
+          "sourcePage": 9,
+          "front": "How is relative risk calculated in a cohort study?",
+          "back": "Arrange the data in a 2×2 table: exposed — a diseased, b non-diseased, total a+b; unexposed — c diseased, d non-diseased, total c+d. Incidence of disease in the exposed = a/(a+b); incidence in the unexposed = c/(c+d). Relative risk (RR) = [a/(a+b)] ÷ [c/(c+d)], the ratio of the two incidences."
+        },
+        {
+          "id": "cpd03-c010",
+          "type": "fact",
+          "topics": [
+            "3.1.3"
+          ],
+          "sourcePage": 10,
+          "front": "How is the relative risk interpreted?",
+          "back": "RR = 1: incidence in exposed and unexposed is the same, so exposure is not associated with disease. RR > 1: incidence in the exposed is higher than in the unexposed, so exposure is positively associated with disease. RR < 1: incidence in the exposed is lower, so exposure is negatively associated with the disease (a protective association)."
+        },
+        {
+          "id": "cpd03-c011",
+          "type": "compare",
+          "topics": [
+            "3.1.4"
+          ],
+          "sourcePage": 10,
+          "front": "What are the strengths and weaknesses of a cohort study?",
+          "back": "Strengths: it allows calculation of incidence; several outcomes can be examined for a given exposure; the temporal sequence (exposure before outcome) is clear; and it is good for investigating rare exposures. Weaknesses: large numbers of subjects may have to be followed for a long time; it is expensive and time-consuming; it is not good for rare diseases or for diseases with a long latency; and differential loss to follow-up can introduce bias."
+        },
+        {
+          "id": "cpd03-c012",
+          "type": "concept",
+          "topics": [
+            "3.2.1"
+          ],
+          "sourcePage": 10,
+          "front": "What is a case-control study and what are its elements?",
+          "back": "A case-control study starts with the outcome: cases (people who have the disease, e.g. lung cancer) and controls (people without it) are identified, and their previous exposure (e.g. smoking) is compared by looking back in time. The odds of exposure in cases and controls are contrasted to obtain an odds ratio. Elements: 1. selection of cases; 2. selection of controls; 3. information on exposure; 4. analysis."
+        },
+        {
+          "id": "cpd03-c013",
+          "type": "process",
+          "topics": [
+            "3.2.2"
+          ],
+          "sourcePage": 11,
+          "front": "How are cases and controls selected in a case-control study?",
+          "back": "Cases should be all people in the source population who develop the disease of interest; the sample of cases must be independent of the exposure under study and the outcome must be clearly defined. Prevalent cases may reflect survival with disease rather than development of it, so incident cases are preferred. Cases may be hospital/clinic based (easier to find, but may represent severe cases) or population based (e.g. a cancer registry, not biased by factors drawing a patient to a particular hospital). Controls must represent the distribution of exposure in the source population that gave rise to the cases, be selected from that same source population, and be chosen independently of their exposure status. Sources of controls include the general population, patients with other diseases at a health facility, and case-based controls such as friends or neighbours."
+        },
+        {
+          "id": "cpd03-c014",
+          "type": "concept",
+          "topics": [
+            "3.2.3"
+          ],
+          "sourcePage": 11,
+          "front": "How should exposure information be collected, and how is the odds ratio calculated and interpreted?",
+          "back": "Exposure information must be collected objectively (reproducibility of measurement), accurately (reflecting as closely as possible the effect of the exposure) and precisely (quality management in measurement). From the 2×2 table (exposed: a cases, b controls; unexposed: c cases, d controls), the odds ratio = ad/bc. OR = 1 means the odds of exposure in cases and controls are the same, with no association; OR > 1 means odds of exposure are higher in cases, a positive association; OR < 1 means odds of exposure are lower in cases, a negative association."
+        },
+        {
+          "id": "cpd03-c015",
+          "type": "compare",
+          "topics": [
+            "3.2.4"
+          ],
+          "sourcePage": 12,
+          "front": "What are the strengths and weaknesses of case-control studies?",
+          "back": "Strengths: good for examining rare outcomes or outcomes with long latency; relatively quick to conduct and inexpensive; requires comparatively few subjects; and multiple exposures or risk factors can be examined at once. Weaknesses: susceptible to recall bias; selection of an appropriate comparison group may be difficult; and rates of disease in exposed and unexposed individuals cannot be determined directly."
+        }
+      ]
+    },
+    {
+      "id": "cpd04",
+      "number": 4,
+      "title": "Experimental Studies: Clinical Trials",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 12–15 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "Clinical Trials: Purpose and Design",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Foundations",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Significance and objectives of clinical trials"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "Randomized controlled trials and randomization"
+                },
+                {
+                  "id": "1.1.3",
+                  "title": "Blinding and the biases it prevents"
+                }
+              ]
+            },
+            {
+              "id": "1.2",
+              "title": "Conduct and evaluation",
+              "children": [
+                {
+                  "id": "1.2.1",
+                  "title": "Phases of clinical trials"
+                },
+                {
+                  "id": "1.2.2",
+                  "title": "Therapeutic and prevention trial protocols"
+                },
+                {
+                  "id": "1.2.3",
+                  "title": "Advantages and disadvantages of RCTs"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd04-c001",
+          "type": "concept",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 12,
+          "front": "What is the significance of clinical trials in health research?",
+          "back": "Clinical trials translate the results of basic scientific research into better ways to prevent, diagnose or treat disease. Studies involving people are designed to answer scientific questions and to find better ways of preventing, diagnosing and treating disease."
+        },
+        {
+          "id": "cpd04-c002",
+          "type": "fact",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 13,
+          "front": "What types of interventions are normally evaluated in clinical trials?",
+          "back": "Clinical trials are normally conducted to evaluate new forms of therapy or prevention: new drugs or treatments; new medical or health care technology; new organization or delivery systems of health care; new methods of primary prevention; and new programmes of screening or early detection."
+        },
+        {
+          "id": "cpd04-c003",
+          "type": "definition",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 13,
+          "front": "Define a randomized controlled clinical trial.",
+          "back": "It is a planned experiment designed to assess the efficacy of prophylactic, diagnostic or therapeutic agents, devices, regimens and procedures applied to human subjects. It compares outcomes in a group given the test treatment with those in a comparable group receiving a control treatment; patients in both groups are enrolled prospectively, treated or exposed to the intervention, and followed over the same period."
+        },
+        {
+          "id": "cpd04-c004",
+          "type": "concept",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 13,
+          "front": "What does randomization achieve in a clinical trial?",
+          "back": "Randomization gives participants an equal chance of assignment to one of two or more groups: one receiving the most widely accepted (standard/gold standard) treatment, and the other the new treatment being tested. It provides the best way to prove effectiveness by ensuring that all groups are as similar as possible and that confounding, co-interventions and bias in outcome ascertainment are minimized."
+        },
+        {
+          "id": "cpd04-c005",
+          "type": "definition",
+          "topics": [
+            "1.1.3"
+          ],
+          "sourcePage": 13,
+          "front": "What are the levels of blinding in a clinical trial?",
+          "back": "Blinding helps balance groups during follow-up. Single blinding conceals allocation from participants; double blinding conceals it from participants and investigators; triple blinding conceals it from participants, investigators and analysts."
+        },
+        {
+          "id": "cpd04-c006",
+          "type": "concept",
+          "topics": [
+            "1.1.3"
+          ],
+          "sourcePage": 13,
+          "front": "What biases does blinding eliminate in a clinical trial?",
+          "back": "Blinding eliminates co-intervention — participants using other therapy or changing behaviour, or study staff, medical providers, family or friends treating participants differently — and biased outcome ascertainment, in which participants report symptoms differently, physicians elicit symptoms or outcomes differently, or investigators interpret them differently."
+        },
+        {
+          "id": "cpd04-c007",
+          "type": "summary",
+          "topics": [
+            "1.2.1"
+          ],
+          "sourcePage": 14,
+          "front": "What are the phases of clinical trials and their objectives?",
+          "back": "Phase I: safety and acceptability, studied in healthy volunteers. Phase II: long-term safety and low risk, 100 to 500 participants; establishes dose and schedule and gives early indications of efficacy. Phase III: effectiveness, 1000 or more participants, higher-risk group. Phase IV: post-marketing surveillance, 1000 or more participants in the community."
+        },
+        {
+          "id": "cpd04-c008",
+          "type": "process",
+          "topics": [
+            "1.2.2"
+          ],
+          "sourcePage": 14,
+          "front": "Outline the steps of a therapeutic clinical trial, using the new drug regimen versus standard therapy example.",
+          "back": "1. Identify the patients (e.g. HIV-infected persons) and define clear inclusion and exclusion criteria.\n2. Randomize patients into two groups: one receives the new drug regimen and the other the standard therapy (e.g. HAART).\n3. Follow up periodically, estimating viral load and CD4 count at intervals.\n4. Use statistical methods to determine whether viral load and CD4 counts differ between the two groups."
+        },
+        {
+          "id": "cpd04-c009",
+          "type": "process",
+          "topics": [
+            "1.2.2"
+          ],
+          "sourcePage": 14,
+          "front": "Outline the steps of a prevention (vaccine) trial.",
+          "back": "1. Decide at national, regional and local level whether the vaccine is appropriate for the country and population.\n2. Develop a Phase I trial design.\n3. Find healthy volunteers (adults/children, men/women).\n4. Carry out screening followed by enrollment, and randomize participants to vaccine or placebo.\n5. Follow up periodically, recording safety and estimating immunogenicity.\n6. Use statistical methods to establish safety and immunogenicity at the scheduled intervals."
+        },
+        {
+          "id": "cpd04-c010",
+          "type": "compare",
+          "topics": [
+            "1.2.3"
+          ],
+          "sourcePage": 15,
+          "front": "What are the advantages and disadvantages of randomized controlled trials?",
+          "back": "Advantages: the only effective method known to control selection bias; controls confounding bias without adjustment; facilitates effective blinding in some trials; and retains the advantages of cohort studies. Disadvantages: can be complex and expensive; lack of representativeness because volunteers differ from the population of interest; and immense ethical challenges."
+        }
+      ]
+    },
+    {
+      "id": "cpd05",
+      "number": 5,
+      "title": "Validity of Studies and Sources of Bias",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 15–18 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "Accuracy, Precision and Error",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Core concepts",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Accuracy, precision and validity"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "Random versus systematic error"
+                }
+              ]
+            },
+            {
+              "id": "1.2",
+              "title": "Threats to validity",
+              "children": [
+                {
+                  "id": "1.2.1",
+                  "title": "Overview of threats"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Selection and Information Bias",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "Selection bias",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "Sources in epidemiological studies"
+                },
+                {
+                  "id": "2.1.2",
+                  "title": "Control at design, collection and analysis stages"
+                }
+              ]
+            },
+            {
+              "id": "2.2",
+              "title": "Information bias",
+              "children": [
+                {
+                  "id": "2.2.1",
+                  "title": "Sources in epidemiological studies"
+                },
+                {
+                  "id": "2.2.2",
+                  "title": "Control measures"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "title": "Confounding",
+          "children": [
+            {
+              "id": "3.1",
+              "title": "Effects and control",
+              "children": [
+                {
+                  "id": "3.1.1",
+                  "title": "Definition and consequences"
+                },
+                {
+                  "id": "3.1.2",
+                  "title": "Control at design and analysis stages"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd05-c001",
+          "type": "concept",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 15,
+          "front": "How are accuracy, precision and validity related in a study measurement?",
+          "back": "Accuracy equals precision plus validity. Precision is reproducibility of a measurement (freedom from random error), while validity is closeness to the true value (freedom from systematic error). The possible combinations are good accuracy with good precision; poor accuracy with good precision (consistently biased); good accuracy with poor precision (unbiased on average but variable); and poor accuracy with poor precision."
+        },
+        {
+          "id": "cpd05-c002",
+          "type": "compare",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 15,
+          "front": "Distinguish random errors from systematic errors in research.",
+          "back": "Random errors are due to chance and produce variability in estimation — examples are sampling error and measurement error. Systematic errors are known or uncontrolled errors in estimation that make results depart systematically from the true value. Their key consequence is that the association between exposure and outcome among study participants differs from the causal association in the population."
+        },
+        {
+          "id": "cpd05-c003",
+          "type": "fact",
+          "topics": [
+            "1.2.1"
+          ],
+          "sourcePage": 16,
+          "front": "What are the three major threats to the validity of a study?",
+          "back": "The three major threats to validity are selection bias, information bias and confounding. Selection bias concerns whether participants represent the target population; information bias concerns whether measurements represent the phenomena of interest; confounding mixes the effect of extraneous factors with the exposure effect."
+        },
+        {
+          "id": "cpd05-c004",
+          "type": "definition",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 16,
+          "front": "What is selection bias, and what are its sources in epidemiological studies?",
+          "back": "Selection bias asks whether study participants accurately represent the target population; it results from procedures used to select individuals for inclusion in the study and/or analyses. Sources include: surveillance (systematic notification of exposed cases); screening/diagnosis (systematic case search among the exposed); admission to health facilities (systematic admission of exposed or unexposed cases and controls); selective survival (systematic inclusion of cases who survived and may be more or less exposed); and nonresponse or loss to follow-up (systematic inclusion of subjects more likely to participate, who may be more or less exposed or at risk)."
+        },
+        {
+          "id": "cpd05-c005",
+          "type": "process",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 16,
+          "front": "How can selection bias be dealt with at the design, data collection and analysis stages?",
+          "back": "Design stage: use incident rather than prevalent cases in case-control studies; use a population-based design; apply the same eligibility criteria for cases and controls; give both groups the same diagnostic procedures and intensity of disease surveillance. Data collection stage: minimize nonresponse, nonparticipation and loss to follow-up in cohort studies; keep a record of all losses with baseline data; ensure diagnosis is not affected by exposure status (blinding). Analysis stage: compare nonresponders/dropouts with responders/non-dropouts on baseline variables — large differences strongly suggest selection bias, small differences do not rule it out; use study results and external information to deduce the direction and magnitude of bias; and perform a sensitivity analysis."
+        },
+        {
+          "id": "cpd05-c006",
+          "type": "definition",
+          "topics": [
+            "2.2.1"
+          ],
+          "sourcePage": 17,
+          "front": "What is information bias and how does it arise in case-control and cohort studies?",
+          "back": "Information bias asks whether measurements accurately represent the phenomena of interest; it results from procedures used to measure exposures, outcomes and other variables. In case-control studies information collection leans towards a specific exposure status: recall bias makes cases recall exposure more than controls, and better exposure data may exist for cases. In cohort studies collection leans towards outcome status, with better outcome data on the exposed. Investigators may systematically collect information supporting their expected conclusions, consciously or unconsciously; prevarication is systematic distortion of the truth by subjects."
+        },
+        {
+          "id": "cpd05-c007",
+          "type": "process",
+          "topics": [
+            "2.2.2"
+          ],
+          "sourcePage": 17,
+          "front": "What measures help to prevent or control information bias?",
+          "back": "Use precise operational definitions of variables; detailed measurement protocols; repeated measurements on key variables; training, certification and re-certification of staff; data audits of interviewers and data centres; data cleaning, both visual and computer-based; and re-running all analyses before publication."
+        },
+        {
+          "id": "cpd05-c008",
+          "type": "definition",
+          "topics": [
+            "3.1.1"
+          ],
+          "sourcePage": 17,
+          "front": "Define confounding ('confusion of effects').",
+          "back": "Confounding is the distortion of the apparent effect of the exposure of interest because the effect of extraneous factors is mistaken for, or mixed with, the actual exposure effect. The extraneous factor is related both to the exposure and to the outcome."
+        },
+        {
+          "id": "cpd05-c009",
+          "type": "fact",
+          "topics": [
+            "3.1.1"
+          ],
+          "sourcePage": 17,
+          "front": "What effects can confounding have on the results of a study?",
+          "back": "Confounding may simulate an association that does not exist; hide an association that does exist; change the direction of an effect; or increase or decrease the strength of an association."
+        },
+        {
+          "id": "cpd05-c010",
+          "type": "compare",
+          "topics": [
+            "3.1.2"
+          ],
+          "sourcePage": 18,
+          "front": "How is confounding controlled at the design stage versus the analysis stage?",
+          "back": "At the design stage (during exposure measurement): restriction, matching, randomization and the use of experimental studies. At the analysis stage (during outcome assessment): stratification and multivariate analysis."
+        },
+        {
+          "id": "cpd05-c011",
+          "type": "summary",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 15,
+          "front": "Why do random and systematic error matter when interpreting an exposure–outcome association?",
+          "back": "Because of chance and systematic error, the association observed among study participants may differ from the true causal association in the population. Precision reflects random error (sampling and measurement variability), whereas validity reflects systematic error; a study can be precise yet invalid, so both must be assessed before drawing conclusions."
+        }
+      ]
+    },
+    {
+      "id": "cpd06",
+      "number": 6,
+      "title": "Measurement of Variables and Disease Frequency",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 18–24 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "Measurement of Study Variables",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Data types and central tendency",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Types of data"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "Mean, median and mode"
+                }
+              ]
+            },
+            {
+              "id": "1.2",
+              "title": "Variability",
+              "children": [
+                {
+                  "id": "1.2.1",
+                  "title": "Range and inter-quartile range"
+                },
+                {
+                  "id": "1.2.2",
+                  "title": "Mean deviation and standard deviation"
+                },
+                {
+                  "id": "1.2.3",
+                  "title": "Coefficient of variation"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Measures of Disease Frequency",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "Population and prevalence",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "Population at risk"
+                },
+                {
+                  "id": "2.1.2",
+                  "title": "Point and period prevalence"
+                },
+                {
+                  "id": "2.1.3",
+                  "title": "Factors influencing prevalence and its uses"
+                }
+              ]
+            },
+            {
+              "id": "2.2",
+              "title": "Incidence and related measures",
+              "children": [
+                {
+                  "id": "2.2.1",
+                  "title": "Incidence, cumulative incidence and incidence density"
+                },
+                {
+                  "id": "2.2.2",
+                  "title": "Uses of incidence and the incidence–prevalence relationship"
+                },
+                {
+                  "id": "2.2.3",
+                  "title": "Case fatality"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd06-c001",
+          "type": "definition",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 18,
+          "front": "How are types of data classified in health research?",
+          "back": "Qualitative data are nominal (unordered categories, e.g. colour of eyes) or ordinal (ordered categories, e.g. stages of a disease condition). Quantitative data are discrete (e.g. family size) or continuous (e.g. height, weight)."
+        },
+        {
+          "id": "cpd06-c002",
+          "type": "concept",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 18,
+          "front": "How are the arithmetic mean, median and mode calculated and used?",
+          "back": "Arithmetic mean (AM, simply the mean) = sum of all observed values (ΣXi) ÷ n; the sample mean is x̄ and the population mean is μ (e.g. ages summing to 260 in 10 people give a mean of 26 years). The median is the middle value, dividing the distribution into two halves with 50% of data on either side; it is useful with extreme values. The mode is the value occurring most frequently; it is the only location statistic usable for nominal data and is used in epidemiology to describe an epidemic with respect to time."
+        },
+        {
+          "id": "cpd06-c003",
+          "type": "fact",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 19,
+          "front": "How is the median determined with odd and even numbers of observations, and why is it preferred with outliers?",
+          "back": "With an odd number of observations the median is the middle value of the ordered data; for 11 hospital stays of 1, 2, 3, 4, 5, 6, 7, 8, 8, 9, 77 days it is the 6th value, 6 days, while the mean is 11.8 days. With an even number, take the average of the two middle values. The median is preferred when extreme values are present because it is not pulled towards the outlier."
+        },
+        {
+          "id": "cpd06-c004",
+          "type": "compare",
+          "topics": [
+            "1.2.1"
+          ],
+          "sourcePage": 19,
+          "front": "Compare the range and the inter-quartile range as measures of dispersion.",
+          "back": "Range is the difference between the minimum and maximum observation: a quick, easy indicator, but influenced by extreme values and based on only two data points. Inter-quartile range (quartile deviation) is the interval between the upper quartile Q3 and lower quartile Q1 (IQR = Q3 − Q1): unaffected by extreme values, but it covers only the middle 50% of observations."
+        },
+        {
+          "id": "cpd06-c005",
+          "type": "definition",
+          "topics": [
+            "1.2.2"
+          ],
+          "sourcePage": 20,
+          "front": "Define mean deviation, standard deviation and variance, with their advantages and disadvantages.",
+          "back": "Mean deviation is the average of the absolute deviations of observations from the arithmetic mean (signs ignored). It uses all observations and is easy to understand, but ignores the sign of differences and is not widely used. Standard deviation (SD) is the square root of the average of the squared deviations of observations from the arithmetic mean; its square is the variance. SD is the most important measure of dispersion because, unlike variance (unit squared), it is expressed in the same units as the observations and is suitable for further analysis. Together with the mean, SD describes the data."
+        },
+        {
+          "id": "cpd06-c006",
+          "type": "concept",
+          "topics": [
+            "1.2.3"
+          ],
+          "sourcePage": 20,
+          "front": "What is the coefficient of variation and what is its purpose?",
+          "back": "The coefficient of variation (CV) is the standard deviation expressed as a percentage of the arithmetic mean: CV = (SD/AM) × 100. Its purpose is to compare relative variability between different groups."
+        },
+        {
+          "id": "cpd06-c007",
+          "type": "definition",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 20,
+          "front": "What is the population at risk?",
+          "back": "The population at risk is the portion of a population that is susceptible to a disease. It can be defined using demographic or environmental factors. For carcinoma of the cervix the population at risk is females aged 30 to less than 70 years; for hepatitis B it is individuals who are anti-HBc negative."
+        },
+        {
+          "id": "cpd06-c008",
+          "type": "concept",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 21,
+          "front": "Define prevalence and distinguish point prevalence from period prevalence.",
+          "back": "Prevalence is the number of existing cases (old and new) in a defined population at a specified time, divided by the population at risk at that time; the total population may be used as an approximation if data on the population at risk are unavailable. Point prevalence measures frequency at a given point in time: P = C/N, where C is the number of cases at time t and N the population size at time t (e.g. 15 of 150 schoolchildren requiring glasses = 10%). Period prevalence measures frequency over a period: PP = (C + I)/N, where C is the number of prevalent cases at the start, I the incident cases during the period and N the population for that period (e.g. (25 + 15)/150 ≈ 27%)."
+        },
+        {
+          "id": "cpd06-c009",
+          "type": "fact",
+          "topics": [
+            "2.1.3"
+          ],
+          "sourcePage": 22,
+          "front": "What factors increase or decrease the prevalence of a disease?",
+          "back": "Prevalence depends on the number of new cases and the duration of illness: short diseases have low prevalence (e.g. sudden infant death), while long or rare lifelong diseases accumulate high prevalence. Increase is caused by long duration, low cure rate, low case fatality, more new cases, immigration of patients, improved detection and emigration of healthy people. Decrease follows shorter duration, high cure rate, high case fatality, fewer new cases, emigration of patients, improved cure and immigration of healthy people. Because many causes act together, changes in prevalence are difficult to interpret."
+        },
+        {
+          "id": "cpd06-c010",
+          "type": "fact",
+          "topics": [
+            "2.1.3"
+          ],
+          "sourcePage": 22,
+          "front": "What are the main uses of prevalence data?",
+          "back": "Prevalence data are used to assess health care needs and plan health services, to measure the occurrence of conditions with gradual onset, and to study chronic diseases."
+        },
+        {
+          "id": "cpd06-c011",
+          "type": "concept",
+          "topics": [
+            "2.2.1"
+          ],
+          "sourcePage": 23,
+          "front": "Define incidence, cumulative incidence and incidence density.",
+          "back": "Incidence is the number of new cases in a given period in a specified population; the time unit (day, month, year) must be specified. It can be expressed in absolute numbers, as cumulative incidence or as incidence density. Cumulative incidence (CI) = number of new cases ÷ population at risk at the beginning × 10ⁿ; it is also called the attack rate and assumes the whole at-risk population was followed for the observation period. It is the probability that an individual will experience the health status change over a specified follow-up period, assuming the person did not have the disease at the start and did not die of other causes. Incidence density (ID) = number of new cases ÷ total person-time of observation × 10ⁿ; it is also called the incidence rate and reflects the person-time actually observed."
+        },
+        {
+          "id": "cpd06-c012",
+          "type": "fact",
+          "topics": [
+            "2.2.2"
+          ],
+          "sourcePage": 23,
+          "front": "What are the uses of incidence data and how are incidence and prevalence related?",
+          "back": "Incidence data describe trends in diseases and evaluate the impact of primary prevention programmes. Prevalence depends on incidence (I) and duration of disease (D): P = I × D. Prevalence can change from one period to another as a result of changes in incidence, changes in duration, or both. High prevalence with low incidence is typical of diabetes mellitus; low prevalence with high incidence is typical of the common cold."
+        },
+        {
+          "id": "cpd06-c013",
+          "type": "definition",
+          "topics": [
+            "2.2.3"
+          ],
+          "sourcePage": 24,
+          "front": "What is case fatality and how is it expressed?",
+          "back": "Case fatality places the number of deaths from a disease in relation to the number of cases of that disease and therefore reflects severity. It can be expressed as a proportion or a ratio. It is not a true rate, although it is often referred to as the case fatality rate."
+        }
+      ]
+    },
+    {
+      "id": "cpd07",
+      "number": 7,
+      "title": "Sampling Methods, Sample Size and Power",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 24–30 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "Sampling Methods",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Fundamentals of sampling",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Definition, study population and representativeness"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "Sampling terms and reasons for sampling"
+                },
+                {
+                  "id": "1.1.3",
+                  "title": "Probability versus non-probability samples and sampling error"
+                }
+              ]
+            },
+            {
+              "id": "1.2",
+              "title": "Probability sampling methods",
+              "children": [
+                {
+                  "id": "1.2.1",
+                  "title": "Simple random and systematic sampling"
+                },
+                {
+                  "id": "1.2.2",
+                  "title": "Stratified sampling"
+                },
+                {
+                  "id": "1.2.3",
+                  "title": "Cluster sampling"
+                },
+                {
+                  "id": "1.2.4",
+                  "title": "Multistage sampling"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Sample Size and Power",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "Determinants and errors",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "Sample size and influencing factors"
+                },
+                {
+                  "id": "2.1.2",
+                  "title": "Power and Type I/Type II errors"
+                },
+                {
+                  "id": "2.1.3",
+                  "title": "Alpha, confidence level, beta and power"
+                }
+              ]
+            },
+            {
+              "id": "2.2",
+              "title": "Estimation and formulas",
+              "children": [
+                {
+                  "id": "2.2.1",
+                  "title": "Steps in estimating sample size"
+                },
+                {
+                  "id": "2.2.2",
+                  "title": "Sample size for a population mean"
+                },
+                {
+                  "id": "2.2.3",
+                  "title": "Sample size for comparing two means"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd07-c001",
+          "type": "definition",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 24,
+          "front": "Define sampling and the study population, and state what representativeness requires.",
+          "back": "Sampling is the procedure by which some members of a population are selected as representatives of the entire population. The study population is the population to which the results of the study will be inferred; it depends on the research question (for example the general population, health care workers or hospitals of a country). The sample must be representative in time (seasonality, day of the week, time of day), in place (urban, rural) and in persons (age, sex, other demographic characteristics)."
+        },
+        {
+          "id": "cpd07-c002",
+          "type": "definition",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 25,
+          "front": "Define sampling unit, sampling frame and sampling scheme, and give the reasons for sampling populations.",
+          "back": "The basic sampling unit is the elementary unit that will be sampled (people, health care workers, hospitals). The sampling frame is the list of all sampling units in the population. The sampling scheme is the method used to select sampling units from the frame. We sample to obtain information from large populations, to ensure efficiency of the study and to obtain more accurate information."
+        },
+        {
+          "id": "cpd07-c003",
+          "type": "compare",
+          "topics": [
+            "1.1.3"
+          ],
+          "sourcePage": 25,
+          "front": "Compare non-probability and probability samples.",
+          "back": "In non-probability samples the chance of being selected is unknown: convenience samples are biased and represent a best- or worst-case scenario, while subjective samples are based on the researcher's knowledge under time or resource constraints. In probability samples every unit in the population has a known probability of selection; this is the only sampling method that allows valid conclusions about the population."
+        },
+        {
+          "id": "cpd07-c004",
+          "type": "concept",
+          "topics": [
+            "1.1.3"
+          ],
+          "sourcePage": 26,
+          "front": "What is sampling error and what determines its magnitude?",
+          "back": "No sample is a perfect mirror of the population. In probability samples the magnitude of the error can be measured and is expressed as the standard error of the mean, a proportion or a difference. It is a function of the sample size and the variability of the measurement."
+        },
+        {
+          "id": "cpd07-c005",
+          "type": "concept",
+          "topics": [
+            "1.2.1"
+          ],
+          "sourcePage": 26,
+          "front": "Describe simple random sampling and systematic sampling, including procedure and limitations.",
+          "back": "Simple random sampling: every unit has an equal chance; number all units and randomly draw the required units. It is simple and its sampling error is easily measured, but it needs a complete list of units and does not always achieve the best representation of the population. Systematic sampling: draw one unit every k units, with an equal chance for each unit. Calculate the interval k = N/n, draw a random starting number and select every kth unit. It ensures representation across the list and is easy to implement, but is dangerous if the list has cycles or periodicity."
+        },
+        {
+          "id": "cpd07-c006",
+          "type": "concept",
+          "topics": [
+            "1.2.2"
+          ],
+          "sourcePage": 27,
+          "front": "Describe stratified sampling and its advantages and disadvantages.",
+          "back": "Classify the population into homogeneous subgroups (strata), draw a sample in each stratum and combine the results. It is more precise when the variable of interest is associated with the strata, and all subgroups are represented so separate conclusions can be drawn. Disadvantages: sampling error is difficult to measure and precision is lost if only small numbers are sampled in individual strata. For vaccination coverage, for example, a sample is drawn in each region, estimates are calculated per stratum and the strata are weighted to obtain a national estimate."
+        },
+        {
+          "id": "cpd07-c007",
+          "type": "concept",
+          "topics": [
+            "1.2.3"
+          ],
+          "sourcePage": 27,
+          "front": "Describe cluster sampling, its assumptions, two stages and limitations.",
+          "back": "The sampling unit is a group (cluster) of subjects, not an individual: take a random sample of clusters and include all or a proportion of units in the selected clusters. It is simple (no list of individual units required) and needs less travel and resources, but is imprecise if clusters are homogeneous (large design effect) and its sampling error is difficult to measure. It assumes variability among clusters is minimal and that within-cluster variability resembles the general population. Stage 1 uses probability proportional to size: decide the number of clusters, make a cumulative list of populations, divide the grand total by the number of clusters to get the interval, choose a random start and add the interval repeatedly to identify all clusters. Stage 2 selects a random sample of subjects or households within each selected cluster using a sampling frame."
+        },
+        {
+          "id": "cpd07-c008",
+          "type": "concept",
+          "topics": [
+            "1.2.4"
+          ],
+          "sourcePage": 28,
+          "front": "What is multistage sampling, and what are its advantages and disadvantages?",
+          "back": "Multistage sampling uses several chained samples involving several statistical units (for example regions, then districts, then households, then persons). It requires no complete listing of the population and is the most feasible approach for large populations. Disadvantages: several sampling lists are needed and the sampling error is difficult to measure."
+        },
+        {
+          "id": "cpd07-c009",
+          "type": "definition",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 28,
+          "front": "What is sample size and which factors influence it?",
+          "back": "Sample size is the number of subjects or observations included in a study; it affects the accuracy and reliability of the results. Larger samples give more precise estimates but require more resources. Influencing factors: effect size (the magnitude of the expected difference or association — larger effects need smaller samples); significance level α (probability of a Type I error, usually 0.05); power (1−β, usually 80–90%); and population variability (more variability requires a larger sample)."
+        },
+        {
+          "id": "cpd07-c010",
+          "type": "concept",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 28,
+          "front": "What is the power of a study and how can it be increased?",
+          "back": "Power is the ability of a study to detect an effect if it truly exists. It is increased by a larger sample size, a larger effect size or reduced variability. It is typically set at 80%, meaning an 80% chance of finding a true effect."
+        },
+        {
+          "id": "cpd07-c011",
+          "type": "fact",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 29,
+          "front": "What are Type I and Type II errors, and how is power related to them?",
+          "back": "A Type I error (α) is a false positive: rejecting a null hypothesis that is actually true. A Type II error (β) is a false negative: failing to reject a null hypothesis that is false. Power is related to the Type II error by the formula Power = 1 − β."
+        },
+        {
+          "id": "cpd07-c012",
+          "type": "definition",
+          "topics": [
+            "2.1.3"
+          ],
+          "sourcePage": 29,
+          "front": "Define alpha, confidence level, beta and power in sample size determination.",
+          "back": "Alpha (α) is the significance level of a test: the probability of rejecting the null hypothesis when it is true (a Type I error). Confidence level is the probability that an estimate of a population parameter lies within specified limits of the true value; it is denoted 1 − α. Beta (β) is the probability of failing to reject the null hypothesis when it is false (a Type II error). Power is the probability of correctly rejecting a false null hypothesis, denoted 1 − β."
+        },
+        {
+          "id": "cpd07-c013",
+          "type": "process",
+          "topics": [
+            "2.2.1"
+          ],
+          "sourcePage": 29,
+          "front": "What are the steps in estimating sample size?",
+          "back": "1. Identify the major study variable.\n2. Determine the type of estimate (percentage, mean, ratio, etc.).\n3. Indicate the expected frequency of the factor of interest.\n4. Decide the desired precision of the estimate.\n5. Decide the acceptable risk that the estimate will fall outside its real population value.\n6. Adjust for population size.\n7. Adjust for the estimated design effect.\n8. Adjust for the expected response rate."
+        },
+        {
+          "id": "cpd07-c014",
+          "type": "concept",
+          "topics": [
+            "2.2.2"
+          ],
+          "sourcePage": 29,
+          "front": "What is the formula for sample size when estimating a population mean?",
+          "back": "n = (Zα/2 × σ / E)², where n is the required sample size, Zα/2 is the Z value for the desired confidence level (1.96 for 95% confidence), σ is the estimated population standard deviation and E is the margin of error (desired precision). For a study of adult height with 95% confidence, σ = 8 cm and E = 2 cm, n = (1.96 × 8 / 2)² ≈ 62 subjects."
+        },
+        {
+          "id": "cpd07-c015",
+          "type": "concept",
+          "topics": [
+            "2.2.3"
+          ],
+          "sourcePage": 30,
+          "front": "What is the formula for sample size when comparing the means of two groups?",
+          "back": "For each group, n = 2(Zα/2 + Zβ)²σ²/Δ², where Zα/2 is the Z value for the confidence level (1.96 for 95%), Zβ is the Z value for power (0.84 for 80% power), σ is the pooled standard deviation and Δ is the minimum detectable difference between the two means. For a trial with σ = 10 mmHg and Δ = 5 mmHg at 95% confidence and 80% power, n ≈ 63 subjects per group."
+        }
+      ]
+    },
+    {
+      "id": "cpd08",
+      "number": 8,
+      "title": "Data Collection, Management and Analysis",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 30–37 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "Data Collection",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Tools and question design",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Information collected and data collection tools"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "Key elements of data collection tools"
+                },
+                {
+                  "id": "1.1.3",
+                  "title": "Open, closed and semi-open questions"
+                },
+                {
+                  "id": "1.1.4",
+                  "title": "Question wording and ordering"
+                }
+              ]
+            },
+            {
+              "id": "1.2",
+              "title": "Quality, management and entry",
+              "children": [
+                {
+                  "id": "1.2.1",
+                  "title": "Reliability, accuracy and six steps of data collection"
+                },
+                {
+                  "id": "1.2.2",
+                  "title": "Data management and variable naming"
+                },
+                {
+                  "id": "1.2.3",
+                  "title": "Data entry and validation"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Data Analysis",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "Objectives and sequence",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "Key objectives of data analysis"
+                },
+                {
+                  "id": "2.1.2",
+                  "title": "Sequence of the analysis strategy"
+                },
+                {
+                  "id": "2.1.3",
+                  "title": "Advanced analysis"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd08-c001",
+          "type": "summary",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 30,
+          "front": "What kinds of information are gathered with data collection tools, and what tools and modes are used?",
+          "back": "Information collected includes individual characteristics (age, height, clinical history, housing, family size), facts (alcohol use, drug prescription), judgments or opinions (quality of health services), practices and behaviours (diet, exercise, seatbelt use, open defecation), risk factors (mosquito breeding, unsafe sex), knowledge and healthy lifestyles. Tools include abstraction forms, structured observation guides, questionnaires, checklists, and review of records (personal, clinical, surveillance, registers, text, figures). Administration may be interviewer-led (face-to-face, telephone, computer-assisted) or self-administered (paper-based or computer-assisted)."
+        },
+        {
+          "id": "cpd08-c002",
+          "type": "concept",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 31,
+          "front": "What are the key elements of a good data collection tool?",
+          "back": "Clarity of words, balance of phrases, length of sentences, comprehensive response options, appropriate constraints on responses, utility of instructions, logical order of questions and suitable context for questions."
+        },
+        {
+          "id": "cpd08-c003",
+          "type": "compare",
+          "topics": [
+            "1.1.3"
+          ],
+          "sourcePage": 31,
+          "front": "Compare open, closed and semi-open questions.",
+          "back": "Open questions suggest no answers and require respondents to generate one: they give freedom of response, stimulate memory, help generate closed responses later and suit a hypothesis-raising stage, but are difficult to code and analyse and may be incomplete or unfocused. Closed questions offer dichotomous options (yes/no, male/female), which force a clear position but may oversimplify; multiple options widen the choice but may be hard to choose among; quantitative answers create continuous variables but may need validation. Semi-open questions offer suggested answers plus an 'other, specify' option: they leave the door open to unplanned answers but are difficult to analyse."
+        },
+        {
+          "id": "cpd08-c004",
+          "type": "process",
+          "topics": [
+            "1.1.4"
+          ],
+          "sourcePage": 33,
+          "front": "What rules govern the wording and ordering of questions in a questionnaire?",
+          "back": "Keep questions short and precise; avoid ambiguities; use everyday language; avoid jargon and double negatives; ask only one question at a time; be specific; and use a neutral tone so as not to influence respondents. Order questions from simple to complicated, general to specific and casual to intimate; group questions on the same topic; place identification questions at the beginning or end; use chronological order for sequences of events; insert simple questions as a break in a complex questionnaire; and triangulate important topics with multiple questions."
+        },
+        {
+          "id": "cpd08-c005",
+          "type": "definition",
+          "topics": [
+            "1.2.1"
+          ],
+          "sourcePage": 33,
+          "front": "Define reliability and accuracy as dimensions of data quality.",
+          "back": "Reliability is reproducibility, repeatability or precision: the stability or consistency of information, shown by a measurement giving the same or a similar result when repeated on the same thing. Accuracy is the ability of a measurement to be correct on average."
+        },
+        {
+          "id": "cpd08-c006",
+          "type": "process",
+          "topics": [
+            "1.2.1"
+          ],
+          "sourcePage": 34,
+          "front": "What are the six steps in data collection?",
+          "back": "1. Draft the question-by-question guide.\n2. Train the staff members who will collect the data.\n3. Initiate data collection and ensure quality.\n4. Review collected data for quality and completeness.\n5. Debrief to troubleshoot difficulties.\n6. Validate the data."
+        },
+        {
+          "id": "cpd08-c007",
+          "type": "process",
+          "topics": [
+            "1.2.2"
+          ],
+          "sourcePage": 34,
+          "front": "What are the steps and key elements of data management and documentation?",
+          "back": "Steps: define variables; create the study database and data dictionary; enter data and correct errors; create the dataset for analysis; back up and archive the dataset. Key elements are data structure, data entry, individual and aggregated databases, and mother and daughter databases. Documentation should record the structure (name, number of records), variables (name, values, coding), history (creation, modification), storage information (media, location, backup) and any additional information."
+        },
+        {
+          "id": "cpd08-c008",
+          "type": "fact",
+          "topics": [
+            "1.2.2"
+          ],
+          "sourcePage": 34,
+          "front": "How should variables be structured and named in a study database?",
+          "back": "Specify the structure: numeric integers with a set number of digits, numeric values with a set number of decimals, alphanumeric fields with a set length and capitalisation, and dates in a specific format. Names should be clear and refer to the questionnaire item, understandable (e.g. EXERDAILY for 'exercise daily'), short with no spaces (most software requires fewer than 10 characters), consistent across related variables (e.g. EXERPAST, EXERCURRDL, VARIAB conventions for crude variables and a suffix for dichotomized variables), and not duplicated — software trimming of names can create duplicates."
+        },
+        {
+          "id": "cpd08-c009",
+          "type": "process",
+          "topics": [
+            "1.2.3"
+          ],
+          "sourcePage": 35,
+          "front": "What are the good practices for data entry and validation?",
+          "back": "Use data entry as an opportunity for partial data cleaning; write comments; seek clarification of unclear entries; use built-in checks; mark each paper form as data entry is completed; and validate the data after entry."
+        },
+        {
+          "id": "cpd08-c010",
+          "type": "concept",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 35,
+          "front": "What are the key objectives of data analysis?",
+          "back": "Plan the analysis; programme the crude analysis; deal with chance, biases and third factors; assess causality; and measure the clinical or public health impact of the findings."
+        },
+        {
+          "id": "cpd08-c011",
+          "type": "process",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 35,
+          "front": "What is the sequence of the data analysis strategy?",
+          "back": "1. Identify the study type (descriptive — estimation of a quantity; analytical — testing hypotheses).\n2. Identify the main variables (outcomes, exposures, third factors, subgroups of interest).\n3. Become familiar with the data (frequencies, distributions, description of the study population; check number of observations by status, duplicates, missing observations, ranges, legal values and consistency).\n4. Characterize the study population (baseline sociodemographic and economic characteristics such as age, gender and income; frequency of clinical features or health problems; comparison of groups in analytical studies).\n5. Examine the outcome/exposure association using a priori hypotheses, prior knowledge and the study design, with an appropriate measure of association.\n6. Create additional two-way tables for second-line analysis and new variables.\n7. Conduct advanced analysis."
+        },
+        {
+          "id": "cpd08-c012",
+          "type": "process",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 36,
+          "front": "What preparatory reviews and decisions are needed before analysis begins?",
+          "back": "Review the protocol for consistency with the study objectives and study type; review the questionnaire; review the analysis plan; review the data collection procedures; obtain the electronic database(s); and decide on the software to be used for analysis."
+        },
+        {
+          "id": "cpd08-c013",
+          "type": "fact",
+          "topics": [
+            "2.1.3"
+          ],
+          "sourcePage": 37,
+          "front": "What does advanced analysis include after the initial two-way tables?",
+          "back": "Advanced analysis includes assessment of dose–response relationships, stratifications to control confounding and examine subgroups, and multivariate analysis."
+        }
+      ]
+    },
+    {
+      "id": "cpd09",
+      "number": 9,
+      "title": "Research Ethics and Publication Ethics",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 37–42 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "Research Ethics",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Foundations and principles",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Ethical foundations and standards"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "Four ethical principles"
+                }
+              ]
+            },
+            {
+              "id": "1.2",
+              "title": "Consent and review",
+              "children": [
+                {
+                  "id": "1.2.1",
+                  "title": "Informed consent: meaning and process"
+                },
+                {
+                  "id": "1.2.2",
+                  "title": "Stakeholders, documentation and types of consent"
+                },
+                {
+                  "id": "1.2.3",
+                  "title": "Ethical issues and review board responsibilities"
+                },
+                {
+                  "id": "1.2.4",
+                  "title": "Ethics influencing research and medical practice"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Publication Ethics",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "Core components",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "Ethics review, confidentiality and fabrication/falsification"
+                },
+                {
+                  "id": "2.1.2",
+                  "title": "Authorship criteria"
+                },
+                {
+                  "id": "2.1.3",
+                  "title": "Ethics related to submission"
+                }
+              ]
+            },
+            {
+              "id": "2.2",
+              "title": "Misconduct and prevention",
+              "children": [
+                {
+                  "id": "2.2.1",
+                  "title": "Plagiarism, its types and avoidance"
+                },
+                {
+                  "id": "2.2.2",
+                  "title": "Conflict of interest"
+                },
+                {
+                  "id": "2.2.3",
+                  "title": "Checklist and consequences of misconduct"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd09-c001",
+          "type": "concept",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 37,
+          "front": "What ethical standards apply to health research?",
+          "back": "An ethical foundation is crucial for all research, including health research. Any research involving human participants should follow international standards of ethics. Nepal's national standards are not less exacting and its ethical guidelines are on par with international guidelines. Ethics review is expected even in situations of no risk, such as use of available data, or minimal risk, such as asking questions without collecting samples or other specimens."
+        },
+        {
+          "id": "cpd09-c002",
+          "type": "summary",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 37,
+          "front": "What are the four fundamental ethical principles in health research?",
+          "back": "Respect for autonomy — autonomy means self-rule; respect decisions people make about their own lives and their dignity, do not interfere with competent adults, and empower those for whom we are responsible. Justice — give all people their due, treat everyone equally, fairly and impartially, give all an opportunity to participate unless contraindicated, and do not impose unfair burdens. Beneficence — act fairly and correctly, take positive steps to prevent harm; it may conflict with respect for autonomy. Non-maleficence — first do no harm, minimize harm that cannot be avoided, and do not waste resources that could be used for good."
+        },
+        {
+          "id": "cpd09-c003",
+          "type": "definition",
+          "topics": [
+            "1.2.1"
+          ],
+          "sourcePage": 37,
+          "front": "Define informed consent and describe the process.",
+          "back": "Informed consent is the process of systematically informing potential participants about the proposed research and empowering them to make an informed decision about participating. Participants must understand the study procedures, risks and benefits; have all their questions and concerns answered; and take a learned, informed decision to participate or not. The process can be repeated several times during the study if necessary."
+        },
+        {
+          "id": "cpd09-c004",
+          "type": "concept",
+          "topics": [
+            "1.2.2"
+          ],
+          "sourcePage": 38,
+          "front": "Who are the stakeholders in informed consent, how is consent documented, and what forms can it take?",
+          "back": "Researchers and institutions provide information, discussion and explanation, ensure comprehension and obtain a voluntary decision. Participants give informed, free and independent consent without coercion or force. Sponsors, monitors and regulators assess the fairness of the consenting procedure and verify documentation of consent. Informed consent benefits the participant and the investigator. Procedures must be explained adequately in the consent form: simple, clear language, translations and back-translations with certification, and a test of understanding. An impartial witness may be needed. Group consent can be desirable (e.g. tribal studies) but cannot replace individual consent. Forms include the traditional written consent form and pictorial consent."
+        },
+        {
+          "id": "cpd09-c005",
+          "type": "summary",
+          "topics": [
+            "1.2.3"
+          ],
+          "sourcePage": 38,
+          "front": "What ethical issues must be addressed in health research, and what should an ethics committee review?",
+          "back": "Issues include competence of the researchers and team; protection of human rights and ethical handling of vulnerable populations, women and children; confidentiality and non-discriminatory practices; appropriate informed consent and study-specific education; mechanisms for reporting and managing adverse events; care and support of participants (standard of care, long-term care, post-trial access to care and products); reimbursement and compensation; and continuing review of study progress. The review board should ask whether the study offers real or potential individual/community benefit, whether participants' rights are adequately protected, whether benefits outweigh risks, whether participants and communities will have access to findings and benefits, and what mechanisms provide safety, care and support."
+        },
+        {
+          "id": "cpd09-c006",
+          "type": "fact",
+          "topics": [
+            "1.2.4"
+          ],
+          "sourcePage": 39,
+          "front": "What wider influences affect the ethics of health research and medical practice?",
+          "back": "There is a growing expectation of accountability: government responsibility (local, state, national) and investigators' responsibility are questioned. Advocacy movements have increased public awareness, and there is collective demand for health benefits — the universal right to health care (health for all). The place of self-responsibility and lifestyle is debated: should researchers always be blamed for mishaps? The need to include bioethics in the medical curriculum is increasingly stressed."
+        },
+        {
+          "id": "cpd09-c007",
+          "type": "concept",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 39,
+          "front": "What are the components of publication ethics, and what do ethics review and confidentiality require?",
+          "back": "The components are ethics review/breach of confidentiality; fabrication and falsification; authorship; plagiarism; ethics related to submission; and conflict of interest. Ethics review requires human/animal ethics committee approval according to national guidelines, informed consent or assent for research with human participants, and registration of trials with the Nepal Health Research Council (NHRC). Data confidentiality means data must not be shared for analysis with someone working at a different institution without institutional permission."
+        },
+        {
+          "id": "cpd09-c008",
+          "type": "definition",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 40,
+          "front": "Distinguish fabrication from falsification in research.",
+          "back": "Fabrication means research results were not generated from the study at all; falsification means results were generated by manipulating data. Both are extremely serious research misconduct. All case report forms and the underlying data must be preserved so that results can be verified."
+        },
+        {
+          "id": "cpd09-c009",
+          "type": "fact",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 40,
+          "front": "What are the ICMJE criteria for authorship?",
+          "back": "Authorship confers credit and implies responsibility and accountability for the published work. Authorship should be based on all four ICMJE criteria: substantial contributions to conception or design of the work, or acquisition, analysis or interpretation of data; drafting the work or revising it critically for important intellectual content; final approval of the version to be published; and agreement to be accountable for all aspects of the work, including investigation and resolution of questions about accuracy or integrity. Each author's contribution must be declared, and authorship should be decided while writing the protocol."
+        },
+        {
+          "id": "cpd09-c010",
+          "type": "concept",
+          "topics": [
+            "2.1.3"
+          ],
+          "sourcePage": 40,
+          "front": "What are the main ethical problems related to manuscript submission?",
+          "back": "Simultaneous submission of the same manuscript to different journals; duplicate publication of the same hypothesis, methods, data, discussion and conclusion; self-citation, meaning citing one's own publication out of context; and predatory journals, which hardly peer review any manuscript. A list of predatory journals is maintained by the University Grants Commission Consortium for Academic and Research Ethics (UGC-CARE)."
+        },
+        {
+          "id": "cpd09-c011",
+          "type": "definition",
+          "topics": [
+            "2.2.1"
+          ],
+          "sourcePage": 41,
+          "front": "Define plagiarism and list its types.",
+          "back": "Plagiarism is the use of someone else's previously published manuscript, or unreferenced use of others' published or unpublished ideas, without consent, credit or acknowledgement. The most common form is copying text word-for-word, and it is considered serious publication misconduct. Types are direct plagiarism (complete or partial copying without acknowledging the original author), self-plagiarism (duplication of one's previous works or sentences) and redundant or 'salami' publications (several similar manuscripts or reports based on the same experiments)."
+        },
+        {
+          "id": "cpd09-c012",
+          "type": "process",
+          "topics": [
+            "2.2.1"
+          ],
+          "sourcePage": 41,
+          "front": "How can plagiarism be avoided?",
+          "back": "Avoid copy-paste; write the concept in one's own words, even if it takes more time; acknowledge original sources, including unpublished works, and cite references accurately; avoid writing several articles of the same type; and use anti-plagiarism software tools such as URKUND, iThenticate or Turnitin according to university norms."
+        },
+        {
+          "id": "cpd09-c013",
+          "type": "concept",
+          "topics": [
+            "2.2.2"
+          ],
+          "sourcePage": 41,
+          "front": "What is a conflict of interest and how should it be handled?",
+          "back": "A conflict of interest is any financial, personal, social or other interest that directly or indirectly influences an author's conduct with respect to the manuscript — for example, a drug trial funded by a pharmaceutical company. Any such conflict must be disclosed during submission; disclosure is mandatory, and it lets readers judge the influence of the conflict on the paper's conclusions."
+        },
+        {
+          "id": "cpd09-c014",
+          "type": "summary",
+          "topics": [
+            "2.2.3"
+          ],
+          "sourcePage": 42,
+          "front": "What does the publication ethics checklist require, and what are the consequences of research misconduct?",
+          "back": "Approval and consent: approval of regulatory authorities, the institutional review board and the ethics committee; registration of the clinical trial; documented informed consent. Data accuracy: no manipulation of material, equipment, process or data; no fake data; double-check accuracy. Plagiarism and self-citation: written permission for reproduced material, figures or tables, with citation. Submission fraud: no simultaneous submission, no previous publication of the whole or part of the work, and no excessive self-citation. Authorship: all authors in a pre-agreed order, agreement and awareness of co-authors, and no ghost or guest authors. Conflict of interest: declaration of relevant financial and scientific interests or relationships that could be seen as influencing the findings. COPE (Committee on Publication Ethics) describes the consequences of misconduct; they depend on whether the misconduct is major or minor, and may include blacklisting of the author by member journals and action by the institute."
+        }
+      ]
+    },
+    {
+      "id": "cpd10",
+      "number": 10,
+      "title": "Medical Oaths and Ethical Foundations",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 79–81 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "Hippocratic Oath (c. 425 BC)",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "The oath and the teacher",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Swearing to the gods"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "Duties to teacher and pupils"
+                }
+              ]
+            },
+            {
+              "id": "1.2",
+              "title": "Practice and secrecy",
+              "children": [
+                {
+                  "id": "1.2.1",
+                  "title": "Healing, non-maleficence and purity"
+                },
+                {
+                  "id": "1.2.2",
+                  "title": "House visits and confidentiality"
+                },
+                {
+                  "id": "1.2.3",
+                  "title": "Final blessing and sanction"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "New Oath for Physicians",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "Patient-centred care",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "Honesty, alternatives and autonomy"
+                },
+                {
+                  "id": "2.1.2",
+                  "title": "Conscience, empathy and testing"
+                }
+              ]
+            },
+            {
+              "id": "2.2",
+              "title": "Professional practice",
+              "children": [
+                {
+                  "id": "2.2.1",
+                  "title": "Referral, records and consent"
+                },
+                {
+                  "id": "2.2.2",
+                  "title": "Learning, non-abandonment and equal care"
+                },
+                {
+                  "id": "2.2.3",
+                  "title": "Colleagues and institutions"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "title": "Principles of Medical Ethics (NMC Code, 2017)",
+          "children": [
+            {
+              "id": "3.1",
+              "title": "Purpose and foundations",
+              "children": [
+                {
+                  "id": "3.1.1",
+                  "title": "Purpose of medicine"
+                },
+                {
+                  "id": "3.1.2",
+                  "title": "Four ethical principles"
+                }
+              ]
+            },
+            {
+              "id": "3.2",
+              "title": "Professional accountability",
+              "children": [
+                {
+                  "id": "3.2.1",
+                  "title": "Service, learning and evidence"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd10-c001",
+          "type": "concept",
+          "topics": [
+            "1.1.1",
+            "1.1.2"
+          ],
+          "sourcePage": 79,
+          "front": "Under the Hippocratic Oath (c. 425 BC), what does the physician swear, and what duties are owed to the teacher and to other learners?",
+          "back": "The physician swears by Apollo the physician, Aesculapius, Health, Heal-all and all the gods and goddesses to keep the oath according to their ability and judgement.\nThe teacher is to be regarded as equal to parents: share his livelihood and give financial help when he is in need, treat his children as brothers, and teach the art without fee or indenture to the teacher's sons and to pupils who have signed the indenture and sworn obedience to the physicians' law — but to no one else."
+        },
+        {
+          "id": "cpd10-c002",
+          "type": "concept",
+          "topics": [
+            "1.2.1"
+          ],
+          "sourcePage": 79,
+          "front": "What does the Hippocratic Oath say about helping the sick, avoiding harm, poison, abortion and surgery?",
+          "back": "Treatment is to be used to help the sick according to the physician's ability and judgement, never to injure or wrong them. The physician will not give poison to anyone even if asked, nor suggest such a plan, and will not give a pessary to cause illegal abortion. Life and art are to be kept in purity and holiness. The knife is not to be used on patients suffering from stone; such cases are left to skilled craftsmen (surgeons)."
+        },
+        {
+          "id": "cpd10-c003",
+          "type": "concept",
+          "topics": [
+            "1.2.2",
+            "1.2.3"
+          ],
+          "sourcePage": 79,
+          "front": "How does the Hippocratic Oath govern house visits, confidentiality and the final sanction?",
+          "back": "Houses are entered only to help the sick, keeping free from all intentional wrongdoing and harm, especially sexual relations with woman or man, bonded or free. Whatever is seen or heard in practice — or even outside practice in social intercourse — that ought not to be published abroad is not divulged but held as holy secrets. Keeping the oath brings honour in life and art among all people; transgressing it brings the opposite."
+        },
+        {
+          "id": "cpd10-c004",
+          "type": "definition",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 80,
+          "front": "According to the New Oath for Physicians, how should honesty, bad news, alternatives and patient autonomy be handled?",
+          "back": "In the name of suffering humanity, the physician promises dedication to the welfare of the sick according to ability and judgement. Patients are to be honoured in all medical matters: bad news delivered with honesty must be conveyed with understanding, sympathy and tact. Patients receive acceptable alternatives for diagnosis and medical or surgical treatment, with risks and benefits explained as best the physician knows them, and they make the ultimate decision about their own care. If patients are incapable, the decision of family members or loved ones is accepted, with encouragement to decide as the patient would have decided."
+        },
+        {
+          "id": "cpd10-c005",
+          "type": "concept",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 80,
+          "front": "What does the New Oath say about moral judgement, empathy, appropriate testing and the limits of cure?",
+          "back": "The physician will not sit in moral judgement on any patient but will treat the illness to the best of their ability whatever the circumstances. Empathy is owed to patients whose illness is linked to substances such as alcohol or drugs, or other forms of self-abuse usually believed to be under voluntary control. Recognising personal and medical limitations, the physician strives to cure when possible but to comfort always. Tests are performed only if there is a reasonable chance that the results will improve the outcome."
+        },
+        {
+          "id": "cpd10-c006",
+          "type": "process",
+          "topics": [
+            "2.2.1"
+          ],
+          "sourcePage": 80,
+          "front": "How does the New Oath for Physicians address profit-driven tests, referral, records and experimentation?",
+          "back": "No test, procedure or surgery is to be performed solely to make money; patients are freely referred to other physicians when they are better able to provide treatment. Copies of medical records are furnished freely to patients or their families on request. The physician does unto patients and their families only what they would want done for their own family. Patients are never experimented on without truly informed consent, and the physician strives to instruct patients fully so that such consent is possible."
+        },
+        {
+          "id": "cpd10-c007",
+          "type": "fact",
+          "topics": [
+            "2.2.2"
+          ],
+          "sourcePage": 80,
+          "front": "What commitments does the New Oath make about lifelong learning, non-abandonment and equality of care?",
+          "back": "The physician remains a learner throughout professional life, learning not only from formal medical sources but also from patients. Care is provided to all who seek it regardless of sex, race, colour, creed, sexual preference, lifestyle or economic status, with some time volunteered for free care of the poor, homeless, disadvantaged, dispossessed and helpless. No patient is turned away, and patients are encouraged to seek further medical opinions before the physician's own opinion is accepted uncritically."
+        },
+        {
+          "id": "cpd10-c008",
+          "type": "fact",
+          "topics": [
+            "2.2.3"
+          ],
+          "sourcePage": 81,
+          "front": "How should a physician treat colleagues and medical institutions under the New Oath?",
+          "back": "Professional colleagues are treated with respect. The physician does not hesitate to testify openly against medical institutions guilty of malpractice, malfeasance, cupidity or fraud, and defends with equal fervour colleagues who are unjustly accused of malpractice, malfeasance, cupidity or fraud."
+        },
+        {
+          "id": "cpd10-c009",
+          "type": "definition",
+          "topics": [
+            "3.1.1"
+          ],
+          "sourcePage": 81,
+          "front": "What is the purpose of medicine under the Nepal Medical Council Code of Ethics and Professional Conduct (2017)?",
+          "back": "Medicine exists to cure illnesses, stabilise health and alleviate pain and discomfort. Medical practitioners must be properly qualified, uphold the highest standards of professionalism and ethical conduct, and prioritise patient interests."
+        },
+        {
+          "id": "cpd10-c010",
+          "type": "definition",
+          "topics": [
+            "3.1.2"
+          ],
+          "sourcePage": 81,
+          "front": "Define autonomy and beneficence as foundations of medical ethics.",
+          "back": "Autonomy: respect and recognise a mentally sound patient's right to self-determination in making decisions and treatment choices.\nBeneficence: offer treatments only if they potentially benefit the patient."
+        },
+        {
+          "id": "cpd10-c011",
+          "type": "definition",
+          "topics": [
+            "3.1.2"
+          ],
+          "sourcePage": 81,
+          "front": "Define non-maleficence and justice as foundations of medical ethics.",
+          "back": "Non-maleficence: avoid treatments that cause harm, minimise side effects, and avoid treatments whose risks outweigh their benefits.\nJustice: distribute scarce health resources fairly and equitably, without discrimination based on age, gender, disability or social status."
+        },
+        {
+          "id": "cpd10-c012",
+          "type": "summary",
+          "topics": [
+            "3.2.1"
+          ],
+          "sourcePage": 81,
+          "front": "What three obligations make up accountability towards the medical profession?",
+          "back": "Service to humanity: serve humanity with dedication.\nContinuous learning: stay updated on medical advancements for the benefit of patients and the medical fraternity.\nEvidence-based practice: practise and promote evidence-based medicine among colleagues."
+        },
+        {
+          "id": "cpd10-c013",
+          "type": "compare",
+          "topics": [
+            "1.2.1",
+            "2.1.1"
+          ],
+          "sourcePage": 81,
+          "front": "Compare the Hippocratic Oath with the New Oath for Physicians on patient decision-making.",
+          "back": "The Hippocratic Oath is physician-led: treatment is given 'according to my ability and judgement' to help the sick and never harm them, with secrecy and no explicit patient choice. The New Oath shifts decisions to the patient: acceptable alternatives and risks are explained, the patient makes the ultimate decision, and family or loved ones decide only when the patient is incapable, guided by what the patient would have wanted."
+        }
+      ]
+    },
+    {
+      "id": "cpd11",
+      "number": 11,
+      "title": "Professional Conduct and Duties of Practitioners",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 81–86 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "Advertising and Solicitation",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Public information",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Factual information and advertisements"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "Permissible public announcements"
+                }
+              ]
+            },
+            {
+              "id": "1.2",
+              "title": "Unethical promotion",
+              "children": [
+                {
+                  "id": "1.2.1",
+                  "title": "Solicitation and self-advertisement"
+                },
+                {
+                  "id": "1.2.2",
+                  "title": "Gratuity and commissions"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Duties Toward Patients",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "General duties",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "Emergency care and the sick"
+                }
+              ]
+            },
+            {
+              "id": "2.2",
+              "title": "Consent",
+              "children": [
+                {
+                  "id": "2.2.1",
+                  "title": "Key elements of informed consent"
+                },
+                {
+                  "id": "2.2.2",
+                  "title": "Documentation and special cases"
+                }
+              ]
+            },
+            {
+              "id": "2.3",
+              "title": "Conduct and confidentiality",
+              "children": [
+                {
+                  "id": "2.3.1",
+                  "title": "Communication, intimate exams, drugs, medico-legal cases"
+                },
+                {
+                  "id": "2.3.2",
+                  "title": "Personal relationships and termination"
+                },
+                {
+                  "id": "2.3.3",
+                  "title": "Medical records and confidentiality"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "title": "Information, Trust and Patient Welfare",
+          "children": [
+            {
+              "id": "3.1",
+              "title": "Patient welfare",
+              "children": [
+                {
+                  "id": "3.1.1",
+                  "title": "Accurate information, trust and costs"
+                },
+                {
+                  "id": "3.1.2",
+                  "title": "Religion and terminal care"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "4",
+          "title": "Duties Toward the Medical Profession",
+          "children": [
+            {
+              "id": "4.1",
+              "title": "Professional integrity",
+              "children": [
+                {
+                  "id": "4.1.1",
+                  "title": "Honour, societies and exposure of misconduct"
+                }
+              ]
+            },
+            {
+              "id": "4.2",
+              "title": "Fitness and education",
+              "children": [
+                {
+                  "id": "4.2.1",
+                  "title": "Fitness, serious illness and education"
+                }
+              ]
+            },
+            {
+              "id": "4.3",
+              "title": "Restricted practice",
+              "children": [
+                {
+                  "id": "4.3.1",
+                  "title": "Titles and special modalities"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "5",
+          "title": "Colleagues, Society and Responsible Practice",
+          "children": [
+            {
+              "id": "5.1",
+              "title": "Colleagues and society",
+              "children": [
+                {
+                  "id": "5.1.1",
+                  "title": "Colleagues, consultation and public health"
+                }
+              ]
+            },
+            {
+              "id": "5.2",
+              "title": "Responsible practice",
+              "children": [
+                {
+                  "id": "5.2.1",
+                  "title": "Prescribing and financial interests"
+                },
+                {
+                  "id": "5.2.2",
+                  "title": "New treatments and research"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd11-c001",
+          "type": "definition",
+          "topics": [
+            "1.1.1",
+            "1.1.2"
+          ],
+          "sourcePage": 82,
+          "front": "What information may a practitioner share publicly, and which public announcements are permissible?",
+          "back": "Information dissemination must be factual and relevant so that patients can make informed choices; inappropriate advertisements are discouraged because they mislead the public and create false hopes. Permissible announcements cover starting or changing a practice, change of address, temporary absences, and resuming or succeeding to another practice. All such announcements must remain factual and relevant."
+        },
+        {
+          "id": "cpd11-c002",
+          "type": "concept",
+          "topics": [
+            "1.2.1",
+            "1.2.2"
+          ],
+          "sourcePage": 82,
+          "front": "Why are solicitation, self-advertisement, gratuities and referral commissions unethical?",
+          "back": "Direct or indirect solicitation of patients is unethical. Self-advertisement is discouraged because it may mislead the public and create false hopes. Receiving or offering gratuity, commission or bonuses for referrals, or for recommending treatments, investigations or consultations, is unethical."
+        },
+        {
+          "id": "cpd11-c003",
+          "type": "concept",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 82,
+          "front": "What is the general duty of a medical practitioner toward patients, especially in emergencies?",
+          "back": "A practitioner is not obligated to treat every patient, except in emergencies. They must respond to the sick and injured upholding medical honour and integrity, and must initiate treatment immediately in emergencies, obtaining consent once the patient is stable."
+        },
+        {
+          "id": "cpd11-c004",
+          "type": "process",
+          "topics": [
+            "2.2.1"
+          ],
+          "sourcePage": 82,
+          "front": "What four key elements must be covered when obtaining informed consent?",
+          "back": "1. Illness information: explain the nature of the illness.\n2. Treatment risks and benefits: discuss potential risks, benefits and side effects.\n3. Alternatives: present alternative treatments with their consequences and complications.\n4. No-treatment consequences: explain the risks of opting out of treatment.\nConsent must be recorded in writing before any invasive procedure."
+        },
+        {
+          "id": "cpd11-c005",
+          "type": "fact",
+          "topics": [
+            "2.2.2"
+          ],
+          "sourcePage": 82,
+          "front": "How is consent handled for minors, mental impairment, refusal and implied consent?",
+          "back": "Minors (under 16): obtain consent from parents or guardians.\nMental impairment: obtain consent from next of kin.\nPatient's right to refuse: a mentally sound patient may refuse treatment, and the refusal must be documented.\nImplied consent: behaviour indicating consent, such as extending an arm for a blood sample, may not require written consent."
+        },
+        {
+          "id": "cpd11-c006",
+          "type": "process",
+          "topics": [
+            "2.3.1"
+          ],
+          "sourcePage": 83,
+          "front": "What are the duties on communication, intimate examinations, alcohol/drugs and medico-legal cases?",
+          "back": "Explain treatment, risks and follow-up care even when time is short. Maintain confidentiality in practitioner–patient communication; allow patients to express grievances and resolve conflicts through sincere, honest communication. Conduct intimate examinations in the presence of a chaperone unless the patient refuses. Alcohol, intoxicating drugs and smoking are prohibited in the workplace, and a practitioner must not attend patients while under the influence. Medico-legal cases such as sexual offences, assault and autopsies are handled by trained or expert practitioners, with confidentiality maintained."
+        },
+        {
+          "id": "cpd11-c007",
+          "type": "compare",
+          "topics": [
+            "2.3.2"
+          ],
+          "sourcePage": 83,
+          "front": "When may a doctor–patient relationship be terminated, and when is termination prohibited?",
+          "back": "Termination is prohibited on grounds such as age, gender or religion. It is permitted for: loss of trust between practitioner and patient; treatment beyond the practitioner's capability; non-payment (except in emergencies); noncompliance after attempts to resolve the reasons for it; immoral pressure on the practitioner to act unethically; or the practitioner being unwell, with proper notice and referral. Emotional or sexual relationships with patients or their families during the professional relationship are prohibited."
+        },
+        {
+          "id": "cpd11-c008",
+          "type": "fact",
+          "topics": [
+            "2.3.3"
+          ],
+          "sourcePage": 83,
+          "front": "What are the rules for medical records and patient confidentiality?",
+          "back": "Maintain confidential records of patient history, examinations and treatments. Keep records for at least 5 years. They are accessible on patient request, by judicial order, or to authorised bodies. Keep patient information secret and disclose it only when legally required or to prevent harm."
+        },
+        {
+          "id": "cpd11-c009",
+          "type": "concept",
+          "topics": [
+            "3.1.1"
+          ],
+          "sourcePage": 84,
+          "front": "How should health information, patient trust and treatment costs be handled?",
+          "back": "Provide accurate, objective information and avoid exaggerated or financially exploitative content. Do not exploit patient trust to promote unnecessary procedures or research, and avoid guarantees of cure and 'no cure, no cost' contracts. Disclose tentative costs before treatment begins and assist financially disadvantaged patients by seeking charitable support."
+        },
+        {
+          "id": "cpd11-c010",
+          "type": "concept",
+          "topics": [
+            "3.1.2"
+          ],
+          "sourcePage": 84,
+          "front": "How should a practitioner respect religion and care for the terminally ill?",
+          "back": "Serve humanity above religious beliefs, respect each patient's religious faith and avoid discrimination. Ensure a dignified, pain-free death. Euthanasia is not legalised in Nepal. Palliative care includes narcotics and sedatives to relieve pain. With a DNR order, continue treatment except cardiopulmonary resuscitation. Avoid futile treatments that will not benefit the patient or will increase suffering."
+        },
+        {
+          "id": "cpd11-c011",
+          "type": "summary",
+          "topics": [
+            "4.1.1"
+          ],
+          "sourcePage": 84,
+          "front": "Summarise a practitioner's duties toward the honour and safeguarding of the medical profession.",
+          "back": "Act to uphold the nobleness, dignity and honour of the medical profession to the highest standards. Join and participate actively in medical societies to advance careers, stay updated on innovations and contribute to professional upliftment. Avoid improper delegation of authority and the use of unqualified or unregistered persons for medical procedures, and report illegal practice by unregistered practitioners to the concerned authority. Report incompetent, corrupt and dishonest members and their unethical conduct to the Nepal Medical Council without fear."
+        },
+        {
+          "id": "cpd11-c012",
+          "type": "fact",
+          "topics": [
+            "4.2.1"
+          ],
+          "sourcePage": 85,
+          "front": "What do fitness to practice, serious illness and educational activities require?",
+          "back": "Maintain physical and mental fitness to practise. Practitioners with serious infections must take precautions to protect patients and inform the authorities when necessary; those with psychiatric illness or substance dependence should refrain from practice and obtain treatment. Participate in health/medical education without using it for personal practice promotion or canvassing for patients; ensure information is factual, balanced and not used for commercial promotion."
+        },
+        {
+          "id": "cpd11-c013",
+          "type": "fact",
+          "topics": [
+            "4.3.1"
+          ],
+          "sourcePage": 85,
+          "front": "What rules govern specialist titles, complementary medicine, organ transplant and assisted reproduction?",
+          "back": "Only practitioners on the Specialist Register may use the title 'Specialist'; nonspecialists must not set up dedicated specialist practices, and practising outside one's specialty or during unauthorised periods is unethical and subject to disciplinary action. Practise complementary/alternative modalities only if properly trained and qualified. Follow the Human Organ Transplant Act 2055 and its amendments. Follow guidelines for assisted reproductive technology and safe abortion services; prenatal screening and diagnosis must be safe, with informed consent, considering the interests of both the pregnant woman and the fetus. In-utero sex identification for social or cultural reasons is unethical and illegal."
+        },
+        {
+          "id": "cpd11-c014",
+          "type": "concept",
+          "topics": [
+            "5.1.1"
+          ],
+          "sourcePage": 86,
+          "front": "How should practitioners deal with colleagues, consultations and wider society?",
+          "back": "Avoid defamatory comments that undermine trust in another practitioner, though honest, justified feedback in the patient's best interest is acceptable. Offering free services to colleagues and their immediate families is encouraged but not mandatory; do not exploit professional positions for unethical benefits or coerce colleagues, health professionals or students. Seek second opinions when necessary, with respect and without undermining the other practitioner's authority; in consultation discuss treatment with them without taking over the case, always focusing on the patient's best interest. Use expertise to educate the public, enforce health laws and prevent epidemics and communicable diseases; do not abandon duty during epidemics and expect appropriate protective measures from facilities. Promote and collaborate with paramedical services such as pharmacy and nursing."
+        },
+        {
+          "id": "cpd11-c015",
+          "type": "process",
+          "topics": [
+            "5.2.1",
+            "5.2.2"
+          ],
+          "sourcePage": 86,
+          "front": "What are the rules for prescribing, financial interests, new treatments and research?",
+          "back": "Prescribe only when necessary with clear explanations; write legibly, include your name and registration number, and prefer generic names. Follow guidelines for scheduled drugs and avoid prescriptions that may lead to addiction unless absolutely necessary. Accept sample drugs only for patient benefit and do not resell them. Avoid financial inducements for referrals or treatments, do not let commercial interests influence treatment decisions, accept only medical appliances and books that benefit patients as gifts, and disclose research grants and sponsorships. Apply new treatments cautiously, uphold patient rights and dignity, and fully explain the new treatment. Follow good clinical research practice, avoid fraudulent research for personal gain, and comply with Nepal Health Research Council guidelines."
+        }
+      ]
+    },
+    {
+      "id": "cpd12",
+      "number": 12,
+      "title": "Violation of the Code and Disciplinary Action",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 87–90 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "Violation of the Code of Ethics",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Advertising and communication",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Signboards and visiting cards"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "Mass media, websites and unsolicited contact"
+                }
+              ]
+            },
+            {
+              "id": "1.2",
+              "title": "Certificates and reporting",
+              "children": [
+                {
+                  "id": "1.2.1",
+                  "title": "Unqualified associates and false certificates"
+                },
+                {
+                  "id": "1.2.2",
+                  "title": "Convictions and conflicts of interest"
+                }
+              ]
+            },
+            {
+              "id": "1.3",
+              "title": "Enforcement",
+              "children": [
+                {
+                  "id": "1.3.1",
+                  "title": "Special ethical issues and detection methods"
+                },
+                {
+                  "id": "1.3.2",
+                  "title": "Investigation and disciplinary actions"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Disciplining from Practice",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "Grounds and process",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "Moral turpitude and unfitness"
+                },
+                {
+                  "id": "2.1.2",
+                  "title": "Ethics Committee and right of appeal"
+                }
+              ]
+            },
+            {
+              "id": "2.2",
+              "title": "Register decisions",
+              "children": [
+                {
+                  "id": "2.2.1",
+                  "title": "Erasure from the Medical Register"
+                },
+                {
+                  "id": "2.2.2",
+                  "title": "Restoration and appeal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "title": "Punishable Violations of the Code",
+          "children": [
+            {
+              "id": "3.1",
+              "title": "Categories of offence",
+              "children": [
+                {
+                  "id": "3.1.1",
+                  "title": "Patient-care failures"
+                },
+                {
+                  "id": "3.1.2",
+                  "title": "Personal and financial offences"
+                },
+                {
+                  "id": "3.1.3",
+                  "title": "Practice-setting and information offences"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd12-c001",
+          "type": "fact",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 87,
+          "front": "What professional details may appear on a practitioner's signboard or visiting card?",
+          "back": "Advertising is against the code except for essential professional details: qualifications, registration number, practice location and consultation hours. No decorations, blinking lights or promotional content are permitted, and a practitioner must not be associated with non-medical promotions. A signboard and visiting card may carry only: the name with prefix 'Dr.' and academic designations; name of the practice; Council-approved quotable qualifications in approved abbreviations; Council-approved specialist title; Nepal Medical Council registration number; name and logo of associated medical institutions; consultation hours; and indication of the practice's location in the building. A name must not appear on any signboard carrying merchandise or service promotion, nor be placed in association with other promotional signboards."
+        },
+        {
+          "id": "cpd12-c002",
+          "type": "fact",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 87,
+          "front": "What are the rules for mass media announcements, practice websites, social media and unsolicited contact?",
+          "back": "Mass media announcements are permitted for commencement of practice or changes, but must be completed within four weeks of the event. Practice websites may carry only service information approved by the Council. Social media posts for self-promotion or patient solicitation are prohibited. Promotion of services through unsolicited visits, calls, emails or the press is prohibited."
+        },
+        {
+          "id": "cpd12-c003",
+          "type": "concept",
+          "topics": [
+            "1.2.1"
+          ],
+          "sourcePage": 88,
+          "front": "Why must a practitioner avoid unqualified associates and false certificates?",
+          "back": "Associating with unqualified individuals for patient treatment is prohibited, and unqualified practitioners must be reported to the Council. Certificates and reports must be truthful and based on facts; issuing untrue, misleading or improper certificates can lead to disciplinary action, and signing blank certificates is prohibited."
+        },
+        {
+          "id": "cpd12-c004",
+          "type": "process",
+          "topics": [
+            "1.2.2"
+          ],
+          "sourcePage": 88,
+          "front": "What must be reported to the Council, and how should conflicts of interest be handled?",
+          "back": "Any conviction or adverse disciplinary finding must be reported to the Council within 28 days, even if under appeal; failure to do so may itself result in disciplinary action. Avoid secondary gains from political affiliations or associations with pharmaceutical or medical equipment companies, and never allow such affiliations to influence clinical practice — doing so is a violation of the code."
+        },
+        {
+          "id": "cpd12-c005",
+          "type": "process",
+          "topics": [
+            "1.3.1",
+            "1.3.2"
+          ],
+          "sourcePage": 88,
+          "front": "How is misconduct detected and investigated, and what disciplinary actions can follow?",
+          "back": "For new ethical dilemmas, Standard Operating Procedures (SOPs) are developed and followed. The Council detects violations through complaints from victims or any person, telephone or email complaints, reports in newspapers, television or radio, information and orders from government authorities, and complaints from associations or societies. Investigations follow the Nepal Medical Council by-laws 2024. The Council protects the public from medical negligence and misconduct, ensuring trust in the profession. Punishments vary with severity: notice, warning, probation, suspension or permanent removal from the Council's register. Removal or suspension is publicised in national media, and practising with a removed name is serious misconduct."
+        },
+        {
+          "id": "cpd12-c006",
+          "type": "concept",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 89,
+          "front": "Which offences lead to cancellation of registration under 'Disciplining from Practice'?",
+          "back": "Conviction for offences involving moral turpitude — such as dishonesty, indecent behaviour and violence — leads to cancellation or suspension of registration. Offences affecting fitness to practise, for example drug-related offences, are taken very seriously."
+        },
+        {
+          "id": "cpd12-c007",
+          "type": "process",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 89,
+          "front": "What is the role of the Ethics Committee in investigating complaints?",
+          "back": "The Ethics Committee investigates complaints of unethical conduct and malpractice. It follows the prescribed complaint and investigation procedures, and the practitioner has the right to appeal its decisions."
+        },
+        {
+          "id": "cpd12-c008",
+          "type": "definition",
+          "topics": [
+            "2.2.1"
+          ],
+          "sourcePage": 89,
+          "front": "What is erasure from the Medical Register?",
+          "back": "Erasure is the Council's removal of a practitioner's name from the Medical Register for severe ethical violations, negligence or offences. The erasure remains in force until restoration is approved."
+        },
+        {
+          "id": "cpd12-c009",
+          "type": "process",
+          "topics": [
+            "2.2.2"
+          ],
+          "sourcePage": 89,
+          "front": "How can registration be restored after erasure, and can an erasure decision be appealed?",
+          "back": "Applications for restoration may be made after two years. The Committee reviews the case and may restore registration unconditionally, conditionally, or extend the erasure. A practitioner may appeal an erasure decision in court."
+        },
+        {
+          "id": "cpd12-c010",
+          "type": "summary",
+          "topics": [
+            "3.1.1"
+          ],
+          "sourcePage": 89,
+          "front": "List the patient-care failures that are punishable violations of the code.",
+          "back": "Failure to assess mental soundness/capacity and obtain informed consent.\nFailure to treat in an emergency.\nFailure to maintain medical records.\nBreach of confidentiality.\nUnjust termination of the doctor–patient relationship.\nFailure to communicate properly with the patient.\nAbuse of alcohol or drugs while on duty."
+        },
+        {
+          "id": "cpd12-c011",
+          "type": "summary",
+          "topics": [
+            "3.1.2"
+          ],
+          "sourcePage": 89,
+          "front": "Which personal, financial and relationship offences are punishable?",
+          "back": "Disparagement of other medical practitioners.\nObtaining personal gains from improper associations with pharmaceutical or medical equipment companies.\nExtracting excess fees from patients.\nTaking commission when referring patients, arranging investigations, or prescribing drugs and equipment.\nImproper personal relationships with a patient, the patient's family members or relatives.\nPractising without fitness to practise or beyond one's level of competence.\nSeniors or juniors misusing their position."
+        },
+        {
+          "id": "cpd12-c012",
+          "type": "summary",
+          "topics": [
+            "3.1.3"
+          ],
+          "sourcePage": 90,
+          "front": "Which practice-setting and information offences are punishable?",
+          "back": "Treating patients in private clinics or nursing homes during duty hours away from the primary hospital.\nPractising at other places, or simultaneously with pursuing higher education, away from the approved institution.\nPractising complementary or alternative medicine without proper qualification.\nIssuing false certificates.\nDisseminating misleading information to the public.\nIrrational drug prescribing.\nExerting undue pressure to compel a patient admitted to a government hospital to visit a private clinic or nursing home."
+        }
+      ]
+    },
+    {
+      "id": "cpd13",
+      "number": 13,
+      "title": "Foundations of Communication in Medicine",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 107–110 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "Communication Theory",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Nature of communication",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Definition and dynamic two-way process"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "Three pillars and continuing improvement"
+                }
+              ]
+            },
+            {
+              "id": "1.2",
+              "title": "Types and challenges",
+              "children": [
+                {
+                  "id": "1.2.1",
+                  "title": "Verbal communication"
+                },
+                {
+                  "id": "1.2.2",
+                  "title": "Non-verbal communication"
+                },
+                {
+                  "id": "1.2.3",
+                  "title": "Challenges of verbal communication"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Communication in Medicine",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "Role in medical practice",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "Changing emphasis in medical training"
+                },
+                {
+                  "id": "2.1.2",
+                  "title": "Key training areas for doctors"
+                }
+              ]
+            },
+            {
+              "id": "2.2",
+              "title": "Interviews, audiences and benefits",
+              "children": [
+                {
+                  "id": "2.2.1",
+                  "title": "Types of medical interviews"
+                },
+                {
+                  "id": "2.2.2",
+                  "title": "Communication beyond patients"
+                },
+                {
+                  "id": "2.2.3",
+                  "title": "Benefits of effective communication"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "title": "Effective Communication and Relationships",
+          "children": [
+            {
+              "id": "3.1",
+              "title": "Principles and barriers",
+              "children": [
+                {
+                  "id": "3.1.1",
+                  "title": "Principles of effective communication"
+                },
+                {
+                  "id": "3.1.2",
+                  "title": "Barriers to effective communication"
+                }
+              ]
+            },
+            {
+              "id": "3.2",
+              "title": "Doctor–patient relationship",
+              "children": [
+                {
+                  "id": "3.2.1",
+                  "title": "Building the relationship in consultation"
+                },
+                {
+                  "id": "3.2.2",
+                  "title": "Self-reflection after each consultation"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd13-c001",
+          "type": "definition",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 107,
+          "front": "Define communication and describe its essential nature as a process.",
+          "back": "Communication is the exchange of information through symbols, signs, or messages. It creates connection and engagement between individuals and is a dynamic, two-way process (dialogue), not merely a monologue. It involves listening, understanding with empathy, and clear expression of thoughts and ideas. Communication may be intentional or unintentional and may use conventional or non-conventional signals. It can occur through spoken language or other modes, and its meaning is influenced by context and delivery."
+        },
+        {
+          "id": "cpd13-c002",
+          "type": "concept",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 107,
+          "front": "What three pillars underpin effective communication, and how is the skill improved?",
+          "back": "Effective communication is a learned skill built on three pillars:\n1. Accuracy — the information conveyed is correct and faithful to the intended meaning.\n2. Efficiency — the message is delivered without unnecessary effort or loss of meaning.\n3. Supportiveness — the exchange supports the relationship and the other person.\nImprovement comes through observation, feedback, and deliberate practice."
+        },
+        {
+          "id": "cpd13-c003",
+          "type": "compare",
+          "topics": [
+            "1.2.1"
+          ],
+          "sourcePage": 107,
+          "front": "Compare the four verbal communication styles: open (broad), open (focused), closed, and leading.",
+          "back": "Open (broad): gives control to the respondent and encourages free disclosure, e.g. 'Explain how you felt on the first day of college.'\nOpen (focused): encourages disclosure within a given area, e.g. 'Did you have a good day at school?'\nClosed: the interviewer controls the information and checks facts; answers are usually yes/no, e.g. 'Do you smoke?'\nLeading: suggests the desired response and keeps control with the interviewer, e.g. 'What year in the 15th century did Columbus arrive in the Americas?'"
+        },
+        {
+          "id": "cpd13-c004",
+          "type": "concept",
+          "topics": [
+            "1.2.2"
+          ],
+          "sourcePage": 107,
+          "front": "What does non-verbal communication include, and how much of communication does it represent?",
+          "back": "Non-verbal communication includes listening (active and passive), silence, touch, hand gestures, eye contact, and facial expressions. It carries a very large share of communication effort — in the source material, about 50% of communication effort is attributed to non-verbal communication. These cues must be read alongside the spoken words, because they can reinforce or contradict the verbal message."
+        },
+        {
+          "id": "cpd13-c005",
+          "type": "fact",
+          "topics": [
+            "1.2.3"
+          ],
+          "sourcePage": 108,
+          "front": "What is the main challenge of verbal communication and what reduces it?",
+          "back": "Verbal messages can be clearly misunderstood or misinterpreted, and a significant portion of what is said is often misunderstood. Training in effective communication is therefore crucial for minimizing misunderstandings, since the choice of words, context, and delivery all influence how a message is received."
+        },
+        {
+          "id": "cpd13-c006",
+          "type": "concept",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 108,
+          "front": "How has the emphasis of medical training changed with regard to communication?",
+          "back": "Communication in medicine is critical for mutual understanding and trust in the doctor–patient relationship. Traditionally, medical training emphasized technical skills, often at the expense of communication. Modern medicine focuses on communication skills together with evidence-based practice, recognizing that technical competence alone is not sufficient for good care."
+        },
+        {
+          "id": "cpd13-c007",
+          "type": "summary",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 108,
+          "front": "List the key communication training areas identified for doctors.",
+          "back": "Key training areas for doctors are:\n1. Understanding verbal and non-verbal communication.\n2. Taking medical histories from patients and families.\n3. Gaining insight into illness behaviour, patient roles, and cultural beliefs.\n4. Conducting effective interviews, including opening, closing, and summarizing.\n5. Communicating with patients with learning disabilities.\n6. Enhancing communication across diverse patient demographics.\n7. Learning the principles of clinical problem-solving."
+        },
+        {
+          "id": "cpd13-c008",
+          "type": "fact",
+          "topics": [
+            "2.2.1"
+          ],
+          "sourcePage": 108,
+          "front": "What are the four main types of medical interview?",
+          "back": "Medical interviews are the most common form of communication between doctors and patients and are classified into four types:\n1. History-taking.\n2. Breaking bad news.\n3. Consultations.\n4. Obtaining informed consent."
+        },
+        {
+          "id": "cpd13-c009",
+          "type": "fact",
+          "topics": [
+            "2.2.2"
+          ],
+          "sourcePage": 108,
+          "front": "With whom beyond patients must a doctor communicate effectively?",
+          "back": "Communication is also crucial with nurses and auxiliary staff, colleagues, administrators, and in legal settings such as providing evidence in court. It additionally extends to presenting research findings, dealing with the media, and communicating with the public and legislators."
+        },
+        {
+          "id": "cpd13-c010",
+          "type": "summary",
+          "topics": [
+            "2.2.3"
+          ],
+          "sourcePage": 109,
+          "front": "What does effective communication in medicine achieve?",
+          "back": "Effective communication in medicine:\n1. Fosters a good working relationship.\n2. Enhances patient satisfaction.\n3. Improves patient understanding of their illness and treatment.\n4. Increases patient compliance with treatment.\n5. Encourages interaction rather than simply transmitting information."
+        },
+        {
+          "id": "cpd13-c011",
+          "type": "concept",
+          "topics": [
+            "3.1.1"
+          ],
+          "sourcePage": 109,
+          "front": "Describe the principles of effective communication, including the helical model.",
+          "back": "Effective communication requires thoughtful planning and follow-through. It follows the helical model, in which each exchange influences the next rather than occurring in isolation. Its principles are:\n1. Empathy — understanding and managing emotional responses.\n2. Team communication — involving patients, families, physicians, and other healthcare providers.\n3. Mutual trust and respect — sharing information, seeking advice, and participating in team activities such as seminars and workshops."
+        },
+        {
+          "id": "cpd13-c012",
+          "type": "fact",
+          "topics": [
+            "3.1.2"
+          ],
+          "sourcePage": 109,
+          "front": "What common barriers can hinder effective communication?",
+          "back": "Common barriers include personal attitudes, such as focusing solely on physical symptoms while neglecting emotional distress; language differences; time constraints; work environment challenges; lack of knowledge; human factors such as fatigue and stress; and inconsistency in providing information."
+        },
+        {
+          "id": "cpd13-c013",
+          "type": "summary",
+          "topics": [
+            "3.2.1"
+          ],
+          "sourcePage": 109,
+          "front": "How is a good doctor–patient relationship built during a consultation?",
+          "back": "A good relationship is built by:\n1. Tailoring the amount and type of information to each patient.\n2. Offering explanations patients can understand and remember, linked to their own perception of the illness.\n3. Using an interactive approach to ensure shared understanding of the problem.\n4. Involving patients in collaborative planning, which increases commitment to the treatment plan.\n5. Continuously building the relationship and providing support, creating a supportive environment, and being aware of the patient's emotional state.\n6. Identifying all issues the patient wishes to discuss and establishing an agreed agenda.\n7. Involving the patient collaboratively throughout the consultation.\n8. Closing effectively: confirming the agreed care plan, clarifying next steps for doctor and patient, establishing contingency plans, maximizing adherence and health outcomes, and using time efficiently.\n9. Continuing the collaborative process at future interactions to strengthen the relationship."
+        },
+        {
+          "id": "cpd13-c014",
+          "type": "process",
+          "topics": [
+            "3.2.2"
+          ],
+          "sourcePage": 110,
+          "front": "What questions should a doctor ask in self-reflection after each consultation?",
+          "back": "After each consultation, ask yourself:\n1. Was I genuinely curious?\n2. Do I know significantly more about this person as a human being than before they entered the room?\n3. Did I listen effectively?\n4. Did I make a reasonable working diagnosis?\n5. Did I explore the patient's beliefs?\n6. Did I involve the patient in decision-making?\n7. Did I ensure the patient understood the information provided?\n8. Did I work on developing the relationship?"
+        }
+      ]
+    },
+    {
+      "id": "cpd14",
+      "number": 14,
+      "title": "The Clinical Interview and Breaking Bad News",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 110–115 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "Communication Protocols Overview",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "The protocol suite",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Six named communication protocols"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "C-L-A-S-S: All Medical Interviews",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "Framework and setting",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "The five steps of C-L-A-S-S"
+                },
+                {
+                  "id": "2.1.2",
+                  "title": "Context: physical and interpersonal setting"
+                }
+              ]
+            },
+            {
+              "id": "2.2",
+              "title": "Listening and responding",
+              "children": [
+                {
+                  "id": "2.2.1",
+                  "title": "Open-ended questions and facilitating"
+                },
+                {
+                  "id": "2.2.2",
+                  "title": "Clarifying and managing time and interruptions"
+                },
+                {
+                  "id": "2.2.3",
+                  "title": "Acknowledge emotions: the empathic response"
+                }
+              ]
+            },
+            {
+              "id": "2.3",
+              "title": "Planning and closing",
+              "children": [
+                {
+                  "id": "2.3.1",
+                  "title": "Strategy: the management plan"
+                },
+                {
+                  "id": "2.3.2",
+                  "title": "Summary and closing the interview"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "title": "S-P-I-K-E-S: Breaking Bad News",
+          "children": [
+            {
+              "id": "3.1",
+              "title": "Preparing and assessing",
+              "children": [
+                {
+                  "id": "3.1.1",
+                  "title": "The six steps of S-P-I-K-E-S"
+                },
+                {
+                  "id": "3.1.2",
+                  "title": "Setting up the conversation"
+                },
+                {
+                  "id": "3.1.3",
+                  "title": "Perception"
+                }
+              ]
+            },
+            {
+              "id": "3.2",
+              "title": "Delivering information and supporting",
+              "children": [
+                {
+                  "id": "3.2.1",
+                  "title": "Invitation"
+                },
+                {
+                  "id": "3.2.2",
+                  "title": "Knowledge"
+                },
+                {
+                  "id": "3.2.3",
+                  "title": "Emotions"
+                },
+                {
+                  "id": "3.2.4",
+                  "title": "Strategy and Summary"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd14-c001",
+          "type": "fact",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 110,
+          "front": "Name the six communication protocols taught in this section and state the purpose of each.",
+          "back": "The six protocols are:\n1. C-L-A-S-S — for all medical interviews.\n2. S-P-I-K-E-S — for breaking bad news to patients and family members.\n3. C-O-N-E-S — for discussing a medical error with patients and family members.\n4. E-V-E — a sub-protocol for any encounter in which emotions are present.\n5. B-U-S-T-E-R — for challenging conversations with patients and family members.\n6. B-A-L-A-N-C-E — for cultural competence."
+        },
+        {
+          "id": "cpd14-c002",
+          "type": "process",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 111,
+          "front": "What are the five basic steps of the C-L-A-S-S protocol for clinical interviews?",
+          "back": "The C-L-A-S-S protocol sets out five steps for clinical interviews and conversations with patients:\n1. CONTEXT — the physical setup of the area chosen for the interview.\n2. LISTENING SKILLS — how to be an effective listener.\n3. ACKNOWLEDGE — how to validate, explore, and address emotions and concerns.\n4. STRATEGY — how to provide a management plan the patient can understand.\n5. SUMMARY — how to summarize and clarify the conversation."
+        },
+        {
+          "id": "cpd14-c003",
+          "type": "concept",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 111,
+          "front": "How should the physical and interpersonal context of a clinical interview be arranged?",
+          "back": "Physical space: use a private area with no distractions; choose somewhere a private conversation is possible. Keep your eyes at the same level as the patient or family member (sit down if needed) and have no physical barriers between you. If you are behind a desk, seat the patient or family members across the corner. Have a box of tissues available.\nFamily and friends: seat the patient closest to you.\nBody language: present a relaxed demeanour and maintain eye contact, except when the patient becomes upset.\nTouch: only touch a non-threatening area such as the hand or forearm, and be aware of cultural issues that may not allow touching."
+        },
+        {
+          "id": "cpd14-c004",
+          "type": "process",
+          "topics": [
+            "2.2.1"
+          ],
+          "sourcePage": 111,
+          "front": "What listening techniques help a clinician facilitate a patient's account?",
+          "back": "Be an effective listener. Start with open-ended questions, for example 'How did you manage with the new treatment?', 'Can you tell me more about your concerns?', and 'How have you been feeling?'\nFacilitating: let the patient speak without interrupting; allow them to finish; nod to show you are following; and repeat a key word from the patient's last sentence back in your own next sentence."
+        },
+        {
+          "id": "cpd14-c005",
+          "type": "process",
+          "topics": [
+            "2.2.2"
+          ],
+          "sourcePage": 112,
+          "front": "How are clarifying statements and time or interruption problems handled in an interview?",
+          "back": "Clarifying: use statements such as 'So, if I understand you correctly, you are saying...' and 'Tell me more about that.'\nTime and interruptions: if there are time constraints, tell the patient ahead of time. Do not answer pagers or phone calls; if you must, apologize to the patient before answering. Try to prepare the patient in advance if you know you will be interrupted."
+        },
+        {
+          "id": "cpd14-c006",
+          "type": "clinical",
+          "topics": [
+            "2.2.3"
+          ],
+          "sourcePage": 112,
+          "front": "Describe the empathic response used when acknowledging emotions.",
+          "back": "Explore, identify, and respond to the emotion. The empathic response has three parts:\n1. Identify the emotion.\n2. Identify the cause of the emotion.\n3. Respond by showing you have made the connection between the emotion and its cause, e.g. 'That must have felt terrible when...' or 'Most people would be upset about this.'\nYou do not have to have the same feelings as the patient, and you do not have to agree with the patient's feelings."
+        },
+        {
+          "id": "cpd14-c007",
+          "type": "process",
+          "topics": [
+            "2.3.1"
+          ],
+          "sourcePage": 112,
+          "front": "What steps make up a management plan the patient can understand (Strategy)?",
+          "back": "Propose a plan the patient will understand. Appraise in your mind, or clarify with the patient, their expectations of treatment and outcome. Decide what the best medical plan would be for that patient. Recommend a strategy for how to proceed. Evaluate the patient's response, then collaborate and agree on the plan."
+        },
+        {
+          "id": "cpd14-c008",
+          "type": "process",
+          "topics": [
+            "2.3.2"
+          ],
+          "sourcePage": 113,
+          "front": "How should the interviewer close and summarize a clinical interview?",
+          "back": "Close the discussion in a clear and concise manner. Check the patient's understanding and ask whether they have any other questions. If there is no time for further questions, suggest that they can be addressed at the next appointment. Set a clear contract for a follow-up visit."
+        },
+        {
+          "id": "cpd14-c009",
+          "type": "process",
+          "topics": [
+            "3.1.1"
+          ],
+          "sourcePage": 113,
+          "front": "List the six steps of the S-P-I-K-E-S protocol for breaking bad news.",
+          "back": "S-P-I-K-E-S is a protocol for breaking bad news to patients and family members:\n1. S — Setting up the conversation.\n2. P — Perception.\n3. I — Invitation.\n4. K — Knowledge.\n5. E — Emotions.\n6. S — Strategy and Summary."
+        },
+        {
+          "id": "cpd14-c010",
+          "type": "concept",
+          "topics": [
+            "3.1.2"
+          ],
+          "sourcePage": 113,
+          "front": "How should the clinician set up the conversation when breaking bad news?",
+          "back": "Secure an appropriate area for the discussion, quiet and undisturbed. Prepare what to say and anticipate the patient's or family's reaction. Have the key people the patient wants in the room. Seat the patient closest to you with no barriers between you. Sit down, try to be calm, and make eye contact."
+        },
+        {
+          "id": "cpd14-c011",
+          "type": "clinical",
+          "topics": [
+            "3.1.3"
+          ],
+          "sourcePage": 113,
+          "front": "What is assessed during the Perception step of S-P-I-K-E-S?",
+          "back": "Assess the patient's understanding of the seriousness of their condition. Ask what the patient and family already know — for example, 'Tell me what you understand about your condition so far' or 'What did the other doctors tell you?' You might say, 'I'd like to be sure we are on the same page with understanding your condition, so can you tell me...' Assess the level of understanding of both patient and family, note any discrepancies between their understanding and what is actually true, and watch for signs of denial."
+        },
+        {
+          "id": "cpd14-c012",
+          "type": "clinical",
+          "topics": [
+            "3.2.1"
+          ],
+          "sourcePage": 114,
+          "front": "What does the Invitation step of S-P-I-K-E-S involve?",
+          "back": "Get permission to have the discussion — 'ask before you tell'. Set goals for the discussion and ask the patient whether they want the details of the medical condition or treatment, e.g. 'I'd like to go over the results, would that be ok?' or 'Today my plan is to discuss... is that okay?' Accept the patient's right not to know, and offer to answer any questions the patient or family members want to ask."
+        },
+        {
+          "id": "cpd14-c013",
+          "type": "clinical",
+          "topics": [
+            "3.2.2"
+          ],
+          "sourcePage": 114,
+          "front": "How should facts be explained during the Knowledge step of S-P-I-K-E-S?",
+          "back": "Explain the facts without medical jargon, in a manner the patient will understand. Instead of 'You have a nuclear grade 1 ER/PR positive spiculated 4-centimetre lesion', say 'You have a fairly good sized tumour in your breast.' Fill in any gaps that were evident in the Perception stage. Present information in small chunks and, after each chunk, verify understanding — for example, 'Are you with me so far?'"
+        },
+        {
+          "id": "cpd14-c014",
+          "type": "clinical",
+          "topics": [
+            "3.2.3"
+          ],
+          "sourcePage": 114,
+          "front": "How should emotions be handled during the Emotions step of S-P-I-K-E-S?",
+          "back": "Use the empathic response and be supportive. Deal with emotions as they occur, because patients who are very emotional will not comprehend what you say. Use open-ended questions to explore concerns. Avoid false reassurance or unrealistic comforting statements (for example, invoking stories that 'lots of miracles happen'). As with the empathic response generally, you neither have to share the patient's feelings nor agree with them in order to respond effectively."
+        },
+        {
+          "id": "cpd14-c015",
+          "type": "clinical",
+          "topics": [
+            "3.2.4"
+          ],
+          "sourcePage": 115,
+          "front": "What happens in the Strategy and Summary steps of S-P-I-K-E-S?",
+          "back": "Strategy: decide what the best medical plan is for the patient; appraise in your mind or clarify with the patient their expectations of treatment and outcome; recommend a strategy for proceeding; collaborate and agree on the plan; ask the patient to repeat their understanding of the plan; and provide a clear treatment plan in writing for the patient to take home.\nSummary: summarize the conversation and offer to answer questions, being prepared for tough ones. If the patient asks 'Does this mean I'm going to die?', respond 'Tell me more about what concerns you?' If they ask 'Can I be cured?', answer honestly — 'I'm sorry to say that it is unlikely. Our goal is to keep it in check.' If they ask 'How long do I have to live?', say 'I can discuss that with you, but first tell me why you ask?'"
+        }
+      ]
+    },
+    {
+      "id": "cpd15",
+      "number": 15,
+      "title": "Difficult Conversations, Errors and Cultural Competence",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 115–121 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "C-O-N-E-S: Discussing a Medical Error",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Framework and opening",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Indications and the five steps"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "Context and Opening Shot"
+                }
+              ]
+            },
+            {
+              "id": "1.2",
+              "title": "Delivery and closure",
+              "children": [
+                {
+                  "id": "1.2.1",
+                  "title": "Narrative approach"
+                },
+                {
+                  "id": "1.2.2",
+                  "title": "Emotions, Strategy, Summary and disclosure standards"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "E-V-E: Responding to Emotions",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "The emotion sub-protocol",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "Explore, Validate and the empathic response"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "title": "B-U-S-T-E-R: Challenging Conversations",
+          "children": [
+            {
+              "id": "3.1",
+              "title": "Preparation and listening",
+              "children": [
+                {
+                  "id": "3.1.1",
+                  "title": "Emotional labour and the six steps"
+                },
+                {
+                  "id": "3.1.2",
+                  "title": "Be prepared and use non-judgmental listening"
+                },
+                {
+                  "id": "3.1.3",
+                  "title": "Six-second rule and 'Tell me more' statements"
+                }
+              ]
+            },
+            {
+              "id": "3.2",
+              "title": "Responding and safety",
+              "children": [
+                {
+                  "id": "3.2.1",
+                  "title": "Empathize and validate"
+                },
+                {
+                  "id": "3.2.2",
+                  "title": "Wish statements, important tips and ending safely"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "4",
+          "title": "B-A-L-A-N-C-E: Cultural Competence",
+          "children": [
+            {
+              "id": "4.1",
+              "title": "Cultural history and principles",
+              "children": [
+                {
+                  "id": "4.1.1",
+                  "title": "The BALANCE domains of a cultural history"
+                },
+                {
+                  "id": "4.1.2",
+                  "title": "Fundamental principles of cultural competence"
+                },
+                {
+                  "id": "4.1.3",
+                  "title": "Cultural variation in beliefs and care"
+                }
+              ]
+            },
+            {
+              "id": "4.2",
+              "title": "Applying cultural competence",
+              "children": [
+                {
+                  "id": "4.2.1",
+                  "title": "When cultural competence matters most"
+                },
+                {
+                  "id": "4.2.2",
+                  "title": "Providing personalized culturally competent care"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd15-c001",
+          "type": "process",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 115,
+          "front": "When is the C-O-N-E-S protocol used, and what are its five steps?",
+          "back": "C-O-N-E-S is used for discussing a medical error with patients and family members: when disclosing that a medical error has occurred, when there is a sudden deterioration in the patient's medical condition, or when talking to the family about a sudden death. The news should be delivered by the most senior person on the patient's treatment team.\nThe five steps are:\n1. C — Context.\n2. O — Opening Shot.\n3. N — Narrative.\n4. E — Emotions.\n5. S — Strategy and Summary."
+        },
+        {
+          "id": "cpd15-c002",
+          "type": "clinical",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 116,
+          "front": "How are the Context and Opening Shot steps of C-O-N-E-S carried out?",
+          "back": "Context: prepare what to say and anticipate the patient's or family's reaction. Hold the conversation in a quiet, undisturbed area. Seat the patient closest to you with no barriers between you. Sit down, try to be calm, and maintain eye contact. Have a box of tissues available.\nOpening Shot: alert the patient or family member that important news is coming, for example 'This is difficult. I have to tell you what I found out about your mother — she is so ill', 'This is hard, but I have some information to share that is important', 'I must talk to you about your condition', or 'Thanks for coming in. I must tell you about your father.'"
+        },
+        {
+          "id": "cpd15-c003",
+          "type": "clinical",
+          "topics": [
+            "1.2.1"
+          ],
+          "sourcePage": 116,
+          "front": "What is the Narrative approach in the C-O-N-E-S protocol?",
+          "back": "Explain the chronological sequence of events, for example 'As you know, your mother came in back in...' Tell the patient or family what is happening in plain terms and reassure them that there will be follow-up and that no further harm is intended or a good outcome is sought. Make clear that the situation is a priority: 'I am the doctor responsible for your mother, so it is important that I find out what happened.' Promote trust with statements such as 'I will be open and honest with you when I have all the facts' and 'I can guarantee we will do our best.' Reassure them about next steps: 'Here is what I propose we do' and 'Let's meet at the end of today, or I can call you when I know more.' If you do not know the answer, say so and say that you will attempt to find out."
+        },
+        {
+          "id": "cpd15-c004",
+          "type": "concept",
+          "topics": [
+            "1.2.2"
+          ],
+          "sourcePage": 117,
+          "front": "What are the Emotions, Strategy and Summary steps of C-O-N-E-S, and what is the status of error disclosure?",
+          "back": "Emotions: respond to the feelings disclosed, using the empathic response and acknowledging the impact of what has happened.\nStrategy and Summary: summarize the discussion and make specific plans; let the family know the situation is a priority and that you will be open and honest as the facts become known; agree on follow-up and a clear next step.\nDisclosing medical errors is now a standard of practice — it is not optional. Sensitive disclosure has a favourable impact on malpractice claims."
+        },
+        {
+          "id": "cpd15-c005",
+          "type": "process",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 117,
+          "front": "Describe the E-V-E sub-protocol for encounters in which strong emotions are present.",
+          "back": "E-V-E has three elements to use any time strong emotion occurs:\n1. EXPLORE the emotion — identify it (anger, sadness, etc.), find out more about it and what is causing it ('Can you tell me more about how you feel?'), and acknowledge it ('I can see that made you very angry').\n2. VALIDATE the emotion — let the person know you understand that the emotion was appropriate: 'I can understand how that would make you angry' or 'Most people would feel that way.'\n3. EMPATHIC RESPONSE — respond in a way that shows you have seen the emotion and understand it: 'I'm sorry this has happened and I understand how it would make you feel that way', 'I hear what you're saying — that must have been very difficult', or 'I get your point. It was obviously very upsetting.'"
+        },
+        {
+          "id": "cpd15-c006",
+          "type": "concept",
+          "topics": [
+            "3.1.1"
+          ],
+          "sourcePage": 118,
+          "front": "Define emotional labour and list the six steps of the B-U-S-T-E-R protocol.",
+          "back": "Emotional labour is the mental work used to recognize and manage emotions so they do not rule the conversation.\nThe B-U-S-T-E-R steps for challenging conversations with patients and family members are:\n1. B — Be prepared.\n2. U — Use non-judgmental listening.\n3. S — Six second rule.\n4. T — 'Tell me more' statements.\n5. E — Empathize and validate.\n6. R — Respond with a wish statement."
+        },
+        {
+          "id": "cpd15-c007",
+          "type": "clinical",
+          "topics": [
+            "3.1.2"
+          ],
+          "sourcePage": 118,
+          "front": "How does a clinician prepare for and listen non-judgmentally in a challenging conversation?",
+          "back": "Be prepared: expect emotions — your own and theirs — to come your way; have a plan for how you will handle it, especially when giving bad news; monitor what you think and feel, since awareness of your own communication makes you more effective; practise self-regulation and keep your own emotions in check when your buttons are pushed; aim to turn confrontation into a conversation; and know when NOT to have the conversation, because emotions may be too intense.\nUse non-judgmental listening: remember it is not about you but about the other person's disappointments, fears, and anxiety, which often underlie the anger, blame, or denial at the surface. Maintain eye contact and listen without interrupting, making only clarifying statements. Paraphrase with 'So let me see if I understand...' and 'What I hear you saying is...'"
+        },
+        {
+          "id": "cpd15-c008",
+          "type": "clinical",
+          "topics": [
+            "3.1.3"
+          ],
+          "sourcePage": 119,
+          "front": "What is the six-second rule, and how are 'Tell me more' statements used?",
+          "back": "Six-second rule: when your own emotions start to boil — especially in response to blame — wait at least six seconds or pause if needed. Avoid being defensive or blaming; if an interaction did not work, it may be because you waited too long to collect your thoughts and use skills such as 'Tell me more' or empathic and validating responses.\n'Tell me more' statements invite the person to expand on what they are saying: 'Tell me more about your husband', 'What happened after that?', and 'What other concerns do you have?'"
+        },
+        {
+          "id": "cpd15-c009",
+          "type": "clinical",
+          "topics": [
+            "3.2.1"
+          ],
+          "sourcePage": 119,
+          "front": "How are empathizing and validating statements used in B-U-S-T-E-R?",
+          "back": "Use empathizing and validating responses to acknowledge and diminish emotions. Acknowledge the emotion by empathizing, for example: 'I can see you weren't expecting this', 'This isn't easy to talk about, is it?', 'It's very stressful, isn't it?', 'It must be hard to come here every week', and 'I can see how difficult it is for you.'"
+        },
+        {
+          "id": "cpd15-c010",
+          "type": "clinical",
+          "topics": [
+            "3.2.2"
+          ],
+          "sourcePage": 119,
+          "front": "What are wish statements, important tips, and the rule for ending a conversation safely?",
+          "back": "Respond with a wish statement to show you hear the person and acknowledge that the goal may be desirable, but is not achievable: 'I wish I had better news...', 'I wish I didn't have to tell you this...', 'I wish we had a more effective treatment', or 'I wish things had worked out better.'\nImportant tips: stay calm; avoid phrases such as 'I know how you feel', 'I feel your pain', and 'It's going to be alright.' When emotions or behaviour escalate and you feel threatened or unsafe, end the interaction — for example, 'This conversation is making me feel uncomfortable right now' or 'I don't feel safe right now and can't continue this conversation.'"
+        },
+        {
+          "id": "cpd15-c011",
+          "type": "fact",
+          "topics": [
+            "4.1.1"
+          ],
+          "sourcePage": 120,
+          "front": "What seven areas are covered when taking a cultural history using the BALANCE framework?",
+          "back": "The BALANCE mnemonic covers:\n1. B — Beliefs and Values that influence perceptions of illness.\n2. A — Ambience: living situation and family structure, related risks of home and work.\n3. L — Language and Health Literacy: role of interpreters, translation, and metaphoric meanings.\n4. A — Affiliations: community ties, religious and spiritual beliefs, status, and community resources.\n5. N — Network: the social support system.\n6. C — Challenges: cancer-related risks of home and work conditions.\n7. E — Economics: socioeconomic status and community resources."
+        },
+        {
+          "id": "cpd15-c012",
+          "type": "concept",
+          "topics": [
+            "4.1.2"
+          ],
+          "sourcePage": 120,
+          "front": "What are the fundamental principles of cultural competence in cancer care?",
+          "back": "Cross-cultural medical encounters are increasing in multi-ethnic societies, and cultural factors influence cancer survival rates and patient and family quality of life. Cultural competence is a set of attitudes, skills, and knowledge that can be acquired. Respecting cultural diversity is key to delivering comprehensive cancer care across the illness trajectory, and cultural competence promotes patient-centred care through sensitive negotiation of therapeutic goals."
+        },
+        {
+          "id": "cpd15-c013",
+          "type": "concept",
+          "topics": [
+            "4.1.3"
+          ],
+          "sourcePage": 120,
+          "front": "Which aspects of care and belief vary across cultures, and how does this affect cancer care?",
+          "back": "Aspects that vary across cultures include the role of autonomy in decision-making, the support available to help patients cope, role expectations of sick persons, beliefs about cancer causation, end-of-life preferences (advance directives, DNR, hospice), and patient–clinician–institution relationships. Discussion of cancer is a taboo in some cultures where 'cancer' is still associated with death or with guilt and shame. Patients from diverse cultures rely on different healing practices, which can often be incorporated into care plans. Ethnic, genetic, and cultural differences can affect treatment directly or through lifestyles."
+        },
+        {
+          "id": "cpd15-c014",
+          "type": "fact",
+          "topics": [
+            "4.2.1"
+          ],
+          "sourcePage": 121,
+          "front": "In which situations is cultural competence most needed?",
+          "back": "Cultural competence is most relevant when telling patients about diagnosis, prognosis, and risks; in discussion of death and end-of-life choices; when there is disagreement in information-giving; regarding family involvement in decision-making; with use of alternative and complementary cancer treatments; with reliance on spirituality and religion for healing; with attitudes toward psychological and behavioural counselling; and with concerns regarding clinical trials."
+        },
+        {
+          "id": "cpd15-c015",
+          "type": "summary",
+          "topics": [
+            "4.2.2"
+          ],
+          "sourcePage": 121,
+          "front": "How is culturally competent, personalized cancer care put into practice?",
+          "back": "Personalized cancer care incorporates patients' and families' culture and draws on community resources. Learn about the cultural groups most frequently treated at your institution and incorporate cultural information into the social history. Be prepared to briefly describe your own cultural background. Always clarify your institutional and ethical norms in matters of truth-telling and decision-making. Recognize your own biases toward particular cultural attitudes and practices; be aware of how different families involve themselves in decision-making; be sensitive to different cultural meanings of suffering and care-giving; and open your mind to different ways of promoting health and coping with illness."
+        }
+      ]
+    },
+    {
+      "id": "cpd16",
+      "number": 16,
+      "title": "Constitution of Nepal 2015",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 135–137 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "Constitutional Framework of Nepal 2015",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Structure of the Constitution",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Promulgation, parts and articles"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "The 35 parts and directive principles"
+                },
+                {
+                  "id": "1.1.3",
+                  "title": "The nine schedules"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Fundamental Rights and Duties (Part 3)",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "The 31 fundamental rights (Articles 16–46)",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "Civil and political rights (Articles 16–28)"
+                },
+                {
+                  "id": "2.1.2",
+                  "title": "Socio-economic rights (Articles 29–37)"
+                },
+                {
+                  "id": "2.1.3",
+                  "title": "Group rights, consumer rights and remedies (Articles 38–46)"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd16-c001",
+          "type": "definition",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 135,
+          "front": "What is the Constitution of Nepal 2015 and when did it come into force?",
+          "back": "The present Constitution of Nepal was promulgated on 20 September 2015, replacing the Interim Constitution of Nepal, 2007. It is the supreme law of the country and is organised into 35 parts, 39 articles and 9 schedules. Its Fundamental Rights and Duties are placed in Part 3, which is of direct medico-legal relevance."
+        },
+        {
+          "id": "cpd16-c002",
+          "type": "summary",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 135,
+          "front": "List the 35 parts of the Constitution of Nepal in order.",
+          "back": "1 Preliminary; 2 Citizenship; 3 Fundamental Rights and Duties; 4 Directive Principles, Policies and Responsibilities of the State; 5 Structure of the State and Distribution of State Power; 6 President and Vice-President; 7 Federal Executive; 8 Federal Legislature; 9 Federal Legislative Procedure; 10 Federal Financial Procedures; 11 Judiciary; 12 Attorney General; 13 Provincial Executive; 14 Provincial Legislature; 15 Provincial Legislative Procedure; 16 Financial Procedures of Province; 17 Local Executive; 18 Local Legislature; 19 Local Financial Procedure; 20 Interrelationship between the Federation, Provinces and Local Levels; 21 Commission for the Investigation of Abuse of Authority; 22 Auditor General; 23 Public Service Commission; 24 Election Commission; 25 National Human Rights Commission; 26 National Natural Resources and Fiscal Commission; 27 Other Commissions; 28 Provision regarding National Security; 29 Provision relating to Political Parties; 30 Emergency Power; 31 Amendment of the Constitution; 32 Miscellaneous; 33 Transitional Provisions; 34 Definitions and Interpretation; 35 Short Title, Commencement and Repeal."
+        },
+        {
+          "id": "cpd16-c003",
+          "type": "fact",
+          "topics": [
+            "1.1.3"
+          ],
+          "sourcePage": 136,
+          "front": "What are the nine schedules of the Constitution of Nepal?",
+          "back": "Schedule 1 National Flag; 2 National Anthem; 3 Coat of Arms; 4 Provinces and districts within provinces; 5 List of Federal powers/jurisdiction; 6 List of Provincial powers/jurisdiction; 7 List of Concurrent (federal and provincial) powers/jurisdiction; 8 List of Powers/Jurisdiction for Local Level; 9 List of Concurrent Powers/Jurisdiction for Federation, Province and Local Level."
+        },
+        {
+          "id": "cpd16-c004",
+          "type": "concept",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 136,
+          "front": "Where does the Constitution place the directive principles and the constitutional commissions, including the National Human Rights Commission?",
+          "back": "Directive Principles, Policies and Responsibilities of the State are in Part 4, kept separate from the justiciable fundamental rights of Part 3. The commissions are listed in Parts 21–27: Commission for the Investigation of Abuse of Authority (21), Auditor General (22), Public Service Commission (23), Election Commission (24), National Human Rights Commission (25), National Natural Resources and Fiscal Commission (26), and Other Commissions (27). The National Human Rights Commission is therefore a constitutional body established under Part 25."
+        },
+        {
+          "id": "cpd16-c005",
+          "type": "fact",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 136,
+          "front": "How many fundamental rights does the Constitution guarantee and where are they listed?",
+          "back": "Part 3 (Fundamental Rights and Duties) guarantees 31 fundamental rights, numbered Articles 16 through 46. They cover civil and political rights, socio-economic rights, rights of specific groups, and the right to constitutional remedies."
+        },
+        {
+          "id": "cpd16-c006",
+          "type": "summary",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 136,
+          "front": "Enumerate the fundamental rights guaranteed under Articles 16 to 28.",
+          "back": "Article 16 Right to Live with Dignity; 17 Right to Freedom; 18 Right to Equality; 19 Right to Communication; 20 Rights relating to Justice; 21 Right of Victim of Crime; 22 Right against Torture; 23 Right against Preventive Detention; 24 Right against Untouchability and Discrimination; 25 Right relating to Property; 26 Right to Freedom of Religion; 27 Right to Information; 28 Right to Privacy."
+        },
+        {
+          "id": "cpd16-c007",
+          "type": "concept",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 136,
+          "front": "Which fundamental rights are most relevant to medico-legal practice?",
+          "back": "Article 16 (right to live with dignity), Article 20 (rights relating to justice), Article 21 (right of victim of crime), Article 22 (right against torture), Article 28 (right to privacy) and Article 35 (right relating to health). Together they require humane treatment, protection and justice for victims, prohibition of torture, privacy of medical information, and access to healthcare."
+        },
+        {
+          "id": "cpd16-c008",
+          "type": "summary",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 137,
+          "front": "What fundamental rights are guaranteed under Articles 29 to 37?",
+          "back": "Article 29 Right against Exploitation; 30 Right to a Clean Environment; 31 Right relating to Education; 32 Right to Language and Culture; 33 Right to Employment; 34 Right to Labour; 35 Right relating to Health; 36 Right relating to Food; 37 Right to Housing."
+        },
+        {
+          "id": "cpd16-c009",
+          "type": "concept",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 137,
+          "front": "What does Article 35, the Right relating to Health, broadly guarantee?",
+          "back": "It establishes health as a fundamental right: every citizen has the right to free basic health services provided by the state, no individual may be deprived of emergency health services, citizens have the right to obtain information about their medical treatment, and equal access to health services is guaranteed together with the right to clean drinking water and sanitation."
+        },
+        {
+          "id": "cpd16-c010",
+          "type": "summary",
+          "topics": [
+            "2.1.3"
+          ],
+          "sourcePage": 137,
+          "front": "List the fundamental rights guaranteed under Articles 38 to 46.",
+          "back": "Article 38 Rights of Women; 39 Rights of the Child; 40 Rights of Dalit; 41 Rights of Senior Citizens; 42 Right to Social Justice; 43 Right to Social Security; 44 Right of the Consumer; 45 Right against Exile; 46 Right to Constitutional Remedies."
+        },
+        {
+          "id": "cpd16-c011",
+          "type": "concept",
+          "topics": [
+            "2.1.3"
+          ],
+          "sourcePage": 137,
+          "front": "Why are Article 44 and Article 46 significant in healthcare law?",
+          "back": "Article 44 (Right of the Consumer) underpins the treatment of patients as consumers of medical services under the Consumer Protection Act, 2075. Article 46 (Right to Constitutional Remedies) provides the means to enforce fundamental rights, including the rights to life, health and dignity."
+        },
+        {
+          "id": "cpd16-c012",
+          "type": "fact",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 136,
+          "front": "What do Articles 27 and 28 guarantee, and why does this matter for medical records?",
+          "back": "Article 27 guarantees the Right to Information and Article 28 the Right to Privacy. In medical practice, patients are entitled to information about their condition and treatment, while their personal and medical information must be kept confidential, subject only to lawful disclosure such as compulsory reporting of medico-legal cases."
+        }
+      ]
+    },
+    {
+      "id": "cpd17",
+      "number": 17,
+      "title": "Medico-Legal Cases, Reports and Dying Declarations",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 137–140 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "Medico-Legal Cases (MLC)",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Basics and documents",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Definition, scope and practitioner obligations"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "Essential documents and reports"
+                }
+              ]
+            },
+            {
+              "id": "1.2",
+              "title": "Recognition and handling",
+              "children": [
+                {
+                  "id": "1.2.1",
+                  "title": "Types of cases treated as medico-legal cases"
+                },
+                {
+                  "id": "1.2.2",
+                  "title": "Step-by-step MLC handling process"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Dying Declaration",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "Nature and evidentiary value",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "Meaning, legal maxim and rationale"
+                },
+                {
+                  "id": "2.1.2",
+                  "title": "Forms and evidentiary status"
+                },
+                {
+                  "id": "2.1.3",
+                  "title": "Need for corroboration"
+                }
+              ]
+            },
+            {
+              "id": "2.2",
+              "title": "Legal requirements and practice in Nepal",
+              "children": [
+                {
+                  "id": "2.2.1",
+                  "title": "Conditions for admissibility"
+                },
+                {
+                  "id": "2.2.2",
+                  "title": "Exceptions, contradictions and reliability"
+                },
+                {
+                  "id": "2.2.3",
+                  "title": "Judicial trends in Nepal"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd17-c001",
+          "type": "definition",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 137,
+          "front": "What is a medico-legal case (MLC), and what are the duties of a practitioner who encounters one?",
+          "back": "An MLC is any case in which a medical practitioner encounters an unnatural death — accidental or deliberate, including deaths involving animals — and any clinical case that goes to court. The practitioner must report such cases to the police, must give prompt medical attention as the primary responsibility, and must keep accurate, thorough medico-legal documentation."
+        },
+        {
+          "id": "cpd17-c002",
+          "type": "definition",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 137,
+          "front": "What is a medical certificate in the context of medico-legal work?",
+          "back": "It is a certificate issued by a medical practitioner regarding sickness, insanity, death, age and similar facts. Issuing a false or incomplete certificate is itself an offence and may lead to legal consequences, so the certificate must be accurate and complete."
+        },
+        {
+          "id": "cpd17-c003",
+          "type": "definition",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 138,
+          "front": "What is a medico-legal report and what are its essential requirements?",
+          "back": "It is a report prepared by a medical doctor, usually at the request of magistrates or the police, for cases of injuries, sexual offences or death. It must be based solely on the doctor's own personal observations and findings — never on hearsay."
+        },
+        {
+          "id": "cpd17-c004",
+          "type": "summary",
+          "topics": [
+            "1.2.1"
+          ],
+          "sourcePage": 138,
+          "front": "Which types of cases are treated as medico-legal cases?",
+          "back": "Vehicular, factory or other unnatural accidents, especially where grievous injury is likely; suspected or evident rape or sexual violence; unconsciousness of unexplained cause; suspected or evident poisoning; cases referred for age estimation; brought-in-dead cases with suspicious histories; and any case that goes to court."
+        },
+        {
+          "id": "cpd17-c005",
+          "type": "process",
+          "topics": [
+            "1.2.2"
+          ],
+          "sourcePage": 138,
+          "front": "Describe the first four steps in the medico-legal case handling process.",
+          "back": "1. Immediate treatment — the first duty is to provide medical care and stabilise the patient.\n2. Police notification — information is sent to the police within a reasonable time, with special consideration of consent in sexual violence cases.\n3. MLC documentation — fill out the MLC form/police intimation in triplicate: one copy for the hospital, one for the police and one retained copy.\n4. Comprehensive treatment — include pharmacological, surgical and psychosocial care, especially in rape, sexual violence and child abuse."
+        },
+        {
+          "id": "cpd17-c006",
+          "type": "process",
+          "topics": [
+            "1.2.2"
+          ],
+          "sourcePage": 138,
+          "front": "Describe the later steps in the medico-legal case handling process, including examination, consent, evidence and records.",
+          "back": "5. Conduct the examination, prepare the medico-legal report, and ensure proper collection and sealing of specimens for forensic analysis.\n6. If a female doctor is unavailable for sexual violence cases involving women or girls, a male doctor may examine with a female attendant present.\n7. Obtain consent from the patient or guardian (where the patient is a minor) before filling out the MLR form.\n8. Only designated staff may handle evidence; collected material must be sealed and stored securely until dispatched for forensic testing.\n9. Retain inpatient records for at least about five years and MLC records permanently (for life). The exact retention figure in the source is partly illegible."
+        },
+        {
+          "id": "cpd17-c007",
+          "type": "definition",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 139,
+          "front": "What is the legal maxim and rationale behind a dying declaration?",
+          "back": "The maxim is 'Nemo moriturus mentire' — a man about to die will not lie. It rests on the belief that a person speaking at the point of death tells the truth in order to attain salvation, so a dying person is presumed to speak truthfully."
+        },
+        {
+          "id": "cpd17-c008",
+          "type": "fact",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 139,
+          "front": "In what forms can a dying declaration be made, and what is its evidentiary status?",
+          "back": "A dying declaration may be made in any form — written, oral, or by gestures and signs. It is a statement by a person who believes death is imminent, relating to the cause or circumstances of that death. Because the declarant is dead and cannot be cross-examined, it is admitted as a hearsay exception under the presumption that a dying person speaks the truth."
+        },
+        {
+          "id": "cpd17-c009",
+          "type": "concept",
+          "topics": [
+            "2.1.3"
+          ],
+          "sourcePage": 139,
+          "front": "Why does a dying declaration usually require corroboration?",
+          "back": "Because it is a form of hearsay and the declarant cannot be cross-examined. Courts generally look for corroborative evidence, and sole reliance on an uncorroborated dying declaration may lead to wrongful conviction."
+        },
+        {
+          "id": "cpd17-c010",
+          "type": "process",
+          "topics": [
+            "2.2.1"
+          ],
+          "sourcePage": 139,
+          "front": "What conditions must be satisfied for a dying declaration to be admissible?",
+          "back": "The declarant must have died before the declaration is submitted in evidence. The statement must relate to the cause or circumstances of the death. It must be made voluntarily, while the declarant was conscious, mentally fit and competent (mentally and physically fit), and free from influence or coercion. The person who recorded or heard it must be able to testify to it in court."
+        },
+        {
+          "id": "cpd17-c011",
+          "type": "concept",
+          "topics": [
+            "2.2.2"
+          ],
+          "sourcePage": 139,
+          "front": "How are coercion, incompleteness and contradictions treated in relation to a dying declaration?",
+          "back": "The declaration must not be influenced, induced or coerced; the declarant must have made it of their own free will. Incomplete or contradictory statements concerning the death, or statements inconsistent with the declarant's condition, are closely scrutinised and may be rejected as unreliable."
+        },
+        {
+          "id": "cpd17-c012",
+          "type": "summary",
+          "topics": [
+            "2.2.3"
+          ],
+          "sourcePage": 139,
+          "front": "What was the legal position on dying declarations in Nepal before the Evidence Act?",
+          "back": "Before the Evidence Act, 2031, Nepal had no specific law governing dying declarations. The later Evidence Act used the term 'deceased person' rather than expressly saying 'dying declaration', and the term was introduced and clarified through subsequent Supreme Court decisions. The source text cites the Evidence Act with inconsistent years (2031 and 2041), so the exact year is uncertain."
+        },
+        {
+          "id": "cpd17-c013",
+          "type": "fact",
+          "topics": [
+            "2.2.3"
+          ],
+          "sourcePage": 140,
+          "front": "Summarise the judicial principles applied by Nepalese courts to dying declarations.",
+          "back": "There is still no single clear statutory code for dying declarations; the Supreme Court has clarified the position case by case. The declarant must be aware of impending death for the statement to qualify. No fixed time limit is prescribed between the statement and the death. Contradictions are examined and may defeat admissibility. Written declarations require the person who recorded them to testify; oral declarations require the person who heard them to testify; hospital declarations are treated as evidence unless disproved. Acceptance ultimately depends on the facts, issues and circumstances of each case."
+        }
+      ]
+    },
+    {
+      "id": "cpd18",
+      "number": 18,
+      "title": "Offences Relating to Hurt",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 140–143 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "Hurt and Grievous Hurt under the National Penal Code",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Definitions of hurt and grievous hurt",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Meaning and scope of hurt (NPC 2017, s.191(2))"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "Grievous hurt — listed injuries (NPC s.192(3))"
+                },
+                {
+                  "id": "1.1.3",
+                  "title": "Life-endangering hurt short of listed injuries"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Punishment and Mitigating Considerations",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "Punishment and reduction of sentence",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "Base punishment for grievous hurt"
+                },
+                {
+                  "id": "2.1.2",
+                  "title": "Reduced sentence for healing or restored function"
+                }
+              ]
+            },
+            {
+              "id": "2.2",
+              "title": "Mental and situational factors",
+              "children": [
+                {
+                  "id": "2.2.1",
+                  "title": "Role of intention and knowledge"
+                },
+                {
+                  "id": "2.2.2",
+                  "title": "Grave and sudden provocation"
+                },
+                {
+                  "id": "2.2.3",
+                  "title": "Exemptions to the defence of provocation"
+                },
+                {
+                  "id": "2.2.4",
+                  "title": "Recklessness and negligence"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd18-c001",
+          "type": "definition",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 140,
+          "front": "How does the National Penal Code, 2017 define 'hurt'?",
+          "back": "Hurt is substantial suffering brought about by actual contact with the body through a forced assault; the law draws no sharp distinction between attack and hurt. Under section 191(2) of the NPC, a person who does any act that causes physical pain, transfers a disease or illness (including contagious disease by direct or indirect contact), or causes any part of the body — including the mind — to fail to function, is deemed to cause hurt."
+        },
+        {
+          "id": "cpd18-c002",
+          "type": "concept",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 141,
+          "front": "How does the NPC treat simple hurt in relation to grievous hurt, and what is the significance of the broad definition?",
+          "back": "Simple or common hurt is punishable, while grievous hurt is a serious, violent form of hurt. For both simple and violent hurt, imprisonment and fine are determined according to the seriousness and extent of the injuries. The NPC's definition of hurt is broad and does not specify the modes by which hurt may be inflicted, so a wide range of conduct can be brought within it."
+        },
+        {
+          "id": "cpd18-c003",
+          "type": "summary",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 141,
+          "front": "List the injuries that constitute grievous hurt under section 192(3) of the National Penal Code.",
+          "back": "A person who intentionally causes any of the following is an offender of grievous hurt: (a) blindness by depriving sight of, or breaking, either eye; (b) loss of the sense of smell; (c) loss of hearing of either ear; (d) loss of the power of speech; (e) cutting off a woman's breast; (f) emasculation or rendering a male or female infertile; (g) fracturing or dislocating the backbone, hand, leg or a joint of such organ; (h) hurt that makes the sufferer unable to perform his or her professional work."
+        },
+        {
+          "id": "cpd18-c004",
+          "type": "concept",
+          "topics": [
+            "1.1.3"
+          ],
+          "sourcePage": 141,
+          "front": "When can an act that does not cause a listed grievous injury still be punished as grievous hurt?",
+          "back": "Where an act of hurt, though not amounting to any of the defined forms of grievous hurt, immediately creates danger to life and is followed by the prescribed serious consequence, the offender is deemed to be liable for the punishment of grievous hurt. The principle is that life-endangering hurt is treated as grievous even without a specified discrete injury."
+        },
+        {
+          "id": "cpd18-c005",
+          "type": "fact",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 142,
+          "front": "What is the base punishment for causing grievous hurt under the National Penal Code?",
+          "back": "Imprisonment for up to ten years together with a fine of up to NPR 100,000 (one hundred thousand rupees)."
+        },
+        {
+          "id": "cpd18-c006",
+          "type": "fact",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 142,
+          "front": "How is the sentence reduced when the injury heals or function is restored?",
+          "back": "If the injury heals or does not lead to severe consequences, the sentence may be reduced. If it causes functional dysfunction of an organ, the sentence may be halved; if the injury heals with restoration of function, the sentence may be reduced to about three years with a fine. The exact fine figure in the source is illegible, so the principle of reduction should be applied rather than a precise number."
+        },
+        {
+          "id": "cpd18-c007",
+          "type": "concept",
+          "topics": [
+            "2.2.1"
+          ],
+          "sourcePage": 142,
+          "front": "How do intention and knowledge affect punishment for hurt?",
+          "back": "Intentionally targeting a person — for example, someone known to have a weak heart — with the intention of causing hurt is treated as intentional infliction of hurt and can attract more severe penalties. Awareness or knowledge of the potential consequences of one's act also affects the legal outcome: a person who knowingly causes hurt may face stricter punishment."
+        },
+        {
+          "id": "cpd18-c008",
+          "type": "definition",
+          "topics": [
+            "2.2.2"
+          ],
+          "sourcePage": 142,
+          "front": "What is grave and sudden provocation and how does it affect punishment?",
+          "back": "It is a loss of self-control produced by a serious and sudden provocation. Where hurt is caused in such circumstances, punishment may be mitigated: for grievous hurt, imprisonment up to two years and a fine up to NPR 20,000; for other hurt, imprisonment up to one year (with a fine)."
+        },
+        {
+          "id": "cpd18-c009",
+          "type": "fact",
+          "topics": [
+            "2.2.3"
+          ],
+          "sourcePage": 142,
+          "front": "When is the defence of provocation not available?",
+          "back": "Provocation does not apply if the hurt is caused during the lawful exercise of rights, in self-defence, or where the provocation was sought or intended as a pretext for harming the victim."
+        },
+        {
+          "id": "cpd18-c010",
+          "type": "fact",
+          "topics": [
+            "2.2.4"
+          ],
+          "sourcePage": 142,
+          "front": "What penalties apply when grievous hurt is caused recklessly or negligently?",
+          "back": "Reckless conduct may attract imprisonment up to two years or a fine; negligent conduct may attract imprisonment up to one year or a fine up to about NPR 10,000. The source also refers to lesser negligent hurt being punishable by imprisonment up to six months or a fine. Exact fine figures for reckless conduct are partly illegible, so the principle — less severe punishment than intentional hurt — should be retained."
+        },
+        {
+          "id": "cpd18-c011",
+          "type": "compare",
+          "topics": [
+            "2.1.1",
+            "2.2.2",
+            "2.2.4"
+          ],
+          "sourcePage": 142,
+          "front": "Compare punishment for grievous hurt caused intentionally, under provocation, and by negligence.",
+          "back": "Intentional grievous hurt: up to ten years' imprisonment plus a fine up to NPR 100,000. Grave and sudden provocation: up to two years' imprisonment plus a fine up to NPR 20,000. Recklessness: up to two years' imprisonment or a fine. Negligence: up to one year's imprisonment or a fine up to about NPR 10,000. Punishment therefore scales with the degree of culpability, from intention down through provocation to negligence."
+        },
+        {
+          "id": "cpd18-c012",
+          "type": "summary",
+          "topics": [
+            "1.1.1",
+            "1.1.2",
+            "2.1.1"
+          ],
+          "sourcePage": 143,
+          "front": "Summarise the legal approach to hurt and grievous hurt in Nepal.",
+          "back": "Both are defined in the National Penal Code, 2017. 'Hurt' covers pain, disease and functional impairment caused by forcible contact; 'grievous hurt' covers specified severe injuries such as loss of a sense or organ, emasculation, and inability to work, as well as life-endangering hurt. Punishment is based on seriousness, with mitigation for healing, provocation and lower mental culpability."
+        }
+      ]
+    },
+    {
+      "id": "cpd19",
+      "number": 19,
+      "title": "Sexual Offences: Rape and Consent",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 143–146 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "Rape — Definition and Legal Basis",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Definition, law and acts of penetration",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Definition of rape and validity of consent"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "Governing laws in Nepal"
+                },
+                {
+                  "id": "1.1.3",
+                  "title": "Acts amounting to penetration"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Elements of Rape",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "Consent, mental state and force",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "Absence of consent and incapacity to consent"
+                },
+                {
+                  "id": "2.1.2",
+                  "title": "Mental state of the offender"
+                },
+                {
+                  "id": "2.1.3",
+                  "title": "Force, threat and expression of consent"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "title": "Forms and Categories of Rape",
+          "children": [
+            {
+              "id": "3.1",
+              "title": "Categories by relationship and setting",
+              "children": [
+                {
+                  "id": "3.1.1",
+                  "title": "Acquaintance, partner and marital rape"
+                },
+                {
+                  "id": "3.1.2",
+                  "title": "Gang, statutory and war rape"
+                },
+                {
+                  "id": "3.1.3",
+                  "title": "Stranger, incest and aggravated rape"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "4",
+          "title": "Punishment and Limitation",
+          "children": [
+            {
+              "id": "4.1",
+              "title": "Legal consequences",
+              "children": [
+                {
+                  "id": "4.1.1",
+                  "title": "Punishment according to the victim's age"
+                },
+                {
+                  "id": "4.1.2",
+                  "title": "Limitation on filing a rape case"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd19-c001",
+          "type": "definition",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 143,
+          "front": "How is rape defined in the Nepalese medico-legal context, and when is consent invalid?",
+          "back": "A man who engages in sexual intercourse with a girl child below eighteen years is regarded as committing rape even if she appears to consent. Consent is not valid when obtained through coercion, undue influence, intimidation, threat, misrepresentation, or kidnapping/hostage-taking, nor when the person is of unsound mind."
+        },
+        {
+          "id": "cpd19-c002",
+          "type": "fact",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 143,
+          "front": "Which laws govern rape in Nepal?",
+          "back": "The governing laws are the National Criminal Code, 2074; the National Criminal Procedure Code, 2074; and the Criminal Offence (Sentencing and Punishment) Act, 2074."
+        },
+        {
+          "id": "cpd19-c003",
+          "type": "concept",
+          "topics": [
+            "1.1.3"
+          ],
+          "sourcePage": 143,
+          "front": "What acts amount to penetration for the offence of rape?",
+          "back": "Penetration is not limited to the penis into the vagina: it includes penetration of the penis into the anus or mouth, penetration of any body part or object into the anus, mouth or vagina, and insertion of objects. All such acts are regarded as forms of rape."
+        },
+        {
+          "id": "cpd19-c004",
+          "type": "summary",
+          "topics": [
+            "2.1.1",
+            "2.1.2"
+          ],
+          "sourcePage": 143,
+          "front": "What are the essential elements of rape and the required mental state of the offender?",
+          "back": "The elements are absence of consent, application of force, threat or coercion, and the occurrence of sexual penetration. The offender must be aware of the victim's lack of consent and must recklessly disregard that lack of consent in the sexual activity."
+        },
+        {
+          "id": "cpd19-c005",
+          "type": "concept",
+          "topics": [
+            "2.1.1",
+            "2.1.3"
+          ],
+          "sourcePage": 144,
+          "front": "When is a person incapable of consenting, and how may consent be expressed or withdrawn?",
+          "back": "Consent may be verbal or implied, but it must be explicit and freely given and can be withdrawn at any time. A person cannot consent when incapacitated by intoxication, unsoundness of mind, minority or other factors. Sexual activity with a minor is an offence even if the minor apparently agrees, and activity without the victim's explicit consent, or obtained by physical, verbal or weapon-borne force or threat, is rape."
+        },
+        {
+          "id": "cpd19-c006",
+          "type": "summary",
+          "topics": [
+            "3.1.1"
+          ],
+          "sourcePage": 144,
+          "front": "Describe acquaintance rape and partner rape, including the three types of partner rape.",
+          "back": "Acquaintance rape, also called date rape, occurs between people who know each other and have an existing social connection; victims may not label it as rape, but consent can be withdrawn at any time. Partner (spousal) rape involves a current or former partner regardless of marital status and takes three forms: battering rape (physical and sexual violence), force-only rape (imposition of power and control), and obsessive/sadistic rape (torture and sexual abuse)."
+        },
+        {
+          "id": "cpd19-c007",
+          "type": "definition",
+          "topics": [
+            "3.1.1"
+          ],
+          "sourcePage": 145,
+          "front": "What is marital rape?",
+          "back": "It is sexual activity imposed within a marital relationship without consent freely granted. Marriage does not create presumed consent; non-consensual sexual intercourse between spouses constitutes rape."
+        },
+        {
+          "id": "cpd19-c008",
+          "type": "definition",
+          "topics": [
+            "3.1.2"
+          ],
+          "sourcePage": 145,
+          "front": "What is gang rape?",
+          "back": "A dreadful form of sexual assault in which a single victim is attacked by a group of assailants who collaborate to engage in sexual assault without the victim's consent. It frequently causes profound physical and psychological trauma."
+        },
+        {
+          "id": "cpd19-c009",
+          "type": "definition",
+          "topics": [
+            "3.1.2"
+          ],
+          "sourcePage": 145,
+          "front": "What is statutory rape?",
+          "back": "Sexual intercourse with a person below the legal age of consent. Because the minor is legally incapable of consenting, the act is rape even if the minor appears to agree."
+        },
+        {
+          "id": "cpd19-c010",
+          "type": "definition",
+          "topics": [
+            "3.1.2"
+          ],
+          "sourcePage": 145,
+          "front": "What is war rape?",
+          "back": "Sexual violence, including rape, occurring during armed conflict. It can take forms such as mass rape, sexual slavery or other sexual abuse and causes significant physical and psychological repercussions for victims."
+        },
+        {
+          "id": "cpd19-c011",
+          "type": "compare",
+          "topics": [
+            "3.1.3"
+          ],
+          "sourcePage": 145,
+          "front": "How do stranger rape, incest rape and aggravated rape differ?",
+          "back": "Stranger rape occurs where the assailant has no prior connection or familiarity with the victim and may happen in diverse settings. Incest rape is non-consensual sexual activity within a familial relationship — between parents and children, uncles and nieces/nephews, or aunts and nieces/nephews. Aggravated rape is rape committed with the use of force, or while the victim is incapacitated or otherwise unable to give consent."
+        },
+        {
+          "id": "cpd19-c012",
+          "type": "fact",
+          "topics": [
+            "4.1.1"
+          ],
+          "sourcePage": 146,
+          "front": "How does punishment for rape vary with the age of the victim?",
+          "back": "Under the National Criminal Code, 2074, the sentence becomes longer as the victim's age falls: roughly 16–20 years for a girl below ten years, decreasing through bands of about 14–16, 12–14, 10–12 and 7–10 years for older girls, with a shorter term (around seven years) for a woman above eighteen. The source table is partly illegible, so the reliable principle is that younger victims attract substantially longer imprisonment."
+        },
+        {
+          "id": "cpd19-c013",
+          "type": "fact",
+          "topics": [
+            "4.1.2"
+          ],
+          "sourcePage": 146,
+          "front": "What limitation periods apply to filing a rape case in Nepal?",
+          "back": "The National Criminal Code, 2074 sets limitation periods by category. Some categories — such as incest rape and rape of a person in the offender's protection, security or custody, or of a person in a workplace or while receiving professional services — have no limitation, while other categories such as custodial rape/detainee rape must be filed within one year of the commission of the offence. The relevant table is partly garbled, so the principle of longer or unlimited limitation for abuse of trust or authority should be retained."
+        }
+      ]
+    },
+    {
+      "id": "cpd20",
+      "number": 20,
+      "title": "Medical Negligence: Concept and Legal Framework",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 146–152 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "Understanding Medical Negligence",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Concept and forms",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Definition and public impact"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "Common forms of negligence"
+                }
+              ]
+            },
+            {
+              "id": "1.2",
+              "title": "Proof and legal principles",
+              "children": [
+                {
+                  "id": "1.2.1",
+                  "title": "Criteria for proving negligence"
+                },
+                {
+                  "id": "1.2.2",
+                  "title": "Legal principles: Bolam test and res ipsa loquitur"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Legal Framework in Nepal",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "Constitutional, criminal and civil law",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "Constitutional right to health (Article 35)"
+                },
+                {
+                  "id": "2.1.2",
+                  "title": "Muluki Criminal Code, 2074 — medical offences, drugs and reports"
+                },
+                {
+                  "id": "2.1.3",
+                  "title": "Muluki Civil Code, 2074 — torts"
+                }
+              ]
+            },
+            {
+              "id": "2.2",
+              "title": "Regulatory and consumer law",
+              "children": [
+                {
+                  "id": "2.2.1",
+                  "title": "Consumer Protection Act, 2075"
+                },
+                {
+                  "id": "2.2.2",
+                  "title": "Health Service Acts, 2053 and 2075"
+                },
+                {
+                  "id": "2.2.3",
+                  "title": "Nepal Medical Council Act, 2020 and Rules, 2024"
+                },
+                {
+                  "id": "2.2.4",
+                  "title": "Need for a specific Medical Negligence Act"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd20-c001",
+          "type": "definition",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 147,
+          "front": "What is medical negligence, and what is its public impact in Nepal?",
+          "back": "Medical negligence occurs when a healthcare provider fails to meet the accepted standard of care, leading to harm or injury to a patient. The rise in such cases in Nepal has caused public unrest, vandalism of hospitals and attacks on healthcare professionals, together with calls for legal intervention."
+        },
+        {
+          "id": "cpd20-c002",
+          "type": "summary",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 147,
+          "front": "List the common forms or types of medical negligence described in the text.",
+          "back": "Wrong-site surgery; unintentional laceration of internal organs during surgery; severe blood loss from procedural errors; leaving foreign objects or surgical instruments inside the patient; anaesthesia errors such as wrong dose or type of anaesthetic and failure to review the patient's history; and childbirth/labour malpractice such as mishandling difficult births, complications of induced labour and misdiagnosis of newborn conditions."
+        },
+        {
+          "id": "cpd20-c003",
+          "type": "process",
+          "topics": [
+            "1.2.1"
+          ],
+          "sourcePage": 148,
+          "front": "What four elements must be proved to establish medical negligence?",
+          "back": "1. Duty of care — the provider must have owed a duty to the patient, normally established through a doctor–patient relationship.\n2. Breach of duty — the provider departed from the expected standard of care.\n3. Causation — the breach is directly linked to the harm suffered by the patient.\n4. Damage — actual harm or injury results, including physical, emotional or financial damage."
+        },
+        {
+          "id": "cpd20-c004",
+          "type": "concept",
+          "topics": [
+            "1.2.2"
+          ],
+          "sourcePage": 148,
+          "front": "Explain the Bolam test and the doctrine of res ipsa loquitur in medical negligence.",
+          "back": "The Bolam test asks whether the provider acted in accordance with a practice accepted as proper by a responsible body of professional peers in the same field. Res ipsa loquitur ('the thing speaks for itself') allows negligence to be inferred from the event itself, as when a foreign object is found inside a patient after surgery."
+        },
+        {
+          "id": "cpd20-c005",
+          "type": "fact",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 148,
+          "front": "What does Article 35 of the Constitution of Nepal guarantee regarding health care?",
+          "back": "It makes the right to health a fundamental right: every citizen has the right to free basic health services provided by the state; no individual may be deprived of emergency health services; citizens have the right to obtain information about their medical treatment; and equal access to health services is guaranteed along with the right to clean drinking water and sanitation."
+        },
+        {
+          "id": "cpd20-c006",
+          "type": "summary",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 149,
+          "front": "What offences relating to the human body and to medical treatment are set out in the Muluki Criminal Code, 2074?",
+          "back": "Causing death by recklessness: up to three years' imprisonment and a fine of NPR 30,000–100,000. Unlicensed medical practice: up to three years' imprisonment and a fine, with life imprisonment if death results. Malicious medical treatment: punishment equivalent to murder if death occurs, or to grievous hurt. Reckless or negligent treatment: up to five years' imprisonment and a fine up to NPR 50,000 for reckless acts; up to three years and a fine up to NPR 30,000 for negligent acts causing harm. Unauthorised medical experiments without consent: up to three years and a fine up to NPR 30,000, with a higher penalty if death results."
+        },
+        {
+          "id": "cpd20-c007",
+          "type": "fact",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 150,
+          "front": "What additional offences concerning drugs and medical reports does the Criminal Code, 2074 list?",
+          "back": "Adulterating drugs or selling adulterated drugs is prohibited, with penalties ranging from fines to imprisonment up to four years depending on the harm caused. Selling expired or misbranded drugs is punishable by up to one year's imprisonment and a fine. Providing false or misleading medical reports is punishable by up to three years and a fine, and if the report leads to death or grievous harm the offender faces penalties equivalent to murder or grievous hurt. Offenders must also pay compensation to the victim or successors."
+        },
+        {
+          "id": "cpd20-c008",
+          "type": "summary",
+          "topics": [
+            "2.1.3"
+          ],
+          "sourcePage": 150,
+          "front": "Which provisions of the Muluki Civil Code, 2074 are relevant to medical negligence?",
+          "back": "Chapter 17 deals with torts. Section 672 defines tortious acts, including acts causing harm through negligence or omission. Section 675 establishes vicarious liability, holding employers liable for torts committed by employees in the course of employment. Section 682 requires a person committing a tort to compensate the injured party for the harm suffered."
+        },
+        {
+          "id": "cpd20-c009",
+          "type": "fact",
+          "topics": [
+            "2.2.1"
+          ],
+          "sourcePage": 151,
+          "front": "How does the Consumer Protection Act, 2075 address medical negligence?",
+          "back": "Patients are recognised as consumers and medical personnel as service providers. Section 50 allows an aggrieved patient to file a complaint and seek compensation for negligent medical services. Complaints may be made to the Central Market Monitoring Committee or other designated authorities; a consumer harmed by a defective product or service may claim compensation within six months of the incident. Adjudication shifted from Consumer Courts to District Courts together with District Compensation Committees."
+        },
+        {
+          "id": "cpd20-c010",
+          "type": "fact",
+          "topics": [
+            "2.2.2"
+          ],
+          "sourcePage": 152,
+          "front": "What do the Health Service Acts, 2053 and 2075 provide?",
+          "back": "The Health Service Act, 2053 restricts reckless acts or ulterior motives by health service providers (section 63), specifies punishments (section 72), prevents drug misuse, misleading advertisements and substandard drugs, and holds manufacturers accountable with compensation for death or injury. The Health Service Act, 2075 guarantees every citizen the right to quality health services in an accessible and convenient manner; the government is responsible for providing services according to available resources, and patients with doubts about treatment may complain to the prescribing health worker or the institution involved."
+        },
+        {
+          "id": "cpd20-c011",
+          "type": "fact",
+          "topics": [
+            "2.2.3"
+          ],
+          "sourcePage": 152,
+          "front": "What do the Nepal Medical Council Act, 2020, Rules, 2024 and Code of Ethics provide, and what is the Council's limitation?",
+          "back": "The Nepal Medical Council is the regulatory authority empowered to take disciplinary action against registered practitioners for misconduct. Section 26 of the Act restricts unregistered practice, with imprisonment up to about one year and a fine up to NPR 3,000. Rule 22(1) of the Rules, 2024 requires adherence to professional ethics toward patients and their families; Rule 23 sets penalties for violations; and the Code of Ethics and Professional Conduct, 2017 prohibits treatments or procedures that may harm patients. However, the Council can mainly remove a practitioner from the register — it cannot initiate legal proceedings."
+        },
+        {
+          "id": "cpd20-c012",
+          "type": "concept",
+          "topics": [
+            "2.2.4"
+          ],
+          "sourcePage": 152,
+          "front": "Why is a separate Medical Negligence Act considered necessary in Nepal?",
+          "back": "In a landmark case the Supreme Court directed the government to enact a separate Medical Negligence Act. Because no specific law exists, redress depends on scattered provisions across different statutes, creating inconsistency and difficulty. Existing laws try to control and punish negligent acts, but a unified, detailed law is needed for effective regulation."
+        }
+      ]
+    },
+    {
+      "id": "cpd21",
+      "number": 21,
+      "title": "Medical Negligence in Nepal: Challenges and Landmark Cases",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 152–156 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "Situational Analysis of Medical Negligence in Nepal",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Trust and practice",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Public trust and expectations"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "Instances of negligence and contributing factors"
+                }
+              ]
+            },
+            {
+              "id": "1.2",
+              "title": "Gaps, systems and progress",
+              "children": [
+                {
+                  "id": "1.2.1",
+                  "title": "Gaps in addressing negligence"
+                },
+                {
+                  "id": "1.2.2",
+                  "title": "Procedural and systemic issues"
+                },
+                {
+                  "id": "1.2.3",
+                  "title": "Positive developments"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Common Challenges of Medical Negligence in Nepal",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "Impact and institutional challenges",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "Erosion of trust, violence and inadequate compensation"
+                },
+                {
+                  "id": "2.1.2",
+                  "title": "Delayed justice, missing legislation and commercialisation"
+                },
+                {
+                  "id": "2.1.3",
+                  "title": "Unregulated practice, judicial limits, measuring negligence and causation"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "title": "Landmark Medical Negligence Cases",
+          "children": [
+            {
+              "id": "3.1",
+              "title": "Reported cases",
+              "children": [
+                {
+                  "id": "3.1.1",
+                  "title": "Dr. Shah case — wrong medication and loss of eyesight"
+                },
+                {
+                  "id": "3.1.2",
+                  "title": "Tika Prasad Adhikari vs. Om Hospital"
+                },
+                {
+                  "id": "3.1.3",
+                  "title": "Senior Captain Rakesh Jung Bahadur Rana case"
+                },
+                {
+                  "id": "3.1.4",
+                  "title": "Baby Rihan case"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd21-c001",
+          "type": "concept",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 152,
+          "front": "How does medical negligence affect public trust in Nepal?",
+          "back": "Doctors and healthcare workers are traditionally held in high esteem, often regarded as saviours. Instances of negligence severely erode patient trust and can make people reluctant to seek medical care, damaging the doctor–patient relationship."
+        },
+        {
+          "id": "cpd21-c002",
+          "type": "summary",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 153,
+          "front": "What instances of medical negligence and contributing factors are commonly seen?",
+          "back": "Errors in surgical treatment and diagnosis — such as wrong-site surgery, misdiagnosis and incorrect medication prescriptions — are common, often reflecting a lack of requisite skills. Contributing factors include lack of medical ethics and expertise, excessive workloads leading to oversight, and commercialisation and profit-driven motives that overshadow patient care."
+        },
+        {
+          "id": "cpd21-c003",
+          "type": "summary",
+          "topics": [
+            "1.2.1"
+          ],
+          "sourcePage": 153,
+          "front": "What gaps hinder action against medical negligence, and what statistics are cited?",
+          "back": "Key terms such as 'medical negligence' are not explicitly defined in major legislation; many cases are settled privately or go unreported because of distrust of the legal system and fear of prolonged litigation; even reported cases rarely reach verdicts and compensation is delayed. According to the Consumer Rights Protection Forum, 50 applications were filed in five years with only 18 proceeding to prosecution; the Nepal Medical Council received 70 complaints in 2018–2019 and only about one third were adjudicated."
+        },
+        {
+          "id": "cpd21-c004",
+          "type": "concept",
+          "topics": [
+            "1.2.2"
+          ],
+          "sourcePage": 153,
+          "front": "What procedural and systemic issues affect medical negligence claims in Nepal?",
+          "back": "Jurisdictional confusion arose because Consumer Courts were not established, so District Courts handle cases with District Compensation Committees. Victims carry the burden of proof, often without resources or expertise. Autopsies are not mandatory in suspected negligence-related deaths, which hampers evidence collection. Public frustration frequently becomes protests and violence against health facilities rather than legal action."
+        },
+        {
+          "id": "cpd21-c005",
+          "type": "fact",
+          "topics": [
+            "1.2.3"
+          ],
+          "sourcePage": 154,
+          "front": "What positive developments are noted in addressing medical negligence?",
+          "back": "Growing education and awareness are leading more individuals to pursue legal action against negligent practices. Existing laws also provide remedies for both civil and criminal liability, including compensation, imprisonment, fines and suspensions."
+        },
+        {
+          "id": "cpd21-c006",
+          "type": "summary",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 154,
+          "front": "What are the first three common challenges of medical negligence in Nepal?",
+          "back": "1. Negligence incidents diminish trust in healthcare systems and adversely affect patient outcomes.\n2. Violence and vandalism: victims and families sometimes resort to destructive behaviour, disrupting peace and healthcare services.\n3. Inadequacy of compensation: monetary awards often fail to cover the loss and suffering of victims and their families."
+        },
+        {
+          "id": "cpd21-c007",
+          "type": "summary",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 154,
+          "front": "What are the fourth, fifth and sixth common challenges of medical negligence in Nepal?",
+          "back": "4. Delayed justice: prolonged legal processes produce delayed or denied justice.\n5. Absence of specific legislation: without a dedicated Medical Negligence Act, perpetrators exploit loopholes and negligence increases.\n6. Commercialisation of healthcare: profit-oriented practices compromise quality care because government regulation and oversight is insufficient."
+        },
+        {
+          "id": "cpd21-c008",
+          "type": "summary",
+          "topics": [
+            "2.1.3"
+          ],
+          "sourcePage": 154,
+          "front": "What are the last four common challenges of medical negligence in Nepal?",
+          "back": "7. Unregulated medical practices: illegal medical shops and self-medication pose serious risks without professional guidance.\n8. Judicial limitations: judges often lack medical expertise and depend heavily on expert testimony.\n9. Measuring negligence: distinguishing unavoidable medical risks from actual negligence is complex.\n10. Proving causation: linking a medical act directly to the resulting harm is difficult and weakens claims."
+        },
+        {
+          "id": "cpd21-c009",
+          "type": "clinical",
+          "topics": [
+            "3.1.1"
+          ],
+          "sourcePage": 155,
+          "front": "What happened in the case of Dr. Shah, and what precedent did it establish?",
+          "back": "A patient given wrong medication for a simple eye ailment suffered loss of eyesight and physical deformities. The Compensation Committee held the doctor and the associated nursing home jointly liable and awarded about NPR 1,17,119.94; the Patan Appellate Court increased compensation to about NPR 6,17,119.94 because of the lifelong impact. The Supreme Court upheld the verdict, stressed informed consent and the doctor–patient relationship, established a 'Right against Medical Negligence', directed the government to enact a separate Medical Negligence Act and highlighted the need for expert opinion in such cases."
+        },
+        {
+          "id": "cpd21-c010",
+          "type": "clinical",
+          "topics": [
+            "3.1.2"
+          ],
+          "sourcePage": 155,
+          "front": "What were the facts and findings in Tika Prasad Adhikari vs. Om Hospital?",
+          "back": "A patient died from gross negligence involving a wrong blood transfusion and delayed surgical intervention. The teaching hospital was found negligent for supplying the incorrect blood type and ordered to pay NPR 5 lakh; Om Hospital was fined NPR 4.48 lakh for delaying necessary surgery; and the two treating doctors were penalised NPR 6 lakh and NPR 4 lakh respectively. The case reinforced the accountability of both institutions and individual practitioners for timely, accurate care."
+        },
+        {
+          "id": "cpd21-c011",
+          "type": "clinical",
+          "topics": [
+            "3.1.3"
+          ],
+          "sourcePage": 155,
+          "front": "What happened in the case of Senior Captain Rakesh Jung Bahadur Rana?",
+          "back": "An airline captain died of a heart attack after being declared fit to fly despite having existing heart disease. The Medical Council held the cardiologist responsible for negligent medical assessment, barred him from treating heart-related diseases for life and required proof of supervised practice thereafter. The case underlined the importance of accurate health evaluations, especially in professions affecting public safety."
+        },
+        {
+          "id": "cpd21-c012",
+          "type": "clinical",
+          "topics": [
+            "3.1.4"
+          ],
+          "sourcePage": 156,
+          "front": "What were the facts and outcome of the Baby Rihan case?",
+          "back": "A newborn suffered severe, permanent complications from multiple negligent acts, including improper medication dosage and delayed diagnostic tests. The Nepal Medical Council acknowledged negligence but took limited punitive action. The Patan High Court ordered Grande International Hospital to pay NPR 3.5 million in compensation to the family. The case drew attention to systemic hospital-management problems and the need for full accountability and patient counselling."
+        }
+      ]
+    },
+    {
+      "id": "cpd22",
+      "number": 22,
+      "title": "Basic Life Support and Adult Cardiac Arrest Algorithms",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 173–177 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "2020 AHA Adult BLS/ACLS Guidelines",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Guideline overview",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Major themes of the 2020 update"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "IV versus IO access for medications"
+                }
+              ]
+            },
+            {
+              "id": "1.2",
+              "title": "Early CPR by lay rescuers",
+              "children": [
+                {
+                  "id": "1.2.1",
+                  "title": "Lay rescuer CPR and collapse recognition"
+                }
+              ]
+            },
+            {
+              "id": "1.3",
+              "title": "CPR quality and defibrillation updates",
+              "children": [
+                {
+                  "id": "1.3.1",
+                  "title": "Early epinephrine administration"
+                },
+                {
+                  "id": "1.3.2",
+                  "title": "Real-time audiovisual feedback"
+                },
+                {
+                  "id": "1.3.3",
+                  "title": "Physiologic monitoring of CPR quality"
+                },
+                {
+                  "id": "1.3.4",
+                  "title": "Double sequential defibrillation"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Adult Periarrest and Cardiac Arrest Algorithms",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "Adult cardiac arrest algorithms",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "Adult Cardiac Arrest Algorithm"
+                },
+                {
+                  "id": "2.1.2",
+                  "title": "Emergency for Healthcare Providers Algorithm"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd22-c001",
+          "type": "concept",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 173,
+          "front": "What are the major themes of the 2020 AHA Guidelines for adult basic and advanced life support?",
+          "back": "The 2020 update provides enhanced algorithms and visual aids for BLS and ACLS resuscitation scenarios. It re-emphasizes early initiation of CPR by lay rescuers and reaffirms early epinephrine administration. It suggests real-time audiovisual feedback to maintain CPR quality, and continuous monitoring of arterial blood pressure and end-tidal CO2 (ETCO2) during ACLS to improve CPR quality. Routine double sequential defibrillation is not recommended. IV access is preferred for medications, with IO access acceptable if IV is unavailable. Post-ROSC care addresses oxygenation, blood pressure, PCI evaluation, temperature management and neuroprognostication; post-arrest recovery requires assessment of physical, cognitive and psychosocial needs; debriefing after resuscitation benefits lay rescuers, EMS and healthcare workers. Cardiac arrest in pregnancy prioritizes maternal resuscitation with preparation for early perimortem cesarean delivery."
+        },
+        {
+          "id": "cpd22-c002",
+          "type": "fact",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 174,
+          "front": "How should vascular access be chosen for drug administration during adult cardiac arrest?",
+          "back": "2020 (new): IV access is preferred for drug administration during cardiac arrest. 2020 (updated): IO access is reasonable when IV access is unsuccessful or cannot be readily established. 2010 (old): IO access was recommended if IV access was unavailable. Reason: a 2020 review found IV access associated with better clinical outcomes."
+        },
+        {
+          "id": "cpd22-c003",
+          "type": "compare",
+          "topics": [
+            "1.2.1"
+          ],
+          "sourcePage": 173,
+          "front": "What does the 2020 guideline recommend about lay rescuer CPR for presumed cardiac arrest, and how did this differ from 2010?",
+          "back": "2020 (updated): laypersons should initiate CPR for presumed cardiac arrest, because the risk of harm is low if the patient is not actually in arrest. 2010 (old): lay rescuers were told not to check for signs of circulation and to assume cardiac arrest if an adult suddenly collapsed. An unresponsive victim who is not breathing normally should be treated as being in cardiac arrest."
+        },
+        {
+          "id": "cpd22-c004",
+          "type": "fact",
+          "topics": [
+            "1.3.1"
+          ],
+          "sourcePage": 174,
+          "front": "When should epinephrine be given during adult cardiac arrest according to the 2020 guideline?",
+          "back": "2020 (unchanged/reaffirmed): give epinephrine early in cardiac arrest with a nonshockable rhythm (asystole or PEA), and after defibrillation attempts have failed in a shockable rhythm (VF or pulseless VT). Reason: early epinephrine improves return of spontaneous circulation (ROSC) and survival, based on systematic reviews and meta-analyses."
+        },
+        {
+          "id": "cpd22-c005",
+          "type": "fact",
+          "topics": [
+            "1.3.2"
+          ],
+          "sourcePage": 174,
+          "front": "What is the 2020 recommendation on real-time audiovisual feedback during CPR?",
+          "back": "2020 (unchanged/reaffirmed): use audiovisual feedback devices during CPR to optimize rescuer performance. Reason: a recent randomized controlled trial showed a 25% increase in survival to hospital discharge when audio feedback on compression depth was used."
+        },
+        {
+          "id": "cpd22-c006",
+          "type": "compare",
+          "topics": [
+            "1.3.3"
+          ],
+          "sourcePage": 174,
+          "front": "How should physiologic parameters be used to monitor CPR quality, and what changed in 2020?",
+          "back": "2020 (updated): use physiologic parameters such as arterial blood pressure or ETCO2 to monitor and optimize CPR quality. 2015 (old): physiologic parameters were suggested but lacked clinical study support for improved outcomes. Reason: newer data show a higher likelihood of ROSC when CPR quality is monitored with ETCO2 or diastolic blood pressure."
+        },
+        {
+          "id": "cpd22-c007",
+          "type": "definition",
+          "topics": [
+            "1.3.4"
+          ],
+          "sourcePage": 174,
+          "front": "What is double sequential defibrillation, and what is its status in the 2020 guidelines?",
+          "back": "Double sequential defibrillation is the rapid delivery of two shocks from two defibrillators, proposed for shockable rhythms that remain refractory to standard shocks. 2020 (new): it is not supported for refractory shockable rhythm. Reason: no evidence supports its routine use, and a recent randomized trial suggests that repositioning the defibrillation pads may be as effective."
+        },
+        {
+          "id": "cpd22-c008",
+          "type": "process",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 176,
+          "front": "Describe the key steps of the Adult Cardiac Arrest Algorithm.",
+          "back": "1. Confirm unresponsiveness and absent or abnormal breathing, shout for help, activate the emergency response system and obtain an AED.\\n2. Check the pulse for no more than 10 seconds; if absent, start high-quality CPR: compressions 100–120/min, depth about 5–6 cm, complete recoil, minimal interruptions, and change compressor every 2 minutes.\\n3. For VF/pulseless VT, deliver a shock and resume CPR immediately for 2 minutes; establish IV/IO access and give epinephrine 1 mg every 3–5 minutes; for refractory VF/pVT give amiodarone (or lidocaine) and consider repeat defibrillation.\\n4. For asystole/PEA, give epinephrine as soon as possible and search for and treat reversible causes (the H's and T's).\\n5. Continue cycles until ROSC or termination of efforts; then move to post-cardiac arrest care.\\nNote: the source page contained only the algorithm image, so the step sequence has been reconstructed from the standard AHA Adult Cardiac Arrest Algorithm."
+        },
+        {
+          "id": "cpd22-c009",
+          "type": "process",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 177,
+          "front": "What are the steps of the Emergency for Healthcare Providers Algorithm?",
+          "back": "Check for responsiveness; shout for nearby help; activate the emergency response system; get naloxone and an AED if available. Assess breathing and check for a pulse for less than 10 seconds. Open the airway and reposition it, and continue ongoing assessment of responsiveness and breathing. Support ventilation with rescue breathing or a bag-mask device and use the AED as indicated. Start CPR if there is no pulse; consider naloxone and refer to the BLS/Cardiac Arrest Algorithm."
+        },
+        {
+          "id": "cpd22-c010",
+          "type": "clinical",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 177,
+          "front": "How does the Healthcare Providers Algorithm handle suspected opioid poisoning?",
+          "back": "When opioid poisoning is suspected, check responsiveness, shout for help, activate the emergency response system and obtain naloxone and an AED. Assess breathing and pulse; open and reposition the airway. Provide supportive ventilation with rescue breathing or a bag-mask device and give naloxone. If the patient deteriorates or has no pulse, start CPR, consider naloxone, and follow the BLS/Cardiac Arrest Algorithm."
+        },
+        {
+          "id": "cpd22-c011",
+          "type": "summary",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 173,
+          "front": "Which post-arrest and system-level priorities are highlighted in the 2020 adult BLS/ACLS guideline overview?",
+          "back": "Post-ROSC care includes attention to oxygenation, blood pressure, evaluation for PCI, temperature management and neuroprognostication. Post-cardiac arrest recovery requires assessment and support for physical, cognitive and psychosocial needs. Debriefing after resuscitation is beneficial for the mental health of lay rescuers, EMS personnel and healthcare workers. Cardiac arrest in pregnancy focuses on maternal resuscitation with preparation for early perimortem cesarean delivery if needed."
+        }
+      ]
+    },
+    {
+      "id": "cpd23",
+      "number": 23,
+      "title": "Adult Post-Cardiac Arrest Care, Neuroprognostication and Pregnancy",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 174–179 and 186–187 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "Adult Post-Cardiac Arrest Care Algorithm",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Immediate stabilization after ROSC",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Airway management and respiratory targets"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "Hemodynamic management and perfusion targets"
+                }
+              ]
+            },
+            {
+              "id": "1.2",
+              "title": "Emergent evaluation and temperature control",
+              "children": [
+                {
+                  "id": "1.2.1",
+                  "title": "Emergent cardiac intervention and 12-lead ECG"
+                },
+                {
+                  "id": "1.2.2",
+                  "title": "Targeted temperature management in the algorithm"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Components of Post-Cardiac Arrest Care",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "Monitoring and supportive care",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "Hemodynamic monitoring goals and tools"
+                },
+                {
+                  "id": "2.1.2",
+                  "title": "Temperature management and fever prevention"
+                },
+                {
+                  "id": "2.1.3",
+                  "title": "Neuromonitoring and seizure treatment"
+                },
+                {
+                  "id": "2.1.4",
+                  "title": "Electrolytes, glucose and sedation"
+                }
+              ]
+            },
+            {
+              "id": "2.2",
+              "title": "Prognosis and recovery",
+              "children": [
+                {
+                  "id": "2.2.1",
+                  "title": "Neuroprognostication principles"
+                },
+                {
+                  "id": "2.2.2",
+                  "title": "Post-arrest recovery support and rescuer debriefing"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "title": "Cardiac Arrest in Pregnancy and In-Hospital Systems",
+          "children": [
+            {
+              "id": "3.1",
+              "title": "Maternal cardiac arrest management",
+              "children": [
+                {
+                  "id": "3.1.1",
+                  "title": "Team planning and resuscitation priorities"
+                },
+                {
+                  "id": "3.1.2",
+                  "title": "Obstetric interventions and perimortem cesarean delivery"
+                },
+                {
+                  "id": "3.1.3",
+                  "title": "Etiologies of maternal cardiac arrest"
+                }
+              ]
+            },
+            {
+              "id": "3.2",
+              "title": "In-hospital ACLS systems",
+              "children": [
+                {
+                  "id": "3.2.1",
+                  "title": "Adult chains of survival for IHCA and OHCA"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd23-c001",
+          "type": "process",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 178,
+          "front": "What are the airway and respiratory management steps in the Adult Post-Cardiac Arrest Care Algorithm?",
+          "back": "Manage the airway with early placement of an endotracheal tube. Confirm and monitor endotracheal tube placement with waveform capnography. Manage respiratory parameters: start ventilation at 10 breaths per minute, titrate inspired oxygen to an oxygen saturation of about 94–98%, and maintain PaCO2 in the range of 35–45 mmHg while managing respiratory parameters to the patient's initial stabilization state."
+        },
+        {
+          "id": "cpd23-c002",
+          "type": "fact",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 178,
+          "front": "What hemodynamic targets and treatments are specified in the Adult Post-Cardiac Arrest Care Algorithm?",
+          "back": "Manage hemodynamic parameters by administering crystalloid and/or a vasopressor or inotrope to achieve a systolic blood pressure above 90 mmHg or a mean arterial pressure above 65 mmHg. These perfusion targets support initial stabilization after return of spontaneous circulation. (The source scan garbled the systolic value as '>20 mmHg'; the standard algorithm target of >90 mmHg is used here.)"
+        },
+        {
+          "id": "cpd23-c003",
+          "type": "process",
+          "topics": [
+            "1.2.1"
+          ],
+          "sourcePage": 178,
+          "front": "How is emergent cardiac intervention evaluated after cardiac arrest?",
+          "back": "Perform early evaluation with a 12-lead ECG and consider the patient's hemodynamics when deciding on cardiac intervention. Evaluation for emergent cardiac intervention and targeted temperature management should be performed concurrently, so that decisions about TTM receive high priority alongside cardiac interventions."
+        },
+        {
+          "id": "cpd23-c004",
+          "type": "fact",
+          "topics": [
+            "1.2.2"
+          ],
+          "sourcePage": 178,
+          "front": "When and how should targeted temperature management be started according to the post-cardiac arrest algorithm?",
+          "back": "If the patient is not following commands, start targeted temperature management as soon as possible: begin at 32–36°C for 24 hours using a cooling device with a feedback loop. Core temperature should be measured continuously during management."
+        },
+        {
+          "id": "cpd23-c005",
+          "type": "process",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 186,
+          "front": "What does post-cardiac arrest hemodynamic monitoring involve?",
+          "back": "Set specific hemodynamic goals and review them daily. Monitor with cardiac telemetry and arterial blood pressure monitoring. Monitor serum lactate, urine output and central venous oxygen saturation to help guide therapies. Use parenteral fluid boluses with or without inotropes or vasopressors to maintain systolic blood pressure greater than the fifth percentile for age and sex."
+        },
+        {
+          "id": "cpd23-c006",
+          "type": "fact",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 186,
+          "front": "What are the temperature management recommendations in post-cardiac arrest care?",
+          "back": "Measure and continuously monitor core temperature. Prevent and treat fever immediately after arrest and during rewarming. For comatose patients, apply targeted temperature management at 32–34°C followed by 36–37.5°C, or use only TTM at 36–37.5°C. Prevent shivering, monitor blood pressure and treat hypotension during rewarming."
+        },
+        {
+          "id": "cpd23-c007",
+          "type": "fact",
+          "topics": [
+            "2.1.3"
+          ],
+          "sourcePage": 186,
+          "front": "What neuromonitoring is recommended after cardiac arrest?",
+          "back": "If the patient has encephalopathy and resources are available, monitor with continuous electroencephalography. Treat seizures, including clinical and nonconvulsive seizures after ROSC. Consider early brain imaging to diagnose treatable causes of cardiac arrest."
+        },
+        {
+          "id": "cpd23-c008",
+          "type": "fact",
+          "topics": [
+            "2.1.4"
+          ],
+          "sourcePage": 186,
+          "front": "How should electrolytes, glucose and sedation be managed in post-cardiac arrest care?",
+          "back": "Measure blood glucose and avoid hypoglycemia. Maintain electrolytes within normal ranges to avoid possible life-threatening arrhythmias. Sedation is listed as a component of post-cardiac arrest critical care management; the corresponding page of the source scan was too garbled to recover further detail."
+        },
+        {
+          "id": "cpd23-c009",
+          "type": "concept",
+          "topics": [
+            "2.2.1"
+          ],
+          "sourcePage": 187,
+          "front": "What principles should guide neuroprognostication after cardiac arrest?",
+          "back": "Always consider multiple modalities, combining clinical findings and other tests, rather than relying on any single predictive factor. Remember that assessments may be modified by targeted temperature management or induced hypothermia. Consider neuroimaging such as magnetic resonance imaging during the first 7 days. The 2020 guidelines state that neuroprognostication should be performed no sooner than 72 hours after return to normothermia."
+        },
+        {
+          "id": "cpd23-c010",
+          "type": "summary",
+          "topics": [
+            "2.2.2"
+          ],
+          "sourcePage": 175,
+          "front": "What support should cardiac arrest survivors and rescuers receive during recovery?",
+          "back": "Cardiac arrest survivors should receive multimodal rehabilitation and a structured assessment of physical, cognitive and psychosocial needs before discharge. Recovery extends well beyond hospitalization and requires ongoing support for optimal well-being. Debriefings and emotional support follow-up for lay rescuers, EMS providers and hospital-based healthcare workers may be beneficial, because rescuers and providers may experience stress or anxiety; debriefings help manage these effects."
+        },
+        {
+          "id": "cpd23-c011",
+          "type": "process",
+          "topics": [
+            "3.1.1"
+          ],
+          "sourcePage": 179,
+          "front": "How should teams plan and prioritize resuscitation for cardiac arrest in pregnancy?",
+          "back": "Team planning should be done in collaboration with obstetric, neonatal, emergency, anesthesiology, intensive care and cardiac arrest services. Priorities include provision of high-quality CPR and relief of aortocaval compression with lateral uterine displacement. Prioritize oxygenation and airway management during resuscitation in pregnancy, and avoid fetal monitoring during maternal cardiac arrest because it may interfere with maternal resuscitation efforts; pregnant patients are more prone to hypoxia."
+        },
+        {
+          "id": "cpd23-c012",
+          "type": "process",
+          "topics": [
+            "3.1.2"
+          ],
+          "sourcePage": 179,
+          "front": "Describe the obstetric interventions and perimortem cesarean delivery steps in maternal cardiac arrest.",
+          "back": "Continue BLS/ACLS with high-quality CPR and defibrillation when indicated. Perform obstetric interventions: manual lateral uterine displacement and detachment of fetal monitors. The airway may be difficult in pregnancy, so endotracheal intubation or a supraglottic advanced airway should be performed by an experienced provider; confirm and monitor tube placement with waveform capnography or capnometry. Once an advanced airway is in place, give 1 breath every 6 seconds (10 breaths per minute) with continuous chest compressions. The goal of perimortem cesarean delivery is to improve maternal and fetal outcomes; ideally perform it within 5 minutes, depending on provider resources and skills. If there is no ROSC after about 4 minutes, consider perimortem cesarean delivery, with the neonatal team ready to receive the neonate."
+        },
+        {
+          "id": "cpd23-c013",
+          "type": "fact",
+          "topics": [
+            "3.1.3"
+          ],
+          "sourcePage": 179,
+          "front": "What is the A–H mnemonic for potential etiologies of maternal cardiac arrest?",
+          "back": "A — Anesthetic complications; B — Bleeding; C — Cardiovascular causes; D — Drugs; E — Embolic causes; F — Fever; G — General nonobstetric causes of cardiac arrest (the H's and T's); H — Hypertension."
+        },
+        {
+          "id": "cpd23-c014",
+          "type": "definition",
+          "topics": [
+            "3.2.1"
+          ],
+          "sourcePage": 175,
+          "front": "What are the AHA Chains of Survival for adult in-hospital and out-of-hospital cardiac arrest?",
+          "back": "The adult chains of survival for IHCA and OHCA emphasize rapid recognition and activation of the emergency response system, immediate high-quality CPR, prompt defibrillation for shockable rhythms, advanced life support including medications and airway management, integrated post-cardiac arrest care, and recovery support. The source page contained the chain diagrams with little readable text; the sequence has been reconstructed from the standard AHA chain-of-survival concept."
+        }
+      ]
+    },
+    {
+      "id": "cpd24",
+      "number": 24,
+      "title": "Pediatric Basic and Advanced Life Support",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 179–185 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "2020 Pediatric Resuscitation Guideline Updates",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Airway and ventilation updates",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Combined guidelines and assisted ventilation rates"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "Cuffed endotracheal tubes and cricoid pressure"
+                }
+              ]
+            },
+            {
+              "id": "1.2",
+              "title": "Circulation and post-arrest updates",
+              "children": [
+                {
+                  "id": "1.2.1",
+                  "title": "Early epinephrine and arterial line feedback"
+                },
+                {
+                  "id": "1.2.2",
+                  "title": "Post-ROSC seizure detection and survivor support"
+                }
+              ]
+            },
+            {
+              "id": "1.3",
+              "title": "Special pediatric emergencies",
+              "children": [
+                {
+                  "id": "1.3.1",
+                  "title": "Septic shock and blood component therapy"
+                },
+                {
+                  "id": "1.3.2",
+                  "title": "Opioid overdose and myocarditis"
+                },
+                {
+                  "id": "1.3.3",
+                  "title": "Pulmonary hypertension and congenital heart disease"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Pediatric Cardiac Arrest Algorithm",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "CPR quality and airway",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "High-quality CPR parameters"
+                },
+                {
+                  "id": "2.1.2",
+                  "title": "Advanced airway and waveform capnography"
+                }
+              ]
+            },
+            {
+              "id": "2.2",
+              "title": "Defibrillation and medications",
+              "children": [
+                {
+                  "id": "2.2.1",
+                  "title": "Defibrillation energy dosing"
+                },
+                {
+                  "id": "2.2.2",
+                  "title": "Epinephrine and antiarrhythmic dosing"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "title": "Pediatric Bradycardia and Tachycardia With a Pulse",
+          "children": [
+            {
+              "id": "3.1",
+              "title": "Bradycardia with a pulse",
+              "children": [
+                {
+                  "id": "3.1.1",
+                  "title": "Initial assessment and CPR threshold"
+                },
+                {
+                  "id": "3.1.2",
+                  "title": "Medication dosing, pacing and reversible causes"
+                }
+              ]
+            },
+            {
+              "id": "3.2",
+              "title": "Tachycardia with a pulse",
+              "children": [
+                {
+                  "id": "3.2.1",
+                  "title": "SVT features and physiologic targets"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd24-c001",
+          "type": "compare",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 180,
+          "front": "What changed in the 2020 guidelines for pediatric assisted ventilation rates?",
+          "back": "PBLS and PALS are now combined in one document with revised algorithms and visual aids for clarity. 2020 update: for infants and children with a pulse but inadequate respiratory effort, give rescue breathing at 1 breath every 2–3 seconds (20–30 breaths per minute); for infants and children with an advanced airway during CPR, use 20–30 breaths per minute (1 breath every 2–3 seconds) without interrupting compressions. 2010 guidelines: rescue breaths were 12–20 breaths per minute (1 breath every 3–5 seconds), and ventilation with an advanced airway was about 10 breaths per minute (1 breath every 6 seconds). The 2020 rate applies to all pediatric resuscitation scenarios."
+        },
+        {
+          "id": "cpd24-c002",
+          "type": "compare",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 181,
+          "front": "What does the 2020 guideline say about cuffed endotracheal tubes and cricoid pressure in children?",
+          "back": "2020 update: it is reasonable to prefer cuffed endotracheal tubes when intubating infants and children, with attention to proper tube size, position and cuff inflation pressure; cuffed tubes reduce air leaks and the need for tube exchanges. 2010: both cuffed and uncuffed tubes were considered acceptable, with cuffed tubes preferable in situations such as poor lung compliance or a large glottic air leak. 2020 update: routine cricoid pressure during pediatric endotracheal intubation is no longer recommended because evidence is insufficient that it prevents aspiration; 2010 considered its routine application acceptable."
+        },
+        {
+          "id": "cpd24-c003",
+          "type": "fact",
+          "topics": [
+            "1.2.1"
+          ],
+          "sourcePage": 181,
+          "front": "What are the 2020 pediatric recommendations for early epinephrine and invasive blood pressure monitoring during CPR?",
+          "back": "Epinephrine should be given as soon as possible, ideally within 5 minutes of starting chest compressions, for pediatric nonshockable rhythms; the 2015 guideline advised epinephrine without emphasizing timing. For patients with continuous invasive arterial blood pressure monitoring during cardiac arrest, use diastolic blood pressure to assess CPR quality; in 2015 this was only suggested when invasive hemodynamic monitoring was already in place."
+        },
+        {
+          "id": "cpd24-c004",
+          "type": "summary",
+          "topics": [
+            "1.2.2"
+          ],
+          "sourcePage": 181,
+          "front": "Summarize the 2020 recommendations for seizure detection and long-term recovery after pediatric cardiac arrest.",
+          "back": "After ROSC, continuous electroencephalographic monitoring is recommended to detect seizures, and both clinical and nonconvulsive seizures should be treated. The 2015 guideline recommended prompt EEG for diagnosis and suggested anticonvulsants. Pediatric cardiac arrest survivors should receive formal assessment and support for physical, cognitive and psychosocial needs, with referral to rehabilitation services and ongoing neurologic support for at least the first year after the event."
+        },
+        {
+          "id": "cpd24-c005",
+          "type": "process",
+          "topics": [
+            "1.3.1"
+          ],
+          "sourcePage": 182,
+          "front": "How should fluid-refractory septic shock and hemorrhagic shock be managed in infants and children?",
+          "back": "Give parenteral fluid in 10 mL/kg aliquots with frequent reassessment (2020 update; the 2015 guideline advised an initial 20 mL/kg bolus). For fluid-refractory septic shock, epinephrine or norepinephrine is recommended as the initial vasoactive infusion. Balanced blood component resuscitation is reasonable for infants and children with hemorrhagic shock, based on adult data."
+        },
+        {
+          "id": "cpd24-c006",
+          "type": "fact",
+          "topics": [
+            "1.3.2"
+          ],
+          "sourcePage": 182,
+          "front": "What is the 2020 approach to opioid overdose in pediatric resuscitation?",
+          "back": "Standard PBLS or PALS should be started before naloxone administration for patients who have a pulse but no normal breathing or only gasping; in cardiac arrest, CPR takes priority over naloxone. The 2015 guideline advised naloxone for patients with a perfusing cardiac rhythm and opioid-associated respiratory arrest. Lay or trained rescuers may give naloxone promptly, but CPR and ventilation remain the priority."
+        },
+        {
+          "id": "cpd24-c007",
+          "type": "clinical",
+          "topics": [
+            "1.3.2"
+          ],
+          "sourcePage": 182,
+          "front": "Why is early escalation important in pediatric myocarditis?",
+          "back": "Myocarditis carries a high risk of cardiac arrest in children. Early transfer to the ICU is critical; some patients require mechanical circulatory support or extracorporeal life support (ECLS). The 2020 recommendations also advise early consideration of extracorporeal CPR (ECPR) if cardiac arrest occurs."
+        },
+        {
+          "id": "cpd24-c008",
+          "type": "concept",
+          "topics": [
+            "1.3.3"
+          ],
+          "sourcePage": 182,
+          "front": "How are pulmonary hypertensive crises and single-ventricle physiology addressed in PALS?",
+          "back": "Initial therapy for pulmonary hypertensive crises may include inhaled nitric oxide or prostacyclin, with careful respiratory management to avoid hypoxia and acidosis; other measures include analgesia, sedation, neuromuscular blockade, alkalosis induction, and rescue therapy with ECLS for refractory cases. Congenital heart disease requires special considerations in PALS management, particularly for single-ventricle physiology."
+        },
+        {
+          "id": "cpd24-c009",
+          "type": "process",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 183,
+          "front": "What are the compression quality standards in the Pediatric Cardiac Arrest Algorithm?",
+          "back": "Push hard — about one third (2%) of the anteroposterior diameter of the chest — and fast, at 100–120 compressions per minute, and allow complete chest recoil. Minimize interruptions in compressions and change the compressor every 2 minutes, or sooner if fatigued. If there is no advanced airway, use a 15:2 compression-to-ventilation ratio."
+        },
+        {
+          "id": "cpd24-c010",
+          "type": "fact",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 183,
+          "front": "How is an advanced airway used and confirmed during pediatric cardiac arrest?",
+          "back": "Use endotracheal intubation or a supraglottic advanced airway. Use waveform capnography or capnometry to confirm and continuously monitor endotracheal tube placement. Once an advanced airway is in place, provide continuous compressions and give 1 breath every 2–3 seconds (20–30 breaths per minute)."
+        },
+        {
+          "id": "cpd24-c011",
+          "type": "fact",
+          "topics": [
+            "2.2.1"
+          ],
+          "sourcePage": 183,
+          "front": "What defibrillation energies are used in pediatric cardiac arrest?",
+          "back": "First shock: 2 J/kg. Second shock: 4 J/kg. Subsequent shocks: 4–10 J/kg, with a maximum of 10 J/kg or the adult dose."
+        },
+        {
+          "id": "cpd24-c012",
+          "type": "fact",
+          "topics": [
+            "2.2.2"
+          ],
+          "sourcePage": 183,
+          "front": "What are the medication doses in the Pediatric Cardiac Arrest Algorithm?",
+          "back": "Epinephrine IV/IO: 0.01 mg/kg (0.1 mL/kg of the 0.1 mg/mL concentration), maximum 1 mg, repeated every 3–5 minutes; if no IV/IO access, give endotracheally 0.1 mg/kg (0.1 mL/kg of the 1 mg/mL concentration). Amiodarone IV/IO: 5 mg/kg bolus during cardiac arrest, may repeat up to 3 total doses for refractory VF or pulseless VT; alternatively lidocaine IV/IO with an initial 1 mg/kg loading dose."
+        },
+        {
+          "id": "cpd24-c013",
+          "type": "process",
+          "topics": [
+            "3.1.1"
+          ],
+          "sourcePage": 184,
+          "front": "What is the initial assessment and CPR threshold in the Pediatric Bradycardia With a Pulse Algorithm?",
+          "back": "Maintain a patent airway and assist breathing with positive-pressure ventilation and oxygen as necessary. Apply a cardiac monitor to identify the rhythm and document it. Start CPR if the heart rate remains below 60 per minute despite adequate oxygenation and ventilation, and continue CPR if the heart rate stays below 60 per minute. Obtain IV/IO access."
+        },
+        {
+          "id": "cpd24-c014",
+          "type": "fact",
+          "topics": [
+            "3.1.2"
+          ],
+          "sourcePage": 184,
+          "front": "What drug doses and reversible causes apply in pediatric bradycardia with a pulse?",
+          "back": "Epinephrine IV/IO: 0.1 mg/kg (0.1 mL/kg of the 0.1 mg/mL concentration), repeat every 3–5 minutes; if IV/IO access is unavailable but an endotracheal tube is in place, give 0.1 mg/kg (0.1 mL/kg of the 1 mg/mL concentration). Atropine for increased vagal tone or primary AV block: 0.02 mg/kg IV/IO, may repeat once, minimum dose 0.1 mg and maximum single dose 0.5 mg. Consider transthoracic or transvenous pacing. Look for reversible causes such as hypothermia, hypoxia and medications."
+        },
+        {
+          "id": "cpd24-c015",
+          "type": "definition",
+          "topics": [
+            "3.2.1"
+          ],
+          "sourcePage": 185,
+          "front": "What features define probable supraventricular tachycardia in the Pediatric Tachycardia With a Pulse Algorithm, and what are the oxygenation and ventilation targets?",
+          "back": "Probable SVT features: P waves absent or abnormal, RR interval not variable, infant rate usually at least 220/min and child rate usually at least 180/min. Measure oxygenation and target SpO2 at 94–99%, or the child's normal/appropriate saturation for the patient's underlying condition. Measure and target PaCO2 appropriately for the underlying condition, while limiting exposure to severe hypercapnia and hypocapnia. The remainder of this algorithm page was too garbled to reconstruct confidently."
+        }
+      ]
+    },
+    {
+      "id": "cpd25",
+      "number": 25,
+      "title": "Neonatal Life Support and Resuscitation",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 187–190 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "Foundations of Neonatal Resuscitation",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Preparation and immediate care",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Anticipation, training and team readiness"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "Immediate post-birth care and skin-to-skin contact"
+                },
+                {
+                  "id": "1.1.3",
+                  "title": "Prevention of hypothermia"
+                }
+              ]
+            },
+            {
+              "id": "1.2",
+              "title": "Ventilation and monitoring",
+              "children": [
+                {
+                  "id": "1.2.1",
+                  "title": "Ventilation prioritization and heart rate response"
+                },
+                {
+                  "id": "1.2.2",
+                  "title": "Pulse oximetry and oxygen therapy"
+                },
+                {
+                  "id": "1.2.3",
+                  "title": "Heart rate monitoring during resuscitation"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Neonatal Resuscitation Interventions and Decisions",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "Airway and circulation",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "Endotracheal suctioning for meconium"
+                },
+                {
+                  "id": "2.1.2",
+                  "title": "Chest compressions and effective ventilation"
+                },
+                {
+                  "id": "2.1.3",
+                  "title": "Vascular access, epinephrine and volume expansion"
+                }
+              ]
+            },
+            {
+              "id": "2.2",
+              "title": "Care decisions and systems",
+              "children": [
+                {
+                  "id": "2.2.1",
+                  "title": "Care redirection and termination of resuscitation"
+                },
+                {
+                  "id": "2.2.2",
+                  "title": "Training and system performance"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "title": "Neonatal Resuscitation Algorithm",
+          "children": [
+            {
+              "id": "3.1",
+              "title": "Algorithm progression",
+              "children": [
+                {
+                  "id": "3.1.1",
+                  "title": "Initial steps, the first minute and escalation"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd25-c001",
+          "type": "process",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 188,
+          "front": "What preparation and staffing does neonatal resuscitation require according to the 2020 guidelines?",
+          "back": "Neonatal resuscitation demands careful anticipation and preparation. Caregivers must train both individually and as teams to be ready for newborn resuscitation. 2020 (new): every birth should have at least one person skilled in newborn resuscitation and in initiating positive-pressure ventilation, with that person's responsibility being the care of the newborn. Rationale: this enhances early identification of at-risk newborns and promotes team readiness."
+        },
+        {
+          "id": "cpd25-c002",
+          "type": "summary",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 189,
+          "front": "Summarize the 2020 recommendations for immediate post-birth care and skin-to-skin contact.",
+          "back": "Most newborns do not require immediate cord clamping or resuscitation; they can be evaluated while in skin-to-skin contact with their mothers, which promotes bonding and breastfeeding and helps maintain normal body temperature. 2020 (new): healthy newborns should be placed skin-to-skin immediately after birth to improve breastfeeding, temperature control and blood glucose stability. Early skin-to-skin contact promotes normothermia and improved outcomes in preterm and low-birth-weight infants."
+        },
+        {
+          "id": "cpd25-c003",
+          "type": "concept",
+          "topics": [
+            "1.1.3"
+          ],
+          "sourcePage": 187,
+          "front": "Why is prevention of hypothermia emphasized in neonatal resuscitation?",
+          "back": "Preventing hypothermia is crucial for maintaining normothermia in newborns requiring resuscitation. Skin-to-skin care after birth is a key focus during neonatal stabilization and is emphasized as part of routine newborn care."
+        },
+        {
+          "id": "cpd25-c004",
+          "type": "process",
+          "topics": [
+            "1.2.1"
+          ],
+          "sourcePage": 187,
+          "front": "What is the primary focus when an infant needs support after birth, and how is effective ventilation recognized?",
+          "back": "For infants needing support after birth, lung inflation and ventilation are the most critical and primary focus. A rising heart rate is the most critical sign indicating that ventilation is effective."
+        },
+        {
+          "id": "cpd25-c005",
+          "type": "definition",
+          "topics": [
+            "1.2.2"
+          ],
+          "sourcePage": 188,
+          "front": "What is pulse oximetry used for during neonatal resuscitation?",
+          "back": "Pulse oximetry is a noninvasive measure of oxygen saturation used to guide oxygen therapy during resuscitation: it should be used so that target oxygen saturation levels are achieved, with the delivered oxygen concentration adjusted to the newborn's measured saturation."
+        },
+        {
+          "id": "cpd25-c006",
+          "type": "fact",
+          "topics": [
+            "1.2.3"
+          ],
+          "sourcePage": 188,
+          "front": "How should the newborn's heart rate be monitored during resuscitation?",
+          "back": "Heart rate should be monitored electrocardiographically during chest compressions and during administration of medications."
+        },
+        {
+          "id": "cpd25-c007",
+          "type": "compare",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 189,
+          "front": "When is endotracheal suctioning indicated for meconium-stained amniotic fluid?",
+          "back": "Routine endotracheal suctioning for infants born with meconium-stained amniotic fluid is no longer recommended. 2020 (updated): routine laryngoscopy and tracheal suctioning are not recommended for nonvigorous newborns with meconium-stained amniotic fluid unless airway obstruction is present; suctioning is needed only if obstruction is suspected after positive-pressure ventilation. 2015 (old): routine intubation for tracheal suction was not suggested because of insufficient evidence. Outcomes are similar whether suctioning is done before or after PPV."
+        },
+        {
+          "id": "cpd25-c008",
+          "type": "process",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 188,
+          "front": "When should chest compressions begin during neonatal resuscitation?",
+          "back": "Start chest compressions if there is a poor heart rate response to ventilation. Before starting compressions, ensure that effective ventilation steps have been carried out, including correct positioning, positive-pressure ventilation and, when needed, endotracheal intubation."
+        },
+        {
+          "id": "cpd25-c009",
+          "type": "process",
+          "topics": [
+            "2.1.3"
+          ],
+          "sourcePage": 189,
+          "front": "What are the vascular access and medication steps when a newborn does not respond to resuscitation?",
+          "back": "The umbilical venous route is preferred for vascular access in newborns; if IV access is not available or feasible, intraosseous access may be considered. Give epinephrine intravascularly if there is a poor heart rate response to chest compressions. Newborns unresponsive to epinephrine with a history or signs of blood loss may require volume expansion. The umbilical vein is critical for administering medications when resuscitation efforts are unsuccessful."
+        },
+        {
+          "id": "cpd25-c010",
+          "type": "compare",
+          "topics": [
+            "2.2.1"
+          ],
+          "sourcePage": 189,
+          "front": "When should resuscitation be redirected or stopped in the newborn?",
+          "back": "If no heart rate response is observed after 20 minutes of resuscitation, it may be appropriate to discuss care redirection with the healthcare team and family. 2020 (updated): consider stopping resuscitation after 20 minutes with no heart rate, engaging both the healthcare team and family. 2010 (old): it was appropriate to consider stopping if no heart rate was detectable after 10 minutes. Rationale: survival is unlikely after 20 minutes without a heart rate response."
+        },
+        {
+          "id": "cpd25-c011",
+          "type": "fact",
+          "topics": [
+            "2.2.2"
+          ],
+          "sourcePage": 189,
+          "front": "How often should neonatal resuscitation training and competency refreshing occur?",
+          "back": "Neonatal resuscitation training should occur more frequently than every 2 years in order to retain skills. The prior suggestion was that training occur more frequently, with benefits noted when sessions were given every 6 months or more often. Rationale: brief booster training improves psychomotor performance, including in low-resource settings."
+        },
+        {
+          "id": "cpd25-c012",
+          "type": "process",
+          "topics": [
+            "3.1.1"
+          ],
+          "sourcePage": 190,
+          "front": "What are the initial steps of the Neonatal Resuscitation Algorithm in the first minute after birth?",
+          "back": "At birth, provide warmth, dry and stimulate the infant, position the head and airway, and suction only if the airway is obstructed; then assess breathing and heart rate. During the first minute, if the newborn is apneic or gasping, or the heart rate is below 100 per minute, begin positive-pressure ventilation. Note: the source page was an algorithm image with only '1 minute' legible, so these steps are reconstructed from the standard AHA Neonatal Resuscitation Algorithm."
+        },
+        {
+          "id": "cpd25-c013",
+          "type": "process",
+          "topics": [
+            "3.1.1"
+          ],
+          "sourcePage": 190,
+          "front": "How does the Neonatal Resuscitation Algorithm escalate when heart rate does not improve?",
+          "back": "After starting positive-pressure ventilation, reassess the heart rate after about 30–60 seconds. If the heart rate remains below 100 per minute, continue and correct ventilation; if it falls below 60 per minute despite effective ventilation, begin chest compressions coordinated with ventilation and give epinephrine via the umbilical venous route. Consider volume expansion if there is blood loss or poor response. If there is still no heart rate response after 20 minutes, discuss care redirection with the team and family. Note: this escalation sequence is reconstructed from the standard AHA algorithm because the source page was an unreadable algorithm image."
+        }
+      ]
+    },
+    {
+      "id": "cpd26",
+      "number": 26,
+      "title": "Child Health and Immunization Programs",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 199–202 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "Community-Based Integrated Management of Neonatal and Childhood Illnesses (CB-IMNCI)",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Program foundation",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Launch and merger of CB-IMCI and CB-NCP"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "Goal and Nepal Health Sector Strategy targets"
+                }
+              ]
+            },
+            {
+              "id": "1.2",
+              "title": "Focus areas and implementation",
+              "children": [
+                {
+                  "id": "1.2.1",
+                  "title": "Neonatal conditions and childhood illnesses"
+                },
+                {
+                  "id": "1.2.2",
+                  "title": "Roles of FCHVs and health workers"
+                },
+                {
+                  "id": "1.2.3",
+                  "title": "Key interventions: newborn, child and cross-cutting"
+                },
+                {
+                  "id": "1.2.4",
+                  "title": "Service availability, eligibility and documents"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "National Immunization Program (NIP)",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "Program overview",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "History and major achievements"
+                },
+                {
+                  "id": "2.1.2",
+                  "title": "Goal, benefits, eligibility and service availability"
+                }
+              ]
+            },
+            {
+              "id": "2.2",
+              "title": " Immunization schedule",
+              "children": [
+                {
+                  "id": "2.2.1",
+                  "title": "Vaccines at birth and 6–14 weeks"
+                },
+                {
+                  "id": "2.2.2",
+                  "title": "Vaccines at 9–15 months and maternal Td"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd26-c001",
+          "type": "fact",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 199,
+          "front": "When was CB-IMNCI launched and which programs did it combine?",
+          "back": "The Community-Based Integrated Management of Neonatal and Childhood Illnesses (CB-IMNCI) is an integrated health program launched on 14 October 2015 by the Ministry of Health, Nepal. It merges the Community-Based Integrated Management of Childhood Illness (CB-IMCI) and the Community-Based Newborn Care Program (CB-NCP) to provide a comprehensive approach to neonatal and childhood health."
+        },
+        {
+          "id": "cpd26-c002",
+          "type": "fact",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 199,
+          "front": "What under-five and neonatal mortality targets were set by the Nepal Health Sector Strategy 2015–2020?",
+          "back": "The Nepal Health Sector Strategy (2015–2020) targeted reduction of the under-five mortality rate to 28 per 1,000 live births by 2020, and reduction of the neonatal mortality rate to 17.5 per 1,000 live births by 2020. The overall goal of CB-IMNCI is to improve newborn and child survival and healthy growth and development."
+        },
+        {
+          "id": "cpd26-c003",
+          "type": "summary",
+          "topics": [
+            "1.1.2",
+            "1.2.1"
+          ],
+          "sourcePage": 199,
+          "front": "Summarize the key focus areas of CB-IMNCI.",
+          "back": "Neonatal care addresses birth asphyxia, bacterial infections, jaundice, hypothermia, low birth weight, and breastfeeding counseling. Childhood illnesses in children aged 2 months to 59 months focus on five major killer diseases: pneumonia, diarrhoea, malaria, measles, and malnutrition. Together these areas support improved newborn and child survival, growth and development."
+        },
+        {
+          "id": "cpd26-c004",
+          "type": "fact",
+          "topics": [
+            "1.2.1"
+          ],
+          "sourcePage": 200,
+          "front": "Which five childhood killer diseases does CB-IMNCI target in the 2–59 month age group?",
+          "back": "Case management for children aged 2–59 months targets five major childhood killer diseases: pneumonia, diarrhoea, malnutrition, measles, and malaria. Children benefit from diagnosis and treatment of these conditions under the program."
+        },
+        {
+          "id": "cpd26-c005",
+          "type": "concept",
+          "topics": [
+            "1.2.2"
+          ],
+          "sourcePage": 199,
+          "front": "What are the roles and responsibilities of Female Community Health Volunteers in CB-IMNCI?",
+          "back": "FCHVs promote maternal, newborn and child health; distribute essential commodities including iron, zinc, oral rehydration solution (ORS) and chlorhexidine; and refer sick newborns and children showing danger signs to appropriate facilities."
+        },
+        {
+          "id": "cpd26-c006",
+          "type": "concept",
+          "topics": [
+            "1.2.2"
+          ],
+          "sourcePage": 199,
+          "front": "What services do health workers provide under CB-IMNCI?",
+          "back": "Health workers manage non-breathing cases, neonatal sepsis and common childhood illnesses. They also provide counseling, postnatal visits and clinical care through outreach clinics, supported by improved interpersonal communication skills."
+        },
+        {
+          "id": "cpd26-c007",
+          "type": "process",
+          "topics": [
+            "1.2.3"
+          ],
+          "sourcePage": 200,
+          "front": "What newborn-specific interventions are included in CB-IMNCI?",
+          "back": "Newborn-specific interventions include:\n1. Promotion of birth preparedness plans.\n2. Promotion of essential newborn care practices for mothers and newborns.\n3. Identification and management of non-breathing babies at birth.\n4. Identification and management of preterm and low-birth-weight babies.\n5. Management of sepsis among young infants aged 0–59 days, including diarrhoea."
+        },
+        {
+          "id": "cpd26-c008",
+          "type": "summary",
+          "topics": [
+            "1.2.3"
+          ],
+          "sourcePage": 200,
+          "front": "What child-specific and cross-cutting interventions are included in CB-IMNCI?",
+          "back": "Child-specific interventions provide case management for children aged 2–59 months for the five major killer diseases (pneumonia, diarrhoea, malnutrition, measles, malaria). Cross-cutting interventions include postnatal care, behaviour change communication for healthy pregnancy, safe delivery, personal hygiene and sanitation, improved knowledge of immunization, nutrition and care of sick children, and improved interpersonal communication skills of health workers and FCHVs."
+        },
+        {
+          "id": "cpd26-c009",
+          "type": "fact",
+          "topics": [
+            "1.2.4"
+          ],
+          "sourcePage": 200,
+          "front": "Where are CB-IMNCI services available, who is eligible, and are documents required?",
+          "back": "Services are available at district hospitals, primary health care centres, health posts and up to the community level. All children are eligible to receive CB-IMNCI services, and no documents or certifications are required."
+        },
+        {
+          "id": "cpd26-c010",
+          "type": "fact",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 200,
+          "front": "What is the history and priority status of Nepal's National Immunization Program?",
+          "back": "The National Immunization Program (NIP) is Nepal's highest-priority health program. It was launched in 1977 as the Expanded Program on Immunization (EPI) and has achieved significant milestones over the years, including contributing to the reduction of under-five mortality."
+        },
+        {
+          "id": "cpd26-c011",
+          "type": "summary",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 201,
+          "front": "Summarize the major achievements of the National Immunization Program.",
+          "back": "Achievements include: over 16,000 outreach sessions delivering services to hard-to-reach and marginalized communities; vaccines provided under the national program against various diseases; the 'Fully Immunized Child' initiative since 2012, with 18 districts achieving this status; the switch from tOPV to bOPV on 17 April 2016; sustained elimination of maternal and neonatal tetanus since 2005; significant reduction in Japanese encephalitis burden; and ongoing efforts to eliminate measles and control rubella/CRS by 2019 with new case-based surveillance guidelines."
+        },
+        {
+          "id": "cpd26-c012",
+          "type": "fact",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 201,
+          "front": "What is the NIP goal, who benefits, and what are the eligibility and documentation rules?",
+          "back": "The goal is to reduce child mortality, morbidity and disability from vaccine-preventable diseases. Vaccines are provided to children under five years and pregnant women according to the national schedule. Services are available at district hospitals, primary health care centres, health posts and through FCHVs during campaigns. All children are eligible, and no documents or certifications are required to claim subsidies or services."
+        },
+        {
+          "id": "cpd26-c013",
+          "type": "fact",
+          "topics": [
+            "2.2.1"
+          ],
+          "sourcePage": 202,
+          "front": "Which vaccines are given at birth and at 6, 10 and 14 weeks under Nepal's NIP schedule?",
+          "back": "At birth: BCG for tuberculosis. At 6, 10 and 14 weeks: DPT-HepB-HiB (diphtheria, pertussis, tetanus, hepatitis B and Haemophilus influenzae type b) and oral polio vaccine (OPV). Pneumococcal conjugate vaccine (PCV), protecting against meningitic, ear and chest infections, is given at 6 and 10 weeks with a booster at 9 months. Inactivated polio vaccine (IPV) is given at 14 weeks."
+        },
+        {
+          "id": "cpd26-c014",
+          "type": "fact",
+          "topics": [
+            "2.2.2"
+          ],
+          "sourcePage": 202,
+          "front": "Which vaccines are given at 9–15 months and to pregnant women under the NIP?",
+          "back": "Measles–Rubella (MR) vaccine is given at 9 and 15 months, protecting against measles and German measles. Japanese encephalitis (JE) vaccine is given at 12 months. Expecting mothers receive two doses of tetanus–diphtheria (Td) vaccine one month apart during pregnancy to protect against neonatal and maternal tetanus."
+        }
+      ]
+    },
+    {
+      "id": "cpd27",
+      "number": 27,
+      "title": "Nutrition and Family Planning Programs",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 202–204 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "National Nutrition Program",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Rationale and objectives",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Policy context and constitutional basis"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "Goal and general objective"
+                }
+              ]
+            },
+            {
+              "id": "1.2",
+              "title": "Strategy and services",
+              "children": [
+                {
+                  "id": "1.2.1",
+                  "title": "Core nutrition strategies"
+                },
+                {
+                  "id": "1.2.2",
+                  "title": "Benefits, eligibility and service delivery"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Family Planning Program",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "Program framework",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "Priority, integration and policy commitments"
+                }
+              ]
+            },
+            {
+              "id": "2.2",
+              "title": "Services and access",
+              "children": [
+                {
+                  "id": "2.2.1",
+                  "title": "Contraceptive methods offered"
+                },
+                {
+                  "id": "2.2.2",
+                  "title": "Service availability, eligibility and documents"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd27-c001",
+          "type": "concept",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 202,
+          "front": "Why does the National Nutrition Program matter for Nepal's development and policy framework?",
+          "back": "Nutrition interventions are a cost-effective investment in socio-economic development because they improve human capital through better productivity. The program supports achievement of several Sustainable Development Goals. The Government of Nepal, following international and national policies, ensures access to adequate food, health and nutrition for all citizens, and the right to food, health and nutrition is guaranteed by Nepal's Constitution."
+        },
+        {
+          "id": "cpd27-c002",
+          "type": "fact",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 202,
+          "front": "What is the goal of the National Nutrition Program?",
+          "back": "The goal is to achieve nutritional well-being of all people so they can maintain a healthy life and contribute to the socio-economic development of the country, through improved nutrition program implementation in collaboration with relevant sectors."
+        },
+        {
+          "id": "cpd27-c003",
+          "type": "fact",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 202,
+          "front": "What is the general objective of the National Nutrition Program?",
+          "back": "The general objective is to enhance nutritional well-being, reduce child and maternal mortality, and contribute to equitable human development."
+        },
+        {
+          "id": "cpd27-c004",
+          "type": "summary",
+          "topics": [
+            "1.2.1"
+          ],
+          "sourcePage": 203,
+          "front": "What are the main strategies of the National Nutrition Program?",
+          "back": "The program's strategy includes promotion of a food-based approach, food fortification, supplementation of food, and promotion of public health measures. These combine nutrition-sensitive and nutrition-specific interventions to improve nutritional status."
+        },
+        {
+          "id": "cpd27-c005",
+          "type": "fact",
+          "topics": [
+            "1.2.2"
+          ],
+          "sourcePage": 203,
+          "front": "What benefits do women and children receive under the National Nutrition Program?",
+          "back": "Women and children benefit through nutrition-sensitive and nutrition-specific interventions. Benefits include free availability of iron tablets and calcium for pregnant women, regular growth monitoring, integrated management of acute malnutrition, and food fortification."
+        },
+        {
+          "id": "cpd27-c006",
+          "type": "fact",
+          "topics": [
+            "1.2.2"
+          ],
+          "sourcePage": 203,
+          "front": "Where are nutrition services available, who is eligible, and are documents required?",
+          "back": "Services are available at district hospitals, primary health care centres, health posts and up to the community level. All newborns and children are eligible to receive the services, and no documents or certifications need to be presented."
+        },
+        {
+          "id": "cpd27-c007",
+          "type": "fact",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 203,
+          "front": "How is the Family Planning Program positioned within Nepal's health policy?",
+          "back": "Family planning is a key priority initiative of the Government of Nepal, Ministry of Health. It is part of the reproductive health package and essential health care services under the Nepal Health Sector Program II (2010–2015), the Family Planning Costed Implementation Plan (2015), the Health Sector Strategy (NHSS) 2015–2020, and the Government of Nepal's FP2020 commitments. The program provides free family planning services and commodities."
+        },
+        {
+          "id": "cpd27-c008",
+          "type": "fact",
+          "topics": [
+            "2.2.1"
+          ],
+          "sourcePage": 204,
+          "front": "Which permanent family planning methods are provided under the program?",
+          "back": "Permanent methods provided free of cost are vasectomy for men and mini-lap (minilaparotomy) for women."
+        },
+        {
+          "id": "cpd27-c009",
+          "type": "fact",
+          "topics": [
+            "2.2.1"
+          ],
+          "sourcePage": 204,
+          "front": "Which reversible contraceptive methods are provided under Nepal's Family Planning Program?",
+          "back": "Long-acting reversible contraceptives include the Intra-Uterine Contraceptive Device (IUCD) and depot medroxyprogesterone (Depo-Provera), which can be administered by Auxiliary Health Workers. Short-term methods include oral contraceptive pills and condoms."
+        },
+        {
+          "id": "cpd27-c010",
+          "type": "fact",
+          "topics": [
+            "2.2.2"
+          ],
+          "sourcePage": 204,
+          "front": "Where are family planning services available, who is eligible, and are documents required?",
+          "back": "Services are available at all public institutions: district hospitals, primary health care centres and health posts. FCHVs also conduct community-based family planning programs. All Nepali citizens are eligible, and no documents or certifications need to be presented to claim subsidies and services."
+        }
+      ]
+    },
+    {
+      "id": "cpd28",
+      "number": 28,
+      "title": "Safe Motherhood and Female Community Health Volunteers",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 204–207 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "Safe Motherhood Program",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Goal and community package",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Goal, focus and birth preparedness"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "ANC, PNC and essential newborn care"
+                }
+              ]
+            },
+            {
+              "id": "1.2",
+              "title": "Aama and Newborn Program",
+              "children": [
+                {
+                  "id": "1.2.1",
+                  "title": "Evolution of demand-side interventions"
+                },
+                {
+                  "id": "1.2.2",
+                  "title": "Transport and four-ANC incentives"
+                },
+                {
+                  "id": "1.2.3",
+                  "title": "Free institutional delivery and complication payments"
+                },
+                {
+                  "id": "1.2.4",
+                  "title": "Health worker incentives and sick newborn care packages"
+                },
+                {
+                  "id": "1.2.5",
+                  "title": "Additional services, eligibility and availability"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Female Community Health Volunteers (FCHVs)",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "FCHV support and services",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "FCHV Fund and key services"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd28-c001",
+          "type": "fact",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 204,
+          "front": "What is the goal and key focus of the Safe Motherhood Program?",
+          "back": "The goal is to reduce maternal and neonatal morbidity and mortality and improve maternal and neonatal health through preventive, promotive and curative services. The key focus is to address avoidable factors causing death during pregnancy, childbirth and the postpartum period."
+        },
+        {
+          "id": "cpd28-c002",
+          "type": "process",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 204,
+          "front": "What does birth preparedness and complication readiness involve at the community level?",
+          "back": "Birth preparedness and complication readiness involves preparing money, identifying a health facility for delivery, arranging transport and arranging blood donors. It is delivered as part of the Birth Preparedness Package and maternal and newborn health activities at community level."
+        },
+        {
+          "id": "cpd28-c003",
+          "type": "fact",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 204,
+          "front": "Which ANC/PNC, self-care and newborn services are included in the Safe Motherhood community package?",
+          "back": "Key ANC/PNC services include iron tablets, tetanus–diphtheria (Td) vaccine and albendazole. Self-care covers adequate food, rest, no smoking and no alcohol, including during pregnancy and the postpartum period. The package also includes essential newborn care and identification of and prompt care-seeking for danger signs during pregnancy, delivery, the postpartum period and the newborn period."
+        },
+        {
+          "id": "cpd28-c004",
+          "type": "summary",
+          "topics": [
+            "1.2.1"
+          ],
+          "sourcePage": 205,
+          "front": "Trace the evolution of Nepal's Aama and Newborn Program demand-side interventions.",
+          "back": "The Government of Nepal introduced demand-side interventions in maternal health to improve institutional delivery. The Maternity Incentive Scheme, launched in 2005, shared transportation costs to health facilities. In 2009 user fees were removed from all delivery care, creating the Aama Program. In 2012 the 4 ANC Incentives Program (introduced in 2009) was merged with the Aama Program. In FY 2073/74 the free newborn care program (introduced in FY 2072/73) was also merged. The combined program is now known as the Aama and Newborn Program."
+        },
+        {
+          "id": "cpd28-c005",
+          "type": "fact",
+          "topics": [
+            "1.2.2"
+          ],
+          "sourcePage": 205,
+          "front": "What transport incentive is paid for institutional delivery under the Aama Program?",
+          "back": "A cash payment is made to women immediately following institutional delivery: NPR 1,500 in mountain districts, NPR 1,000 in hill districts and NPR 500 in Terai districts."
+        },
+        {
+          "id": "cpd28-c006",
+          "type": "fact",
+          "topics": [
+            "1.2.2"
+          ],
+          "sourcePage": 205,
+          "front": "What is the incentive for completing four antenatal care visits?",
+          "back": "A cash payment of NPR 400 is made to women on completion of four ANC visits, at the 4th, 6th, 8th and 9th months of pregnancy, linked with institutional delivery and postnatal care."
+        },
+        {
+          "id": "cpd28-c007",
+          "type": "fact",
+          "topics": [
+            "1.2.3"
+          ],
+          "sourcePage": 205,
+          "front": "What are the facility payments for free institutional delivery care under the Aama Program?",
+          "back": "Health facilities are reimbursed for free delivery care: NPR 1,000 for a normal delivery in facilities with fewer than 25 beds; NPR 1,500 for a normal delivery in facilities with 25 or more beds; and NPR 3,000 for complicated deliveries."
+        },
+        {
+          "id": "cpd28-c008",
+          "type": "fact",
+          "topics": [
+            "1.2.3"
+          ],
+          "sourcePage": 206,
+          "front": "Which obstetric complications are covered by the NPR 3,000 complicated-delivery payment?",
+          "back": "The complicated-delivery payment covers antepartum haemorrhage requiring blood transfusion, postpartum haemorrhage requiring transfusion or manual removal of placenta or exploration, eclampsia, manual removal of retained placenta, puerperal sepsis, instrumental delivery, and abortion complications requiring blood transfusion and admission longer than 24 hours. Intravenous antibiotics for sepsis are included as complicated deliveries."
+        },
+        {
+          "id": "cpd28-c009",
+          "type": "fact",
+          "topics": [
+            "1.2.3"
+          ],
+          "sourcePage": 206,
+          "front": "What are the payments for caesarean section, anti-D and laparotomy under the Aama and Newborn Program?",
+          "back": "Caesarean section (surgery) is paid at NPR 7,000; anti-D administration for Rh-negative mothers at NPR 500; and laparotomy for perforation due to abortion, ectopic pregnancy or ruptured uterus at NPR 7,000."
+        },
+        {
+          "id": "cpd28-c010",
+          "type": "fact",
+          "topics": [
+            "1.2.4"
+          ],
+          "sourcePage": 206,
+          "front": "What incentives are paid to health workers for deliveries and sick newborn care?",
+          "back": "A cash payment of NPR 300 is made to the health worker attending all forms of delivery — normal, complicated and caesarean section — arranged through health facility reimbursement. Similarly, NPR 300 is paid to the health worker providing sick newborn care across all service packages, also arranged through facility reimbursement."
+        },
+        {
+          "id": "cpd28-c011",
+          "type": "fact",
+          "topics": [
+            "1.2.4"
+          ],
+          "sourcePage": 206,
+          "front": "What are the reimbursement packages for free sick newborn care?",
+          "back": "Health facilities are reimbursed a set package of care costs: 'Package 0' no cost, 'Package A' NPR 1,000, 'Package B' NPR 2,000 and 'Package C' NPR 5,000. A facility can claim a combination of A+B+C up to NPR 8,000 depending on medicines, diagnostics and treatment services provided."
+        },
+        {
+          "id": "cpd28-c012",
+          "type": "summary",
+          "topics": [
+            "1.2.5"
+          ],
+          "sourcePage": 206,
+          "front": "List the additional Safe Motherhood services and the eligibility, documentation and availability rules.",
+          "back": "Additional services include reproductive health morbidity prevention and management, management of pelvic organ prolapse, cervical cancer screening and prevention training, obstetric fistula management, emergency referral fund and the Nyano Jhola Program. Incentives and services are available to Nepali citizens, especially pregnant mothers and newborns. Only Nepali nationals are eligible, so a copy of Nepali citizenship must be presented. Services are available in all public health facilities with birthing facilities; free sick newborn care is implemented in major hospitals with a plan to roll it out nationwide."
+        },
+        {
+          "id": "cpd28-c013",
+          "type": "fact",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 207,
+          "front": "What is the FCHV Fund and what key services do Female Community Health Volunteers provide?",
+          "back": "The FCHV Fund (FY 2064/65) provides Rs. 50,000 cash support to each VDC for income generation activities, benefiting FCHVs and the community. Key services include distribution of family planning commodities (pills and condoms), iron tablets to pregnant and lactating mothers, and oral rehydration solution; health education, communication and community outreach; linkage between health facility and community with referral, especially for maternal, newborn and CB-IMNCI services; and support in home deliveries focused on initiating skin-to-skin contact, uptake of misoprostol and application of chlorhexidine to the cord."
+        }
+      ]
+    },
+    {
+      "id": "cpd29",
+      "number": 29,
+      "title": "Adolescent Health, Outreach and Safe Abortion Services",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 207–210 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "Adolescent and Sexual Reproductive Health (ASRH) Program",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Program framework",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Goal, objective, targets and vision"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "Service components"
+                }
+              ]
+            },
+            {
+              "id": "1.2",
+              "title": "Access and eligibility",
+              "children": [
+                {
+                  "id": "1.2.1",
+                  "title": "Service availability, eligibility and documents"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Primary Health Care Outreach Program",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "Background and services",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "Origin and context"
+                },
+                {
+                  "id": "2.1.2",
+                  "title": "Community-level service package"
+                }
+              ]
+            },
+            {
+              "id": "2.2",
+              "title": "Access",
+              "children": [
+                {
+                  "id": "2.2.1",
+                  "title": "Eligibility and documents"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "title": "Safe Abortion Services (NSAS)",
+          "children": [
+            {
+              "id": "3.1",
+              "title": "Background and expansion",
+              "children": [
+                {
+                  "id": "3.1.1",
+                  "title": "Rationale and goal"
+                },
+                {
+                  "id": "3.1.2",
+                  "title": "Service expansion and program priorities"
+                }
+              ]
+            },
+            {
+              "id": "3.2",
+              "title": "Services and access",
+              "children": [
+                {
+                  "id": "3.2.1",
+                  "title": "Service package, benefits and availability"
+                },
+                {
+                  "id": "3.2.2",
+                  "title": "Eligibility and documents"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd29-c001",
+          "type": "fact",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 207,
+          "front": "What are the goal, objective, targets and vision of the ASRH Program?",
+          "back": "The objective is to enhance the sexual and reproductive health status of adolescents. The target was to make 1,000 health facilities adolescent-friendly by 2015; as of 2016, 1,534 facilities had achieved this status. The vision is to ensure all public health facilities are adolescent-friendly as envisioned by the Health Sector Strategy (NHSS)."
+        },
+        {
+          "id": "cpd29-c002",
+          "type": "summary",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 208,
+          "front": "What service components make up the Adolescent and Sexual Reproductive Health Program?",
+          "back": "ASRH comprises all services delivered through public health facilities, with program focus on: (1) information and skills, (2) program orientation to health service providers and stakeholders on ASRH, (3) health services and counseling, and (4) a safe and supportive environment."
+        },
+        {
+          "id": "cpd29-c003",
+          "type": "fact",
+          "topics": [
+            "1.2.1"
+          ],
+          "sourcePage": 208,
+          "front": "Where are ASRH services available, who is eligible, and are documents required?",
+          "back": "Services are available at all adolescent-friendly service sites: district hospitals, primary health care centres and health posts. FCHVs also conduct community-based ASRH programs. All adolescent boys and girls are eligible, and no documents or certifications are required to claim subsidies and services."
+        },
+        {
+          "id": "cpd29-c004",
+          "type": "fact",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 208,
+          "front": "When and why did the Primary Health Care Outreach Program begin?",
+          "back": "The Primary Health Care Outreach Program was initiated in 1994 (2051 BS) to improve access to health services. It responded to limited utilization of health services due to accessibility issues, as outlined in the National Health Policy 1991, by bringing services closer to communities."
+        },
+        {
+          "id": "cpd29-c005",
+          "type": "summary",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 208,
+          "front": "Summarize the community-level services of the Primary Health Care Outreach Program.",
+          "back": "Safe Motherhood and Newborn Care: antenatal, postnatal and newborn care, iron distribution and referral if danger signs are identified. Family Planning: DMPA (Depo-Provera), pills and condoms, monitoring of continuous users, education and counseling on contraception, counseling and referral for IUCD, implant and voluntary sterilization, and defaulter tracing. Child Health: growth monitoring of under-three children, pneumonia treatment and diarrhoea treatment."
+        },
+        {
+          "id": "cpd29-c006",
+          "type": "fact",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 209,
+          "front": "What additional service areas are covered by the Primary Health Care Outreach Program?",
+          "back": "In addition to safe motherhood and newborn care, family planning and child health, the outreach program covers HIV/AIDS, adolescents' sexual and reproductive health, and other services including first aid treatment, general treatment and referral for complicated cases."
+        },
+        {
+          "id": "cpd29-c007",
+          "type": "fact",
+          "topics": [
+            "2.2.1"
+          ],
+          "sourcePage": 209,
+          "front": "Who is eligible for Primary Health Care Outreach services and are documents needed?",
+          "back": "All Nepali citizens are eligible to avail the services at the pre-defined location in the community on the specified date. No documents or certifications need to be presented to claim subsidies and services."
+        },
+        {
+          "id": "cpd29-c008",
+          "type": "concept",
+          "topics": [
+            "3.1.1"
+          ],
+          "sourcePage": 209,
+          "front": "Why was the Safe Abortion Services program established and what is its goal?",
+          "back": "Unwanted pregnancies often arise from limited access to family planning information and services. Women without access to safe abortion face high risks of complications from unsafe abortion or severe social pressure that can lead to suicide. The goal is to ensure safe, accessible and affordable abortion services for women with unwanted pregnancies."
+        },
+        {
+          "id": "cpd29-c009",
+          "type": "fact",
+          "topics": [
+            "3.1.2"
+          ],
+          "sourcePage": 209,
+          "front": "How have safe abortion services been expanded in Nepal, and what is the contraceptive priority?",
+          "back": "Curettage (MVA) services expanded to all 75 district hospitals and over 50% of primary health care centres. Second-trimester abortion services are available in 22 hospitals with Comprehensive Emergency Obstetric and Neonatal Care (CEONC). Medical abortion services expanded to 39 districts from FY 2070/71 with partner support, with training for Skilled Birth Attendants. By FY 2070/71 the focus was on ensuring availability of five modern contraceptives at Safe Abortion Services sites as per NHSP IP 2."
+        },
+        {
+          "id": "cpd29-c010",
+          "type": "summary",
+          "topics": [
+            "3.2.1"
+          ],
+          "sourcePage": 210,
+          "front": "What services and benefits are provided under Safe Abortion Services?",
+          "back": "Services are free, including consultation, medicines and commodities: (i) pre- and post-abortion counseling on abortion and contraceptive methods; (ii) termination of pregnancy as per national protocol; (iii) diagnosis and treatment of existing reproductive tract infections; (iv) contraceptive methods as per informed choice; and (v) follow-up for post-abortion complication management. CAC (MVA and medical abortion) services are available in all 75 district hospitals and over 50% of PHCCs; second-trimester services in 22 CEONC hospitals; and medical abortion expanding to health posts with additional SBA training."
+        },
+        {
+          "id": "cpd29-c011",
+          "type": "fact",
+          "topics": [
+            "3.2.2"
+          ],
+          "sourcePage": 210,
+          "front": "Who is eligible for safe abortion services and are documents required?",
+          "back": "Women with unwanted pregnancy of 9 to 12 weeks are eligible to seek abortion services. No documents or certifications need to be presented to receive services under this program."
+        }
+      ]
+    },
+    {
+      "id": "cpd30",
+      "number": 30,
+      "title": "NCDs, Epidemic Surveillance and Disaster Management",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 210–214 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "Package of Essential Non-communicable Disease Interventions (PEN)",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Rationale and scope",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Burden, objective and implementation sites"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "Contributing factors and essential NCDs"
+                }
+              ]
+            },
+            {
+              "id": "1.2",
+              "title": "Goals and facility services",
+              "children": [
+                {
+                  "id": "1.2.1",
+                  "title": "Early detection, management and diagnostics"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Epidemic and Outbreak Surveillance Program",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "Early Warning and Reporting System (EWARS)",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "Scope, function and weekly reporting"
+                },
+                {
+                  "id": "2.1.2",
+                  "title": "Immediate reporting and weekly bulletin"
+                }
+              ]
+            },
+            {
+              "id": "2.2",
+              "title": "Other surveillance systems",
+              "children": [
+                {
+                  "id": "2.2.1",
+                  "title": "Active surveillance for infectious diseases"
+                },
+                {
+                  "id": "2.2.2",
+                  "title": "Water quality monitoring and EDCD responsibilities"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "title": "Disaster Management Program",
+          "children": [
+            {
+              "id": "3.1",
+              "title": "Preparedness and response",
+              "children": [
+                {
+                  "id": "3.1.1",
+                  "title": "Goal and key focus areas"
+                },
+                {
+                  "id": "3.1.2",
+                  "title": "Activities and stockpiling"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd30-c001",
+          "type": "fact",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 210,
+          "front": "What is the burden, objective and implementation setting of Nepal's PEN program?",
+          "back": "Non-communicable diseases account for around 60% of total annual deaths in Nepal (2014, WHO). The PEN program was introduced to screen, diagnose, treat and refer for cardiovascular diseases, chronic obstructive pulmonary disease, cancer, diabetes and mental health issues. It is implemented at health posts, primary health care centres and district hospitals."
+        },
+        {
+          "id": "cpd30-c002",
+          "type": "summary",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 211,
+          "front": "What factors drive the NCD burden and which conditions does PEN target?",
+          "back": "NCDs are a leading cause of death globally and in South-East Asia. Contributing factors include unhealthy lifestyles, globalization, trade and marketing, and demographic and economic transitions. Essential NCDs are cardiovascular disease, chronic non-infectious respiratory diseases such as COPD, cancers and diabetes mellitus. Oral health, mental health and road traffic injuries are also growing threats."
+        },
+        {
+          "id": "cpd30-c003",
+          "type": "fact",
+          "topics": [
+            "1.2.1"
+          ],
+          "sourcePage": 211,
+          "front": "What are the goals of the PEN program?",
+          "back": "The goals are early detection — identifying chronic diseases early in the community — and management, providing timely treatment and referral for effective management."
+        },
+        {
+          "id": "cpd30-c004",
+          "type": "compare",
+          "topics": [
+            "1.2.1"
+          ],
+          "sourcePage": 211,
+          "front": "How do PEN services and diagnostics differ between health posts and primary health care centres?",
+          "back": "At health posts: detect hypertension and diabetes, assess CVD risk, provide counseling, referral and follow-up of low-risk patients, refill drugs and health promotion, using a blood pressure device, glucometer, urine protein and ketone test strips, stethoscope, measuring tape, digital weighing scale, stadiometer and CVD risk charts. At PHCCs: confirm diagnosis of diabetes and hypertension, manage and follow up high-risk patients and refer complicated cases to district hospital, with the same diagnostics plus a cardio check device."
+        },
+        {
+          "id": "cpd30-c005",
+          "type": "fact",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 212,
+          "front": "What is EWARS and what is its role in Nepal's epidemic surveillance?",
+          "back": "The Early Warning and Reporting System (EWARS) is a hospital-based sentinel surveillance system in 84 hospitals across all 75 districts of Nepal. It complements the Health Management Information System (HMIS) by providing timely reports for early detection of vector-borne, waterborne and foodborne diseases. The overall purpose of surveillance is to systematically collect and analyze data on infectious diseases to inform public health priorities, resource allocation and preventive action."
+        },
+        {
+          "id": "cpd30-c006",
+          "type": "fact",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 212,
+          "front": "Which six priority diseases are reported weekly through EWARS?",
+          "back": "EWARS requires detailed weekly case and death reports, including 'zero' reports, for six priority diseases/syndromes: malaria, kala-azar, dengue, acute gastroenteritis (AGE), cholera, and severe acute respiratory infection (SARI)."
+        },
+        {
+          "id": "cpd30-c007",
+          "type": "fact",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 212,
+          "front": "Which conditions require immediate reporting within 24 hours under EWARS, and how is information shared?",
+          "back": "Immediate reporting within 24 hours of diagnosis is required for confirmed cholera, severe and complicated malaria, suspect or clinical dengue, and five or more cases of AGE or SARI from the same area in one week. A weekly EWARS bulletin is produced on Sundays and shared with stakeholders by email and on the EDCD website."
+        },
+        {
+          "id": "cpd30-c008",
+          "type": "concept",
+          "topics": [
+            "2.2.1"
+          ],
+          "sourcePage": 212,
+          "front": "How does the active surveillance system for infectious diseases work?",
+          "back": "Active surveillance closely monitors outbreaks or suspected outbreaks. Designated officers track cases using standard case definitions for notifiable diseases and coordinate with relevant sections to take necessary actions."
+        },
+        {
+          "id": "cpd30-c009",
+          "type": "fact",
+          "topics": [
+            "2.2.2"
+          ],
+          "sourcePage": 212,
+          "front": "What is the institutional structure for water quality surveillance in Nepal?",
+          "back": "The Epidemiology and Disease Control Division (EDCD) serves as the secretariat of the Water Quality Surveillance Committee, which is coordinated by the Director of the EDCD."
+        },
+        {
+          "id": "cpd30-c010",
+          "type": "summary",
+          "topics": [
+            "2.2.2"
+          ],
+          "sourcePage": 213,
+          "front": "What are the responsibilities of EDCD in water quality monitoring and surveillance?",
+          "back": "Responsibilities include regular monitoring of drinking water quality from various sources and distribution sites; surveillance and coordination with stakeholders for water-borne disease quality surveillance; capacity building by training personnel and strengthening district surveillance; epidemic response through water quality testing during outbreaks; and record keeping with a GIS-based record of drinking water distribution systems and feedback to responsible organizations."
+        },
+        {
+          "id": "cpd30-c011",
+          "type": "fact",
+          "topics": [
+            "3.1.1"
+          ],
+          "sourcePage": 213,
+          "front": "What is the goal and key focus areas of the Disaster Management Program?",
+          "back": "The goal is to enhance health sector emergency preparedness and disaster response, including outbreak management, in coordination with stakeholders nationwide. Key focus areas are disaster preparedness (health sector contingency planning and hospital emergency preparedness), training and capacity building of health workers, multi-sectoral coordination and collaboration, and resource management with stockpiles of essential supplies, medicines and surgical kits at provincial levels."
+        },
+        {
+          "id": "cpd30-c012",
+          "type": "process",
+          "topics": [
+            "3.1.2"
+          ],
+          "sourcePage": 214,
+          "front": "What are the main activities of the Disaster Management Program?",
+          "back": "Activities include developing and refining health sector contingency plans for rapid, effective emergency response; emergency training to equip health workers with disaster skills and knowledge; multi-sectoral coordination to improve efficiency; ensuring hospitals are ready to handle emergencies and disasters; and stockpiling critical supplies and medicines to support disaster response efforts."
+        }
+      ]
+    },
+    {
+      "id": "cpd31",
+      "number": 31,
+      "title": "Deprived Citizens' Treatment, Malaria and Kala-azar",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 214–217 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "Medical Treatment for Deprived Citizens (Bipanna Nagarik Kosh)",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Fund and coverage",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Establishment and covered diseases"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "Financial benefits and treatment abroad"
+                }
+              ]
+            },
+            {
+              "id": "1.2",
+              "title": "Access",
+              "children": [
+                {
+                  "id": "1.2.1",
+                  "title": "Eligibility, documents and service points"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Malaria Control Program",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "Evolution and risk",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "History and evolution"
+                },
+                {
+                  "id": "2.1.2",
+                  "title": "High-risk factors and micro-stratification"
+                },
+                {
+                  "id": "2.1.3",
+                  "title": "Risk classification and strategic focus"
+                }
+              ]
+            },
+            {
+              "id": "2.2",
+              "title": "Vision and goals",
+              "children": [
+                {
+                  "id": "2.2.1",
+                  "title": "Vision, mission and targets"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "title": "Kala-azar Elimination Program",
+          "children": [
+            {
+              "id": "3.1",
+              "title": "Disease and commitment",
+              "children": [
+                {
+                  "id": "3.1.1",
+                  "title": "Parasite, vector, symptoms and risk groups"
+                },
+                {
+                  "id": "3.1.2",
+                  "title": "Regional and national commitment"
+                }
+              ]
+            },
+            {
+              "id": "3.2",
+              "title": "National plan and progress",
+              "children": [
+                {
+                  "id": "3.2.1",
+                  "title": "Plan phases and target"
+                },
+                {
+                  "id": "3.2.2",
+                  "title": "Diagnosis and current status"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd31-c001",
+          "type": "fact",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 214,
+          "front": "What is Bipanna Nagarik Kosh and which diseases does it cover?",
+          "back": "Bipanna Nagarik Kosh was established following the Janandolan of 2062 BS to provide financial relief for expensive medical treatment, particularly for those affected by chronic diseases. Covered conditions are cardiovascular diseases, cancer, renal failure, Alzheimer's disease, Parkinson's disease, head and spinal injury, sickle cell anaemia and stroke."
+        },
+        {
+          "id": "cpd31-c002",
+          "type": "fact",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 214,
+          "front": "What financial benefits are provided for general illness and renal impairment?",
+          "back": "General support provides NRs 1,00,000 for healthcare expenses including medicines for disease management. For renal impairment: free haemodialysis and peritoneal dialysis for one year; kidney transplant expenses of NRs 2,00,000; NRs 1,00,000 for post-transplant medicines in one or more instalments; and an additional NRs 1,00,000 cash grant for post-transplant medicines. Other subsidies are provided directly through hospitals in Nepal."
+        },
+        {
+          "id": "cpd31-c003",
+          "type": "fact",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 214,
+          "front": "What are the provisions for treatment outside Nepal and the single-disease limit?",
+          "back": "If required treatment is unavailable in Nepal, up to NRs 1,00,000 can be provided in cash for treatment abroad, subject to proof of unavailability in Nepal and approval from the Ministry of Health. The service provision is not applicable for different diseases for the same patient — the support is limited to a single disease."
+        },
+        {
+          "id": "cpd31-c004",
+          "type": "fact",
+          "topics": [
+            "1.2.1"
+          ],
+          "sourcePage": 215,
+          "front": "Who is eligible for medical treatment support for deprived citizens, what documents are needed and where is it available?",
+          "back": "Any citizen who cannot bear the cost of medical treatment for the listed diseases is eligible. Required documents are: a prescription from any hospital or doctor; attestation from the local VDC or municipality office of permanent address confirming eligibility; and approval from the D(P)HO office granting the subsidy. Services are available at health facilities and hospitals recognized and enlisted by the Ministry of Health."
+        },
+        {
+          "id": "cpd31-c005",
+          "type": "summary",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 215,
+          "front": "Describe the history and evolution of Nepal's Malaria Control Program.",
+          "back": "Malaria control began in 1954 with support from USAID (then USOM), mainly in the Terai of central Nepal. The National Malaria Eradication Program was launched in 1958 to eradicate malaria, but in 1978 the strategy shifted from eradication to control due to various challenges. In 1998 the Roll Back Malaria (RBM) initiative was introduced, targeting hard-core forests, foot-hills, inner Terai and hill river valleys, which accounted for over 70% of malaria cases."
+        },
+        {
+          "id": "cpd31-c006",
+          "type": "fact",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 215,
+          "front": "What high-risk factors and 2013 micro-stratification figures shape malaria control in Nepal?",
+          "back": "High-risk factors include vector abundance, population movement of mobile and vulnerable groups, geographical factors such as inaccessibility and suitable temperatures, and socio-economic influences on transmission. The 2013 micro-stratification report estimated about 13.02 million people (48%) living in malaria-endemic areas: high-risk VDCs about 1 million (3.62%), moderate-risk VDCs 2.66 million (9.8%) and low-risk VDCs 9.38 million (34.52%). About 14.13 million (52.1%) lived in non-endemic VDCs."
+        },
+        {
+          "id": "cpd31-c007",
+          "type": "compare",
+          "topics": [
+            "2.1.3"
+          ],
+          "sourcePage": 216,
+          "front": "How are high- and low-risk malaria areas classified, and what is the strategic focus?",
+          "back": "High-risk areas are foothills with river belts, forest fringe areas in the Terai, hill river valleys and inner Terai regions. Low-risk areas are plain cultivated outer Terai, mountain regions and mountain valleys. The strategic focus is micro-stratification — detailed assessment of malaria risk at VDC level to identify high, moderate and low-risk areas so interventions can be tailored effectively."
+        },
+        {
+          "id": "cpd31-c008",
+          "type": "fact",
+          "topics": [
+            "2.2.1"
+          ],
+          "sourcePage": 216,
+          "front": "What are the vision, mission and goals of the Malaria Control Program?",
+          "back": "Vision: malaria-free Nepal in 2025. Mission: to empower health staff and communities at risk of malaria to contribute towards a malaria-free Nepal by 2026. Goals: sustain zero deaths due to malaria from 2012 onwards; reduce incidence of indigenous malaria cases by 90% by 2018 relative to 2012; reduce the number of VDCs with indigenous malaria cases by 70% by 2018 relative to 2012; and receive WHO certification of malaria-free status by 2025."
+        },
+        {
+          "id": "cpd31-c009",
+          "type": "fact",
+          "topics": [
+            "3.1.1"
+          ],
+          "sourcePage": 216,
+          "front": "What are the cause, vector, symptoms and risk groups of kala-azar?",
+          "back": "Kala-azar is caused by the parasite Leishmania donovani and transmitted by the sand fly Phlebotomus argentipes. Symptoms include fever for more than two weeks, progressive weight loss, splenomegaly, anaemia and sometimes darkening of the skin. Children and young adults in endemic areas are the main risk groups, and cases of kala-azar with HIV/TB co-infection are increasing."
+        },
+        {
+          "id": "cpd31-c010",
+          "type": "fact",
+          "topics": [
+            "3.1.2"
+          ],
+          "sourcePage": 216,
+          "front": "What regional commitment did Nepal make for kala-azar elimination?",
+          "back": "Nepal, India and Bangladesh are signatories to a memorandum following World Health Assembly resolution WHA 60.13 (2005) aiming to eliminate kala-azar by 2015."
+        },
+        {
+          "id": "cpd31-c011",
+          "type": "process",
+          "topics": [
+            "3.2.1"
+          ],
+          "sourcePage": 217,
+          "front": "What are the phases and target of Nepal's national kala-azar elimination plan?",
+          "back": "The national plan was formulated by the Epidemiology and Disease Control Division (EDCD) of the Department of Health Services. Its phases are: preparatory phase 2005–2008 (establishing groundwork), attack phase 2008–2015 (intensive control measures to reduce incidence) and consolidation phase 2015 onwards (sustaining elimination). The target was to reduce annual kala-azar incidence to less than 1 per 10,000 population at district level by 2015."
+        },
+        {
+          "id": "cpd31-c012",
+          "type": "fact",
+          "topics": [
+            "3.2.2"
+          ],
+          "sourcePage": 217,
+          "front": "Which diagnostic test is used for kala-azar and what progress has been made?",
+          "back": "The rK39 dipstick test is a rapid serological test widely used in the Indian subcontinent, including Nepal, and is provided up to the primary health care level in program districts. Significant progress has been made in both diagnosis and treatment, contributing to ongoing elimination efforts."
+        }
+      ]
+    },
+    {
+      "id": "cpd32",
+      "number": 32,
+      "title": "Lymphatic Filariasis, Dengue and Zoonotic Disease Control",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 217–220 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "Lymphatic Filariasis Elimination Program",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Disease and epidemiology",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Parasite, vector and endemicity"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "Mapping and distribution"
+                }
+              ]
+            },
+            {
+              "id": "1.2",
+              "title": "National plan and achievements",
+              "children": [
+                {
+                  "id": "1.2.1",
+                  "title": "National plan of action and mass drug administration"
+                },
+                {
+                  "id": "1.2.2",
+                  "title": "Achievements and additional benefits"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Dengue Control Program",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "Disease and spread",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "Clinical forms and history"
+                },
+                {
+                  "id": "2.1.2",
+                  "title": "Geographical spread and epidemiology"
+                }
+              ]
+            },
+            {
+              "id": "2.2",
+              "title": "Surveillance and control",
+              "children": [
+                {
+                  "id": "2.2.1",
+                  "title": "Entomological findings and key actions"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "title": "Zoonotic Disease Control Program",
+          "children": [
+            {
+              "id": "3.1",
+              "title": "Priorities and burden",
+              "children": [
+                {
+                  "id": "3.1.1",
+                  "title": "Priority zoonoses and key issues"
+                }
+              ]
+            },
+            {
+              "id": "3.2",
+              "title": "EDCD response",
+              "children": [
+                {
+                  "id": "3.2.1",
+                  "title": "Objectives, approach and goals"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd32-c001",
+          "type": "fact",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 217,
+          "front": "What are the parasite, vector and endemic extent of lymphatic filariasis in Nepal?",
+          "back": "Lymphatic filariasis is a major public health problem in Nepal caused by the parasite Wuchereria bancrofti and transmitted by the mosquito Culex quinquefasciatus, found in all endemic areas. Sixty-one districts are endemic, spanning diverse topography from the Terai plains (300 feet above sea level) to high hill areas (5,800 feet). Average prevalence is about 13%, ranging from less than 1% to 39%."
+        },
+        {
+          "id": "cpd32-c002",
+          "type": "fact",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 217,
+          "front": "How was lymphatic filariasis mapped in Nepal and how is it distributed?",
+          "back": "Initial mapping was conducted in 2001 and 2005, with remapping in 2012 using the Immuno-Chromatographic Test (ICT). Prevalence is higher in the plains, but significant cases also occur in valleys and river basin areas of hilly districts. The disease predominantly affects rural and poorer communities."
+        },
+        {
+          "id": "cpd32-c003",
+          "type": "process",
+          "topics": [
+            "1.2.1"
+          ],
+          "sourcePage": 218,
+          "front": "Describe the National Plan of Action and mass drug administration for LF elimination.",
+          "back": "The National Plan of Action (2003–2020) aims to eliminate LF in Nepal, led by a National Task Force chaired by the Director-General of the Department of Health Services. Mass Drug Administration (MDA) began in 2003 in Parsa district and achieved 100% geographical coverage by FY 2064/65 (2013). MDA has been phased out in 25 districts, post-MDA surveillance started in 20 districts, and morbidity management is partially initiated in all endemic districts. All endemic districts were to complete the recommended 14 rounds of MDA by 2018."
+        },
+        {
+          "id": "cpd32-c004",
+          "type": "summary",
+          "topics": [
+            "1.2.2"
+          ],
+          "sourcePage": 218,
+          "front": "What achievements and additional benefits resulted from the LF elimination program?",
+          "back": "Surveys included mapping, baseline, follow-up, MDA coverage and Transmission Assessment Surveys (TAS). TAS showed significant reduction of LF prevalence in 26 districts, contributing to prevention of disability and suffering. More than 100 million doses were administered to at-risk populations over 13 years. The program also strengthened the health system through training and capacity building."
+        },
+        {
+          "id": "cpd32-c005",
+          "type": "fact",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 218,
+          "front": "What is dengue, what are its clinical forms and when did it appear in Nepal?",
+          "back": "Dengue is a mosquito-borne viral infection with three forms: Dengue Fever (DF), Dengue Haemorrhagic Fever (DHF) and Dengue Shock Syndrome (DSS). Initial cases were detected as early as 2005, mostly linked to travel from neighbouring India, and notable outbreaks occurred in 2006 and 2010."
+        },
+        {
+          "id": "cpd32-c006",
+          "type": "fact",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 219,
+          "front": "Which districts reported indigenous dengue transmission and what were the reported case figures?",
+          "back": "Indigenous dengue cases were reported from 12 districts spreading across the Terai from west to east: Chitwan, Kanchanpur, Kailali, Banke, Bardiya, Kapilvastu, Parsa, Rupandehi, Rautahat, Sarlahi, Saptari and Jhapa. Reports recorded 79 confirmed cases from 15 districts, with the highest incidence in Chitwan (55 cases)."
+        },
+        {
+          "id": "cpd32-c007",
+          "type": "fact",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 219,
+          "front": "Where was Aedes aegypti identified in Nepal?",
+          "back": "Aedes aegypti mosquitoes were identified in five peri-urban areas of the Terai: Kailali, Dang, Chitwan, Parsa and Jhapa."
+        },
+        {
+          "id": "cpd32-c008",
+          "type": "summary",
+          "topics": [
+            "2.2.1"
+          ],
+          "sourcePage": 219,
+          "front": "What did dengue surveillance reveal and what are the key control actions?",
+          "back": "Entomological surveillance from 2006 to 2010 identified local transmission of dengue in the Terai. Studies by EDCD/NPHL in collaboration with WARUN/AFRIMS showed that all four dengue virus subtypes (DEN-1, DEN-2, DEN-3 and DEN-4) circulated in Nepal. Key actions are ongoing surveillance and reporting of cases, mosquito control and public awareness to reduce transmission."
+        },
+        {
+          "id": "cpd32-c009",
+          "type": "fact",
+          "topics": [
+            "3.1.1"
+          ],
+          "sourcePage": 219,
+          "front": "Which zoonotic diseases are prioritized and what is the burden of rabies and snake bite in Nepal?",
+          "back": "Priority zoonoses are taeniosis/cysticercosis/neurocysticercosis, leptospirosis, hydatidosis, brucellosis, toxoplasmosis and avian influenza. Over 35,000 people receive post-exposure treatment for rabies annually and about 100 deaths occur each year. Snake bite is a major medical emergency causing death or chronic disability, especially among farmers and plantation workers; cases are increasing though deaths are decreasing."
+        },
+        {
+          "id": "cpd32-c010",
+          "type": "fact",
+          "topics": [
+            "3.2.1"
+          ],
+          "sourcePage": 220,
+          "front": "What are the objective and approach of the EDCD in zoonotic disease control?",
+          "back": "The EDCD aims to prevent deaths from rabies and poisonous snake bites caused by inadequate or delayed health care, and to manage and prevent zoonotic disease outbreaks and epidemics. Its approach is coordination with public, non-governmental and private sectors, with prevention and control focused on reducing human suffering and mortality from zoonoses."
+        },
+        {
+          "id": "cpd32-c011",
+          "type": "fact",
+          "topics": [
+            "3.2.1"
+          ],
+          "sourcePage": 220,
+          "front": "What are the two main goals of the Zoonotic Disease Control Program?",
+          "back": "First, prevent deaths from rabies and snake bites by ensuring availability of Anti-Rabies Vaccines (ARV) and Anti-Snake Venom Serum (ASVS). Second, control and manage outbreaks and epidemics of zoonotic diseases through timely intervention and management."
+        }
+      ]
+    },
+    {
+      "id": "cpd33",
+      "number": 33,
+      "title": "Leprosy, Tuberculosis and HIV/STI Control Programs",
+      "status": "draft",
+      "subject": "CPD",
+      "excludeExamples": true,
+      "source": {
+        "file": "cpd book 02-07-2026 17.16.pdf — The Mandatory CPD Textbook",
+        "pageRange": "PDF 220–223 — theory only; MCQs/explanations excluded; no images"
+      },
+      "outline": [
+        {
+          "id": "1",
+          "title": "Leprosy Control Program",
+          "children": [
+            {
+              "id": "1.1",
+              "title": "Achievement and strategy",
+              "children": [
+                {
+                  "id": "1.1.1",
+                  "title": "Elimination achievement and national strategy"
+                },
+                {
+                  "id": "1.1.2",
+                  "title": "Key principles and 2020 target"
+                }
+              ]
+            },
+            {
+              "id": "1.2",
+              "title": "Objectives and approach",
+              "children": [
+                {
+                  "id": "1.2.1",
+                  "title": "Objectives and service integration"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Tuberculosis Control Program",
+          "children": [
+            {
+              "id": "2.1",
+              "title": "Situation and targets",
+              "children": [
+                {
+                  "id": "2.1.1",
+                  "title": "Current situation and national aims"
+                },
+                {
+                  "id": "2.1.2",
+                  "title": "Global and End TB Strategy targets"
+                }
+              ]
+            },
+            {
+              "id": "2.2",
+              "title": "Services and approach",
+              "children": [
+                {
+                  "id": "2.2.1",
+                  "title": "Treatment, diagnosis, drug supply and program approach"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "title": "HIV and STI Control Program",
+          "children": [
+            {
+              "id": "3.1",
+              "title": "History and strategy",
+              "children": [
+                {
+                  "id": "3.1.1",
+                  "title": "Objective, history and national guidelines"
+                },
+                {
+                  "id": "3.1.2",
+                  "title": "Strategic plan and 90-90-90 targets"
+                }
+              ]
+            },
+            {
+              "id": "3.2",
+              "title": "Testing and services",
+              "children": [
+                {
+                  "id": "3.2.1",
+                  "title": "Testing modalities and availability"
+                },
+                {
+                  "id": "3.2.2",
+                  "title": "Training and available services"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cards": [
+        {
+          "id": "cpd33-c001",
+          "type": "fact",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 220,
+          "front": "When did Nepal eliminate leprosy as a public health problem and what is the remaining challenge?",
+          "back": "Nepal achieved elimination of leprosy as a public health problem in December 2009 and officially declared its elimination in 2010, a major success in the health sector. The remaining challenge is to sustain these achievements and further reduce the disease burden through quality leprosy services."
+        },
+        {
+          "id": "cpd33-c002",
+          "type": "fact",
+          "topics": [
+            "1.1.1"
+          ],
+          "sourcePage": 220,
+          "front": "What national and global strategies guide Nepal's leprosy control after elimination?",
+          "back": "The national strategy 'Sustain Quality Leprosy Services and Further Reduce the Disease Burden Due to Leprosy in Nepal: 2011–2015' is based on the 'Enhanced Global Strategy for Further Reducing the Disease Burden Due to Leprosy: 2011–2015'. National operational guidelines have been updated based on WHO guidelines."
+        },
+        {
+          "id": "cpd33-c003",
+          "type": "fact",
+          "topics": [
+            "1.1.2"
+          ],
+          "sourcePage": 220,
+          "front": "What are the key principles and the 2020 disability target of the leprosy program?",
+          "back": "Key principles are early detection of new leprosy cases and timely treatment with multi-drug therapy (MDT) through integrated health services. The 2020 target is to reduce grade II disability to below 1 per million population."
+        },
+        {
+          "id": "cpd33-c004",
+          "type": "summary",
+          "topics": [
+            "1.2.1"
+          ],
+          "sourcePage": 221,
+          "front": "What are the objectives and approach of the post-elimination leprosy strategy?",
+          "back": "Objectives are to achieve and maintain prevalence below 1 per 10,000 population, further reduce disease burden at district level, minimize disability due to leprosy, reduce stigma in the community, provide high-quality services to all affected persons, and integrate leprosy services into the general health care delivery system. The approach is integrated health services to ensure comprehensive and sustainable care."
+        },
+        {
+          "id": "cpd33-c005",
+          "type": "fact",
+          "topics": [
+            "2.1.1"
+          ],
+          "sourcePage": 221,
+          "front": "What is the TB situation in Nepal and what are the national aims?",
+          "back": "Tuberculosis remains a significant public health issue in Nepal, affecting thousands annually. Nepal aims to end the TB epidemic by 2050, with intermediate goals to reduce TB incidence by 20% by 2021 compared with 2015 levels and to increase case notifications by a cumulative total of 20,000 from July 2016 to July 2021."
+        },
+        {
+          "id": "cpd33-c006",
+          "type": "fact",
+          "topics": [
+            "2.1.2"
+          ],
+          "sourcePage": 221,
+          "front": "What are the SDG and End TB Strategy targets for tuberculosis?",
+          "back": "SDG 3 aims to ensure healthy lives and promote well-being for all at all ages, ending the epidemics of TB and other communicable diseases by 2030. The End TB Strategy targets are to detect 100% of new sputum smear-positive TB cases, cure at least 85% of these cases, and eliminate TB as a public health problem (fewer than 1 case per million population) by 2050."
+        },
+        {
+          "id": "cpd33-c007",
+          "type": "summary",
+          "topics": [
+            "2.2.1"
+          ],
+          "sourcePage": 222,
+          "front": "What services and approaches make up the Tuberculosis Control Program?",
+          "back": "Benefits and services include effective chemotherapy for all patients according to national treatment policies, early diagnosis of infectious pulmonary TB by sputum smear examination and GeneXpert technology, and continuous drug supply through all treatment centres. The approach emphasizes comprehensive case detection to identify all new sputum smear-positive cases, high cure rates through adherence to guidelines and regular monitoring, and secure, consistent drug management to prevent treatment interruptions."
+        },
+        {
+          "id": "cpd33-c008",
+          "type": "fact",
+          "topics": [
+            "3.1.1"
+          ],
+          "sourcePage": 222,
+          "front": "What is the HIV/STI program objective and how did HIV testing services evolve in Nepal?",
+          "back": "The objective is to achieve universal access to prevention, treatment, care and support for HIV. HIV Testing Services (HTS) began in 1995 with voluntary Client-Initiated Testing and Counseling (CITC) and later expanded to include Provider-Initiated Testing and Counseling (PITC). National guidelines were formulated in 2003 and updated in 2007, 2009, 2011 and 2014; a newer consolidated guideline recommends community-led testing."
+        },
+        {
+          "id": "cpd33-c009",
+          "type": "fact",
+          "topics": [
+            "3.1.2"
+          ],
+          "sourcePage": 222,
+          "front": "What are the 90-90-90 targets of Nepal's National HIV Strategic Plan 2016–2021?",
+          "back": "By 2020: 90% of all people living with HIV know their HIV status; 90% of all people with diagnosed HIV infection receive sustained antiretroviral therapy (ART); and 90% of all people receiving ART achieve viral suppression."
+        },
+        {
+          "id": "cpd33-c010",
+          "type": "fact",
+          "topics": [
+            "3.2.1"
+          ],
+          "sourcePage": 222,
+          "front": "What HIV testing modalities are used and how widely are they available?",
+          "back": "The two components of HIV testing and counseling are voluntary Client-Initiated Testing and Counseling (CITC) and Provider-Initiated Testing and Counseling (PITC). HTS is available up to the health post level, and standalone HIV testing and counseling sites are also run by NGOs."
+        },
+        {
+          "id": "cpd33-c011",
+          "type": "fact",
+          "topics": [
+            "3.2.2"
+          ],
+          "sourcePage": 223,
+          "front": "How is the HIV testing workforce developed and where are counseling and testing services delivered?",
+          "back": "Health workers and community members are trained to deliver HIV testing services effectively, ensuring comprehensive coverage and high-quality service delivery. Counseling and testing are offered at public health facilities and NGO-operated HTC sites, extending up to the health post level."
+        }
+      ]
     }
   ];
 });
