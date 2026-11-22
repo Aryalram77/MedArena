@@ -5,9 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Syllabus — MedArena</title>
 <style>
-:root{--ink:#0f172a;--muted:#64748b;--accent:#2563eb;--line:#e2e8f0;--bg:#f3f6fb}
+:root{
+  --ink:#0f172a;--muted:#64748b;--accent:#2563eb;--line:#e2e8f0;--bg:#f3f6fb;
+  --navy:#0b1224;--blue:#3b82f6;--cyan:#22d3ee;--violet:#8b5cf6;--gold:#f5c451;
+  --donut-hole:#fff;--row:#fff;--row-2:#f8fafc;
+}
 *{box-sizing:border-box}
 body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+body.projecting{overflow:hidden}
 header{background:#0f172a;color:#fff;padding:10px 20px;display:flex;align-items:center;gap:18px;position:sticky;top:0;z-index:50}
 header .logo{font-weight:800;font-size:18px;letter-spacing:.4px}
 header .logo a{color:inherit;text-decoration:none}
@@ -17,22 +22,121 @@ header .logo .brand{background:linear-gradient(90deg,#3b82f6,#22d3ee,#8b5cf6,#3b
 .navlinks a{color:#cbd5e1;text-decoration:none;font-size:13px;font-weight:600;padding:8px 12px;border-radius:8px;background:#1e293b}
 .navlinks a:hover{color:#fff;background:#334155}
 .container{max-width:1200px;margin:22px auto 40px;padding:0 18px}
-.hero{background:linear-gradient(135deg,#0b1224 0%,#12204a 60%,#1a2a5e 100%);color:#fff;border-radius:18px;padding:24px 26px;border:1px solid rgba(245,196,81,.25);box-shadow:0 16px 40px rgba(11,18,36,.22)}
-.eyebrow{font-size:11px;letter-spacing:2px;font-weight:800;color:#f5c451;text-transform:uppercase}
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#0b1224 0%,#12204a 60%,#1a2a5e 100%);color:#fff;border-radius:18px;padding:24px 26px;border:1px solid rgba(245,196,81,.25);box-shadow:0 16px 40px rgba(11,18,36,.22)}
+.hero::after{content:"";position:absolute;width:280px;height:280px;right:-80px;top:-140px;border-radius:50%;background:radial-gradient(circle,rgba(34,211,238,.28),transparent 65%);pointer-events:none}
+.eyebrow{font-size:11px;letter-spacing:2px;font-weight:800;color:var(--gold);text-transform:uppercase}
 .hero h1{margin:8px 0 6px;font-size:clamp(22px,3vw,32px);letter-spacing:-.5px}
 .hero p{margin:0;color:#cbd5e1;font-size:14px;line-height:1.6}
+
+/* ---- CEEMD/MS syllabus projector ---- */
+.blueprint{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 18px 45px rgba(31,55,93,.10)}
+.bp-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:22px 24px;background:linear-gradient(120deg,#f8fbff 0%,#eef4ff 55%,#f7f0ff 100%);border-bottom:1px solid var(--line)}
+.bp-title{display:flex;align-items:center;gap:14px}
+.bp-mark{width:48px;height:48px;flex:0 0 48px;border-radius:14px;display:grid;place-items:center;font-size:22px;background:linear-gradient(135deg,var(--blue),var(--violet));color:#fff;box-shadow:0 8px 18px rgba(59,130,246,.32)}
+.bp-head h2{margin:0;font-size:clamp(22px,3vw,29px);letter-spacing:-.6px;line-height:1.1}
+.bp-head p{margin:5px 0 0;color:var(--muted);font-size:13px;line-height:1.5}
+.bp-actions{display:flex;gap:9px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:9px 14px;border-radius:10px;text-decoration:none;font-size:13px;font-weight:700;border:0;cursor:pointer;transition:.18s ease}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#1d4ed8;transform:translateY(-1px)}
+.btn-secondary{background:#e2e8f0;color:#0f172a}
+.btn-secondary:hover{background:#cbd5e1}
+.btn-ghost{background:#0f172a;color:#fff;box-shadow:0 6px 16px rgba(15,23,42,.22)}
+.btn-ghost:hover{background:#1e293b;transform:translateY(-1px)}
+
+.metric-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border-bottom:1px solid var(--line)}
+.metric{background:#fff;padding:14px 16px;min-height:76px;display:flex;flex-direction:column;justify-content:center}
+.metric b{font-size:20px;letter-spacing:-.5px;color:#13213d}
+.metric span{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;margin-top:3px}
+.metric.gold b{color:#b7791f}
+
+.bp-grid{display:grid;grid-template-columns:minmax(290px,.82fr) minmax(420px,1.18fr);gap:16px;padding:18px}
+.panel{background:var(--row);border:1px solid var(--line);border-radius:16px;padding:17px;min-width:0}
+.panel h3{margin:0 0 13px;font-size:14px;letter-spacing:.3px;text-transform:uppercase;color:#334155}
+.split-bar{display:flex;height:28px;border-radius:999px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(15,23,42,.05)}
+.split-bar div{display:grid;place-items:center;color:#fff;font-size:11px;font-weight:800;letter-spacing:.4px}
+.split-clinical{width:57.5%;background:linear-gradient(90deg,var(--blue),#60a5fa)}
+.split-basic{width:42.5%;background:linear-gradient(90deg,var(--violet),var(--cyan))}
+.split-legend{display:flex;justify-content:space-between;gap:10px;margin-top:9px;font-size:12px;color:var(--muted)}
+.split-legend strong{color:#13213d}
+
+.cog-wrap{display:flex;align-items:center;gap:18px;margin-top:20px;padding-top:18px;border-top:1px dashed var(--line)}
+.donut{position:relative;width:142px;height:142px;flex:0 0 142px;border-radius:50%;background:conic-gradient(var(--blue) 0 50%,var(--violet) 50% 80%,var(--cyan) 80% 100%);box-shadow:0 8px 22px rgba(59,130,246,.16)}
+.donut::after{content:"";position:absolute;inset:19px;border-radius:50%;background:var(--donut-hole);box-shadow:inset 0 0 0 1px var(--line)}
+.donut-center{position:absolute;inset:0;z-index:1;display:grid;place-content:center;text-align:center}
+.donut-center b{font-size:25px;line-height:1;color:#13213d}
+.donut-center small{font-size:9px;font-weight:800;letter-spacing:1.2px;color:var(--muted);margin-top:3px}
+.cog-list{list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:12px;flex:1}
+.cog-list li{display:flex;align-items:center;justify-content:space-between;gap:8px;color:var(--muted)}
+.cog-list b{color:#13213d}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:7px;vertical-align:middle}
+.dot.blue{background:var(--blue)}.dot.violet{background:var(--violet)}.dot.cyan{background:var(--cyan)}.dot.gold{background:var(--gold)}
+
+.panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.filters{display:inline-flex;background:#eef2f7;border-radius:10px;padding:3px;gap:2px}
+.filters button{border:0;background:transparent;color:var(--muted);font-size:11px;font-weight:800;padding:6px 9px;border-radius:8px;cursor:pointer;transition:.16s}
+.filters button.active{background:#fff;color:#13213d;box-shadow:0 2px 8px rgba(15,23,42,.10)}
+.weight-scroll{max-height:410px;overflow:auto;padding-right:3px;margin-top:12px}
+.weight-group+.weight-group{margin-top:16px}
+.group-head{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 10px;border-radius:9px;background:linear-gradient(90deg,#eff6ff,#f5f3ff);font-size:12px;font-weight:800;color:#243b6b}
+.group-head.basic{background:linear-gradient(90deg,#f5f3ff,#ecfeff)}
+.group-head span{font-weight:700;color:var(--muted);font-size:11px}
+table.weight{width:100%;border-collapse:collapse;margin-top:7px;font-size:12px}
+table.weight th{text-align:left;font-size:9px;letter-spacing:.9px;text-transform:uppercase;color:#94a3b8;padding:5px 8px;border-bottom:1px solid var(--line)}
+table.weight th:last-child,table.weight td:last-child{text-align:right}
+table.weight td{padding:7px 8px;border-bottom:1px solid #f1f5f9;vertical-align:middle;transition:background .18s}
+table.weight tbody tr:hover td{background:#f8fbff}
+table.weight td.subj{font-weight:700;color:#243b6b}
+.mark{font-weight:800;color:#13213d;white-space:nowrap}
+.bar{height:6px;border-radius:99px;background:#e8eef7;overflow:hidden;min-width:70px}
+.bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--blue),#60a5fa)}
+.basic .bar i{background:linear-gradient(90deg,var(--violet),var(--cyan))}
+.share{font-variant-numeric:tabular-nums;color:var(--muted);font-weight:700;white-space:nowrap}
+
+.bp-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 18px;border-top:1px solid var(--line);background:#fbfdff;color:var(--muted);font-size:11px;font-weight:600}
+.bp-foot .right{display:flex;gap:14px;flex-wrap:wrap}
+
+/* ---- Projector mode ---- */
+.blueprint.is-projecting{position:fixed;inset:0;z-index:100;margin:0;border:0;border-radius:0;overflow:auto;background:radial-gradient(circle at 15% 0%,#142a5c 0%,#0b1224 48%,#070b18 100%);color:#e2e8f0;box-shadow:none;--donut-hole:#0d1730;--row:rgba(255,255,255,.05);--line:rgba(255,255,255,.12)}
+.is-projecting .bp-head{background:linear-gradient(120deg,rgba(59,130,246,.20),rgba(139,92,246,.16));border-bottom-color:rgba(255,255,255,.12)}
+.is-projecting .bp-head h2,.is-projecting .metric b,.is-projecting .donut-center b,.is-projecting .mark,.is-projecting table.weight td.subj{color:#fff}
+.is-projecting .bp-head p,.is-projecting .metric span,.is-projecting .cog-list,.is-projecting .cog-list b,.is-projecting .split-legend,.is-projecting .share,.is-projecting .bp-foot{color:#a9bad6}
+.is-projecting .metric{background:rgba(255,255,255,.04)}
+.is-projecting .panel{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)}
+.is-projecting .panel h3{color:#dbeafe}
+.is-projecting .filters{background:rgba(255,255,255,.09)}
+.is-projecting .filters button{color:#a9bad6}
+.is-projecting .filters button.active{background:rgba(255,255,255,.18);color:#fff}
+.is-projecting .split-bar{box-shadow:inset 0 0 0 1px rgba(255,255,255,.16)}
+.is-projecting .cog-wrap{border-top-color:rgba(255,255,255,.12)}
+.is-projecting .group-head{background:linear-gradient(90deg,rgba(59,130,246,.25),rgba(139,92,246,.22));color:#eaf2ff}
+.is-projecting .group-head.basic{background:linear-gradient(90deg,rgba(139,92,246,.22),rgba(34,211,238,.18))}
+.is-projecting .group-head span{color:#a9bad6}
+.is-projecting table.weight th{color:#7f93b8;border-bottom-color:rgba(255,255,255,.12)}
+.is-projecting table.weight td{border-bottom-color:rgba(255,255,255,.07)}
+.is-projecting table.weight tbody tr:hover td{background:rgba(255,255,255,.06)}
+.is-projecting .bar{background:rgba(255,255,255,.12)}
+.is-projecting .bp-foot{background:rgba(255,255,255,.03);border-top-color:rgba(255,255,255,.12)}
+.is-projecting .weight-scroll{max-height:none}
+.is-projecting table.weight tbody tr.active td{background:linear-gradient(90deg,rgba(59,130,246,.32),rgba(139,92,246,.18));animation:rowPulse 1.7s ease-in-out infinite}
+@keyframes rowPulse{0%,100%{box-shadow:inset 0 0 0 0 rgba(245,196,81,0)}50%{box-shadow:inset 3px 0 0 0 var(--gold)}}
+
+/* ---- PDF card ---- */
 .card{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 8px 25px rgba(31,55,93,.06)}
 .card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px 16px;border-bottom:1px solid var(--line);background:#f8fafc}
 .card-head h2{margin:0;font-size:18px;color:#172640}
 .actions{display:flex;gap:10px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:10px;text-decoration:none;font-size:13px;font-weight:700}
-.btn-primary{background:var(--accent);color:#fff}
-.btn-primary:hover{background:#1d4ed8}
-.btn-secondary{background:#e2e8f0;color:#0f172a}
-.btn-secondary:hover{background:#cbd5e1}
 .viewer{width:100%;height:min(82vh,1100px);border:0;display:block;background:#525659}
 .note{padding:12px 16px;color:var(--muted);font-size:13px;line-height:1.55;border-top:1px solid var(--line);background:#fff}
-@media(max-width:700px){header{padding:10px 14px;flex-wrap:wrap}.navlinks{margin-left:0}.container{padding:0 12px}.hero{padding:18px}.viewer{height:75vh}}
+
+@media(max-width:900px){.bp-grid{grid-template-columns:1fr}.weight-scroll{max-height:340px}}
+@media(max-width:700px){
+  header{padding:10px 14px;flex-wrap:wrap}.navlinks{margin-left:0}.container{padding:0 12px}.hero{padding:18px}.viewer{height:75vh}
+  .bp-head,.bp-grid{padding:16px}.metric-strip{grid-template-columns:repeat(2,1fr)}
+  .cog-wrap{flex-direction:column;align-items:flex-start}.donut{width:126px;height:126px;flex-basis:126px}
+  .is-projecting .bp-grid{padding:12px}.is-projecting .metric{padding:11px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
@@ -47,9 +151,79 @@ header .logo .brand{background:linear-gradient(90deg,#3b82f6,#22d3ee,#8b5cf6,#3b
 
 <main class="container">
   <section class="hero">
-    <div class="eyebrow">📄 Syllabus</div>
-    <h1>Loksewa Medical Officer Syllabus</h1>
-    <p>General Health Services, 8th Level — Medical Officer (1st and 2nd Papers). View the syllabus below or open/download the PDF.</p>
+    <div class="eyebrow">📚 Syllabus hub</div>
+    <h1>Syllabus &amp; Exam Blueprints</h1>
+    <p>Explore the MECEE-PG MD/MS blueprint below, then open the Loksewa Medical Officer syllabus PDF.</p>
+  </section>
+
+  <section class="blueprint" id="ceeProjector" aria-labelledby="ceeTitle">
+    <div class="bp-head">
+      <div class="bp-title">
+        <div class="bp-mark" aria-hidden="true">🎯</div>
+        <div>
+          <div class="eyebrow">MECEE-PG · MEC Nepal</div>
+          <h2 id="ceeTitle">CEEMD/MS</h2>
+          <p>Syllabus for Postgraduate Entrance Examination, 2020 · Revised November 2025</p>
+        </div>
+      </div>
+      <div class="bp-actions">
+        <button class="btn btn-ghost" id="projectorBtn" type="button" aria-pressed="false">⛶ Projector mode</button>
+      </div>
+    </div>
+
+    <div class="metric-strip" aria-label="Exam format and scoring rules">
+      <div class="metric"><b>200</b><span>MCQs · 4 options</span></div>
+      <div class="metric"><b>3 hours</b><span>Duration</span></div>
+      <div class="metric"><b>+1</b><span>Each correct</span></div>
+      <div class="metric"><b>−0.25</b><span>Each incorrect</span></div>
+      <div class="metric gold"><b>Top 50%</b><span>Merit-list threshold</span></div>
+    </div>
+
+    <div class="bp-grid">
+      <div class="panel">
+        <h3>Blueprint at a glance</h3>
+        <div class="split-bar" role="img" aria-label="Clinical subjects 115 marks, Basic and allied subjects 85 marks">
+          <div class="split-clinical">Clinical 115</div>
+          <div class="split-basic">Basic &amp; Allied 85</div>
+        </div>
+        <div class="split-legend">
+          <span><i class="dot blue"></i>Clinical <strong>57.5%</strong></span>
+          <span><i class="dot violet"></i>Basic &amp; Allied <strong>42.5%</strong></span>
+        </div>
+
+        <div class="cog-wrap">
+          <div class="donut" role="img" aria-label="Cognitive ratio: 50 percent recall, 30 percent understanding, 20 percent application">
+            <div class="donut-center"><b>200</b><small>TOTAL MARKS</small></div>
+          </div>
+          <ul class="cog-list">
+            <li><span><i class="dot blue"></i>Recall</span><b>50% · 100 marks</b></li>
+            <li><span><i class="dot violet"></i>Understanding</span><b>30% · 60 marks</b></li>
+            <li><span><i class="dot cyan"></i>Application</span><b>20% · 40 marks</b></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h3>Subject-wise weightage</h3>
+          <div class="filters" role="group" aria-label="Filter subject weightage">
+            <button type="button" class="active" data-filter="all">All</button>
+            <button type="button" data-filter="clinical">Clinical 115</button>
+            <button type="button" data-filter="basic">Basic 85</button>
+          </div>
+        </div>
+        <div class="weight-scroll" id="weightScroll"></div>
+      </div>
+    </div>
+
+    <div class="bp-foot">
+      <span>Qualification: upper 50th percentile rank enters the merit list.</span>
+      <span class="right">
+        <span><i class="dot blue"></i>Clinical 115</span>
+        <span><i class="dot violet"></i>Basic &amp; Allied 85</span>
+        <span><i class="dot gold"></i>Negative marking 0.25</span>
+      </span>
+    </div>
   </section>
 
   <section class="card" aria-label="Syllabus PDF viewer">
@@ -64,6 +238,105 @@ header .logo .brand{background:linear-gradient(90deg,#3b82f6,#22d3ee,#8b5cf6,#3b
     <div class="note">If the PDF does not display in your browser, use <a href="lumbini-loksewa-medical-officer-syllabus.pdf" target="_blank" rel="noopener">Open in new tab</a> or <a href="lumbini-loksewa-medical-officer-syllabus.pdf" download>Download PDF</a>.</div>
   </section>
 </main>
+
+<script>
+(function () {
+  var GROUPS = [
+    { key: "clinical", title: "Clinical Subjects", marks: 115, subjects: [
+      ["Medicine", 18], ["Surgery", 18], ["Obstetrics & Gynecology", 12], ["Pediatrics", 12],
+      ["Orthopedics", 10], ["Otorhinolaryngology (ENT)", 10], ["Ophthalmology", 7],
+      ["Anesthesiology", 7], ["Psychiatry", 7], ["Radiology", 7], ["Dermatology", 7]
+    ]},
+    { key: "basic", title: "Basic Medical Sciences & Allied Topics", marks: 85, subjects: [
+      ["Anatomy", 12], ["Physiology", 12], ["Pathology", 10], ["Pharmacology", 10],
+      ["Community Medicine & Research (6+4)", 10], ["CPD Topics (Ethics, BLS/ACLS, Infection Control)", 10],
+      ["Biochemistry", 8], ["Microbiology", 8], ["Forensic Medicine", 5]
+    ]}
+  ];
+
+  var host = document.getElementById("weightScroll");
+  var section = document.getElementById("ceeProjector");
+  var btn = document.getElementById("projectorBtn");
+  var filter = "all";
+  var timer = null;
+  var projecting = false;
+
+  function share(marks) {
+    var n = marks / 2;
+    return (Number.isInteger(n) ? n : n.toFixed(1)) + "%";
+  }
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+    });
+  }
+  function groupHtml(g) {
+    var rows = g.subjects.map(function (s) {
+      var name = s[0], marks = s[1];
+      return '<tr>' +
+        '<td class="subj">' + esc(name) + '</td>' +
+        '<td class="mark">' + marks + '</td>' +
+        '<td><div class="bar" aria-hidden="true"><i style="width:' + (marks / 18 * 100).toFixed(1) + '%"></i></div></td>' +
+        '<td class="share">' + share(marks) + '</td>' +
+      '</tr>';
+    }).join("");
+    return '<div class="weight-group ' + g.key + '" data-group="' + g.key + '">' +
+      '<div class="group-head"><span>' + esc(g.title) + '</span><span>' + g.marks + ' marks · ' + share(g.marks) + '</span></div>' +
+      '<table class="weight"><thead><tr><th>Subject</th><th>Marks</th><th>Weight</th><th>Share</th></tr></thead><tbody>' + rows + '</tbody></table>' +
+    '</div>';
+  }
+  function render() {
+    host.innerHTML = GROUPS.filter(function (g) { return filter === "all" || g.key === filter; }).map(groupHtml).join("");
+    stopCycle();
+    if (projecting) startCycle();
+  }
+
+  document.querySelectorAll(".filters button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      filter = b.dataset.filter;
+      document.querySelectorAll(".filters button").forEach(function (x) { x.classList.toggle("active", x === b); });
+      render();
+    });
+  });
+
+  function stopCycle() {
+    if (timer) { clearInterval(timer); timer = null; }
+    section.querySelectorAll(".weight-group tbody tr").forEach(function (r) { r.classList.remove("active"); });
+  }
+  function startCycle() {
+    stopCycle();
+    var rows = Array.prototype.slice.call(section.querySelectorAll(".weight-group tbody tr"));
+    if (!rows.length || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var i = 0;
+    timer = setInterval(function () {
+      rows.forEach(function (r) { r.classList.remove("active"); });
+      rows[i].classList.add("active");
+      rows[i].scrollIntoView({ block: "nearest", behavior: "smooth" });
+      i = (i + 1) % rows.length;
+    }, 1800);
+  }
+  function setProjector(on) {
+    projecting = on;
+    section.classList.toggle("is-projecting", on);
+    document.body.classList.toggle("projecting", on);
+    btn.setAttribute("aria-pressed", String(on));
+    btn.textContent = on ? "↩ Exit projector" : "⛶ Projector mode";
+    if (on) {
+      startCycle();
+      if (section.requestFullscreen) section.requestFullscreen().catch(function () {});
+    } else {
+      stopCycle();
+      if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(function () {});
+    }
+  }
+  btn.addEventListener("click", function () { setProjector(!projecting); });
+  document.addEventListener("fullscreenchange", function () {
+    if (!document.fullscreenElement && projecting) setProjector(false);
+  });
+
+  render();
+})();
+</script>
 <script src="screen-time.js" defer></script>
 </body>
 </html>
