@@ -31,6 +31,7 @@ from urllib.request import urlopen
 ROOT = os.path.dirname(os.path.abspath(__file__))
 HTML_PATH = os.path.join(ROOT, "surgery-practice.html")
 INDEX_PATH = os.path.join(ROOT, "index.html")
+PREMIUM_ACCESS_PATH = os.path.join(ROOT, "premium-access.js")
 BACKUP_DIR = os.path.join(ROOT, "backups")
 IMG_DIR = os.path.join(ROOT, "cee-img")
 USERS_PATH = os.path.join(ROOT, "medarena-users.json")
@@ -55,9 +56,40 @@ CTYPE = {
     ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg",
     ".webp": "image/webp", ".gif": "image/gif", ".svg": "image/svg+xml",
     ".json": "application/json", ".ico": "image/x-icon", ".js": "text/javascript",
-    ".pdf": "application/pdf", ".woff2": "font/woff2", ".woff": "font/woff",
-    ".mp4": "video/mp4", ".txt": "text/plain; charset=utf-8",
+    ".mjs": "text/javascript", ".pdf": "application/pdf",
+    ".woff2": "font/woff2", ".woff": "font/woff",
+    ".mp4": "video/mp4", ".webm": "video/webm",
+    ".txt": "text/plain; charset=utf-8",
 }
+
+# Files/folders a phone is allowed to fetch from this server. The admin server
+# doubles as the Wi-Fi user site, so it must serve the same static assets as a
+# plain file server — but it must never expose user data, backups or scripts.
+PUBLIC_FILES = {
+    "index.html", "surgery-practice.html", "high-yield.html", "emergency-stp.html",
+    "loksewa-analysis.html", "syllabus.html", "video-lessons.html",
+    "premium-access.js", "screen-time.js", "auth.js", "auth.css",
+    "pdf.min.js", "pdf.worker.min.js", "favicon.svg",
+}
+PUBLIC_DIRS = ("medical-mahasagar/", "cee-img/", "pdfs/", "radiology-img/")
+
+
+def is_public_static(url_path):
+    """Whitelist static site assets; keep admin data and scripts private."""
+    p = unquote(url_path.split("?")[0]).lstrip("/").replace("\\", "/")
+    if not p or p.startswith(".") or "/." in p or ".." in p:
+        return False
+    if p in PUBLIC_FILES:
+        return True
+    return any(p.startswith(prefix) for prefix in PUBLIC_DIRS)
+
+
+def static_path(url_path):
+    """Map a public URL to a file path, defaulting folders to index.html."""
+    p = unquote(url_path.split("?")[0]).strip("/").replace("\\", "/")
+    if not p or p.endswith("/"):
+        p += "index.html"
+    return p
 
 _lock = threading.Lock()
 
@@ -373,6 +405,27 @@ def load_lock():
         return None
 
 
+def sync_premium_access(lock_obj):
+    """Mirror the lock into premium-access.js — the shared gate used by the
+    homepage, practice page and Medical Mahasagar. Caller holds _lock."""
+    if not os.path.isfile(PREMIUM_ACCESS_PATH):
+        return
+    obj = lock_obj if isinstance(lock_obj, dict) else {}
+    line = "var LOCK = %s;" % json.dumps(obj, separators=(",", ":"))
+    src = load_html(PREMIUM_ACCESS_PATH)
+    if "var LOCK =" not in src:
+        raise RuntimeError("var LOCK missing in premium-access.js")
+    out = re.sub(r"var LOCK = [^\n]*;", lambda _m, s=line: s, src, count=1)
+    if out == src:
+        raise RuntimeError("could not replace LOCK in premium-access.js")
+    os.makedirs(BACKUP_DIR, exist_ok=True)
+    stamp24 = time.strftime("%Y%m%d-%H%M%S")
+    shutil.copyfile(PREMIUM_ACCESS_PATH,
+                    os.path.join(BACKUP_DIR, "premium-access-%s.js" % stamp24))
+    with open(PREMIUM_ACCESS_PATH, "w", encoding="utf-8", newline="") as f:
+        f.write(out)
+
+
 def save_lock(enabled, code, banks, stamp, keep_code=False):
     with _lock:
         html = load_html(HTML_PATH)
@@ -400,6 +453,7 @@ def save_lock(enabled, code, banks, stamp, keep_code=False):
         else:
             rev = None
             line = "const LOCK = null;"
+            pobj = {"rev": None, "updated": stamp, "banks": [], "subs": []}
             pline = "const PLOCK = null;"
         if "const LOCK =" not in html:
             raise RuntimeError("LOCK constant missing in surgery-practice.html")
@@ -435,6 +489,8 @@ def save_lock(enabled, code, banks, stamp, keep_code=False):
                 raise RuntimeError("could not insert PLOCK into index.html")
         with open(INDEX_PATH, "w", encoding="utf-8", newline="") as f:
             f.write(ih2)
+        # Keep the shared static gate in step with the inline lock above.
+        sync_premium_access(pobj)
         return os.path.basename(bpath)
 
 
@@ -491,6 +547,9 @@ def update_lock_subs(subs):
             raise RuntimeError("could not replace PLOCK in index.html")
         with open(INDEX_PATH, "w", encoding="utf-8", newline="") as f:
             f.write(ih2)
+        # The shared gate must contain the new subscriber code too, otherwise
+        # codes issued here never work in the homepage / Mahasagar gate.
+        sync_premium_access(pobj)
         # Keep Very High Yield notes in sync — the same lifetime code unlocks them.
         hy_path = os.path.join(ROOT, "high-yield.html")
         if os.path.exists(hy_path):
@@ -506,7 +565,8 @@ def update_lock_subs(subs):
 # ---------- publishing (codes/banks only work live once pushed) ----------
 # GitHub Pages serves the committed HTML, so a lifetime code written into the
 # local LOCK does nothing on the live site until those files are pushed.
-PUBLISH_FILES = ("surgery-practice.html", "index.html", "high-yield.html", "admin.html")
+PUBLISH_FILES = ("surgery-practice.html", "index.html", "high-yield.html",
+                 "premium-access.js", "admin.html", "medical-mahasagar/index.html")
 
 
 def _git(*args, timeout=300):
@@ -1100,6 +1160,11 @@ class Handler(BaseHTTPRequestHandler):
         # Static asset folders used by the practice engine and the STP viewer.
         if path.startswith("/pdfs/") or path.startswith("/radiology-img/"):
             self._file(path); return
+        # The Wi-Fi user site needs the same static files as a plain file server.
+        # Without this, phones loaded the HTML but every script/CSS/image 404'd,
+        # so Medical Mahasagar never received its card dataset.
+        if is_public_static(path):
+            self._file(static_path(path)); return
         if path == "/favicon.ico":
             self._send(204, "image/x-icon", b""); return
         self._send(404, "text/plain", b"not found")
