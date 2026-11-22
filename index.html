@@ -1302,7 +1302,7 @@ var MEDARENA_FREE_TRIAL = window.MEDARENA_ACCESS.FREE_TRIAL;
 const FREE_UNTIL = window.MEDARENA_ACCESS.FREE_UNTIL;
 const isFreePeriod = window.MEDARENA_ACCESS.isFreePeriod;
 function applyPracticeLockIcons(){
-  if (isFreePeriod()) { document.querySelectorAll(".home-bank-action .lock-ic").forEach(el => el.remove()); return; }
+  if (isFreePeriod() || (window.MEDARENA_ACCESS && window.MEDARENA_ACCESS.isUnlocked())) { document.querySelectorAll(".home-bank-action .lock-ic").forEach(el => el.remove()); return; }
   if (!(typeof PLOCK === "object" && PLOCK && PLOCK.rev)) return;
   const list = Array.isArray(PLOCK.banks) ? PLOCK.banks : null; // legacy: all sets
   document.querySelectorAll(".home-bank-action").forEach(a => {
@@ -2214,7 +2214,7 @@ renderEmbeddedBanks();
     .then(d => { if (d && d.rev){ cloudRev = d.rev; refresh(); } })
     .catch(() => {});
   function computeState(){
-    if (isFreePeriod()){ unlockedNow = true; return { link: false, auto: false }; }
+    if (isFreePeriod() || (window.MEDARENA_ACCESS && window.MEDARENA_ACCESS.isUnlocked())){ unlockedNow = true; return { link: false, auto: false }; }
     const locked = typeof PLOCK === "object" && PLOCK && PLOCK.rev;
     unlockedNow = false;
     if (!locked) return { link: false, auto: false };

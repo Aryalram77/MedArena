@@ -1595,7 +1595,8 @@ const medArenaHash = window.MEDARENA_ACCESS.hash;
     .then(d => { if (d && d.rev){ cloudSubs = [{ id: devId, rev: d.rev }]; refreshAccess(); } })
     .catch(() => {});
   /* unlocked: owner's master code, or a lifetime code issued for THIS device */
-  const unlocked = () => isFreePeriod() || (!!rev && !!saved && (saved.rev === rev || allSubs().some(s => s.rev && s.rev === saved.rev && s.id === devId)));
+  const unlocked = () => isFreePeriod() || (window.MEDARENA_ACCESS && window.MEDARENA_ACCESS.isUnlocked()) ||
+    (!!rev && !!saved && (saved.rev === rev || allSubs().some(s => s.rev && s.rev === saved.rev && s.id === devId)));
   /* Share the live unlock state with the study buddy so it never shows a
      locked answer on a device that practice already treats as unlocked
      (including cloud-issued codes returned by /api/sub-verify). */
@@ -1664,7 +1665,12 @@ const medArenaHash = window.MEDARENA_ACCESS.hash;
       }
       saved = { rev: hit.rev };           /* lifetime code — bound to this device */
     }
-    try { localStorage.setItem("medarena.practiceAccess", JSON.stringify(saved)); } catch (e) {}
+    /* Route through the shared access layer so this successful entry writes a
+       lifetime receipt — the code form never returns to this device. */
+    try {
+      if (window.MEDARENA_ACCESS && window.MEDARENA_ACCESS.saveAccess) window.MEDARENA_ACCESS.saveAccess(saved);
+      else localStorage.setItem("medarena.practiceAccess", JSON.stringify(saved));
+    } catch (e) {}
     input.value = "";
     input.blur();
     refreshAccess();

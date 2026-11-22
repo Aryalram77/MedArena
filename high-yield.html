@@ -3147,6 +3147,7 @@ window.HYLock = (function(){
   function unlocked(){
     if (isFreePeriod()) return true;
     if (!LOCK.rev) return true;
+    if (window.MEDARENA_ACCESS && window.MEDARENA_ACCESS.isUnlocked()) return true;
     if (!saved) return false;
     if (saved.rev === LOCK.rev) return true;   /* owner's master code */
     return allSubs().some(function(s){ return s.rev && s.rev === saved.rev && s.id === devId; });
@@ -3215,7 +3216,12 @@ window.HYLock = (function(){
         savedRev = hit.rev;                   /* lifetime code — bound to this device */
       }
       saved = { rev: savedRev };
-      try { localStorage.setItem("medarena.practiceAccess", JSON.stringify(saved)); } catch (e) {}
+      /* Route through the shared layer so the lifetime receipt is written and
+         the code form never returns to this device. */
+      try {
+        if (window.MEDARENA_ACCESS && window.MEDARENA_ACCESS.saveAccess) window.MEDARENA_ACCESS.saveAccess(saved);
+        else localStorage.setItem("medarena.practiceAccess", JSON.stringify(saved));
+      } catch (e) {}
       input.value = "";
       paintChips();
       close();
