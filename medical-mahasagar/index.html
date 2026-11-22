@@ -128,35 +128,68 @@
     </div>
   </div>
 
-  <!-- The 27 MB card dataset is injected only after the lifetime gate opens. -->
-  <script src="../premium-access.js"></script>
+  <!-- The 27 MB card dataset is injected directly — Medical Mahasagar is free. -->
+  <style>
+    .mm-load-status{position:fixed;left:50%;top:18px;transform:translateX(-50%);z-index:6000;
+      max-width:calc(100vw - 32px);padding:10px 16px;border-radius:999px;background:#0f3d7a;
+      color:#fff;box-shadow:0 8px 26px rgba(15,61,122,.35);font:600 13px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif;
+      text-align:center}
+  </style>
   <script>
     (function () {
-      var MA = window.MEDARENA_ACCESS;
-      if (!MA) {
-        document.body.innerHTML = '<p style="padding:30px;font:16px system-ui">Access service unavailable. Reload the page.</p>';
-        return;
-      }
       var loaded = false;
-      function load(index) {
-        var s = document.createElement("script");
-        s.src = index;
-        s.async = false;          /* data.js → validator.js → app.js → tracker */
-        document.body.appendChild(s);
-      }
-      MA.mountGate({
-        title: "Medical Mahasagar is premium",
-        description: "Unlock with the same lifetime code used for the locked practice sets. Chapter cards, figures and search stay hidden until this device is unlocked.",
-        homeHref: "../index.html",
-        onUnlock: function () {
-          if (loaded) return;
-          loaded = true;
-          load("js/data.js");
-          load("js/validator.js");
-          load("js/app.js");
-          load("../screen-time.js");
+      var status = null;
+
+      function setStatus(text) {
+        if (!status) {
+          status = document.createElement("div");
+          status.className = "mm-load-status";
+          status.setAttribute("role", "status");
+          document.body.appendChild(status);
         }
-      });
+        status.textContent = text;
+      }
+
+      /* Mobile Safari does not reliably preserve execution order for injected
+         scripts with async=false. Chain on onload instead so data.js is always
+         ready before validator.js and app.js. One retry covers flaky mobile data. */
+      function loadScript(src, attempt) {
+        attempt = attempt || 0;
+        return new Promise(function (resolve, reject) {
+          var s = document.createElement("script");
+          s.src = src;
+          s.async = false;
+          s.onload = function () { resolve(); };
+          s.onerror = function () {
+            if (s.parentNode) s.parentNode.removeChild(s);
+            if (attempt < 1) {
+              loadScript(src, attempt + 1).then(resolve, reject);
+            } else {
+              reject(new Error("Could not load " + src));
+            }
+          };
+          document.body.appendChild(s);
+        });
+      }
+
+      function boot() {
+        if (loaded) return;
+        loaded = true;
+        setStatus("Loading chapter cards…");
+        loadScript("js/data.js")
+          .then(function () { setStatus("Checking chapter topics…"); return loadScript("js/validator.js"); })
+          .then(function () { setStatus("Building cards…"); return loadScript("js/app.js"); })
+          .then(function () {
+            if (status && status.parentNode) status.parentNode.removeChild(status);
+            /* Screen-time tracking is optional; never let it block the cards. */
+            loadScript("../screen-time.js").catch(function () {});
+          })
+          .catch(function (err) {
+            setStatus("Cards could not load: " + (err && err.message ? err.message : err) + " — check your connection and reload.");
+          });
+      }
+
+      boot();
     })();
   </script>
 </body>
