@@ -1,14 +1,14 @@
 {
   "v": 1,
-  "generatedAt": "2026-11-23T12:24:28.810Z",
-  "totalQuestions": 31426,
+  "generatedAt": "2026-11-23T16:22:53.119Z",
+  "totalQuestions": 32742,
   "subjects": {
     "surgery": 5994,
     "medicine": 2301,
     "anesthesia": 91,
     "orthopedics": 1567,
     "pathology": 2587,
-    "obg": 223,
+    "obg": 1539,
     "community": 3187,
     "pediatrics": 211,
     "radiology": 860,
@@ -1112,6 +1112,34 @@
     ],
     "obg": [
       {
+        "name": "AIIMS New Pattern Questions with Answers",
+        "available": 102,
+        "banks": [
+          "obs"
+        ]
+      },
+      {
+        "name": "Diagnosis in Obstetrics and Fetal Monitoring",
+        "available": 86,
+        "banks": [
+          "obs"
+        ]
+      },
+      {
+        "name": "Other Problems in Pregnancy",
+        "available": 84,
+        "banks": [
+          "obs"
+        ]
+      },
+      {
+        "name": "Normal and Abnormal Labor",
+        "available": 75,
+        "banks": [
+          "obs"
+        ]
+      },
+      {
         "name": "Obstetrics & Gynaecology",
         "available": 65,
         "banks": [
@@ -1123,6 +1151,13 @@
         ]
       },
       {
+        "name": "Diabetes and Thyroid in Pregnancy",
+        "available": 61,
+        "banks": [
+          "obs"
+        ]
+      },
+      {
         "name": "Obstetrics & Gynecology",
         "available": 58,
         "banks": [
@@ -1130,6 +1165,48 @@
           "cee4",
           "cee5",
           "cee6"
+        ]
+      },
+      {
+        "name": "Maternal Adaptations in Pregnancy",
+        "available": 57,
+        "banks": [
+          "obs"
+        ]
+      },
+      {
+        "name": "Latest Papers",
+        "available": 56,
+        "banks": [
+          "obs"
+        ]
+      },
+      {
+        "name": "Infections in Pregnancy",
+        "available": 53,
+        "banks": [
+          "obs"
+        ]
+      },
+      {
+        "name": "Malpresentations",
+        "available": 53,
+        "banks": [
+          "obs"
+        ]
+      },
+      {
+        "name": "Third Stage of Labor and its Complications",
+        "available": 51,
+        "banks": [
+          "obs"
+        ]
+      },
+      {
+        "name": "Ectopic Pregnancy",
+        "available": 49,
+        "banks": [
+          "obs"
         ]
       },
       {
@@ -1148,6 +1225,125 @@
         ]
       },
       {
+        "name": "Hypertensive Disorders in Pregnancy",
+        "available": 46,
+        "banks": [
+          "obs"
+        ]
+      },
+      {
+        "name": "Antepartum Hemorrhage and DIC",
+        "available": 45,
+        "banks": [
+          "obs"
+        ]
+      },
+      {
+        "name": "Abortion and MTP",
+        "available": 42,
+        "banks": [
+          "obs"
+        ]
+      },
+      {
+        "name": "Trophoblastic Diseases including Choriocarcinoma",
+        "available": 42,
+        "banks": [
+          "obs"
+        ]
+      },
+      {
+        "name": "Preterm Labor, PROM and Post-dated Pregnancy",
+        "available": 41,
+        "banks": [
+          "obs"
+        ]
+      },
+      {
+        "name": "Operative Obstetrics",
+        "available": 40,
+        "banks": [
+          "obs"
+        ]
+      },
+      {
+        "name": "Pelvis and Fetal Skull",
+        "available": 35,
+        "banks": [
+          "obs"
+        ]
+      },
+      {
+        "name": "Placenta, Fetal Membranes and Umbilical Cord",
+        "available": 34,
+        "banks": [
+          "obs"
+        ]
+      },
+      {
+        "name": "Pregnancy in Rh-Negative Women",
+        "available": 34,
+        "banks": [
+          "obs"
+        ]
+      },
+      {
+        "name": "Heart Disease in Pregnancy",
+        "available": 32,
+        "banks": [
+          "obs"
+        ]
+      },
+      {
+        "name": "Basics of Reproduction",
+        "available": 29,
+        "banks": [
+          "obs"
+        ]
+      },
+      {
+        "name": "Obstructed Labor and Intrauterine Death",
+        "available": 29,
+        "banks": [
+          "obs"
+        ]
+      },
+      {
+        "name": "Fetal Growth Disorders",
+        "available": 28,
+        "banks": [
+          "obs"
+        ]
+      },
+      {
+        "name": "Multifetal Pregnancy",
+        "available": 28,
+        "banks": [
+          "obs"
+        ]
+      },
+      {
+        "name": "Puerperium and its Abnormalities",
+        "available": 26,
+        "banks": [
+          "obs"
+        ]
+      },
+      {
+        "name": "Anemia in Pregnancy",
+        "available": 22,
+        "banks": [
+          "obs"
+        ]
+      },
+      {
+        "name": "Amniotic Fluid and its Abnormalities",
+        "available": 21,
+        "banks": [
+          "obs"
+        ]
+      },
+      {
         "name": "Gynaecology",
         "available": 19,
         "banks": [
@@ -1156,6 +1352,13 @@
           "central2072",
           "central2073",
           "central2074"
+        ]
+      },
+      {
+        "name": "Fetal Physiology",
+        "available": 15,
+        "banks": [
+          "obs"
         ]
       },
       {
