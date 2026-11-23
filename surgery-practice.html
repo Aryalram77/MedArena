@@ -461,7 +461,7 @@ pre{white-space:pre-wrap;word-break:break-word;overflow-x:auto;}
 <header>
   <div class="logo"><a class="home-brand-link" href="index.html" aria-label="MedArena homepage">✚ <span class="brand">MedArena</span></a></div>
   <div class="tag" id="hdrTag">Categories: Loksewa · Surgery · CEE MD/MS</div>
-  <div class="hdr-actions"><button class="rev-btn" id="revOpenBtn" type="button">🔁 Revisions<span class="due-dot zero" id="revDueDot">0</span></button></div>
+  <div class="hdr-actions"><a class="rev-btn" href="pragati-bibaran.html" style="text-decoration:none">📈 प्रगति विवरण</a><button class="rev-btn" id="revOpenBtn" type="button">🔁 Revisions<span class="due-dot zero" id="revDueDot">0</span></button></div>
 </header>
 
 <div id="freeUsageBanner" style="display:none;background:linear-gradient(90deg,#0ea5e9,#2563eb);color:#fff;padding:10px 16px;text-align:center;font-size:14px;font-weight:600;letter-spacing:.2px">
@@ -683,6 +683,9 @@ pre{white-space:pre-wrap;word-break:break-word;overflow-x:auto;}
 <div class="toast" id="toast"></div>
 
 <script src="premium-access.js"></script>
+<script src="js/pragati-taxonomy.js"></script>
+<script src="js/pragati-api.js"></script>
+<script src="js/pragati-track.js"></script>
 <script>
 "use strict";
 /* ===== Question of the Day (auto-selected daily from all sets) ===== */
@@ -851,6 +854,12 @@ function buildPool(){
     const target = CUR.questions.find(q => String(q.n) === String(deepQ));
     if (target) return { src: [target], label: "Question " + target.n };
   }
+  /* Pragati Bibaran chapter deep link: ?bank=<id>&ch=<exact chapter label>. */
+  const deepChapter = requestedEntry && routeParams.get("ch");
+  if (deepChapter){
+    const src = CUR.questions.filter(q => q.chapter === deepChapter);
+    if (src.length) return { src, label: deepChapter };
+  }
   const size = parseInt($("setSizeSel").value, 10);
   const n = CUR.questions.length;
   const val = $("setSel").value;
@@ -909,7 +918,11 @@ function startExam(playerName){
   const revActive = !!(window.MARevision && window.MARevision.sessionActive());
   const mode = revActive ? "tutor" : (MOCK ? "timed" : (CUR.noKey ? "timed" : $("modeSel").value));
   const minutes = MOCK ? 75 : (mode === "tutor" ? 0 : Math.max(0, parseInt($("timerMin").value, 10) || 0));
-  state.exam = { pool, label: bp.label, playerName, mode, minutes, bankId: (BANKS.find(x => x.bank === CUR) || {}).id || "", sel: pool.map(() => null), flags: pool.map(() => false), marks: {}, cur: 0, timeLeft: minutes * 60, timerInt: null };
+  state.exam = { id: "", pool, label: bp.label, playerName, mode, minutes, bankId: (BANKS.find(x => x.bank === CUR) || {}).id || "", sel: pool.map(() => null), flags: pool.map(() => false), marks: {}, cur: 0, timeLeft: minutes * 60, timerInt: null, _pragatiSeen: {} };
+  try {
+    const ps = window.PragatiTrack && window.PragatiTrack.startSession({ bankId: state.exam.bankId, label: bp.label, mode, total: pool.length });
+    if (ps) state.exam.id = ps.id;
+  } catch (e) {}
   if (mode === "timed" && minutes > 0) { state.exam.timerInt = setInterval(tick, 1000); updateTimer(); }
   state.exam._resumeInt = setInterval(saveResumeNow, 15000);
   ["examOrchestrator", "examResults", "revisionView"].forEach(id => { const el = $(`#${id}`); if (el) el.style.display = "none"; });
@@ -1107,6 +1120,12 @@ function choose(i, oi, row){
       if (!q.options[oi].correct) toast("❌ Wrong answer — added to Revisions, due now.");
       try { if (window.MADailySolved) window.MADailySolved.mark(q); } catch (e) {}
       try { if (window.maSyncCloud && ex.bankId) window.maSyncCloud({ [ex.bankId + "|" + QKEY(q)]: { c: q.options[oi].correct ? 1 : 0, t: Date.now() } }); } catch (e) {}
+      try {
+        if (window.PragatiTrack && ex.bankId) {
+          const evt = window.PragatiTrack.recordAnswer(q, { bankId: ex.bankId, selected: [k], correct: !!q.options[oi].correct, sessionId: ex.id, mode: ex.mode });
+          if (evt) { ex._pragatiSeen = ex._pragatiSeen || {}; ex._pragatiSeen[QKEY(q)] = true; }
+        }
+      } catch (e) {}
     } else {
       if (ex.sel[i][0] === k) ex.sel[i] = []; else ex.sel[i] = [k];
     }
@@ -1184,6 +1203,12 @@ function finishExam(auto){
     try { if (window.MARevision && !q.noKey && sel.length) window.MARevision.record(q, !!ok); } catch (e) {}
     try { if (window.MADailySolved && sel.length) window.MADailySolved.mark(q); } catch (e) {}
     if (sel.length && ex.bankId) pItems[ex.bankId + "|" + QKEY(q)] = { c: ok ? 1 : 0, t: Date.now() };
+    /* Tutor mode already emitted the event in choose(); timed mode emits once here. */
+    try {
+      if (window.PragatiTrack && ex.bankId && sel.length && !q.noKey && !((ex._pragatiSeen || {})[QKEY(q)])) {
+        window.PragatiTrack.recordAnswer(q, { bankId: ex.bankId, selected: sel.map(String), correct: !!ok, sessionId: ex.id, mode: ex.mode });
+      }
+    } catch (e) {}
   });
   try { if (window.maSyncCloud && Object.keys(pItems).length) window.maSyncCloud(pItems); } catch (e) {}
 
@@ -1214,6 +1239,13 @@ function finishExam(auto){
   const hist = JSON.parse(store.getItem("se1.hist") || "[]");
   hist.unshift({ d: new Date().toLocaleString(), label: a.label, mode: a.mode, total: a.total, correct: a.correct, timeUsed: a.timeUsed });
   store.setItem("se1.hist", JSON.stringify(hist.slice(0, 30)));
+  try {
+    if (window.PragatiTrack) window.PragatiTrack.finishSession({
+      id: ex.id, finishedAt: Date.now(),
+      answered: ex.sel.filter(x => x && x.length).length,
+      correct, timeUsed: a.timeUsed
+    });
+  } catch (e) {}
   const saved = state.exam;
   if (saved && saved._resumeInt) clearInterval(saved._resumeInt);
   if (saved) clearResume(saved.bankId || (BANKS.find(b => b.bank === CUR) || {}).id || "");

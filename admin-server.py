@@ -37,6 +37,8 @@ IMG_DIR = os.path.join(ROOT, "cee-img")
 USERS_PATH = os.path.join(ROOT, "medarena-users.json")
 SUBS_PATH = os.path.join(ROOT, "medarena-subs.json")
 AUTH_CONFIG_PATH = os.path.join(ROOT, "auth-config.json")
+PRAGATI_SYLLABUS_PATH = os.path.join(ROOT, "pragati-syllabus.json")
+PRAGATI_WEIGHTAGE_PATH = os.path.join(ROOT, "pragati-weightage.json")
 SESSION_COOKIE = "ma_sess"
 SESSION_TTL = 60 * 24 * 3600  # 60 days
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8600
@@ -68,7 +70,11 @@ CTYPE = {
 PUBLIC_FILES = {
     "index.html", "surgery-practice.html", "high-yield.html", "emergency-stp.html",
     "loksewa-analysis.html", "syllabus.html", "video-lessons.html",
+    "pragati-bibaran.html", "pragati-syllabus.json", "pragati-question-counts.json",
+    "pragati-question-index.json", "supabase-config.json",
     "premium-access.js", "screen-time.js", "auth.js", "auth.css",
+    "js/pragati-taxonomy.js", "js/pragati-api.js", "js/pragati-track.js",
+    "js/pragati.js", "css/pragati.css",
     "pdf.min.js", "pdf.worker.min.js", "favicon.svg",
 }
 PUBLIC_DIRS = ("medical-mahasagar/", "cee-img/", "pdfs/", "radiology-img/")
@@ -332,6 +338,124 @@ def save_notification_content(content):
             f.write(html2)
         saved = load_notification()
         return os.path.basename(backup)
+
+
+def load_pragati_syllabus():
+    """Read the generated 200-mark blueprint shipped with the static site."""
+    try:
+        with open(PRAGATI_SYLLABUS_PATH, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        if isinstance(data, dict) and isinstance(data.get("subjects"), list):
+            return data
+    except Exception:
+        pass
+    return {"totalMarks": 200, "subjects": []}
+
+
+def load_pragati_weightage():
+    """Blueprint marks with an optional admin override layered on top.
+
+    The override file is separate from the generated syllabus so rebuilding the
+    question catalogue never silently resets an admin's weightage edits.
+    """
+    syllabus = load_pragati_syllabus()
+    override = {}
+    source = "blueprint"
+    updated = ""
+    try:
+        with open(PRAGATI_WEIGHTAGE_PATH, "r", encoding="utf-8") as f:
+            saved = json.load(f)
+        if isinstance(saved, dict):
+            for row in saved.get("subjects") or []:
+                if isinstance(row, dict) and row.get("id"):
+                    override[str(row["id"])] = row.get("marks")
+            source = "admin"
+            updated = str(saved.get("updatedAt", "") or "")
+    except Exception:
+        pass
+
+    subjects = []
+    for base in syllabus.get("subjects") or []:
+        if not isinstance(base, dict) or not base.get("id"):
+            continue
+        sid = str(base["id"])
+        marks = base.get("marks", 0)
+        if sid in override:
+            try:
+                marks = max(0, int(round(float(override[sid]))))
+            except (TypeError, ValueError):
+                pass
+        row = dict(base)
+        row["id"] = sid
+        row["marks"] = marks
+        subjects.append(row)
+    total = sum(int(s.get("marks", 0) or 0) for s in subjects)
+    return {
+        "v": 1,
+        "title": syllabus.get("title", "MECEE-PG MD/MS · 200-mark blueprint"),
+        "subjects": subjects,
+        "total": total,
+        "valid": total == 200,
+        "source": source,
+        "updatedAt": updated,
+    }
+
+
+def save_pragati_weightage(payload):
+    """Validate and persist admin weightage. Total must be exactly 200."""
+    data = payload if isinstance(payload, dict) else {}
+    rows = data.get("subjects")
+    if not isinstance(rows, list) or not rows:
+        raise ValueError("subjects must be a non-empty list")
+
+    syllabus = load_pragati_syllabus()
+    defaults = {}
+    for base in syllabus.get("subjects") or []:
+        if isinstance(base, dict) and base.get("id"):
+            defaults[str(base["id"])] = base
+
+    marks = {}
+    for row in rows:
+        if not isinstance(row, dict):
+            raise ValueError("invalid subject row")
+        sid = str(row.get("id", "") or "")
+        if sid not in defaults:
+            raise ValueError("unknown subject id: " + sid)
+        try:
+            value = int(round(float(row.get("marks"))))
+        except (TypeError, ValueError):
+            raise ValueError("marks must be a number for " + sid)
+        if value < 0 or value > 200:
+            raise ValueError("marks out of range for " + sid)
+        marks[sid] = value
+    if len(marks) != len(defaults):
+        raise ValueError("weightage must include every subject in the blueprint")
+    total = sum(marks.values())
+    if total != 200:
+        raise ValueError("weightage total is %d/200" % total)
+
+    saved = {
+        "v": 1,
+        "subjects": [{"id": sid, "marks": marks[sid]} for sid in defaults],
+        "total": 200,
+        "updatedAt": str(data.get("updatedAt", "") or time.strftime("%Y-%m-%dT%H:%M:%SZ")),
+    }
+    with _lock:
+        os.makedirs(BACKUP_DIR, exist_ok=True)
+        backup = ""
+        if os.path.exists(PRAGATI_WEIGHTAGE_PATH):
+            stamp = time.strftime("%Y%m%d-%H%M%S")
+            backup = os.path.join(BACKUP_DIR, "pragati-weightage-%s.json" % stamp)
+            shutil.copyfile(PRAGATI_WEIGHTAGE_PATH, backup)
+        tmp = PRAGATI_WEIGHTAGE_PATH + ".tmp"
+        with open(tmp, "w", encoding="utf-8", newline="") as f:
+            json.dump(saved, f, ensure_ascii=False, indent=2)
+            f.write("\n")
+        os.replace(tmp, PRAGATI_WEIGHTAGE_PATH)
+        check = load_pragati_weightage()
+        if not check.get("valid") or check.get("total") != 200:
+            raise RuntimeError("weightage verification failed")
+        return os.path.basename(backup) if backup else "created"
 
 
 def save_concept(c, stamp):
@@ -1066,6 +1190,8 @@ class Handler(BaseHTTPRequestHandler):
             self._send_json(load_homepage_content()); return
         if path == "/api/notification":
             self._send_json(load_notification()); return
+        if path == "/api/pragati/weightage":
+            self._send_json(load_pragati_weightage()); return
         if path == "/api/concept":
             self._send_json(load_concept()); return
         if path == "/api/question-of-day":
@@ -1405,6 +1531,17 @@ class Handler(BaseHTTPRequestHandler):
                                      "msg": "%d questions · backup %s · (old block was %d bytes)" % (len(bank["questions"]), os.path.basename(bpath), old_len)})
                 except Exception as ex:
                     self._send_json({"error": "save failed: %r" % ex}, 500)
+            return
+
+        if path == "/api/admin/pragati/weightage":
+            try:
+                backup = save_pragati_weightage(payload)
+                self._send_json({"ok": True, "total": 200, "backup": backup,
+                                 "msg": "Weightage saved · 200/200 · " + backup})
+            except ValueError as ex:
+                self._send_json({"error": str(ex)}, 400)
+            except Exception as ex:
+                self._send_json({"error": "save failed: %r" % ex}, 500)
             return
 
         if path == "/api/save-homepage":

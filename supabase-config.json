@@ -1,0 +1,6 @@
+{
+  "enabled": false,
+  "url": "",
+  "anonKey": "",
+  "notes": "Optional. Fill with your Supabase project URL and public anon key, then set enabled to true. RLS still requires a real Supabase user JWT; never put a service-role key in this file."
+}

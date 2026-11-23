@@ -291,6 +291,17 @@ hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0}
   </div>
   <div class="meta" id="hMeta" style="margin-top:6px"></div>
 </div>
+<div class="panel" id="weightagePanel" style="margin:0 22px 20px;max-width:1456px">
+  <h2>⚖️ Pragati Bibaran — CEE MD/MS weightage</h2>
+  <div class="meta" style="margin:-4px 0 12px">Official 200-mark blueprint. These marks drive weighted progress and priority in the personal dashboard — they are deliberately independent of question-bank size. The total must be exactly 200 before anything is saved.</div>
+  <div id="wTable" class="u-wrap" style="background:transparent;border:none"><span class="meta">Loading weightage…</span></div>
+  <div class="toolbar" style="margin-top:12px">
+    <button id="wSave">💾 Save weightage</button>
+    <button class="ghost" id="wReset">↺ Reset to 200-mark blueprint</button>
+    <span id="wTotal" class="meta" style="margin-left:auto"></span>
+  </div>
+  <div class="meta" id="wMeta" style="margin-top:6px"></div>
+</div>
 <div class="panel" id="notificationPanel" style="margin:0 22px 20px;max-width:1456px">
   <h2>📣 Notifications / Broadcast</h2>
   <div class="meta" style="margin:-4px 0 12px">Broadcast a message to all visitors. It appears in the 🔔 bell on the homepage. Toggle off to hide it.</div>
@@ -1084,6 +1095,68 @@ async function loadQotD(){
 const qotdRefresh = $("qotdRefresh");
 if (qotdRefresh) qotdRefresh.onclick = () => loadQotD();
 loadQotD().catch(e => toast("QotD load failed: " + e.message, true));
+</script>
+<script>
+/* ===== Pragati Bibaran weightage editor ===== */
+(function () {
+  const DEFAULT_MARKS = {
+    medicine:18, surgery:18, obg:12, pediatrics:12, orthopedics:10, ent:10,
+    ophthalmology:7, anesthesia:7, psychiatry:7, radiology:7, dermatology:7,
+    anatomy:12, physiology:12, pathology:10, pharmacology:10, biochemistry:8,
+    microbiology:8, community:6, research:4, forensic:5, cpd:10
+  };
+  const NAMES = {
+    medicine:"Medicine",surgery:"Surgery",obg:"Obstetrics & Gynecology",pediatrics:"Pediatrics",orthopedics:"Orthopedics",ent:"ENT",ophthalmology:"Ophthalmology",anesthesia:"Anesthesiology",psychiatry:"Psychiatry",radiology:"Radiology",dermatology:"Dermatology",anatomy:"Anatomy",physiology:"Physiology",pathology:"Pathology",pharmacology:"Pharmacology",biochemistry:"Biochemistry",microbiology:"Microbiology",community:"Community Medicine",research:"Research Methodology",forensic:"Forensic Medicine",cpd:"Mandatory CPD"
+  };
+  function render(rows, meta) {
+    const host = $("wTable"); if (!host) return;
+    host.innerHTML = '<div class="u-row u-hd" style="grid-template-columns:minmax(190px,2fr) 120px 120px"><span>Subject</span><span style="text-align:right">Marks</span><span style="text-align:right">Share</span></div>' +
+      rows.map(r => '<div class="u-row" style="grid-template-columns:minmax(190px,2fr) 120px 120px"><span><b>'+esc(r.name||NAMES[r.id]||r.id)+'</b><i>'+esc(r.nameNp||r.group||r.id)+'</i></span>'+
+        '<span style="text-align:right"><input type="number" min="0" max="200" step="1" data-weight="'+esc(r.id)+'" value="'+Number(r.marks||0)+'" style="width:88px;text-align:right"></span>'+
+        '<span class="u-n" data-share="'+esc(r.id)+'">'+((Number(r.marks||0)/2).toFixed(1))+'%</span></div>').join("");
+    updateTotal();
+    if (meta) $("wMeta").textContent = meta;
+  }
+  function current() {
+    return [].slice.call(document.querySelectorAll("[data-weight]")).map(el => ({
+      id: el.dataset.weight, marks: Math.max(0, Math.round(Number(el.value) || 0))
+    }));
+  }
+  function updateTotal() {
+    const rows = current();
+    const total = rows.reduce((a,r)=>a+r.marks,0);
+    const el = $("wTotal"); if (!el) return;
+    el.textContent = "Total: " + total + "/200";
+    el.style.color = total === 200 ? "var(--ok)" : "var(--bad)";
+    rows.forEach(r => { const s = document.querySelector('[data-share="'+r.id+'"]'); if (s) s.textContent = (r.marks/2).toFixed(1)+"%"; });
+    return total;
+  }
+  async function load() {
+    try {
+      const d = await api("/api/pragati/weightage");
+      render(d.subjects || [], d.updatedAt ? "Last updated " + d.updatedAt : "Blueprint default — not customised yet.");
+    } catch (e) {
+      render(Object.keys(DEFAULT_MARKS).map(id => ({ id, name: NAMES[id], marks: DEFAULT_MARKS[id] })), "Showing local blueprint default: " + e.message);
+    }
+  }
+  $("wTable").addEventListener("input", updateTotal);
+  $("wSave").onclick = async () => {
+    const total = updateTotal();
+    if (total !== 200) { toast("Weightage total is " + total + "/200 — fix it before saving.", true); return; }
+    try {
+      const out = await api("/api/admin/pragati/weightage", {
+        method:"POST", headers:{"Content-Type":"application/json"},
+        body: JSON.stringify({ v:1, subjects: current(), total:200, updatedAt:new Date().toISOString() })
+      });
+      toast("Weightage saved ✔ " + (out.msg || "200/200"));
+      load();
+    } catch (e) { toast("Weightage save failed: " + e.message, true); }
+  };
+  $("wReset").onclick = () => {
+    render(Object.keys(DEFAULT_MARKS).map(id => ({ id, name: NAMES[id], marks: DEFAULT_MARKS[id] })), "Unsaved reset to the official 200-mark blueprint — click Save weightage to apply.");
+  };
+  load();
+})();
 </script>
 <footer class="site-copyright" id="siteCopyright" aria-label="Copyright">© Dr. Ram</footer>
 </body>

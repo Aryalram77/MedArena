@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>प्रगति विवरण | PRAGATI BIBARAN — MedArena</title>
+<link rel="stylesheet" href="auth.css">
+<link rel="stylesheet" href="css/pragati.css">
+<script>window.MA_API_BASE = "https://medarena-api.medarena-ram.workers.dev";</script>
+<script src="js/pragati-taxonomy.js"></script>
+<script src="js/pragati-api.js"></script>
+<script src="auth.js" defer></script>
+<script src="screen-time.js" defer></script>
+<script src="js/pragati-track.js" defer></script>
+<script src="js/pragati.js" defer></script>
+</head>
+<body class="pb-body">
+<header class="pb-header">
+  <a class="pb-logo" href="index.html" aria-label="MedArena homepage"><span class="cross">✚</span> <span class="brand">MedArena</span></a>
+  <nav class="pb-nav" aria-label="Primary">
+    <a href="index.html">Home</a>
+    <a href="syllabus.html">Syllabus</a>
+    <a href="surgery-practice.html">Practice</a>
+    <a href="pragati-bibaran.html" aria-current="page">प्रगति विवरण</a>
+  </nav>
+</header>
+
+<main class="pb-wrap">
+  <section class="pb-hero" id="dashTop">
+    <div class="pb-hero-top">
+      <div>
+        <div class="pb-eyebrow">Personal CEE MD/MS analytics</div>
+        <h1>प्रगति विवरण | PRAGATI BIBARAN</h1>
+        <p>Your own attempts, your own coverage, your own weak areas. Every number below comes from your signed-in account or this device's real practice history — never a demo profile.</p>
+      </div>
+      <button class="pb-btn pb-btn-ghost" id="projectorBtn" type="button" aria-pressed="false">⛶ Projector mode</button>
+    </div>
+    <div class="pb-who">
+      <div class="pb-avatar" id="pbAvatar">प</div>
+      <div>
+        <b id="pbGreeting">नमस्ते</b>
+        <small id="pbIdentity">Loading your profile…</small>
+      </div>
+    </div>
+  </section>
+
+  <div class="pb-alert" id="weightWarn" hidden></div>
+
+  <section class="pb-grid g5" aria-label="Overall progress">
+    <article class="pb-card pb-metric gold"><b id="mWeighted">—</b><span>Weighted progress</span><em id="mWeightedNote">Σ weight × completion ÷ 200</em></article>
+    <article class="pb-card pb-metric green"><b id="mAccuracy">—</b><span>Accuracy</span><em id="mAccuracyNote">correct ÷ attempted</em></article>
+    <article class="pb-card pb-metric violet"><b id="mCoverage">—</b><span>Unique coverage</span><em id="mCoverageNote">unique ÷ available</em></article>
+    <article class="pb-card pb-metric"><b id="mStreak">—</b><span>Day streak</span><em id="mStreakNote">based on real activity days</em></article>
+    <article class="pb-card pb-metric"><b id="mAttempts">—</b><span>Total attempts</span><em id="mUniqueNote">— unique questions</em></article>
+  </section>
+
+  <section class="pb-grid g2" style="margin-top:16px">
+    <article class="pb-card" id="goalCard">
+      <h2>🎯 Your goals</h2>
+      <p class="pb-sub">Used only to personalise the plan. Nothing here is shared with other learners.</p>
+      <div class="pb-form">
+        <label class="pb-field">Your name<input type="text" id="pfName" maxlength="80" placeholder="Your name"></label>
+        <label class="pb-field">Target marks<input type="number" id="pfTarget" min="1" max="200" value="200"></label>
+        <label class="pb-field">Exam date<input type="date" id="pfExamDate"></label>
+        <label class="pb-field">Study minutes / day<input type="number" id="pfDaily" min="5" max="480" value="30"></label>
+        <label class="pb-field">Min attempts before weakness analysis<input type="number" id="pfMinAttempts" min="1" max="500" value="12"></label>
+      </div>
+      <div style="margin-top:12px">
+        <div class="pb-field" style="font-size:12px">Focus subjects (optional)</div>
+        <div class="pb-checks" id="pfWeak"></div>
+      </div>
+      <div class="pb-actions">
+        <button class="pb-btn pb-btn-primary" id="pfSave" type="button">💾 Save my goals</button>
+        <span class="pb-hint" id="pfMeta" style="margin:0"></span>
+      </div>
+    </article>
+
+    <article class="pb-card" id="planCard">
+      <h2>📅 Today's study plan</h2>
+      <p class="pb-sub">Built from your current weak areas, weightage and available minutes. Open any line to start practising immediately.</p>
+      <div class="pb-plan" id="planBody"><div class="pb-empty">Loading your plan…</div></div>
+    </article>
+  </section>
+
+  <section class="pb-card" style="margin-top:16px">
+    <div class="pb-card-head" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center">
+      <div>
+        <h2>📊 Subject tracker</h2>
+        <p class="pb-sub" style="margin:0">Question-bank volume is shown for context only. Priority comes from the official 200-mark weightage, never from how many questions a bank contains.</p>
+      </div>
+      <span class="pb-pill mute" id="configSource">loading weightage…</span>
+    </div>
+    <div class="pb-table-wrap" style="margin-top:14px">
+      <table class="pb-table">
+        <thead><tr><th>Subject</th><th class="num">Marks</th><th class="num">Available</th><th class="num">Unique tried</th><th>Coverage</th><th>Accuracy</th><th class="num">Attempts</th><th>Priority</th><th></th></tr></thead>
+        <tbody id="subjectBody"><tr><td colspan="9"><div class="pb-empty">Loading your real activity…</div></td></tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="pb-grid g2" style="margin-top:16px">
+    <article class="pb-card">
+      <h2>🩺 Weakness analysis</h2>
+      <p class="pb-sub">Only subjects with at least your chosen number of attempts are scored. Priority = weakness × official weightage.</p>
+      <div class="pb-table-wrap">
+        <table class="pb-table">
+          <thead><tr><th>Subject</th><th class="num">Attempts</th><th class="num">Accuracy</th><th class="num">Coverage</th><th class="num">Priority</th><th>Status</th></tr></thead>
+          <tbody id="weakBody"><tr><td colspan="6"><div class="pb-empty">Loading…</div></td></tr></tbody>
+        </table>
+      </div>
+    </article>
+    <article class="pb-card">
+      <h2>📈 Last 14 days</h2>
+      <p class="pb-sub">Attempts per day from your answer log, merged with the existing daily-solved counter.</p>
+      <div class="pb-chart" id="chartDays"></div>
+      <div class="pb-legend"><span><i style="background:#3b82f6"></i>Attempts</span><span><i style="background:#059669"></i>Correct portion</span></div>
+    </article>
+  </section>
+
+  <section class="pb-card" style="margin-top:16px">
+    <div class="pb-card-head" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center">
+      <div>
+        <h2>📚 Chapter tracker</h2>
+        <p class="pb-sub" style="margin:0">Tick a chapter when you have finished it, even if its questions live in a mixed paper. Manual ticks are saved to your profile.</p>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <select id="chapterSubject" class="pb-field" style="min-width:190px"></select>
+        <input type="text" id="chapterSearch" class="pb-field" style="min-width:170px" placeholder="Search chapter…">
+      </div>
+    </div>
+    <div class="pb-table-wrap" style="margin-top:14px">
+      <table class="pb-table">
+        <thead><tr><th style="width:44px">Done</th><th>Chapter</th><th class="num">Available</th><th class="num">Unique tried</th><th>Coverage</th><th>Accuracy</th><th></th></tr></thead>
+        <tbody id="chapterBody"><tr><td colspan="7"><div class="pb-empty">Loading chapters…</div></td></tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="pb-grid g2" style="margin-top:16px">
+    <article class="pb-card">
+      <h2>⚖️ Weight vs coverage</h2>
+      <p class="pb-sub">Blue bar = official marks. Green bar = your unique-question coverage in that subject.</p>
+      <div class="pb-chart" id="chartSubjects" style="height:220px"></div>
+      <div class="pb-legend"><span><i style="background:#3b82f6"></i>Weightage</span><span><i style="background:#059669"></i>Your coverage</span></div>
+    </article>
+    <article class="pb-card pb-source-card">
+      <h2>🔒 Data & sync</h2>
+      <p class="pb-sub">Transparency about where each figure comes from.</p>
+      <div class="pb-source" id="sourceBody">Checking sources…</div>
+      <div class="pb-hint" style="margin-top:14px">
+        Formulas used: <code>Accuracy = Correct / Attempted × 100</code> ·
+        <code>Coverage = Unique attempted / Available × 100</code> ·
+        <code>Weighted progress = Σ(weightage × completion) / Σ weightage</code>.
+        Repeating a question adds an attempt but never a second unique question.
+      </div>
+    </article>
+  </section>
+</main>
+
+<div class="pb-toast" id="pbToast" role="status" aria-live="polite"></div>
+</body>
+</html>

@@ -1,0 +1,3769 @@
+{
+  "v": 1,
+  "generatedAt": "2026-11-23T01:39:03.710Z",
+  "totalQuestions": 29700,
+  "subjects": {
+    "surgery": 5977,
+    "medicine": 739,
+    "anesthesia": 69,
+    "orthopedics": 1565,
+    "pathology": 2575,
+    "obg": 190,
+    "community": 3184,
+    "pediatrics": 211,
+    "radiology": 860,
+    "pharmacology": 3522,
+    "dermatology": 1107,
+    "psychiatry": 693,
+    "anatomy": 1775,
+    "ophthalmology": 628,
+    "ent": 1233,
+    "microbiology": 1474,
+    "research": 127,
+    "forensic": 1238,
+    "physiology": 1225,
+    "biochemistry": 503,
+    "cpd": 195
+  },
+  "chapters": {
+    "surgery": [
+      {
+        "name": "Chapter 21 — Kidney and Ureter",
+        "available": 295,
+        "banks": [
+          "surgery2"
+        ]
+      },
+      {
+        "name": "Chapter 10 — Stomach and Duodenum",
+        "available": 285,
+        "banks": [
+          "surgery2"
+        ]
+      },
+      {
+        "name": "Pancreas",
+        "available": 248,
+        "banks": [
+          "se1"
+        ]
+      },
+      {
+        "name": "Breast",
+        "available": 237,
+        "banks": [
+          "se1"
+        ]
+      },
+      {
+        "name": "Surgery",
+        "available": 226,
+        "banks": [
+          "loksewa",
+          "gandaki2078",
+          "gandaki2078kartik",
+          "cee2026",
+          "gandaki2080",
+          "koshi2081",
+          "karnali2082",
+          "central2081",
+          "central2062",
+          "central2069",
+          "loksewamock",
+          "central2072",
+          "central2073",
+          "central2074",
+          "cee1",
+          "cee3",
+          "cee4",
+          "cee5",
+          "cee6"
+        ]
+      },
+      {
+        "name": "Thyroid",
+        "available": 224,
+        "banks": [
+          "se1"
+        ]
+      },
+      {
+        "name": "Chapter 29 — Thorax and Lung",
+        "available": 222,
+        "banks": [
+          "surgery3"
+        ]
+      },
+      {
+        "name": "Esophagus",
+        "available": 201,
+        "banks": [
+          "se1"
+        ]
+      },
+      {
+        "name": "Liver",
+        "available": 170,
+        "banks": [
+          "se1"
+        ]
+      },
+      {
+        "name": "Chapter 26 — Arterial Disorders",
+        "available": 168,
+        "banks": [
+          "surgery3"
+        ]
+      },
+      {
+        "name": "Chapter 14 — Large Intestine",
+        "available": 167,
+        "banks": [
+          "surgery2"
+        ]
+      },
+      {
+        "name": "Chapter 42 — Trauma",
+        "available": 163,
+        "banks": [
+          "surgery3"
+        ]
+      },
+      {
+        "name": "Bile Duct",
+        "available": 149,
+        "banks": [
+          "se1"
+        ]
+      },
+      {
+        "name": "Chapter 33 — Cerebrovascular Diseases",
+        "available": 149,
+        "banks": [
+          "surgery3"
+        ]
+      },
+      {
+        "name": "Chapter 18 — Rectum and Anal Canal",
+        "available": 140,
+        "banks": [
+          "surgery2"
+        ]
+      },
+      {
+        "name": "Chapter 31 — Plastic Surgery and Skin Lesions",
+        "available": 140,
+        "banks": [
+          "surgery3"
+        ]
+      },
+      {
+        "name": "Gallbladder",
+        "available": 140,
+        "banks": [
+          "se1"
+        ]
+      },
+      {
+        "name": "Chapter 25 — Testis and Scrotum",
+        "available": 138,
+        "banks": [
+          "surgery2"
+        ]
+      },
+      {
+        "name": "Chapter 12 — Intestinal Obstruction",
+        "available": 137,
+        "banks": [
+          "surgery2"
+        ]
+      },
+      {
+        "name": "Chapter 19 — Hernia and Abdominal Wall",
+        "available": 134,
+        "banks": [
+          "surgery2"
+        ]
+      },
+      {
+        "name": "Chapter 24 — Urethra and Penis",
+        "available": 123,
+        "banks": [
+          "surgery2"
+        ]
+      },
+      {
+        "name": "Chapter 13 — Small Intestine",
+        "available": 118,
+        "banks": [
+          "surgery2"
+        ]
+      },
+      {
+        "name": "Chapter 39 — Oncology",
+        "available": 118,
+        "banks": [
+          "surgery3"
+        ]
+      },
+      {
+        "name": "Chapter 47 — Sterilization and Infection",
+        "available": 114,
+        "banks": [
+          "surgery3"
+        ]
+      },
+      {
+        "name": "Chapter 22 — Urinary Bladder",
+        "available": 99,
+        "banks": [
+          "surgery2"
+        ]
+      },
+      {
+        "name": "Chapter 34 — CNS Tumors",
+        "available": 95,
+        "banks": [
+          "surgery3"
+        ]
+      },
+      {
+        "name": "Chapter 11 — Peritoneum",
+        "available": 90,
+        "banks": [
+          "surgery2"
+        ]
+      },
+      {
+        "name": "Chapter 36 — Salivary Glands",
+        "available": 90,
+        "banks": [
+          "surgery3"
+        ]
+      },
+      {
+        "name": "Recent Questions",
+        "available": 85,
+        "banks": [
+          "se1"
+        ]
+      },
+      {
+        "name": "Chapter 23 — Prostate and Seminal Vesicles",
+        "available": 84,
+        "banks": [
+          "surgery2"
+        ]
+      },
+      {
+        "name": "Chapter 51 — Miscellaneous",
+        "available": 79,
+        "banks": [
+          "surgery3"
+        ]
+      },
+      {
+        "name": "Chapter 48 — Fluid, Electrolyte and Nutrition",
+        "available": 78,
+        "banks": [
+          "surgery3"
+        ]
+      },
+      {
+        "name": "Chapter 16 — Inflammatory Bowel Disease",
+        "available": 75,
+        "banks": [
+          "surgery2"
+        ]
+      },
+      {
+        "name": "Parathyroid and Adrenal Glands",
+        "available": 74,
+        "banks": [
+          "se1"
+        ]
+      },
+      {
+        "name": "Chapter 27 — Venous Disorders",
+        "available": 72,
+        "banks": [
+          "surgery3"
+        ]
+      },
+      {
+        "name": "Chapter 30 — Burns",
+        "available": 71,
+        "banks": [
+          "surgery3"
+        ]
+      },
+      {
+        "name": "Chapter 43 — Transplantation",
+        "available": 70,
+        "banks": [
+          "surgery3"
+        ]
+      },
+      {
+        "name": "Portal Hypertension",
+        "available": 70,
+        "banks": [
+          "se1"
+        ]
+      },
+      {
+        "name": "Chapter 35 — Oral Cavity",
+        "available": 67,
+        "banks": [
+          "surgery3"
+        ]
+      },
+      {
+        "name": "Chapter 37 — Neck",
+        "available": 67,
+        "banks": [
+          "surgery3"
+        ]
+      },
+      {
+        "name": "Chapter 20 — Spleen",
+        "available": 66,
+        "banks": [
+          "surgery2"
+        ]
+      },
+      {
+        "name": "Chapter 17 — Vermiform Appendix",
+        "available": 63,
+        "banks": [
+          "surgery2"
+        ]
+      },
+      {
+        "name": "Chapter 46 — Sutures and Anastomoses",
+        "available": 54,
+        "banks": [
+          "surgery3"
+        ]
+      },
+      {
+        "name": "Chapter 32 — Wound Healing, Tissue Repair and Scar",
+        "available": 49,
+        "banks": [
+          "surgery3"
+        ]
+      },
+      {
+        "name": "Chapter 49 — Blood Transfusion",
+        "available": 40,
+        "banks": [
+          "surgery3"
+        ]
+      },
+      {
+        "name": "Chapter 28 — Lymphatic System",
+        "available": 39,
+        "banks": [
+          "surgery3"
+        ]
+      },
+      {
+        "name": "Chapter 38 — Facial Injuries and Abnormalities",
+        "available": 38,
+        "banks": [
+          "surgery3"
+        ]
+      },
+      {
+        "name": "Chapter 50 — Shock",
+        "available": 36,
+        "banks": [
+          "surgery3"
+        ]
+      },
+      {
+        "name": "Chapter 45 — Robotics, Laparoscopy and Bariatric Surgery",
+        "available": 35,
+        "banks": [
+          "surgery3"
+        ]
+      },
+      {
+        "name": "Chapter 40 — Sarcoma",
+        "available": 30,
+        "banks": [
+          "surgery3"
+        ]
+      },
+      {
+        "name": "Chapter 15 — Ileostomy and Colostomy",
+        "available": 16,
+        "banks": [
+          "surgery2"
+        ]
+      },
+      {
+        "name": "Chapter 44 — Anesthesia and Perioperative Complications",
+        "available": 14,
+        "banks": [
+          "surgery3"
+        ]
+      },
+      {
+        "name": "Chapter 41 — Pediatric Surgery",
+        "available": 13,
+        "banks": [
+          "surgery3"
+        ]
+      },
+      {
+        "name": "Chapter 9 — Esophagus (continued from Part 1)",
+        "available": 12,
+        "banks": [
+          "surgery2"
+        ]
+      }
+    ],
+    "medicine": [
+      {
+        "name": "Medicine",
+        "available": 266,
+        "banks": [
+          "loksewa",
+          "gandaki2078",
+          "gandaki2078kartik",
+          "cee2026",
+          "gandaki2080",
+          "koshi2081",
+          "karnali2082",
+          "central2081",
+          "central2062",
+          "central2069",
+          "loksewamock",
+          "central2072",
+          "central2073",
+          "central2074",
+          "cee1",
+          "cee3",
+          "cee4",
+          "cee5",
+          "cee6"
+        ]
+      },
+      {
+        "name": "Cerebrovascular Diseases & Stroke Localization",
+        "available": 81,
+        "banks": [
+          "neuro"
+        ]
+      },
+      {
+        "name": "Spinal Cord Disorders",
+        "available": 47,
+        "banks": [
+          "neuro"
+        ]
+      },
+      {
+        "name": "Peripheral Neuropathies",
+        "available": 45,
+        "banks": [
+          "neuro"
+        ]
+      },
+      {
+        "name": "Dementias & Extrapyramidal Disorders",
+        "available": 43,
+        "banks": [
+          "neuro"
+        ]
+      },
+      {
+        "name": "CNS Tumors & Neurocutaneous Syndromes",
+        "available": 42,
+        "banks": [
+          "neuro"
+        ]
+      },
+      {
+        "name": "Neuromuscular Junction & Muscle Disorders",
+        "available": 41,
+        "banks": [
+          "neuro"
+        ]
+      },
+      {
+        "name": "CNS Infections",
+        "available": 35,
+        "banks": [
+          "neuro"
+        ]
+      },
+      {
+        "name": "Seizures and Epilepsy",
+        "available": 24,
+        "banks": [
+          "neuro"
+        ]
+      },
+      {
+        "name": "Motor Neuron Disease & Motor System",
+        "available": 23,
+        "banks": [
+          "neuro"
+        ]
+      },
+      {
+        "name": "Head Injuries",
+        "available": 20,
+        "banks": [
+          "neuro"
+        ]
+      },
+      {
+        "name": "Aphasias, Memory & Higher Functions",
+        "available": 19,
+        "banks": [
+          "neuro"
+        ]
+      },
+      {
+        "name": "Headache",
+        "available": 13,
+        "banks": [
+          "neuro"
+        ]
+      },
+      {
+        "name": "Miscellaneous",
+        "available": 11,
+        "banks": [
+          "neuro"
+        ]
+      },
+      {
+        "name": "Multiple Sclerosis",
+        "available": 11,
+        "banks": [
+          "neuro"
+        ]
+      },
+      {
+        "name": "Emergency Medicine",
+        "available": 7,
+        "banks": [
+          "loksewa",
+          "gandaki2080"
+        ]
+      },
+      {
+        "name": "Cardiology",
+        "available": 3,
+        "banks": [
+          "loksewa",
+          "gandaki2078"
+        ]
+      },
+      {
+        "name": "Medical Practice",
+        "available": 2,
+        "banks": [
+          "loksewa"
+        ]
+      },
+      {
+        "name": "Medicine/Surgery",
+        "available": 2,
+        "banks": [
+          "gandaki2080"
+        ]
+      },
+      {
+        "name": "Urology",
+        "available": 2,
+        "banks": [
+          "gandaki2078"
+        ]
+      },
+      {
+        "name": "Neurology",
+        "available": 1,
+        "banks": [
+          "loksewa"
+        ]
+      },
+      {
+        "name": "Surgery/Medicine",
+        "available": 1,
+        "banks": [
+          "gandaki2080"
+        ]
+      }
+    ],
+    "anesthesia": [
+      {
+        "name": "Anesthesia",
+        "available": 43,
+        "banks": [
+          "gandaki2080",
+          "koshi2081",
+          "cee1",
+          "cee3",
+          "cee4",
+          "cee5",
+          "cee6"
+        ]
+      },
+      {
+        "name": "Anaesthesia",
+        "available": 23,
+        "banks": [
+          "gandaki2078",
+          "gandaki2078kartik",
+          "cee2026",
+          "central2069",
+          "central2072",
+          "central2073",
+          "central2074"
+        ]
+      },
+      {
+        "name": "Anesthesiology",
+        "available": 2,
+        "banks": [
+          "loksewa"
+        ]
+      },
+      {
+        "name": "Anesthesia/Pharmacology",
+        "available": 1,
+        "banks": [
+          "gandaki2080"
+        ]
+      }
+    ],
+    "orthopedics": [
+      {
+        "name": "Chapter 20: DNB Questions",
+        "available": 258,
+        "banks": [
+          "ortho"
+        ]
+      },
+      {
+        "name": "Chapter 7: Upper Limb Traumatology",
+        "available": 137,
+        "banks": [
+          "ortho"
+        ]
+      },
+      {
+        "name": "Chapter 16: Joint Disorders",
+        "available": 119,
+        "banks": [
+          "ortho"
+        ]
+      },
+      {
+        "name": "Chapter 4: Orthopedics Oncology",
+        "available": 114,
+        "banks": [
+          "ortho"
+        ]
+      },
+      {
+        "name": "Chapter 17: Metabolic Disorders of Bone",
+        "available": 112,
+        "banks": [
+          "ortho"
+        ]
+      },
+      {
+        "name": "Chapter 18: Pediatric Orthopedics",
+        "available": 101,
+        "banks": [
+          "ortho"
+        ]
+      },
+      {
+        "name": "Chapter 15: Peripheral Nerve Injury",
+        "available": 93,
+        "banks": [
+          "ortho"
+        ]
+      },
+      {
+        "name": "Orthopaedics",
+        "available": 70,
+        "banks": [
+          "gandaki2078",
+          "gandaki2078kartik",
+          "cee2026",
+          "karnali2082",
+          "central2081",
+          "central2062",
+          "central2069",
+          "loksewamock",
+          "central2072",
+          "central2073",
+          "central2074"
+        ]
+      },
+      {
+        "name": "Orthopedics",
+        "available": 70,
+        "banks": [
+          "loksewa",
+          "gandaki2080",
+          "koshi2081",
+          "loksewamock",
+          "cee1",
+          "cee3",
+          "cee4",
+          "cee5",
+          "cee6"
+        ]
+      },
+      {
+        "name": "Chapter 10: Lower Limb Traumatology",
+        "available": 65,
+        "banks": [
+          "ortho"
+        ]
+      },
+      {
+        "name": "Chapter 9: Pelvis and Hip Injury",
+        "available": 61,
+        "banks": [
+          "ortho"
+        ]
+      },
+      {
+        "name": "Chapter 14: Neuromuscular Disease",
+        "available": 58,
+        "banks": [
+          "ortho"
+        ]
+      },
+      {
+        "name": "Chapter 2: Infection of Bone and Joints",
+        "available": 51,
+        "banks": [
+          "ortho"
+        ]
+      },
+      {
+        "name": "Chapter 13: Sports Injury",
+        "available": 49,
+        "banks": [
+          "ortho"
+        ]
+      },
+      {
+        "name": "Chapter 3: Tuberculosis of Bone and Joints",
+        "available": 48,
+        "banks": [
+          "ortho"
+        ]
+      },
+      {
+        "name": "Chapter 8: Spinal Injury",
+        "available": 36,
+        "banks": [
+          "ortho"
+        ]
+      },
+      {
+        "name": "Chapter 19: Osteochondritis and Avascular Necrosis",
+        "available": 33,
+        "banks": [
+          "ortho"
+        ]
+      },
+      {
+        "name": "Chapter 5: Fracture and Fracture Healing",
+        "available": 32,
+        "banks": [
+          "ortho"
+        ]
+      },
+      {
+        "name": "Chapter 11: Fracture Management",
+        "available": 24,
+        "banks": [
+          "ortho"
+        ]
+      },
+      {
+        "name": "Chapter 1: Imaging for Orthopedics",
+        "available": 17,
+        "banks": [
+          "ortho"
+        ]
+      },
+      {
+        "name": "Chapter 12: Amputations",
+        "available": 10,
+        "banks": [
+          "ortho"
+        ]
+      },
+      {
+        "name": "Chapter 6: Advanced Trauma Life Support",
+        "available": 6,
+        "banks": [
+          "ortho"
+        ]
+      },
+      {
+        "name": "Orthopedics/Neurology",
+        "available": 1,
+        "banks": [
+          "gandaki2080"
+        ]
+      }
+    ],
+    "pathology": [
+      {
+        "name": "Chapter 1: Hematology",
+        "available": 458,
+        "banks": [
+          "hema"
+        ]
+      },
+      {
+        "name": "Chapter 7: Anemia and Red Blood Cells",
+        "available": 197,
+        "banks": [
+          "patho"
+        ]
+      },
+      {
+        "name": "Chapter 6: Immunity",
+        "available": 183,
+        "banks": [
+          "patho"
+        ]
+      },
+      {
+        "name": "Chapter 8: White Blood Cells and Platelets",
+        "available": 175,
+        "banks": [
+          "patho"
+        ]
+      },
+      {
+        "name": "Chapter 11: Kidney and Urinary Bladder",
+        "available": 152,
+        "banks": [
+          "patho"
+        ]
+      },
+      {
+        "name": "Chapter 5: Neoplasia",
+        "available": 152,
+        "banks": [
+          "patho"
+        ]
+      },
+      {
+        "name": "Chapter 9: Cardiovascular System",
+        "available": 127,
+        "banks": [
+          "patho"
+        ]
+      },
+      {
+        "name": "Chapter 12: Gastrointestinal Tract",
+        "available": 121,
+        "banks": [
+          "patho"
+        ]
+      },
+      {
+        "name": "Chapter 2: Inflammation",
+        "available": 116,
+        "banks": [
+          "patho"
+        ]
+      },
+      {
+        "name": "Chapter 4: Genetics",
+        "available": 109,
+        "banks": [
+          "patho"
+        ]
+      },
+      {
+        "name": "Chapter 1: Cell Injury",
+        "available": 97,
+        "banks": [
+          "patho"
+        ]
+      },
+      {
+        "name": "Chapter 10: Respiratory System",
+        "available": 93,
+        "banks": [
+          "patho"
+        ]
+      },
+      {
+        "name": "Chapter 13: Liver",
+        "available": 93,
+        "banks": [
+          "patho"
+        ]
+      },
+      {
+        "name": "Pathology",
+        "available": 83,
+        "banks": [
+          "loksewa",
+          "gandaki2078kartik",
+          "cee2026",
+          "gandaki2080",
+          "central2062",
+          "loksewamock",
+          "central2072",
+          "central2073",
+          "central2074",
+          "cee1",
+          "cee3",
+          "cee4",
+          "cee5",
+          "cee6"
+        ]
+      },
+      {
+        "name": "Chapter 16: Endocrine System",
+        "available": 72,
+        "banks": [
+          "patho"
+        ]
+      },
+      {
+        "name": "Chapter 15: Central Nervous System",
+        "available": 61,
+        "banks": [
+          "patho"
+        ]
+      },
+      {
+        "name": "Chapter 18: Miscellaneous",
+        "available": 61,
+        "banks": [
+          "patho"
+        ]
+      },
+      {
+        "name": "Chapter 14: Genital System and Breast",
+        "available": 55,
+        "banks": [
+          "patho"
+        ]
+      },
+      {
+        "name": "Chapter 3: Hemodynamics",
+        "available": 49,
+        "banks": [
+          "patho"
+        ]
+      },
+      {
+        "name": "Chapter 17: Musculoskeletal System",
+        "available": 39,
+        "banks": [
+          "patho"
+        ]
+      },
+      {
+        "name": "Image Based Questions",
+        "available": 27,
+        "banks": [
+          "patho"
+        ]
+      },
+      {
+        "name": "AIIMS May 2015",
+        "available": 21,
+        "banks": [
+          "patho"
+        ]
+      },
+      {
+        "name": "Chapter 16: Endocrine System — Assertion/Conceptual",
+        "available": 10,
+        "banks": [
+          "patho"
+        ]
+      },
+      {
+        "name": "AIIMS November 2015",
+        "available": 7,
+        "banks": [
+          "patho"
+        ]
+      },
+      {
+        "name": "Chapter 15: Central Nervous System — Assertion/Conceptual",
+        "available": 5,
+        "banks": [
+          "patho"
+        ]
+      },
+      {
+        "name": "Chapter 17: Musculoskeletal System — Assertion/Conceptual",
+        "available": 4,
+        "banks": [
+          "patho"
+        ]
+      },
+      {
+        "name": "Chapter 14: Genital System and Breast — Assertion/Conceptual",
+        "available": 3,
+        "banks": [
+          "patho"
+        ]
+      },
+      {
+        "name": "Hematology",
+        "available": 2,
+        "banks": [
+          "gandaki2078"
+        ]
+      },
+      {
+        "name": "Medicine/Hematology",
+        "available": 1,
+        "banks": [
+          "gandaki2080"
+        ]
+      },
+      {
+        "name": "Pathology/Medicine",
+        "available": 1,
+        "banks": [
+          "gandaki2080"
+        ]
+      },
+      {
+        "name": "Pathology/Surgery",
+        "available": 1,
+        "banks": [
+          "gandaki2080"
+        ]
+      }
+    ],
+    "obg": [
+      {
+        "name": "Obstetrics & Gynecology",
+        "available": 58,
+        "banks": [
+          "cee3",
+          "cee4",
+          "cee5",
+          "cee6"
+        ]
+      },
+      {
+        "name": "Obstetrics",
+        "available": 49,
+        "banks": [
+          "loksewa",
+          "gandaki2078",
+          "gandaki2078kartik",
+          "gandaki2080",
+          "koshi2081",
+          "loksewamock",
+          "central2072",
+          "central2073",
+          "central2074"
+        ]
+      },
+      {
+        "name": "Obstetrics & Gynaecology",
+        "available": 32,
+        "banks": [
+          "karnali2082",
+          "central2081",
+          "central2062",
+          "loksewamock"
+        ]
+      },
+      {
+        "name": "Gynaecology",
+        "available": 19,
+        "banks": [
+          "gandaki2078",
+          "gandaki2078kartik",
+          "central2072",
+          "central2073",
+          "central2074"
+        ]
+      },
+      {
+        "name": "Obstetrics and Gynaecology",
+        "available": 12,
+        "banks": [
+          "cee2026"
+        ]
+      },
+      {
+        "name": "OBG",
+        "available": 11,
+        "banks": [
+          "central2069"
+        ]
+      },
+      {
+        "name": "Gynecology",
+        "available": 4,
+        "banks": [
+          "loksewa",
+          "koshi2081"
+        ]
+      },
+      {
+        "name": "Medicine / OBG / Paed / Community",
+        "available": 3,
+        "banks": [
+          "loksewamock"
+        ]
+      },
+      {
+        "name": "Obstetrics/Gynecology",
+        "available": 2,
+        "banks": [
+          "gandaki2080"
+        ]
+      }
+    ],
+    "community": [
+      {
+        "name": "Communicable and Non-communicable Diseases",
+        "available": 684,
+        "banks": [
+          "psm"
+        ]
+      },
+      {
+        "name": "Epidemiology and Vaccines",
+        "available": 493,
+        "banks": [
+          "psm"
+        ]
+      },
+      {
+        "name": "Nutrition and Health",
+        "available": 310,
+        "banks": [
+          "psm"
+        ]
+      },
+      {
+        "name": "Environment and Health",
+        "available": 302,
+        "banks": [
+          "psm"
+        ]
+      },
+      {
+        "name": "Biostatistics",
+        "available": 232,
+        "banks": [
+          "psm"
+        ]
+      },
+      {
+        "name": "Demography, Family Planning and Contraception",
+        "available": 222,
+        "banks": [
+          "psm"
+        ]
+      },
+      {
+        "name": "Concepts of Health and Disease",
+        "available": 177,
+        "banks": [
+          "psm"
+        ]
+      },
+      {
+        "name": "Biomedical Waste Management, Disaster Management, Occupational Health, Genetics and Health, Mental Health",
+        "available": 175,
+        "banks": [
+          "psm"
+        ]
+      },
+      {
+        "name": "Community Medicine",
+        "available": 162,
+        "banks": [
+          "gandaki2078",
+          "gandaki2078kartik",
+          "cee2026",
+          "koshi2081",
+          "karnali2082",
+          "central2081",
+          "central2062",
+          "loksewamock",
+          "central2072",
+          "central2073",
+          "central2074",
+          "cee3",
+          "cee4",
+          "cee5",
+          "cee6"
+        ]
+      },
+      {
+        "name": "General Health Services",
+        "available": 113,
+        "banks": [
+          "gandaki83",
+          "loksewamock"
+        ]
+      },
+      {
+        "name": "Screening of Disease",
+        "available": 88,
+        "banks": [
+          "psm"
+        ]
+      },
+      {
+        "name": "Social Sciences and Health",
+        "available": 80,
+        "banks": [
+          "psm"
+        ]
+      },
+      {
+        "name": "History of Medicine",
+        "available": 38,
+        "banks": [
+          "psm"
+        ]
+      },
+      {
+        "name": "Health Education and Communication",
+        "available": 35,
+        "banks": [
+          "psm"
+        ]
+      },
+      {
+        "name": "Medicine, Obstetrics, Paediatrics and Community Medicine",
+        "available": 25,
+        "banks": [
+          "lumbini83"
+        ]
+      },
+      {
+        "name": "Public Health",
+        "available": 24,
+        "banks": [
+          "loksewa",
+          "koshi2081",
+          "loksewamock"
+        ]
+      },
+      {
+        "name": "PSM",
+        "available": 21,
+        "banks": [
+          "gandaki2080",
+          "central2069"
+        ]
+      },
+      {
+        "name": "Pediatrics/PSM",
+        "available": 1,
+        "banks": [
+          "gandaki2080"
+        ]
+      },
+      {
+        "name": "PSM/Pediatrics",
+        "available": 1,
+        "banks": [
+          "gandaki2080"
+        ]
+      },
+      {
+        "name": "PSM/Surgery",
+        "available": 1,
+        "banks": [
+          "gandaki2080"
+        ]
+      }
+    ],
+    "pediatrics": [
+      {
+        "name": "Paediatrics",
+        "available": 127,
+        "banks": [
+          "gandaki2078",
+          "gandaki2078kartik",
+          "cee2026",
+          "karnali2082",
+          "central2081",
+          "central2062",
+          "loksewamock",
+          "central2072",
+          "central2073",
+          "central2074"
+        ]
+      },
+      {
+        "name": "Pediatrics",
+        "available": 83,
+        "banks": [
+          "loksewa",
+          "gandaki2080",
+          "koshi2081",
+          "central2069",
+          "loksewamock",
+          "cee1",
+          "cee3",
+          "cee4",
+          "cee5",
+          "cee6"
+        ]
+      },
+      {
+        "name": "Pediatrics/Medicine",
+        "available": 1,
+        "banks": [
+          "gandaki2080"
+        ]
+      }
+    ],
+    "radiology": [
+      {
+        "name": "Gastrointestinal and Genitourinary System",
+        "available": 188,
+        "banks": [
+          "radiology"
+        ]
+      },
+      {
+        "name": "Radiotherapy and Chemotherapy",
+        "available": 129,
+        "banks": [
+          "radiology"
+        ]
+      },
+      {
+        "name": "General Radiology",
+        "available": 120,
+        "banks": [
+          "radiology"
+        ]
+      },
+      {
+        "name": "Cardiothoracic Radiology",
+        "available": 115,
+        "banks": [
+          "radiology"
+        ]
+      },
+      {
+        "name": "Neuroradiology",
+        "available": 115,
+        "banks": [
+          "radiology"
+        ]
+      },
+      {
+        "name": "Musculoskeletal Radiology",
+        "available": 70,
+        "banks": [
+          "radiology"
+        ]
+      },
+      {
+        "name": "Radiology",
+        "available": 64,
+        "banks": [
+          "loksewa",
+          "gandaki2078kartik",
+          "cee2026",
+          "central2073",
+          "cee1",
+          "cee3",
+          "cee4",
+          "cee5",
+          "cee6"
+        ]
+      },
+      {
+        "name": "Image Based Questions",
+        "available": 30,
+        "banks": [
+          "radiology"
+        ]
+      },
+      {
+        "name": "Nuclear Scans",
+        "available": 29,
+        "banks": [
+          "radiology"
+        ]
+      }
+    ],
+    "pharmacology": [
+      {
+        "name": "Central Nervous System",
+        "available": 435,
+        "banks": [
+          "pharmacology"
+        ]
+      },
+      {
+        "name": "Endocrinology",
+        "available": 335,
+        "banks": [
+          "pharmacology"
+        ]
+      },
+      {
+        "name": "Cardiovascular System",
+        "available": 328,
+        "banks": [
+          "pharmacology"
+        ]
+      },
+      {
+        "name": "Chemotherapy A: General Consideration and Non-specific Antimicrobial Agents",
+        "available": 302,
+        "banks": [
+          "pharmacology"
+        ]
+      },
+      {
+        "name": "Chemotherapy B: Antimicrobials for Specific Conditions",
+        "available": 290,
+        "banks": [
+          "pharmacology"
+        ]
+      },
+      {
+        "name": "Autonomic Nervous System",
+        "available": 283,
+        "banks": [
+          "pharmacology"
+        ]
+      },
+      {
+        "name": "General Pharmacology",
+        "available": 261,
+        "banks": [
+          "pharmacology"
+        ]
+      },
+      {
+        "name": "Autacoids",
+        "available": 194,
+        "banks": [
+          "pharmacology"
+        ]
+      },
+      {
+        "name": "Chemotherapy C: Antineoplastic Drugs",
+        "available": 166,
+        "banks": [
+          "pharmacology"
+        ]
+      },
+      {
+        "name": "Pharmacology",
+        "available": 165,
+        "banks": [
+          "loksewa",
+          "gandaki2078",
+          "gandaki2078kartik",
+          "cee2026",
+          "gandaki2080",
+          "koshi2081",
+          "karnali2082",
+          "central2081",
+          "central2062",
+          "central2069",
+          "loksewamock",
+          "central2072",
+          "central2073",
+          "central2074",
+          "cee1",
+          "cee3",
+          "cee4",
+          "cee5",
+          "cee6"
+        ]
+      },
+      {
+        "name": "Anaesthesia",
+        "available": 154,
+        "banks": [
+          "pharmacology"
+        ]
+      },
+      {
+        "name": "Hematology",
+        "available": 147,
+        "banks": [
+          "pharmacology"
+        ]
+      },
+      {
+        "name": "Other Topics and Adverse Effects",
+        "available": 110,
+        "banks": [
+          "pharmacology"
+        ]
+      },
+      {
+        "name": "Gastrointestinal Tract",
+        "available": 107,
+        "banks": [
+          "pharmacology"
+        ]
+      },
+      {
+        "name": "Kidney",
+        "available": 88,
+        "banks": [
+          "pharmacology"
+        ]
+      },
+      {
+        "name": "Immunomodulators",
+        "available": 79,
+        "banks": [
+          "pharmacology"
+        ]
+      },
+      {
+        "name": "Respiratory System",
+        "available": 77,
+        "banks": [
+          "pharmacology"
+        ]
+      },
+      {
+        "name": "Pharmacology/Medicine",
+        "available": 1,
+        "banks": [
+          "gandaki2080"
+        ]
+      }
+    ],
+    "dermatology": [
+      {
+        "name": "Papulosquamous Disorders",
+        "available": 87,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Blistering Diseases",
+        "available": 83,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Leprosy (Hansen's Disease)",
+        "available": 82,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Sexually Transmitted Diseases",
+        "available": 71,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Dermatology",
+        "available": 70,
+        "banks": [
+          "loksewa",
+          "gandaki2078kartik",
+          "cee2026",
+          "gandaki2080",
+          "koshi2081",
+          "karnali2082",
+          "central2081",
+          "central2062",
+          "central2069",
+          "loksewamock",
+          "central2072",
+          "central2073",
+          "central2074",
+          "cee1",
+          "cee3",
+          "cee4",
+          "cee5"
+        ]
+      },
+      {
+        "name": "Connective Tissue Disorders and Drug Eruptions",
+        "available": 57,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Fungal Infections",
+        "available": 50,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Viral Infections",
+        "available": 49,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Eczema and Dermatitis",
+        "available": 46,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Disorders of Pigmentation",
+        "available": 44,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Skin Lesions, Morphology and Investigations",
+        "available": 44,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Tuberculosis and Bacterial Infections",
+        "available": 44,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Important Short Topics",
+        "available": 42,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Recent Questions",
+        "available": 42,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Disorders of Hair and Nail",
+        "available": 40,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Disorders of Adnexa and Appendages",
+        "available": 32,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Skin Tumors and Endocrinal Disorders",
+        "available": 32,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Protozoal and Parasitic Infections",
+        "available": 28,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Dermatology, Pharmacology, Emergency Medicine and Surgery",
+        "available": 25,
+        "banks": [
+          "lumbini83"
+        ]
+      },
+      {
+        "name": "Anatomy and Physiology of Skin",
+        "available": 21,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Skin Anatomy & Physiology",
+        "available": 19,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Adnexal Disorders",
+        "available": 13,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Sexually Transmitted Infections",
+        "available": 13,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "General Dermatology",
+        "available": 8,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Leprosy",
+        "available": 6,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Protozoal & Infestations",
+        "available": 6,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Blistering Disorders",
+        "available": 5,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Pigmentary Disorders",
+        "available": 5,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Bacterial Infections",
+        "available": 4,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Dermatology / Pharmacology / Surgery / Emergency",
+        "available": 4,
+        "banks": [
+          "loksewamock"
+        ]
+      },
+      {
+        "name": "Eczema & Dermatitis",
+        "available": 4,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Connective Tissue Disorders",
+        "available": 3,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Drug Reactions & Urticaria",
+        "available": 3,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Genodermatoses & Misc",
+        "available": 3,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Nevi & Tumors",
+        "available": 3,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Bacterial Infections & TB",
+        "available": 2,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Cutaneous TB",
+        "available": 2,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Infestations",
+        "available": 2,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Nail Disorders",
+        "available": 2,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Psoriasis & Papulosquamous",
+        "available": 2,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "STIs",
+        "available": 2,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Basics & Morphology",
+        "available": 1,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Dermatology/Infectious Disease",
+        "available": 1,
+        "banks": [
+          "gandaki2080"
+        ]
+      },
+      {
+        "name": "Dermatology/Medicine",
+        "available": 1,
+        "banks": [
+          "gandaki2080"
+        ]
+      },
+      {
+        "name": "Fungal & Yeast Infections",
+        "available": 1,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Hair & Nail",
+        "available": 1,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Urticaria & Drug Reactions",
+        "available": 1,
+        "banks": [
+          "dermatology"
+        ]
+      },
+      {
+        "name": "Vasculitis & Purpura",
+        "available": 1,
+        "banks": [
+          "dermatology"
+        ]
+      }
+    ],
+    "psychiatry": [
+      {
+        "name": "Psychiatry",
+        "available": 89,
+        "banks": [
+          "loksewa",
+          "cee2026",
+          "gandaki2080",
+          "koshi2081",
+          "karnali2082",
+          "central2081",
+          "central2062",
+          "central2069",
+          "loksewamock",
+          "central2072",
+          "central2073",
+          "central2074",
+          "cee1",
+          "cee3",
+          "cee4",
+          "cee5",
+          "cee6"
+        ]
+      },
+      {
+        "name": "General",
+        "available": 81,
+        "banks": [
+          "psychiatry"
+        ]
+      },
+      {
+        "name": "Depression Epidemiology and Etiology",
+        "available": 78,
+        "banks": [
+          "psychiatry"
+        ]
+      },
+      {
+        "name": "History",
+        "available": 73,
+        "banks": [
+          "psychiatry"
+        ]
+      },
+      {
+        "name": "Substance Use Disorders",
+        "available": 64,
+        "banks": [
+          "psychiatry"
+        ]
+      },
+      {
+        "name": "ECT",
+        "available": 63,
+        "banks": [
+          "psychiatry"
+        ]
+      },
+      {
+        "name": "Organic Mental Disorders",
+        "available": 48,
+        "banks": [
+          "psychiatry"
+        ]
+      },
+      {
+        "name": "Basics",
+        "available": 41,
+        "banks": [
+          "psychiatry"
+        ]
+      },
+      {
+        "name": "Child Psychiatry",
+        "available": 36,
+        "banks": [
+          "psychiatry"
+        ]
+      },
+      {
+        "name": "Psychoanalysis",
+        "available": 27,
+        "banks": [
+          "psychiatry"
+        ]
+      },
+      {
+        "name": "Personality Disorders",
+        "available": 26,
+        "banks": [
+          "psychiatry"
+        ]
+      },
+      {
+        "name": "Forensic Medicine, Nepal Health Policy, Medicine and Psychiatry",
+        "available": 25,
+        "banks": [
+          "lumbini83"
+        ]
+      },
+      {
+        "name": "Sleep Disorders",
+        "available": 19,
+        "banks": [
+          "psychiatry"
+        ]
+      },
+      {
+        "name": "Eating Disorders",
+        "available": 10,
+        "banks": [
+          "psychiatry"
+        ]
+      },
+      {
+        "name": "Sexual Disorders",
+        "available": 8,
+        "banks": [
+          "psychiatry"
+        ]
+      },
+      {
+        "name": "Forensic / Medicine / Psychiatry",
+        "available": 3,
+        "banks": [
+          "loksewamock"
+        ]
+      },
+      {
+        "name": "Psychiatry/Medicine",
+        "available": 1,
+        "banks": [
+          "gandaki2080"
+        ]
+      },
+      {
+        "name": "Psychiatry/Pediatrics",
+        "available": 1,
+        "banks": [
+          "gandaki2080"
+        ]
+      }
+    ],
+    "anatomy": [
+      {
+        "name": "Head and Neck",
+        "available": 389,
+        "banks": [
+          "anatomy"
+        ]
+      },
+      {
+        "name": "Abdomen",
+        "available": 262,
+        "banks": [
+          "anatomy"
+        ]
+      },
+      {
+        "name": "Embryology",
+        "available": 221,
+        "banks": [
+          "anatomy"
+        ]
+      },
+      {
+        "name": "Upper Limb",
+        "available": 160,
+        "banks": [
+          "anatomy"
+        ]
+      },
+      {
+        "name": "Neuroanatomy",
+        "available": 152,
+        "banks": [
+          "anatomy"
+        ]
+      },
+      {
+        "name": "Thorax",
+        "available": 136,
+        "banks": [
+          "anatomy"
+        ]
+      },
+      {
+        "name": "Lower Limb",
+        "available": 123,
+        "banks": [
+          "anatomy"
+        ]
+      },
+      {
+        "name": "Histology",
+        "available": 103,
+        "banks": [
+          "anatomy"
+        ]
+      },
+      {
+        "name": "Anatomy",
+        "available": 85,
+        "banks": [
+          "loksewa",
+          "gandaki2078kartik",
+          "cee2026",
+          "koshi2081",
+          "central2062",
+          "loksewamock",
+          "central2072",
+          "central2073",
+          "central2074",
+          "cee1",
+          "cee3",
+          "cee4",
+          "cee5",
+          "cee6"
+        ]
+      },
+      {
+        "name": "Pelvis and Perineum",
+        "available": 81,
+        "banks": [
+          "anatomy"
+        ]
+      },
+      {
+        "name": "General Anatomy",
+        "available": 47,
+        "banks": [
+          "anatomy"
+        ]
+      },
+      {
+        "name": "Back and Vertebral Column",
+        "available": 15,
+        "banks": [
+          "anatomy"
+        ]
+      },
+      {
+        "name": "Anatomy/Embryology",
+        "available": 1,
+        "banks": [
+          "gandaki2080"
+        ]
+      }
+    ],
+    "ophthalmology": [
+      {
+        "name": "5. Retina",
+        "available": 98,
+        "banks": [
+          "ophtho"
+        ]
+      },
+      {
+        "name": "2. Conjunctiva, Sclera and Cornea",
+        "available": 94,
+        "banks": [
+          "ophtho"
+        ]
+      },
+      {
+        "name": "Ophthalmology",
+        "available": 88,
+        "banks": [
+          "loksewa",
+          "gandaki2078",
+          "gandaki2078kartik",
+          "cee2026",
+          "gandaki2080",
+          "koshi2081",
+          "karnali2082",
+          "central2081",
+          "central2062",
+          "central2069",
+          "loksewamock",
+          "central2072",
+          "central2073",
+          "central2074",
+          "cee3",
+          "cee4",
+          "cee5",
+          "cee6"
+        ]
+      },
+      {
+        "name": "10. Neuro-ophthalmology",
+        "available": 67,
+        "banks": [
+          "ophtho"
+        ]
+      },
+      {
+        "name": "4. Lens",
+        "available": 60,
+        "banks": [
+          "ophtho"
+        ]
+      },
+      {
+        "name": "3. Glaucoma",
+        "available": 56,
+        "banks": [
+          "ophtho"
+        ]
+      },
+      {
+        "name": "7. Ocular Adnexa",
+        "available": 39,
+        "banks": [
+          "ophtho"
+        ]
+      },
+      {
+        "name": "6. Uveal Tract",
+        "available": 33,
+        "banks": [
+          "ophtho"
+        ]
+      },
+      {
+        "name": "9. Strabismus",
+        "available": 31,
+        "banks": [
+          "ophtho"
+        ]
+      },
+      {
+        "name": "8. Optics and Refraction",
+        "available": 29,
+        "banks": [
+          "ophtho"
+        ]
+      },
+      {
+        "name": "Ophthalmology, ENT, Oral Health, Orthopaedics, Anaesthesia",
+        "available": 25,
+        "banks": [
+          "lumbini83"
+        ]
+      },
+      {
+        "name": "12. Miscellaneous Topics",
+        "available": 5,
+        "banks": [
+          "ophtho"
+        ]
+      },
+      {
+        "name": "Ophthalmology / ENT / Ortho / Anaesthesia",
+        "available": 3,
+        "banks": [
+          "loksewamock"
+        ]
+      }
+    ],
+    "ent": [
+      {
+        "name": "Chapter 7: Diseases of Middle Ear",
+        "available": 117,
+        "banks": [
+          "ent"
+        ]
+      },
+      {
+        "name": "ENT",
+        "available": 110,
+        "banks": [
+          "loksewa",
+          "gandaki2078",
+          "gandaki2078kartik",
+          "cee2026",
+          "gandaki2080",
+          "koshi2081",
+          "karnali2082",
+          "central2081",
+          "central2062",
+          "central2069",
+          "loksewamock",
+          "central2072",
+          "central2073",
+          "central2074",
+          "cee1",
+          "cee3",
+          "cee4",
+          "cee5",
+          "cee6"
+        ]
+      },
+      {
+        "name": "Chapter 1: Anatomy of Ear",
+        "available": 102,
+        "banks": [
+          "ent"
+        ]
+      },
+      {
+        "name": "Chapter 21: Oral Cavity",
+        "available": 79,
+        "banks": [
+          "ent"
+        ]
+      },
+      {
+        "name": "Chapter 20A: Diseases of Paranasal Sinus—Sinusitis",
+        "available": 59,
+        "banks": [
+          "ent"
+        ]
+      },
+      {
+        "name": "Chapter 4: Assessment of Hearing Loss",
+        "available": 58,
+        "banks": [
+          "ent"
+        ]
+      },
+      {
+        "name": "Chapter 15: Anatomy and Physiology of Nose",
+        "available": 47,
+        "banks": [
+          "ent"
+        ]
+      },
+      {
+        "name": "Chapter 17: Granulomatous Disorders of Nose, Nasal Polyps and Foreign Body in Nose",
+        "available": 47,
+        "banks": [
+          "ent"
+        ]
+      },
+      {
+        "name": "Chapter 26: Anatomy of Larynx, Congenital Lesions of Larynx and Stridor",
+        "available": 46,
+        "banks": [
+          "ent"
+        ]
+      },
+      {
+        "name": "Chapter 22: Anatomy of Pharynx, Tonsils and Adenoids",
+        "available": 44,
+        "banks": [
+          "ent"
+        ]
+      },
+      {
+        "name": "Chapter 27: Acute and Chronic Inflammation of Larynx, Voice and Speech Disorders",
+        "available": 44,
+        "banks": [
+          "ent"
+        ]
+      },
+      {
+        "name": "Chapter 24: Lesions of Nasopharynx and Hypopharynx including Tumors of Pharynx",
+        "available": 42,
+        "banks": [
+          "ent"
+        ]
+      },
+      {
+        "name": "Chapter 29: Tumors of Larynx",
+        "available": 40,
+        "banks": [
+          "ent"
+        ]
+      },
+      {
+        "name": "Chapter 5: Assessment of Vestibular Function",
+        "available": 39,
+        "banks": [
+          "ent"
+        ]
+      },
+      {
+        "name": "Chapter 16: Diseases of External Nose and Nasal Septum",
+        "available": 36,
+        "banks": [
+          "ent"
+        ]
+      },
+      {
+        "name": "Chapter 28: Vocal Cord Paralysis",
+        "available": 35,
+        "banks": [
+          "ent"
+        ]
+      },
+      {
+        "name": "Chapter 6: Diseases of External Ear",
+        "available": 31,
+        "banks": [
+          "ent"
+        ]
+      },
+      {
+        "name": "Chapter 3: Hearing Loss",
+        "available": 29,
+        "banks": [
+          "ent"
+        ]
+      },
+      {
+        "name": "Chapter 19: Epistaxis",
+        "available": 26,
+        "banks": [
+          "ent"
+        ]
+      },
+      {
+        "name": "Chapter 30: Important Operative Procedures",
+        "available": 26,
+        "banks": [
+          "ent"
+        ]
+      },
+      {
+        "name": "Chapter 8: Meniere's Disease (Endolymphatic Hydrops)",
+        "available": 25,
+        "banks": [
+          "ent"
+        ]
+      },
+      {
+        "name": "Chapter 11: Lesion of Cerebellopontine Angle and Acoustic Neuroma",
+        "available": 21,
+        "banks": [
+          "ent"
+        ]
+      },
+      {
+        "name": "Chapter 20B: Diseases of Paranasal Sinus—Sinonasal Tumor",
+        "available": 21,
+        "banks": [
+          "ent"
+        ]
+      },
+      {
+        "name": "Chapter 18: Inflammatory Disorders of Nasal Cavity",
+        "available": 19,
+        "banks": [
+          "ent"
+        ]
+      },
+      {
+        "name": "Chapter 12: Glomus Tumor and Other Tumors of the Ear",
+        "available": 18,
+        "banks": [
+          "ent"
+        ]
+      },
+      {
+        "name": "Chapter 13: Rehabilitative Methods",
+        "available": 18,
+        "banks": [
+          "ent"
+        ]
+      },
+      {
+        "name": "Chapter 2: Physiology of Ear and Hearing",
+        "available": 17,
+        "banks": [
+          "ent"
+        ]
+      },
+      {
+        "name": "Chapter 23: Head and Neck Space Inflammation and Thornwaldt's Bursitis",
+        "available": 17,
+        "banks": [
+          "ent"
+        ]
+      },
+      {
+        "name": "Chapter 14: Miscellaneous",
+        "available": 16,
+        "banks": [
+          "ent"
+        ]
+      },
+      {
+        "name": "Chapter 25: Pharynx Hot Topics",
+        "available": 3,
+        "banks": [
+          "ent"
+        ]
+      },
+      {
+        "name": "Anatomy/ENT",
+        "available": 1,
+        "banks": [
+          "gandaki2080"
+        ]
+      }
+    ],
+    "microbiology": [
+      {
+        "name": "Microbiology 5",
+        "available": 77,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology",
+        "available": 70,
+        "banks": [
+          "gandaki2078",
+          "gandaki2078kartik",
+          "cee2026",
+          "central2062",
+          "central2069",
+          "loksewamock",
+          "central2072",
+          "central2073",
+          "central2074",
+          "cee1",
+          "cee3",
+          "cee4",
+          "cee5",
+          "cee6"
+        ]
+      },
+      {
+        "name": "Microbiology 4.4",
+        "available": 70,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 4.2",
+        "available": 60,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 2.2",
+        "available": 59,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 3.6",
+        "available": 59,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 3.12",
+        "available": 58,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology RQ",
+        "available": 56,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 6.7",
+        "available": 53,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 3.11",
+        "available": 52,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 3.7",
+        "available": 52,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 7.1",
+        "available": 51,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 4.6",
+        "available": 48,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 4.3",
+        "available": 47,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 3.10",
+        "available": 45,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 3.5",
+        "available": 45,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 3.9",
+        "available": 44,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 4.5",
+        "available": 42,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 6.6",
+        "available": 36,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 1.1",
+        "available": 35,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 3.8",
+        "available": 33,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 3.4",
+        "available": 32,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 6.4",
+        "available": 31,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 3.2",
+        "available": 27,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 3.1",
+        "available": 26,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 1.2",
+        "available": 23,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 2.3",
+        "available": 22,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 7.2",
+        "available": 22,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 6.2",
+        "available": 21,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 1.3",
+        "available": 20,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 4.1",
+        "available": 20,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 2.5",
+        "available": 19,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 4.7",
+        "available": 18,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 1.4",
+        "available": 17,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 6.3",
+        "available": 17,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 3.3",
+        "available": 15,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 6.5",
+        "available": 15,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 2.4",
+        "available": 14,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 2.1",
+        "available": 12,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Microbiology 6.1",
+        "available": 10,
+        "banks": [
+          "microbiology"
+        ]
+      },
+      {
+        "name": "Pediatrics/Microbiology",
+        "available": 1,
+        "banks": [
+          "gandaki2080"
+        ]
+      }
+    ],
+    "research": [
+      {
+        "name": "Data Collection",
+        "available": 14,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Measures of Disease Frequency",
+        "available": 11,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Introduction to Health Research",
+        "available": 10,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Sample Size and Power of Study",
+        "available": 10,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Validity of Studies",
+        "available": 10,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Measurement of Study Variables",
+        "available": 9,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Sampling Methods",
+        "available": 9,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Study Design: Experimental Study / Clinical Trials",
+        "available": 9,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Data Analysis",
+        "available": 8,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Publication Ethics",
+        "available": 8,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Research Question",
+        "available": 8,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Study Design: Analytical Study",
+        "available": 7,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Ethics in Health Research",
+        "available": 6,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Study Design: Descriptive Study",
+        "available": 6,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Biostatistics",
+        "available": 2,
+        "banks": [
+          "gandaki2078"
+        ]
+      }
+    ],
+    "forensic": [
+      {
+        "name": "Forensic Medicine",
+        "available": 109,
+        "banks": [
+          "gandaki2078",
+          "gandaki2078kartik",
+          "cee2026",
+          "koshi2081",
+          "karnali2082",
+          "central2081",
+          "central2062",
+          "loksewamock",
+          "central2072",
+          "central2073",
+          "central2074",
+          "cee1",
+          "cee3",
+          "cee4",
+          "cee5",
+          "cee6"
+        ]
+      },
+      {
+        "name": "Chapter 29: Forensic Psychiatry",
+        "available": 82,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 4: Identification I",
+        "available": 79,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 13: Regional Injuries",
+        "available": 58,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 9: Signs of Death",
+        "available": 49,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 10: Asphyxia",
+        "available": 47,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 14: Thermal Injuries",
+        "available": 44,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 1: Medical Jurisprudence and Ethics",
+        "available": 42,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 3: Legal Procedure",
+        "available": 42,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 11: Injuries",
+        "available": 35,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 17: Medico-legal Aspects of Injuries",
+        "available": 35,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 12: Firearm Injuries",
+        "available": 33,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 21: Infanticide and Child Abuse",
+        "available": 32,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 48: Inebriants—Alcohol",
+        "available": 32,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 24: Virginity, Pregnancy and Delivery",
+        "available": 30,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 6: Medico-legal Autopsy",
+        "available": 28,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 46: Organic Irritants—Animal",
+        "available": 26,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 61: Drug Dependence and Date Rape Drugs",
+        "available": 26,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 2: Acts Related to Medical Practice",
+        "available": 25,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 25: Sexual Offences I",
+        "available": 23,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 58: Agricultural Poisons",
+        "available": 22,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 36: General Toxicology",
+        "available": 21,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 63: Food Poisoning",
+        "available": 18,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 32: DNA Fingerprinting",
+        "available": 14,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 37: Corrosive Poisons",
+        "available": 14,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 38: Inorganic Metallic Irritants—Arsenic",
+        "available": 14,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 8: Thanatology",
+        "available": 14,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 30: Bloodstain Analysis",
+        "available": 13,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 47: Somniferous Poisons (Narcotic Poisons)",
+        "available": 13,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 5: Identification II",
+        "available": 13,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Forensic",
+        "available": 13,
+        "banks": [
+          "gandaki2080",
+          "central2069"
+        ]
+      },
+      {
+        "name": "Chapter 26: Sexual Offences II",
+        "available": 12,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 27: Sexual Offences III",
+        "available": 12,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 40: Inorganic Metallic Irritants—Lead",
+        "available": 10,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 22: Abortion",
+        "available": 9,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 23: Impotence and Sterility",
+        "available": 9,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 45: Organic Irritants—Plant",
+        "available": 9,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 50: Deliriants—DhaturaDatura",
+        "available": 9,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 56: Asphyxiants",
+        "available": 9,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 55: Hydrocyanic Acid",
+        "available": 8,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 60: Medicinal Poisons",
+        "available": 8,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 15: Transportation Injuries",
+        "available": 7,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 19: Starvation Deaths",
+        "available": 7,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 53: Spinal and Peripheral Nerve Poisons",
+        "available": 7,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 16: Explosion Injuries and Fall from Height",
+        "available": 6,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 31: Seminal Stains and Other Biological Samples",
+        "available": 6,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 39: Inorganic Metallic Irritants—Mercury",
+        "available": 6,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 43: Other Inorganic Metallic Irritants",
+        "available": 6,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 44: Non-Metallic and Mechanical Irritants",
+        "available": 5,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 51: Deliriants—Cannabis",
+        "available": 5,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 52: Deliriants—Cocaine",
+        "available": 5,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 54: Cardiac Poisons",
+        "available": 5,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 41: Inorganic Metallic Irritants—Copper",
+        "available": 4,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 57: War Gases and Biological Weapons",
+        "available": 4,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 33: Torture and Custodial Deaths",
+        "available": 3,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 35: Newer Techniques and Recent Advances",
+        "available": 3,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 59: Alphos (Aluminum Phosphide)",
+        "available": 3,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 62: Kerosene Oil Poisoning",
+        "available": 3,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 18: Decompression, Radiation and Altitude Sickness",
+        "available": 2,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 28: Postmortem Artifacts",
+        "available": 2,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 34: Medico-legal Aspects of HIV",
+        "available": 2,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Chapter 49: Sedative-hypnotic—Barbiturates",
+        "available": 2,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Pharmacology/Toxicology",
+        "available": 2,
+        "banks": [
+          "gandaki2080"
+        ]
+      },
+      {
+        "name": "Chapter 7: Autopsy Room Hazards",
+        "available": 1,
+        "banks": [
+          "forensic"
+        ]
+      },
+      {
+        "name": "Forensic/Medicine",
+        "available": 1,
+        "banks": [
+          "gandaki2080"
+        ]
+      }
+    ],
+    "physiology": [
+      {
+        "name": "Chapter 17: Endocrine Physiology",
+        "available": 120,
+        "banks": [
+          "physiology"
+        ]
+      },
+      {
+        "name": "Chapter 16: Gastrointestinal Physiology",
+        "available": 97,
+        "banks": [
+          "physiology"
+        ]
+      },
+      {
+        "name": "Chapter 15: Renal Physiology",
+        "available": 91,
+        "banks": [
+          "physiology"
+        ]
+      },
+      {
+        "name": "Chapter 12: Sensory Physiology",
+        "available": 84,
+        "banks": [
+          "physiology"
+        ]
+      },
+      {
+        "name": "Chapter 2: Cell Membrane, Transport and Membrane Potential",
+        "available": 77,
+        "banks": [
+          "physiology"
+        ]
+      },
+      {
+        "name": "Chapter 3: Physiology of Nerve",
+        "available": 74,
+        "banks": [
+          "physiology"
+        ]
+      },
+      {
+        "name": "Physiology",
+        "available": 73,
+        "banks": [
+          "gandaki2078kartik",
+          "cee2026",
+          "central2062",
+          "loksewamock",
+          "central2072",
+          "central2074",
+          "cee3",
+          "cee4",
+          "cee5",
+          "cee6"
+        ]
+      },
+      {
+        "name": "Chapter 13: Motor Physiology",
+        "available": 71,
+        "banks": [
+          "physiology"
+        ]
+      },
+      {
+        "name": "Chapter 9: Mechanics of Respiration with Lung Volumes and Capacities",
+        "available": 58,
+        "banks": [
+          "physiology"
+        ]
+      },
+      {
+        "name": "Chapter 18: Male and Female Reproductive Physiology",
+        "available": 55,
+        "banks": [
+          "physiology"
+        ]
+      },
+      {
+        "name": "Chapter 10: Gaseous Exchange",
+        "available": 50,
+        "banks": [
+          "physiology"
+        ]
+      },
+      {
+        "name": "Chapter 4: Physiology of Muscle",
+        "available": 50,
+        "banks": [
+          "physiology"
+        ]
+      },
+      {
+        "name": "Chapter 8: Vascular System and Regional Circulation",
+        "available": 50,
+        "banks": [
+          "physiology"
+        ]
+      },
+      {
+        "name": "Chapter 1: Body Fluid: Distribution and Measurement",
+        "available": 49,
+        "banks": [
+          "physiology"
+        ]
+      },
+      {
+        "name": "Chapter 6: Cardiac Output and Regulation",
+        "available": 46,
+        "banks": [
+          "physiology"
+        ]
+      },
+      {
+        "name": "Chapter 14: Higher Functions and Special Senses",
+        "available": 45,
+        "banks": [
+          "physiology"
+        ]
+      },
+      {
+        "name": "Chapter 11: Regulation of Respiration and Applied Physiology",
+        "available": 41,
+        "banks": [
+          "physiology"
+        ]
+      },
+      {
+        "name": "Chapter 7: Blood Pressure and Regulation",
+        "available": 38,
+        "banks": [
+          "physiology"
+        ]
+      },
+      {
+        "name": "Chapter 5: Electrophysiology of Heart",
+        "available": 33,
+        "banks": [
+          "physiology"
+        ]
+      },
+      {
+        "name": "Chapter 19: Special Topic: Exercise Physiology",
+        "available": 22,
+        "banks": [
+          "physiology"
+        ]
+      },
+      {
+        "name": "Physiology/Medicine",
+        "available": 1,
+        "banks": [
+          "gandaki2080"
+        ]
+      }
+    ],
+    "biochemistry": [
+      {
+        "name": "Biochemistry",
+        "available": 503,
+        "banks": [
+          "cee2026",
+          "central2072",
+          "central2074",
+          "cee1",
+          "cee3",
+          "cee4",
+          "cee5",
+          "cee6",
+          "biochemistry"
+        ]
+      }
+    ],
+    "cpd": [
+      {
+        "name": "Medical Ethics",
+        "available": 43,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Medical Negligence",
+        "available": 25,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "ACLS",
+        "available": 19,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "BLS and ACLS",
+        "available": 11,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Medico-Legal Cases",
+        "available": 10,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Sexual Offences",
+        "available": 10,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "National Immunization Program",
+        "available": 6,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Community-Based Integrated Management of Neonatal and Childhood Illnesses (CB-IMNCI)",
+        "available": 5,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "National Nutrition Program",
+        "available": 5,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Offences Relating to Hurt",
+        "available": 5,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Safe Motherhood Program",
+        "available": 5,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Adolescent and Sexual Reproductive Health Program",
+        "available": 4,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Constitution of Nepal 2015",
+        "available": 4,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Dying Declaration",
+        "available": 4,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Female Community Health Program",
+        "available": 4,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Dengue Control Program",
+        "available": 3,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Disaster Management Program",
+        "available": 3,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Epidemic and Outbreak Surveillance Program",
+        "available": 3,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Kala-azar Elimination Program",
+        "available": 3,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Lymphatic Filariasis Elimination Program",
+        "available": 3,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Malaria Control Program",
+        "available": 3,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Medical Treatment for Deprived Citizens",
+        "available": 3,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Primary Health Care Outreach Program",
+        "available": 3,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Zoonotic Disease Control Program",
+        "available": 3,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Family Planning Program",
+        "available": 2,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "HIV and STI Control Program",
+        "available": 2,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Leprosy Control Program",
+        "available": 2,
+        "banks": [
+          "cpd"
+        ]
+      },
+      {
+        "name": "Tuberculosis Control Program",
+        "available": 2,
+        "banks": [
+          "cpd"
+        ]
+      }
+    ]
+  }
+}
