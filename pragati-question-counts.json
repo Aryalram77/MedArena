@@ -1,10 +1,10 @@
 {
   "v": 1,
-  "generatedAt": "2026-11-23T04:07:46.226Z",
-  "totalQuestions": 30806,
+  "generatedAt": "2026-11-23T07:07:19.307Z",
+  "totalQuestions": 31226,
   "subjects": {
     "surgery": 5977,
-    "medicine": 1845,
+    "medicine": 2265,
     "anesthesia": 69,
     "orthopedics": 1565,
     "pathology": 2575,
@@ -472,8 +472,22 @@
         ]
       },
       {
+        "name": "Endocrinology",
+        "available": 191,
+        "banks": [
+          "medicine"
+        ]
+      },
+      {
         "name": "Kidney and Urinary Tract",
         "available": 159,
+        "banks": [
+          "medicine"
+        ]
+      },
+      {
+        "name": "Connective Tissue Disorders",
+        "available": 150,
         "banks": [
           "medicine"
         ]
@@ -483,6 +497,13 @@
         "available": 81,
         "banks": [
           "neuro"
+        ]
+      },
+      {
+        "name": "Nervous System",
+        "available": 79,
+        "banks": [
+          "medicine"
         ]
       },
       {
