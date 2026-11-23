@@ -348,7 +348,6 @@ html,body{overflow-x:hidden;}
   <div class="logo"><a class="home-brand-link" href="index.html" aria-label="MedArena homepage">✚ <span class="brand">MedArena</span></a></div>
   <div class="tabs">
     <button id="tabBank" class="active">📚 Question Bank</button>
-    <button id="tabExam">🗂 Practice Session</button>
   </div>
   <a href="syllabus.html" class="hy-toplink" title="Loksewa Medical Officer Syllabus">📄 Syllabus</a>
   <a href="video-lessons.html" class="hy-toplink" title="High-Yield Video Lessons">🎬 Video Lessons</a>
@@ -1345,7 +1344,7 @@ const state = { banks: [], exam: null, bank: null, errorPool: [] };
 let DB = null;
 
 function switchTab(id, btn){
-  const tabs = [["adminView", $id("tabBank")], ["examView", $id("tabExam")]];
+  const tabs = [["adminView", $id("tabBank")]];
   tabs.forEach(([v, b]) => {
     const view = $id(v);
     if (view) view.style.display = "none";
@@ -1357,9 +1356,8 @@ function switchTab(id, btn){
 }
 
 (function bindTabs(){
-  const tabBank = $id("tabBank"), tabExam = $id("tabExam");
+  const tabBank = $id("tabBank");
   if (tabBank) tabBank.onclick = () => switchTab("adminView", tabBank);
-  if (tabExam) tabExam.onclick = () => { window.location.href = "surgery-practice.html"; };
 })();
 
 function toast(msg){
