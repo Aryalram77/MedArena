@@ -1,10 +1,10 @@
 {
   "v": 1,
-  "generatedAt": "2026-11-23T01:39:03.710Z",
-  "totalQuestions": 29700,
+  "generatedAt": "2026-11-23T04:07:46.226Z",
+  "totalQuestions": 30806,
   "subjects": {
     "surgery": 5977,
-    "medicine": 739,
+    "medicine": 1845,
     "anesthesia": 69,
     "orthopedics": 1565,
     "pathology": 2575,
@@ -426,6 +426,20 @@
     ],
     "medicine": [
       {
+        "name": "Hematology",
+        "available": 453,
+        "banks": [
+          "medicine"
+        ]
+      },
+      {
+        "name": "Cardiovascular System",
+        "available": 279,
+        "banks": [
+          "medicine"
+        ]
+      },
+      {
         "name": "Medicine",
         "available": 266,
         "banks": [
@@ -448,6 +462,20 @@
           "cee4",
           "cee5",
           "cee6"
+        ]
+      },
+      {
+        "name": "Respiratory System",
+        "available": 215,
+        "banks": [
+          "medicine"
+        ]
+      },
+      {
+        "name": "Kidney and Urinary Tract",
+        "available": 159,
+        "banks": [
+          "medicine"
         ]
       },
       {

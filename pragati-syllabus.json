@@ -11,6 +11,7 @@
       "group": "clinical",
       "marks": 18,
       "banks": [
+        "medicine",
         "cee1",
         "cee3",
         "cee4",

@@ -14,7 +14,7 @@
   "use strict";
 
   var SUBJECTS = [
-    { id: "medicine",          name: "Medicine",                  nameNp: "चिकित्सा",          group: "clinical", marks: 18, banks: ["cee1", "cee3", "cee4", "cee5", "cee6", "cee2026", "neuro"] },
+    { id: "medicine",          name: "Medicine",                  nameNp: "चिकित्सा",          group: "clinical", marks: 18, banks: ["medicine", "cee1", "cee3", "cee4", "cee5", "cee6", "cee2026", "neuro"] },
     { id: "surgery",           name: "Surgery",                   nameNp: "शल्यचिकित्सा",      group: "clinical", marks: 18, banks: ["se1", "surgery2", "surgery3", "cee1", "cee3", "cee4", "cee5", "cee6", "cee2026"] },
     { id: "obg",               name: "Obstetrics & Gynecology",   nameNp: "स्त्रीरोग तथा प्रसूति", group: "clinical", marks: 12, banks: ["cee1", "cee3", "cee4", "cee5", "cee6", "cee2026"] },
     { id: "pediatrics",        name: "Pediatrics",                nameNp: "बालचिकित्सा",       group: "clinical", marks: 12, banks: ["cee1", "cee3", "cee4", "cee5", "cee6", "cee2026"] },
@@ -50,7 +50,7 @@
     ortho: "orthopedics", ent: "ent", physiology: "physiology",
     radiology: "radiology", anatomy: "anatomy", biochemistry: "biochemistry",
     pharmacology: "pharmacology", psm: "community", dermatology: "dermatology",
-    patho: "pathology", hema: "pathology", neuro: "medicine",
+    patho: "pathology", hema: "pathology", neuro: "medicine", medicine: "medicine",
     microbiology: "microbiology", nursingconcept: "mixed"
   };
 
