@@ -16,7 +16,7 @@
   var SUBJECTS = [
     { id: "medicine",          name: "Medicine",                  nameNp: "चिकित्सा",          group: "clinical", marks: 18, banks: ["medicine", "cee1", "cee3", "cee4", "cee5", "cee6", "cee2025", "cee2026", "neuro"] },
     { id: "surgery",           name: "Surgery",                   nameNp: "शल्यचिकित्सा",      group: "clinical", marks: 18, banks: ["se1", "surgery2", "surgery3", "cee1", "cee3", "cee4", "cee5", "cee6", "cee2025", "cee2026"] },
-    { id: "obg",               name: "Obstetrics & Gynecology",   nameNp: "स्त्रीरोग तथा प्रसूति", group: "clinical", marks: 12, banks: ["cee1", "cee3", "cee4", "cee5", "cee6", "cee2025", "cee2026", "obs"] },
+    { id: "obg",               name: "Obstetrics & Gynecology",   nameNp: "स्त्रीरोग तथा प्रसूति", group: "clinical", marks: 12, banks: ["cee1", "cee3", "cee4", "cee5", "cee6", "cee2025", "cee2026", "obs", "gynae"] },
     { id: "pediatrics",        name: "Pediatrics",                nameNp: "बालचिकित्सा",       group: "clinical", marks: 12, banks: ["cee1", "cee3", "cee4", "cee5", "cee6", "cee2025", "cee2026"] },
     { id: "orthopedics",       name: "Orthopedics",               nameNp: "हड्डीरोग",          group: "clinical", marks: 10, banks: ["ortho", "cee1", "cee3", "cee4", "cee5", "cee6", "cee2025", "cee2026"] },
     { id: "ent",               name: "ENT",                       nameNp: "कर्ण-नासा-घाँटी",    group: "clinical", marks: 10, banks: ["ent", "cee1", "cee3", "cee4", "cee5", "cee6", "cee2025", "cee2026"] },
@@ -49,6 +49,7 @@
     ophtho: "ophthalmology", psychiatry: "psychiatry", forensic: "forensic",
     ortho: "orthopedics", ent: "ent", physiology: "physiology",
     obs: "obg",
+    gynae: "obg",
     radiology: "radiology", anatomy: "anatomy", biochemistry: "biochemistry",
     pharmacology: "pharmacology", psm: "community", dermatology: "dermatology",
     patho: "pathology", hema: "pathology", neuro: "medicine", medicine: "medicine",

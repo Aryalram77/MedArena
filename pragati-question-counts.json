@@ -1,14 +1,14 @@
 {
   "v": 1,
-  "generatedAt": "2026-11-23T16:22:53.119Z",
-  "totalQuestions": 32742,
+  "generatedAt": "2026-11-24T02:08:23.914Z",
+  "totalQuestions": 34126,
   "subjects": {
     "surgery": 5994,
     "medicine": 2301,
     "anesthesia": 91,
     "orthopedics": 1567,
     "pathology": 2587,
-    "obg": 1539,
+    "obg": 2923,
     "community": 3187,
     "pediatrics": 211,
     "radiology": 860,
@@ -1113,9 +1113,59 @@
     "obg": [
       {
         "name": "AIIMS New Pattern Questions with Answers",
-        "available": 102,
+        "available": 204,
         "banks": [
-          "obs"
+          "obs",
+          "gynae"
+        ]
+      },
+      {
+        "name": "Gynecological Oncology: Ovarian Tumors",
+        "available": 123,
+        "banks": [
+          "gynae"
+        ]
+      },
+      {
+        "name": "Contraception",
+        "available": 109,
+        "banks": [
+          "gynae"
+        ]
+      },
+      {
+        "name": "Gynecological Oncology: CIN, Cancer Cervix",
+        "available": 98,
+        "banks": [
+          "gynae"
+        ]
+      },
+      {
+        "name": "Infections of the Genital Tract",
+        "available": 98,
+        "banks": [
+          "gynae"
+        ]
+      },
+      {
+        "name": "Reproductive Physiology and Hormones in Females",
+        "available": 92,
+        "banks": [
+          "gynae"
+        ]
+      },
+      {
+        "name": "Anatomy of the Female Genital Tract",
+        "available": 89,
+        "banks": [
+          "gynae"
+        ]
+      },
+      {
+        "name": "Disorders of Menstruation",
+        "available": 89,
+        "banks": [
+          "gynae"
         ]
       },
       {
@@ -1133,10 +1183,39 @@
         ]
       },
       {
+        "name": "Gynecological Oncology: Uterine Cancer",
+        "available": 77,
+        "banks": [
+          "gynae"
+        ]
+      },
+      {
         "name": "Normal and Abnormal Labor",
         "available": 75,
         "banks": [
           "obs"
+        ]
+      },
+      {
+        "name": "Urogynecology",
+        "available": 74,
+        "banks": [
+          "gynae"
+        ]
+      },
+      {
+        "name": "Infertility",
+        "available": 73,
+        "banks": [
+          "gynae"
+        ]
+      },
+      {
+        "name": "Latest Papers",
+        "available": 70,
+        "banks": [
+          "obs",
+          "gynae"
         ]
       },
       {
@@ -1175,10 +1254,24 @@
         ]
       },
       {
-        "name": "Latest Papers",
-        "available": 56,
+        "name": "Sexuality and Intersexuality",
+        "available": 57,
         "banks": [
-          "obs"
+          "gynae"
+        ]
+      },
+      {
+        "name": "Uterine Fibroid",
+        "available": 57,
+        "banks": [
+          "gynae"
+        ]
+      },
+      {
+        "name": "PCOD, Hirsutism and Galactorrhea",
+        "available": 54,
+        "banks": [
+          "gynae"
         ]
       },
       {
@@ -1193,6 +1286,13 @@
         "available": 53,
         "banks": [
           "obs"
+        ]
+      },
+      {
+        "name": "Congenital Malformations",
+        "available": 51,
+        "banks": [
+          "gynae"
         ]
       },
       {
@@ -1239,6 +1339,13 @@
         ]
       },
       {
+        "name": "Menopause and HRT",
+        "available": 44,
+        "banks": [
+          "gynae"
+        ]
+      },
+      {
         "name": "Abortion and MTP",
         "available": 42,
         "banks": [
@@ -1264,6 +1371,13 @@
         "available": 40,
         "banks": [
           "obs"
+        ]
+      },
+      {
+        "name": "Endometriosis and Dysmenorrhea",
+        "available": 35,
+        "banks": [
+          "gynae"
         ]
       },
       {
@@ -1323,6 +1437,13 @@
         ]
       },
       {
+        "name": "Gynecological Diagnosis and Operative Surgery",
+        "available": 27,
+        "banks": [
+          "gynae"
+        ]
+      },
+      {
         "name": "Puerperium and its Abnormalities",
         "available": 26,
         "banks": [
@@ -1341,6 +1462,13 @@
         "available": 21,
         "banks": [
           "obs"
+        ]
+      },
+      {
+        "name": "Gynecological Oncology: Miscellaneous Tumors",
+        "available": 21,
+        "banks": [
+          "gynae"
         ]
       },
       {
