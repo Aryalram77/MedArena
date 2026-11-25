@@ -1,0 +1,30 @@
+{
+  "bankId": "se1",
+  "count": 3,
+  "items": {
+    "723": {
+      "explanation": "Correct answer: B — Common in cirrhosis of liver due to HBV\n\nWhy this is correct:\n- The printed key is B: Common in cirrhosis of liver due to HBV.\n- No explanatory text was located in the supplied source material for this item; the teaching points below are reconstructed from the question wording and the printed key.\n- The stem asks: All are true about hepatoblastoma except. The keyed option is the one that directly answers that cue.\n\nClinical reasoning:\n| Step | Finding | Interpretation |\n|---|---|---|\n| 1 | All are true about hepatoblastoma except | Identify what the question is testing |\n| 2 | Common in cirrhosis of liver due to HBV | This is the printed key and the option that fits the cue |\n| 3 | Common in cirrhosis of liver due to HBV vs Present in childhood | Distinguish the key from the nearest distractor |\n\nWhy other options are wrong:\n- Option A — Present in childhood: this is one of the expected choices; because the stem asks for an exception, it is not the keyed answer.\n- Option C — Chemosensitive: this is one of the expected choices; because the stem asks for an exception, it is not the keyed answer.\n- Option D — Surgical resection is treatment of choice: this is one of the expected choices; because the stem asks for an exception, it is not the keyed answer.\n\nKey points:\n- Remember the printed key: B — Common in cirrhosis of liver due to HBV.\n- Exam trap: read the exact qualifier in the stem before choosing among near-miss options.\n\nReference: No verified source extract located; standard first-line knowledge used only to frame the reasoning.",
+      "source": "",
+      "status": "needs_review",
+      "confidence": "low",
+      "notes": "No local source extract met the similarity threshold.",
+      "n": 104
+    },
+    "1043": {
+      "explanation": "Correct answer: A — ESWL\n\nWhy this is correct:\n- The printed key is A: ESWL.\n- No explanatory text was located in the supplied source material for this item; the teaching points below are reconstructed from the question wording and the printed key.\n- The stem asks: Treatment for common bile duct stone is by. The keyed option is the one that directly answers that cue.\n\nClinical reasoning:\n| Step | Finding | Interpretation |\n|---|---|---|\n| 1 | Treatment for common bile duct stone is by | Identify what the question is testing |\n| 2 | ESWL | This is the printed key and the option that fits the cue |\n| 3 | ESWL vs Exploration of bile duct and recovery of stones | Distinguish the key from the nearest distractor |\n\nWhy other options are wrong:\n- Option B — Exploration of bile duct and recovery of stones: this alternative is not the specific answer identified by the printed key for the cue (Treatment for common bile duct stone is by).\n- Option C — Bile duct stenting: this alternative is not the specific answer identified by the printed key for the cue (Treatment for common bile duct stone is by).\n- Option D — Nasobiliary drainage: this alternative is not the specific answer identified by the printed key for the cue (Treatment for common bile duct stone is by).\n- Option E — Percutaneous drainage: this alternative is not the specific answer identified by the printed key for the cue (Treatment for common bile duct stone is by).\n\nKey points:\n- Remember the printed key: A — ESWL.\n- Exam trap: read the exact qualifier in the stem before choosing among near-miss options.\n\nReference: No verified source extract located; standard first-line knowledge used only to frame the reasoning.",
+      "source": "",
+      "status": "needs_review",
+      "confidence": "low",
+      "notes": "No local source extract met the similarity threshold.",
+      "n": 44
+    },
+    "1067": {
+      "explanation": "Correct answer: A — Retained stone\n\nWhy this is correct:\n- The printed key is A: Retained stone.\n- No explanatory text was located in the supplied source material for this item; the teaching points below are reconstructed from the question wording and the printed key.\n- The stem asks: Most common complication of common bile duct exploration. The keyed option is the one that directly answers that cue.\n\nClinical reasoning:\n| Step | Finding | Interpretation |\n|---|---|---|\n| 1 | Most common complication of common bile duct exploration | Identify what the question is testing |\n| 2 | Retained stone | This is the printed key and the option that fits the cue |\n| 3 | Retained stone vs Pancreatitis | Distinguish the key from the nearest distractor |\n\nWhy other options are wrong:\n- Option B — Pancreatitis: this alternative is not the specific answer identified by the printed key for the cue (Most common complication of common bile duct exploration).\n- Option C — Stricture of common bile duct: this alternative is not the specific answer identified by the printed key for the cue (Most common complication of common bile duct exploration).\n- Option D — T-tube displacement: this alternative is not the specific answer identified by the printed key for the cue (Most common complication of common bile duct exploration).\n\nKey points:\n- Remember the printed key: A — Retained stone.\n- Exam trap: read the exact qualifier in the stem before choosing among near-miss options.\n\nReference: No verified source extract located; standard first-line knowledge used only to frame the reasoning.",
+      "source": "",
+      "status": "needs_review",
+      "confidence": "low",
+      "notes": "No local source extract met the similarity threshold.",
+      "n": 68
+    }
+  }
+}

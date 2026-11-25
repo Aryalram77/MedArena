@@ -1,0 +1,22 @@
+{
+  "bankId": "dermatology",
+  "count": 2,
+  "items": {
+    "173": {
+      "explanation": "Correct answer: D — Amorolfine\n\nWhy this is correct:\n- The printed key is D: Amorolfine.\n- No explanatory text was located in the supplied source material for this item; the teaching points below are reconstructed from the question wording and the printed key.\n- The stem asks: NEET Pattern 2020: A patient has onychomycosis. He should be prescribed a nail lacquer containing. The keyed option is the one that directly answers that cue.\n\nClinical reasoning:\n| Step | Finding | Interpretation |\n|---|---|---|\n| 1 | NEET Pattern 2020: A patient has onychomycosis. He should be prescribed a nail lacquer containing | Identify what the question is testing |\n| 2 | Amorolfine | This is the printed key and the option that fits the cue |\n| 3 | Amorolfine vs Terbinafine | Distinguish the key from the nearest distractor |\n\nWhy other options are wrong:\n- Option A — Terbinafine: this alternative is not the specific answer identified by the printed key for the cue (NEET Pattern 2020: A patient has onychomycosis. He should be prescribed a nail lacquer containing).\n- Option B — Nystatin: this alternative is not the specific answer identified by the printed key for the cue (NEET Pattern 2020: A patient has onychomycosis. He should be prescribed a nail lacquer containing).\n- Option C — Flucytosine: this alternative is not the specific answer identified by the printed key for the cue (NEET Pattern 2020: A patient has onychomycosis. He should be prescribed a nail lacquer containing).\n\nKey points:\n- Remember the printed key: D — Amorolfine.\n- Exam trap: read the exact qualifier in the stem before choosing among near-miss options.\n\nReference: No verified source extract located; standard first-line knowledge used only to frame the reasoning.",
+      "source": "",
+      "status": "needs_review",
+      "confidence": "low",
+      "notes": "No local source extract met the similarity threshold.",
+      "n": 174
+    },
+    "375": {
+      "explanation": "Correct answer: A — Oral griseofulvin\n\nWhy this is correct:\n- The printed key is A: Oral griseofulvin.\n- No explanatory text was located in the supplied source material for this item; the teaching points below are reconstructed from the question wording and the printed key.\n- The stem asks: An 11-year-old is having tinea capitis. The most appropriate line of therapy is. The keyed option is the one that directly answers that cue.\n\nClinical reasoning:\n| Step | Finding | Interpretation |\n|---|---|---|\n| 1 | An 11-year-old is having tinea capitis. The most appropriate line of therapy is | Identify what the question is testing |\n| 2 | Oral griseofulvin | This is the printed key and the option that fits the cue |\n| 3 | Oral griseofulvin vs Topical griseofulvin | Distinguish the key from the nearest distractor |\n\nWhy other options are wrong:\n- Option B — Topical griseofulvin: this alternative is not the specific answer identified by the printed key for the cue (An 11-year-old is having tinea capitis. The most appropriate line of therapy is).\n- Option C — Selenium sulphide shampoo: this alternative is not the specific answer identified by the printed key for the cue (An 11-year-old is having tinea capitis. The most appropriate line of therapy is).\n- Option D — Shaving of hair: this alternative is not the specific answer identified by the printed key for the cue (An 11-year-old is having tinea capitis. The most appropriate line of therapy is).\n\nKey points:\n- Remember the printed key: A — Oral griseofulvin.\n- Exam trap: read the exact qualifier in the stem before choosing among near-miss options.\n\nReference: No verified source extract located; standard first-line knowledge used only to frame the reasoning.",
+      "source": "",
+      "status": "needs_review",
+      "confidence": "low",
+      "notes": "No local source extract met the similarity threshold.",
+      "n": 376
+    }
+  }
+}

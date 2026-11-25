@@ -1,0 +1,14 @@
+{
+  "bankId": "lumbini83",
+  "count": 1,
+  "items": {
+    "82": {
+      "explanation": "Printed answer: None — no listed letter applies.\n\nWhy this is correct:\n- The source prints 'None' rather than a letter; no listed option is accepted.\n- The printed key is : Unanswerable.\n- No explanatory text was located in the supplied source material for this item; the teaching points below are reconstructed from the question wording and the printed key.\n- The stem asks: Condition that may result in chronic toxicity (question partly illegible on scan). The keyed option is the one that directly answers that cue.\n\nClinical reasoning:\n| Step | Finding | Interpretation |\n|---|---|---|\n| 1 | Condition that may result in chronic toxicity (question partly illegible on scan) | Identify what the question is testing |\n| 2 | Unanswerable | This is the printed key and the option that fits the cue |\n| 3 | Unanswerable vs Could not read reliably | Distinguish the key from the nearest distractor |\n\nWhy other options are wrong:\n- Option A — Could not read reliably: this alternative is not the specific answer identified by the printed key for the cue (Condition that may result in chronic toxicity (question partly illegible on scan)).\n- Option B — -: this alternative is not the specific answer identified by the printed key for the cue (Condition that may result in chronic toxicity (question partly illegible on scan)).\n- Option C — -: this alternative is not the specific answer identified by the printed key for the cue (Condition that may result in chronic toxicity (question partly illegible on scan)).\n- Option D — -: this alternative is not the specific answer identified by the printed key for the cue (Condition that may result in chronic toxicity (question partly illegible on scan)).\n\nKey points:\n- Remember the printed key: None — Unanswerable.\n- Exam trap: read the exact qualifier in the stem before choosing among near-miss options.\n\nReference: No verified source extract located; standard first-line knowledge used only to frame the reasoning.",
+      "source": "",
+      "status": "needs_review",
+      "confidence": "low",
+      "notes": "No local source extract met the similarity threshold.",
+      "n": 83
+    }
+  }
+}

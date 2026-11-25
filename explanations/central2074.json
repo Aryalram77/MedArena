@@ -1,0 +1,14 @@
+{
+  "bankId": "central2074",
+  "count": 1,
+  "items": {
+    "60": {
+      "explanation": "Correct answer: C — Ca vulva\n\nWhy this is correct:\n- The printed key is C: Ca vulva.\n- No explanatory text was located in the supplied source material for this item; the teaching points below are reconstructed from the question wording and the printed key.\n- The stem asks: Sentinel lymph node biopsy is most useful for which of the following gynecological malignancies?. The keyed option is the one that directly answers that cue.\n\nClinical reasoning:\n| Step | Finding | Interpretation |\n|---|---|---|\n| 1 | Sentinel lymph node biopsy is most useful for which of the following gynecological malignancies? | Identify what the question is testing |\n| 2 | Ca vulva | This is the printed key and the option that fits the cue |\n| 3 | Ca vulva vs Ca endometrium | Distinguish the key from the nearest distractor |\n\nWhy other options are wrong:\n- Option A — Ca endometrium: this alternative is not the specific answer identified by the printed key for the cue (Sentinel lymph node biopsy is most useful for which of the following gynecological malignancies?).\n- Option B — Ca cervix: this alternative is not the specific answer identified by the printed key for the cue (Sentinel lymph node biopsy is most useful for which of the following gynecological malignancies?).\n- Option D — Ca vagina: this alternative is not the specific answer identified by the printed key for the cue (Sentinel lymph node biopsy is most useful for which of the following gynecological malignancies?).\n\nKey points:\n- Remember the printed key: C — Ca vulva.\n- Exam trap: read the exact qualifier in the stem before choosing among near-miss options.\n\nReference: No verified source extract located; standard first-line knowledge used only to frame the reasoning.",
+      "source": "",
+      "status": "needs_review",
+      "confidence": "low",
+      "notes": "No local source extract met the similarity threshold.",
+      "n": 61
+    }
+  }
+}

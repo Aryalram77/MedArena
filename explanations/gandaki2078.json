@@ -1,0 +1,14 @@
+{
+  "bankId": "gandaki2078",
+  "count": 1,
+  "items": {
+    "24": {
+      "explanation": "Correct answer: A — Liquid nitrogen\n\nWhy this is correct:\n- The printed key is A: Liquid nitrogen.\n- No explanatory text was located in the supplied source material for this item; the teaching points below are reconstructed from the question wording and the printed key.\n- The stem asks: In semen banks, semen is preserved at low temperature using. The keyed option is the one that directly answers that cue.\n\nClinical reasoning:\n| Step | Finding | Interpretation |\n|---|---|---|\n| 1 | In semen banks, semen is preserved at low temperature using | Identify what the question is testing |\n| 2 | Liquid nitrogen | This is the printed key and the option that fits the cue |\n| 3 | Liquid nitrogen vs Liquid air | Distinguish the key from the nearest distractor |\n\nWhy other options are wrong:\n- Option B — Liquid air: this alternative is not the specific answer identified by the printed key for the cue (In semen banks, semen is preserved at low temperature using).\n- Option C — Dry ice: this alternative is not the specific answer identified by the printed key for the cue (In semen banks, semen is preserved at low temperature using).\n- Option D — Deep freeze: this alternative is not the specific answer identified by the printed key for the cue (In semen banks, semen is preserved at low temperature using).\n\nKey points:\n- Remember the printed key: A — Liquid nitrogen.\n- Exam trap: read the exact qualifier in the stem before choosing among near-miss options.\n\nReference: No verified source extract located; standard first-line knowledge used only to frame the reasoning.",
+      "source": "",
+      "status": "needs_review",
+      "confidence": "low",
+      "notes": "No local source extract met the similarity threshold.",
+      "n": 25
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "bankId": "hema",
+  "count": 3,
+  "items": {
+    "262": {
+      "explanation": "Correct answer: B — Imatinib Mesylate Therap:\n\nWhy this is correct:\n- The printed key is B: Imatinib Mesylate Therap:.\n- No explanatory text was located in the supplied source material for this item; the teaching points below are reconstructed from the question wording and the printed key.\n- The stem asks: Initial treatment recommended for news diagnosed patient with CML is. The keyed option is the one that directly answers that cue.\n\nClinical reasoning:\n| Step | Finding | Interpretation |\n|---|---|---|\n| 1 | Initial treatment recommended for news diagnosed patient with CML is | Identify what the question is testing |\n| 2 | Imatinib Mesylate Therap: | This is the printed key and the option that fits the cue |\n| 3 | Imatinib Mesylate Therap: vs Allogenic Bone Marrow Transplantation | Distinguish the key from the nearest distractor |\n\nWhy other options are wrong:\n- Option A — Allogenic Bone Marrow Transplantation: this alternative is not the specific answer identified by the printed key for the cue (Initial treatment recommended for news diagnosed patient with CML is).\n- Option C — TNF- ALT SABER 3 INE A o On: le LUV es by i pe: this alternative is not the specific answer identified by the printed key for the cue (Initial treatment recommended for news diagnosed patient with CML is).\n- Option D — IFN-.: this alternative is not the specific answer identified by the printed key for the cue (Initial treatment recommended for news diagnosed patient with CML is).\n\nKey points:\n- Remember the printed key: B — Imatinib Mesylate Therap:.\n- Exam trap: read the exact qualifier in the stem before choosing among near-miss options.\n\nReference: No verified source extract located; standard first-line knowledge used only to frame the reasoning.",
+      "source": "",
+      "status": "needs_review",
+      "confidence": "low",
+      "notes": "No local source extract met the similarity threshold.",
+      "n": 263
+    },
+    "442": {
+      "explanation": "Correct answer: E — All of the above\n\nWhy this is correct:\n- The printed key is E: All of the above.\n- No explanatory text was located in the supplied source material for this item; the teaching points below are reconstructed from the question wording and the printed key.\n- The stem asks: Blood components products are. The keyed option is the one that directly answers that cue.\n\nClinical reasoning:\n| Step | Finding | Interpretation |\n|---|---|---|\n| 1 | Blood components products are | Identify what the question is testing |\n| 2 | All of the above | This is the printed key and the option that fits the cue |\n| 3 | All of the above vs Whole blood | Distinguish the key from the nearest distractor |\n\nWhy other options are wrong:\n- Option A — Whole blood: this alternative is not the specific answer identified by the printed key for the cue (Blood components products are).\n- Option B — Platelets: this alternative is not the specific answer identified by the printed key for the cue (Blood components products are).\n- Option C — Fresh frozen plasma: this alternative is not the specific answer identified by the printed key for the cue (Blood components products are).\n- Option D — Leukocyte reduced RBC: this alternative is not the specific answer identified by the printed key for the cue (Blood components products are).\n\nKey points:\n- Remember the printed key: E — All of the above.\n- Exam trap: read the exact qualifier in the stem before choosing among near-miss options.\n\nReference: No verified source extract located; standard first-line knowledge used only to frame the reasoning.",
+      "source": "",
+      "status": "needs_review",
+      "confidence": "low",
+      "notes": "No local source extract met the similarity threshold.",
+      "n": 443
+    },
+    "447": {
+      "explanation": "Correct answer: B — Factor IX ao)\n\nWhy this is correct:\n- The printed key is B: Factor IX ao).\n- No explanatory text was located in the supplied source material for this item; the teaching points below are reconstructed from the question wording and the printed key.\n- The stem asks: Cryoprecipitate contains all except-. The keyed option is the one that directly answers that cue.\n\nClinical reasoning:\n| Step | Finding | Interpretation |\n|---|---|---|\n| 1 | Cryoprecipitate contains all except- | Identify what the question is testing |\n| 2 | Factor IX ao) | This is the printed key and the option that fits the cue |\n| 3 | Factor IX ao) vs Factor VIII 2 | Distinguish the key from the nearest distractor |\n\nWhy other options are wrong:\n- Option A — Factor VIII 2: this is one of the expected choices; because the stem asks for an exception, it is not the keyed answer.\n- Option C — Fibrinogen a]: this is one of the expected choices; because the stem asks for an exception, it is not the keyed answer.\n- Option D — VWF. =: this is one of the expected choices; because the stem asks for an exception, it is not the keyed answer.\n\nKey points:\n- Remember the printed key: B — Factor IX ao).\n- Exam trap: read the exact qualifier in the stem before choosing among near-miss options.\n\nReference: No verified source extract located; standard first-line knowledge used only to frame the reasoning.",
+      "source": "",
+      "status": "needs_review",
+      "confidence": "low",
+      "notes": "No local source extract met the similarity threshold.",
+      "n": 448
+    }
+  }
+}

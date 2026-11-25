@@ -1,0 +1,30 @@
+{
+  "bankId": "gynae",
+  "count": 3,
+  "items": {
+    "573": {
+      "explanation": "Correct answers: B, C, D — T. vaginalis is a flagellated protozoa; Metronidazole is used for treatment; Strawberry cervix\n\nWhy this is correct:\n- The printed key is B, C, D: T. vaginalis is a flagellated protozoa; Metronidazole is used for treatment; Strawberry cervix.\n- No explanatory text was located in the supplied source material for this item; the teaching points below are reconstructed from the question wording and the printed key.\n- The stem asks: True about Trichomonas vaginitis. The keyed option is the one that directly answers that cue.\n\nClinical reasoning:\n| Step | Finding | Interpretation |\n|---|---|---|\n| 1 | True about Trichomonas vaginitis | Identify what the question is testing |\n| 2 | T. vaginalis is a flagellated protozoa; Metronidazole is used for treatment; Strawberry cervix | This is the printed key and the option that fits the cue |\n| 3 | T. vaginalis is a flagellated protozoa vs Important cause of recurrent abortion | Distinguish the key from the nearest distractor |\n\nWhy other options are wrong:\n- Option A — Important cause of recurrent abortion: this alternative is not the specific answer identified by the printed key for the cue (True about Trichomonas vaginitis).\n- Option E — Curdy discharge: this alternative is not the specific answer identified by the printed key for the cue (True about Trichomonas vaginitis).\n\nKey points:\n- Remember the printed key: B, C, D — T. vaginalis is a flagellated protozoa; Metronidazole is used for treatment; Strawberry cervix.\n- Exam trap: read the exact qualifier in the stem before choosing among near-miss options.\n\nReference: No verified source extract located; standard first-line knowledge used only to frame the reasoning.",
+      "source": "",
+      "status": "needs_review",
+      "confidence": "low",
+      "notes": "No local source extract met the similarity threshold.",
+      "n": 574
+    },
+    "730": {
+      "explanation": "Correct answer: A — TESA\n\nWhy this is correct:\n- The printed key is A: TESA.\n- No explanatory text was located in the supplied source material for this item; the teaching points below are reconstructed from the question wording and the printed key.\n- The stem asks: Aspiration of sperms from testis is done in. The keyed option is the one that directly answers that cue.\n\nClinical reasoning:\n| Step | Finding | Interpretation |\n|---|---|---|\n| 1 | Aspiration of sperms from testis is done in | Identify what the question is testing |\n| 2 | TESA | This is the printed key and the option that fits the cue |\n| 3 | TESA vs MESA | Distinguish the key from the nearest distractor |\n\nWhy other options are wrong:\n- Option B — MESA: this alternative is not the specific answer identified by the printed key for the cue (Aspiration of sperms from testis is done in).\n- Option C — ZIFT: this alternative is not the specific answer identified by the printed key for the cue (Aspiration of sperms from testis is done in).\n- Option D — GIFT: this alternative is not the specific answer identified by the printed key for the cue (Aspiration of sperms from testis is done in).\n\nKey points:\n- Remember the printed key: A — TESA.\n- Exam trap: read the exact qualifier in the stem before choosing among near-miss options.\n\nReference: No verified source extract located; standard first-line knowledge used only to frame the reasoning.",
+      "source": "",
+      "status": "needs_review",
+      "confidence": "low",
+      "notes": "No local source extract met the similarity threshold.",
+      "n": 731
+    },
+    "996": {
+      "explanation": "Correct answers: A, B, C, D — Pap smear; USG; Endometrial biopsy; Dilatation & curettage\n\nWhy this is correct:\n- The printed key is A, B, C, D: Pap smear; USG; Endometrial biopsy; Dilatation & curettage.\n- No explanatory text was located in the supplied source material for this item; the teaching points below are reconstructed from the question wording and the printed key.\n- The stem asks: Evaluation of a patient with post-menopausal bleeding is done by. The keyed option is the one that directly answers that cue.\n\nClinical reasoning:\n| Step | Finding | Interpretation |\n|---|---|---|\n| 1 | Evaluation of a patient with post-menopausal bleeding is done by | Identify what the question is testing |\n| 2 | Pap smear; USG; Endometrial biopsy; Dilatation & curettage | This is the printed key and the option that fits the cue |\n| 3 | No incorrect option supplied | Key stands on the source evidence |\n\nWhy other options are wrong:\n- No incorrect options were supplied for this item.\n\nKey points:\n- Remember the printed key: A, B, C, D — Pap smear; USG; Endometrial biopsy; Dilatation & curettage.\n- Exam trap: read the exact qualifier in the stem before choosing among near-miss options.\n\nReference: No verified source extract located; standard first-line knowledge used only to frame the reasoning.",
+      "source": "",
+      "status": "needs_review",
+      "confidence": "low",
+      "notes": "No local source extract met the similarity threshold.",
+      "n": 997
+    }
+  }
+}

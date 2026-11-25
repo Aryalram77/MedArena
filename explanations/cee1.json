@@ -1,0 +1,14 @@
+{
+  "bankId": "cee1",
+  "count": 1,
+  "items": {
+    "54": {
+      "explanation": "Correct answer: A — Ethanol\n\nWhy this is correct:\n- The printed key is A: Ethanol.\n- No explanatory text was located in the supplied source material for this item; the teaching points below are reconstructed from the question wording and the printed key.\n- The stem asks: A 20-year-old male presents to the emergency room with altered consciousness after\nconsuming methanol. The specific antidote (fomepizole) is not available. What is the initial trea.... The keyed option is the one that directly answers that cue.\n\nClinical reasoning:\n| Step | Finding | Interpretation |\n|---|---|---|\n| 1 | A 20-year-old male presents to the emergency room with altered consciousness after consuming methanol. The specific antidote (fomepizole) is not available. What is the initial trea... | Identify what the question is testing |\n| 2 | Ethanol | This is the printed key and the option that fits the cue |\n| 3 | Ethanol vs b) Propranolol | Distinguish the key from the nearest distractor |\n\nWhy other options are wrong:\n- Option B — b) Propranolol: this is one of the expected choices; because the stem asks for an exception, it is not the keyed answer.\n- Option C — c) Ketorolac: this is one of the expected choices; because the stem asks for an exception, it is not the keyed answer.\n- Option D — d) Carboxylic acid: this is one of the expected choices; because the stem asks for an exception, it is not the keyed answer.\n\nKey points:\n- Remember the printed key: A — Ethanol.\n- Exam trap: read the exact qualifier in the stem before choosing among near-miss options.\n\nReference: No verified source extract located; standard first-line knowledge used only to frame the reasoning.",
+      "source": "",
+      "status": "needs_review",
+      "confidence": "low",
+      "notes": "No local source extract met the similarity threshold.",
+      "n": 55
+    }
+  }
+}
