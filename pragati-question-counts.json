@@ -1,28 +1,28 @@
 {
   "v": 1,
-  "generatedAt": "2026-11-24T02:08:23.914Z",
-  "totalQuestions": 34126,
+  "generatedAt": "2026-11-25T16:43:57.637Z",
+  "totalQuestions": 34326,
   "subjects": {
-    "surgery": 5994,
-    "medicine": 2301,
-    "anesthesia": 91,
-    "orthopedics": 1567,
-    "pathology": 2587,
-    "obg": 2923,
-    "community": 3187,
-    "pediatrics": 211,
+    "surgery": 6012,
+    "medicine": 2319,
+    "anesthesia": 99,
+    "orthopedics": 1577,
+    "pathology": 2595,
+    "obg": 2935,
+    "community": 3197,
+    "pediatrics": 223,
     "radiology": 860,
-    "pharmacology": 3540,
-    "dermatology": 1131,
-    "psychiatry": 693,
-    "anatomy": 1776,
-    "ophthalmology": 634,
-    "ent": 1242,
-    "microbiology": 1475,
+    "pharmacology": 3553,
+    "dermatology": 1142,
+    "psychiatry": 701,
+    "anatomy": 1783,
+    "ophthalmology": 642,
+    "ent": 1252,
+    "microbiology": 1484,
     "research": 127,
-    "forensic": 1241,
-    "physiology": 1226,
-    "biochemistry": 506,
+    "forensic": 1257,
+    "physiology": 1240,
+    "biochemistry": 514,
     "cpd": 195
   },
   "chapters": {
@@ -42,21 +42,15 @@
         ]
       },
       {
-        "name": "Pancreas",
-        "available": 248,
-        "banks": [
-          "se1"
-        ]
-      },
-      {
         "name": "Surgery",
-        "available": 243,
+        "available": 261,
         "banks": [
           "loksewa",
           "gandaki2078",
           "gandaki2078kartik",
           "cee2026",
           "cee2025",
+          "cee2024",
           "gandaki2080",
           "koshi2081",
           "karnali2082",
@@ -72,6 +66,13 @@
           "cee4",
           "cee5",
           "cee6"
+        ]
+      },
+      {
+        "name": "Pancreas",
+        "available": 248,
+        "banks": [
+          "se1"
         ]
       },
       {
@@ -435,13 +436,14 @@
       },
       {
         "name": "Medicine",
-        "available": 301,
+        "available": 319,
         "banks": [
           "loksewa",
           "gandaki2078",
           "gandaki2078kartik",
           "cee2026",
           "cee2025",
+          "cee2024",
           "gandaki2080",
           "koshi2081",
           "karnali2082",
@@ -669,11 +671,12 @@
       },
       {
         "name": "Anaesthesia",
-        "available": 23,
+        "available": 31,
         "banks": [
           "gandaki2078",
           "gandaki2078kartik",
           "cee2026",
+          "cee2024",
           "central2069",
           "central2072",
           "central2073",
@@ -746,6 +749,24 @@
         ]
       },
       {
+        "name": "Orthopaedics",
+        "available": 80,
+        "banks": [
+          "gandaki2078",
+          "gandaki2078kartik",
+          "cee2026",
+          "cee2024",
+          "karnali2082",
+          "central2081",
+          "central2062",
+          "central2069",
+          "loksewamock",
+          "central2072",
+          "central2073",
+          "central2074"
+        ]
+      },
+      {
         "name": "Orthopedics",
         "available": 72,
         "banks": [
@@ -759,23 +780,6 @@
           "cee4",
           "cee5",
           "cee6"
-        ]
-      },
-      {
-        "name": "Orthopaedics",
-        "available": 70,
-        "banks": [
-          "gandaki2078",
-          "gandaki2078kartik",
-          "cee2026",
-          "karnali2082",
-          "central2081",
-          "central2062",
-          "central2069",
-          "loksewamock",
-          "central2072",
-          "central2073",
-          "central2074"
         ]
       },
       {
@@ -949,20 +953,14 @@
         ]
       },
       {
-        "name": "Chapter 1: Cell Injury",
-        "available": 97,
-        "banks": [
-          "patho"
-        ]
-      },
-      {
         "name": "Pathology",
-        "available": 95,
+        "available": 103,
         "banks": [
           "loksewa",
           "gandaki2078kartik",
           "cee2026",
           "cee2025",
+          "cee2024",
           "gandaki2080",
           "central2062",
           "loksewamock",
@@ -974,6 +972,13 @@
           "cee4",
           "cee5",
           "cee6"
+        ]
+      },
+      {
+        "name": "Chapter 1: Cell Injury",
+        "available": 97,
+        "banks": [
+          "patho"
         ]
       },
       {
@@ -1451,6 +1456,14 @@
         ]
       },
       {
+        "name": "Obstetrics and Gynaecology",
+        "available": 24,
+        "banks": [
+          "cee2026",
+          "cee2024"
+        ]
+      },
+      {
         "name": "Anemia in Pregnancy",
         "available": 22,
         "banks": [
@@ -1487,13 +1500,6 @@
         "available": 15,
         "banks": [
           "obs"
-        ]
-      },
-      {
-        "name": "Obstetrics and Gynaecology",
-        "available": 12,
-        "banks": [
-          "cee2026"
         ]
       },
       {
@@ -1585,12 +1591,13 @@
       },
       {
         "name": "Community Medicine",
-        "available": 165,
+        "available": 175,
         "banks": [
           "gandaki2078",
           "gandaki2078kartik",
           "cee2026",
           "cee2025",
+          "cee2024",
           "koshi2081",
           "karnali2082",
           "central2081",
@@ -1690,11 +1697,12 @@
     "pediatrics": [
       {
         "name": "Paediatrics",
-        "available": 127,
+        "available": 139,
         "banks": [
           "gandaki2078",
           "gandaki2078kartik",
           "cee2026",
+          "cee2024",
           "karnali2082",
           "central2081",
           "central2062",
@@ -1852,21 +1860,15 @@
         ]
       },
       {
-        "name": "Autacoids",
-        "available": 194,
-        "banks": [
-          "pharmacology"
-        ]
-      },
-      {
         "name": "Pharmacology",
-        "available": 183,
+        "available": 196,
         "banks": [
           "loksewa",
           "gandaki2078",
           "gandaki2078kartik",
           "cee2026",
           "cee2025",
+          "cee2024",
           "gandaki2080",
           "koshi2081",
           "karnali2082",
@@ -1882,6 +1884,13 @@
           "cee4",
           "cee5",
           "cee6"
+        ]
+      },
+      {
+        "name": "Autacoids",
+        "available": 194,
+        "banks": [
+          "pharmacology"
         ]
       },
       {
@@ -1951,12 +1960,13 @@
     "dermatology": [
       {
         "name": "Dermatology",
-        "available": 94,
+        "available": 105,
         "banks": [
           "loksewa",
           "gandaki2078kartik",
           "cee2026",
           "cee2025",
+          "cee2024",
           "gandaki2080",
           "koshi2081",
           "karnali2082",
@@ -2306,10 +2316,11 @@
     "psychiatry": [
       {
         "name": "Psychiatry",
-        "available": 89,
+        "available": 97,
         "banks": [
           "loksewa",
           "cee2026",
+          "cee2024",
           "gandaki2080",
           "koshi2081",
           "karnali2082",
@@ -2506,12 +2517,13 @@
       },
       {
         "name": "Anatomy",
-        "available": 86,
+        "available": 93,
         "banks": [
           "loksewa",
           "gandaki2078kartik",
           "cee2026",
           "cee2025",
+          "cee2024",
           "koshi2081",
           "central2062",
           "loksewamock",
@@ -2556,28 +2568,15 @@
     ],
     "ophthalmology": [
       {
-        "name": "5. Retina",
-        "available": 98,
-        "banks": [
-          "ophtho"
-        ]
-      },
-      {
-        "name": "2. Conjunctiva, Sclera and Cornea",
-        "available": 94,
-        "banks": [
-          "ophtho"
-        ]
-      },
-      {
         "name": "Ophthalmology",
-        "available": 94,
+        "available": 102,
         "banks": [
           "loksewa",
           "gandaki2078",
           "gandaki2078kartik",
           "cee2026",
           "cee2025",
+          "cee2024",
           "gandaki2080",
           "koshi2081",
           "karnali2082",
@@ -2592,6 +2591,20 @@
           "cee4",
           "cee5",
           "cee6"
+        ]
+      },
+      {
+        "name": "5. Retina",
+        "available": 98,
+        "banks": [
+          "ophtho"
+        ]
+      },
+      {
+        "name": "2. Conjunctiva, Sclera and Cornea",
+        "available": 94,
+        "banks": [
+          "ophtho"
         ]
       },
       {
@@ -2668,13 +2681,14 @@
     "ent": [
       {
         "name": "ENT",
-        "available": 119,
+        "available": 129,
         "banks": [
           "loksewa",
           "gandaki2078",
           "gandaki2078kartik",
           "cee2026",
           "cee2025",
+          "cee2024",
           "gandaki2080",
           "koshi2081",
           "karnali2082",
@@ -2905,20 +2919,14 @@
     ],
     "microbiology": [
       {
-        "name": "Microbiology 5",
-        "available": 77,
-        "banks": [
-          "microbiology"
-        ]
-      },
-      {
         "name": "Microbiology",
-        "available": 71,
+        "available": 80,
         "banks": [
           "gandaki2078",
           "gandaki2078kartik",
           "cee2026",
           "cee2025",
+          "cee2024",
           "central2062",
           "central2069",
           "loksewamock",
@@ -2930,6 +2938,13 @@
           "cee4",
           "cee5",
           "cee6"
+        ]
+      },
+      {
+        "name": "Microbiology 5",
+        "available": 77,
+        "banks": [
+          "microbiology"
         ]
       },
       {
@@ -3316,12 +3331,13 @@
     "forensic": [
       {
         "name": "Forensic Medicine",
-        "available": 112,
+        "available": 128,
         "banks": [
           "gandaki2078",
           "gandaki2078kartik",
           "cee2026",
           "cee2025",
+          "cee2024",
           "koshi2081",
           "karnali2082",
           "central2081",
@@ -3810,6 +3826,24 @@
         ]
       },
       {
+        "name": "Physiology",
+        "available": 88,
+        "banks": [
+          "gandaki2078kartik",
+          "cee2026",
+          "cee2025",
+          "cee2024",
+          "central2062",
+          "loksewamock",
+          "central2072",
+          "central2074",
+          "cee3",
+          "cee4",
+          "cee5",
+          "cee6"
+        ]
+      },
+      {
         "name": "Chapter 12: Sensory Physiology",
         "available": 84,
         "banks": [
@@ -3828,23 +3862,6 @@
         "available": 74,
         "banks": [
           "physiology"
-        ]
-      },
-      {
-        "name": "Physiology",
-        "available": 74,
-        "banks": [
-          "gandaki2078kartik",
-          "cee2026",
-          "cee2025",
-          "central2062",
-          "loksewamock",
-          "central2072",
-          "central2074",
-          "cee3",
-          "cee4",
-          "cee5",
-          "cee6"
         ]
       },
       {
@@ -3949,10 +3966,11 @@
     "biochemistry": [
       {
         "name": "Biochemistry",
-        "available": 506,
+        "available": 514,
         "banks": [
           "cee2026",
           "cee2025",
+          "cee2024",
           "central2072",
           "central2074",
           "cee1",
