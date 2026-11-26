@@ -40,10 +40,14 @@ surgery-part2.js
 medarena-apk/
 anatomy-extract/
 
-# NOTE: admin-server.py, admin.html and start-admin.bat ARE committed on purpose.
-# GitHub Pages cannot run Python, so they do nothing on the live site, but they
-# are your only backup of the server and the editor. They contain no secrets:
-# the admin password lives in admin-auth.json, which is ignored above.
+# Admin tooling + docs are LOCAL ONLY — kept off GitHub so they can't be read
+# or reverse-engineered. (They contain no secrets; admin password lives in
+# admin-auth.json, which is ignored above. Back these up yourself.)
+admin-server.py
+admin.html
+start-admin.bat
+publish.bat
+PUBLISHING.md
 
 # Video lesson pipeline (node packages + intermediate render output)
 video-lessons/node_modules/
