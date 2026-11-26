@@ -219,8 +219,19 @@
   <a class="back-link" href="index.html">&larr; Back to MedArena</a>
 </div>
 
-<div id="freeUsageBanner" style="display:none;background:linear-gradient(90deg,#0ea5e9,#2563eb);color:#fff;padding:10px 16px;text-align:center;font-size:14px;font-weight:600;letter-spacing:.2px">
-  Free Usage Limits in <span id="freeUsageTimer" style="font-variant-numeric:tabular-nums;background:rgba(255,255,255,.18);padding:3px 10px;border-radius:999px;margin-left:6px;display:inline-block;min-width:180px"></span>
+<style>
+#freeUsageBanner{display:none;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px;padding:11px 18px;text-align:center;font-weight:600;letter-spacing:.2px;font-size:14px;color:#fff;background:linear-gradient(90deg,#7c3aed,#ec4899,#f59e0b);background-size:200% 100%;animation:fuGrad 8s ease infinite;box-shadow:0 6px 22px rgba(124,58,237,.28);border-bottom:1px solid rgba(255,255,255,.18)}
+@keyframes fuGrad{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+#freeUsageBanner .fu-ico{font-size:17px;animation:fuPulse 1.6s ease-in-out infinite;display:inline-block}
+@keyframes fuPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+#freeUsageBanner .fu-text{opacity:.96}
+#freeUsageBanner .fu-timer{font-variant-numeric:tabular-nums;font-weight:800;background:rgba(255,255,255,.22);padding:4px 12px;border-radius:999px;display:inline-block;min-width:190px;letter-spacing:1px;border:1px solid rgba(255,255,255,.35);box-shadow:inset 0 1px 0 rgba(255,255,255,.25)}
+@media (max-width:560px){#freeUsageBanner{font-size:12.5px;padding:10px 12px;gap:8px}#freeUsageBanner .fu-timer{min-width:150px;font-size:12px}}
+</style>
+<div id="freeUsageBanner" class="fu-banner">
+  <span class="fu-ico">🎉</span>
+  <span class="fu-text">Free Usage Limits in</span>
+  <span id="freeUsageTimer" class="fu-timer"></span>
 </div>
 
 <div class="wrap">
@@ -3316,7 +3327,7 @@ window.HYLock = (function(){
       var h = Math.floor(s/3600); s %= 3600;
       var m = Math.floor(s/60); s %= 60;
       timerEl.textContent = d + 'd ' + pad(h) + 'h ' + pad(m) + 'm ' + pad(s) + 's';
-      banner.style.display = 'block';
+      banner.style.display = 'flex';
     }
     tick();
     setInterval(tick, 1000);
