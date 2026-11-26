@@ -219,19 +219,8 @@
   <a class="back-link" href="index.html">&larr; Back to MedArena</a>
 </div>
 
-<style>
-#freeUsageBanner{display:none;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px;padding:11px 18px;text-align:center;font-weight:600;letter-spacing:.2px;font-size:14px;color:#fff;background:linear-gradient(90deg,#7c3aed,#ec4899,#f59e0b);background-size:200% 100%;animation:fuGrad 8s ease infinite;box-shadow:0 6px 22px rgba(124,58,237,.28);border-bottom:1px solid rgba(255,255,255,.18)}
-@keyframes fuGrad{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-#freeUsageBanner .fu-ico{font-size:17px;animation:fuPulse 1.6s ease-in-out infinite;display:inline-block}
-@keyframes fuPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
-#freeUsageBanner .fu-text{opacity:.96}
-#freeUsageBanner .fu-timer{font-variant-numeric:tabular-nums;font-weight:800;background:rgba(255,255,255,.22);padding:4px 12px;border-radius:999px;display:inline-block;min-width:190px;letter-spacing:1px;border:1px solid rgba(255,255,255,.35);box-shadow:inset 0 1px 0 rgba(255,255,255,.25)}
-@media (max-width:560px){#freeUsageBanner{font-size:12.5px;padding:10px 12px;gap:8px}#freeUsageBanner .fu-timer{min-width:150px;font-size:12px}}
-</style>
-<div id="freeUsageBanner" class="fu-banner">
-  <span class="fu-ico">🎉</span>
-  <span class="fu-text">Free Usage Limits in</span>
-  <span id="freeUsageTimer" class="fu-timer"></span>
+<div id="freeUsageBanner" style="display:none;background:linear-gradient(90deg,#0ea5e9,#2563eb);color:#fff;padding:10px 16px;text-align:center;font-size:14px;font-weight:600;letter-spacing:.2px">
+  Free Usage Limits in <span id="freeUsageTimer" style="font-variant-numeric:tabular-nums;background:rgba(255,255,255,.18);padding:3px 10px;border-radius:999px;margin-left:6px;display:inline-block;min-width:180px"></span>
 </div>
 
 <div class="wrap">
@@ -3145,7 +3134,6 @@ const ESEWA_QR = window.MEDARENA_ACCESS.ESEWA_QR;
    Unlock uses the exact same keys/codes as surgery-practice.html, so one lifetime
    code unlocks everything: master code hash or device-bound cloud code. */
 var MEDARENA_FREE_TRIAL = window.MEDARENA_ACCESS.FREE_TRIAL;
-const trialActive = window.MEDARENA_ACCESS.trialActive;
 window.HYLock = (function(){
                 var LOCK = {"rev":"52d7047f-e066693f","updated":"26 Nov 2026, 14:27","banks":["se1","surgery2","surgery3","loksewa","lumbini83","gandaki83","gandaki2078","gandaki2078kartik","gandaki2080","koshi2081","karnali2082","central2081","central2062","central2069","loksewamock","loksewa2070","central2072","central2073","central2074","cee2026","cee2025","cee2024","nursingconcept","cee1","cee2","cee3","cee4","cee5","cee6","ophtho","psychiatry","forensic","ortho","ent","physiology","hema","neuro","radiology","anatomy","biochemistry","pharmacology","psm","dermatology","patho","microbiology","medicine","cpd","obs","gynae"],"subs":[{"id":"MA-EJW6-MG2H","rev":"1a18ffca-dd4f5e8e","at":"22 Nov 2026, 08:09"},{"id":"MA-79VK-F67C","rev":"e25843d7-7e6ae6a7","at":"22 Nov 2026, 08:49"},{"id":"MA-87Q3-B5P3","rev":"eb50f366-06fedea6","at":"22 Nov 2026, 09:25"},{"id":"MA-A753-GQSS","rev":"9edaf372-0e76edfa","at":"22 Nov 2026, 16:38"},{"id":"MA-R732-YT7W","rev":"93fac0bd-4e2b983d","at":"23 Nov 2026, 10:14"},{"id":"MA-S3X4-P69Z","rev":"c6095633-303a3b8b","at":"25 Nov 2026, 15:01"},{"id":"MA-YKTV-VZWM","rev":"bd9f87d7-eb76abb7","at":"26 Nov 2026, 14:27"}]};
   var FREE = ["neuro", "acidbase"];   /* free topics — everything else is locked by default */
@@ -3155,7 +3143,7 @@ window.HYLock = (function(){
   var saved = null; try { saved = JSON.parse(localStorage.getItem("medarena.practiceAccess") || "null"); } catch (e) {}
   var cloudSubs = [];
   var allSubs = function(){ return (LOCK.subs || []).concat(cloudSubs); };
-  function isFreePeriod(){ return window.MEDARENA_ACCESS.isFreePeriod() || trialActive(); }
+  function isFreePeriod(){ return window.MEDARENA_ACCESS.isFreePeriod(); }
   function unlocked(){
     if (isFreePeriod()) return true;
     if (!LOCK.rev) return true;
@@ -3306,33 +3294,24 @@ window.HYLock = (function(){
 
 <script>
 (function(){
-  var retries = 0;
-  function start(){
-    if (!window.MEDARENA_ACCESS) {
-      if (retries++ < 50) { setTimeout(start, 200); return; }
-      return;
-    }
-    if (!window.MEDARENA_ACCESS.trialActive()) return;
-    var FREE_UNTIL = window.MEDARENA_ACCESS.trialExpiresMs();
-    if (!FREE_UNTIL) return;
-    var banner = document.getElementById('freeUsageBanner');
-    var timerEl = document.getElementById('freeUsageTimer');
-    if (!banner || !timerEl) return;
-    function pad(n){ return String(n).padStart(2,'0'); }
-    function tick(){
-      var ms = FREE_UNTIL - Date.now();
-      if (ms <= 0){ banner.style.display = 'none'; return; }
-      var s = Math.floor(ms/1000);
-      var d = Math.floor(s/86400); s %= 86400;
-      var h = Math.floor(s/3600); s %= 3600;
-      var m = Math.floor(s/60); s %= 60;
-      timerEl.textContent = d + 'd ' + pad(h) + 'h ' + pad(m) + 'm ' + pad(s) + 's';
-      banner.style.display = 'flex';
-    }
-    tick();
-    setInterval(tick, 1000);
+  if (!MEDARENA_FREE_TRIAL) return;
+  var FREE_UNTIL = Date.parse('2026-11-25T23:59:59+05:45');
+  var banner = document.getElementById('freeUsageBanner');
+  var timerEl = document.getElementById('freeUsageTimer');
+  if (!banner || !timerEl) return;
+  function pad(n){ return String(n).padStart(2,'0'); }
+  function tick(){
+    var ms = FREE_UNTIL - Date.now();
+    if (ms <= 0){ banner.style.display = 'none'; return; }
+    var s = Math.floor(ms/1000);
+    var d = Math.floor(s/86400); s %= 86400;
+    var h = Math.floor(s/3600); s %= 3600;
+    var m = Math.floor(s/60); s %= 60;
+    timerEl.textContent = d + 'd ' + pad(h) + 'h ' + pad(m) + 'm ' + pad(s) + 's';
+    banner.style.display = 'block';
   }
-  start();
+  tick();
+  setInterval(tick, 1000);
 })();
 </script>
 <script src="screen-time.js" defer></script>
