@@ -465,6 +465,13 @@ html,body{overflow-x:hidden;}
 .home-countdown.gandaki .cd-done{color:#fef08a}
 .home-countdown.gandaki .cd-sub{color:#fde68a}
 .home-countdown.gandaki .cd-ghost{position:absolute;right:-8px;bottom:-18px;font-size:96px;opacity:.08;pointer-events:none;user-select:none;font-weight:900;letter-spacing:-2px}
+.home-countdown.cee-pg{background:linear-gradient(135deg,#0b1040 0%,#1a1a5e 55%,#2e2e8a 100%);border:1px solid rgba(99,102,241,.45)}
+.home-countdown.cee-pg .cd-eyebrow{color:#a5b4fc}
+.home-countdown.cee-pg .cd-unit{background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.35)}
+.home-countdown.cee-pg .cd-unit b{color:#c7d2fe}
+.home-countdown.cee-pg .cd-sep{color:#a5b4fc}
+.home-countdown.cee-pg .cd-done{color:#c7d2fe}
+.home-countdown.cee-pg .cd-sub{color:#ddd6fe}
 <style>
 .dc-section{margin:0 0 30px}
 .dc-live{display:inline-flex;align-items:center;gap:10px;background:#0b1224;color:#f5c451;font-size:11px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;padding:8px 16px;border-radius:999px;border:1px solid rgba(245,196,81,.35)}
@@ -541,6 +548,24 @@ html,body{overflow-x:hidden;}
     </div>
   </div>
 </section>
+<section class="home-countdown cee-pg" aria-labelledby="cdCTitle">
+  <div class="cd-inner">
+    <div class="cd-left">
+      <div class="cd-eyebrow">⏳ CEE-PG Exam 2083</div>
+      <div class="cd-title" id="cdCTitle">CEE-PG — MD/MS Entrance</div>
+      <div class="cd-sub">4th week of Magh, 2083 BS · 29 Jan 2027. Start your prep early.</div>
+    </div>
+    <div class="cd-timer" id="cdCTimer">
+      <div class="cd-unit"><b id="cdCD">00</b><span>Days</span></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><b id="cdCH">00</b><span>Hours</span></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><b id="cdCM">00</b><span>Minutes</span></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><b id="cdCS">00</b><span>Seconds</span></div>
+    </div>
+  </div>
+</section>
 <script>
 (function(){
   function pad(n){return String(n).padStart(2,"0");}
@@ -564,6 +589,7 @@ html,body{overflow-x:hidden;}
   }
   makeCountdown("2027-02-12T00:00:00", ["cdD","cdH","cdM","cdS","cdTimer"]);
   makeCountdown("2026-12-12T00:00:00", ["cdGD","cdGH","cdGM","cdGS","cdGTimer"]);
+  makeCountdown("2027-01-29T00:00:00", ["cdCD","cdCH","cdCM","cdCS","cdCTimer"]);
 })();
 </script>
 <section id="maProgressHost" aria-live="polite" hidden></section>
