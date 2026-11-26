@@ -1843,11 +1843,11 @@ const medArenaHash = window.MEDARENA_ACCESS.hash;
 (function(){
   var retries = 0;
   function start(){
-    if (!window.MACLOUD || !window.MACLOUD.user) {
+    if (!window.MEDARENA_ACCESS) {
       if (retries++ < 50) { setTimeout(start, 200); return; }
       return;
     }
-    if (!window.MEDARENA_ACCESS || !window.MEDARENA_ACCESS.trialActive()) return;
+    if (!window.MEDARENA_ACCESS.trialActive()) return;
     var FREE_UNTIL = window.MEDARENA_ACCESS.trialExpiresMs();
     if (!FREE_UNTIL) return;
     var banner = document.getElementById('freeUsageBanner');

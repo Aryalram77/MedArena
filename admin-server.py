@@ -47,25 +47,7 @@ PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8600
 # content is treated as unlocked. Set FREE_TRIAL_ON = True and update FREE_UNTIL_MS
 # to re-enable it later.
 FREE_TRIAL_ON = False
-FREE_UNTIL_MS = 1798290458452  # ~30 days from enable (kept for backward compat)
-
-# Per-account free trial: every new account gets this many days of free access.
-# Stored server-side (medarena-users.json) so clearing localStorage cannot reset it.
-TRIAL_DAYS = 30
-
-
-def trial_status(u):
-    """Return {trialStarted, trialExpires, trialActive, daysRemaining} for a user.
-    trialStarted defaults to the account's created time if never set."""
-    if not u:
-        return {"trialStarted": 0, "trialExpires": 0, "trialActive": False, "daysRemaining": 0}
-    started = int(u.get("trialStarted") or u.get("created") or 0)
-    expires = started + TRIAL_DAYS * 86400
-    now = int(time.time())
-    active = started > 0 and now < expires
-    days = max(0, round((expires - now) / 86400)) if active else 0
-    return {"trialStarted": started, "trialExpires": expires, "trialActive": active, "daysRemaining": days}
-
+FREE_UNTIL_MS = 1795630499000  # 2026-11-25T23:59:59+05:45
 
 def is_free_period():
     return FREE_TRIAL_ON and int(time.time() * 1000) < FREE_UNTIL_MS
@@ -860,7 +842,7 @@ def save_google_client_id(cid):
 # is not enough: a tunnel (ngrok, cloudflared) makes the request look local, so
 # the password is the real gate and loopback is only a second lock.
 
-ADMIN_PATH = os.path.join(os.path.expandvars("%USERPROFILE%\\Documents\\deepseek-harness\\default-workspace"), "admin-auth.json")
+ADMIN_PATH = os.path.join(ROOT, "admin-auth.json")
 ADMIN_COOKIE = "ma_admin"
 ADMIN_TTL = 12 * 3600  # 12 hours
 
@@ -1254,9 +1236,7 @@ class Handler(BaseHTTPRequestHandler):
             return
         if path == "/api/me":
             user, _sid = self._session()
-            u = public_user(user) if user else None
-            ts = trial_status(user) if user else {"trialStarted": 0, "trialExpires": 0, "trialActive": False, "daysRemaining": 0}
-            self._send_json({"user": u, "trial": ts})
+            self._send_json({"user": public_user(user)})
             return
         if path == "/api/progress":
             user, _sid = self._session()
@@ -1399,7 +1379,6 @@ class Handler(BaseHTTPRequestHandler):
                 u["picture"] = info.get("picture", "") or u.get("picture", "")
                 u["provider"] = "google"
                 u["last_seen"] = now
-                u.setdefault("trialStarted", now)
                 sid = create_session(db, info["sub"])
                 save_users_db(db)
             self._send_json({"user": public_user(u)}, extra={"Set-Cookie": session_cookie(sid)})
@@ -1428,7 +1407,6 @@ class Handler(BaseHTTPRequestHandler):
                           "provider": "password", "pw": hash_password(password),
                           "created": u.get("created", now), "last_seen": now})
                 u.setdefault("progress", {})
-                u.setdefault("trialStarted", now)
                 db["users"][sub] = u
                 sid = create_session(db, sub)
                 save_users_db(db)
@@ -1445,7 +1423,6 @@ class Handler(BaseHTTPRequestHandler):
                 if not isinstance(u, dict) or not check_password(password, u.get("pw") or {}):
                     self._send_json({"error": "Wrong e-mail or password."}, 401); return
                 u["last_seen"] = int(time.time())
-                u.setdefault("trialStarted", u.get("created") or u["last_seen"])
                 sid = create_session(db, sub)
                 save_users_db(db)
             self._send_json({"user": public_user(u)}, extra={"Set-Cookie": session_cookie(sid)})

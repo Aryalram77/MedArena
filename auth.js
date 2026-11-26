@@ -22,7 +22,7 @@ const MA = {
   set(k, v) { try { localStorage.setItem(k, v); } catch (e) { window.__maMem = window.__maMem || {}; window.__maMem[k] = v; } }
 };
 
-const CLOUD = { online: false, clientId: "", user: null, gsi: 0, gsiInit: false, googlePending: false, pending: {}, banks: null, trial: null };
+const CLOUD = { online: false, clientId: "", user: null, gsi: 0, gsiInit: false, googlePending: false, pending: {}, banks: null };
 window.MACLOUD = CLOUD;
 window.maSyncCloud = null;   // set below; practice-page hooks guard on it
 
@@ -270,8 +270,9 @@ function maHtmlSignin() {
       '</form>';
   }
   inner += note;
-  inner += '<div class="ma-act"><button class="ma-btn" data-ma-signup>New here? Create an account</button></div>';
-  inner += '<p style="margin-bottom:0">An account is required to use MedArena. Your progress stays tied to your account across devices.</p>';
+  inner += '<div class="ma-act"><button class="ma-btn" data-ma-signup>New here? Create an account</button>' +
+           '<button class="ma-btn" data-ma-close>Continue without an account</button></div>';
+  inner += '<p style="margin-bottom:0">Practising without an account keeps progress in this browser; it merges into your account when you sign in.</p>';
   return inner;
 }
 
@@ -530,13 +531,6 @@ function maMaybeOpenReset() {
 /* ---------------- adopt a signed-in session: merge cloud progress with local ---------------- */
 async function maAfterSignin(user, quiet) {
   CLOUD.user = user;
-  /* Refresh trial status from the server (per-account, survives localStorage clears). */
-  try {
-    const r = await fetch("/api/me", { cache: "no-store" });
-    const d = await r.json();
-    CLOUD.trial = d.trial || { trialActive: false, daysRemaining: 0 };
-  } catch (e) { CLOUD.trial = { trialActive: false, daysRemaining: 0 }; }
-
   let server = {};
   try {
     const r = await fetch("/api/progress", { cache: "no-store" });
@@ -562,8 +556,6 @@ async function maAfterSignin(user, quiet) {
   maClose();
   if (!quiet) maToast("\u2705 Signed in \u2014 " + (user.name || user.email || ""));
   maShowProgressCard();
-  /* Re-evaluate the premium gate now that per-account trial status is known. */
-  try { if (window.MEDARENA_ACCESS && typeof window.MEDARENA_ACCESS.refresh === "function") window.MEDARENA_ACCESS.refresh(); } catch (e) {}
 }
 
 function maSignOut() {
@@ -656,29 +648,17 @@ async function maInit() {
   maInitDone = true;
   if (maMaybeOpenReset()) return;
   maRenderChip();
-
+  try { maUpdateCards(); } catch (e) {}
   if (CLOUD.online) {
     maLoadBankMeta();
     try {
       const r = await fetch("/api/me", { cache: "no-store" });
       const d = await r.json();
-      if (d.user) {
-        await maAfterSignin(d.user, true);
-        CLOUD.trial = d.trial || { trialActive: false, daysRemaining: 0 };
-      } else {
-        /* No account — require sign-in before the app is usable. */
-        maRenderChip(); maShowProgressCard();
-        maOpen("signin");
-      }
-    } catch (e) {
-      maRenderChip(); maShowProgressCard();
-      maOpen("signin");
-    }
+      if (d.user) await maAfterSignin(d.user, true);
+      else { maRenderChip(); maShowProgressCard(); }
+    } catch (e) { maRenderChip(); maShowProgressCard(); }
   } else {
-    /* Server unreachable: cannot verify an account, so block entry. */
     maShowProgressCard();
-    maErr = "Server not detected. Start start-admin.bat and open http://localhost:8600 to sign in.";
-    maOpen("signin");
   }
 }
 maInit();

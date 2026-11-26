@@ -2389,15 +2389,15 @@ initDB().then(async () => {
 </script>
 <script>
 (function(){
-  /* Per-account trial countdown — reads server-side trial expiry via premium-access.js.
-     Retries until the auth module has loaded trial data (survives localStorage clears). */
+  /* Frontend-only fixed 30-day window. Reads FREE_UNTIL from premium-access.js.
+     Retries until premium-access.js has loaded. Clearing localStorage cannot reset it. */
   var retries = 0;
   function start(){
-    if (!window.MACLOUD || !window.MACLOUD.user) {
+    if (!window.MEDARENA_ACCESS) {
       if (retries++ < 50) { setTimeout(start, 200); return; }
-      return; /* not signed in — auth modal handles entry */
+      return;
     }
-    if (!window.MEDARENA_ACCESS || !window.MEDARENA_ACCESS.trialActive()) return;
+    if (!window.MEDARENA_ACCESS.trialActive()) return;
     var FREE_UNTIL = window.MEDARENA_ACCESS.trialExpiresMs();
     if (!FREE_UNTIL) return;
     var banner = document.getElementById('freeUsageBanner');
