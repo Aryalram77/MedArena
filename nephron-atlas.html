@@ -12,11 +12,12 @@
     <meta name="twitter:card" content="summary_large_image">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Source+Serif+4:wght@400;500;600&amp;display=swap" rel="stylesheet">
     <style>
       :root {
         --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+        --font-explanation: 'Source Serif 4', Georgia, 'Times New Roman', serif;
         --bg-canvas: #0b0f17;
         --bg-surface: #0d121c;
         --bg-panel: #0f172a;
@@ -533,6 +534,13 @@
         font-size: 11.5px;
         line-height: 1.5;
         color: #94a3b8;
+      }
+
+      .function-text,
+      .transporter-action,
+      .drug-mech,
+      .drug-clinical {
+        font-family: var(--font-explanation);
       }
 
       /* Directory List */
