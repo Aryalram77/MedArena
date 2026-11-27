@@ -1,0 +1,2672 @@
+<!doctype html>
+<html lang="en"><head>
+    
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedArena Atlas — Nephron</title>
+    <meta name="description" content="Interactive realistic atlas of the human nephron with labeled anatomical structures, physiological functions, membrane transporters, and drugs acting on each segment.">
+    <meta property="og:title" content="MedArena Atlas — Nephron">
+    <meta property="og:description" content="Explore every nephron structure, its major function, apical and basolateral transporters, and the exact drugs acting on each target.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+        --bg-canvas: #0b0f17;
+        --bg-surface: #0d121c;
+        --bg-panel: #0f172a;
+        --border-subtle: rgba(30, 41, 59, 0.9);
+        --text-primary: #f8fafc;
+        --text-secondary: #cbd5e1;
+        --text-muted: #94a3b8;
+        --text-dim: #64748b;
+        --accent-cyan: #22d3ee;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--bg-canvas);
+        color: var(--text-primary);
+        font-family: var(--font-sans);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      button {
+        font-family: inherit;
+        cursor: pointer;
+        border: none;
+        background: none;
+        color: inherit;
+      }
+
+      button:focus-visible,
+      [role='button']:focus-visible {
+        outline: 2px solid var(--accent-cyan);
+        outline-offset: 2px;
+      }
+
+      .font-mono {
+        font-family: var(--font-mono);
+        font-variant-numeric: tabular-nums;
+      }
+
+      .app-shell {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Three-Zone Top Bar */
+      .topbar {
+        height: 56px;
+        border-bottom: 1px solid var(--border-subtle);
+        background-color: var(--bg-surface);
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+        flex-shrink: 0;
+      }
+
+      .brand {
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: -0.015em;
+        color: #f8fafc;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .atlas-back {
+        margin-right: 6px;
+        color: #94a3b8;
+        font-size: 12px;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .atlas-back:hover {
+        color: #22d3ee;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+
+      html.atlas-embed .topbar {
+        display: none;
+      }
+
+      html.atlas-embed .workspace {
+        width: 100%;
+        max-width: none;
+      }
+
+      .topnav {
+        display: none;
+        align-items: center;
+        gap: 24px;
+      }
+
+      @media (min-width: 768px) {
+        .topnav {
+          display: flex;
+        }
+      }
+
+      .topnav-btn {
+        font-size: 14px;
+        font-weight: 500;
+        color: #94a3b8;
+        padding: 4px 0;
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: color 0.15s ease;
+      }
+
+      .topnav-btn:hover {
+        color: #f1f5f9;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+
+      .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 14px;
+        border-radius: 6px;
+        background-color: #22d3ee;
+        color: #020617;
+        font-size: 12px;
+        font-weight: 600;
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: background-color 0.15s ease;
+      }
+
+      .cta-btn:hover {
+        background-color: #67e8f9;
+      }
+
+      /* Main Split Workspace */
+      .workspace {
+        flex: 1;
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      @media (min-width: 1024px) {
+        .workspace {
+          grid-template-columns: 1fr 456px;
+        }
+      }
+
+      .map-stage {
+        padding: 20px 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        border-bottom: 1px solid rgba(30, 41, 59, 0.8);
+      }
+
+      @media (min-width: 1024px) {
+        .map-stage {
+          border-bottom: none;
+          border-right: 1px solid rgba(30, 41, 59, 0.8);
+        }
+      }
+
+      .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .segmented {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 4px;
+        padding: 4px;
+        border-radius: 8px;
+        background-color: #0f172a;
+        border: 1px solid #1e293b;
+      }
+
+      .seg-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+        font-weight: 500;
+        border-radius: 6px;
+        color: #94a3b8;
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: background-color 0.15s ease, color 0.15s ease;
+      }
+
+      .seg-btn:hover {
+        color: #e2e8f0;
+      }
+
+      .seg-btn.active {
+        background-color: #1e293b;
+        color: #67e8f9;
+      }
+
+      .toggle-group {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .toggle-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        border-radius: 6px;
+        border: 1px solid #1e293b;
+        background-color: #0f172a;
+        color: #94a3b8;
+        font-size: 12px;
+        font-weight: 500;
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+      }
+
+      .toggle-btn:hover {
+        border-color: #334155;
+        color: #e2e8f0;
+      }
+
+      .toggle-btn.active {
+        background-color: #1e293b;
+        border-color: #475569;
+        color: #f1f5f9;
+      }
+
+      .toggle-btn.active-cyan {
+        background-color: #1e293b;
+        border-color: #475569;
+        color: #67e8f9;
+      }
+
+      /* SVG Map Card */
+      .svg-container {
+        position: relative;
+        flex: 1;
+        border-radius: 12px;
+        border: 1px solid #1e293b;
+        background-color: var(--bg-surface);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px;
+      }
+
+      .nephron-svg {
+        width: 100%;
+        max-width: 900px;
+        height: auto;
+        user-select: none;
+        display: block;
+      }
+
+      .struct-group {
+        cursor: pointer;
+        transition: opacity 0.15s ease;
+      }
+
+      .struct-label {
+        cursor: pointer;
+      }
+
+      @keyframes filtrateDash {
+        to {
+          stroke-dashoffset: -28;
+        }
+      }
+
+      .animate-filtrate-flow {
+        stroke-dasharray: 5 9;
+        animation: filtrateDash 1.3s linear infinite;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .animate-filtrate-flow {
+          animation: none;
+        }
+      }
+
+      /* Legend Footer */
+      .legend-footer {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        font-size: 12px;
+        color: #94a3b8;
+      }
+
+      .legend-items {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 18px;
+      }
+
+      .legend-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .swatch {
+        width: 14px;
+        height: 8px;
+        border-radius: 2px;
+        display: inline-block;
+      }
+
+      .legend-hint {
+        font-size: 11px;
+        color: #64748b;
+      }
+
+      /* Right Inspector Sidebar */
+      .sidebar {
+        background-color: rgba(13, 18, 28, 0.72);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        overflow-y: auto;
+      }
+
+      .panel-card {
+        border-radius: 12px;
+        border: 1px solid #1e293b;
+        background-color: #0b0f17;
+        padding: 18px;
+      }
+
+      .meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        color: #94a3b8;
+      }
+
+      .meta-accent {
+        color: #22d3ee;
+      }
+
+      .struct-title {
+        margin: 6px 0 0 0;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 1.3;
+        color: #f8fafc;
+        text-wrap: balance;
+      }
+
+      .function-block {
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid rgba(30, 41, 59, 0.85);
+      }
+
+      .section-kicker {
+        font-size: 11px;
+        color: #94a3b8;
+        margin-bottom: 6px;
+      }
+
+      .function-text {
+        margin: 0;
+        font-size: 13px;
+        line-height: 1.58;
+        color: #e2e8f0;
+      }
+
+      .cell-diagram-wrap {
+        margin-top: 14px;
+        border-radius: 8px;
+        border: 1px solid #1e293b;
+        background-color: #090d14;
+        padding: 8px;
+      }
+
+      .cell-diagram-svg {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      /* Transporters Table / Stack */
+      .transporter-list {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .transporter-row {
+        padding: 10px 0;
+        border-top: 1px solid rgba(30, 41, 59, 0.75);
+      }
+
+      .transporter-row:first-child {
+        border-top: none;
+        padding-top: 4px;
+      }
+
+      .transporter-row:last-child {
+        padding-bottom: 0;
+      }
+
+      .transporter-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .transporter-name {
+        font-size: 13px;
+        font-weight: 600;
+        color: #f8fafc;
+      }
+
+      .transporter-loc {
+        font-size: 11px;
+        color: #38bdf8;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      .transporter-action {
+        margin-top: 3px;
+        font-size: 12px;
+        line-height: 1.48;
+        color: #cbd5e1;
+      }
+
+      /* Drugs Card */
+      .drugs-card {
+        border-radius: 12px;
+        border: 1px solid rgba(56, 189, 248, 0.3);
+        background: linear-gradient(180deg, rgba(12, 26, 44, 0.75) 0%, #0b0f17 100%);
+        padding: 18px;
+      }
+
+      .drug-class-block {
+        padding: 12px 0;
+        border-top: 1px solid rgba(30, 41, 59, 0.85);
+      }
+
+      .drug-class-block:first-child {
+        border-top: none;
+        padding-top: 6px;
+      }
+
+      .drug-class-block:last-child {
+        padding-bottom: 0;
+      }
+
+      .drug-class-title {
+        font-size: 14px;
+        font-weight: 700;
+        color: #f8fafc;
+        margin: 0;
+      }
+
+      .drug-action-tag {
+        margin-top: 3px;
+        font-size: 11px;
+        color: #67e8f9;
+      }
+
+      .drug-list-line {
+        margin-top: 6px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #fde68a;
+        line-height: 1.5;
+      }
+
+      .drug-mech {
+        margin-top: 5px;
+        font-size: 12px;
+        line-height: 1.55;
+        color: #cbd5e1;
+      }
+
+      .drug-clinical {
+        margin-top: 5px;
+        font-size: 11.5px;
+        line-height: 1.5;
+        color: #94a3b8;
+      }
+
+      /* Directory List */
+      .directory-wrap {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .directory-heading {
+        font-size: 12px;
+        color: #94a3b8;
+        margin-bottom: 8px;
+      }
+
+      .directory-list {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        max-height: 270px;
+        overflow-y: auto;
+        padding-right: 4px;
+      }
+
+      .dir-item {
+        width: 100%;
+        text-align: left;
+        padding: 8px 12px;
+        border-radius: 8px;
+        border: 1px solid transparent;
+        background: transparent;
+        color: #cbd5e1;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        transition: background-color 0.12s ease, border-color 0.12s ease;
+      }
+
+      .dir-item:hover {
+        background-color: rgba(15, 23, 42, 0.65);
+      }
+
+      .dir-item.active {
+        background-color: #0f172a;
+        border-color: rgba(6, 182, 212, 0.55);
+        color: #f8fafc;
+      }
+
+      .dir-name {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-weight: 500;
+      }
+
+      .dir-tag {
+        font-size: 11px;
+        color: #64748b;
+        flex-shrink: 0;
+      }
+    </style>
+</head>
+  <body>
+    <script>
+      if (new URLSearchParams(window.location.search).get('embed') === '1') {
+        document.documentElement.classList.add('atlas-embed');
+      }
+    </script>
+    <div class="app-shell">
+      <!-- Three-Zone Top Bar -->
+      <header class="topbar">
+        <span class="brand"><a class="atlas-back" href="index.html" aria-label="Back to MedArena">← MedArena</a> · Nephron</span>
+
+        <nav class="topnav" aria-label="Nephron region views">
+          <button type="button" class="topnav-btn" data-nav="all">Full Nephron</button>
+          <button type="button" class="topnav-btn" data-nav="corpuscle" data-select="glomerulus">
+            Renal Corpuscle
+          </button>
+          <button type="button" class="topnav-btn" data-nav="loop" data-select="thick_ascending_limb">
+            Loop of Henle
+          </button>
+          <button type="button" class="topnav-btn" data-nav="distal" data-select="collecting_duct">
+            Distal &amp; Collecting
+          </button>
+        </nav>
+
+        <button type="button" id="toggleLabelsBtn" class="cta-btn">
+          <span id="labelsIconWrap" aria-hidden="true"></span>
+          <span id="labelsBtnText">Hide Labels</span>
+        </button>
+      </header>
+
+      <!-- Main Split Workspace -->
+      <main class="workspace">
+        <!-- Left/Center Realistic Nephron Stage -->
+        <section class="map-stage">
+          <div class="toolbar">
+            <div class="segmented" id="filterBar" role="group" aria-label="Nephron segment filter">
+              <button type="button" class="seg-btn active" data-filter="all">All Segments</button>
+              <button type="button" class="seg-btn" data-filter="corpuscle">Corpuscle &amp; PCT</button>
+              <button type="button" class="seg-btn" data-filter="loop">Loop of Henle</button>
+              <button type="button" class="seg-btn" data-filter="distal">DCT &amp; Collecting</button>
+            </div>
+
+            <div class="toggle-group">
+              <button type="button" id="toggleZonesBtn" class="toggle-btn active">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                  <polyline points="2 17 12 22 22 17"></polyline>
+                  <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+                <span>Renal Zones</span>
+              </button>
+              <button type="button" id="toggleFlowBtn" class="toggle-btn active-cyan">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                </svg>
+                <span>Filtrate Flow</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="svg-container">
+            <svg id="nephronSvg" viewBox="0 0 980 820" class="nephron-svg" role="img" aria-label="Realistic anatomical diagram of the human nephron showing renal cortex, medulla, glomerulus, proximal tubule, loop of Henle, distal tubule, collecting duct, and vasa recta">
+              <defs>
+                <!-- Renal Tissue Zone Gradients -->
+                <linearGradient id="cortexBg" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#192132"></stop>
+                  <stop offset="100%" stop-color="#151d2d"></stop>
+                </linearGradient>
+                <linearGradient id="outerMedullaBg" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#121827"></stop>
+                  <stop offset="100%" stop-color="#0e1421"></stop>
+                </linearGradient>
+                <linearGradient id="innerMedullaBg" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#0c111d"></stop>
+                  <stop offset="100%" stop-color="#090d16"></stop>
+                </linearGradient>
+
+                <!-- Osmolarity Scale Bar -->
+                <linearGradient id="osmGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.35"></stop>
+                  <stop offset="50%" stop-color="#f59e0b" stop-opacity="0.45"></stop>
+                  <stop offset="100%" stop-color="#ef4444" stop-opacity="0.65"></stop>
+                </linearGradient>
+
+                <!-- Bowman's Capsule & Glomerular Shading -->
+                <radialGradient id="bowmanSpaceGrad" cx="48%" cy="48%" r="54%">
+                  <stop offset="0%" stop-color="#16273d"></stop>
+                  <stop offset="78%" stop-color="#101c2d"></stop>
+                  <stop offset="100%" stop-color="#0b1320"></stop>
+                </radialGradient>
+
+                <!-- Tubular 3D Wall Shading -->
+                <linearGradient id="pctGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#92400e"></stop>
+                  <stop offset="50%" stop-color="#d97706"></stop>
+                  <stop offset="100%" stop-color="#b45309"></stop>
+                </linearGradient>
+                <linearGradient id="loopGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#9a3412"></stop>
+                  <stop offset="50%" stop-color="#ea580c"></stop>
+                  <stop offset="100%" stop-color="#c2410c"></stop>
+                </linearGradient>
+                <linearGradient id="dctGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#0e7490"></stop>
+                  <stop offset="50%" stop-color="#0891b2"></stop>
+                  <stop offset="100%" stop-color="#155e75"></stop>
+                </linearGradient>
+                <linearGradient id="cdGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#4338ca"></stop>
+                  <stop offset="50%" stop-color="#6366f1"></stop>
+                  <stop offset="100%" stop-color="#3730a3"></stop>
+                </linearGradient>
+
+                <!-- Brush Border Microvilli Pattern for PCT -->
+                <pattern id="brushBorderPattern" width="8" height="8" patternUnits="userSpaceOnUse">
+                  <rect width="8" height="8" fill="#78350f" fill-opacity="0.18"></rect>
+                  <circle cx="4" cy="4" r="1.1" fill="#fbbf24" fill-opacity="0.22"></circle>
+                </pattern>
+              </defs>
+
+              <!-- Histological Renal Parenchyma Zones -->
+              <g id="zonesLayer" style="">
+                <!-- Renal Capsule Curve (Top Cortical Boundary) -->
+                <path d="M 18 28 Q 490 8 962 28 L 962 340 L 18 340 Z" fill="url(#cortexBg)" stroke="#243147" stroke-width="1.2"></path>
+                <!-- Outer Medulla -->
+                <rect x="18" y="340" width="944" height="215" fill="url(#outerMedullaBg)" stroke="#1d283b" stroke-width="1"></rect>
+                <!-- Inner Medulla & Renal Papilla -->
+                <path d="M 18 555 L 962 555 L 962 770 Q 490 795 18 770 Z" fill="url(#innerMedullaBg)" stroke="#1a2436" stroke-width="1"></path>
+                <!-- Minor Calyx / Papillary Receiving Funnel -->
+                <path d="M 595 776 Q 685 790 765 776 L 785 812 Q 685 820 575 812 Z" fill="#0b1322" stroke="#2b3b57" stroke-width="1.2"></path>
+
+                <!-- Corticomedullary & Inner Medullary Boundary Dashed Lines -->
+                <line x1="18" y1="340" x2="962" y2="340" stroke="#334155" stroke-width="1.2" stroke-dasharray="5 5"></line>
+                <line x1="18" y1="555" x2="962" y2="555" stroke="#28354d" stroke-width="1.1" stroke-dasharray="4 6"></line>
+
+                <!-- Interstitial Osmolarity Gradient Bar (Left Margin) -->
+                <rect x="26" y="130" width="7" height="600" rx="3.5" fill="url(#osmGrad)" stroke="#334155" stroke-width="0.8"></rect>
+                <g font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#7c8ba1">
+                  <text x="38" y="140">300 mOsm/L</text>
+                  <text x="38" y="356">400 mOsm/L</text>
+                  <text x="38" y="572">700 mOsm/L</text>
+                  <text x="38" y="728">1200 mOsm/L</text>
+                </g>
+
+                <!-- Zone Names -->
+                <g font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600" fill="#64748b">
+                  <text x="34" y="54">RENAL CORTEX</text>
+                  <text x="34" y="328" font-size="9.5" fill="#475569">CORTICOMEDULLARY JUNCTION</text>
+                  <text x="34" y="378">OUTER MEDULLA</text>
+                  <text x="34" y="592">INNER MEDULLA (PAPILLA)</text>
+                  <text x="685" y="805" text-anchor="middle" font-size="10">MINOR CALYX (URINE OUTFLOW)</text>
+                </g>
+              </g>
+
+              <!-- Interactive Layers populated by JS in precise anatomical Z-order -->
+              <g id="vasculatureBackLayer"></g>
+              <g id="tubulesLayer"></g>
+              <g id="corpuscleLayer"></g>
+              <g id="vasculatureFrontLayer"></g>
+              <g id="flowLayer"></g>
+              <g id="labelsLayer"></g>
+            </svg>
+          </div>
+
+          <div class="legend-footer">
+            <div class="legend-items">
+              <span class="legend-item">
+                <span class="swatch" style="background-color: #dc2626"></span>
+                <span>Glomerular &amp; Arteriolar Supply</span>
+              </span>
+              <span class="legend-item">
+                <span class="swatch" style="background-color: #d97706"></span>
+                <span>Proximal Tubule &amp; Loop of Henle</span>
+              </span>
+              <span class="legend-item">
+                <span class="swatch" style="background-color: #0891b2"></span>
+                <span>Distal Convoluted Tubule &amp; JGA</span>
+              </span>
+              <span class="legend-item">
+                <span class="swatch" style="background-color: #6366f1"></span>
+                <span>Collecting Duct</span>
+              </span>
+            </div>
+            <span class="legend-hint font-mono">Click any nephron structure to view function, transporters &amp; drugs</span>
+          </div>
+        </section>
+
+        <!-- Right Physiology, Transporters & Drug Inspector Sidebar -->
+        <aside class="sidebar">
+          <!-- Structure Overview & Major Function + Cell Transport Schematic -->
+          <div class="panel-card">
+            <div class="meta-row font-mono">
+              <span class="meta-accent" id="inspZone"></span>
+              <span aria-hidden="true">·</span>
+              <span id="inspOsm"></span>
+              <span aria-hidden="true">·</span>
+              <span id="inspShare"></span>
+            </div>
+
+            <h1 class="struct-title" id="inspName"></h1>
+
+            <div class="function-block">
+              <div class="section-kicker font-mono">Major Function</div>
+              <p class="function-text" id="inspFunction"></p>
+            </div>
+
+            <div class="cell-diagram-wrap">
+              <svg id="cellTransportSvg" viewBox="0 0 440 160" class="cell-diagram-svg" role="img" aria-label="Schematic of membrane transporters and drug targets for selected nephron segment"></svg>
+            </div>
+          </div>
+
+          <!-- Transporters & Channels -->
+          <div class="panel-card">
+            <div class="section-kicker font-mono">Key Membrane Transporters &amp; Channels</div>
+            <div class="transporter-list" id="transporterList"></div>
+          </div>
+
+          <!-- Pharmacology & Drugs Acting on Structure -->
+          <div class="drugs-card">
+            <div class="section-kicker font-mono" style="color: #7dd3fc">Drugs Acting on This Structure</div>
+            <div id="drugListContainer"></div>
+          </div>
+
+          <!-- Complete Structure Index -->
+          <div class="directory-wrap">
+            <div class="directory-heading font-mono">Nephron Structures (Filtration → Excretion)</div>
+            <div class="directory-list" id="structureDirectory"></div>
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <script>
+      (function () {
+        const SVG_NS = 'http://www.w3.org/2000/svg';
+
+        const NEPHRON_STRUCTURES = [
+          {
+            id: 'afferent_arteriole',
+            name: 'Afferent Arteriole',
+            shortLabel: 'Afferent Arteriole',
+            category: 'corpuscle',
+            zone: 'Renal Cortex',
+            osmolarity: '~300 mOsm/L (Blood)',
+            filtrateShare: '100% RBF Inflow (~1.1 L/min)',
+            layer: 'front_vascular',
+            colorWall: '#7f1d1d',
+            colorMain: '#dc2626',
+            colorActive: '#f87171',
+            colorSheen: '#fecaca',
+            strokeWidth: 14,
+            svgPath: 'M 540 82 C 470 78, 405 102, 342 138 L 316 146',
+            flowPath: 'M 538 82 C 470 78, 405 102, 342 138 L 316 146',
+            labelPos: [446, 66],
+            labelAnchor: 'middle',
+            leaderTarget: [430, 88],
+            majorFunction:
+              'Delivers renal blood flow into the glomerulus and dynamically regulates glomerular hydrostatic pressure (PGC) and GFR through myogenic stretch responses and tubuloglomerular feedback (TGF). Its media houses specialized juxtaglomerular (JG) granular cells that synthesize and secrete renin.',
+            cellDiagram: {
+              leftLabel: 'Vascular Lumen',
+              centerLabel: 'Afferent Smooth Muscle & JG Cell',
+              rightLabel: 'Renal Blood / Systemic',
+              apical: [
+                { name: 'Cav1.2 (L-type Ca²⁺)', dir: 'in', note: 'Constriction' },
+                { name: 'EP2 / IP (PGE₂/PGI₂)', dir: 'in', note: 'Dilation' },
+              ],
+              basolateral: [
+                { name: 'β1 Receptor (JG)', dir: 'out', note: 'Renin Release' },
+                { name: 'A1 Adenosine R.', dir: 'in', note: 'TGF Constrict' },
+              ],
+              drugBadges: ['NSAIDs (× PG)', 'CCBs (× Cav1.2)', 'β-Blockers (× β1)'],
+            },
+            transporters: [
+              {
+                name: 'L-Type Voltage-Gated Ca²⁺ Channels (Cav1.2)',
+                location: 'Arteriolar Smooth Muscle',
+                action: 'Mediates Ca²⁺ influx for myogenic vasoconstriction in response to elevated arterial pressure.',
+              },
+              {
+                name: 'Prostaglandin Receptors (EP2 / IP)',
+                location: 'Arteriolar Smooth Muscle',
+                action: 'PGE₂ and PGI₂ maintain basal afferent vasodilation to preserve GFR during volume depletion.',
+              },
+              {
+                name: 'Adenosine A1 & α1-Adrenergic Receptors',
+                location: 'Arteriolar Smooth Muscle',
+                action: 'Constrict the afferent arteriole during high macula densa NaCl delivery (TGF) or sympathetic surge.',
+              },
+              {
+                name: 'β1-Adrenergic Receptors',
+                location: 'Juxtaglomerular (JG) Cells',
+                action: 'Stimulate cyclic AMP-mediated renin exocytosis into the bloodstream.',
+              },
+            ],
+            drugs: [
+              {
+                drugClass: 'NSAIDs (COX-1 / COX-2 Inhibitors)',
+                actionTag: 'Indirect Afferent Vasoconstriction',
+                drugList: ['Ibuprofen', 'Naproxen', 'Indomethacin', 'Ketorolac', 'Diclofenac', 'Celecoxib'],
+                mechanism:
+                  'Inhibit cyclooxygenase (COX) synthesis of vasodilatory prostaglandins (PGE₂, PGI₂) → leaves angiotensin II/norepinephrine vasoconstriction unopposed → drops PGC and GFR.',
+                clinical:
+                  'Can precipitate acute prerenal AKI in volume-depleted, heart failure, cirrhosis, or CKD patients (especially "triple whammy" with ACEi + diuretic).',
+              },
+              {
+                drugClass: 'Dihydropyridine Calcium Channel Blockers',
+                actionTag: 'Selective Afferent Vasodilation',
+                drugList: ['Amlodipine', 'Nifedipine', 'Nicardipine', 'Felodipine'],
+                mechanism:
+                  'Block L-type Cav1.2 channels predominantly on the afferent arteriole → dilate afferent lumen and lower systemic/renal vascular resistance.',
+                clinical:
+                  'Effective antihypertensives; afferent dilation without efferent dilation can slightly increase intraglomerular pressure unless paired with an ACEi/ARB.',
+              },
+              {
+                drugClass: 'Calcineurin Inhibitors',
+                actionTag: 'Potent Afferent Vasoconstriction',
+                drugList: ['Cyclosporine', 'Tacrolimus'],
+                mechanism:
+                  'Increase endothelin-1 and thromboxane A2 while suppressing NO/prostacyclin → severe afferent arteriolar vasospasm.',
+                clinical:
+                  'Major cause of acute reversible GFR drop and chronic striped interstitial fibrosis in transplant recipients.',
+              },
+              {
+                drugClass: 'Beta-Blockers',
+                actionTag: 'Inhibit JG Renin Secretion',
+                drugList: ['Propranolol', 'Metoprolol', 'Atenolol', 'Carvedilol'],
+                mechanism: 'Block β1-adrenergic receptors on JG granular cells → suppress renin release and downstream Ang II.',
+                clinical: 'Lower blood pressure and blunt neurohormonal RAAS activation.',
+              },
+            ],
+          },
+          {
+            id: 'glomerulus',
+            name: 'Glomerulus (Capillary Tuft)',
+            shortLabel: 'Glomerulus',
+            category: 'corpuscle',
+            zone: 'Renal Cortex',
+            osmolarity: '300 mOsm/L',
+            filtrateShare: 'Filters ~20% of RPF (180 L/day)',
+            layer: 'corpuscle_tuft',
+            colorWall: '#7f1d1d',
+            colorMain: '#ef4444',
+            colorActive: '#fca5a5',
+            colorSheen: '#fee2e2',
+            labelPos: [148, 86],
+            labelAnchor: 'end',
+            leaderTarget: [232, 146],
+            majorFunction:
+              'High-pressure (~55–60 mmHg) fenestrated capillary network performing selective ultrafiltration of plasma across a 3-layer barrier (fenestrated endothelium, negatively charged glomerular basement membrane, and podocyte slit diaphragms), passing water and small solutes while retaining plasma proteins and cells.',
+            cellDiagram: {
+              leftLabel: 'Glomerular Capillary Blood',
+              centerLabel: '3-Layer Filtration Barrier',
+              rightLabel: 'Bowman Urinary Space',
+              apical: [
+                { name: 'Endothelial Fenestrae', dir: 'out', note: '70–100 nm' },
+                { name: 'GBM Heparan Sulfate', dir: 'out', note: 'Charge Barrier' },
+              ],
+              basolateral: [
+                { name: 'Podocyte Slit (Nephrin)', dir: 'out', note: 'Size Barrier' },
+                { name: 'Mesangial AT1 / ET', dir: 'in', note: 'Modulates Kf' },
+              ],
+              drugBadges: ['Steroids (Stabilize Podocytes)', 'ACEi/ARB (↓ PGC)'],
+            },
+            transporters: [
+              {
+                name: 'Fenestrated Capillary Endothelium',
+                location: 'Inner Capillary Layer',
+                action: '70–100 nm pores permit rapid hydraulic conductivity (high Kf) while excluding RBCs, WBCs, and platelets.',
+              },
+              {
+                name: 'Glomerular Basement Membrane (Heparan Sulfate & Type IV Collagen)',
+                location: 'Middle Barrier Layer',
+                action: 'Polyanionic proteoglycans create an electrostatic barrier repelling negatively charged serum albumin.',
+              },
+              {
+                name: 'Podocyte Foot Processes & Slit Diaphragm (Nephrin / Podocin)',
+                location: 'Outer Visceral Layer',
+                action: 'Interdigitating slit diaphragms provide the final size-selective molecular sieve.',
+              },
+              {
+                name: 'Intraglomerular Mesangial Cells (AT1 / Endothelin Receptors)',
+                location: 'Central Capillary Stalk',
+                action: 'Contract to reduce filtration surface area (Kf) and phagocytose trapped immune macromolecules.',
+              },
+            ],
+            drugs: [
+              {
+                drugClass: 'Glucocorticoids & Immunosuppressants',
+                actionTag: 'Protect Podocytes & Suppress Inflammation',
+                drugList: ['Prednisone', 'Methylprednisolone', 'Mycophenolate mofetil', 'Cyclophosphamide', 'Rituximab'],
+                mechanism:
+                  'Restore podocyte actin cytoskeleton integrity, reduce immune-complex deposition, and preserve GBM negative charge.',
+                clinical:
+                  'First-line therapy for minimal change disease, nephrotic syndromes, lupus nephritis, and crescentic glomerulonephritis.',
+              },
+              {
+                drugClass: 'RAAS & SGLT2 Nephroprotective Agents',
+                actionTag: 'Reduce Intraglomerular Hyperfiltration',
+                drugList: ['Lisinopril', 'Losartan', 'Empagliflozin', 'Dapagliflozin'],
+                mechanism:
+                  'Lower intraglomerular capillary pressure (PGC) via efferent dilation (ACEi/ARB) or TGF-driven afferent constriction (SGLT2i).',
+                clinical:
+                  'Significantly reduce albuminuria and slow progression of diabetic and proteinuric chronic kidney disease.',
+              },
+            ],
+          },
+          {
+            id: 'bowmans_capsule',
+            name: "Bowman's Capsule & Urinary Space",
+            shortLabel: "Bowman's Capsule",
+            category: 'corpuscle',
+            zone: 'Renal Cortex',
+            osmolarity: '300 mOsm/L (Isosmotic)',
+            filtrateShare: '100% of Glomerular Filtrate (125 mL/min)',
+            layer: 'corpuscle_capsule',
+            colorWall: '#1e3a5f',
+            colorMain: '#38bdf8',
+            colorActive: '#7dd3fc',
+            colorSheen: '#e0f2fe',
+            labelPos: [152, 122],
+            labelAnchor: 'end',
+            leaderTarget: [204, 134],
+            majorFunction:
+              "Double-walled epithelial cup surrounding the glomerulus. Collects primary protein-free ultrafiltrate in Bowman's space (maintaining hydrostatic back-pressure PBS ≈ 15 mmHg) and funnels it through the urinary pole into the proximal convoluted tubule.",
+            cellDiagram: {
+              leftLabel: 'Glomerular Tuft',
+              centerLabel: "Bowman's Space & Parietal Wall",
+              rightLabel: 'PCT Urinary Pole',
+              apical: [
+                { name: 'Ultrafiltration Flux', dir: 'out', note: '180 L/day' },
+                { name: 'Parietal Claudin-1', dir: 'in', note: 'Tight Seal' },
+              ],
+              basolateral: [
+                { name: 'PBS Back-Pressure', dir: 'in', note: '~15 mmHg' },
+              ],
+              drugBadges: ['Mannitol (Filtered Load)', 'Contrast / Aminoglycoside Filtration'],
+            },
+            transporters: [
+              {
+                name: 'Parietal Epithelial Tight Junctions (Claudin-1)',
+                location: "Outer Bowman's Capsule",
+                action: 'Forms a watertight seal retaining primary filtrate within the urinary space.',
+              },
+              {
+                name: 'Visceral Podocyte Filtration Slits',
+                location: 'Inner Capsule Reflection',
+                action: 'Controls protein-free entry of water, electrolytes, glucose, amino acids, and small drugs.',
+              },
+            ],
+            drugs: [
+              {
+                drugClass: 'Osmotic Diuretics (Freely Filtered Solute)',
+                actionTag: "Increases Filtrate Osmolarity from Bowman's Space Onward",
+                drugList: ['Mannitol'],
+                mechanism:
+                  "Freely filtered across the glomerulus into Bowman's space without tubular reabsorption, immediately increasing tubular fluid osmotic pressure.",
+                clinical:
+                  'Used acutely for cerebral edema, elevated intracranial/intraocular pressure, and maintaining urine flow in rhabdomyolysis.',
+              },
+              {
+                drugClass: 'Nephrotoxic Filtered Agents (Tubular Delivery)',
+                actionTag: 'Filtered Here Before Distal Injury',
+                drugList: ['Gentamicin', 'Tobramycin', 'Vancomycin', 'Cisplatin', 'Amphotericin B'],
+                mechanism:
+                  "Low-molecular-weight compounds freely filter into Bowman's space, exposing downstream PCT and collecting duct cells to high luminal drug concentrations.",
+                clinical: 'Requires renal dosing (CrCl/eGFR adjustment) and hydration to limit nephrotoxicity.',
+              },
+            ],
+          },
+          {
+            id: 'efferent_arteriole',
+            name: 'Efferent Arteriole',
+            shortLabel: 'Efferent Arteriole',
+            category: 'corpuscle',
+            zone: 'Renal Cortex',
+            osmolarity: '~300 mOsm/L (High Oncotic)',
+            filtrateShare: '80% RPF Post-Glomerular Outflow',
+            layer: 'front_vascular',
+            colorWall: '#881337',
+            colorMain: '#e11d48',
+            colorActive: '#fb7185',
+            colorSheen: '#ffe4e6',
+            strokeWidth: 10.5,
+            svgPath: 'M 316 170 L 348 176 C 392 184, 424 218, 434 268 C 440 298, 424 328, 396 346',
+            flowPath: 'M 316 170 L 348 176 C 392 184, 424 218, 434 268 C 440 298, 424 328, 396 346',
+            labelPos: [452, 286],
+            labelAnchor: 'start',
+            leaderTarget: [430, 286],
+            majorFunction:
+              'Carries concentrated, high-oncotic-pressure blood out of the glomerulus into the peritubular capillaries and vasa recta. Constriction by Angiotensin II raises glomerular hydrostatic pressure (PGC) to defend GFR during hypovolemia, whereas dilation lowers PGC.',
+            cellDiagram: {
+              leftLabel: 'Post-Glomerular Blood',
+              centerLabel: 'Efferent Arteriolar Smooth Muscle',
+              rightLabel: 'Peritubular Plexus',
+              apical: [
+                { name: 'AT1 Receptor (Ang II)', dir: 'in', note: 'Constriction' },
+                { name: 'α1-Adrenergic R.', dir: 'in', note: 'Constriction' },
+              ],
+              basolateral: [
+                { name: 'PGC Regulation', dir: 'out', note: 'Defends GFR' },
+              ],
+              drugBadges: ['ACE Inhibitors (↓ Ang II)', 'ARBs (× AT1)'],
+            },
+            transporters: [
+              {
+                name: 'Angiotensin II Type 1 (AT1) Receptors',
+                location: 'Efferent Vascular Smooth Muscle',
+                action: 'High sensitivity to Ang II produces preferential efferent vasoconstriction, elevating PGC and filtration fraction.',
+              },
+              {
+                name: 'Endothelin (ETA) & α1-Adrenergic Receptors',
+                location: 'Efferent Vascular Smooth Muscle',
+                action: 'Contribute to post-glomerular vascular resistance and peritubular capillary pressure drop.',
+              },
+            ],
+            drugs: [
+              {
+                drugClass: 'ACE Inhibitors',
+                actionTag: 'Dilate Efferent Arteriole (↓ Ang II)',
+                drugList: ['Lisinopril', 'Enalapril', 'Ramipril', 'Captopril', 'Benazepril'],
+                mechanism:
+                  'Inhibit angiotensin-converting enzyme → decrease Angiotensin II → preferentially dilate the efferent arteriole → lower PGC and filtration fraction.',
+                clinical:
+                  'First-line in diabetic nephropathy, proteinuric CKD, hypertension, and HFrEF. Caution in bilateral renal artery stenosis (can cause acute GFR collapse).',
+              },
+              {
+                drugClass: 'Angiotensin II Receptor Blockers (ARBs)',
+                actionTag: 'Block AT1 on Efferent Arteriole',
+                drugList: ['Losartan', 'Valsartan', 'Irbesartan', 'Candesartan', 'Telmisartan'],
+                mechanism:
+                  'Competitively antagonize AT1 receptors on efferent smooth muscle → efferent vasodilation, reduced proteinuria, and no bradykinin accumulation.',
+                clinical: 'Renoprotective alternative to ACE inhibitors without dry cough or angioedema.',
+              },
+              {
+                drugClass: 'Direct Renin Inhibitors',
+                actionTag: 'Upstream RAAS Suppression',
+                drugList: ['Aliskiren'],
+                mechanism: 'Directly inhibit renin cleavage of angiotensinogen → reduce Ang II-driven efferent constriction.',
+                clinical: 'Contraindicated with ACEi/ARB in diabetes or CKD due to hyperkalemia and hypotension risk.',
+              },
+            ],
+          },
+          {
+            id: 'pct',
+            name: 'Proximal Convoluted Tubule (PCT — S1, S2 & Pars Recta S3)',
+            shortLabel: 'Proximal Convoluted Tubule (PCT)',
+            category: 'corpuscle',
+            zone: 'Renal Cortex → Outer Stripe',
+            osmolarity: '300 mOsm/L (Isosmotic)',
+            filtrateShare: 'Reabsorbs ~65% Na⁺/H₂O, 85% HCO₃⁻, 100% Glucose',
+            layer: 'tubule',
+            colorWall: '#78350f',
+            colorMain: '#d97706',
+            colorActive: '#fbbf24',
+            colorSheen: '#fde68a',
+            strokeWidth: 23,
+            svgPath:
+              'M 192 178 C 148 184, 114 214, 136 244 C 158 272, 240 248, 246 278 C 252 308, 128 292, 130 330 C 132 362, 212 346, 224 374 L 225 408',
+            flowPath:
+              'M 192 178 C 148 184, 114 214, 136 244 C 158 272, 240 248, 246 278 C 252 308, 128 292, 130 330 C 132 362, 212 346, 224 374 L 225 408',
+            labelPos: [118, 224],
+            labelAnchor: 'end',
+            labelLines: ['Proximal Convoluted', 'Tubule (PCT)'],
+            leaderTarget: [134, 242],
+            majorFunction:
+              'Primary bulk-reabsorption segment equipped with a dense apical microvillous brush border and abundant mitochondria. Reabsorbs ~65% of filtered Na⁺, Cl⁻, K⁺, and water isosmotically, ~85% of filtered HCO₃⁻, and 100% of filtered glucose and amino acids, while actively secreting organic acids, bases, and protein-bound drugs.',
+            cellDiagram: {
+              leftLabel: 'Tubular Lumen',
+              centerLabel: 'PCT Epithelial Cell (Brush Border)',
+              rightLabel: 'Peritubular Blood',
+              apical: [
+                { name: 'SGLT2 / SGLT1', dir: 'in', note: 'Na⁺ + Glucose' },
+                { name: 'NHE3 + CA IV', dir: 'out', note: 'H⁺ / HCO₃⁻' },
+                { name: 'NaPi-IIa / URAT1', dir: 'in', note: 'PO₄³⁻ / Urate' },
+              ],
+              basolateral: [
+                { name: 'Na⁺/K⁺-ATPase', dir: 'out', note: '3Na⁺ out / 2K⁺ in' },
+                { name: 'GLUT2 & NBCe1', dir: 'out', note: 'Glucose & HCO₃⁻' },
+                { name: 'OAT1/3 & OCT2', dir: 'in', note: 'Drug Secretion' },
+              ],
+              drugBadges: ['Acetazolamide (× CA)', 'SGLT2i (× SGLT2)', 'Probenecid (× URAT1/OAT)'],
+            },
+            transporters: [
+              {
+                name: 'SGLT2 (S1/S2) & SGLT1 (S3)',
+                location: 'Apical Brush Border',
+                action: 'Secondary active Na⁺-glucose cotransporters; SGLT2 reabsorbs ~90% of filtered glucose (1:1), SGLT1 ~10% (2:1).',
+              },
+              {
+                name: 'NHE3 (Na⁺/H⁺ Exchanger) & Carbonic Anhydrase (CA IV / CA II)',
+                location: 'Apical & Intracellular',
+                action: 'Secretes H⁺ to titrate luminal HCO₃⁻ → H₂CO₃ → CO₂ + H₂O, driving ~85% of systemic bicarbonate reclamation.',
+              },
+              {
+                name: 'Aquaporin-1 (AQP1)',
+                location: 'Apical & Basolateral',
+                action: 'Permits rapid constitutive water reabsorption so tubular fluid stays strictly isosmotic (~300 mOsm/L).',
+              },
+              {
+                name: 'NaPi-IIa / NaPi-IIc & URAT1',
+                location: 'Apical Membrane',
+                action: 'Reabsorb filtered phosphate (inhibited by PTH) and uric acid.',
+              },
+              {
+                name: 'OAT1 / OAT3 & OCT2',
+                location: 'Basolateral Membrane',
+                action: 'Actively secrete organic anions (loop/thiazide diuretics, penicillins, NSAIDs, methotrexate) and cations (metformin, creatinine) into lumen.',
+              },
+            ],
+            drugs: [
+              {
+                drugClass: 'Carbonic Anhydrase Inhibitors',
+                actionTag: 'Inhibit CA II & CA IV → Block HCO₃⁻ Reabsorption',
+                drugList: ['Acetazolamide', 'Methazolamide', 'Dorzolamide', 'Brinzolamide'],
+                mechanism:
+                  'Block luminal CA IV and intracellular CA II → prevent dehydration of H₂CO₃ → cause urinary loss of NaHCO₃ and mild self-limiting diuresis.',
+                clinical:
+                  'Used for glaucoma, acute mountain sickness, pseudotumor cerebri, and metabolic alkalosis. Causes hyperchloremic (normal anion gap) metabolic acidosis and hypokalemia.',
+              },
+              {
+                drugClass: 'SGLT2 Inhibitors (Gliflozins)',
+                actionTag: 'Block Apical SGLT2 Glucose/Na⁺ Cotransport',
+                drugList: ['Empagliflozin', 'Dapagliflozin', 'Canagliflozin', 'Ertugliflozin'],
+                mechanism:
+                  'Inhibit SGLT2 in S1/S2 → promote glycosuria and natriuresis, increasing NaCl delivery to macula densa to normalize intraglomerular pressure.',
+                clinical:
+                  'Type 2 diabetes, heart failure (HFrEF & HFpEF), and CKD progression. Watch for genital mycotic infections, volume depletion, and euglycemic DKA.',
+              },
+              {
+                drugClass: 'Osmotic Diuretics',
+                actionTag: 'Osmotic Water Retention in PCT',
+                drugList: ['Mannitol'],
+                mechanism:
+                  'Non-reabsorbable filtered solute opposes passive water movement across AQP1 in the PCT and thin descending limb.',
+                clinical: 'Reduces intracranial & intraocular pressure; contraindicated in anuria or pulmonary edema.',
+              },
+              {
+                drugClass: 'Uricosurics & Organic Transport Competitors',
+                actionTag: 'Inhibit URAT1 / OAT1–3',
+                drugList: ['Probenecid', 'Lesinurad', 'Cimetidine (OCT2)', 'Trimethoprim (OCT2)'],
+                mechanism:
+                  'Probenecid inhibits URAT1 to increase uric acid excretion (gout) and blocks OAT1/3 to prolong penicillin half-life; trimethoprim/cimetidine block OCT2 creatinine secretion.',
+                clinical: 'Probenecid lowers serum urate; OCT2 blockers raise serum creatinine without lowering true GFR.',
+              },
+            ],
+          },
+          {
+            id: 'thin_descending_limb',
+            name: 'Thin Descending Limb of Loop of Henle',
+            shortLabel: 'Thin Descending Limb',
+            category: 'loop',
+            zone: 'Outer → Inner Medulla',
+            osmolarity: '300 → 1200 mOsm/L',
+            filtrateShare: 'Reabsorbs ~15–20% Water (Concentrating)',
+            layer: 'tubule',
+            colorWall: '#9a3412',
+            colorMain: '#ea580c',
+            colorActive: '#fb923c',
+            colorSheen: '#fed7aa',
+            strokeWidth: 11,
+            svgPath: 'M 225 408 L 225 696 C 225 734, 256 752, 286 752',
+            flowPath: 'M 225 408 L 225 696 C 225 734, 256 752, 286 752',
+            labelPos: [188, 534],
+            labelAnchor: 'end',
+            leaderTarget: [222, 534],
+            majorFunction:
+              'Highly permeable to water via abundant Aquaporin-1 channels while nearly impermeable to Na⁺ and Cl⁻ ("concentrating segment"). As filtrate plunges into the hyperosmotic medulla, water exits passively until luminal osmolarity reaches ~1200 mOsm/L at the hairpin tip.',
+            cellDiagram: {
+              leftLabel: 'Tubular Lumen',
+              centerLabel: 'Thin Squamous Epithelium',
+              rightLabel: 'Hypertonic Medulla (1200 mOsm)',
+              apical: [
+                { name: 'Aquaporin-1 (AQP1)', dir: 'in', note: 'Water Efflux' },
+                { name: 'NaCl Impermeable', dir: 'none', note: 'Solute Trapped' },
+              ],
+              basolateral: [
+                { name: 'Aquaporin-1 (AQP1)', dir: 'out', note: 'To Vasa Recta' },
+                { name: 'UT-A2 (Deep tip)', dir: 'in', note: 'Urea Entry' },
+              ],
+              drugBadges: ['Mannitol (Opposes H₂O Exit)', 'Loop Diuretics (Indirect Washout)'],
+            },
+            transporters: [
+              {
+                name: 'Aquaporin-1 (AQP1) Water Channels',
+                location: 'Apical & Basolateral',
+                action: 'Constitutively expressed water channels permitting rapid osmotic water extraction into the hypertonic medullary interstitium.',
+              },
+              {
+                name: 'UT-A2 Urea Transporter (Distal Segment)',
+                location: 'Basolateral / Apical',
+                action: 'Allows modest passive urea entry near the medullary hairpin loop to participate in countercurrent recycling.',
+              },
+            ],
+            drugs: [
+              {
+                drugClass: 'Osmotic Diuretics',
+                actionTag: 'Trap Water Inside Lumen',
+                drugList: ['Mannitol'],
+                mechanism:
+                  'Unreabsorbed mannitol molecules hold water osmotically inside the descending limb, opposing AQP1-mediated water extraction and washing out medullary hypertonicity.',
+                clinical: 'Produces brisk water and Na⁺ diuresis when tubular reabsorption must be prevented.',
+              },
+              {
+                drugClass: 'Loop Diuretics (Indirect Medullary Effect)',
+                actionTag: 'Abolish Concentrating Gradient',
+                drugList: ['Furosemide', 'Bumetanide', 'Torsemide'],
+                mechanism:
+                  'By blocking NaCl transport in the neighboring thick ascending limb, loop diuretics collapse the medullary interstitial osmotic gradient needed to draw water from the descending limb.',
+                clinical: 'Impairs both maximal urine concentration and dilution.',
+              },
+            ],
+          },
+          {
+            id: 'thin_ascending_limb',
+            name: 'Thin Ascending Limb of Loop of Henle',
+            shortLabel: 'Thin Ascending Limb',
+            category: 'loop',
+            zone: 'Inner Medulla',
+            osmolarity: '1200 → 700 mOsm/L',
+            filtrateShare: 'Passive NaCl Efflux (Water-Impermeable)',
+            layer: 'tubule',
+            colorWall: '#9a3412',
+            colorMain: '#f97316',
+            colorActive: '#fdba74',
+            colorSheen: '#ffedd5',
+            strokeWidth: 11,
+            svgPath: 'M 286 752 C 316 752, 344 734, 344 696 L 344 555',
+            flowPath: 'M 286 752 C 316 752, 344 734, 344 696 L 344 555',
+            labelPos: [404, 654],
+            labelAnchor: 'start',
+            leaderTarget: [347, 654],
+            majorFunction:
+              'Completely impermeable to water (lacks aquaporins) while permeable to Na⁺ and Cl⁻. After reaching ~1200 mOsm/L at the hairpin bend, NaCl diffuses passively down its steep concentration gradient into the inner medullary interstitium, beginning urine dilution.',
+            cellDiagram: {
+              leftLabel: 'Tubular Lumen (High NaCl)',
+              centerLabel: 'Thin Ascending Epithelium',
+              rightLabel: 'Inner Medulla',
+              apical: [
+                { name: 'ClC-Ka / ClC-Kb', dir: 'in', note: 'Passive Cl⁻ Exit' },
+                { name: 'Water Impermeable', dir: 'none', note: 'No AQP' },
+              ],
+              basolateral: [
+                { name: 'ClC-Ka / Barttin', dir: 'out', note: 'Cl⁻ to Interstitium' },
+                { name: 'Paracellular Na⁺', dir: 'out', note: 'Follows Cl⁻' },
+              ],
+              drugBadges: ['Mannitol (Blunts Gradient)'],
+            },
+            transporters: [
+              {
+                name: 'ClC-Ka / ClC-Kb Chloride Channels (with Barttin)',
+                location: 'Apical & Basolateral',
+                action: 'Mediates rapid passive Cl⁻ efflux down its concentration gradient from the concentrated tubular fluid.',
+              },
+              {
+                name: 'Paracellular Na⁺ Pathway',
+                location: 'Tight Junctions',
+                action: 'Passive Na⁺ diffusion driven by electrical and chemical gradients created by Cl⁻ exit.',
+              },
+            ],
+            drugs: [
+              {
+                drugClass: 'Osmotic Diuretics',
+                actionTag: 'Dilutes Luminal NaCl Concentration',
+                drugList: ['Mannitol'],
+                mechanism:
+                  'Excess retained water lowers luminal Na⁺ and Cl⁻ concentrations inside the thin ascending limb, diminishing the passive NaCl driving gradient.',
+                clinical: 'Contributes to loss of medullary hyperosmolality during osmotic diuresis.',
+              },
+            ],
+          },
+          {
+            id: 'thick_ascending_limb',
+            name: 'Thick Ascending Limb (TAL) of Loop of Henle',
+            shortLabel: 'Thick Ascending Limb (TAL)',
+            category: 'loop',
+            zone: 'Outer Medulla → Cortex',
+            osmolarity: '700 → 100 mOsm/L (Diluting)',
+            filtrateShare: 'Reabsorbs ~25% NaCl + Ca²⁺/Mg²⁺',
+            layer: 'tubule',
+            colorWall: '#9a3412',
+            colorMain: '#ea580c',
+            colorActive: '#fb923c',
+            colorSheen: '#fed7aa',
+            strokeWidth: 19,
+            svgPath: 'M 344 555 L 344 196 C 344 178, 336 164, 336 156',
+            flowPath: 'M 344 555 L 344 196 C 344 178, 336 164, 336 156',
+            labelPos: [404, 444],
+            labelAnchor: 'start',
+            leaderTarget: [348, 444],
+            majorFunction:
+              'Impermeable to water ("diluting segment"). Actively pumps ~25% of filtered Na⁺, K⁺, and Cl⁻ into the interstitium to power the countercurrent multiplier (creating the hypertonic medulla). K⁺ back-diffusion through apical ROMK creates a +8 mV lumen-positive electrical potential that drives paracellular Ca²⁺ and Mg²⁺ reabsorption.',
+            cellDiagram: {
+              leftLabel: 'Tubular Lumen (+8 mV)',
+              centerLabel: 'TAL Epithelial Cell',
+              rightLabel: 'Interstitium / Blood',
+              apical: [
+                { name: 'NKCC2', dir: 'in', note: '1Na⁺ 1K⁺ 2Cl⁻' },
+                { name: 'ROMK (Kir1.1)', dir: 'out', note: 'K⁺ Recycling (+mV)' },
+                { name: 'Paracellular Ca²⁺/Mg²⁺', dir: 'in', note: 'Claudin-16/19' },
+              ],
+              basolateral: [
+                { name: 'Na⁺/K⁺-ATPase', dir: 'out', note: '3Na⁺ / 2K⁺' },
+                { name: 'ClC-Kb + Barttin', dir: 'out', note: 'Cl⁻ Exit' },
+                { name: 'CaSR Sensor', dir: 'in', note: 'Inhibits NKCC2' },
+              ],
+              drugBadges: ['Loop Diuretics (× NKCC2)', 'Calcimimetics (+ CaSR)'],
+            },
+            transporters: [
+              {
+                name: 'NKCC2 (Na⁺-K⁺-2Cl⁻ Cotransporter)',
+                location: 'Apical Membrane',
+                action: 'Electroneutrally reabsorbs 1 Na⁺, 1 K⁺, and 2 Cl⁻ driven by the basolateral Na⁺/K⁺-ATPase gradient.',
+              },
+              {
+                name: 'ROMK (Kir1.1 Potassium Channel)',
+                location: 'Apical Membrane',
+                action: 'Recycles K⁺ back into the lumen, generating the +8 mV lumen-positive voltage essential for divalent cation uptake.',
+              },
+              {
+                name: 'Claudin-16 & Claudin-19 Tight Junctions',
+                location: 'Paracellular Pathway',
+                action: 'Mediates passive paracellular reabsorption of ~25% of filtered Ca²⁺ and ~60% of filtered Mg²⁺ driven by +8 mV luminal potential.',
+              },
+              {
+                name: 'Basolateral CaSR & ClC-Kb',
+                location: 'Basolateral Membrane',
+                action: 'ClC-Kb exits Cl⁻; high serum Ca²⁺ activates CaSR to inhibit ROMK/NKCC2 and promote calciuresis.',
+              },
+            ],
+            drugs: [
+              {
+                drugClass: 'Loop Diuretics ("High-Ceiling" Diuretics)',
+                actionTag: 'Inhibit Apical NKCC2 Cotransporter',
+                drugList: ['Furosemide', 'Bumetanide', 'Torsemide', 'Ethacrynic acid'],
+                mechanism:
+                  'Bind to the Cl⁻ site of NKCC2 → abolish NaCl reabsorption and eliminate the +8 mV lumen-positive potential → cause profound natriuresis plus Ca²⁺ and Mg²⁺ wasting.',
+                clinical:
+                  'Acute pulmonary edema, decompensated heart failure, ascites, severe hypercalcemia. Adverse effects: hypokalemia, metabolic alkalosis, hypomagnesemia, hyperuricemia, reversible/irreversible ototoxicity (highest with ethacrynic acid).',
+              },
+              {
+                drugClass: 'Calcimimetics',
+                actionTag: 'Activate Basolateral CaSR',
+                drugList: ['Cinacalcet', 'Etelcalcetide'],
+                mechanism:
+                  'Allosterically activate CaSR on TAL basolateral membrane (and parathyroid gland) → inhibit ROMK/NKCC2 and promote Ca²⁺ excretion.',
+                clinical: 'Used in secondary hyperparathyroidism (CKD) and parathyroid carcinoma hypercalcemia.',
+              },
+            ],
+          },
+          {
+            id: 'jga_macula_densa',
+            name: 'Juxtaglomerular Apparatus (JGA) & Macula Densa',
+            shortLabel: 'Macula Densa / JGA',
+            category: 'distal',
+            zone: 'Renal Cortex (Vascular Pole)',
+            osmolarity: '100–150 mOsm/L (Tubular)',
+            filtrateShare: 'Master Sensor for GFR & Renin',
+            layer: 'jga',
+            colorWall: '#0f766e',
+            colorMain: '#14b8a6',
+            colorActive: '#5eead4',
+            colorSheen: '#ccfbf1',
+            labelPos: [286, 272],
+            labelAnchor: 'middle',
+            leaderTarget: [332, 166],
+            majorFunction:
+              'Specialized chemosensory plaque at the end of the TAL nestled directly between the afferent and efferent arterioles. Detects luminal NaCl delivery via NKCC2 to regulate single-nephron GFR (tubuloglomerular feedback) and modulate COX-2-dependent renin release from JG cells.',
+            cellDiagram: {
+              leftLabel: 'Distal TAL Lumen',
+              centerLabel: 'Macula Densa Plaque',
+              rightLabel: 'JG Cells & Afferent Arteriole',
+              apical: [
+                { name: 'NKCC2 (NaCl Sensor)', dir: 'in', note: 'Monitors [NaCl]' },
+                { name: 'NHE2', dir: 'out', note: 'pH / Na⁺' },
+              ],
+              basolateral: [
+                { name: 'ATP → Adenosine (A1)', dir: 'out', note: 'High NaCl → Constrict' },
+                { name: 'COX-2 / nNOS (PGE₂)', dir: 'out', note: 'Low NaCl → Renin' },
+              ],
+              drugBadges: ['SGLT2i (Restores TGF)', 'Loop Diuretics (× Sensor)', 'NSAIDs (× COX-2)'],
+            },
+            transporters: [
+              {
+                name: 'Macula Densa NKCC2 Sensor',
+                location: 'Apical Membrane',
+                action: 'Increased NaCl uptake during high GFR triggers basolateral ATP/adenosine release → constricts afferent arteriole (TGF).',
+              },
+              {
+                name: 'COX-2 & Neuronal NOS (nNOS)',
+                location: 'Macula Densa Cytosol',
+                action: 'Low luminal NaCl upregulates COX-2 → PGE₂ release dilates afferent arteriole and triggers JG cell renin release.',
+              },
+              {
+                name: 'Extracellular ATP / Adenosine A1 Signaling',
+                location: 'JGA Mesangial Cleft',
+                action: 'Mediates rapid vasoconstriction of the adjacent afferent arteriole during hyperfiltration.',
+              },
+            ],
+            drugs: [
+              {
+                drugClass: 'SGLT2 Inhibitors (TGF Restoration)',
+                actionTag: 'Increase Macula Densa NaCl Delivery',
+                drugList: ['Empagliflozin', 'Dapagliflozin', 'Canagliflozin'],
+                mechanism:
+                  'Inhibiting proximal Na⁺ reabsorption delivers more NaCl to the macula densa → reactivates NKCC2 and adenosine A1-mediated afferent constriction → corrects diabetic hyperfiltration.',
+                clinical: 'Explains the initial benign eGFR dip followed by long-term nephron preservation.',
+              },
+              {
+                drugClass: 'Loop Diuretics',
+                actionTag: 'Block Macula Densa NKCC2 Sensor',
+                drugList: ['Furosemide', 'Bumetanide', 'Torsemide'],
+                mechanism:
+                  'Blind the macula densa to luminal NaCl → suppress tubuloglomerular feedback and stimulate COX-2/renin release despite high distal flow.',
+                clinical: 'Maintains high GFR during loop diuresis; contributes to compensatory RAAS activation.',
+              },
+              {
+                drugClass: 'NSAIDs & Selective COX-2 Inhibitors',
+                actionTag: 'Inhibit Macula Densa COX-2',
+                drugList: ['Indomethacin', 'Ibuprofen', 'Celecoxib'],
+                mechanism: 'Block macula densa PGE₂ production → blunt renin release and cause afferent constriction.',
+                clinical: 'Can induce hyporeninemic hypoaldosteronism (Type 4 RTA) and hyperkalemia.',
+              },
+            ],
+          },
+          {
+            id: 'dct',
+            name: 'Distal Convoluted Tubule (DCT)',
+            shortLabel: 'Distal Convoluted Tubule (DCT)',
+            category: 'distal',
+            zone: 'Renal Cortex',
+            osmolarity: '100 → 50 mOsm/L (Cortical Diluting)',
+            filtrateShare: 'Reabsorbs ~5–10% NaCl + Active Ca²⁺/Mg²⁺',
+            layer: 'tubule',
+            colorWall: '#155e75',
+            colorMain: '#0891b2',
+            colorActive: '#22d3ee',
+            colorSheen: '#a5f3fc',
+            strokeWidth: 17,
+            svgPath:
+              'M 336 156 C 362 152, 392 170, 412 204 C 434 240, 476 168, 514 202 C 550 236, 588 158, 634 176 L 675 186',
+            flowPath:
+              'M 336 156 C 362 152, 392 170, 412 204 C 434 240, 476 168, 514 202 C 550 236, 588 158, 634 176 L 675 186',
+            labelPos: [516, 140],
+            labelAnchor: 'middle',
+            leaderTarget: [514, 198],
+            majorFunction:
+              'Water-impermeable cortical segment ("cortical diluting segment") that reabsorbs ~5–10% of filtered NaCl via NCC, lowering urine osmolarity down to ~50 mOsm/L. It is also the primary site of PTH- and calcitriol-regulated transcellular Ca²⁺ reabsorption and TRPM6-mediated Mg²⁺ conservation.',
+            cellDiagram: {
+              leftLabel: 'Tubular Lumen',
+              centerLabel: 'DCT Epithelial Cell',
+              rightLabel: 'Peritubular Blood',
+              apical: [
+                { name: 'NCC (Na⁺-Cl⁻)', dir: 'in', note: 'Electroneutral' },
+                { name: 'TRPV5 (Ca²⁺)', dir: 'in', note: 'PTH-Regulated' },
+                { name: 'TRPM6 (Mg²⁺)', dir: 'in', note: 'Mg²⁺ Uptake' },
+              ],
+              basolateral: [
+                { name: 'Na⁺/K⁺-ATPase', dir: 'out', note: '3Na⁺ / 2K⁺' },
+                { name: 'NCX1 (3Na⁺/Ca²⁺)', dir: 'out', note: 'Ca²⁺ Exit' },
+                { name: 'PTH Receptor', dir: 'in', note: '↑ TRPV5' },
+              ],
+              drugBadges: ['Thiazides (× NCC → ↑ Ca²⁺ Reabs)', 'Tacrolimus (+ NCC)'],
+            },
+            transporters: [
+              {
+                name: 'NCC (Na⁺-Cl⁻ Cotransporter)',
+                location: 'Apical Membrane',
+                action: 'Electroneutral reabsorption of 1 Na⁺ and 1 Cl⁻; regulated by WNK-SPAK kinases and aldosterone.',
+              },
+              {
+                name: 'TRPV5 Calcium Channel & Basolateral NCX1',
+                location: 'Apical & Basolateral',
+                action: 'PTH stimulates TRPV5 Ca²⁺ entry; low intracellular Na⁺ drives basolateral NCX1 (3Na⁺ in / 1Ca²⁺ out) to reabsorb Ca²⁺.',
+              },
+              {
+                name: 'TRPM6 Magnesium Channel',
+                location: 'Apical Membrane',
+                action: 'Primary site of active transcellular Mg²⁺ reabsorption.',
+              },
+            ],
+            drugs: [
+              {
+                drugClass: 'Thiazide & Thiazide-Like Diuretics',
+                actionTag: 'Inhibit Apical NCC Cotransporter',
+                drugList: ['Hydrochlorothiazide (HCTZ)', 'Chlorthalidone', 'Indapamide', 'Metolazone'],
+                mechanism:
+                  'Bind the Cl⁻ site of apical NCC → block NaCl reabsorption; dropping intracellular Na⁺ accelerates basolateral NCX1 Ca²⁺ extrusion → decreases urinary Ca²⁺ excretion.',
+                clinical:
+                  'First-line for hypertension, recurrent calcium kidney stones (hypocalciuria), osteoporosis, and nephrogenic diabetes insipidus. Adverse effects: hypokalemia, hyponatremia, metabolic alkalosis, hyperuricemia, hyperglycemia, hypercalcemia.',
+              },
+              {
+                drugClass: 'Calcineurin Inhibitors (Off-Target Stimulation)',
+                actionTag: 'Hyperactivate NCC via WNK-SPAK',
+                drugList: ['Cyclosporine', 'Tacrolimus'],
+                mechanism: 'Prevent calcineurin-mediated dephosphorylation of NCC → overactive NaCl retention.',
+                clinical: 'Contributes to post-transplant salt-sensitive hypertension and hyperkalemia.',
+              },
+            ],
+          },
+          {
+            id: 'collecting_duct',
+            name: 'Collecting Duct (Cortical & Medullary CD)',
+            shortLabel: 'Collecting Duct (CD)',
+            category: 'distal',
+            zone: 'Cortex → Inner Medulla',
+            osmolarity: '50 – 1200 mOsm/L (ADH-Dependent)',
+            filtrateShare: 'Fine-Tunes Final 1–3% Na⁺, K⁺, H⁺ & Water',
+            layer: 'tubule',
+            colorWall: '#312e81',
+            colorMain: '#6366f1',
+            colorActive: '#818cf8',
+            colorSheen: '#c7d2fe',
+            strokeWidth: 21,
+            svgPath: 'M 675 94 L 675 786',
+            secondaryPaths: ['M 744 128 C 722 142, 700 156, 675 166', 'M 750 232 C 724 242, 700 250, 675 262'],
+            flowPath: 'M 675 104 L 675 786',
+            labelPos: [714, 412],
+            labelAnchor: 'start',
+            leaderTarget: [684, 412],
+            majorFunction:
+              'Final determinant of urine volume, osmolarity, K⁺ balance, and acid-base homeostasis. Principal cells mediate aldosterone-driven Na⁺ reabsorption (ENaC), K⁺ secretion (ROMK), and ADH-regulated water reabsorption (AQP2). Intercalated cells secrete H⁺ (α-type) or HCO₃⁻ (β-type).',
+            cellDiagram: {
+              leftLabel: 'Tubular Lumen (Final Urine)',
+              centerLabel: 'Principal & Intercalated Cells',
+              rightLabel: 'Medullary Interstitium',
+              apical: [
+                { name: 'ENaC (Na⁺ Channel)', dir: 'in', note: 'Principal Cell' },
+                { name: 'ROMK (K⁺ Secretion)', dir: 'out', note: 'Driven by ENaC' },
+                { name: 'AQP2 (ADH-Gated)', dir: 'in', note: 'Water Reabs.' },
+                { name: 'H⁺-ATPase (α-IC)', dir: 'out', note: 'Urine Acidification' },
+              ],
+              basolateral: [
+                { name: 'MR (Aldosterone R.)', dir: 'in', note: '↑ ENaC / ROMK' },
+                { name: 'V2 Receptor (ADH)', dir: 'in', note: '↑ AQP2 / UT-A1' },
+                { name: 'AQP3 / AQP4', dir: 'out', note: 'Water Exit' },
+              ],
+              drugBadges: ['Amiloride (× ENaC)', 'Spironolactone (× MR)', 'Tolvaptan (× V2)'],
+            },
+            transporters: [
+              {
+                name: 'ENaC (Epithelial Na⁺ Channel) & ROMK',
+                location: 'Apical Principal Cell',
+                action: 'ENaC reabsorbs Na⁺, creating a lumen-negative voltage that drives K⁺ secretion via ROMK and H⁺ secretion via α-intercalated cells.',
+              },
+              {
+                name: 'Aquaporin-2 (AQP2) & Basolateral AQP3/AQP4',
+                location: 'Principal Cell',
+                action: 'ADH binds basolateral V2 receptors (Gs → cAMP → PKA) to traffic AQP2 vesicles into the apical membrane for water reabsorption.',
+              },
+              {
+                name: 'H⁺-ATPase, H⁺/K⁺-ATPase & Pendrin',
+                location: 'Apical Intercalated Cells',
+                action: 'α-intercalated cells secrete H⁺ to generate new HCO₃⁻; β-intercalated cells secrete HCO₃⁻ during alkalosis.',
+              },
+              {
+                name: 'UT-A1 / UT-A3 Urea Transporters',
+                location: 'Inner Medullary Collecting Duct',
+                action: 'ADH-stimulated urea reabsorption concentrates inner medullary interstitium up to 1200 mOsm/L.',
+              },
+            ],
+            drugs: [
+              {
+                drugClass: 'ENaC Blockers (Potassium-Sparing Diuretics)',
+                actionTag: 'Directly Block Apical ENaC Channels',
+                drugList: ['Amiloride', 'Triamterene'],
+                mechanism:
+                  'Block luminal ENaC independent of aldosterone → abolish lumen-negative charge → reduce Na⁺ reabsorption and spare K⁺ and H⁺.',
+                clinical:
+                  'Prevent loop/thiazide-induced hypokalemia; amiloride is specific therapy for Liddle syndrome and lithium-induced nephrogenic diabetes insipidus (blocks lithium entry via ENaC).',
+              },
+              {
+                drugClass: 'Mineralocorticoid Receptor Antagonists (MRAs)',
+                actionTag: 'Block Intracellular Aldosterone Receptors',
+                drugList: ['Spironolactone', 'Eplerenone', 'Finerenone'],
+                mechanism:
+                  'Competitively inhibit cytoplasmic mineralocorticoid receptors → prevent transcription of ENaC, ROMK, and Na⁺/K⁺-ATPase.',
+                clinical:
+                  'HFrEF mortality reduction, cirrhotic ascites, primary hyperaldosteronism, resistant HTN, diabetic CKD (finerenone). Watch for hyperkalemia; spironolactone can cause gynecomastia.',
+              },
+              {
+                drugClass: 'Vasopressin V2 Receptor Antagonists (Vaptans)',
+                actionTag: 'Block Basolateral V2 Receptors → Aquaresis',
+                drugList: ['Tolvaptan', 'Conivaptan'],
+                mechanism:
+                  'Antagonize V2 receptors on principal cells → prevent AQP2 insertion → promote electrolyte-free water excretion (aquaresis).',
+                clinical: 'SIADH / euvolemic or hypervolemic hyponatremia and slowing cyst growth in ADPKD.',
+              },
+              {
+                drugClass: 'ADH Analogs & V2 Inhibitors (NDI Inducers)',
+                actionTag: 'Activate or Impair V2 / cAMP Signaling',
+                drugList: ['Desmopressin (DDAVP, agonist)', 'Lithium (inhibits cAMP)', 'Demeclocycline'],
+                mechanism:
+                  'Desmopressin activates V2 to insert AQP2 (treats central DI); lithium enters via ENaC and inhibits GSK3β/cAMP signaling, causing nephrogenic DI.',
+                clinical: 'Desmopressin treats central DI; lithium toxicity causes polyuria/polydipsia.',
+              },
+            ],
+          },
+          {
+            id: 'vasa_recta',
+            name: 'Peritubular Capillaries & Vasa Recta',
+            shortLabel: 'Peritubular Capillaries / Vasa Recta',
+            category: 'loop',
+            zone: 'Cortex & Medulla',
+            osmolarity: '300 ↔ 1200 mOsm/L (Countercurrent Exchange)',
+            filtrateShare: 'Reclaims Reabsorbate & Preserves Medullary Gradient',
+            layer: 'back_vascular',
+            colorWall: '#4c1d95',
+            colorMain: '#9333ea',
+            colorActive: '#c084fc',
+            colorSheen: '#e9d5ff',
+            strokeWidth: 6.5,
+            svgPath:
+              'M 396 346 C 378 368, 374 430, 374 520 L 374 686 C 374 720, 344 736, 316 736 C 288 736, 260 720, 260 686 L 260 406 C 260 364, 240 342, 200 330',
+            secondaryPaths: [
+              'M 396 346 C 430 334, 495 318, 560 302 C 618 286, 650 245, 652 195',
+              'M 260 436 L 374 436',
+              'M 260 516 L 374 516',
+              'M 260 604 L 374 604',
+            ],
+            flowPath:
+              'M 396 346 L 374 520 L 374 686 C 374 720, 344 736, 316 736 C 288 736, 260 720, 260 686 L 260 406',
+            labelPos: [404, 594],
+            labelAnchor: 'start',
+            leaderTarget: [376, 594],
+            majorFunction:
+              'Low-pressure, high-oncotic-pressure peritubular capillaries rapidly absorb water and solutes reabsorbed by the PCT and DCT. Hairpin vasa recta loops act as passive countercurrent exchangers that supply O₂ to the medulla without washing away the hyperosmotic NaCl/urea gradient.',
+            cellDiagram: {
+              leftLabel: 'Medullary Interstitium',
+              centerLabel: 'Vasa Recta Endothelium',
+              rightLabel: 'Capillary Blood',
+              apical: [
+                { name: 'Aquaporin-1 (AQP1)', dir: 'in', note: 'Water Exchange' },
+                { name: 'UT-B Urea Transporter', dir: 'in', note: 'Urea Exchange' },
+              ],
+              basolateral: [
+                { name: 'Starling Oncotic Pull', dir: 'in', note: 'Reclaims PCT Fluid' },
+                { name: 'EP2/IP Prostaglandin R.', dir: 'in', note: 'Medullary Flow' },
+              ],
+              drugBadges: ['NSAIDs (Medullary Ischemia)', 'Radiocontrast (Vasospasm)'],
+            },
+            transporters: [
+              {
+                name: 'Aquaporin-1 (Descending Vasa Recta)',
+                location: 'Endothelial Membrane',
+                action: 'Allows rapid water egress on descent and water re-entry on ascent to preserve medullary hypertonicity.',
+              },
+              {
+                name: 'UT-B (Urea Transporter B)',
+                location: 'Vasa Recta Endothelium & RBCs',
+                action: 'Facilitates passive urea countercurrent exchange between ascending and descending vasa recta.',
+              },
+              {
+                name: 'Fenestrated Cortical Endothelium & Starling Forces',
+                location: 'Peritubular Plexus',
+                action: 'High post-glomerular oncotic pressure (πc) and low hydrostatic pressure (Pc) drive rapid uptake of tubular reabsorbate.',
+              },
+            ],
+            drugs: [
+              {
+                drugClass: 'NSAIDs & Analgesic Nephropathy',
+                actionTag: 'Constrict Medullary Vasa Recta',
+                drugList: ['Indomethacin', 'Ibuprofen', 'Naproxen', 'Acetaminophen + NSAID combinations'],
+                mechanism:
+                  'Inhibit vasodilatory prostaglandins required to keep vasa recta open in the hypoxic medulla → severe medullary ischemia.',
+                clinical: 'Chronic heavy use can cause renal papillary necrosis and chronic interstitial nephritis.',
+              },
+              {
+                drugClass: 'Iodinated Radiocontrast Media',
+                actionTag: 'Vasa Recta Vasoconstriction & Medullary Hypoxia',
+                drugList: ['Iohexol', 'Iopamidol', 'Iodixanol'],
+                mechanism:
+                  'Increase blood viscosity and trigger endothelin/adenosine release → slow vasa recta flow in an already low-pO₂ outer medulla.',
+                clinical: 'Preventable with IV isotonic hydration in high-risk CKD patients (contrast-associated AKI).',
+              },
+            ],
+          },
+        ];
+
+        const state = {
+          filter: 'all',
+          selectedId: 'thick_ascending_limb',
+          hoveredId: null,
+          showLabels: true,
+          showZones: true,
+          showFlow: true,
+        };
+
+        // DOM references
+        const zonesLayer = document.getElementById('zonesLayer');
+        const vasculatureBackLayer = document.getElementById('vasculatureBackLayer');
+        const tubulesLayer = document.getElementById('tubulesLayer');
+        const corpuscleLayer = document.getElementById('corpuscleLayer');
+        const vasculatureFrontLayer = document.getElementById('vasculatureFrontLayer');
+        const flowLayer = document.getElementById('flowLayer');
+        const labelsLayer = document.getElementById('labelsLayer');
+
+        const toggleLabelsBtn = document.getElementById('toggleLabelsBtn');
+        const labelsIconWrap = document.getElementById('labelsIconWrap');
+        const labelsBtnText = document.getElementById('labelsBtnText');
+        const toggleZonesBtn = document.getElementById('toggleZonesBtn');
+        const toggleFlowBtn = document.getElementById('toggleFlowBtn');
+
+        const inspZone = document.getElementById('inspZone');
+        const inspOsm = document.getElementById('inspOsm');
+        const inspShare = document.getElementById('inspShare');
+        const inspName = document.getElementById('inspName');
+        const inspFunction = document.getElementById('inspFunction');
+        const cellTransportSvg = document.getElementById('cellTransportSvg');
+        const transporterList = document.getElementById('transporterList');
+        const drugListContainer = document.getElementById('drugListContainer');
+        const structureDirectory = document.getElementById('structureDirectory');
+
+        function createSvgEl(tag, attrs) {
+          const el = document.createElementNS(SVG_NS, tag);
+          for (const [k, v] of Object.entries(attrs)) {
+            el.setAttribute(k, String(v));
+          }
+          return el;
+        }
+
+        function isHighlighted(item) {
+          if (state.filter === 'all') return true;
+          return item.category === state.filter;
+        }
+
+        function selectStructure(id) {
+          state.selectedId = id;
+          renderAll();
+        }
+
+        function attachInteractiveEvents(el, item) {
+          el.setAttribute('class', 'struct-group');
+          el.setAttribute('tabindex', '0');
+          el.setAttribute('role', 'button');
+          el.setAttribute('aria-label', item.name);
+          el.addEventListener('click', () => selectStructure(item.id));
+          el.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              selectStructure(item.id);
+            }
+          });
+          el.addEventListener('mouseenter', () => {
+            if (state.hoveredId !== item.id) {
+              state.hoveredId = item.id;
+              renderNephronDiagram();
+            }
+          });
+          el.addEventListener('mouseleave', () => {
+            if (state.hoveredId !== null) {
+              state.hoveredId = null;
+              renderNephronDiagram();
+            }
+          });
+        }
+
+        function renderTubularPathGroup(item, container) {
+          const highlighted = isHighlighted(item);
+          const isSelected = item.id === state.selectedId;
+          const isHovered = item.id === state.hoveredId;
+          const g = createSvgEl('g', { opacity: highlighted ? 1 : 0.2 });
+          attachInteractiveEvents(g, item);
+
+          if (isSelected || isHovered) {
+            g.appendChild(
+              createSvgEl('path', {
+                d: item.svgPath,
+                fill: 'none',
+                stroke: isSelected ? '#22d3ee' : '#e2e8f0',
+                'stroke-width': item.strokeWidth + 9,
+                'stroke-linecap': 'round',
+                'stroke-linejoin': 'round',
+                opacity: 0.36,
+              })
+            );
+            if (item.secondaryPaths) {
+              for (const sp of item.secondaryPaths) {
+                g.appendChild(
+                  createSvgEl('path', {
+                    d: sp,
+                    fill: 'none',
+                    stroke: isSelected ? '#22d3ee' : '#e2e8f0',
+                    'stroke-width': Math.max(5, item.strokeWidth * 0.65) + 6,
+                    'stroke-linecap': 'round',
+                    opacity: 0.3,
+                  })
+                );
+              }
+            }
+          }
+
+          // Basement membrane / outer epithelial wall
+          g.appendChild(
+            createSvgEl('path', {
+              d: item.svgPath,
+              fill: 'none',
+              stroke: item.colorWall,
+              'stroke-width': item.strokeWidth + 4,
+              'stroke-linecap': 'round',
+              'stroke-linejoin': 'round',
+            })
+          );
+
+          // Main epithelial body
+          g.appendChild(
+            createSvgEl('path', {
+              d: item.svgPath,
+              fill: 'none',
+              stroke: isSelected || isHovered ? item.colorActive : item.colorMain,
+              'stroke-width': item.strokeWidth,
+              'stroke-linecap': 'round',
+              'stroke-linejoin': 'round',
+            })
+          );
+
+          // PCT brush-border texture overlay
+          if (item.id === 'pct') {
+            g.appendChild(
+              createSvgEl('path', {
+                d: item.svgPath,
+                fill: 'none',
+                stroke: 'url(#brushBorderPattern)',
+                'stroke-width': item.strokeWidth - 4,
+                'stroke-linecap': 'round',
+                'stroke-linejoin': 'round',
+              })
+            );
+          }
+
+          // Inner tubular lumen sheen
+          g.appendChild(
+            createSvgEl('path', {
+              d: item.svgPath,
+              fill: 'none',
+              stroke: item.colorSheen,
+              'stroke-width': Math.max(2.2, item.strokeWidth * 0.3),
+              'stroke-linecap': 'round',
+              'stroke-linejoin': 'round',
+              opacity: item.id === 'vasa_recta' ? 0.28 : 0.25,
+            })
+          );
+
+          // Secondary tributaries / capillary anastomoses
+          if (item.secondaryPaths) {
+            for (const sp of item.secondaryPaths) {
+              g.appendChild(
+                createSvgEl('path', {
+                  d: sp,
+                  fill: 'none',
+                  stroke: item.colorWall,
+                  'stroke-width': Math.max(4, item.strokeWidth * 0.68) + 2.5,
+                  'stroke-linecap': 'round',
+                })
+              );
+              g.appendChild(
+                createSvgEl('path', {
+                  d: sp,
+                  fill: 'none',
+                  stroke: isSelected || isHovered ? item.colorActive : item.colorMain,
+                  'stroke-width': Math.max(3, item.strokeWidth * 0.62),
+                  'stroke-linecap': 'round',
+                })
+              );
+            }
+          }
+
+          // Invisible wide hit target
+          g.appendChild(
+            createSvgEl('path', {
+              d: item.svgPath,
+              fill: 'none',
+              stroke: 'transparent',
+              'stroke-width': Math.max(26, item.strokeWidth + 14),
+              'stroke-linecap': 'round',
+            })
+          );
+
+          container.appendChild(g);
+        }
+
+        function renderBowmansCapsule(item) {
+          const highlighted = isHighlighted(item);
+          const isSelected = item.id === state.selectedId;
+          const isHovered = item.id === state.hoveredId;
+          const g = createSvgEl('g', { opacity: highlighted ? 1 : 0.2 });
+          attachInteractiveEvents(g, item);
+
+          // Outer glow on hover/selection
+          if (isSelected || isHovered) {
+            g.appendChild(
+              createSvgEl('circle', {
+                cx: 254,
+                cy: 158,
+                r: 72,
+                fill: 'none',
+                stroke: isSelected ? '#22d3ee' : '#e2e8f0',
+                'stroke-width': 6,
+                opacity: 0.42,
+              })
+            );
+          }
+
+          // Outer parietal Bowman's capsule cup opening right for vascular pole & left-down for urinary pole
+          g.appendChild(
+            createSvgEl('path', {
+              d: 'M 316 138 C 304 102, 272 86, 240 90 C 202 95, 178 128, 184 166 C 186 174, 189 180, 193 185 C 199 194, 212 222, 250 226 C 284 228, 308 206, 316 178 Z',
+              fill: 'url(#bowmanSpaceGrad)',
+              stroke: isSelected || isHovered ? '#38bdf8' : '#475569',
+              'stroke-width': 4.5,
+              'stroke-linejoin': 'round',
+            })
+          );
+
+          // Parietal squamous epithelial inner rim
+          g.appendChild(
+            createSvgEl('path', {
+              d: 'M 310 142 C 299 110, 270 95, 242 98 C 210 102, 188 131, 193 165 C 196 188, 222 217, 252 218 C 280 219, 302 200, 310 175',
+              fill: 'none',
+              stroke: isSelected || isHovered ? '#7dd3fc' : '#64748b',
+              'stroke-width': 1.8,
+              'stroke-dasharray': '5 4',
+              opacity: 0.65,
+            })
+          );
+
+          // Urinary pole funnel neck joining PCT
+          g.appendChild(
+            createSvgEl('path', {
+              d: 'M 192 162 C 184 168, 184 182, 194 188',
+              fill: 'none',
+              stroke: '#d97706',
+              'stroke-width': 6,
+              'stroke-linecap': 'round',
+              opacity: 0.45,
+            })
+          );
+
+          corpuscleLayer.appendChild(g);
+        }
+
+        function renderGlomerularTuft(item) {
+          const highlighted = isHighlighted(item);
+          const isSelected = item.id === state.selectedId;
+          const isHovered = item.id === state.hoveredId;
+          const g = createSvgEl('g', { opacity: highlighted ? 1 : 0.2 });
+          attachInteractiveEvents(g, item);
+
+          const loops = [
+            'M 314 148 C 288 122, 256 108, 226 124 C 202 138, 210 166, 236 164 C 262 162, 274 134, 248 126',
+            'M 248 126 C 222 120, 200 148, 214 176 C 226 198, 256 194, 266 172 C 276 150, 248 140, 230 156',
+            'M 230 156 C 214 170, 226 206, 258 206 C 288 206, 298 174, 278 158 C 262 146, 268 122, 292 136',
+            'M 292 136 C 306 144, 298 186, 276 194 C 254 202, 286 174, 314 170',
+          ];
+
+          if (isSelected || isHovered) {
+            for (const d of loops) {
+              g.appendChild(
+                createSvgEl('path', {
+                  d,
+                  fill: 'none',
+                  stroke: isSelected ? '#22d3ee' : '#fde68a',
+                  'stroke-width': 13,
+                  'stroke-linecap': 'round',
+                  opacity: 0.35,
+                })
+              );
+            }
+          }
+
+          for (const d of loops) {
+            // Capillary basement wall
+            g.appendChild(
+              createSvgEl('path', {
+                d,
+                fill: 'none',
+                stroke: '#7f1d1d',
+                'stroke-width': 9.5,
+                'stroke-linecap': 'round',
+              })
+            );
+            // Capillary blood lumen
+            g.appendChild(
+              createSvgEl('path', {
+                d,
+                fill: 'none',
+                stroke: isSelected || isHovered ? '#f87171' : '#ef4444',
+                'stroke-width': 6.5,
+                'stroke-linecap': 'round',
+              })
+            );
+            // Podocyte visceral foot process accent
+            g.appendChild(
+              createSvgEl('path', {
+                d,
+                fill: 'none',
+                stroke: '#fecaca',
+                'stroke-width': 1.8,
+                'stroke-dasharray': '2 5',
+                'stroke-linecap': 'round',
+                opacity: 0.6,
+              })
+            );
+          }
+
+          // Invisible wider hit ellipse for easy clicking anywhere inside capillary tuft
+          g.appendChild(
+            createSvgEl('ellipse', {
+              cx: 256,
+              cy: 162,
+              rx: 46,
+              ry: 42,
+              fill: 'transparent',
+            })
+          );
+
+          corpuscleLayer.appendChild(g);
+        }
+
+        function renderJgaMaculaDensa(item) {
+          const highlighted = isHighlighted(item);
+          const isSelected = item.id === state.selectedId;
+          const isHovered = item.id === state.hoveredId;
+          const g = createSvgEl('g', { opacity: highlighted ? 1 : 0.2 });
+          attachInteractiveEvents(g, item);
+
+          if (isSelected || isHovered) {
+            g.appendChild(
+              createSvgEl('circle', {
+                cx: 336,
+                cy: 158,
+                r: 22,
+                fill: 'none',
+                stroke: isSelected ? '#22d3ee' : '#e2e8f0',
+                'stroke-width': 4,
+                opacity: 0.55,
+              })
+            );
+          }
+
+          // Extraglomerular mesangium (Lacis cells) cushion
+          g.appendChild(
+            createSvgEl('polygon', {
+              points: '316,148 338,144 338,172 316,168',
+              fill: '#134e4a',
+              stroke: '#2dd4bf',
+              'stroke-width': 1,
+              opacity: 0.85,
+            })
+          );
+
+          // Packed tall Macula Densa cells on TAL wall facing vascular pole
+          for (let i = 0; i < 4; i++) {
+            g.appendChild(
+              createSvgEl('rect', {
+                x: 332,
+                y: 145 + i * 6.5,
+                width: 9,
+                height: 5.5,
+                rx: 2,
+                fill: isSelected || isHovered ? '#5eead4' : '#14b8a6',
+                stroke: '#042f2e',
+                'stroke-width': 0.9,
+              })
+            );
+          }
+
+          // JG granular cells collar on afferent arteriole
+          for (let i = 0; i < 3; i++) {
+            g.appendChild(
+              createSvgEl('circle', {
+                cx: 321 + i * 5.5,
+                cy: 139 - i * 1.5,
+                r: 3.2,
+                fill: '#fb7185',
+                stroke: '#881337',
+                'stroke-width': 0.8,
+              })
+            );
+          }
+
+          // Hit target
+          g.appendChild(
+            createSvgEl('circle', {
+              cx: 334,
+              cy: 158,
+              r: 22,
+              fill: 'transparent',
+            })
+          );
+
+          vasculatureFrontLayer.appendChild(g);
+        }
+
+        function renderFlowParticles() {
+          flowLayer.innerHTML = '';
+          if (!state.showFlow) return;
+
+          for (const item of NEPHRON_STRUCTURES) {
+            if (!item.flowPath) continue;
+            if (!isHighlighted(item)) continue;
+            const isVascular = item.id === 'afferent_arteriole' || item.id === 'efferent_arteriole' || item.id === 'vasa_recta';
+            flowLayer.appendChild(
+              createSvgEl('path', {
+                d: item.flowPath,
+                fill: 'none',
+                stroke: isVascular ? '#fecdd3' : '#bae6fd',
+                'stroke-width': item.strokeWidth ? Math.max(1.8, item.strokeWidth * 0.16) : 2,
+                'stroke-linecap': 'round',
+                class: 'animate-filtrate-flow',
+                'pointer-events': 'none',
+                opacity: 0.62,
+              })
+            );
+          }
+        }
+
+        function renderLabels() {
+          labelsLayer.innerHTML = '';
+          if (!state.showLabels) return;
+
+          // Additional static histological sub-labels for clarity
+          const subLabels = [
+            { x: 254, y: 204, text: "Bowman's Space", anchor: 'middle' },
+            { x: 206, y: 392, text: 'Pars Recta (S3)', anchor: 'end' },
+            { x: 286, y: 768, text: 'Loop Hairpin Bend', anchor: 'middle' },
+            { x: 754, y: 118, text: 'Connecting Tubule', anchor: 'start' },
+            { x: 658, y: 742, text: 'Papillary Duct', anchor: 'end' },
+          ];
+
+          for (const sub of subLabels) {
+            const t = createSvgEl('text', {
+              x: sub.x,
+              y: sub.y,
+              'text-anchor': sub.anchor,
+              'font-size': 9.5,
+              'font-family': 'IBM Plex Mono, monospace',
+              fill: '#7c8ba1',
+              'pointer-events': 'none',
+            });
+            t.textContent = sub.text;
+            labelsLayer.appendChild(t);
+          }
+
+          for (const item of NEPHRON_STRUCTURES) {
+            const highlighted = isHighlighted(item);
+            const isSelected = item.id === state.selectedId;
+
+            if (item.leaderTarget) {
+              labelsLayer.appendChild(
+                createSvgEl('line', {
+                  x1: item.labelPos[0] + (item.labelAnchor === 'end' ? 5 : item.labelAnchor === 'start' ? -5 : 0),
+                  y1: item.labelPos[1] - 3,
+                  x2: item.leaderTarget[0],
+                  y2: item.leaderTarget[1],
+                  stroke: isSelected ? '#22d3ee' : '#475569',
+                  'stroke-width': isSelected ? 1.3 : 0.9,
+                  opacity: highlighted ? 0.85 : 0.25,
+                  'pointer-events': 'none',
+                })
+              );
+              labelsLayer.appendChild(
+                createSvgEl('circle', {
+                  cx: item.leaderTarget[0],
+                  cy: item.leaderTarget[1],
+                  r: 2.3,
+                  fill: isSelected ? '#22d3ee' : '#94a3b8',
+                  opacity: highlighted ? 0.9 : 0.25,
+                  'pointer-events': 'none',
+                })
+              );
+            }
+
+            const lbl = createSvgEl('text', {
+              x: item.labelPos[0],
+              y: item.labelPos[1],
+              'text-anchor': item.labelAnchor || 'middle',
+              'font-size': isSelected ? 12 : 11,
+              'font-weight': isSelected ? '700' : '500',
+              'font-family': 'Plus Jakarta Sans, sans-serif',
+              fill: isSelected ? '#22d3ee' : highlighted ? '#e2e8f0' : '#475569',
+              class: 'struct-label',
+            });
+            if (item.labelLines && item.labelLines.length > 1) {
+              item.labelLines.forEach((lineText, idx) => {
+                const ts = createSvgEl('tspan', {
+                  x: item.labelPos[0],
+                  dy: idx === 0 ? 0 : 13,
+                });
+                ts.textContent = lineText;
+                lbl.appendChild(ts);
+              });
+            } else {
+              lbl.textContent = item.shortLabel;
+            }
+            lbl.addEventListener('click', () => selectStructure(item.id));
+            labelsLayer.appendChild(lbl);
+          }
+        }
+
+        function renderNephronDiagram() {
+          vasculatureBackLayer.innerHTML = '';
+          tubulesLayer.innerHTML = '';
+          corpuscleLayer.innerHTML = '';
+          vasculatureFrontLayer.innerHTML = '';
+
+          for (const item of NEPHRON_STRUCTURES) {
+            if (item.layer === 'back_vascular') {
+              renderTubularPathGroup(item, vasculatureBackLayer);
+            } else if (item.layer === 'tubule') {
+              renderTubularPathGroup(item, tubulesLayer);
+            } else if (item.layer === 'corpuscle_capsule') {
+              renderBowmansCapsule(item);
+            } else if (item.layer === 'corpuscle_tuft') {
+              renderGlomerularTuft(item);
+            } else if (item.layer === 'front_vascular') {
+              renderTubularPathGroup(item, vasculatureFrontLayer);
+            } else if (item.layer === 'jga') {
+              renderJgaMaculaDensa(item);
+            }
+          }
+
+          renderFlowParticles();
+          renderLabels();
+        }
+
+        function renderCellTransportDiagram(item) {
+          cellTransportSvg.innerHTML = '';
+          const d = item.cellDiagram;
+
+          // 3 compartments: Left (Lumen), Center (Wide Epithelial Cell), Right (Blood/Interstitium)
+          cellTransportSvg.appendChild(
+            createSvgEl('rect', { x: 4, y: 20, width: 68, height: 112, rx: 6, fill: '#0d1626', stroke: '#1e293b' })
+          );
+          cellTransportSvg.appendChild(
+            createSvgEl('rect', { x: 76, y: 20, width: 288, height: 112, rx: 6, fill: '#111c30', stroke: '#334155' })
+          );
+          cellTransportSvg.appendChild(
+            createSvgEl('rect', { x: 368, y: 20, width: 68, height: 112, rx: 6, fill: '#1b121c', stroke: '#3b1d2b' })
+          );
+
+          // Headers
+          const headers = [
+            { x: 38, text: 'Lumen', fill: '#7dd3fc' },
+            { x: 220, text: d.centerLabel, fill: '#f8fafc' },
+            { x: 402, text: 'Blood / Int.', fill: '#fda4af' },
+          ];
+          for (const h of headers) {
+            const txt = createSvgEl('text', {
+              x: h.x,
+              y: 13,
+              'text-anchor': 'middle',
+              'font-size': 8.5,
+              'font-family': 'IBM Plex Mono, monospace',
+              fill: h.fill,
+            });
+            txt.textContent = h.text;
+            cellTransportSvg.appendChild(txt);
+          }
+
+          // Compartment side labels inside left/right columns
+          const leftCap = createSvgEl('text', {
+            x: 38,
+            y: 78,
+            'text-anchor': 'middle',
+            'font-size': 7.5,
+            'font-family': 'IBM Plex Mono, monospace',
+            fill: '#64748b',
+          });
+          leftCap.textContent = 'APICAL';
+          cellTransportSvg.appendChild(leftCap);
+
+          const rightCap = createSvgEl('text', {
+            x: 402,
+            y: 78,
+            'text-anchor': 'middle',
+            'font-size': 7.5,
+            'font-family': 'IBM Plex Mono, monospace',
+            fill: '#64748b',
+          });
+          rightCap.textContent = 'BASOLAT.';
+          cellTransportSvg.appendChild(rightCap);
+
+          // Apical membrane transporters (left boundary x=76)
+          const apicalStartY = 36;
+          const apicalStep = d.apical.length > 3 ? 24 : 30;
+          d.apical.forEach((tr, idx) => {
+            const y = apicalStartY + idx * apicalStep;
+            cellTransportSvg.appendChild(
+              createSvgEl('rect', {
+                x: 61,
+                y: y - 9,
+                width: 30,
+                height: 16,
+                rx: 4,
+                fill: tr.dir === 'none' ? '#1e293b' : '#083344',
+                stroke: tr.dir === 'none' ? '#475569' : '#22d3ee',
+                'stroke-width': 1,
+              })
+            );
+            const arrowText = tr.dir === 'in' ? '→' : tr.dir === 'out' ? '←' : '×';
+            const ar = createSvgEl('text', {
+              x: 76,
+              y: y + 2.5,
+              'text-anchor': 'middle',
+              'font-size': 11,
+              'font-weight': '700',
+              fill: tr.dir === 'none' ? '#94a3b8' : '#67e8f9',
+            });
+            ar.textContent = arrowText;
+            cellTransportSvg.appendChild(ar);
+
+            const nm = createSvgEl('text', {
+              x: 97,
+              y: y - 1,
+              'text-anchor': 'start',
+              'font-size': 8.5,
+              'font-weight': '600',
+              'font-family': 'Plus Jakarta Sans, sans-serif',
+              fill: '#e2e8f0',
+            });
+            nm.textContent = tr.name;
+            cellTransportSvg.appendChild(nm);
+
+            const nt = createSvgEl('text', {
+              x: 97,
+              y: y + 8,
+              'text-anchor': 'start',
+              'font-size': 7.5,
+              'font-family': 'IBM Plex Mono, monospace',
+              fill: '#94a3b8',
+            });
+            nt.textContent = tr.note;
+            cellTransportSvg.appendChild(nt);
+          });
+
+          // Basolateral membrane transporters (right boundary x=364)
+          const basoStartY = 38;
+          const basoStep = d.basolateral.length > 2 ? 30 : 38;
+          d.basolateral.forEach((tr, idx) => {
+            const y = basoStartY + idx * basoStep;
+            cellTransportSvg.appendChild(
+              createSvgEl('rect', {
+                x: 349,
+                y: y - 9,
+                width: 30,
+                height: 16,
+                rx: 4,
+                fill: '#2b1320',
+                stroke: '#f43f5e',
+                'stroke-width': 1,
+              })
+            );
+            const arrowText = tr.dir === 'out' ? '→' : '←';
+            const ar = createSvgEl('text', {
+              x: 364,
+              y: y + 2.5,
+              'text-anchor': 'middle',
+              'font-size': 11,
+              'font-weight': '700',
+              fill: '#fda4af',
+            });
+            ar.textContent = arrowText;
+            cellTransportSvg.appendChild(ar);
+
+            const nm = createSvgEl('text', {
+              x: 343,
+              y: y - 1,
+              'text-anchor': 'end',
+              'font-size': 8.5,
+              'font-weight': '600',
+              'font-family': 'Plus Jakarta Sans, sans-serif',
+              fill: '#f1f5f9',
+            });
+            nm.textContent = tr.name;
+            cellTransportSvg.appendChild(nm);
+
+            const nt = createSvgEl('text', {
+              x: 343,
+              y: y + 8,
+              'text-anchor': 'end',
+              'font-size': 7.5,
+              'font-family': 'IBM Plex Mono, monospace',
+              fill: '#cbd5e1',
+            });
+            nt.textContent = tr.note;
+            cellTransportSvg.appendChild(nt);
+          });
+
+          // Bottom drug targets summary line inside diagram
+          const summary = createSvgEl('text', {
+            x: 220,
+            y: 149,
+            'text-anchor': 'middle',
+            'font-size': 8.5,
+            'font-family': 'IBM Plex Mono, monospace',
+            fill: '#fde68a',
+          });
+          summary.textContent = 'Drug Targets: ' + d.drugBadges.join(' · ');
+          cellTransportSvg.appendChild(summary);
+        }
+
+        function renderInspector() {
+          const item =
+            NEPHRON_STRUCTURES.find((s) => s.id === state.selectedId) || NEPHRON_STRUCTURES[0];
+
+          inspZone.textContent = item.zone;
+          inspOsm.textContent = item.osmolarity;
+          inspShare.textContent = item.filtrateShare;
+          inspName.textContent = item.name;
+          inspFunction.textContent = item.majorFunction;
+
+          renderCellTransportDiagram(item);
+
+          // Transporters
+          transporterList.innerHTML = '';
+          for (const tr of item.transporters) {
+            const row = document.createElement('div');
+            row.className = 'transporter-row';
+
+            const head = document.createElement('div');
+            head.className = 'transporter-head';
+
+            const nameEl = document.createElement('span');
+            nameEl.className = 'transporter-name';
+            nameEl.textContent = tr.name;
+
+            const locEl = document.createElement('span');
+            locEl.className = 'transporter-loc font-mono';
+            locEl.textContent = tr.location;
+
+            head.appendChild(nameEl);
+            head.appendChild(locEl);
+
+            const actEl = document.createElement('div');
+            actEl.className = 'transporter-action';
+            actEl.textContent = tr.action;
+
+            row.appendChild(head);
+            row.appendChild(actEl);
+            transporterList.appendChild(row);
+          }
+
+          // Drugs acting on structure
+          drugListContainer.innerHTML = '';
+          for (const dg of item.drugs) {
+            const block = document.createElement('div');
+            block.className = 'drug-class-block';
+
+            const title = document.createElement('h3');
+            title.className = 'drug-class-title';
+            title.textContent = dg.drugClass;
+
+            const actionTag = document.createElement('div');
+            actionTag.className = 'drug-action-tag font-mono';
+            actionTag.textContent = dg.actionTag;
+
+            const listLine = document.createElement('div');
+            listLine.className = 'drug-list-line';
+            listLine.textContent = 'Drug List: ' + dg.drugList.join(' · ');
+
+            const mech = document.createElement('div');
+            mech.className = 'drug-mech';
+            mech.textContent = 'Mechanism: ' + dg.mechanism;
+
+            const clinical = document.createElement('div');
+            clinical.className = 'drug-clinical';
+            clinical.textContent = 'Clinical & Adverse Profile: ' + dg.clinical;
+
+            block.appendChild(title);
+            block.appendChild(actionTag);
+            block.appendChild(listLine);
+            block.appendChild(mech);
+            block.appendChild(clinical);
+            drugListContainer.appendChild(block);
+          }
+        }
+
+        function renderDirectory() {
+          structureDirectory.innerHTML = '';
+          for (const item of NEPHRON_STRUCTURES) {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'dir-item' + (item.id === state.selectedId ? ' active' : '');
+
+            const nameSpan = document.createElement('span');
+            nameSpan.className = 'dir-name';
+            nameSpan.textContent = item.name;
+
+            const tagSpan = document.createElement('span');
+            tagSpan.className = 'dir-tag font-mono';
+            tagSpan.textContent = item.drugs.length + (item.drugs.length === 1 ? ' class' : ' classes');
+
+            btn.appendChild(nameSpan);
+            btn.appendChild(tagSpan);
+
+            btn.addEventListener('click', () => selectStructure(item.id));
+            btn.addEventListener('mouseenter', () => {
+              if (state.hoveredId !== item.id) {
+                state.hoveredId = item.id;
+                renderNephronDiagram();
+              }
+            });
+            btn.addEventListener('mouseleave', () => {
+              if (state.hoveredId !== null) {
+                state.hoveredId = null;
+                renderNephronDiagram();
+              }
+            });
+
+            structureDirectory.appendChild(btn);
+          }
+        }
+
+        function renderEyeIcon(visible) {
+          labelsIconWrap.innerHTML = visible
+            ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>'
+            : '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>';
+          labelsBtnText.textContent = visible ? 'Hide Labels' : 'Show Labels';
+        }
+
+        function renderControls() {
+          document.querySelectorAll('#filterBar .seg-btn').forEach((btn) => {
+            btn.classList.toggle('active', btn.dataset.filter === state.filter);
+          });
+          toggleZonesBtn.classList.toggle('active', state.showZones);
+          toggleFlowBtn.classList.toggle('active-cyan', state.showFlow);
+          zonesLayer.style.display = state.showZones ? '' : 'none';
+          renderEyeIcon(state.showLabels);
+        }
+
+        function renderAll() {
+          renderControls();
+          renderNephronDiagram();
+          renderInspector();
+          renderDirectory();
+        }
+
+        // Event bindings
+        document.querySelectorAll('#filterBar .seg-btn').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            state.filter = btn.dataset.filter;
+            renderAll();
+          });
+        });
+
+        document.querySelectorAll('.topnav-btn').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            if (btn.dataset.nav) state.filter = btn.dataset.nav;
+            if (btn.dataset.select) {
+              selectStructure(btn.dataset.select);
+            } else {
+              renderAll();
+            }
+          });
+        });
+
+        toggleLabelsBtn.addEventListener('click', () => {
+          state.showLabels = !state.showLabels;
+          renderAll();
+        });
+
+        toggleZonesBtn.addEventListener('click', () => {
+          state.showZones = !state.showZones;
+          renderAll();
+        });
+
+        toggleFlowBtn.addEventListener('click', () => {
+          state.showFlow = !state.showFlow;
+          renderAll();
+        });
+
+
+        renderAll();
+      })();
+    </script>
+  
+
+</div></body></html>
