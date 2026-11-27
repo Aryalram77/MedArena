@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MedArena Atlas</title>
   <meta name="description" content="Interactive MedArena anatomy atlas cards: Circle of Willis and Nephron.">
+  <script>window.MA_API_BASE = "https://medarena-api.medarena-ram.workers.dev";</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
@@ -171,8 +172,8 @@
   </header>
 
   <main class="atlas-stage">
-    <iframe id="atlas-frame-circle" class="atlas-frame active" role="tabpanel" aria-labelledby="atlas-tab-circle" title="Circle of Willis interactive atlas" src="circle-of-willis-atlas.html?embed=1&amp;v=4"></iframe>
-    <iframe id="atlas-frame-nephron" class="atlas-frame" role="tabpanel" aria-labelledby="atlas-tab-nephron" title="Nephron interactive atlas" src="nephron-atlas.html?embed=1&amp;v=4"></iframe>
+    <iframe id="atlas-frame-circle" class="atlas-frame active" role="tabpanel" aria-labelledby="atlas-tab-circle" title="Circle of Willis interactive atlas" src="circle-of-willis-atlas.html?embed=1&amp;v=5"></iframe>
+    <iframe id="atlas-frame-nephron" class="atlas-frame" role="tabpanel" aria-labelledby="atlas-tab-nephron" title="Nephron interactive atlas" src="nephron-atlas.html?embed=1&amp;v=5"></iframe>
   </main>
 
   <script>
@@ -215,6 +216,52 @@
       let saved = '';
       try { saved = localStorage.getItem(STORAGE_KEY) || ''; } catch (e) {}
       if (saved && buttons.some((button) => button.dataset.card === saved)) activate(saved);
+    })();
+  </script>
+
+  <script>
+    /* Count one visit when the Atlas shell opens. The two iframe cards are
+       deliberately not tracked: switching cards is not a new page visit. */
+    (function () {
+      'use strict';
+
+      function recordVisit() {
+        var cloud = String(window.MA_API_BASE || '').trim();
+        var localHost = /^(localhost|127\.0\.0\.1|\[::1\])$/i.test(location.hostname);
+        var base = '';
+
+        if (!localHost) {
+          try {
+            var override = String(localStorage.getItem('ma_api_base') || '').trim();
+            // "-" means "use the same-origin API" even on a hosted page.
+            base = override === '-' ? '' : (override || cloud);
+          } catch (e) {
+            base = cloud;
+          }
+        }
+
+        base = base.replace(/\/+$/, '');
+        var init = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ page: 'medarena-atlas.html' }),
+          keepalive: true
+        };
+        if (base) {
+          init.mode = 'cors';
+          init.credentials = 'omit';
+        }
+
+        try {
+          fetch(base + '/api/atlas/visit', init).catch(function () {});
+        } catch (e) {}
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', recordVisit, { once: true });
+      } else {
+        recordVisit();
+      }
     })();
   </script>
 </body>
