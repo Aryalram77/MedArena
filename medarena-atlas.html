@@ -70,37 +70,59 @@
 
     .brand-divider { color: #475569; }
 
+    .card-switcher {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-left: auto;
+    }
+
+    .tabs-label {
+      color: #64748b;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
     .card-tabs {
       display: flex;
       align-items: center;
       gap: 8px;
       flex-wrap: wrap;
-      margin-left: auto;
     }
 
     .atlas-tab {
-      padding: 8px 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 9px 15px;
       border-radius: 999px;
-      border: 1px solid #1e293b;
+      border: 1px solid #334155;
       background: var(--bg-panel);
-      color: var(--text-muted);
+      color: #e2e8f0;
       font-family: inherit;
       font-size: 13px;
       font-weight: 700;
       cursor: pointer;
       white-space: nowrap;
-      transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+      transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
     }
 
     .atlas-tab:hover {
-      border-color: #475569;
-      color: #e2e8f0;
+      border-color: var(--accent-cyan);
+      color: #fff;
+      transform: translateY(-1px);
     }
 
     .atlas-tab[aria-selected="true"] {
       background: var(--accent-cyan);
       border-color: var(--accent-cyan);
       color: #020617;
+      box-shadow: 0 4px 14px rgba(34, 211, 238, 0.25);
     }
 
     .atlas-tab:focus-visible {
@@ -112,6 +134,7 @@
       flex: 1;
       min-height: 0;
       position: relative;
+      background: var(--bg-canvas);
     }
 
     .atlas-frame {
@@ -128,99 +151,70 @@
 
     @media (max-width: 640px) {
       .topbar { padding: 10px 14px; gap: 10px; }
-      .card-tabs { width: 100%; margin-left: 0; }
-      .atlas-tab { flex: 1; justify-content: center; padding: 8px 10px; font-size: 12px; }
+      .card-switcher { width: 100%; margin-left: 0; }
+      .card-tabs { width: 100%; }
+      .atlas-tab { flex: 1; padding: 8px 10px; font-size: 12px; }
     }
   </style>
 </head>
 <body>
   <header class="topbar">
     <span class="brand"><a class="atlas-back" href="index.html" aria-label="Back to MedArena">← MedArena</a><span class="brand-divider">·</span>MedArena Atlas</span>
-    <nav class="card-tabs" id="atlasTabs" role="tablist" aria-label="Atlas cards"></nav>
+
+    <div class="card-switcher">
+      <span class="tabs-label">Atlas cards</span>
+      <nav class="card-tabs" role="tablist" aria-label="Atlas cards">
+        <button type="button" class="atlas-tab" id="atlas-tab-circle" role="tab" aria-selected="true" aria-controls="atlas-frame-circle" tabindex="0" data-card="circle">🧠 Circle of Willis</button>
+        <button type="button" class="atlas-tab" id="atlas-tab-nephron" role="tab" aria-selected="false" aria-controls="atlas-frame-nephron" tabindex="-1" data-card="nephron">🫘 Nephron</button>
+      </nav>
+    </div>
   </header>
 
-  <main class="atlas-stage" id="atlasStage"></main>
+  <main class="atlas-stage">
+    <iframe id="atlas-frame-circle" class="atlas-frame active" role="tabpanel" aria-labelledby="atlas-tab-circle" title="Circle of Willis interactive atlas" src="circle-of-willis-atlas.html?embed=1&amp;v=2"></iframe>
+    <iframe id="atlas-frame-nephron" class="atlas-frame" role="tabpanel" aria-labelledby="atlas-tab-nephron" title="Nephron interactive atlas" src="nephron-atlas.html?embed=1&amp;v=2"></iframe>
+  </main>
 
   <script>
     (function () {
       'use strict';
 
-      // Add a new object here to create another Atlas card.
-      const CARDS = [
-        { id: 'circle-of-willis', label: '🧠 Circle of Willis', src: 'circle-of-willis-atlas.html?embed=1', title: 'Circle of Willis interactive atlas' },
-        { id: 'nephron', label: '🫘 Nephron', src: 'nephron-atlas.html?embed=1', title: 'Nephron interactive atlas' }
-      ];
-
       const STORAGE_KEY = 'medarena.atlas.activeCard';
-      const tabs = document.getElementById('atlasTabs');
-      const stage = document.getElementById('atlasStage');
-      const buttonMap = new Map();
-      const frameMap = new Map();
+      const buttons = Array.from(document.querySelectorAll('.atlas-tab'));
+      const frames = Array.from(document.querySelectorAll('.atlas-frame'));
 
-      function storedCard() {
-        try { return localStorage.getItem(STORAGE_KEY) || ''; } catch (e) { return ''; }
-      }
-
-      function rememberCard(id) {
-        try { localStorage.setItem(STORAGE_KEY, id); } catch (e) {}
-      }
-
-      function activate(id, moveFocus) {
-        const active = CARDS.find((card) => card.id === id) || CARDS[0];
-
-        CARDS.forEach((card) => {
-          const selected = card.id === active.id;
-          const button = buttonMap.get(card.id);
-          const frame = frameMap.get(card.id);
-
+      function activate(card, moveFocus) {
+        buttons.forEach((button) => {
+          const selected = button.dataset.card === card;
           button.setAttribute('aria-selected', selected ? 'true' : 'false');
           button.tabIndex = selected ? 0 : -1;
-          button.classList.toggle('active', selected);
-          frame.classList.toggle('active', selected);
-
-          if (selected && !frame.getAttribute('src')) {
-            frame.setAttribute('src', frame.dataset.src);
-          }
         });
 
-        rememberCard(active.id);
-        if (moveFocus) buttonMap.get(active.id).focus();
+        frames.forEach((frame) => {
+          frame.classList.toggle('active', frame.id === 'atlas-frame-' + card);
+        });
+
+        try { localStorage.setItem(STORAGE_KEY, card); } catch (e) {}
+        if (moveFocus) {
+          const target = buttons.find((button) => button.dataset.card === card);
+          if (target) target.focus();
+        }
       }
 
-      CARDS.forEach((card, index) => {
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.className = 'atlas-tab';
-        button.id = 'atlas-tab-' + card.id;
-        button.setAttribute('role', 'tab');
-        button.setAttribute('aria-controls', 'atlas-frame-' + card.id);
-        button.setAttribute('aria-selected', 'false');
-        button.textContent = card.label;
-        button.addEventListener('click', () => activate(card.id));
+      buttons.forEach((button, index) => {
+        button.addEventListener('click', () => activate(button.dataset.card));
         button.addEventListener('keydown', (event) => {
           if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
           event.preventDefault();
           const step = event.key === 'ArrowRight' ? 1 : -1;
-          const next = CARDS[(index + step + CARDS.length) % CARDS.length];
-          activate(next.id, true);
+          const next = buttons[(index + step + buttons.length) % buttons.length];
+          activate(next.dataset.card, true);
         });
-        tabs.appendChild(button);
-        buttonMap.set(card.id, button);
-
-        const frame = document.createElement('iframe');
-        frame.id = 'atlas-frame-' + card.id;
-        frame.className = 'atlas-frame';
-        frame.title = card.title;
-        frame.setAttribute('role', 'tabpanel');
-        frame.setAttribute('aria-labelledby', button.id);
-        frame.setAttribute('loading', 'eager');
-        frame.dataset.src = card.src;
-        stage.appendChild(frame);
-        frameMap.set(card.id, frame);
       });
 
-      const saved = storedCard();
-      activate(CARDS.some((card) => card.id === saved) ? saved : CARDS[0].id);
+      let saved = '';
+      try { saved = localStorage.getItem(STORAGE_KEY) || ''; } catch (e) {}
+      if (saved && buttons.some((button) => button.dataset.card === saved)) activate(saved);
     })();
   </script>
 </body>
