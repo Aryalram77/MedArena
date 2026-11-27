@@ -156,7 +156,19 @@
       .card-tabs { width: 100%; }
       .atlas-tab { flex: 1; padding: 8px 10px; font-size: 12px; }
     }
-  </style>
+      .atlas-copyright {
+        flex-shrink: 0;
+        padding: 6px 12px;
+        border-top: 1px solid var(--border-subtle);
+        background-color: var(--bg-surface);
+        color: var(--text-muted);
+        font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 10.5px;
+        letter-spacing: 0.02em;
+        text-align: center;
+      }
+
+</style>
 </head>
 <body>
   <header class="topbar">
@@ -167,14 +179,18 @@
       <nav class="card-tabs" role="tablist" aria-label="Atlas cards">
         <button type="button" class="atlas-tab" id="atlas-tab-circle" role="tab" aria-selected="true" aria-controls="atlas-frame-circle" tabindex="0" data-card="circle">🧠 Circle of Willis</button>
         <button type="button" class="atlas-tab" id="atlas-tab-nephron" role="tab" aria-selected="false" aria-controls="atlas-frame-nephron" tabindex="-1" data-card="nephron">🫘 Nephron</button>
+        <button type="button" class="atlas-tab" id="atlas-tab-ecg" role="tab" aria-selected="false" aria-controls="atlas-frame-ecg" tabindex="-1" data-card="ecg">🫀 ECG</button>
       </nav>
     </div>
   </header>
 
   <main class="atlas-stage">
-    <iframe id="atlas-frame-circle" class="atlas-frame active" role="tabpanel" aria-labelledby="atlas-tab-circle" title="Circle of Willis interactive atlas" src="circle-of-willis-atlas.html?embed=1&amp;v=5"></iframe>
-    <iframe id="atlas-frame-nephron" class="atlas-frame" role="tabpanel" aria-labelledby="atlas-tab-nephron" title="Nephron interactive atlas" src="nephron-atlas.html?embed=1&amp;v=5"></iframe>
+    <iframe id="atlas-frame-circle" class="atlas-frame active" role="tabpanel" aria-labelledby="atlas-tab-circle" title="Circle of Willis interactive atlas" src="circle-of-willis-atlas.html?embed=1&amp;v=6"></iframe>
+    <iframe id="atlas-frame-nephron" class="atlas-frame" role="tabpanel" aria-labelledby="atlas-tab-nephron" title="Nephron interactive atlas" src="nephron-atlas.html?embed=1&amp;v=6"></iframe>
+    <iframe id="atlas-frame-ecg" class="atlas-frame" role="tabpanel" aria-labelledby="atlas-tab-ecg" title="ECG interactive atlas" src="ecg-atlas.html?embed=1&amp;v=6"></iframe>
   </main>
+
+  <footer class="atlas-copyright">© Dr. Ram Aryal · MedArena Atlas</footer>
 
   <script>
     (function () {

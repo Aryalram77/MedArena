@@ -1,0 +1,3596 @@
+<!doctype html>
+<html lang="en"><head>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedArena Atlas — ECG</title>
+    <meta name="description" content="Interactive ECG Atlas featuring major cardiac diseases with real-time dynamic dual-lead ECG strips, normal-vs-pathology complex comparison, hallmark criteria, and clinical explanations.">
+    <meta property="og:title" content="MedArena Atlas — ECG">
+    <meta property="og:description" content="Explore major cardiac diseases with live sweeping ECG waveforms, diagnostic criteria, pathophysiology, and clinical management.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Source+Serif+4:wght@400;500;600&amp;display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+        --font-explanation: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+        --bg-canvas: #0b0f17;
+        --bg-surface: #0d121c;
+        --bg-panel: #0f172a;
+        --border-subtle: rgba(30, 41, 59, 0.9);
+        --text-primary: #f8fafc;
+        --text-secondary: #cbd5e1;
+        --text-muted: #94a3b8;
+        --text-dim: #64748b;
+        --accent-cyan: #22d3ee;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--bg-canvas);
+        color: var(--text-primary);
+        font-family: var(--font-sans);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      button {
+        font-family: inherit;
+        cursor: pointer;
+        border: none;
+        background: none;
+        color: inherit;
+      }
+
+      button:focus-visible,
+      input:focus-visible,
+      [role='button']:focus-visible {
+        outline: 2px solid var(--accent-cyan);
+        outline-offset: 2px;
+      }
+
+      .font-mono {
+        font-family: var(--font-mono);
+        font-variant-numeric: tabular-nums;
+      }
+
+      .app-shell {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Three-Zone Top Bar */
+      .topbar {
+        height: 56px;
+        border-bottom: 1px solid var(--border-subtle);
+        background-color: var(--bg-surface);
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+        flex-shrink: 0;
+      }
+
+      .brand {
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: -0.015em;
+        color: #f8fafc;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      .atlas-back {
+        margin-right: 6px;
+        color: #94a3b8;
+        font-size: 12px;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .atlas-back:hover {
+        color: #22d3ee;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      html.atlas-embed .topbar {
+        display: none;
+      }
+
+      html.atlas-embed .workspace {
+        width: 100%;
+        max-width: none;
+      }
+
+      html.atlas-embed .disease-rail {
+        max-height: none;
+        position: static;
+      }
+
+
+      .topnav {
+        display: none;
+        align-items: center;
+        gap: 24px;
+      }
+
+      @media (min-width: 768px) {
+        .topnav {
+          display: flex;
+        }
+      }
+
+      .topnav-btn {
+        font-size: 14px;
+        font-weight: 500;
+        color: #94a3b8;
+        padding: 4px 0;
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: color 0.15s ease;
+      }
+
+      .topnav-btn:hover {
+        color: #f1f5f9;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+
+      .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 14px;
+        border-radius: 6px;
+        background-color: #22d3ee;
+        color: #020617;
+        font-size: 12px;
+        font-weight: 600;
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: background-color 0.15s ease;
+      }
+
+      .cta-btn:hover {
+        background-color: #67e8f9;
+      }
+
+      /* Three-Pane Clinical Atlas Workspace */
+      .workspace {
+        flex: 1;
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      @media (min-width: 1120px) {
+        .workspace {
+          grid-template-columns: 280px 1fr 390px;
+        }
+      }
+
+      /* Left Disease Directory Column */
+      .disease-rail {
+        background-color: rgba(13, 18, 28, 0.85);
+        border-bottom: 1px solid rgba(30, 41, 59, 0.85);
+        padding: 18px 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      @media (min-width: 1120px) {
+        .disease-rail {
+          border-bottom: none;
+          border-right: 1px solid rgba(30, 41, 59, 0.85);
+          max-height: calc(100vh - 56px);
+          position: sticky;
+          top: 0;
+        }
+      }
+
+      .rail-header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
+      .rail-title {
+        font-size: 13px;
+        font-weight: 600;
+        color: #f8fafc;
+      }
+
+      .rail-count {
+        font-size: 11px;
+        color: #64748b;
+      }
+
+      .search-input {
+        width: 100%;
+        padding: 8px 11px;
+        border-radius: 7px;
+        border: 1px solid #1e293b;
+        background-color: #090d14;
+        color: #f8fafc;
+        font-family: var(--font-sans);
+        font-size: 12px;
+      }
+
+      .search-input::placeholder {
+        color: #64748b;
+      }
+
+      .disease-list {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        overflow-y: auto;
+        padding-right: 2px;
+        max-height: 300px;
+      }
+
+      @media (min-width: 1120px) {
+        .disease-list {
+          max-height: none;
+          flex: 1;
+        }
+      }
+
+      .disease-item {
+        width: 100%;
+        text-align: left;
+        padding: 9px 11px;
+        border-radius: 8px;
+        border: 1px solid transparent;
+        background: transparent;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        transition: background-color 0.12s ease, border-color 0.12s ease;
+      }
+
+      .disease-item:hover {
+        background-color: rgba(15, 23, 42, 0.7);
+      }
+
+      .disease-item.active {
+        background-color: #0f172a;
+        border-color: rgba(34, 211, 238, 0.55);
+      }
+
+      .disease-item-name {
+        font-size: 12.5px;
+        font-weight: 600;
+        color: #e2e8f0;
+        line-height: 1.3;
+      }
+
+      .disease-item.active .disease-item-name {
+        color: #67e8f9;
+      }
+
+      .disease-item-meta {
+        font-size: 11px;
+        color: #64748b;
+      }
+
+      /* Center Dynamic Telemetry Stage */
+      .ecg-stage {
+        padding: 20px 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        border-bottom: 1px solid rgba(30, 41, 59, 0.85);
+      }
+
+      @media (min-width: 1120px) {
+        .ecg-stage {
+          border-bottom: none;
+          border-right: 1px solid rgba(30, 41, 59, 0.85);
+        }
+      }
+
+      .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .segmented {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 4px;
+        padding: 4px;
+        border-radius: 8px;
+        background-color: #0f172a;
+        border: 1px solid #1e293b;
+      }
+
+      .seg-btn {
+        padding: 6px 10px;
+        font-size: 12px;
+        font-weight: 500;
+        border-radius: 6px;
+        color: #94a3b8;
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: background-color 0.15s ease, color 0.15s ease;
+      }
+
+      .seg-btn:hover {
+        color: #e2e8f0;
+      }
+
+      .seg-btn.active {
+        background-color: #1e293b;
+        color: #67e8f9;
+      }
+
+      .toggle-group {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .toggle-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 11px;
+        border-radius: 6px;
+        border: 1px solid #1e293b;
+        background-color: #0f172a;
+        color: #94a3b8;
+        font-size: 12px;
+        font-weight: 500;
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+      }
+
+      .toggle-btn:hover {
+        border-color: #334155;
+        color: #e2e8f0;
+      }
+
+      .toggle-btn.active {
+        background-color: #1e293b;
+        border-color: #475569;
+        color: #f1f5f9;
+      }
+
+      .toggle-btn.active-cyan {
+        background-color: #1e293b;
+        border-color: #475569;
+        color: #67e8f9;
+      }
+
+      /* Live ECG Monitor Frame */
+      .monitor-frame {
+        border-radius: 12px;
+        border: 1px solid #1e293b;
+        background-color: #070b11;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .telemetry-strip {
+        padding: 12px 16px;
+        border-bottom: 1px solid #1e293b;
+        background-color: #0b101b;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+        gap: 12px;
+      }
+
+      .metric-cell {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .metric-label {
+        font-size: 10.5px;
+        color: #64748b;
+      }
+
+      .metric-value {
+        font-size: 15px;
+        font-weight: 600;
+        color: #f8fafc;
+      }
+
+      .metric-hr {
+        color: #34d399;
+      }
+
+      .monitor-canvas-wrap {
+        position: relative;
+        width: 100%;
+        background-color: #080c12;
+      }
+
+      .ecg-canvas {
+        width: 100%;
+        height: 360px;
+        display: block;
+      }
+
+      .ecg-canvas.mode-12lead {
+        height: 540px;
+      }
+
+      @media (max-width: 760px) {
+        .ecg-canvas.mode-12lead {
+          height: 490px;
+        }
+      }
+
+      .monitor-footer {
+        padding: 8px 16px;
+        border-top: 1px solid #1e293b;
+        background-color: #0b101b;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        font-size: 11px;
+        color: #94a3b8;
+      }
+
+      /* Normal vs Pathology Single-Complex Comparison */
+      .compare-card {
+        border-radius: 12px;
+        border: 1px solid #1e293b;
+        background-color: #0b0f17;
+        padding: 14px 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .compare-header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .compare-title {
+        font-size: 12px;
+        font-weight: 600;
+        color: #e2e8f0;
+      }
+
+      .compare-legend {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-size: 11px;
+        color: #94a3b8;
+      }
+
+      .legend-line {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .swatch-line {
+        width: 16px;
+        height: 2px;
+        display: inline-block;
+      }
+
+      .compare-canvas {
+        width: 100%;
+        height: 138px;
+        display: block;
+        border-radius: 8px;
+        border: 1px solid rgba(30, 41, 59, 0.7);
+        background-color: #080c12;
+      }
+
+      /* Normal Conduction, Vector & Parallel ECG Formation Card */
+      .conduction-card {
+        border-radius: 12px;
+        border: 1px solid #1e293b;
+        background-color: #0b0f17;
+        padding: 14px 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .phase-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+      }
+
+      .phase-btn {
+        padding: 4px 8px;
+        border-radius: 5px;
+        border: 1px solid #1e293b;
+        background-color: #0f172a;
+        color: #94a3b8;
+        font-size: 11px;
+        font-weight: 500;
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: background-color 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+      }
+
+      .phase-btn:hover {
+        color: #e2e8f0;
+        border-color: #334155;
+      }
+
+      .phase-btn.active {
+        background-color: #1e293b;
+        border-color: rgba(34, 211, 238, 0.5);
+        color: #67e8f9;
+      }
+
+      .conduction-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      @media (min-width: 720px) {
+        .conduction-grid {
+          grid-template-columns: 1fr 1.15fr;
+        }
+      }
+
+      .conduction-canvas {
+        width: 100%;
+        height: 218px;
+        display: block;
+        border-radius: 8px;
+        border: 1px solid rgba(30, 41, 59, 0.75);
+        background-color: #080c12;
+      }
+
+      .phase-caption {
+        padding-top: 8px;
+        border-top: 1px solid rgba(30, 41, 59, 0.75);
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+      }
+
+      .phase-caption-head {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
+      .phase-caption-title {
+        font-size: 12.5px;
+        font-weight: 600;
+        color: #f8fafc;
+      }
+
+      .phase-vector-tag {
+        font-size: 11px;
+        color: #fde68a;
+      }
+
+      .phase-caption-desc {
+        margin: 0;
+        font-size: 12px;
+        line-height: 1.5;
+        color: #cbd5e1;
+      }
+
+      /* Right Clinical Explanation Sidebar */
+      .explanation-panel {
+        background-color: rgba(13, 18, 28, 0.72);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        overflow-y: auto;
+      }
+
+      .info-card {
+        border-radius: 12px;
+        border: 1px solid #1e293b;
+        background-color: #0b0f17;
+        padding: 18px;
+      }
+
+      .meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        font-size: 11.5px;
+        color: #94a3b8;
+      }
+
+      .meta-accent {
+        color: #22d3ee;
+      }
+
+      .disease-title {
+        margin: 6px 0 0 0;
+        font-size: 19px;
+        font-weight: 700;
+        line-height: 1.28;
+        color: #f8fafc;
+        text-wrap: balance;
+      }
+
+      .section-block {
+        margin-top: 14px;
+        padding-top: 14px;
+        border-top: 1px solid rgba(30, 41, 59, 0.85);
+      }
+
+      .section-kicker {
+        font-size: 11px;
+        color: #94a3b8;
+        margin-bottom: 6px;
+      }
+
+      .body-copy {
+        margin: 0;
+        font-size: 13px;
+        line-height: 1.58;
+        color: #e2e8f0;
+      }
+
+      .criteria-list {
+        margin: 0;
+        padding-left: 16px;
+        font-size: 12.5px;
+        line-height: 1.55;
+        color: #cbd5e1;
+      }
+
+      .criteria-list li + li {
+        margin-top: 5px;
+      }
+
+      .body-copy,
+      .criteria-list,
+      .phase-caption-desc {
+        font-family: var(--font-explanation);
+      }
+
+      .clinical-card {
+        border-radius: 12px;
+        border: 1px solid rgba(56, 189, 248, 0.28);
+        background: linear-gradient(180deg, rgba(12, 26, 44, 0.68) 0%, #0b0f17 100%);
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .empty-state {
+        padding: 18px 10px;
+        font-size: 12px;
+        color: #64748b;
+        text-align: center;
+      }
+      .atlas-copyright {
+        flex-shrink: 0;
+        padding: 6px 12px;
+        border-top: 1px solid var(--border-subtle);
+        background-color: var(--bg-surface);
+        color: var(--text-muted);
+        font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 10.5px;
+        letter-spacing: 0.02em;
+        text-align: center;
+      }
+
+</style>
+</head>
+  <body>
+    <script>
+      if (new URLSearchParams(window.location.search).get('embed') === '1') {
+        document.documentElement.classList.add('atlas-embed');
+      }
+    </script>
+    <div class="app-shell">
+      <!-- Three-Zone Top Bar -->
+      <header class="topbar">
+        <span class="brand"><a class="atlas-back" href="index.html" aria-label="Back to MedArena">← MedArena</a> · ECG</span>
+
+        <nav class="topnav" aria-label="ECG disease categories">
+          <button type="button" class="topnav-btn" data-nav="all">All Conditions</button>
+          <button type="button" class="topnav-btn" data-nav="arrhythmias" data-select="afib">
+            Arrhythmias
+          </button>
+          <button type="button" class="topnav-btn" data-nav="ischemia" data-select="stemi_anterior">
+            Ischemia &amp; MI
+          </button>
+          <button type="button" class="topnav-btn" data-nav="blocks" data-select="complete_av_block">
+            Conduction Blocks
+          </button>
+        </nav>
+
+        <button type="button" id="togglePlayBtn" class="cta-btn">
+          <span id="playBtnText">Freeze Strip</span>
+        </button>
+      </header>
+
+      <!-- Main Three-Pane Workspace -->
+      <main class="workspace">
+        <!-- Left Rail: Major Cardiac Diseases List -->
+        <aside class="disease-rail" aria-label="Major cardiac diseases">
+          <div class="rail-header">
+            <span class="rail-title">Major Cardiac Diseases</span>
+            <span class="rail-count font-mono" id="diseaseCount"></span>
+          </div>
+
+          <input type="search" id="diseaseSearch" class="search-input" placeholder="Filter disease or ECG sign..." aria-label="Filter cardiac diseases">
+
+          <div class="disease-list" id="diseaseList"></div>
+        </aside>
+
+        <!-- Center Stage: Live Dynamic Dual-Lead ECG Monitor + Morphology Overlay -->
+        <section class="ecg-stage">
+          <div class="toolbar">
+            <div class="segmented" id="filterBar" role="group" aria-label="Category filter">
+              <button type="button" class="seg-btn active" data-filter="all">All</button>
+              <button type="button" class="seg-btn" data-filter="arrhythmias">Arrhythmias</button>
+              <button type="button" class="seg-btn" data-filter="ischemia">Ischemia / MI</button>
+              <button type="button" class="seg-btn" data-filter="blocks">Blocks</button>
+              <button type="button" class="seg-btn" data-filter="metabolic">Metabolic</button>
+            </div>
+
+            <div class="toggle-group">
+              <button type="button" id="twelveLeadBtn" class="toggle-btn" aria-pressed="false">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                  <line x1="3" y1="15" x2="21" y2="15"></line>
+                  <line x1="9" y1="4" x2="9" y2="15"></line>
+                  <line x1="15" y1="4" x2="15" y2="15"></line>
+                </svg>
+                <span id="twelveLeadBtnText">12-Lead ECG</span>
+              </button>
+              <button type="button" id="soundBtn" class="toggle-btn active-cyan" aria-pressed="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                </svg>
+                <span id="soundBtnText">Monitor Sound: On</span>
+              </button>
+              <button type="button" id="speedBtn" class="toggle-btn active">
+                <span id="speedBtnText">25 mm/s</span>
+              </button>
+              <button type="button" id="annotationsBtn" class="toggle-btn active-cyan">
+                <span>Wave Labels</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Dynamic Dual-Lead ECG Telemetry Monitor -->
+          <div class="monitor-frame">
+            <div class="telemetry-strip font-mono">
+              <div class="metric-cell">
+                <span class="metric-label">HEART RATE</span>
+                <span class="metric-value metric-hr" id="telHr"></span>
+              </div>
+              <div class="metric-cell">
+                <span class="metric-label">PR INTERVAL</span>
+                <span class="metric-value" id="telPr"></span>
+              </div>
+              <div class="metric-cell">
+                <span class="metric-label">QRS DURATION</span>
+                <span class="metric-value" id="telQrs"></span>
+              </div>
+              <div class="metric-cell">
+                <span class="metric-label">QTc / ST</span>
+                <span class="metric-value" id="telQtSt"></span>
+              </div>
+              <div class="metric-cell">
+                <span class="metric-label">RHYTHM</span>
+                <span class="metric-value" id="telRhythm"></span>
+              </div>
+            </div>
+
+            <div class="monitor-canvas-wrap">
+              <canvas id="ecgCanvas" class="ecg-canvas" aria-label="Live dynamic dual-lead electrocardiogram monitor" width="883" height="450"></canvas>
+            </div>
+
+            <div class="monitor-footer font-mono">
+              <span id="leadConfigText">Dual-Lead Telemetry (Lead II + Lead V1) · 10 mm/mV · 25 mm/s</span>
+              <span id="sweepStatusText">Live Sweep Active</span>
+            </div>
+          </div>
+
+          <!-- Single-Complex Comparison Overlay: Normal Sinus vs Selected ECG -->
+          <div class="compare-card">
+            <div class="compare-header">
+              <span class="compare-title font-mono" id="compareHeading">Single-Beat Overlay (Lead II vs Normal Sinus)</span>
+              <div class="compare-legend font-mono">
+                <span class="legend-line">
+                  <span class="swatch-line" style="border-top: 2px dashed #64748b"></span>
+                  <span>Normal Sinus Reference</span>
+                </span>
+                <span class="legend-line">
+                  <span class="swatch-line" style="background-color: #34d399"></span>
+                  <span>Selected Pathology</span>
+                </span>
+              </div>
+            </div>
+            <canvas id="compareCanvas" class="compare-canvas" aria-label="Single cardiac cycle comparison between normal sinus rhythm and selected cardiac condition" width="843" height="172"></canvas>
+          </div>
+
+          <!-- Normal Cardiac Conduction + Vector + Parallel ECG Wave Formation -->
+          <div class="conduction-card">
+            <div class="compare-header">
+              <span class="compare-title font-mono">Normal Conduction Pathway, Electrical Vector &amp; Parallel ECG Formation</span>
+              <div class="phase-bar" id="conductionPhaseBar" role="group" aria-label="Conduction phase selector">
+                <button type="button" class="phase-btn active" data-phase="auto">Auto Cycle</button>
+                <button type="button" class="phase-btn" data-phase="0">1. SA / P</button>
+                <button type="button" class="phase-btn" data-phase="1">2. AV / PR</button>
+                <button type="button" class="phase-btn" data-phase="2">3. Septum / Q</button>
+                <button type="button" class="phase-btn" data-phase="3">4. LV / R</button>
+                <button type="button" class="phase-btn" data-phase="4">5. Base / S</button>
+                <button type="button" class="phase-btn" data-phase="5">6. Repol / T</button>
+              </div>
+            </div>
+
+            <div class="conduction-grid">
+              <canvas id="conductionHeartCanvas" class="conduction-canvas" aria-label="Anatomical heart conduction pathway and instantaneous mean electrical vector" width="385" height="272"></canvas>
+              <canvas id="parallelEcgCanvas" class="conduction-canvas" aria-label="Parallel ECG wave formation synchronized with heart conduction" width="443" height="272"></canvas>
+            </div>
+
+            <div class="phase-caption">
+              <div class="phase-caption-head">
+                <span class="phase-caption-title" id="conductionPhaseTitle"></span>
+                <span class="phase-vector-tag font-mono" id="conductionVectorTag"></span>
+              </div>
+              <p class="phase-caption-desc" id="conductionPhaseDesc"></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Right Panel: ECG Condition Details & Clinical Explanation -->
+        <aside class="explanation-panel">
+          <div class="info-card">
+            <div class="meta-row font-mono">
+              <span class="meta-accent" id="expCategory"></span>
+              <span aria-hidden="true">·</span>
+              <span id="expLeads"></span>
+              <span aria-hidden="true">·</span>
+              <span id="expUrgency"></span>
+            </div>
+
+            <h1 class="disease-title" id="expTitle"></h1>
+
+            <div class="section-block">
+              <div class="section-kicker font-mono">ECG Findings &amp; Diagnostic Criteria</div>
+              <ul class="criteria-list" id="expCriteria"></ul>
+            </div>
+
+            <div class="section-block">
+              <div class="section-kicker font-mono">Electrophysiologic Explanation</div>
+              <p class="body-copy" id="expMechanism"></p>
+            </div>
+          </div>
+
+          <div class="clinical-card">
+            <div>
+              <div class="section-kicker font-mono" style="color: #7dd3fc">Common Causes &amp; Clinical Context</div>
+              <p class="body-copy" id="expCauses"></p>
+            </div>
+            <div class="section-block" style="margin-top: 2px; padding-top: 12px">
+              <div class="section-kicker font-mono" style="color: #fde68a">Immediate Clinical Management</div>
+              <p class="body-copy" id="expManagement"></p>
+            </div>
+          </div>
+        </aside>
+      </main>
+      <footer class="atlas-copyright">© Dr. Ram Aryal · MedArena Atlas</footer>
+    </div>
+
+    <script>
+      (function () {
+        // ============================================================
+        // Major Cardiac Diseases & Dynamic ECG Synthesis Specifications
+        // ============================================================
+        const ECG_CONDITIONS = [
+          {
+            id: 'normal_sinus',
+            name: 'Normal Sinus Rhythm (Reference)',
+            category: 'arrhythmias',
+            categoryLabel: 'Baseline Physiology',
+            urgency: 'Normal Baseline',
+            leads: ['Lead II', 'Lead V1'],
+            telemetry: {
+              hr: '72 bpm',
+              pr: '160 ms',
+              qrs: '84 ms',
+              qtSt: '400 ms / Isoelectric',
+              rhythm: 'Regular',
+            },
+            hallmarkShort: 'Upright P → narrow QRS → smooth T',
+            criteria: [
+              'Rate 60–100 bpm with regular, constant R-R intervals',
+              'Upright P wave in leads I, II, aVF (inverted in aVR) before every QRS',
+              'Constant PR interval 120–200 ms; narrow QRS < 120 ms',
+              'Isoelectric ST segment and smooth asymmetric T wave',
+            ],
+            mechanism:
+              'Impulses originate reliably from the sinoatrial (SA) node, depolarize both atria (P wave), pause briefly in the AV node (PR segment), and conduct rapidly down the His-Purkinje system to depolarize both ventricles synchronously (narrow QRS), followed by ventricular repolarization (T wave).',
+            causes:
+              'Healthy resting cardiac conduction system serving as the standard benchmark for evaluating intervals, axes, and wave morphology.',
+            management:
+              'No intervention required; used clinically as the baseline reference when comparing pathological deviations.',
+            sim: {
+              type: 'sinus',
+              bpm: 72,
+              lead1: { p: 0.14, pr: 0.16, q: -0.09, r: 1.05, s: -0.22, qrsW: 1.0, st: 0.0, t: 0.28 },
+              lead2: { p: 0.06, pBi: -0.04, pr: 0.16, q: 0, r: 0.28, s: -0.78, qrsW: 1.0, st: 0.0, t: -0.08 },
+              labels: ['P', 'QRS', 'T'],
+            },
+          },
+          {
+            id: 'afib',
+            name: 'Atrial Fibrillation (AFib)',
+            category: 'arrhythmias',
+            categoryLabel: 'Atrial Arrhythmia',
+            urgency: 'Stroke / Rate Risk',
+            leads: ['Lead II', 'Lead V1'],
+            telemetry: {
+              hr: '116 bpm (Var)',
+              pr: 'Absent',
+              qrs: '86 ms',
+              qtSt: '410 ms / Isoelectric',
+              rhythm: 'Irregularly Irregular',
+            },
+            hallmarkShort: 'No P waves · Irregular R-R · Fibrillatory baseline',
+            criteria: [
+              'Irregularly irregular R-R intervals with no repeating cadence',
+              'Complete absence of discrete P waves across all leads',
+              'Chaotic, undulating fibrillatory (f) waves at 350–600/min (best seen in V1)',
+              'Typically narrow QRS unless aberrant conduction or bundle branch block coexists',
+            ],
+            mechanism:
+              'Multiple disorganized micro-reentrant wavelets fire continuously across the atria (often triggered near the pulmonary veins), abolishing coordinated atrial contraction. The AV node acts as a variable filter, permitting only sporadic impulses through to the ventricles—producing an irregularly irregular rhythm.',
+            causes:
+              'Hypertension, ischemic heart disease, mitral valve disease, hyperthyroidism, alcohol binge ("holiday heart"), sleep apnea, and heart failure.',
+            management:
+              'Rate control (beta-blockers, diltiazem/verapamil), rhythm control if indicated (amiodarone, flecainide, electrical cardioversion if unstable), and CHA₂DS₂-VASc anticoagulation (DOACs or warfarin) to prevent left atrial appendage thromboembolism.',
+            sim: {
+              type: 'afib',
+              bpm: 116,
+              lead1: { p: 0, pr: 0.14, q: -0.07, r: 0.98, s: -0.18, qrsW: 1.0, st: 0.0, t: 0.22 },
+              lead2: { p: 0, pr: 0.14, q: 0, r: 0.24, s: -0.72, qrsW: 1.0, st: 0.0, t: -0.08 },
+              labels: ['f-waves', 'Irregular QRS'],
+            },
+          },
+          {
+            id: 'aflutter',
+            name: 'Atrial Flutter (3:1 / 2:1 Block)',
+            category: 'arrhythmias',
+            categoryLabel: 'Atrial Arrhythmia',
+            urgency: 'Thromboembolic Risk',
+            leads: ['Lead II', 'Lead V1'],
+            telemetry: {
+              hr: '100 bpm',
+              pr: 'Sawtooth (300/m)',
+              qrs: '86 ms',
+              qtSt: '395 ms / Isoelectric',
+              rhythm: 'Regular (3:1)',
+            },
+            hallmarkShort: 'Continuous 300 bpm sawtooth F-waves',
+            criteria: [
+              'Continuous, uniform sawtooth flutter (F) waves at ~300 bpm (best seen in II, III, aVF)',
+              'Absence of an isoelectric baseline between atrial deflections',
+              'Positive discrete atrial deflections in lead V1',
+              'Fixed AV conduction ratio (2:1 → 150 bpm, 3:1 → 100 bpm, or 4:1 → 75 bpm)',
+            ],
+            mechanism:
+              'A single large macro-reentrant circuit circles counterclockwise around the tricuspid annulus via the cavotricuspid isthmus at ~300 cycles/min. Because the AV node has a longer refractory period, it transmits only every 2nd or 3rd atrial wave to the ventricles.',
+            causes:
+              'COPD/cor pulmonale, atrial dilation, post-cardiac surgery, heart failure, thyrotoxicosis, and ischemic heart disease.',
+            management:
+              'Rate control (beta-blockers, calcium channel blockers), anticoagulation identical to AFib, and definitive cure via cavotricuspid isthmus catheter ablation (or synchronized cardioversion if unstable).',
+            sim: {
+              type: 'aflutter',
+              bpm: 100,
+              flutterBpm: 300,
+              ratio: 3,
+              lead1: { p: 0, pr: 0.14, q: -0.04, r: 0.96, s: -0.16, qrsW: 1.0, st: 0.0, t: 0.18 },
+              lead2: { p: 0, pr: 0.14, q: 0, r: 0.25, s: -0.7, qrsW: 1.0, st: 0.0, t: -0.06 },
+              labels: ['Sawtooth F', 'QRS'],
+            },
+          },
+          {
+            id: 'svt',
+            name: 'Supraventricular Tachycardia (AVNRT)',
+            category: 'arrhythmias',
+            categoryLabel: 'Narrow-Complex Tachycardia',
+            urgency: 'Acute Tachyarrhythmia',
+            leads: ['Lead II', 'Lead V1'],
+            telemetry: {
+              hr: '178 bpm',
+              pr: 'Buried / Retrograde',
+              qrs: '82 ms',
+              qtSt: '370 ms / Mild ST ↓',
+              rhythm: 'Clockwork Regular',
+            },
+            hallmarkShort: '150–220 bpm regular narrow QRS · Hidden P',
+            criteria: [
+              'Very regular narrow-complex tachycardia (QRS < 120 ms) at 150–220 bpm',
+              'P waves absent or buried inside terminal QRS (retrograde pseudo-S in II, pseudo-R′ in V1)',
+              'Abrupt onset and abrupt termination (paroxysmal)',
+              'Rate-related mild ST depression may appear during rapid tachycardia',
+            ],
+            mechanism:
+              'Dual AV nodal pathways (a fast pathway with a long refractory period and a slow pathway with a short refractory period) sustain a rapid micro-reentrant loop inside the AV node, depolarizing ventricles antegradely and atria retrogradely almost simultaneously.',
+            causes:
+              'Premature atrial contractions triggering AV nodal reentry in otherwise healthy hearts, caffeine, stress, sympathomimetics, or accessory pathways (AVRT).',
+            management:
+              'If unstable: immediate synchronized DC cardioversion. If stable: vagal maneuvers (modified Valsalva) followed by rapid IV adenosine (6 mg → 12 mg) to transiently block AV nodal reentry.',
+            sim: {
+              type: 'svt',
+              bpm: 178,
+              lead1: { p: 0, pr: 0.11, q: -0.05, r: 1.02, s: -0.34, qrsW: 0.95, st: -0.06, t: 0.22 },
+              lead2: { p: 0, pr: 0.11, q: 0, r: 0.36, s: -0.68, rPrime: 0.22, qrsW: 0.95, st: -0.03, t: -0.08 },
+              labels: ['Pseudo-S / R′', 'Rapid Narrow QRS'],
+            },
+          },
+          {
+            id: 'wpw',
+            name: 'Wolff-Parkinson-White (WPW) Syndrome',
+            category: 'arrhythmias',
+            categoryLabel: 'Pre-Excitation Syndrome',
+            urgency: 'Avoid AV-Nodal Blockers in AFib',
+            leads: ['Lead II', 'Lead V5'],
+            telemetry: {
+              hr: '78 bpm',
+              pr: '98 ms (Short)',
+              qrs: '134 ms (Delta)',
+              qtSt: '410 ms / Discordant',
+              rhythm: 'Regular Sinus',
+            },
+            hallmarkShort: 'PR < 120 ms · Slurred Delta Wave · Wide QRS',
+            criteria: [
+              'Shortened PR interval (< 120 ms) due to bypass of AV nodal delay',
+              'Slurred, slow upstroke of the initial QRS complex (Delta wave)',
+              'Widened QRS (> 110–120 ms) representing fusion of pre-excited & normal ventricular activation',
+              'Secondary discordant ST-T wave changes opposite to delta/QRS polarity',
+            ],
+            mechanism:
+              'A congenital accessory atrioventricular muscular tract (Bundle of Kent) conducts atrial impulses directly into ventricular myocardium without pausing at the AV node. Early eccentric ventricular activation creates the slurred delta wave before normal His-Purkinje activation finishes the QRS.',
+            causes:
+              'Congenital accessory pathway; associated with Ebstein anomaly and risk of orthodromic/antidromic AVRT or pre-excited AFib.',
+            management:
+              'Definitive catheter ablation of the accessory pathway. In pre-excited AFib, NEVER give AV nodal blockers (adenosine, verapamil, diltiazem, digoxin, beta-blockers) because unopposed rapid conduction down the Bundle of Kent can trigger VFib; use procainamide or synchronized cardioversion.',
+            sim: {
+              type: 'wpw',
+              bpm: 78,
+              lead1: { p: 0.14, pr: 0.098, q: 0, delta: 0.34, r: 1.02, s: -0.14, qrsW: 1.45, st: -0.08, t: -0.16 },
+              lead2: { p: 0.12, pr: 0.098, q: 0, delta: 0.42, r: 1.25, s: -0.1, qrsW: 1.45, st: -0.1, t: -0.2 },
+              labels: ['Short PR', 'Delta Wave', 'Wide QRS'],
+            },
+          },
+          {
+            id: 'vtach',
+            name: 'Ventricular Tachycardia (Monomorphic VT)',
+            category: 'arrhythmias',
+            categoryLabel: 'Lethal Ventricular Arrhythmia',
+            urgency: 'Emergency / Shockable',
+            leads: ['Lead II', 'Lead V1'],
+            telemetry: {
+              hr: '166 bpm',
+              pr: 'AV Dissociated',
+              qrs: '168 ms (Wide)',
+              qtSt: 'Discordant T',
+              rhythm: 'Regular Wide',
+            },
+            hallmarkShort: 'Wide regular QRS > 140 ms · AV dissociation',
+            criteria: [
+              'Rapid, regular wide-complex rhythm (QRS > 120–140 ms) at 140–220 bpm',
+              'Identical beat-to-beat morphology (monomorphic) with broad notched R/S complexes',
+              'AV dissociation (independent P waves marching at slower atrial rate) and capture/fusion beats',
+              'Extreme axis deviation and Brugada criteria concordance across precordial leads',
+            ],
+            mechanism:
+              'A scarred or ischemic ventricular focus sustains a rapid reentrant circuit through slow-conducting myocardium outside the His-Purkinje network, causing prolonged cell-to-cell ventricular depolarization (wide QRS) independent of the atria.',
+            causes:
+              'Prior myocardial infarction scar (most common), ischemic cardiomyopathy, severe electrolyte imbalance (hypokalemia/hypomagnesemia), myocarditis, and channelopathies.',
+            management:
+              'Check pulse immediately: pulseless VT → immediate defibrillation + CPR/epinephrine (ACLS). Unstable with pulse → synchronized cardioversion. Stable monomorphic VT → IV amiodarone, procainamide, or lidocaine.',
+            sim: {
+              type: 'vtach',
+              bpm: 166,
+              lead1: { vtAmp: 1.15, vtPolarity: 1 },
+              lead2: { vtAmp: 1.05, vtPolarity: -1 },
+              labels: ['Wide Ventricular Complex', 'Discordant T'],
+            },
+          },
+          {
+            id: 'vfib',
+            name: 'Ventricular Fibrillation (VFib)',
+            category: 'arrhythmias',
+            categoryLabel: 'Cardiac Arrest Rhythm',
+            urgency: 'Immediate Defibrillation',
+            leads: ['Lead II', 'Lead V1'],
+            telemetry: {
+              hr: '0 (No Pulse)',
+              pr: 'Absent',
+              qrs: 'Absent',
+              qtSt: 'Chaotic Baseline',
+              rhythm: 'Disorganized',
+            },
+            hallmarkShort: 'Chaotic irregular waves · Zero organized QRS',
+            criteria: [
+              'Completely disorganized, irregular undulating deflections of varying amplitude and frequency',
+              'No identifiable P waves, QRS complexes, ST segments, or T waves',
+              'Coarse VFib (> 3 mm amplitude) degenerates into fine VFib (< 3 mm) if untreated',
+            ],
+            mechanism:
+              'Multiple wandering reentrant wavefronts fragment ventricular myocardium into quivering asynchronous contraction with zero effective cardiac output, leading to immediate cerebral and coronary arrest.',
+            causes:
+              'Acute myocardial ischemia/STEMI, untreated VT, R-on-T phenomenon, severe hypoxia, electrocution, and severe hyper/hypokalemia.',
+            management:
+              'Immediate high-quality CPR and unsynchronized biphasic defibrillation (200 J) as soon as pads are attached, plus epinephrine and amiodarone per ACLS cardiac arrest protocol.',
+            sim: {
+              type: 'vfib',
+              bpm: 0,
+              labels: ['Chaotic Fibrillation (No QRS)'],
+            },
+          },
+          {
+            id: 'torsades',
+            name: 'Torsades de Pointes (Polymorphic VT)',
+            category: 'arrhythmias',
+            categoryLabel: 'QT-Prolonged Polymorphic VT',
+            urgency: 'IV MgSO₄ / Defibrillate',
+            leads: ['Lead II', 'Lead V5'],
+            telemetry: {
+              hr: '220 bpm',
+              pr: 'Absent',
+              qrs: 'Twisting Axis',
+              qtSt: 'Prior QTc > 500 ms',
+              rhythm: 'Spindle Polymorphic',
+            },
+            hallmarkShort: 'QRS peaks twist around baseline in spindles',
+            criteria: [
+              'Rapid polymorphic wide-complex tachycardia at 200–250 bpm',
+              'Characteristic "twisting of the points": QRS amplitude waxes and wanes in undulating spindles',
+              'QRS polarity shifts gradually from positive to negative around the isoelectric line',
+              'Triggered during prolonged QTc (> 500 ms) via R-on-T early afterdepolarization',
+            ],
+            mechanism:
+              'Delayed ventricular repolarization (prolonged QT) allows L-type Ca²⁺ channels to reactivate, producing early afterdepolarizations (EADs) that ignite competing polymorphic ventricular foci whose shifting vectors create the twisting spindle envelope.',
+            causes:
+              'Hypokalemia, hypomagnesemia, bradycardia, congenital Long QT syndrome, and QT-prolonging drugs (sotalol, dofetilide, haloperidol, ondansetron, macrolides, fluoroquinolones).',
+            management:
+              'If pulseless or unstable: immediate unsynchronized defibrillation. If stable/recurrent: IV Magnesium Sulfate (2 g), correct K⁺ to > 4.0 mEq/L, stop offending QT drugs, and overdrive-pace or give isoproterenol if bradycardia-dependent.',
+            sim: {
+              type: 'torsades',
+              bpm: 220,
+              labels: ['Twisting Axis Envelope'],
+            },
+          },
+          {
+            id: 'stemi_anterior',
+            name: 'Acute Anterior STEMI (LAD Occlusion)',
+            category: 'ischemia',
+            categoryLabel: 'Transmural Myocardial Infarction',
+            urgency: 'Cath Lab / PCI (<90 min)',
+            leads: ['Lead V3', 'Lead II'],
+            telemetry: {
+              hr: '96 bpm',
+              pr: '160 ms',
+              qrs: '92 ms',
+              qtSt: '+4.5 mm ST ↑ (V3)',
+              rhythm: 'Sinus Rhythm',
+            },
+            hallmarkShort: 'Convex Tombstone ST ↑ in V1–V4 · Reciprocal ST ↓',
+            criteria: [
+              'Marked convex ("tombstone") ST-segment elevation ≥ 2 mm in precordial leads V2–V3 (≥ 1 mm in others)',
+              'Loss of R-wave progression / emerging pathologic Q waves in V1–V4',
+              'Hyperacute broad T waves fusing directly into the elevated J-point',
+              'Reciprocal ST-segment depression in inferior leads (II, III, aVF)',
+            ],
+            mechanism:
+              'Acute thrombotic occlusion of the Left Anterior Descending (LAD) artery causes full-thickness (transmural) injury across the anterior left ventricular wall and interventricular septum, creating a systolic/diastolic injury current vector toward V1–V4.',
+            causes:
+              'Atherosclerotic plaque rupture and acute coronary thrombosis in the proximal or mid LAD ("widowmaker" lesion).',
+            management:
+              'Activate emergent primary PCI (< 90 min door-to-balloon; or fibrinolytics if PCI unavailable within 120 min), dual antiplatelet therapy (aspirin + ticagrelor/prasugrel), anticoagulation (heparin), and high-intensity statin.',
+            sim: {
+              type: 'sinus',
+              bpm: 96,
+              lead1: { p: 0.11, pr: 0.16, q: -0.28, r: 0.72, s: -0.05, qrsW: 1.05, st: 0.45, stConvex: true, t: 0.46 },
+              lead2: { p: 0.13, pr: 0.16, q: -0.06, r: 0.88, s: -0.22, qrsW: 1.0, st: -0.18, t: -0.12 },
+              labels: ['Pathologic Q', 'Tombstone ST ↑', 'Reciprocal ST ↓'],
+            },
+          },
+          {
+            id: 'stemi_inferior',
+            name: 'Acute Inferior STEMI (RCA Occlusion)',
+            category: 'ischemia',
+            categoryLabel: 'Transmural Myocardial Infarction',
+            urgency: 'Cath Lab + Check V4R (Avoid Nitrates)',
+            leads: ['Lead II', 'Lead aVL'],
+            telemetry: {
+              hr: '56 bpm',
+              pr: '176 ms',
+              qrs: '90 ms',
+              qtSt: '+3.8 mm ST ↑ (II)',
+              rhythm: 'Sinus Bradycardia',
+            },
+            hallmarkShort: 'ST ↑ in II, III, aVF · Reciprocal ST ↓ in aVL',
+            criteria: [
+              'ST-segment elevation ≥ 1 mm in inferior leads II, III, and aVF (III > II suggests RCA)',
+              'Early crisp reciprocal ST-segment depression in lead aVL and lead I',
+              'Frequent sinus bradycardia or AV nodal block (RCA supplies SA & AV nodes in ~85%)',
+              'Obtain right-sided lead V4R to rule out concurrent Right Ventricular Infarction',
+            ],
+            mechanism:
+              'Acute occlusion of the Right Coronary Artery (or dominant LCx) creates transmural ischemia along the diaphragmatic inferior LV wall and frequently compromises SA/AV nodal perfusion or triggers the Bezold-Jarisch vagal reflex.',
+            causes:
+              'Acute plaque rupture in the RCA (80%) or dominant Left Circumflex artery (20%).',
+            management:
+              'Emergent PCI, aspirin + P2Y12 inhibitor, heparin. CRITICAL: avoid nitroglycerin and morphine if Right Ventricular infarction is present (V4R ST ↑), as preload reduction causes catastrophic hypotension; treat RV infarct hypotension with IV fluid bolus.',
+            sim: {
+              type: 'sinus',
+              bpm: 56,
+              lead1: { p: 0.13, pr: 0.176, q: -0.24, r: 0.92, s: -0.04, qrsW: 1.0, st: 0.38, stConvex: true, t: 0.4 },
+              lead2: { p: 0.08, pr: 0.176, q: -0.04, r: 0.72, s: -0.18, qrsW: 1.0, st: -0.24, t: -0.18 },
+              labels: ['Q wave', 'Inferior ST ↑', 'Reciprocal aVL ST ↓'],
+            },
+          },
+          {
+            id: 'nstemi',
+            name: 'NSTEMI / Subendocardial Ischemia',
+            category: 'ischemia',
+            categoryLabel: 'Non-ST-Elevation ACS',
+            urgency: 'Troponin + Early Invasive Strategy',
+            leads: ['Lead V5', 'Lead II'],
+            telemetry: {
+              hr: '92 bpm',
+              pr: '162 ms',
+              qrs: '88 ms',
+              qtSt: '-2.6 mm ST ↓ (V5)',
+              rhythm: 'Sinus Rhythm',
+            },
+            hallmarkShort: 'Horizontal ST depression ≥ 1 mm · T inversion',
+            criteria: [
+              'Horizontal or downsloping ST-segment depression ≥ 0.5–1.0 mm in ≥ 2 contiguous leads',
+              'Symmetric T-wave inversion or biphasic T waves without ST elevation',
+              'Absence of new pathologic Q waves; elevated cardiac troponin confirms NSTEMI vs unstable angina',
+            ],
+            mechanism:
+              'Subtotal coronary stenosis or supply-demand mismatch starves the vulnerable inner subendocardial layer first. Because ischemia does not span the full wall thickness, the injury vector points away from overlying epicardial leads, causing ST depression.',
+            causes:
+              'Non-occlusive coronary thrombus, severe fixed multivessel CAD, coronary vasospasm, severe anemia, or tachyarrhythmia.',
+            management:
+              'Dual antiplatelet therapy (aspirin + ticagrelor/clopidogrel), therapeutic anticoagulation (heparin/enoxaparin), beta-blocker, high-intensity statin, nitrates for pain, and early coronary angiography based on GRACE/TIMI risk.',
+            sim: {
+              type: 'sinus',
+              bpm: 92,
+              lead1: { p: 0.12, pr: 0.162, q: -0.08, r: 1.12, s: -0.16, qrsW: 1.0, st: -0.26, t: -0.22 },
+              lead2: { p: 0.13, pr: 0.162, q: -0.06, r: 0.9, s: -0.2, qrsW: 1.0, st: -0.16, t: -0.14 },
+              labels: ['Horizontal ST ↓', 'T Inversion'],
+            },
+          },
+          {
+            id: 'first_degree_av_block',
+            name: '1st-Degree AV Block (Prolonged PR)',
+            category: 'blocks',
+            categoryLabel: 'AV Nodal Conduction Delay',
+            urgency: 'Usually Benign / Review Meds',
+            leads: ['Lead II', 'Lead V1'],
+            telemetry: {
+              hr: '68 bpm',
+              pr: '280 ms (>200 ms)',
+              qrs: '84 ms',
+              qtSt: '405 ms / Isoelectric',
+              rhythm: 'Regular 1:1',
+            },
+            hallmarkShort: 'Fixed prolonged PR > 200 ms · Every P conducts',
+            criteria: [
+              'PR interval constantly prolonged > 200 ms (> 5 small boxes; here 280 ms)',
+              'Every P wave is followed by a QRS complex (strict 1:1 AV conduction)',
+              'PR interval remains identical from beat to beat without dropped beats',
+              'QRS duration typically remains narrow (< 120 ms) unless bundle block coexists',
+            ],
+            mechanism:
+              'Conduction velocity through the AV node (or occasionally intra-atrial / His-Purkinje tissue) is uniformly slowed, prolonging the time before ventricular depolarization begins—yet every impulse still successfully crosses to the ventricles.',
+            causes:
+              'High vagal tone (athletes), AV-nodal blocking medications (beta-blockers, diltiazem, verapamil, digoxin, amiodarone), acute inferior MI, Lyme carditis, and degenerative conduction disease.',
+            management:
+              'Asymptomatic isolated 1st-degree AV block requires no pacemaker or emergency treatment; monitor PR interval if marked (> 300 ms) and review offending AV-nodal blocking agents.',
+            sim: {
+              type: 'sinus',
+              bpm: 68,
+              lead1: { p: 0.14, pr: 0.28, q: -0.08, r: 1.0, s: -0.2, qrsW: 1.0, st: 0.0, t: 0.26 },
+              lead2: { p: 0.06, pBi: -0.04, pr: 0.28, q: 0, r: 0.26, s: -0.76, qrsW: 1.0, st: 0.0, t: -0.08 },
+              labels: ['Prolonged PR (280 ms)'],
+            },
+          },
+          {
+            id: 'wenckebach',
+            name: '2nd-Degree AV Block: Mobitz I (Wenckebach)',
+            category: 'blocks',
+            categoryLabel: 'AV Nodal Conduction Block',
+            urgency: 'Usually Benign / Monitor',
+            leads: ['Lead II', 'Lead V1'],
+            telemetry: {
+              hr: '60 bpm (4:3)',
+              pr: '180 → 330 ms → Drop',
+              qrs: '86 ms',
+              qtSt: '400 ms / Isoelectric',
+              rhythm: 'Grouped Beating',
+            },
+            hallmarkShort: 'Progressive PR lengthening until a QRS drops',
+            criteria: [
+              'Progressive lengthening of the PR interval from beat to beat (180 → 260 → 330 ms)',
+              'Followed by a non-conducted P wave ("dropped" QRS complex)',
+              'PR interval immediately resets shortest on the beat after the pause ("grouped beating")',
+              'R-R intervals progressively shorten before the pause; QRS remains narrow',
+            ],
+            mechanism:
+              'Fatiguing conduction inside the AV node causes incremental refractoriness with each successive atrial impulse until one P wave arrives during the absolute refractory period and fails to conduct, allowing the AV node to recover during the pause.',
+            causes:
+              'High vagal tone (athletes, sleep), AV-nodal blocking medications (beta-blockers, diltiazem, verapamil, digoxin), and acute inferior MI.',
+            management:
+              'Asymptomatic patients require no pacing—just review/hold offending AV-nodal drugs. If symptomatic bradycardia occurs, treat with IV atropine (blocks vagal tone at the AV node).',
+            sim: {
+              type: 'wenckebach',
+              bpm: 78,
+              lead1: { p: 0.14, q: -0.08, r: 1.0, s: -0.2, qrsW: 1.0, st: 0.0, t: 0.26 },
+              lead2: { p: 0.06, pBi: -0.04, q: 0, r: 0.26, s: -0.74, qrsW: 1.0, st: 0.0, t: -0.07 },
+              labels: ['PR Lengthens', 'Dropped QRS'],
+            },
+          },
+          {
+            id: 'mobitz_type_ii',
+            name: '2nd-Degree AV Block: Mobitz Type II',
+            category: 'blocks',
+            categoryLabel: 'Infranodal His-Purkinje Block',
+            urgency: 'High Risk → Pacemaker Needed',
+            leads: ['Lead II', 'Lead V1'],
+            telemetry: {
+              hr: '52 bpm (3:2)',
+              pr: '164 ms (Fixed)',
+              qrs: '124 ms (Infranodal)',
+              qtSt: '415 ms / Isoelectric',
+              rhythm: 'Sudden Dropped QRS',
+            },
+            hallmarkShort: 'Constant PR interval + sudden unexpected dropped QRS',
+            criteria: [
+              'Constant, fixed PR interval on all conducted beats (164 ms—no progressive lengthening)',
+              'Intermittent, sudden non-conducted P waves ("dropped" QRS) in patterns like 3:2 or 4:3',
+              'QRS is frequently widened (≥ 120 ms) because the block lies below the AV node in His-Purkinje tissue',
+              'High risk of abrupt progression to 3rd-degree complete heart block and syncope',
+            ],
+            mechanism:
+              'Unlike AV nodal Wenckebach, Mobitz II is caused by structural "all-or-none" failure in the His-Purkinje system. Conducted beats travel with normal constant delay, while sudden intermittent failure of both bundle branches drops a ventricular beat without warning.',
+            causes:
+              'Anterior myocardial infarction (LAD septal necrosis), idiopathic conduction system fibrosis (Lenègre-Lev disease), post-TAVR/valve surgery, myocarditis, and infiltrative cardiomyopathy.',
+            management:
+              'Place transcutaneous pacing pads immediately as a precaution; avoid AV-nodal drugs and note that atropine is usually ineffective (and can worsen infranodal block by speeding atrial rate). Urgent permanent pacemaker implantation is indicated.',
+            sim: {
+              type: 'mobitz2',
+              bpm: 78,
+              lead1: { p: 0.14, pr: 0.164, q: -0.06, r: 0.96, s: -0.32, qrsW: 1.42, st: 0.0, t: 0.22 },
+              lead2: { p: 0.06, pBi: -0.04, pr: 0.164, q: 0, r: 0.3, s: -0.78, qrsW: 1.42, st: 0.0, t: -0.08 },
+              labels: ['Fixed PR', 'Sudden Drop'],
+            },
+          },
+          {
+            id: 'complete_av_block',
+            name: '3rd-Degree (Complete) Heart Block',
+            category: 'blocks',
+            categoryLabel: 'Complete AV Dissociation',
+            urgency: 'Urgent Pacemaker / Atropine',
+            leads: ['Lead II', 'Lead V1'],
+            telemetry: {
+              hr: '36 bpm (V) / 86 (A)',
+              pr: 'Variable (Dissoc.)',
+              qrs: '148 ms (Escape)',
+              qtSt: '450 ms / Discordant',
+              rhythm: 'P & QRS Independent',
+            },
+            hallmarkShort: 'Total AV dissociation · Fast P, slow escape QRS',
+            criteria: [
+              'Complete AV dissociation: P waves march regularly (~86 bpm) and QRS complexes march regularly (~36 bpm) with zero mathematical relationship',
+              'PR intervals vary randomly across every beat; P waves sometimes fall inside QRS or T waves',
+              'Escape rhythm is narrow (~45 bpm) if junctional, or wide (~30–40 bpm) if infranodal ventricular',
+            ],
+            mechanism:
+              'Zero atrial impulses penetrate the diseased AV node or His-Purkinje system. To prevent asystole, a subsidiary junctional or ventricular escape pacemaker takes over independently at an intrinsic slow rate.',
+            causes:
+              'Idiopathic fibrodegenerative conduction disease (Lenègre-Lev), acute inferior or large anterior MI, Lyme carditis, digoxin/beta-blocker overdose, and hyperkalemia.',
+            management:
+              'Emergent transcutaneous pacing (and/or IV dopamine or epinephrine infusion; atropine only if narrow junctional escape) as a bridge to definitive permanent pacemaker implantation.',
+            sim: {
+              type: 'complete_block',
+              atrialBpm: 86,
+              ventBpm: 36,
+              lead1: { p: 0.15, q: -0.1, r: 0.92, s: -0.58, qrsW: 1.65, st: 0.06, t: 0.24 },
+              lead2: { p: 0.07, pBi: -0.04, q: 0, r: 0.3, s: -0.95, qrsW: 1.65, st: 0.08, t: 0.18 },
+              labels: ['Independent P', 'Slow Escape QRS'],
+            },
+          },
+          {
+            id: 'lbbb',
+            name: 'Left Bundle Branch Block (LBBB)',
+            category: 'blocks',
+            categoryLabel: 'Intraventricular Conduction Block',
+            urgency: 'Evaluate for New Ischemia (Sgarbossa)',
+            leads: ['Lead V1', 'Lead V6'],
+            telemetry: {
+              hr: '74 bpm',
+              pr: '168 ms',
+              qrs: '144 ms (>120 ms)',
+              qtSt: 'Appropriate Discordance',
+              rhythm: 'Regular Sinus',
+            },
+            hallmarkShort: 'Broad QS/rS in V1 · Notched R ("M") in V6',
+            criteria: [
+              'Wide QRS duration ≥ 120 ms in a supraventricular rhythm',
+              'Lead V1: dominant deep, broad S wave or QS complex ("W" shape)',
+              'Leads I, aVL, V5–V6: broad, slurred or notched monophasic R wave ("M" shape) with absent septal Q waves',
+              'Appropriate discordance: ST segments and T waves point opposite to the main QRS deflection',
+            ],
+            mechanism:
+              'Blocked conduction down the left bundle branch forces depolarization to activate the right ventricle first, then spread slowly leftward across the interventricular septum via cell-to-cell muscle conduction, prolonging LV activation and flipping septal depolarization right-to-left.',
+            causes:
+              'Long-standing hypertension, aortic stenosis, ischemic cardiomyopathy, dilated cardiomyopathy, and anterior MI.',
+            management:
+              'New LBBB with chest pain requires urgent evaluation using Modified Sgarbossa criteria (concordant ST ↑ ≥ 1 mm or discordant ST ↑ ≥ 25% of S depth) to detect underlying STEMI; chronic LBBB with HFrEF may benefit from cardiac resynchronization therapy (CRT).',
+            sim: {
+              type: 'sinus',
+              bpm: 74,
+              lead1: { p: 0.06, pBi: -0.04, pr: 0.168, q: 0, r: 0.12, s: -1.28, qrsW: 1.72, st: 0.18, t: 0.24 },
+              lead2: { p: 0.11, pr: 0.168, q: 0, r: 1.02, rNotch: 0.88, s: 0, qrsW: 1.72, st: -0.14, t: -0.22 },
+              labels: ['Broad QS (V1)', 'Notched R (V6)', 'Discordant ST-T'],
+            },
+          },
+          {
+            id: 'rbbb',
+            name: 'Right Bundle Branch Block (RBBB)',
+            category: 'blocks',
+            categoryLabel: 'Intraventricular Conduction Block',
+            urgency: 'Assess for PE / CAD if New',
+            leads: ['Lead V1', 'Lead V6'],
+            telemetry: {
+              hr: '76 bpm',
+              pr: '164 ms',
+              qrs: '138 ms (>120 ms)',
+              qtSt: 'V1 T-Inversion',
+              rhythm: 'Regular Sinus',
+            },
+            hallmarkShort: 'rsR′ ("Bunny Ears") in V1 · Slurred S in V6',
+            criteria: [
+              'Wide QRS ≥ 120 ms with normal initial septal activation',
+              'Lead V1–V2: classic triphasic rsR′ ("bunny ears" / M-shaped) pattern with R′ taller than initial r',
+              'Leads I & V6: wide, slurred terminal S wave (> 40 ms)',
+              'Secondary ST depression and T-wave inversion in right precordial leads (V1–V3)',
+            ],
+            mechanism:
+              'Normal septal and left ventricular depolarization occur first (preserving early narrow r in V1 and q in V6), followed by delayed slow rightward spread across the right ventricle, generating a late terminal R′ wave in V1 and slurred S wave in V6.',
+            causes:
+              'Right ventricular strain (acute pulmonary embolism, cor pulmonale), ischemic heart disease, ASD, myocarditis, or benign age-related sclerosis.',
+            management:
+              'Isolated chronic RBBB requires no specific therapy; acute new RBBB warrants ruling out pulmonary embolism or anterior ischemia (particularly if paired with bifascicular block).',
+            sim: {
+              type: 'sinus',
+              bpm: 76,
+              lead1: { p: 0.06, pBi: -0.04, pr: 0.164, q: 0, r: 0.36, s: -0.28, rPrime: 0.88, qrsW: 1.58, st: -0.1, t: -0.22 },
+              lead2: { p: 0.12, pr: 0.164, q: -0.07, r: 0.96, s: -0.46, qrsW: 1.58, st: 0.02, t: 0.22 },
+              labels: ['rsR′ Bunny Ears (V1)', 'Slurred S (V6)'],
+            },
+          },
+          {
+            id: 'hyperkalemia',
+            name: 'Severe Hyperkalemia (Peaked T & Widening)',
+            category: 'metabolic',
+            categoryLabel: 'Electrolyte Emergency',
+            urgency: 'IV Calcium Gluconate Now',
+            leads: ['Lead V3', 'Lead II'],
+            telemetry: {
+              hr: '62 bpm',
+              pr: '225 ms (Prolonged)',
+              qrs: '138 ms (Widened)',
+              qtSt: 'Tall Narrow T Wave',
+              rhythm: 'Sinus / Sine Risk',
+            },
+            hallmarkShort: 'Tall tented symmetric T · Flat P · Wide QRS',
+            criteria: [
+              'Early (K⁺ 5.5–6.5): tall, narrow, symmetrically peaked ("tented") T waves',
+              'Moderate (K⁺ 6.5–7.5): prolonged PR interval and flattened/disappearing P waves',
+              'Severe (K⁺ > 7.5–8.0): progressive QRS widening merging into a sinusoidal "sine wave" → asystole/VFib',
+            ],
+            mechanism:
+              'Elevated extracellular K⁺ reduces the resting membrane potential (less negative), inactivating voltage-gated Na⁺ channels (slowing phase 0 upstroke → wide QRS & flat P) while accelerating K⁺-channel repolarization (IKr), creating narrow, tall peaked T waves.',
+            causes:
+              'Acute or chronic kidney injury, RAAS inhibitors + MRA (spironolactone), tissue breakdown (rhabdomyolysis, tumor lysis), DKA/insulin deficiency, and severe acidosis.',
+            management:
+              '1) Stabilize myocardium immediately with IV Calcium Gluconate (acts in 1–3 min); 2) Shift K⁺ intracellularly (IV regular insulin + D50W, nebulized albuterol, NaHCO₃ if acidemic); 3) Eliminate K⁺ from body (loop diuretics, patiromer/ZS-9, or emergent hemodialysis).',
+            sim: {
+              type: 'sinus',
+              bpm: 62,
+              lead1: { p: 0.04, pr: 0.225, q: -0.05, r: 0.78, s: -0.32, qrsW: 1.62, st: 0.05, t: 0.94, tNarrow: true },
+              lead2: { p: 0.04, pr: 0.225, q: -0.04, r: 0.68, s: -0.24, qrsW: 1.62, st: 0.03, t: 0.72, tNarrow: true },
+              labels: ['Flat P', 'Wide QRS', 'Peaked Tented T'],
+            },
+          },
+          {
+            id: 'pericarditis',
+            name: 'Acute Pericarditis',
+            category: 'metabolic',
+            categoryLabel: 'Pericardial Inflammation',
+            urgency: 'Anti-Inflammatory Therapy',
+            leads: ['Lead II', 'Lead V5'],
+            telemetry: {
+              hr: '98 bpm',
+              pr: '148 ms (PR ↓)',
+              qrs: '84 ms',
+              qtSt: '+2.2 mm Concave ST ↑',
+              rhythm: 'Sinus Tachycardia',
+            },
+            hallmarkShort: 'Diffuse concave ST ↑ + PR depression (No Q)',
+            criteria: [
+              'Diffuse concave-upward ("saddle-shaped") ST-segment elevation across most limb & precordial leads (except aVR/V1)',
+              'Classic PR-segment depression (and reciprocal PR elevation + ST depression in aVR)',
+              'Absence of reciprocal ST depression in non-aVR leads and absence of pathologic Q waves',
+              'Spodick sign: subtle downsloping TP segment',
+            ],
+            mechanism:
+              'Inflammation of the visceral pericardium and superficial subepicardium causes global epicardial current of injury across both ventricles and atria simultaneously, explaining why ST elevation is diffuse (non-coronary distribution) and accompanied by atrial PR-segment depression.',
+            causes:
+              'Idiopathic/viral infection (Coxsackie, echovirus), post-MI (Dressler syndrome), uremia, autoimmune disease (SLE), and thoracic trauma/radiation.',
+            management:
+              'High-dose NSAIDs (ibuprofen or aspirin) plus Colchicine for 3 months to prevent recurrence; check echocardiogram to exclude pericardial effusion / tamponade.',
+            sim: {
+              type: 'sinus',
+              bpm: 98,
+              lead1: { p: 0.14, pr: 0.148, prDep: -0.09, q: 0, r: 0.98, s: -0.1, qrsW: 0.95, st: 0.22, stConcave: true, t: 0.34 },
+              lead2: { p: 0.12, pr: 0.148, prDep: -0.08, q: 0, r: 1.08, s: -0.08, qrsW: 0.95, st: 0.24, stConcave: true, t: 0.38 },
+              labels: ['PR Depression', 'Concave ST ↑'],
+            },
+          },
+          {
+            id: 'hypothermia',
+            name: 'Severe Hypothermia (Osborn J-Wave)',
+            category: 'metabolic',
+            categoryLabel: 'Systemic / Thermal Effect',
+            urgency: 'Active Rewarming',
+            leads: ['Lead V5', 'Lead II'],
+            telemetry: {
+              hr: '44 bpm',
+              pr: '215 ms',
+              qrs: '112 ms',
+              qtSt: 'Osborn J-Wave (+3 mm)',
+              rhythm: 'Sinus Bradycardia',
+            },
+            hallmarkShort: 'Bradycardia + Osborn J-wave hump at J-point',
+            criteria: [
+              'Marked sinus bradycardia with prolongation of all intervals (PR, QRS, and QTc)',
+              'Prominent positive camel-hump deflection right at the QRS–ST junction (Osborn J-wave), proportional to degree of hypothermia (< 32 °C)',
+              'Fine high-frequency baseline tremor artifact from shivering',
+            ],
+            mechanism:
+              'Cold temperature slows phase 4 SA nodal depolarization and creates a transmural voltage gradient in the transient outward K⁺ current (Ito) between epicardium and endocardium during early phase 1–2 repolarization, manifesting as the characteristic Osborn J-wave.',
+            causes:
+              'Environmental cold exposure, immersion, sepsis, myxedema coma, severe hypoglycemia, and CNS hypothalamic injury.',
+            management:
+              'Gentle handling (avoid jostling the cold myocardium, which precipitates refractory VFib) and passive/active core rewarming (warmed IV fluids, forced-air blankets, ECMO/bypass if severe arrest).',
+            sim: {
+              type: 'sinus',
+              bpm: 44,
+              shiver: true,
+              lead1: { p: 0.12, pr: 0.215, q: -0.06, r: 1.04, s: -0.1, jWave: 0.34, qrsW: 1.25, st: 0.06, t: 0.2 },
+              lead2: { p: 0.11, pr: 0.215, q: -0.05, r: 0.88, s: -0.12, jWave: 0.26, qrsW: 1.25, st: 0.04, t: 0.18 },
+              labels: ['Bradycardia', 'Osborn J-Wave'],
+            },
+          },
+        ];
+
+        const state = {
+          filter: 'all',
+          search: '',
+          selectedId: 'normal_sinus',
+          viewMode: 'dual', // 'dual' | '12lead'
+          playing: true,
+          soundOn: false,
+          speedMmPerSec: 25,
+          showAnnotations: true,
+          conductionAuto: true,
+          conductionPhase: 0.0, // 0..1 continuous loop over 2.8s
+        };
+
+        // DOM Elements
+        const diseaseCount = document.getElementById('diseaseCount');
+        const diseaseSearch = document.getElementById('diseaseSearch');
+        const diseaseList = document.getElementById('diseaseList');
+        const togglePlayBtn = document.getElementById('togglePlayBtn');
+        const playBtnText = document.getElementById('playBtnText');
+        const twelveLeadBtn = document.getElementById('twelveLeadBtn');
+        const twelveLeadBtnText = document.getElementById('twelveLeadBtnText');
+        const soundBtn = document.getElementById('soundBtn');
+        const soundBtnText = document.getElementById('soundBtnText');
+        const speedBtn = document.getElementById('speedBtn');
+        const speedBtnText = document.getElementById('speedBtnText');
+        const annotationsBtn = document.getElementById('annotationsBtn');
+
+        const telHr = document.getElementById('telHr');
+        const telPr = document.getElementById('telPr');
+        const telQrs = document.getElementById('telQrs');
+        const telQtSt = document.getElementById('telQtSt');
+        const telRhythm = document.getElementById('telRhythm');
+        const leadConfigText = document.getElementById('leadConfigText');
+        const sweepStatusText = document.getElementById('sweepStatusText');
+        const compareHeading = document.getElementById('compareHeading');
+
+        const ecgCanvas = document.getElementById('ecgCanvas');
+        const compareCanvas = document.getElementById('compareCanvas');
+        const conductionHeartCanvas = document.getElementById('conductionHeartCanvas');
+        const parallelEcgCanvas = document.getElementById('parallelEcgCanvas');
+        const conductionPhaseTitle = document.getElementById('conductionPhaseTitle');
+        const conductionVectorTag = document.getElementById('conductionVectorTag');
+        const conductionPhaseDesc = document.getElementById('conductionPhaseDesc');
+
+        const expCategory = document.getElementById('expCategory');
+        const expLeads = document.getElementById('expLeads');
+        const expUrgency = document.getElementById('expUrgency');
+        const expTitle = document.getElementById('expTitle');
+        const expCriteria = document.getElementById('expCriteria');
+        const expMechanism = document.getElementById('expMechanism');
+        const expCauses = document.getElementById('expCauses');
+        const expManagement = document.getElementById('expManagement');
+
+        // ============================================================
+        // Clinical ECG Waveform Synthesis Engine
+        // ============================================================
+        function gauss(x, mu, sigma) {
+          const z = (x - mu) / sigma;
+          return Math.exp(-0.5 * z * z);
+        }
+
+        // Computes single-beat mV at relative time `dt` from P-onset (or R-peak depending on mode)
+        // Here `u` is seconds elapsed since start of P-wave (for sinus) or beat start.
+        function evalSinusComplex(u, spec) {
+          let v = 0;
+          const pr = spec.pr || 0.16;
+          const w = spec.qrsW || 1.0;
+
+          // P wave centered at u = 0.045
+          if (spec.p) {
+            if (spec.pBi) {
+              v += spec.p * gauss(u, 0.032, 0.014) + spec.pBi * gauss(u, 0.06, 0.015);
+            } else {
+              v += spec.p * gauss(u, 0.045, 0.018);
+            }
+          }
+
+          // PR segment depression (e.g. pericarditis)
+          if (spec.prDep && u > 0.07 && u < pr - 0.01) {
+            v += spec.prDep * Math.sin(((u - 0.07) / (pr - 0.08)) * Math.PI);
+          }
+
+          // QRS centered at rTime = pr + 0.028 * w
+          const rTime = pr + 0.03 * w;
+
+          // WPW slurred delta wave leading directly into R wave
+          if (spec.delta) {
+            const dStart = pr - 0.005;
+            if (u >= dStart && u <= rTime) {
+              const frac = (u - dStart) / (rTime - dStart);
+              v += spec.delta * Math.pow(frac, 1.35);
+            }
+          }
+
+          if (spec.q) v += spec.q * gauss(u, rTime - 0.022 * w, 0.009 * w);
+
+          if (spec.rNotch) {
+            // Broad notched M-shaped R wave (LBBB V6)
+            v += spec.r * gauss(u, rTime - 0.012, 0.016 * w * 0.72);
+            v += spec.rNotch * gauss(u, rTime + 0.028, 0.018 * w * 0.72);
+          } else {
+            v += (spec.r || 0) * gauss(u, rTime, 0.013 * w);
+          }
+
+          if (spec.s) v += spec.s * gauss(u, rTime + 0.024 * w, 0.013 * w);
+
+          // R' secondary upward wave (RBBB V1 or SVT pseudo-R')
+          if (spec.rPrime) {
+            v += spec.rPrime * gauss(u, rTime + 0.052 * w, 0.015 * w);
+          }
+
+          // Osborn J-wave hump right at J point
+          const jTime = rTime + 0.044 * w;
+          if (spec.jWave) {
+            v += spec.jWave * gauss(u, jTime + 0.01, 0.018);
+          }
+
+          // ST segment elevation/depression + T wave
+          const tCenter = rTime + 0.195 + (w - 1) * 0.03;
+          const tSig = spec.tNarrow ? 0.025 : 0.044;
+
+          if (spec.st) {
+            const stStart = jTime - 0.006;
+            const stEnd = tCenter;
+            if (u >= stStart && u <= stEnd + 0.06) {
+              const span = stEnd - stStart;
+              const p = Math.max(0, Math.min(1, (u - stStart) / span));
+              let env = 0;
+              if (spec.stConvex) {
+                env = Math.sin(p * Math.PI * 0.85);
+              } else if (spec.stConcave) {
+                env = 0.65 + 0.35 * Math.pow(p, 1.6);
+              } else {
+                // Flat horizontal depression/elevation smoothly tapering into T
+                env = u < stEnd ? Math.min(1, p * 4.5) : Math.max(0, 1 - (u - stEnd) / 0.06);
+              }
+              v += spec.st * env;
+            }
+          }
+
+          // Asymmetric or narrow T wave
+          if (spec.t) {
+            const asym = u < tCenter ? tSig * 1.15 : tSig * 0.85;
+            v += spec.t * gauss(u, tCenter, asym);
+          }
+
+          return v;
+        }
+
+        // Dynamic Real-Time ECG Stream State
+        const SAMPLE_RATE = 240;
+        const MAX_WINDOW_SEC = 6.0;
+        const BUF_LEN = SAMPLE_RATE * MAX_WINDOW_SEC; // 1440 points
+
+        // ============================================================
+        // Web Audio Realistic Cardiac Monitor Sound Engine
+        // ============================================================
+        let audioCtx = null;
+
+        function ensureAudioCtx() {
+          if (!audioCtx) {
+            const Ctx = window.AudioContext || window.webkitAudioContext;
+            if (Ctx) audioCtx = new Ctx();
+          }
+          if (audioCtx && audioCtx.state === 'suspended') {
+            audioCtx.resume();
+          }
+          return audioCtx;
+        }
+
+        function playMonitorBeep(kind) {
+          if (!state.soundOn || !state.playing) return;
+          const ctx = ensureAudioCtx();
+          if (!ctx || ctx.state !== 'running') return;
+
+          const now = ctx.currentTime;
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+
+          if (kind === 'alarm') {
+            // Two-tone urgent telemetry alarm for VFib / Torsades
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(988, now);
+            osc.frequency.setValueAtTime(740, now + 0.09);
+            gain.gain.setValueAtTime(0.0001, now);
+            gain.gain.exponentialRampToValueAtTime(0.07, now + 0.01);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.19);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(now);
+            osc.stop(now + 0.2);
+          } else {
+            // Classic hospital QRS bedside monitor chirp (880 Hz clean tone)
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(880, now);
+            gain.gain.setValueAtTime(0.0001, now);
+            gain.gain.exponentialRampToValueAtTime(0.085, now + 0.005);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.068);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(now);
+            osc.stop(now + 0.075);
+          }
+        }
+
+        const stream = {
+          ch1: new Float32Array(BUF_LEN),
+          ch2: new Float32Array(BUF_LEN),
+          writeIdx: 0,
+          simTime: 0,
+          nextBeatTime: 0.15,
+          beatCount: 0,
+          activeBeats: [], // { startTime, pr, type, pol }
+          atrialNextTime: 0.1,
+          ventNextTime: 0.25,
+          activeAtrialBeats: [],
+          activeVentBeats: [],
+          sweepAnnotations: [], // { time, label }
+          pendingBeeps: [], // { time, kind }
+          nextAlarmTime: 0.5,
+        };
+
+        function resetStream(cond) {
+          stream.ch1.fill(0);
+          stream.ch2.fill(0);
+          stream.writeIdx = 0;
+          stream.simTime = 0;
+          stream.beatCount = 0;
+          stream.activeBeats = [];
+          stream.activeAtrialBeats = [];
+          stream.activeVentBeats = [];
+          stream.sweepAnnotations = [];
+          stream.pendingBeeps = [];
+          stream.nextBeatTime = 0.08;
+          stream.atrialNextTime = 0.08;
+          stream.ventNextTime = 0.22;
+          stream.nextAlarmTime = 2.6;
+        }
+
+        function scheduleNextBeat(cond, emitAudio) {
+          const sim = cond.sim;
+          if (sim.type === 'vfib' || sim.type === 'torsades') {
+            if (emitAudio && stream.simTime >= stream.nextAlarmTime) {
+              stream.pendingBeeps.push({ time: stream.simTime, kind: 'alarm' });
+              stream.nextAlarmTime = stream.simTime + 1.05;
+            }
+            return;
+          }
+
+          if (sim.type === 'complete_block') {
+            const aPeriod = 60 / sim.atrialBpm;
+            while (stream.atrialNextTime <= stream.simTime + 0.05) {
+              stream.activeAtrialBeats.push({ startTime: stream.atrialNextTime });
+              stream.sweepAnnotations.push({ time: stream.atrialNextTime + 0.045, label: 'P', ch: 1 });
+              stream.atrialNextTime += aPeriod;
+            }
+            const vPeriod = 60 / sim.ventBpm;
+            while (stream.ventNextTime <= stream.simTime + 0.05) {
+              stream.activeVentBeats.push({ startTime: stream.ventNextTime });
+              stream.sweepAnnotations.push({ time: stream.ventNextTime + 0.05, label: 'Escape QRS', ch: 1 });
+              if (emitAudio) {
+                stream.pendingBeeps.push({ time: stream.ventNextTime + 0.05, kind: 'qrs' });
+              }
+              stream.ventNextTime += vPeriod;
+            }
+            return;
+          }
+
+          while (stream.nextBeatTime <= stream.simTime + 0.05) {
+            const idx = stream.beatCount++;
+            if (sim.type === 'afib') {
+              const rr = 0.38 + 0.44 * (0.5 + 0.5 * Math.sin(idx * 2.37 + 0.7) * Math.cos(idx * 1.43));
+              stream.activeBeats.push({ startTime: stream.nextBeatTime, pr: 0.14 });
+              stream.sweepAnnotations.push({ time: stream.nextBeatTime + 0.17, label: 'Irregular QRS', ch: 1 });
+              if (emitAudio) {
+                stream.pendingBeeps.push({ time: stream.nextBeatTime + 0.17, kind: 'qrs' });
+              }
+              stream.nextBeatTime += rr;
+            } else if (sim.type === 'wenckebach') {
+              const step = idx % 4;
+              const prs = [0.175, 0.25, 0.335, 0.335];
+              const dropped = step === 3;
+              stream.activeBeats.push({
+                startTime: stream.nextBeatTime,
+                pr: prs[step],
+                dropped,
+              });
+              stream.sweepAnnotations.push({
+                time: stream.nextBeatTime + 0.045,
+                label: dropped ? 'P (Dropped QRS)' : 'PR ' + Math.round(prs[step] * 1000) + 'ms',
+                ch: 1,
+              });
+              if (emitAudio && !dropped) {
+                stream.pendingBeeps.push({ time: stream.nextBeatTime + prs[step] + 0.03, kind: 'qrs' });
+              }
+              stream.nextBeatTime += 60 / sim.bpm;
+            } else if (sim.type === 'mobitz2') {
+              const step = idx % 3;
+              const dropped = step === 2;
+              stream.activeBeats.push({
+                startTime: stream.nextBeatTime,
+                pr: sim.lead1.pr,
+                dropped,
+              });
+              stream.sweepAnnotations.push({
+                time: stream.nextBeatTime + 0.045,
+                label: dropped ? 'P (Sudden Drop)' : 'PR 164ms',
+                ch: 1,
+              });
+              if (emitAudio && !dropped) {
+                stream.pendingBeeps.push({
+                  time: stream.nextBeatTime + sim.lead1.pr + 0.03 * (sim.lead1.qrsW || 1),
+                  kind: 'qrs',
+                });
+              }
+              stream.nextBeatTime += 60 / sim.bpm;
+            } else if (sim.type === 'aflutter') {
+              const period = 60 / sim.bpm;
+              stream.activeBeats.push({ startTime: stream.nextBeatTime, pr: 0.14 });
+              stream.sweepAnnotations.push({ time: stream.nextBeatTime + 0.17, label: 'QRS (3:1)', ch: 1 });
+              if (emitAudio) {
+                stream.pendingBeeps.push({ time: stream.nextBeatTime + 0.17, kind: 'qrs' });
+              }
+              stream.nextBeatTime += period;
+            } else if (sim.type === 'vtach') {
+              const period = 60 / sim.bpm;
+              stream.activeBeats.push({ startTime: stream.nextBeatTime, pr: 0.08 });
+              if (idx % 2 === 0) {
+                stream.sweepAnnotations.push({ time: stream.nextBeatTime + 0.08, label: 'Wide VT', ch: 1 });
+              }
+              if (emitAudio) {
+                stream.pendingBeeps.push({ time: stream.nextBeatTime + 0.085, kind: 'qrs' });
+              }
+              stream.nextBeatTime += period;
+            } else {
+              const period = 60 / sim.bpm;
+              stream.activeBeats.push({ startTime: stream.nextBeatTime, pr: sim.lead1.pr });
+              const rAt = stream.nextBeatTime + sim.lead1.pr + 0.03 * (sim.lead1.qrsW || 1);
+              let tag = 'QRS';
+              if (cond.id === 'first_degree_av_block') tag = 'PR 280ms';
+              else if (cond.id === 'wpw') tag = 'Delta+QRS';
+              else if (cond.id === 'stemi_anterior' || cond.id === 'stemi_inferior') tag = 'ST ↑';
+              else if (cond.id === 'nstemi') tag = 'ST ↓';
+              else if (cond.id === 'hyperkalemia') tag = 'Peaked T';
+              else if (cond.id === 'hypothermia') tag = 'Osborn J';
+              else if (cond.id === 'pericarditis') tag = 'PR↓ / ST↑';
+              else if (cond.id === 'rbbb') tag = 'rsR′';
+              else if (cond.id === 'lbbb') tag = 'Broad QS';
+              stream.sweepAnnotations.push({ time: rAt, label: tag, ch: 1 });
+              if (emitAudio) {
+                stream.pendingBeeps.push({ time: rAt, kind: 'qrs' });
+              }
+              stream.nextBeatTime += period;
+            }
+          }
+        }
+
+        function sampleConditionAt(t, cond) {
+          const sim = cond.sim;
+          let v1 = 0;
+          let v2 = 0;
+
+          if (sim.type === 'vfib') {
+            v1 =
+              0.38 * Math.sin(2 * Math.PI * 4.3 * t + 0.4 * Math.sin(t * 7)) +
+              0.24 * Math.sin(2 * Math.PI * 6.9 * t + 1.3) +
+              0.14 * Math.sin(2 * Math.PI * 11.1 * t);
+            v2 =
+              0.32 * Math.sin(2 * Math.PI * 4.8 * t + 1.9) +
+              0.21 * Math.sin(2 * Math.PI * 7.6 * t) +
+              0.12 * Math.cos(2 * Math.PI * 10.4 * t);
+            return [v1, v2];
+          }
+
+          if (sim.type === 'torsades') {
+            const spindle = 0.18 + 0.92 * Math.abs(Math.sin(Math.PI * (t / 1.55)));
+            const signFlip = Math.sin(Math.PI * (t / 1.55)) >= 0 ? 1 : -1;
+            const freq = sim.bpm / 60;
+            const ph = (t * freq) % 1;
+            const wave =
+              Math.sin(ph * Math.PI * 2) * 0.72 + Math.sin(ph * Math.PI * 4 + 0.5) * 0.28;
+            v1 = signFlip * spindle * wave;
+            v2 = -signFlip * spindle * 0.82 * Math.sin(ph * Math.PI * 2 + 0.35);
+            return [v1, v2];
+          }
+
+          if (sim.type === 'afib') {
+            // Continuous 400-500/min fibrillatory baseline
+            v1 +=
+              0.055 * Math.sin(2 * Math.PI * 6.8 * t) +
+              0.04 * Math.sin(2 * Math.PI * 9.3 * t + 1.2) +
+              0.025 * Math.cos(2 * Math.PI * 12.1 * t);
+            v2 +=
+              0.08 * Math.sin(2 * Math.PI * 7.1 * t + 0.6) +
+              0.05 * Math.sin(2 * Math.PI * 10.2 * t);
+          }
+
+          if (sim.type === 'aflutter') {
+            // Sawtooth 300/min F-waves (period 0.2s): downward in II, positive discrete in V1
+            const fPeriod = 60 / sim.flutterBpm;
+            const fPhase = (t % fPeriod) / fPeriod;
+            v1 += -0.22 * (1 - fPhase) + 0.11;
+            v2 += 0.2 * gauss(fPhase, 0.35, 0.16) - 0.05;
+          }
+
+          if (sim.type === 'complete_block') {
+            for (const ab of stream.activeAtrialBeats) {
+              const u = t - ab.startTime;
+              if (u >= 0 && u <= 0.12) {
+                v1 += sim.lead1.p * gauss(u, 0.045, 0.018);
+                v2 +=
+                  sim.lead2.p * gauss(u, 0.032, 0.014) +
+                  sim.lead2.pBi * gauss(u, 0.06, 0.015);
+              }
+            }
+            for (const vb of stream.activeVentBeats) {
+              const u = t - vb.startTime + 0.12;
+              if (u >= 0.08 && u <= 0.65) {
+                v1 += evalSinusComplex(u, { ...sim.lead1, p: 0, pr: 0.12 });
+                v2 += evalSinusComplex(u, { ...sim.lead2, p: 0, pBi: 0, pr: 0.12 });
+              }
+            }
+            return [v1, v2];
+          }
+
+          if (sim.type === 'vtach') {
+            const period = 60 / sim.bpm;
+            for (const b of stream.activeBeats) {
+              const u = t - b.startTime;
+              if (u >= 0 && u < period) {
+                const ph = u / period;
+                const qrs = gauss(ph, 0.24, 0.085) - 0.45 * gauss(ph, 0.46, 0.11);
+                const tw = -0.32 * gauss(ph, 0.72, 0.13);
+                v1 += sim.lead1.vtPolarity * sim.lead1.vtAmp * (qrs + tw);
+                v2 += sim.lead2.vtPolarity * sim.lead2.vtAmp * (qrs + tw);
+              }
+            }
+            return [v1, v2];
+          }
+
+          // Sinus, Wenckebach, Mobitz II, AFib QRS, AFlutter QRS
+          for (const b of stream.activeBeats) {
+            const u = t - b.startTime;
+            if (u >= 0 && u <= 0.85) {
+              if (sim.type === 'wenckebach' || sim.type === 'mobitz2') {
+                if (b.dropped) {
+                  v1 += sim.lead1.p * gauss(u, 0.045, 0.018);
+                  v2 += sim.lead2.p * gauss(u, 0.032, 0.014) + sim.lead2.pBi * gauss(u, 0.06, 0.015);
+                } else {
+                  v1 += evalSinusComplex(u, { ...sim.lead1, pr: b.pr });
+                  v2 += evalSinusComplex(u, { ...sim.lead2, pr: b.pr });
+                }
+              } else {
+                v1 += evalSinusComplex(u, sim.lead1);
+                v2 += evalSinusComplex(u, sim.lead2);
+              }
+            }
+          }
+
+          if (sim.shiver) {
+            const noise =
+              0.025 * Math.sin(t * 170) + 0.018 * Math.cos(t * 245 + 1.1);
+            v1 += noise;
+            v2 += noise * 0.8;
+          }
+
+          return [v1, v2];
+        }
+
+        function pruneOldBeats() {
+          const cutoff = stream.simTime - MAX_WINDOW_SEC - 1.2;
+          stream.activeBeats = stream.activeBeats.filter((b) => b.startTime > cutoff);
+          stream.activeAtrialBeats = stream.activeAtrialBeats.filter((b) => b.startTime > cutoff);
+          stream.activeVentBeats = stream.activeVentBeats.filter((b) => b.startTime > cutoff);
+          stream.sweepAnnotations = stream.sweepAnnotations.filter((a) => a.time > stream.simTime - MAX_WINDOW_SEC);
+        }
+
+        // ============================================================
+        // 12-Lead ECG Physiological Matrix & Synthesis Engine
+        // ============================================================
+        const TWELVE_LEAD_GRID = [
+          ['I', 'aVR', 'V1', 'V4'],
+          ['II', 'aVL', 'V2', 'V5'],
+          ['III', 'aVF', 'V3', 'V6'],
+        ];
+
+        const STANDARD_12_NORMAL = {
+          I: { p: 0.1, pr: 0.16, q: -0.05, r: 0.72, s: -0.1, qrsW: 1.0, st: 0, t: 0.22 },
+          II: { p: 0.14, pr: 0.16, q: -0.09, r: 1.05, s: -0.22, qrsW: 1.0, st: 0, t: 0.28 },
+          III: { p: 0.05, pr: 0.16, q: -0.04, r: 0.38, s: -0.14, qrsW: 1.0, st: 0, t: 0.08 },
+          aVR: { p: -0.12, pr: 0.16, q: 0, r: 0.08, s: -0.82, qrsW: 1.0, st: 0, t: -0.25 },
+          aVL: { p: 0.05, pr: 0.16, q: -0.05, r: 0.34, s: -0.08, qrsW: 1.0, st: 0, t: 0.12 },
+          aVF: { p: 0.1, pr: 0.16, q: -0.06, r: 0.72, s: -0.16, qrsW: 1.0, st: 0, t: 0.18 },
+          V1: { p: 0.06, pBi: -0.04, pr: 0.16, q: 0, r: 0.24, s: -0.82, qrsW: 1.0, st: 0, t: -0.08 },
+          V2: { p: 0.08, pr: 0.16, q: 0, r: 0.42, s: -0.96, qrsW: 1.0, st: 0, t: 0.22 },
+          V3: { p: 0.09, pr: 0.16, q: 0, r: 0.74, s: -0.55, qrsW: 1.0, st: 0, t: 0.32 },
+          V4: { p: 0.1, pr: 0.16, q: -0.04, r: 1.12, s: -0.24, qrsW: 1.0, st: 0, t: 0.34 },
+          V5: { p: 0.11, pr: 0.16, q: -0.07, r: 1.18, s: -0.12, qrsW: 1.0, st: 0, t: 0.3 },
+          V6: { p: 0.1, pr: 0.16, q: -0.08, r: 0.96, s: -0.06, qrsW: 1.0, st: 0, t: 0.26 },
+        };
+
+        const LEAD_NAMES = Object.keys(STANDARD_12_NORMAL);
+
+        function get12LeadSpecs(cond) {
+          const specs = {};
+          for (const ld of LEAD_NAMES) {
+            specs[ld] = { ...STANDARD_12_NORMAL[ld] };
+          }
+          const tags = {};
+          const id = cond.id;
+
+          if (id === 'afib') {
+            for (const ld of LEAD_NAMES) {
+              specs[ld].p = 0;
+              specs[ld].pBi = 0;
+              specs[ld].pr = 0.14;
+            }
+            tags.V1 = 'Coarse f-waves';
+            tags.II = 'Irregular R-R';
+          } else if (id === 'aflutter') {
+            for (const ld of LEAD_NAMES) {
+              specs[ld].p = 0;
+              specs[ld].pBi = 0;
+              specs[ld].pr = 0.14;
+            }
+            tags.II = 'Sawtooth F';
+            tags.III = 'Sawtooth F';
+            tags.aVF = 'Sawtooth F';
+            tags.V1 = '+F waves';
+          } else if (id === 'svt') {
+            for (const ld of LEAD_NAMES) {
+              specs[ld].p = 0;
+              specs[ld].pBi = 0;
+              specs[ld].pr = 0.11;
+              specs[ld].qrsW = 0.95;
+            }
+            specs.II.s = -0.34;
+            specs.III.s = -0.28;
+            specs.aVF.s = -0.3;
+            specs.V1.rPrime = 0.24;
+            specs.V4.st = -0.06;
+            specs.V5.st = -0.07;
+            specs.V6.st = -0.06;
+            tags.II = 'Pseudo-S';
+            tags.V1 = 'Pseudo-R′';
+          } else if (id === 'wpw') {
+            for (const ld of LEAD_NAMES) {
+              specs[ld].pr = 0.098;
+              specs[ld].qrsW = 1.45;
+              specs[ld].q = 0;
+            }
+            ['I', 'II', 'aVF', 'V1', 'V2', 'V3', 'V4', 'V5', 'V6'].forEach((ld) => {
+              specs[ld].delta = ld === 'V5' || ld === 'V4' ? 0.42 : 0.3;
+              specs[ld].r = Math.max(0.55, specs[ld].r);
+              specs[ld].st = -0.08;
+              specs[ld].t = -0.16;
+            });
+            specs.aVR.delta = -0.28;
+            specs.aVL.delta = -0.18;
+            specs.III.delta = 0.18;
+            tags.II = 'Short PR + Delta';
+            tags.V5 = 'Delta Wave';
+          } else if (id === 'vtach') {
+            const pol = { I: -1, II: 0.65, III: 1, aVR: 1, aVL: -1, aVF: 0.8, V1: 1, V2: 0.85, V3: 0.45, V4: -0.65, V5: -0.95, V6: -1.05 };
+            for (const ld of LEAD_NAMES) {
+              specs[ld] = { vtAmp: Math.abs(pol[ld]) * 1.1, vtPolarity: pol[ld] >= 0 ? 1 : -1 };
+            }
+            tags.aVR = 'Initial +R';
+            tags.V1 = 'Wide Monomorphic';
+            tags.V6 = 'Deep S Concordance';
+          } else if (id === 'stemi_anterior') {
+            specs.V1 = { p: 0.07, pBi: -0.04, pr: 0.16, q: -0.22, r: 0.25, s: -0.3, qrsW: 1.05, st: 0.34, stConvex: true, t: 0.32 };
+            specs.V2 = { p: 0.08, pr: 0.16, q: -0.26, r: 0.38, s: -0.12, qrsW: 1.05, st: 0.48, stConvex: true, t: 0.44 };
+            specs.V3 = { p: 0.1, pr: 0.16, q: -0.28, r: 0.68, s: -0.05, qrsW: 1.05, st: 0.52, stConvex: true, t: 0.48 };
+            specs.V4 = { p: 0.1, pr: 0.16, q: -0.22, r: 0.86, s: -0.05, qrsW: 1.05, st: 0.4, stConvex: true, t: 0.4 };
+            specs.V5.st = 0.2;
+            specs.V5.stConvex = true;
+            specs.I.st = 0.14;
+            specs.aVL.st = 0.18;
+            specs.II.st = -0.18;
+            specs.II.t = -0.12;
+            specs.III.st = -0.24;
+            specs.III.t = -0.16;
+            specs.aVF.st = -0.2;
+            specs.aVF.t = -0.14;
+            tags.V1 = 'ST ↑';
+            tags.V2 = 'Tombstone ST ↑';
+            tags.V3 = 'Tombstone ST ↑';
+            tags.V4 = 'ST ↑ + Q';
+            tags.II = 'Recip ST ↓';
+            tags.III = 'Recip ST ↓';
+            tags.aVF = 'Recip ST ↓';
+          } else if (id === 'stemi_inferior') {
+            for (const ld of LEAD_NAMES) specs[ld].pr = 0.176;
+            specs.II = { ...specs.II, q: -0.22, r: 0.92, s: -0.04, st: 0.36, stConvex: true, t: 0.38 };
+            specs.III = { ...specs.III, q: -0.26, r: 0.64, s: -0.04, st: 0.46, stConvex: true, t: 0.42 };
+            specs.aVF = { ...specs.aVF, q: -0.24, r: 0.78, s: -0.04, st: 0.38, stConvex: true, t: 0.36 };
+            specs.aVL = { ...specs.aVL, st: -0.28, t: -0.2 };
+            specs.I = { ...specs.I, st: -0.16, t: -0.12 };
+            specs.V2.st = -0.12;
+            tags.II = 'ST ↑';
+            tags.III = 'ST ↑ (III > II)';
+            tags.aVF = 'ST ↑';
+            tags.aVL = 'Recip ST ↓';
+            tags.I = 'Recip ST ↓';
+          } else if (id === 'nstemi') {
+            ['I', 'II', 'aVL', 'V3', 'V4', 'V5', 'V6'].forEach((ld) => {
+              specs[ld].st = ld === 'V4' || ld === 'V5' ? -0.28 : -0.2;
+              specs[ld].t = -0.22;
+            });
+            specs.aVR.st = 0.14;
+            specs.aVR.t = 0.12;
+            tags.V4 = 'ST ↓ + T Inv';
+            tags.V5 = 'Horizontal ST ↓';
+            tags.V6 = 'ST ↓';
+            tags.aVR = 'aVR ST ↑';
+          } else if (id === 'first_degree_av_block') {
+            for (const ld of LEAD_NAMES) specs[ld].pr = 0.28;
+            tags.II = 'PR 280 ms';
+            tags.V1 = 'PR 280 ms';
+          } else if (id === 'wenckebach') {
+            tags.II = 'PR Lengthens → Drop';
+            tags.V1 = '4:3 Grouped';
+          } else if (id === 'mobitz_type_ii') {
+            for (const ld of LEAD_NAMES) {
+              specs[ld].pr = 0.164;
+              specs[ld].qrsW = 1.42;
+            }
+            tags.II = 'Fixed PR + Drop';
+            tags.V1 = 'Wide Infranodal';
+          } else if (id === 'complete_av_block') {
+            for (const ld of LEAD_NAMES) specs[ld].qrsW = 1.65;
+            tags.II = 'AV Dissociation';
+            tags.V1 = 'Slow Escape';
+          } else if (id === 'lbbb') {
+            for (const ld of LEAD_NAMES) {
+              specs[ld].pr = 0.168;
+              specs[ld].qrsW = 1.72;
+            }
+            specs.V1 = { p: 0.06, pBi: -0.04, pr: 0.168, q: 0, r: 0.12, s: -1.28, qrsW: 1.72, st: 0.18, t: 0.24 };
+            specs.V2 = { p: 0.08, pr: 0.168, q: 0, r: 0.16, s: -1.34, qrsW: 1.72, st: 0.2, t: 0.26 };
+            specs.V3 = { p: 0.09, pr: 0.168, q: 0, r: 0.26, s: -1.1, qrsW: 1.72, st: 0.14, t: 0.22 };
+            specs.I = { p: 0.1, pr: 0.168, q: 0, r: 0.88, rNotch: 0.76, s: 0, qrsW: 1.72, st: -0.12, t: -0.2 };
+            specs.aVL = { p: 0.06, pr: 0.168, q: 0, r: 0.72, rNotch: 0.64, s: 0, qrsW: 1.72, st: -0.1, t: -0.18 };
+            specs.V5 = { p: 0.11, pr: 0.168, q: 0, r: 1.04, rNotch: 0.9, s: 0, qrsW: 1.72, st: -0.15, t: -0.24 };
+            specs.V6 = { p: 0.11, pr: 0.168, q: 0, r: 1.02, rNotch: 0.88, s: 0, qrsW: 1.72, st: -0.14, t: -0.22 };
+            specs.III = { ...specs.III, q: 0, r: 0.16, s: -0.82 };
+            specs.aVF = { ...specs.aVF, q: 0, r: 0.24, s: -0.68 };
+            tags.V1 = 'Broad QS ("W")';
+            tags.V2 = 'Discordant ST ↑';
+            tags.V6 = 'Notched R ("M")';
+            tags.I = 'Notched R';
+          } else if (id === 'rbbb') {
+            for (const ld of LEAD_NAMES) {
+              specs[ld].pr = 0.164;
+              specs[ld].qrsW = 1.58;
+            }
+            specs.V1 = { p: 0.06, pBi: -0.04, pr: 0.164, q: 0, r: 0.36, s: -0.28, rPrime: 0.88, qrsW: 1.58, st: -0.1, t: -0.22 };
+            specs.V2 = { p: 0.08, pr: 0.164, q: 0, r: 0.44, s: -0.34, rPrime: 0.76, qrsW: 1.58, st: -0.08, t: -0.18 };
+            specs.I = { ...specs.I, s: -0.44, qrsW: 1.58 };
+            specs.aVL = { ...specs.aVL, s: -0.36, qrsW: 1.58 };
+            specs.V5 = { ...specs.V5, s: -0.48, qrsW: 1.58 };
+            specs.V6 = { ...specs.V6, s: -0.46, qrsW: 1.58 };
+            tags.V1 = 'rsR′ Bunny Ears';
+            tags.V2 = 'rsR′ + T Inv';
+            tags.I = 'Slurred S';
+            tags.V6 = 'Slurred S';
+          } else if (id === 'hyperkalemia') {
+            for (const ld of LEAD_NAMES) {
+              specs[ld].p = specs[ld].p * 0.28;
+              specs[ld].pBi = 0;
+              specs[ld].pr = 0.225;
+              specs[ld].qrsW = 1.62;
+              specs[ld].tNarrow = true;
+            }
+            specs.V2.t = 0.86;
+            specs.V3.t = 0.96;
+            specs.V4.t = 0.92;
+            specs.V5.t = 0.78;
+            specs.II.t = 0.72;
+            specs.aVR.t = -0.66;
+            tags.V3 = 'Tented Peaked T';
+            tags.V4 = 'Peaked T';
+            tags.II = 'Flat P · Wide QRS';
+          } else if (id === 'pericarditis') {
+            ['I', 'II', 'III', 'aVL', 'aVF', 'V2', 'V3', 'V4', 'V5', 'V6'].forEach((ld) => {
+              specs[ld].pr = 0.148;
+              specs[ld].prDep = -0.085;
+              specs[ld].q = 0;
+              specs[ld].qrsW = 0.95;
+              specs[ld].st = ld === 'V4' || ld === 'V5' || ld === 'II' ? 0.24 : 0.18;
+              specs[ld].stConcave = true;
+              specs[ld].t = Math.max(0.24, specs[ld].t);
+            });
+            specs.aVR.pr = 0.148;
+            specs.aVR.prDep = 0.085; // PR elevation in aVR
+            specs.aVR.st = -0.18;
+            specs.V1.st = -0.08;
+            tags.II = 'PR↓ + Concave ST↑';
+            tags.V5 = 'Concave ST↑';
+            tags.aVR = 'PR↑ + ST↓';
+          } else if (id === 'hypothermia') {
+            for (const ld of LEAD_NAMES) {
+              specs[ld].pr = 0.215;
+              specs[ld].qrsW = 1.25;
+              specs[ld].jWave = ld === 'aVR' ? -0.22 : ld === 'V1' ? 0.12 : 0.28;
+            }
+            specs.V4.jWave = 0.36;
+            specs.V5.jWave = 0.38;
+            specs.II.jWave = 0.28;
+            tags.V4 = 'Osborn J-Wave';
+            tags.V5 = 'Osborn J-Wave';
+            tags.II = 'Brady + J-Wave';
+          }
+
+          return { specs, tags };
+        }
+
+        function sampleLeadAt(t, cond, leadName, leadSpec) {
+          const sim = cond.sim;
+          let v = 0;
+
+          if (sim.type === 'vfib') {
+            const seed = LEAD_NAMES.indexOf(leadName) * 0.67 + 0.3;
+            v =
+              0.36 * Math.sin(2 * Math.PI * (4.1 + 0.15 * (seed % 1.3)) * t + seed) +
+              0.22 * Math.sin(2 * Math.PI * 6.9 * t + seed * 1.7) +
+              0.14 * Math.cos(2 * Math.PI * 10.8 * t - seed);
+            return leadName === 'aVR' ? -v : v;
+          }
+
+          if (sim.type === 'torsades') {
+            const idx = LEAD_NAMES.indexOf(leadName);
+            const shift = (idx % 4) * 0.28;
+            const pol = leadName === 'aVR' || leadName === 'V1' ? -1 : 1;
+            const spindle = 0.2 + 0.9 * Math.abs(Math.sin(Math.PI * (t / 1.55) + shift * 0.5));
+            const signFlip = Math.sin(Math.PI * (t / 1.55) + shift * 0.5) >= 0 ? 1 : -1;
+            const freq = sim.bpm / 60;
+            const ph = (t * freq + shift * 0.15) % 1;
+            const wave = Math.sin(ph * Math.PI * 2) * 0.72 + Math.sin(ph * Math.PI * 4 + 0.5) * 0.28;
+            return pol * signFlip * spindle * wave;
+          }
+
+          if (sim.type === 'afib') {
+            const fAmp = leadName === 'V1' ? 0.095 : leadName === 'II' || leadName === 'III' || leadName === 'aVF' ? 0.065 : 0.038;
+            const ph = LEAD_NAMES.indexOf(leadName) * 0.42;
+            v +=
+              fAmp * Math.sin(2 * Math.PI * 6.9 * t + ph) +
+              fAmp * 0.65 * Math.sin(2 * Math.PI * 9.7 * t + ph * 1.4);
+          }
+
+          if (sim.type === 'aflutter') {
+            const fPeriod = 60 / sim.flutterBpm;
+            const fPhase = (t % fPeriod) / fPeriod;
+            if (leadName === 'V1') {
+              v += 0.21 * gauss(fPhase, 0.35, 0.16) - 0.05;
+            } else if (leadName === 'II' || leadName === 'III' || leadName === 'aVF') {
+              v += -0.22 * (1 - fPhase) + 0.11;
+            } else if (leadName === 'aVR') {
+              v += 0.15 * (1 - fPhase) - 0.07;
+            } else {
+              v += -0.07 * (1 - fPhase) + 0.035;
+            }
+          }
+
+          if (sim.type === 'complete_block') {
+            for (const ab of stream.activeAtrialBeats) {
+              const u = t - ab.startTime;
+              if (u >= 0 && u <= 0.12) {
+                if (leadSpec.pBi) {
+                  v += leadSpec.p * gauss(u, 0.032, 0.014) + leadSpec.pBi * gauss(u, 0.06, 0.015);
+                } else {
+                  v += (leadSpec.p || 0) * gauss(u, 0.045, 0.018);
+                }
+              }
+            }
+            for (const vb of stream.activeVentBeats) {
+              const u = t - vb.startTime + 0.12;
+              if (u >= 0.08 && u <= 0.65) {
+                v += evalSinusComplex(u, { ...leadSpec, p: 0, pBi: 0, pr: 0.12 });
+              }
+            }
+            return v;
+          }
+
+          if (sim.type === 'vtach') {
+            const period = 60 / sim.bpm;
+            for (const b of stream.activeBeats) {
+              const u = t - b.startTime;
+              if (u >= 0 && u < period) {
+                const ph = u / period;
+                const qrs = gauss(ph, 0.24, 0.085) - 0.45 * gauss(ph, 0.46, 0.11);
+                const tw = -0.32 * gauss(ph, 0.72, 0.13);
+                v += leadSpec.vtPolarity * leadSpec.vtAmp * (qrs + tw);
+              }
+            }
+            return v;
+          }
+
+          for (const b of stream.activeBeats) {
+            const u = t - b.startTime;
+            if (u >= 0 && u <= 0.85) {
+              if (sim.type === 'wenckebach' || sim.type === 'mobitz2') {
+                if (b.dropped) {
+                  if (leadSpec.pBi) {
+                    v += leadSpec.p * gauss(u, 0.032, 0.014) + leadSpec.pBi * gauss(u, 0.06, 0.015);
+                  } else {
+                    v += (leadSpec.p || 0) * gauss(u, 0.045, 0.018);
+                  }
+                } else {
+                  v += evalSinusComplex(u, { ...leadSpec, pr: b.pr });
+                }
+              } else {
+                v += evalSinusComplex(u, leadSpec);
+              }
+            }
+          }
+
+          if (sim.shiver) {
+            v += (0.024 * Math.sin(t * 170) + 0.016 * Math.cos(t * 245 + 1.1)) * (leadName === 'aVR' ? -0.8 : 0.9);
+          }
+
+          return v;
+        }
+
+        // ============================================================
+        // Rendering Dual-Lead & 12-Lead Dynamic ECG Monitors
+        // ============================================================
+        function drawEcgGrid(ctx, w, h) {
+          // 5mm major boxes & 1mm minor boxes
+          const windowSec = state.speedMmPerSec === 50 ? 3.0 : 6.0;
+          const totalSmallBoxes = windowSec / 0.04; // 150 boxes at 25mm/s, 75 at 50mm/s
+          const pxPerMm = w / totalSmallBoxes;
+
+          ctx.lineWidth = 0.6;
+          ctx.strokeStyle = 'rgba(127, 29, 29, 0.22)';
+          ctx.beginPath();
+          for (let x = 0; x <= w; x += pxPerMm) {
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, h);
+          }
+          for (let y = 0; y <= h; y += pxPerMm) {
+            ctx.moveTo(0, y);
+            ctx.lineTo(w, y);
+          }
+          ctx.stroke();
+
+          ctx.lineWidth = 1;
+          ctx.strokeStyle = 'rgba(185, 28, 28, 0.34)';
+          ctx.beginPath();
+          for (let x = 0; x <= w; x += pxPerMm * 5) {
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, h);
+          }
+          for (let y = 0; y <= h; y += pxPerMm * 5) {
+            ctx.moveTo(0, y);
+            ctx.lineTo(w, y);
+          }
+          ctx.stroke();
+
+          return { windowSec, pxPerMm };
+        }
+
+        function render12LeadMonitor(cond) {
+          const dpr = Math.min(window.devicePixelRatio || 1, 2);
+          const rect = ecgCanvas.getBoundingClientRect();
+          const w = Math.max(360, Math.round(rect.width));
+          const h = Math.max(440, Math.round(rect.height));
+          if (ecgCanvas.width !== w * dpr || ecgCanvas.height !== h * dpr) {
+            ecgCanvas.width = w * dpr;
+            ecgCanvas.height = h * dpr;
+          }
+          const ctx = ecgCanvas.getContext('2d');
+          if (!ctx) return;
+
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          ctx.fillStyle = '#080c12';
+          ctx.fillRect(0, 0, w, h);
+
+          const { pxPerMm } = drawEcgGrid(ctx, w, h);
+          const { specs, tags } = get12LeadSpecs(cond);
+
+          const rowH = h / 4;
+          const colW = w / 4;
+          const mvScale = Math.min(pxPerMm * 8.2, rowH * 0.36);
+
+          // Grid dividers separating 4x3 leads and bottom Rhythm II strip
+          ctx.strokeStyle = 'rgba(51, 65, 85, 0.55)';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          for (let r = 1; r <= 3; r++) {
+            ctx.moveTo(0, r * rowH);
+            ctx.lineTo(w, r * rowH);
+          }
+          for (let c = 1; c <= 3; c++) {
+            ctx.moveTo(c * colW, 0);
+            ctx.lineTo(c * colW, rowH * 3);
+          }
+          ctx.stroke();
+
+          // Left 1 mV calibration pulses for all 4 rows
+          const calW = Math.max(10, pxPerMm * 3.5);
+          for (let r = 0; r < 4; r++) {
+            const baseY = r * rowH + rowH * 0.58;
+            const cx = 6;
+            ctx.strokeStyle = r === 3 ? '#38bdf8' : '#34d399';
+            ctx.lineWidth = 1.4;
+            ctx.beginPath();
+            ctx.moveTo(cx, baseY);
+            ctx.lineTo(cx + 3, baseY);
+            ctx.lineTo(cx + 3, baseY - mvScale * 0.8);
+            ctx.lineTo(cx + 3 + calW, baseY - mvScale * 0.8);
+            ctx.lineTo(cx + 3 + calW, baseY);
+            ctx.lineTo(cx + 6 + calW, baseY);
+            ctx.stroke();
+          }
+
+          const colWinSec = state.speedMmPerSec === 50 ? 1.35 : 2.5;
+          const colSweepIdx = Math.floor(stream.simTime / colWinSec);
+          const colCursorFrac = (stream.simTime - colSweepIdx * colWinSec) / colWinSec;
+          const gapFrac = 0.055;
+
+          // Draw 4x3 Lead Matrix
+          for (let r = 0; r < 3; r++) {
+            for (let c = 0; c < 4; c++) {
+              const leadName = TWELVE_LEAD_GRID[r][c];
+              const spec = specs[leadName];
+              const cellX = c * colW;
+              const cellY = r * rowH;
+              const leftPad = c === 0 ? 14 + calW : 10;
+              const traceX = cellX + leftPad;
+              const traceW = colW - leftPad - 8;
+              const baseY = cellY + rowH * 0.58;
+              const color = c >= 2 ? '#67e8f9' : '#34d399';
+              const steps = 105;
+
+              // Previous sweep segment (right of gap)
+              const oldStartF = colCursorFrac + gapFrac;
+              if (colSweepIdx > 0 && oldStartF < 1) {
+                ctx.strokeStyle = color;
+                ctx.globalAlpha = 0.45;
+                ctx.lineWidth = 1.65;
+                ctx.beginPath();
+                let started = false;
+                for (let i = Math.ceil(oldStartF * steps); i <= steps; i++) {
+                  const f = i / steps;
+                  const t = (colSweepIdx - 1) * colWinSec + f * colWinSec;
+                  if (t < 0) continue;
+                  const val = sampleLeadAt(t, cond, leadName, spec);
+                  const x = traceX + f * traceW;
+                  const y = Math.max(cellY + 8, Math.min(cellY + rowH - 8, baseY - val * mvScale));
+                  if (!started) {
+                    ctx.moveTo(x, y);
+                    started = true;
+                  } else {
+                    ctx.lineTo(x, y);
+                  }
+                }
+                ctx.stroke();
+              }
+
+              // Fresh live sweep segment (left of cursor)
+              ctx.strokeStyle = color;
+              ctx.globalAlpha = 1;
+              ctx.lineWidth = 1.85;
+              ctx.beginPath();
+              const curSteps = Math.max(1, Math.floor(colCursorFrac * steps));
+              let headX = traceX;
+              let headY = baseY;
+              for (let i = 0; i <= curSteps; i++) {
+                const f = i === curSteps ? colCursorFrac : i / steps;
+                const t = colSweepIdx * colWinSec + f * colWinSec;
+                const val = sampleLeadAt(t, cond, leadName, spec);
+                headX = traceX + f * traceW;
+                headY = Math.max(cellY + 8, Math.min(cellY + rowH - 8, baseY - val * mvScale));
+                if (i === 0) ctx.moveTo(headX, headY);
+                else ctx.lineTo(headX, headY);
+              }
+              ctx.stroke();
+
+              ctx.fillStyle = '#f8fafc';
+              ctx.beginPath();
+              ctx.arc(headX, headY, 2.2, 0, Math.PI * 2);
+              ctx.fill();
+
+              // Lead Label + Diagnostic Territory Tag
+              ctx.font = '600 11px "IBM Plex Mono", monospace';
+              ctx.fillStyle = color;
+              ctx.textAlign = 'left';
+              ctx.fillText(leadName, cellX + (c === 0 ? 12 + calW : 8), cellY + 15);
+
+              if (state.showAnnotations && tags[leadName]) {
+                ctx.font = '500 9.5px "IBM Plex Mono", monospace';
+                ctx.fillStyle = '#fde68a';
+                ctx.textAlign = 'right';
+                ctx.fillText(tags[leadName], cellX + colW - 8, cellY + 15);
+              }
+            }
+          }
+
+          // Bottom Full-Width Rhythm Strip (Lead II)
+          const rCellY = rowH * 3;
+          const rBaseY = rCellY + rowH * 0.58;
+          const rTraceX = 14 + calW;
+          const rTraceW = w - rTraceX - 10;
+          const rWinSec = state.speedMmPerSec === 50 ? 3.0 : 6.0;
+          const rSweepIdx = Math.floor(stream.simTime / rWinSec);
+          const rCursorFrac = (stream.simTime - rSweepIdx * rWinSec) / rWinSec;
+          const rGapFrac = 0.025;
+          const rSteps = 340;
+          const lead2Spec = specs.II;
+
+          if (rSweepIdx > 0 && rCursorFrac + rGapFrac < 1) {
+            ctx.strokeStyle = '#38bdf8';
+            ctx.globalAlpha = 0.48;
+            ctx.lineWidth = 1.8;
+            ctx.beginPath();
+            let started = false;
+            for (let i = Math.ceil((rCursorFrac + rGapFrac) * rSteps); i <= rSteps; i++) {
+              const f = i / rSteps;
+              const t = (rSweepIdx - 1) * rWinSec + f * rWinSec;
+              if (t < 0) continue;
+              const val = sampleLeadAt(t, cond, 'II', lead2Spec);
+              const x = rTraceX + f * rTraceW;
+              const y = Math.max(rCellY + 8, Math.min(h - 8, rBaseY - val * mvScale));
+              if (!started) {
+                ctx.moveTo(x, y);
+                started = true;
+              } else {
+                ctx.lineTo(x, y);
+              }
+            }
+            ctx.stroke();
+          }
+
+          ctx.strokeStyle = '#38bdf8';
+          ctx.globalAlpha = 1;
+          ctx.lineWidth = 2.0;
+          ctx.beginPath();
+          const rCurSteps = Math.max(1, Math.floor(rCursorFrac * rSteps));
+          let rHeadX = rTraceX;
+          let rHeadY = rBaseY;
+          for (let i = 0; i <= rCurSteps; i++) {
+            const f = i === rCurSteps ? rCursorFrac : i / rSteps;
+            const t = rSweepIdx * rWinSec + f * rWinSec;
+            const val = sampleLeadAt(t, cond, 'II', lead2Spec);
+            rHeadX = rTraceX + f * rTraceW;
+            rHeadY = Math.max(rCellY + 8, Math.min(h - 8, rBaseY - val * mvScale));
+            if (i === 0) ctx.moveTo(rHeadX, rHeadY);
+            else ctx.lineTo(rHeadX, rHeadY);
+          }
+          ctx.stroke();
+
+          ctx.fillStyle = '#f8fafc';
+          ctx.beginPath();
+          ctx.arc(rHeadX, rHeadY, 2.5, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.font = '600 11px "IBM Plex Mono", monospace';
+          ctx.fillStyle = '#38bdf8';
+          ctx.textAlign = 'left';
+          ctx.fillText('Lead II (Rhythm Strip)', rTraceX, rCellY + 15);
+          ctx.globalAlpha = 1;
+        }
+
+        function renderMonitor(cond) {
+          if (state.viewMode === '12lead') {
+            render12LeadMonitor(cond);
+            return;
+          }
+          const dpr = Math.min(window.devicePixelRatio || 1, 2);
+          const rect = ecgCanvas.getBoundingClientRect();
+          const w = Math.max(320, Math.round(rect.width));
+          const h = Math.max(280, Math.round(rect.height));
+          if (ecgCanvas.width !== w * dpr || ecgCanvas.height !== h * dpr) {
+            ecgCanvas.width = w * dpr;
+            ecgCanvas.height = h * dpr;
+          }
+          const ctx = ecgCanvas.getContext('2d');
+          if (!ctx) return;
+
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          ctx.fillStyle = '#080c12';
+          ctx.fillRect(0, 0, w, h);
+
+          const { windowSec, pxPerMm } = drawEcgGrid(ctx, w, h);
+
+          // Divide into two synchronized lead lanes
+          const ch1BaseY = h * 0.29;
+          const ch2BaseY = h * 0.77;
+          const mvScale = pxPerMm * 10; // 10 mm = 1 mV
+
+          // Channel divider hairline
+          ctx.strokeStyle = 'rgba(30, 41, 59, 0.9)';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(0, h * 0.52);
+          ctx.lineTo(w, h * 0.52);
+          ctx.stroke();
+
+          // Left calibration pulses (1.0 mV square wave) + Lead labels
+          const calStart = 12;
+          const calW = pxPerMm * 5;
+          [
+            { baseY: ch1BaseY, lead: cond.leads[0], color: '#34d399' },
+            { baseY: ch2BaseY, lead: cond.leads[1], color: '#38bdf8' },
+          ].forEach((ch) => {
+            ctx.strokeStyle = ch.color;
+            ctx.lineWidth = 1.6;
+            ctx.beginPath();
+            ctx.moveTo(calStart, ch.baseY);
+            ctx.lineTo(calStart + 4, ch.baseY);
+            ctx.lineTo(calStart + 4, ch.baseY - mvScale * 0.85);
+            ctx.lineTo(calStart + 4 + calW, ch.baseY - mvScale * 0.85);
+            ctx.lineTo(calStart + 4 + calW, ch.baseY);
+            ctx.lineTo(calStart + 8 + calW, ch.baseY);
+            ctx.stroke();
+
+            ctx.font = '600 12px "IBM Plex Mono", monospace';
+            ctx.fillStyle = ch.color;
+            ctx.textAlign = 'left';
+            ctx.fillText(ch.lead, calStart, ch.baseY - mvScale * 0.85 - 8);
+          });
+
+          const traceLeft = calStart + calW + 18;
+          const traceW = w - traceLeft - 8;
+          const visSamples = Math.floor(windowSec * SAMPLE_RATE);
+          const cursorPos = stream.writeIdx % visSamples;
+          const gapSamples = Math.floor(0.14 * SAMPLE_RATE);
+
+          function drawChannelTrace(buf, baseY, color) {
+            // Draw two contiguous segments leaving an authentic erase gap ahead of cursor
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.lineWidth = 2.1;
+
+            // Older segment (right of erase gap)
+            const oldStart = cursorPos + gapSamples;
+            if (oldStart < visSamples) {
+              ctx.strokeStyle = color;
+              ctx.globalAlpha = 0.52;
+              ctx.beginPath();
+              let started = false;
+              for (let i = oldStart; i < visSamples; i++) {
+                const idx = (stream.writeIdx - cursorPos + i - visSamples + BUF_LEN) % BUF_LEN;
+                const x = traceLeft + (i / visSamples) * traceW;
+                const y = baseY - buf[idx] * mvScale * 0.85;
+                if (!started) {
+                  ctx.moveTo(x, y);
+                  started = true;
+                } else {
+                  ctx.lineTo(x, y);
+                }
+              }
+              ctx.stroke();
+            }
+
+            // Fresh live segment (left of cursor)
+            ctx.strokeStyle = color;
+            ctx.globalAlpha = 1;
+            ctx.beginPath();
+            for (let i = 0; i <= cursorPos; i++) {
+              const idx = (stream.writeIdx - cursorPos + i + BUF_LEN) % BUF_LEN;
+              const x = traceLeft + (i / visSamples) * traceW;
+              const y = baseY - buf[idx] * mvScale * 0.85;
+              if (i === 0) ctx.moveTo(x, y);
+              else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+
+            // Glowing sweep head dot
+            const headIdx = (stream.writeIdx - 1 + BUF_LEN) % BUF_LEN;
+            const hx = traceLeft + (cursorPos / visSamples) * traceW;
+            const hy = baseY - buf[headIdx] * mvScale * 0.85;
+            ctx.fillStyle = '#f8fafc';
+            ctx.beginPath();
+            ctx.arc(hx, hy, 2.8, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          drawChannelTrace(stream.ch1, ch1BaseY, '#34d399');
+          drawChannelTrace(stream.ch2, ch2BaseY, '#38bdf8');
+          ctx.globalAlpha = 1;
+
+          // Sweep cursor faint vertical line
+          const cursorX = traceLeft + (cursorPos / visSamples) * traceW;
+          ctx.strokeStyle = 'rgba(248, 250, 252, 0.14)';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(cursorX, 8);
+          ctx.lineTo(cursorX, h - 8);
+          ctx.stroke();
+
+          // Live Waveform Annotations
+          if (state.showAnnotations) {
+            ctx.font = '500 10px "IBM Plex Mono", monospace';
+            ctx.textAlign = 'center';
+            for (const ann of stream.sweepAnnotations) {
+              const age = stream.simTime - ann.time;
+              if (age < 0 || age > windowSec) continue;
+              const sampleBack = Math.round(age * SAMPLE_RATE);
+              const posInWin = (cursorPos - sampleBack + visSamples) % visSamples;
+              // Skip if inside erase gap
+              if (posInWin > cursorPos && posInWin < cursorPos + gapSamples) continue;
+              const x = traceLeft + (posInWin / visSamples) * traceW;
+              const y = ch1BaseY - mvScale * 1.18;
+              ctx.fillStyle = posInWin <= cursorPos ? '#fde68a' : 'rgba(253, 230, 138, 0.5)';
+              ctx.fillText(ann.label, x, Math.max(18, y));
+            }
+          }
+        }
+
+        function renderCompareComplex(cond) {
+          const dpr = Math.min(window.devicePixelRatio || 1, 2);
+          const rect = compareCanvas.getBoundingClientRect();
+          const w = Math.max(280, Math.round(rect.width));
+          const h = Math.max(110, Math.round(rect.height));
+          if (compareCanvas.width !== w * dpr || compareCanvas.height !== h * dpr) {
+            compareCanvas.width = w * dpr;
+            compareCanvas.height = h * dpr;
+          }
+          const ctx = compareCanvas.getContext('2d');
+          if (!ctx) return;
+
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          ctx.fillStyle = '#080c12';
+          ctx.fillRect(0, 0, w, h);
+
+          // Subtle grid
+          ctx.strokeStyle = 'rgba(127, 29, 29, 0.22)';
+          ctx.lineWidth = 0.8;
+          ctx.beginPath();
+          for (let x = 0; x <= w; x += 20) {
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, h);
+          }
+          for (let y = 0; y <= h; y += 20) {
+            ctx.moveTo(0, y);
+            ctx.lineTo(w, y);
+          }
+          ctx.stroke();
+
+          const normalSpec = ECG_CONDITIONS[0].sim.lead1;
+          const baseY = h * 0.68;
+          const mvScale = h * 0.44;
+          const spanSec = 0.82;
+          const padX = 24;
+          const drawW = w - padX * 2;
+
+          // Dashed Normal Sinus Reference
+          ctx.save();
+          ctx.setLineDash([4, 4]);
+          ctx.strokeStyle = '#64748b';
+          ctx.lineWidth = 1.6;
+          ctx.beginPath();
+          for (let i = 0; i <= 220; i++) {
+            const u = (i / 220) * spanSec - 0.06;
+            const v = u >= 0 ? evalSinusComplex(u, normalSpec) : 0;
+            const x = padX + (i / 220) * drawW;
+            const y = baseY - v * mvScale;
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+          ctx.restore();
+
+          // Solid Selected Disease Morphology (Lead 1)
+          ctx.strokeStyle = '#34d399';
+          ctx.lineWidth = 2.3;
+          ctx.beginPath();
+          const sim = cond.sim;
+          for (let i = 0; i <= 220; i++) {
+            const u = (i / 220) * spanSec - 0.06;
+            let v = 0;
+            if (sim.type === 'vfib') {
+              v = 0.34 * Math.sin(u * 26) + 0.18 * Math.cos(u * 42);
+            } else if (sim.type === 'torsades') {
+              const env = 0.3 + 0.8 * Math.sin(Math.max(0, u) * 3.8);
+              v = env * Math.sin(u * 28);
+            } else if (sim.type === 'vtach') {
+              const ph = Math.max(0, u) / 0.42;
+              if (u >= 0 && ph <= 1) {
+                v = (gauss(ph, 0.28, 0.1) - 0.42 * gauss(ph, 0.52, 0.12) - 0.28 * gauss(ph, 0.78, 0.13)) * 1.1;
+              }
+            } else if (sim.type === 'aflutter') {
+              const fP = ((u + 0.6) % 0.2) / 0.2;
+              v = -0.22 * (1 - fP) + 0.11;
+              if (u >= 0.05) v += evalSinusComplex(u, { ...sim.lead1, p: 0 });
+            } else if (sim.type === 'afib') {
+              v = 0.06 * Math.sin(u * 48) + 0.04 * Math.cos(u * 68);
+              if (u >= 0.05) v += evalSinusComplex(u, { ...sim.lead1, p: 0 });
+            } else if (sim.type === 'wenckebach') {
+              v = u >= 0 ? evalSinusComplex(u, { ...sim.lead1, pr: 0.29 }) : 0;
+            } else if (sim.type === 'mobitz2') {
+              v = u >= 0 ? evalSinusComplex(u, sim.lead1) : 0;
+            } else if (sim.type === 'complete_block') {
+              v = (u >= 0 ? sim.lead1.p * gauss(u, 0.045, 0.018) : 0) +
+                (u >= 0.18 ? evalSinusComplex(u - 0.18, { ...sim.lead1, p: 0, pr: 0.12 }) : 0);
+            } else {
+              v = u >= 0 ? evalSinusComplex(u, sim.lead1) : 0;
+            }
+            const x = padX + (i / 220) * drawW;
+            const y = baseY - v * mvScale;
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+
+          // Key hallmark badge label at top-left of comparison box
+          ctx.font = '600 11px "IBM Plex Mono", monospace';
+          ctx.fillStyle = '#fde68a';
+          ctx.textAlign = 'left';
+          ctx.fillText(cond.leads[0] + ': ' + cond.hallmarkShort, 12, 18);
+        }
+
+        // ============================================================
+        // Normal Conduction Pathway, Electrical Vector & Parallel ECG
+        // ============================================================
+        const CONDUCTION_PHASES = [
+          {
+            idx: 0,
+            tStart: 0.0,
+            tEnd: 0.16,
+            uStart: 0.0,
+            uEnd: 0.09,
+            title: '1. SA Node & Atrial Depolarization → P Wave',
+            vectorTag: 'Vector: +55° Inferior-Left (Toward Lead II)',
+            desc: 'SA node fires in the upper right atrium; wavefront spreads downward and leftward across both atria via internodal tracts and Bachmann bundle, inscribing the upright P wave.',
+            vecDeg: 55,
+            vecMag: 0.42,
+            activeNode: 'atria',
+          },
+          {
+            idx: 1,
+            tStart: 0.16,
+            tEnd: 0.3,
+            uStart: 0.09,
+            uEnd: 0.16,
+            title: '2. AV Nodal Physiologic Delay → PR Segment',
+            vectorTag: 'Vector: 0 mV (Isoelectric Pause)',
+            desc: 'Impulse slows through the AV node (~100 ms) so atria finish emptying into ventricles before systole. Net external dipole is zero, keeping the PR segment flat on the baseline.',
+            vecDeg: 55,
+            vecMag: 0.0,
+            activeNode: 'av',
+          },
+          {
+            idx: 2,
+            tStart: 0.3,
+            tEnd: 0.4,
+            uStart: 0.16,
+            uEnd: 0.178,
+            title: '3. Septal Depolarization (Left → Right) → Q Wave',
+            vectorTag: 'Vector: -115° Rightward / Superior (Away from Lead II)',
+            desc: 'His-Purkinje impulses activate the interventricular septum first from left to right; because this brief vector points away from Lead II (+60°), it writes a small negative Q wave.',
+            vecDeg: -115,
+            vecMag: 0.38,
+            activeNode: 'septum',
+          },
+          {
+            idx: 3,
+            tStart: 0.4,
+            tEnd: 0.56,
+            uStart: 0.178,
+            uEnd: 0.205,
+            title: '4. Apex & LV Free Wall Activation → R Wave',
+            vectorTag: 'Vector: +60° Strong Inferior-Left (Directly Toward Lead II)',
+            desc: 'Purkinje fibers rapidly excite the thick left ventricular apex and free wall from endocardium to epicardium. The dominant vector points directly toward Lead II, producing the tall positive R wave.',
+            vecDeg: 60,
+            vecMag: 1.0,
+            activeNode: 'lv_apex',
+          },
+          {
+            idx: 4,
+            tStart: 0.56,
+            tEnd: 0.67,
+            uStart: 0.205,
+            uEnd: 0.235,
+            title: '5. Posterobasal Ventricular Depolarization → S Wave',
+            vectorTag: 'Vector: -125° Superior-Right (Away from Lead II)',
+            desc: 'Final depolarization sweeps upward into the posterobasal ventricular walls away from the Lead II electrode, pulling the pen briefly negative to finish the S wave.',
+            vecDeg: -125,
+            vecMag: 0.46,
+            activeNode: 'base',
+          },
+          {
+            idx: 5,
+            tStart: 0.67,
+            tEnd: 1.0,
+            uStart: 0.235,
+            uEnd: 0.56,
+            title: '6. Plateau & Ventricular Repolarization → ST Segment & T Wave',
+            vectorTag: 'Vector: +55° Epicardial → Endocardial Repolarization',
+            desc: 'Uniform plateau keeps the ST segment flat, then epicardium repolarizes before endocardium (negative charge moving outward creates a positive dipole toward Lead II), generating the upright T wave.',
+            vecDeg: 55,
+            vecMag: 0.52,
+            activeNode: 'repol',
+          },
+        ];
+
+        function getActiveConductionPhase(phase) {
+          for (const p of CONDUCTION_PHASES) {
+            if (phase >= p.tStart && phase <= p.tEnd) return p;
+          }
+          return CONDUCTION_PHASES[CONDUCTION_PHASES.length - 1];
+        }
+
+        function phaseToEcgTimeU(phase) {
+          const p = getActiveConductionPhase(phase);
+          const frac = (phase - p.tStart) / Math.max(0.0001, p.tEnd - p.tStart);
+          return p.uStart + frac * (p.uEnd - p.uStart);
+        }
+
+        function drawArrow(ctx, x1, y1, x2, y2, color, lw) {
+          const ang = Math.atan2(y2 - y1, x2 - x1);
+          const head = 9;
+          ctx.strokeStyle = color;
+          ctx.fillStyle = color;
+          ctx.lineWidth = lw;
+          ctx.lineCap = 'round';
+          ctx.beginPath();
+          ctx.moveTo(x1, y1);
+          ctx.lineTo(x2, y2);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.moveTo(x2, y2);
+          ctx.lineTo(x2 - head * Math.cos(ang - Math.PI / 6), y2 - head * Math.sin(ang - Math.PI / 6));
+          ctx.lineTo(x2 - head * Math.cos(ang + Math.PI / 6), y2 - head * Math.sin(ang + Math.PI / 6));
+          ctx.closePath();
+          ctx.fill();
+        }
+
+        function renderConductionAndParallelEcg() {
+          const pInfo = getActiveConductionPhase(state.conductionPhase);
+          const currentU = phaseToEcgTimeU(state.conductionPhase);
+
+          // Update caption text
+          conductionPhaseTitle.textContent = pInfo.title;
+          conductionVectorTag.textContent = pInfo.vectorTag;
+          conductionPhaseDesc.textContent = pInfo.desc;
+
+          document.querySelectorAll('#conductionPhaseBar .phase-btn').forEach((btn) => {
+            const val = btn.dataset.phase;
+            const isActive = state.conductionAuto
+              ? val === 'auto'
+              : val !== 'auto' && Number(val) === pInfo.idx;
+            btn.classList.toggle('active', isActive);
+          });
+
+          // 1) Render Anatomical Heart + Conduction System + Vector
+          const dpr = Math.min(window.devicePixelRatio || 1, 2);
+          const hRect = conductionHeartCanvas.getBoundingClientRect();
+          const hw = Math.max(240, Math.round(hRect.width));
+          const hh = Math.max(180, Math.round(hRect.height));
+          if (conductionHeartCanvas.width !== hw * dpr || conductionHeartCanvas.height !== hh * dpr) {
+            conductionHeartCanvas.width = hw * dpr;
+            conductionHeartCanvas.height = hh * dpr;
+          }
+          const hctx = conductionHeartCanvas.getContext('2d');
+          if (hctx) {
+            hctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            hctx.fillStyle = '#080c12';
+            hctx.fillRect(0, 0, hw, hh);
+
+            const cx = hw * 0.48;
+            const cy = hh * 0.5;
+            const sc = Math.min(hw / 290, hh / 210);
+
+            hctx.save();
+            hctx.translate(cx, cy);
+            hctx.scale(sc, sc);
+
+            // Outer myocardium silhouette (Right side on viewer's left, Left Apex pointing down-right)
+            hctx.fillStyle = pInfo.activeNode === 'repol' ? '#231624' : '#18141c';
+            hctx.strokeStyle = '#475569';
+            hctx.lineWidth = 2;
+            hctx.beginPath();
+            hctx.moveTo(-55, -52);
+            hctx.bezierCurveTo(-92, -32, -96, 18, -58, 52);
+            hctx.bezierCurveTo(-18, 88, 38, 92, 62, 74); // Apex down-right
+            hctx.bezierCurveTo(88, 54, 92, -18, 62, -48);
+            hctx.bezierCurveTo(36, -74, -22, -72, -55, -52);
+            hctx.closePath();
+            hctx.fill();
+            hctx.stroke();
+
+            // Interatrial & Interventricular Septum + Chamber Cutaway Shading
+            hctx.strokeStyle = 'rgba(100, 116, 139, 0.45)';
+            hctx.lineWidth = 2.5;
+            hctx.beginPath();
+            hctx.moveTo(-6, -54);
+            hctx.lineTo(14, 66);
+            hctx.moveTo(-78, -6);
+            hctx.quadraticCurveTo(0, -14, 76, -4);
+            hctx.stroke();
+
+            // Conduction Tracts (SA -> Internodal -> AV -> His -> RBB/LBB -> Purkinje)
+            const act = pInfo.activeNode;
+            const tractCol = (lit) => (lit ? '#22d3ee' : '#334155');
+
+            // Internodal & Bachmann tracts
+            hctx.lineWidth = act === 'atria' ? 3.2 : 1.8;
+            hctx.strokeStyle = tractCol(act === 'atria');
+            hctx.beginPath();
+            hctx.moveTo(-56, -40);
+            hctx.quadraticCurveTo(-45, -18, -10, -12);
+            hctx.moveTo(-56, -40);
+            hctx.quadraticCurveTo(-20, -48, 36, -34);
+            hctx.stroke();
+
+            // His Bundle + Septal LBB/RBB
+            hctx.lineWidth = act === 'septum' || act === 'lv_apex' ? 3.4 : 2;
+            hctx.strokeStyle = tractCol(act === 'septum' || act === 'lv_apex');
+            hctx.beginPath();
+            hctx.moveTo(-10, -12);
+            hctx.lineTo(0, 6);
+            // Right bundle branch
+            hctx.moveTo(0, 6);
+            hctx.quadraticCurveTo(-12, 34, -36, 52);
+            // Left bundle branch
+            hctx.moveTo(0, 6);
+            hctx.quadraticCurveTo(18, 36, 52, 62);
+            hctx.stroke();
+
+            // Purkinje outer subendocardial branches
+            hctx.lineWidth = act === 'lv_apex' || act === 'base' ? 3 : 1.6;
+            hctx.strokeStyle = tractCol(act === 'lv_apex' || act === 'base');
+            hctx.beginPath();
+            hctx.moveTo(-36, 52);
+            hctx.quadraticCurveTo(-68, 34, -70, 6);
+            hctx.moveTo(52, 62);
+            hctx.quadraticCurveTo(72, 36, 66, 2);
+            hctx.stroke();
+
+            // SA Node
+            hctx.fillStyle = act === 'atria' ? '#fde047' : '#64748b';
+            hctx.beginPath();
+            hctx.arc(-56, -40, act === 'atria' ? 6.5 : 4.5, 0, Math.PI * 2);
+            hctx.fill();
+
+            // AV Node
+            hctx.fillStyle = act === 'av' ? '#fb923c' : act === 'atria' ? '#38bdf8' : '#64748b';
+            hctx.beginPath();
+            hctx.arc(-10, -12, act === 'av' ? 7 : 4.8, 0, Math.PI * 2);
+            hctx.fill();
+
+            // Active depolarization glow highlight on heart region
+            if (act === 'septum') {
+              hctx.fillStyle = 'rgba(244, 63, 94, 0.35)';
+              hctx.beginPath();
+              hctx.ellipse(6, 26, 14, 22, -0.2, 0, Math.PI * 2);
+              hctx.fill();
+            } else if (act === 'lv_apex') {
+              hctx.fillStyle = 'rgba(52, 211, 153, 0.25)';
+              hctx.beginPath();
+              hctx.ellipse(42, 36, 26, 34, -0.4, 0, Math.PI * 2);
+              hctx.fill();
+            } else if (act === 'base') {
+              hctx.fillStyle = 'rgba(251, 191, 36, 0.28)';
+              hctx.beginPath();
+              hctx.ellipse(54, -4, 18, 16, 0, 0, Math.PI * 2);
+              hctx.fill();
+            }
+
+            // Lead II Axis Guide (+60 deg)
+            const lead2Rad = (60 * Math.PI) / 180;
+            hctx.save();
+            hctx.setLineDash([3, 3]);
+            hctx.strokeStyle = 'rgba(56, 189, 248, 0.38)';
+            hctx.lineWidth = 1.2;
+            hctx.beginPath();
+            hctx.moveTo(-36 * Math.cos(lead2Rad), -36 * Math.sin(lead2Rad));
+            hctx.lineTo(84 * Math.cos(lead2Rad), 84 * Math.sin(lead2Rad));
+            hctx.stroke();
+            hctx.restore();
+
+            hctx.font = '600 9px "IBM Plex Mono", monospace';
+            hctx.fillStyle = '#38bdf8';
+            hctx.textAlign = 'left';
+            hctx.fillText('Lead II (+60°)', 46, 86);
+
+            // Instantaneous Mean Electrical Vector Arrow
+            if (pInfo.vecMag > 0.05) {
+              const rad = (pInfo.vecDeg * Math.PI) / 180;
+              const len = 62 * pInfo.vecMag;
+              drawArrow(hctx, 0, 8, Math.cos(rad) * len, 8 + Math.sin(rad) * len, '#fde047', 3.2);
+            } else {
+              hctx.font = '600 9.5px "IBM Plex Mono", monospace';
+              hctx.fillStyle = '#fb923c';
+              hctx.textAlign = 'center';
+              hctx.fillText('AV DELAY', 0, -24);
+            }
+
+            // Chamber & Node Labels
+            hctx.font = '500 9px "IBM Plex Mono", monospace';
+            hctx.fillStyle = '#94a3b8';
+            hctx.textAlign = 'right';
+            hctx.fillText('SA', -64, -40);
+            hctx.fillText('RA', -62, -16);
+            hctx.fillText('RV', -64, 34);
+            hctx.textAlign = 'left';
+            hctx.fillText('LA', 66, -24);
+            hctx.fillText('LV', 74, 34);
+            hctx.restore();
+
+            hctx.font = '600 10px "IBM Plex Mono", monospace';
+            hctx.fillStyle = '#94a3b8';
+            hctx.textAlign = 'left';
+            hctx.fillText('CARDIAC CONDUCTION & VECTOR', 10, 16);
+          }
+
+          // 2) Render Parallel ECG Wave Formation Canvas
+          const pRect = parallelEcgCanvas.getBoundingClientRect();
+          const pw = Math.max(260, Math.round(pRect.width));
+          const ph = Math.max(180, Math.round(pRect.height));
+          if (parallelEcgCanvas.width !== pw * dpr || parallelEcgCanvas.height !== ph * dpr) {
+            parallelEcgCanvas.width = pw * dpr;
+            parallelEcgCanvas.height = ph * dpr;
+          }
+          const pctx = parallelEcgCanvas.getContext('2d');
+          if (pctx) {
+            pctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            pctx.fillStyle = '#080c12';
+            pctx.fillRect(0, 0, pw, ph);
+
+            // Grid
+            pctx.strokeStyle = 'rgba(127, 29, 29, 0.22)';
+            pctx.lineWidth = 0.8;
+            pctx.beginPath();
+            for (let x = 0; x <= pw; x += 22) {
+              pctx.moveTo(x, 0);
+              pctx.lineTo(x, ph);
+            }
+            for (let y = 0; y <= ph; y += 22) {
+              pctx.moveTo(0, y);
+              pctx.lineTo(pw, y);
+            }
+            pctx.stroke();
+
+            const normalSpec = ECG_CONDITIONS[0].sim.lead1;
+            const baseY = ph * 0.68;
+            const mvScale = ph * 0.44;
+            const padX = 18;
+            const drawW = pw - padX * 2;
+            const totalU = 0.56;
+
+            // Ghost full normal complex
+            pctx.strokeStyle = 'rgba(71, 85, 105, 0.45)';
+            pctx.lineWidth = 1.6;
+            pctx.beginPath();
+            for (let i = 0; i <= 180; i++) {
+              const u = (i / 180) * totalU;
+              const v = evalSinusComplex(u, normalSpec);
+              const x = padX + (u / totalU) * drawW;
+              const y = baseY - v * mvScale;
+              if (i === 0) pctx.moveTo(x, y);
+              else pctx.lineTo(x, y);
+            }
+            pctx.stroke();
+
+            // Active live-forming trace up to currentU
+            pctx.strokeStyle = '#34d399';
+            pctx.lineWidth = 2.6;
+            pctx.beginPath();
+            const steps = Math.max(2, Math.round((currentU / totalU) * 180));
+            let headX = padX;
+            let headY = baseY;
+            for (let i = 0; i <= steps; i++) {
+              const u = (i / steps) * currentU;
+              const v = evalSinusComplex(u, normalSpec);
+              headX = padX + (u / totalU) * drawW;
+              headY = baseY - v * mvScale;
+              if (i === 0) pctx.moveTo(headX, headY);
+              else pctx.lineTo(headX, headY);
+            }
+            pctx.stroke();
+
+            // Glowing sweep head dot + vertical cursor
+            pctx.strokeStyle = 'rgba(253, 224, 71, 0.35)';
+            pctx.lineWidth = 1;
+            pctx.beginPath();
+            pctx.moveTo(headX, 24);
+            pctx.lineTo(headX, ph - 16);
+            pctx.stroke();
+
+            pctx.fillStyle = '#fde047';
+            pctx.beginPath();
+            pctx.arc(headX, headY, 3.8, 0, Math.PI * 2);
+            pctx.fill();
+
+            // Wave Component Labels
+            const markers = [
+              { u: 0.045, label: 'P', dy: -22 },
+              { u: 0.125, label: 'PR', dy: 16 },
+              { u: 0.168, label: 'Q', dy: 20 },
+              { u: 0.19, label: 'R', dy: -94 },
+              { u: 0.214, label: 'S', dy: 26 },
+              { u: 0.29, label: 'ST', dy: 16 },
+              { u: 0.385, label: 'T', dy: -36 },
+            ];
+            pctx.font = '600 10px "IBM Plex Mono", monospace';
+            pctx.textAlign = 'center';
+            for (const m of markers) {
+              const mx = padX + (m.u / totalU) * drawW;
+              const passed = currentU >= m.u - 0.015;
+              pctx.fillStyle = passed ? '#fde68a' : '#64748b';
+              pctx.fillText(m.label, mx, baseY + m.dy);
+            }
+
+            pctx.font = '600 10px "IBM Plex Mono", monospace';
+            pctx.fillStyle = '#94a3b8';
+            pctx.textAlign = 'left';
+            pctx.fillText('PARALLEL LEAD II ECG FORMATION', 10, 16);
+          }
+        }
+
+        // ============================================================
+        // UI Rendering & Filtering
+        // ============================================================
+        function getFilteredConditions() {
+          const q = state.search.trim().toLowerCase();
+          return ECG_CONDITIONS.filter((c) => {
+            const matchCat = state.filter === 'all' || c.category === state.filter;
+            if (!matchCat) return false;
+            if (!q) return true;
+            return (
+              c.name.toLowerCase().includes(q) ||
+              c.hallmarkShort.toLowerCase().includes(q) ||
+              c.categoryLabel.toLowerCase().includes(q)
+            );
+          });
+        }
+
+        function renderDiseaseList() {
+          const items = getFilteredConditions();
+          diseaseCount.textContent = items.length + ' / ' + ECG_CONDITIONS.length;
+          diseaseList.innerHTML = '';
+
+          if (items.length === 0) {
+            const empty = document.createElement('div');
+            empty.className = 'empty-state';
+            empty.textContent = 'No matching cardiac conditions.';
+            diseaseList.appendChild(empty);
+            return;
+          }
+
+          for (const c of items) {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'disease-item' + (c.id === state.selectedId ? ' active' : '');
+
+            const nm = document.createElement('span');
+            nm.className = 'disease-item-name';
+            nm.textContent = c.name;
+
+            const mt = document.createElement('span');
+            mt.className = 'disease-item-meta font-mono';
+            mt.textContent = c.telemetry.hr + ' · ' + c.leads.join(' / ');
+
+            btn.appendChild(nm);
+            btn.appendChild(mt);
+            btn.addEventListener('click', () => selectCondition(c.id));
+            diseaseList.appendChild(btn);
+          }
+        }
+
+        function renderInspectorAndTelemetry(cond) {
+          telHr.textContent = cond.telemetry.hr;
+          telPr.textContent = cond.telemetry.pr;
+          telQrs.textContent = cond.telemetry.qrs;
+          telQtSt.textContent = cond.telemetry.qtSt;
+          telRhythm.textContent = cond.telemetry.rhythm;
+
+          leadConfigText.textContent =
+            state.viewMode === '12lead'
+              ? '12-Lead Standard (4×3 + Lead II Rhythm) · 10 mm/mV · ' + state.speedMmPerSec + ' mm/s'
+              : 'Dual-Lead Telemetry (' +
+                cond.leads[0] +
+                ' + ' +
+                cond.leads[1] +
+                ') · 10 mm/mV · ' +
+                state.speedMmPerSec +
+                ' mm/s';
+          sweepStatusText.textContent = state.playing ? 'Live Sweep Active' : 'Strip Frozen';
+          compareHeading.textContent = 'Single-Beat Overlay (' + cond.leads[0] + ' vs Normal Sinus)';
+
+          expCategory.textContent = cond.categoryLabel;
+          expLeads.textContent = cond.leads.join(' & ');
+          expUrgency.textContent = cond.urgency;
+          expTitle.textContent = cond.name;
+
+          expCriteria.innerHTML = '';
+          for (const item of cond.criteria) {
+            const li = document.createElement('li');
+            li.textContent = item;
+            expCriteria.appendChild(li);
+          }
+
+          expMechanism.textContent = cond.mechanism;
+          expCauses.textContent = cond.causes;
+          expManagement.textContent = cond.management;
+        }
+
+        function renderControls() {
+          document.querySelectorAll('#filterBar .seg-btn').forEach((btn) => {
+            btn.classList.toggle('active', btn.dataset.filter === state.filter);
+          });
+          playBtnText.textContent = state.playing ? 'Freeze Strip' : 'Resume Sweep';
+          twelveLeadBtnText.textContent = state.viewMode === '12lead' ? '12-Lead ECG: On' : '12-Lead ECG';
+          twelveLeadBtn.classList.toggle('active-cyan', state.viewMode === '12lead');
+          twelveLeadBtn.setAttribute('aria-pressed', String(state.viewMode === '12lead'));
+          ecgCanvas.classList.toggle('mode-12lead', state.viewMode === '12lead');
+          soundBtnText.textContent = state.soundOn ? 'Monitor Sound: On' : 'Monitor Sound: Off';
+          soundBtn.classList.toggle('active-cyan', state.soundOn);
+          soundBtn.setAttribute('aria-pressed', String(state.soundOn));
+          speedBtnText.textContent = state.speedMmPerSec + ' mm/s';
+          annotationsBtn.classList.toggle('active-cyan', state.showAnnotations);
+        }
+
+        function selectCondition(id) {
+          const cond = ECG_CONDITIONS.find((c) => c.id === id) || ECG_CONDITIONS[0];
+          state.selectedId = cond.id;
+          resetStream(cond);
+
+          // Pre-fill 2.4 seconds of initial trace immediately so strip never looks empty on click
+          const prefillSteps = Math.floor(2.4 * SAMPLE_RATE);
+          for (let i = 0; i < prefillSteps; i++) {
+            stream.simTime += 1 / SAMPLE_RATE;
+            scheduleNextBeat(cond, false);
+            const [v1, v2] = sampleConditionAt(stream.simTime, cond);
+            const idx = stream.writeIdx % BUF_LEN;
+            stream.ch1[idx] = v1;
+            stream.ch2[idx] = v2;
+            stream.writeIdx++;
+          }
+          pruneOldBeats();
+          renderAll();
+        }
+
+        function renderAll() {
+          const cond = ECG_CONDITIONS.find((c) => c.id === state.selectedId) || ECG_CONDITIONS[0];
+          renderControls();
+          renderDiseaseList();
+          renderInspectorAndTelemetry(cond);
+          renderMonitor(cond);
+          renderCompareComplex(cond);
+          renderConductionAndParallelEcg();
+        }
+
+        // Animation Loop (sample-exact timing)
+        let lastFrameTs = performance.now();
+        let timeAccumulator = 0;
+        const STEP_DT = 1 / SAMPLE_RATE;
+        function tick(now) {
+          const dt = Math.min(0.05, Math.max(0, (now - lastFrameTs) / 1000));
+          lastFrameTs = now;
+
+          const cond = ECG_CONDITIONS.find((c) => c.id === state.selectedId) || ECG_CONDITIONS[0];
+          if (state.playing) {
+            timeAccumulator += dt;
+            while (timeAccumulator >= STEP_DT) {
+              stream.simTime += STEP_DT;
+              scheduleNextBeat(cond, true);
+              while (stream.pendingBeeps.length && stream.pendingBeeps[0].time <= stream.simTime) {
+                const beep = stream.pendingBeeps.shift();
+                playMonitorBeep(beep.kind);
+              }
+              const [v1, v2] = sampleConditionAt(stream.simTime, cond);
+              const idx = stream.writeIdx % BUF_LEN;
+              stream.ch1[idx] = v1;
+              stream.ch2[idx] = v2;
+              stream.writeIdx++;
+              timeAccumulator -= STEP_DT;
+            }
+            pruneOldBeats();
+          } else {
+            timeAccumulator = 0;
+          }
+
+          if (state.conductionAuto) {
+            state.conductionPhase = (state.conductionPhase + dt / 3.0) % 1.0;
+          }
+
+          renderMonitor(cond);
+          renderConductionAndParallelEcg();
+          requestAnimationFrame(tick);
+        }
+
+        // Event Bindings
+        document.querySelectorAll('#filterBar .seg-btn').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            state.filter = btn.dataset.filter;
+            renderAll();
+          });
+        });
+
+        document.querySelectorAll('.topnav-btn').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            if (btn.dataset.nav) state.filter = btn.dataset.nav;
+            if (btn.dataset.select) {
+              selectCondition(btn.dataset.select);
+            } else {
+              renderAll();
+            }
+          });
+        });
+
+        document.querySelectorAll('#conductionPhaseBar .phase-btn').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const p = btn.dataset.phase;
+            if (p === 'auto') {
+              state.conductionAuto = true;
+            } else {
+              state.conductionAuto = false;
+              const info = CONDUCTION_PHASES[Number(p)] || CONDUCTION_PHASES[0];
+              state.conductionPhase = (info.tStart + info.tEnd) * 0.5;
+            }
+            renderConductionAndParallelEcg();
+          });
+        });
+
+        diseaseSearch.addEventListener('input', (e) => {
+          state.search = e.target.value;
+          renderDiseaseList();
+        });
+
+        togglePlayBtn.addEventListener('click', () => {
+          state.playing = !state.playing;
+          renderAll();
+        });
+
+        twelveLeadBtn.addEventListener('click', () => {
+          state.viewMode = state.viewMode === '12lead' ? 'dual' : '12lead';
+          renderAll();
+        });
+
+        soundBtn.addEventListener('click', () => {
+          state.soundOn = !state.soundOn;
+          if (state.soundOn) {
+            ensureAudioCtx();
+            playMonitorBeep('qrs');
+          }
+          renderControls();
+        });
+
+        speedBtn.addEventListener('click', () => {
+          state.speedMmPerSec = state.speedMmPerSec === 25 ? 50 : 25;
+          renderAll();
+        });
+
+        annotationsBtn.addEventListener('click', () => {
+          state.showAnnotations = !state.showAnnotations;
+          renderAll();
+        });
+
+        window.addEventListener('resize', () => {
+          const cond = ECG_CONDITIONS.find((c) => c.id === state.selectedId) || ECG_CONDITIONS[0];
+          renderCompareComplex(cond);
+          renderConductionAndParallelEcg();
+        });
+
+
+        selectCondition('normal_sinus');
+        requestAnimationFrame(tick);
+      })();
+    </script>
+
+
+</div></body></html>
