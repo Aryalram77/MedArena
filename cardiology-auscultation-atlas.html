@@ -1,0 +1,1185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MedArena Atlas — Cardiology Auscultation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Source+Serif+4:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-canvas: #090d14;
+      --bg-header: #0b101b;
+      --bg-panel: #0d121c;
+      --border: #1e293b;
+      --text-main: #f8fafc;
+      --text-sub: #cbd5e1;
+      --text-muted: #94a3b8;
+      --accent: #22d3ee;
+      --amber: #fbbf24;
+      --emerald: #34d399;
+      --sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      --font-explanation: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: var(--bg-canvas);
+      color: var(--text-main);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+    .app {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+    }
+    header {
+      height: 56px;
+      flex-shrink: 0;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-header);
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+    .brand {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      overflow-x: auto;
+    }
+    .nav-btn {
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--text-muted);
+      font-family: var(--sans);
+      font-size: 12.5px;
+      font-weight: 500;
+      padding: 6px 2px;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .nav-btn:hover { color: var(--text-main); }
+    .nav-btn.active { color: #67e8f9; border-bottom-color: var(--accent); }
+    .cta-btn {
+      background: var(--accent);
+      color: #020617;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-family: var(--sans);
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .cta-btn:hover { background: #67e8f9; }
+    main {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      overflow: hidden;
+    }
+    .viewport {
+      position: relative;
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-canvas);
+      overflow: hidden;
+      user-select: none;
+    }
+    .chest-stage {
+      position: relative;
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 16px 118px;
+      cursor: none;
+    }
+    .chest-stage.pinned { cursor: pointer; }
+    .chest-svg {
+      width: 100%;
+      height: 100%;
+      max-width: 660px;
+      max-height: 680px;
+      display: block;
+    }
+    .hud-tl {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      pointer-events: none;
+      background: rgba(11, 16, 27, 0.92);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      max-width: 330px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .hud-tr {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .audio-prompt {
+      background: var(--amber);
+      color: #020617;
+      border: none;
+      border-radius: 8px;
+      padding: 7px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .hint-box {
+      pointer-events: none;
+      background: rgba(11, 16, 27, 0.9);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .dock {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(920px, calc(100% - 24px));
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(13, 19, 32, 0.95);
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+    }
+    .dock-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      overflow-x: auto;
+    }
+    .dock-row.zones {
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(30,41,59,0.85);
+    }
+    .dock-row.controls {
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .chip-btn {
+      padding: 5px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: #0f172a;
+      color: var(--text-sub);
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .chip-btn:hover { border-color: #475569; color: #fff; }
+    .chip-btn.active {
+      background: rgba(34, 211, 238, 0.16);
+      border-color: rgba(34, 211, 238, 0.65);
+      color: #a5f3fc;
+    }
+    .chip-btn.best {
+      background: rgba(251, 191, 36, 0.12);
+      border-color: rgba(251, 191, 36, 0.45);
+      color: #fde68a;
+    }
+    .seg-group {
+      display: inline-flex;
+      border: 1px solid #334155;
+      background: #020617;
+      border-radius: 6px;
+      padding: 2px;
+    }
+    .seg-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .seg-btn.active {
+      background: var(--accent);
+      color: #020617;
+      font-weight: 600;
+    }
+    .rate-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 210px;
+    }
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 130px;
+      height: 7px;
+      border-radius: 999px;
+      background: #1e293b;
+      outline: none;
+      cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid #090d14;
+      cursor: pointer;
+    }
+    aside {
+      width: 490px;
+      flex-shrink: 0;
+      background: var(--bg-panel);
+      border-left: 1px solid var(--border);
+      overflow-y: auto;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+    .muted { color: var(--text-muted); }
+    .cyan { color: var(--accent); }
+    .amber { color: var(--amber); }
+    h1 {
+      margin: 4px 0 0;
+      font-size: 20px;
+      line-height: 1.3;
+      color: var(--text-main);
+      text-wrap: balance;
+    }
+    .card {
+      border: 1px solid var(--border);
+      background: var(--bg-canvas);
+      border-radius: 10px;
+      padding: 14px;
+    }
+    .pcg-wrap {
+      border: 1px solid var(--border);
+      background: var(--bg-canvas);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .pcg-head {
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+    }
+    canvas#pcgCanvas {
+      width: 100%;
+      height: 136px;
+      display: block;
+    }
+    .metrics-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .cond-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px;
+    }
+    .cond-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg-canvas);
+      color: var(--text-sub);
+      font-size: 12px;
+      text-align: left;
+      cursor: pointer;
+    }
+    .cond-btn:hover { border-color: #475569; color: #fff; }
+    .cond-btn.active {
+      background: #1e293b;
+      border-color: rgba(34, 211, 238, 0.7);
+      color: #a5f3fc;
+      font-weight: 600;
+    }
+    .cond-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .atlas-back {
+      margin-right: 6px;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .atlas-back:hover {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    html.atlas-embed header { display: none; }
+    #siteNote, #briefExp, #whatYouHear, #mechText, #tipText {
+      font-family: var(--font-explanation);
+    }
+    .atlas-copyright {
+      flex-shrink: 0;
+      padding: 6px 12px;
+      border-top: 1px solid var(--border);
+      background: var(--bg-header);
+      color: var(--text-muted);
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.02em;
+      text-align: center;
+    }
+    @media (max-width: 1024px) {
+      .app { height: auto; min-height: 100vh; overflow: auto; }
+      main { flex-direction: column; overflow: visible; }
+      .viewport { min-height: 600px; }
+      aside { width: 100%; border-left: none; border-top: 1px solid var(--border); }
+      nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    if (new URLSearchParams(window.location.search).get('embed') === '1') {
+      document.documentElement.classList.add('atlas-embed');
+    }
+  </script>
+<div class="app">
+  <header>
+    <span class="brand"><a class="atlas-back" href="index.html" aria-label="Back to MedArena">← MedArena</a> · Cardiology Auscultation</span>
+    <nav id="topNav"></nav>
+    <button id="topAudioBtn" class="cta-btn" type="button">Enable Audio</button>
+  </header>
+
+  <main>
+    <section class="viewport">
+      <div id="chestStage" class="chest-stage">
+        <svg id="chestSvg" class="chest-svg" viewBox="0 0 640 680" aria-label="Interactive Thorax Auscultation Map">
+          <defs>
+            <radialGradient id="bgGlow" cx="50%" cy="46%" r="52%">
+              <stop offset="0%" stop-color="#172338" stop-opacity="0.85" />
+              <stop offset="100%" stop-color="#090d14" stop-opacity="0" />
+            </radialGradient>
+            <linearGradient id="torsoGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#162032" />
+              <stop offset="100%" stop-color="#0e1524" />
+            </linearGradient>
+            <linearGradient id="boneGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#cbd5e1" stop-opacity="0.34" />
+              <stop offset="100%" stop-color="#94a3b8" stop-opacity="0.16" />
+            </linearGradient>
+            <radialGradient id="heartGrad" cx="45%" cy="42%" r="60%">
+              <stop offset="0%" stop-color="#f43f5e" stop-opacity="0.58" />
+              <stop offset="65%" stop-color="#be123c" stop-opacity="0.42" />
+              <stop offset="100%" stop-color="#881337" stop-opacity="0.22" />
+            </radialGradient>
+            <radialGradient id="stethMetal" cx="35%" cy="30%" r="70%">
+              <stop offset="0%" stop-color="#f8fafc" />
+              <stop offset="45%" stop-color="#cbd5e1" />
+              <stop offset="100%" stop-color="#475569" />
+            </radialGradient>
+            <radialGradient id="stethMembrane" cx="40%" cy="35%" r="65%">
+              <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.32" />
+              <stop offset="80%" stop-color="#0f172a" stop-opacity="0.72" />
+              <stop offset="100%" stop-color="#0284c7" stop-opacity="0.55" />
+            </radialGradient>
+          </defs>
+          <rect x="0" y="0" width="640" height="680" fill="url(#bgGlow)" />
+          <path d="M 270 52 L 266 132 C 254 152 175 162 122 190 C 90 208 74 260 80 340 L 94 585 L 546 585 L 560 340 C 566 260 550 208 518 190 C 465 162 386 152 374 132 L 370 52 Z" fill="url(#torsoGrad)" stroke="#27354d" stroke-width="2" />
+          <path d="M 304 205 C 296 165 288 128 282 72" fill="none" stroke="#fb7185" stroke-width="6" stroke-opacity="0.25" stroke-linecap="round" />
+          <path d="M 336 205 C 344 165 352 128 358 72" fill="none" stroke="#fb7185" stroke-width="5" stroke-opacity="0.16" stroke-linecap="round" />
+          <path d="M 302 184 C 242 180 184 226 172 315 C 164 374 176 428 212 436 C 248 442 278 418 298 392 Z" fill="#1e293b" fill-opacity="0.32" stroke="#334155" stroke-width="1.2" />
+          <path d="M 338 184 C 398 180 456 226 468 315 C 476 374 464 428 428 436 C 392 442 362 418 342 392 Z" fill="#1e293b" fill-opacity="0.32" stroke="#334155" stroke-width="1.2" />
+          <g id="heartGroup">
+            <path d="M 282 212 L 284 274" stroke="#3b82f6" stroke-width="16" stroke-opacity="0.28" stroke-linecap="round" />
+            <path d="M 326 276 C 324 222 308 184 328 176 C 350 168 358 205 354 242" fill="none" stroke="#fb7185" stroke-width="18" stroke-opacity="0.38" stroke-linecap="round" />
+            <path d="M 340 282 C 348 248 364 226 382 216" fill="none" stroke="#60a5fa" stroke-width="15" stroke-opacity="0.34" stroke-linecap="round" />
+            <path d="M 294 268 C 272 288 268 348 296 382 C 330 418 416 434 438 416 C 456 400 434 324 392 276 C 368 250 318 250 294 268 Z" fill="url(#heartGrad)" stroke="#fb7185" stroke-opacity="0.52" stroke-width="2" />
+            <path d="M 348 298 C 366 336 392 376 420 404" fill="none" stroke="#fda4af" stroke-opacity="0.24" stroke-width="1.5" stroke-dasharray="4 4" />
+          </g>
+          <g fill="none" stroke="url(#boneGrad)" stroke-linecap="round">
+            <path d="M 304 176 C 254 156 184 156 130 182" stroke-width="11" />
+            <path d="M 336 176 C 386 156 456 156 510 182" stroke-width="11" />
+            <g stroke-width="9" opacity="0.72">
+              <path d="M 302 196 C 236 192, 175 186, 164 204" /><path d="M 338 196 C 404 192, 465 186, 476 204" />
+              <path d="M 302 222 C 224 218, 153 220, 140 238" /><path d="M 338 222 C 416 218, 487 220, 500 238" />
+              <path d="M 302 262 C 214 258, 133 270, 118 288" /><path d="M 338 262 C 426 258, 507 270, 522 288" />
+              <path d="M 302 308 C 208 304, 122 324, 106 342" /><path d="M 338 308 C 432 304, 518 324, 534 342" />
+              <path d="M 302 356 C 209 352, 123 378, 108 396" /><path d="M 338 356 C 431 352, 517 378, 532 396" />
+              <path d="M 302 404 C 218 400, 142 428, 128 446" /><path d="M 338 404 C 422 400, 498 428, 512 446" />
+            </g>
+            <path d="M 303 176 L 337 176 L 333 216 L 335 376 L 320 404 L 305 376 L 307 216 Z" fill="#94a3b8" fill-opacity="0.18" stroke="#cbd5e1" stroke-opacity="0.34" stroke-width="1.6" />
+            <line x1="304" y1="216" x2="336" y2="216" stroke="#e2e8f0" stroke-opacity="0.45" stroke-width="1.5" />
+          </g>
+          <text x="120" y="148" fill="#64748b" font-size="11" font-family="var(--mono)">Patient Right</text>
+          <text x="456" y="148" fill="#64748b" font-size="11" font-family="var(--mono)">Patient Left</text>
+          <g id="radiationLayer"></g>
+          <g id="zonesLayer"></g>
+          <path id="stethTube" d="M 450 438 C 496 526, 570 585, 600 690" fill="none" stroke="#1e293b" stroke-width="12" stroke-linecap="round" />
+          <g id="stethSprite" transform="translate(438, 416)">
+            <circle id="waveRing" cx="0" cy="0" r="28" fill="none" stroke="#22d3ee" stroke-width="2" opacity="0" />
+            <circle cx="3" cy="5" r="26" fill="#000" fill-opacity="0.42" />
+            <rect x="6" y="12" width="12" height="18" rx="4" transform="rotate(-24 12 20)" fill="#64748b" stroke="#cbd5e1" stroke-width="1.2" />
+            <circle id="stethRim" cx="0" cy="0" r="24" fill="url(#stethMetal)" stroke="#22d3ee" stroke-width="2" />
+            <circle id="stethMem" cx="0" cy="0" r="19" fill="url(#stethMembrane)" stroke="#0f172a" stroke-width="1.8" />
+            <circle cx="0" cy="0" r="3.5" fill="#e2e8f0" />
+            <circle cx="0" cy="0" r="1.5" fill="#0284c7" />
+          </g>
+        </svg>
+
+        <div class="hud-tl">
+          <div class="mono" style="font-size:12px;">
+            <span id="hudZoneName" class="cyan" style="font-weight:600;">Mitral (Apex) Area</span>
+            <span class="muted"> · </span>
+            <span id="hudSignal" style="color:#cbd5e1;">100% Signal</span>
+          </div>
+          <div id="hudLandmark" style="font-size:11px; color:#cbd5e1; line-height:1.35;"></div>
+          <div id="hudBest" class="mono amber" style="font-size:11px;"></div>
+        </div>
+
+        <div class="hud-tr">
+          <button id="hudAudioPrompt" class="audio-prompt" type="button">Click to Activate Sound</button>
+          <div id="hudHint" class="hint-box">Move mouse to auscultate · Click chest to pin</div>
+        </div>
+      </div>
+
+      <div class="dock">
+        <div id="zoneDockRow" class="dock-row zones"></div>
+        <div class="dock-row controls">
+          <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px;">
+            <div class="seg-group">
+              <button id="modeDiaBtn" class="seg-btn active" type="button">Diaphragm (High)</button>
+              <button id="modeBellBtn" class="seg-btn" type="button">Bell (Low Rumble)</button>
+            </div>
+            <button id="pinBtn" class="chip-btn" type="button">Follow Mouse</button>
+            <button id="muteBtn" class="chip-btn" type="button">Sound On</button>
+          </div>
+          <div class="rate-box">
+            <label for="bpmSlider" class="mono" style="font-size:12px; color:#cbd5e1; white-space:nowrap;">
+              Rate: <span id="bpmValue" class="cyan" style="font-weight:600;">72 bpm</span>
+            </label>
+            <input id="bpmSlider" type="range" min="32" max="185" step="1" value="72" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <aside>
+      <div>
+        <div id="condMeta" class="mono muted" style="font-size:12px;"></div>
+        <h1 id="condTitle"></h1>
+      </div>
+
+      <div class="pcg-wrap">
+        <div class="pcg-head mono">
+          <span style="color:#cbd5e1;">Live Scrolling ECG &amp; Phonocardiogram</span>
+          <span id="pcgBadge" class="cyan"></span>
+        </div>
+        <canvas id="pcgCanvas"></canvas>
+      </div>
+
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:4px;">
+          <strong id="siteTitle" style="color:#e2e8f0;"></strong>
+          <span id="siteBest" class="mono amber" style="font-size:11px;"></span>
+        </div>
+        <div id="siteNote" style="font-size:12px; color:var(--text-muted); line-height:1.4;"></div>
+      </div>
+
+      <div class="card metrics-3">
+        <div>
+          <div class="mono muted" style="font-size:10.5px;">Timing</div>
+          <div id="mTiming" style="font-size:11.5px; font-weight:600; margin-top:2px;"></div>
+        </div>
+        <div>
+          <div class="mono muted" style="font-size:10.5px;">Pitch &amp; Quality</div>
+          <div id="mPitch" style="font-size:11.5px; font-weight:600; color:#a5f3fc; margin-top:2px;"></div>
+        </div>
+        <div>
+          <div class="mono muted" style="font-size:10.5px;">Envelope Shape</div>
+          <div id="mShape" style="font-size:11.5px; font-weight:600; color:#fcd34d; margin-top:2px;"></div>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-size:12px; font-weight:600; color:#cbd5e1; margin-bottom:4px;">Brief Clinical Overview</div>
+        <div id="briefExp" style="font-size:13px; line-height:1.55; color:#e2e8f0;"></div>
+      </div>
+
+      <div class="card" style="display:flex; flex-direction:column; gap:10px;">
+        <div>
+          <div class="mono cyan" style="font-size:11px; margin-bottom:2px;">What You Hear</div>
+          <div id="whatYouHear" style="font-size:12.5px; line-height:1.5; color:#cbd5e1;"></div>
+        </div>
+        <div style="border-top:1px solid var(--border); padding-top:8px;">
+          <div class="mono amber" style="font-size:11px; margin-bottom:2px;">Hemodynamic &amp; Electrophysiology Mechanism</div>
+          <div id="mechText" style="font-size:12.5px; line-height:1.5; color:#cbd5e1;"></div>
+        </div>
+        <div style="border-top:1px solid var(--border); padding-top:8px;">
+          <div class="mono" style="font-size:11px; color:var(--emerald); margin-bottom:2px;">Bedside Exam &amp; Maneuver Tip</div>
+          <div id="tipText" style="font-size:12.5px; line-height:1.5; color:#cbd5e1;"></div>
+        </div>
+      </div>
+
+      <div style="border-top:1px solid var(--border); padding-top:14px; display:flex; flex-direction:column; gap:10px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:12px; font-weight:600; color:#e2e8f0;">All Cardiac Sounds &amp; Arrhythmias</span>
+          <span class="mono muted" style="font-size:11px;">Starts Normal</span>
+        </div>
+        <div id="catFilters" class="dock-row"></div>
+        <div id="condGrid" class="cond-grid"></div>
+      </div>
+    </aside>
+  </main>
+  <footer class="atlas-copyright">© Dr. Ram Aryal · MedArena Atlas</footer>
+</div>
+
+<script>
+(() => {
+  const ZONES = [{"id":"aortic","shortCode":"A2","name":"Aortic Area","landmark":"2nd Right Intercostal Space (RICS), sternal border","x":274,"y":236,"radius":30,"normalNote":"S2 is normally louder than S1 here (aortic valve closure)."},{"id":"pulmonic","shortCode":"P2","name":"Pulmonic Area","landmark":"2nd Left Intercostal Space (LICS), sternal border","x":366,"y":236,"radius":30,"normalNote":"S2 louder than S1; physiological S2 splitting heard on inspiration."},{"id":"erbs","shortCode":"Erb","name":"Erb's Point","landmark":"3rd Left Intercostal Space (LICS), parasternal border","x":368,"y":292,"radius":28,"normalNote":"S1 and S2 are roughly equal; key site for early diastolic murmurs."},{"id":"tricuspid","shortCode":"T1","name":"Tricuspid Area","landmark":"4th Left Intercostal Space (LICS), lower left sternal border","x":356,"y":354,"radius":30,"normalNote":"S1 is normally louder than S2 here (right ventricular inflow)."},{"id":"mitral","shortCode":"M1","name":"Mitral (Apex) Area","landmark":"5th Left Intercostal Space, midclavicular line (PMI)","x":438,"y":416,"radius":33,"normalNote":"S1 is crisp and louder than S2; best site for S3, S4, and mitral lesions."},{"id":"carotid","shortCode":"Car","name":"Right Carotid Artery","landmark":"Right anterior neck lateral to trachea (radiation site)","x":284,"y":118,"radius":25,"isRadiation":true,"normalNote":"Primary upward radiation pathway for Aortic Stenosis."},{"id":"axilla","shortCode":"Ax","name":"Left Axilla","landmark":"Left lateral chest wall along 5th–6th rib (radiation site)","x":516,"y":392,"radius":26,"isRadiation":true,"normalNote":"Classic lateral radiation zone for Mitral Regurgitation."}];
+  const CONDITIONS = [{"id":"normal","name":"Normal Heart Sounds (S1–S2)","shortName":"Normal (S1–S2)","category":"Normal & Innocent","defaultBpm":72,"recommendedSide":"diaphragm","bestZone":"mitral","radiationZones":[],"timingLabel":"S1 (Systole start) · S2 (Diastole start)","pitchLabel":"Low-Mid \"Lub-Dub\"","shapeLabel":"Crisp Discrete Dual Closure","briefExplanation":"Normal physiological cardiac cycle producing a clean \"Lub-Dub\" cadence without murmurs. S1 marks closure of mitral and tricuspid valves at ventricular systole onset; S2 marks closure of aortic and pulmonic valves at diastole onset.","whatYouHear":"Sharp S1 (\"Lub\") louder at the Apex and Tricuspid areas; crisper higher-pitched S2 (\"Dub\") louder at the Aortic and Pulmonic bases with subtle physiological S2 split at P2.","mechanism":"Sudden deceleration of blood columns against taut AV valve leaflets (S1) and semilunar cusps (S2) generates brief acoustic vibrations.","bedsideTip":"Compare S1 vs S2 loudness as you sweep from the 2nd intercostal base down to the 5th intercostal apex.","zoneWeights":{"aortic":0.92,"pulmonic":0.92,"erbs":0.85,"tricuspid":0.9,"mitral":1,"carotid":0.22,"axilla":0.25},"acoustic":{"s1Amp":0.95,"s2Amp":0.92,"s2SplitMs":14,"s3Amp":0,"s4Amp":0,"openingSnapAmp":0,"midSystolicClickAmp":0,"ejectionClickAmp":0,"murmurTiming":"none","murmurAmp":0,"murmurCenterHz":220,"murmurQ":1.4}},{"id":"innocent_stills","name":"Innocent Flow / Still's Murmur","shortName":"Innocent (Still's)","category":"Normal & Innocent","defaultBpm":86,"recommendedSide":"bell","bestZone":"erbs","radiationZones":["pulmonic","tricuspid"],"timingLabel":"Early-to-Mid Systolic","pitchLabel":"Soft Musical / Vibratory (~150 Hz)","shapeLabel":"Brief Crescendo-Decrescendo","briefExplanation":"Benign functional ejection murmur common in children, athletes, fever, or pregnancy caused by brisk normal blood flow across an unobstructed LV outflow tract.","whatYouHear":"Short, soft vibratory systolic hum between S1 and S2, well before S2, with completely normal S1/S2 splitting and no radiation to the neck.","mechanism":"High-velocity laminar flow causes harmonic vibration of normal left ventricular false tendons or aortic valve cusps without structural valve stenosis.","bedsideTip":"Softens or disappears when standing up (reduced venous return); never loud (>Grade 2/6) and never diastolic.","zoneWeights":{"aortic":0.45,"pulmonic":0.65,"erbs":1,"tricuspid":0.72,"mitral":0.42,"carotid":0.08,"axilla":0.1},"acoustic":{"s1Amp":0.9,"s2Amp":0.9,"s2SplitMs":16,"s3Amp":0,"s4Amp":0,"openingSnapAmp":0,"midSystolicClickAmp":0,"ejectionClickAmp":0,"murmurTiming":"systolic_ejection","murmurAmp":0.34,"murmurCenterHz":175,"murmurQ":2.8}},{"id":"s3_gallop","name":"S3 Ventricular Gallop (Volume Overload)","shortName":"S3 Gallop","category":"Extra Gallops","defaultBpm":84,"recommendedSide":"bell","bestZone":"mitral","radiationZones":["tricuspid"],"timingLabel":"Early Diastole (~140 ms post-S2)","pitchLabel":"Very Low Dull Thud (30–55 Hz)","shapeLabel":"Triple Cadence (\"Ken-tuc-ky\")","briefExplanation":"An extra low-pitched sound right after S2 produced when blood rushes rapidly into a dilated, volume-overloaded or failing left ventricle during early passive filling.","whatYouHear":"A rhythmic 3-beat gallop matching the cadence of \"Ken-tuc-ky\" (S1 — S2 — S3) heard softly at the Apex.","mechanism":"Sudden tensing of chordae tendineae and compliant dilated ventricular walls as rapid early diastolic filling abruptly decelerates.","bedsideTip":"Switch to the Bell lightly over the Mitral Apex in left lateral decubitus; physiological under age 35, but signals systolic heart failure in older adults.","zoneWeights":{"aortic":0.15,"pulmonic":0.18,"erbs":0.32,"tricuspid":0.52,"mitral":1,"carotid":0.05,"axilla":0.35},"acoustic":{"s1Amp":0.85,"s2Amp":0.85,"s2SplitMs":10,"s3Amp":0.95,"s4Amp":0,"openingSnapAmp":0,"midSystolicClickAmp":0,"ejectionClickAmp":0,"murmurTiming":"none","murmurAmp":0,"murmurCenterHz":120,"murmurQ":1.2}},{"id":"s4_gallop","name":"S4 Atrial Gallop (Stiff Ventricle)","shortName":"S4 Gallop","category":"Extra Gallops","defaultBpm":76,"recommendedSide":"bell","bestZone":"mitral","radiationZones":["tricuspid"],"timingLabel":"Late Diastole / Presystolic","pitchLabel":"Very Low Presystolic Thud (30–55 Hz)","shapeLabel":"Triple Cadence (\"Ten-nes-see\")","briefExplanation":"A low-frequency presystolic sound heard just before S1 when strong atrial contraction forces blood into a stiff, hypertrophied, non-compliant ventricle (e.g., chronic hypertension, AS, ischemia).","whatYouHear":"A tight presystolic double-thump (\"Ten-nes-see\": S4–S1 — S2) localized sharply at the Apex.","mechanism":"Reduced ventricular compliance from myocardial hypertrophy or fibrosis resists late active atrial kick, creating low-frequency wall oscillation.","bedsideTip":"Always pathological in adults; disappears in atrial fibrillation because effective atrial kick is lost.","zoneWeights":{"aortic":0.16,"pulmonic":0.16,"erbs":0.3,"tricuspid":0.45,"mitral":1,"carotid":0.05,"axilla":0.28},"acoustic":{"s1Amp":0.9,"s2Amp":0.85,"s2SplitMs":10,"s3Amp":0,"s4Amp":0.95,"openingSnapAmp":0,"midSystolicClickAmp":0,"ejectionClickAmp":0,"murmurTiming":"none","murmurAmp":0,"murmurCenterHz":110,"murmurQ":1.2}},{"id":"aortic_stenosis","name":"Aortic Stenosis (AS)","shortName":"Aortic Stenosis","category":"Systolic Murmurs","defaultBpm":74,"recommendedSide":"diaphragm","bestZone":"aortic","radiationZones":["carotid","erbs","mitral"],"timingLabel":"Mid-Systolic Ejection (Gap after S1)","pitchLabel":"Harsh Raspy Medium-High (~320 Hz)","shapeLabel":"Diamond (Crescendo-Decrescendo)","briefExplanation":"Calcified or bicuspid aortic valve cusps restrict left ventricular outflow, creating high-velocity turbulent systolic jets loudest at the 2nd RICS and radiating upward into the carotids.","whatYouHear":"A rough, rising-and-falling \"whoosh\" peaking mid-systole, followed by a softened/delayed A2 (narrow or paradoxical S2 split).","mechanism":"Narrowed aortic orifice accelerates ejection velocity, producing turbulent eddies along the ascending aortic root and carotid arteries.","bedsideTip":"Confirm upward radiation to the Right Carotid Artery and check for delayed carotid pulse upstroke (pulsus parvus et tardus).","zoneWeights":{"aortic":1,"pulmonic":0.52,"erbs":0.65,"tricuspid":0.35,"mitral":0.38,"carotid":0.84,"axilla":0.1},"acoustic":{"s1Amp":0.85,"s2Amp":0.48,"s2SplitMs":0,"s3Amp":0,"s4Amp":0.25,"openingSnapAmp":0,"midSystolicClickAmp":0,"ejectionClickAmp":0.45,"murmurTiming":"systolic_ejection","murmurAmp":0.92,"murmurCenterHz":330,"murmurQ":1.5}},{"id":"mitral_regurgitation","name":"Mitral Regurgitation (MR)","shortName":"Mitral Regurg","category":"Systolic Murmurs","defaultBpm":80,"recommendedSide":"diaphragm","bestZone":"mitral","radiationZones":["axilla"],"timingLabel":"Holosystolic (Pansystolic S1 -> S2)","pitchLabel":"High-Pitched Blowing (~440 Hz)","shapeLabel":"Uniform Plateau","briefExplanation":"Incompetent mitral valve leaflets allow high-pressure blood to leak backward from the left ventricle into the left atrium throughout all of ventricular systole.","whatYouHear":"A steady, blowing \"shhhhh\" starting immediately with a muffled S1 and extending uniformly right up to S2, radiating laterally to the Left Axilla.","mechanism":"Because LV pressure exceeds LA pressure from isovolumetric contraction until S2, regurgitant flow remains continuous and flat-topped across systole.","bedsideTip":"Trace the stethoscope from the Apex toward the Left Axilla—MR stays loud there; handgrip increases afterload and intensifies MR.","zoneWeights":{"aortic":0.18,"pulmonic":0.16,"erbs":0.32,"tricuspid":0.34,"mitral":1,"carotid":0.05,"axilla":0.82},"acoustic":{"s1Amp":0.55,"s2Amp":0.85,"s2SplitMs":28,"s3Amp":0.28,"s4Amp":0,"openingSnapAmp":0,"midSystolicClickAmp":0,"ejectionClickAmp":0,"murmurTiming":"holosystolic","murmurAmp":0.88,"murmurCenterHz":460,"murmurQ":1.8}},{"id":"mvp","name":"Mitral Valve Prolapse (MVP)","shortName":"Mitral Prolapse","category":"Systolic Murmurs","defaultBpm":78,"recommendedSide":"diaphragm","bestZone":"mitral","radiationZones":["axilla","tricuspid"],"timingLabel":"Mid-Systolic Click + Late Systolic","pitchLabel":"Sharp Click + High Blowing","shapeLabel":"Discrete Click -> Late Crescendo","briefExplanation":"Redundant, myxomatous mitral leaflets billow backward into the left atrium mid-systole once ventricular volume shrinks, snapping taut with a crisp click followed by late mitral leakage.","whatYouHear":"S1 — crisp mid-systolic \"Click!\" — late-systolic blowing murmur running into S2 at the Mitral Apex.","mechanism":"As LV cavity size drops during ejection, elongated chordae reach full tension mid-systole (click) and allow leaflet coaptation failure (late murmur).","bedsideTip":"Standing decreases LV preload, causing the click and murmur to occur earlier in systole; squatting delays them toward S2.","zoneWeights":{"aortic":0.14,"pulmonic":0.15,"erbs":0.36,"tricuspid":0.45,"mitral":1,"carotid":0.05,"axilla":0.55},"acoustic":{"s1Amp":0.88,"s2Amp":0.88,"s2SplitMs":14,"s3Amp":0,"s4Amp":0,"openingSnapAmp":0,"midSystolicClickAmp":1,"ejectionClickAmp":0,"murmurTiming":"late_systolic","murmurAmp":0.72,"murmurCenterHz":440,"murmurQ":2}},{"id":"tricuspid_regurgitation","name":"Tricuspid Regurgitation (TR)","shortName":"Tricuspid Regurg","category":"Systolic Murmurs","defaultBpm":82,"recommendedSide":"diaphragm","bestZone":"tricuspid","radiationZones":["erbs","mitral"],"timingLabel":"Holosystolic (4th LICS)","pitchLabel":"Medium Blowing (~360 Hz)","shapeLabel":"Uniform Plateau (Carvallo Sign)","briefExplanation":"Backward systolic blood flow from the right ventricle into the right atrium across a dilated or damaged tricuspid ring, frequently secondary to pulmonary hypertension.","whatYouHear":"A holosystolic plateau murmur centered sharply at the lower left sternal border (4th LICS), without axillary or carotid radiation.","mechanism":"RV systolic pressure exceeds RA pressure throughout systole, driving regurgitant flow that surges during deep inspiration.","bedsideTip":"Carvallo Sign: Louder during inspiration because negative intrathoracic pressure pulls extra venous blood into the right heart.","zoneWeights":{"aortic":0.18,"pulmonic":0.25,"erbs":0.52,"tricuspid":1,"mitral":0.42,"carotid":0.05,"axilla":0.12},"acoustic":{"s1Amp":0.78,"s2Amp":0.88,"s2SplitMs":18,"s3Amp":0,"s4Amp":0,"openingSnapAmp":0,"midSystolicClickAmp":0,"ejectionClickAmp":0,"murmurTiming":"holosystolic","murmurAmp":0.8,"murmurCenterHz":370,"murmurQ":1.7}},{"id":"pulmonic_stenosis","name":"Pulmonic Stenosis (PS)","shortName":"Pulmonic Stenosis","category":"Systolic Murmurs","defaultBpm":76,"recommendedSide":"diaphragm","bestZone":"pulmonic","radiationZones":["erbs"],"timingLabel":"Systolic Ejection + Wide Split S2","pitchLabel":"Harsh Medium-High (~340 Hz)","shapeLabel":"Diamond + Early Ejection Click","briefExplanation":"Fused or stenotic pulmonary valve leaflets obstruct RV outflow into the pulmonary artery, prolonging right ventricular ejection and widening S2 splitting.","whatYouHear":"S1 followed closely by an early systolic ejection click, a harsh diamond systolic murmur at the 2nd LICS, and a soft delayed P2.","mechanism":"Domed stenotic pulmonary cusps snap abruptly at peak opening (click), followed by prolonged turbulent ejection delaying P2.","bedsideTip":"Unlike Aortic Stenosis, PS peaks at the 2nd LICS (left sternal border) and does NOT radiate strongly into the right carotid.","zoneWeights":{"aortic":0.35,"pulmonic":1,"erbs":0.72,"tricuspid":0.32,"mitral":0.14,"carotid":0.1,"axilla":0.08},"acoustic":{"s1Amp":0.88,"s2Amp":0.75,"s2SplitMs":54,"s3Amp":0,"s4Amp":0,"openingSnapAmp":0,"midSystolicClickAmp":0,"ejectionClickAmp":0.85,"murmurTiming":"systolic_ejection","murmurAmp":0.88,"murmurCenterHz":350,"murmurQ":1.6}},{"id":"hocm","name":"Hypertrophic Cardiomyopathy (HOCM)","shortName":"HOCM","category":"Systolic Murmurs","defaultBpm":74,"recommendedSide":"diaphragm","bestZone":"erbs","radiationZones":["tricuspid","mitral"],"timingLabel":"Mid-Systolic Ejection (LLSB)","pitchLabel":"Harsh Medium (~300 Hz)","shapeLabel":"Crescendo-Decrescendo (Dynamic)","briefExplanation":"Asymmetric septal hypertrophy narrows the LV outflow tract and draws the anterior mitral leaflet anteriorly (SAM), creating dynamic outflow obstruction.","whatYouHear":"Harsh systolic diamond murmur heard best at Erb’s Point / 4th LICS with a forceful S4 gallop and zero carotid radiation.","mechanism":"Venturi forces pull the anterior mitral leaflet toward the thickened septum during systole; smaller LV volume worsens obstruction.","bedsideTip":"Classic dynamic rule: Valsalva or standing INCREASES the murmur (unlike AS and MR, which soften when preload drops!).","zoneWeights":{"aortic":0.42,"pulmonic":0.45,"erbs":1,"tricuspid":0.88,"mitral":0.68,"carotid":0.12,"axilla":0.18},"acoustic":{"s1Amp":0.9,"s2Amp":0.85,"s2SplitMs":12,"s3Amp":0,"s4Amp":0.65,"openingSnapAmp":0,"midSystolicClickAmp":0,"ejectionClickAmp":0,"murmurTiming":"systolic_ejection","murmurAmp":0.88,"murmurCenterHz":295,"murmurQ":1.5}},{"id":"aortic_regurgitation","name":"Aortic Regurgitation (AR)","shortName":"Aortic Regurg","category":"Diastolic Murmurs","defaultBpm":72,"recommendedSide":"diaphragm","bestZone":"erbs","radiationZones":["aortic","tricuspid"],"timingLabel":"Early Diastolic (Immediately post-S2)","pitchLabel":"High-Pitched Blowing (~580 Hz)","shapeLabel":"Decrescendo (Tapering)","briefExplanation":"Incomplete closure of the aortic valve allows high-pressure aortic blood to leak backward into the left ventricle immediately after S2.","whatYouHear":"A crisp, airy, high-pitched \"shhhh-uh\" tapering downward right after S2, best caught with firm Diaphragm pressure at Erb’s Point (3rd LICS).","mechanism":"The aortic-to-LV pressure gradient is highest right at S2 and falls rapidly as diastolic aortic pressure drops and LV fills.","bedsideTip":"Have the patient sit upright, lean forward, and hold breath in full expiration to bring the aortic root closer to the chest wall.","zoneWeights":{"aortic":0.78,"pulmonic":0.45,"erbs":1,"tricuspid":0.62,"mitral":0.25,"carotid":0.18,"axilla":0.08},"acoustic":{"s1Amp":0.88,"s2Amp":0.92,"s2SplitMs":12,"s3Amp":0,"s4Amp":0,"openingSnapAmp":0,"midSystolicClickAmp":0,"ejectionClickAmp":0,"murmurTiming":"early_diastolic","murmurAmp":0.86,"murmurCenterHz":590,"murmurQ":2.1}},{"id":"mitral_stenosis","name":"Mitral Stenosis (MS)","shortName":"Mitral Stenosis","category":"Diastolic Murmurs","defaultBpm":70,"recommendedSide":"bell","bestZone":"mitral","radiationZones":[],"timingLabel":"Opening Snap + Mid-Diastolic Rumble","pitchLabel":"Low Rumbling (~115 Hz) + Sharp Snap","shapeLabel":"Snap -> Rumble -> Presystolic Surge","briefExplanation":"Rheumatic thickening and commissural fusion of the mitral valve impair LV filling during diastole, elevating left atrial pressure and generating a characteristic low rumble.","whatYouHear":"Loud snapping S1 — S2 — crisp Opening Snap — low rumbling diastolic murmur peaking again just before S1 (\"presystolic accentuation\").","mechanism":"High LA pressure snaps fused leaflets open early in diastole (Opening Snap), followed by turbulent low-velocity inflow across the stenotic funnel.","bedsideTip":"Use the Bell gently at the Apex in left lateral decubitus; shorter S2-to-OS interval indicates more severe stenosis.","zoneWeights":{"aortic":0.1,"pulmonic":0.12,"erbs":0.24,"tricuspid":0.28,"mitral":1,"carotid":0.04,"axilla":0.22},"acoustic":{"s1Amp":1.15,"s2Amp":0.9,"s2SplitMs":12,"s3Amp":0,"s4Amp":0,"openingSnapAmp":0.95,"midSystolicClickAmp":0,"ejectionClickAmp":0,"murmurTiming":"mid_diastolic_rumble","murmurAmp":0.85,"murmurCenterHz":115,"murmurQ":1.5}},{"id":"pulmonic_regurgitation","name":"Pulmonic Regurgitation (PR)","shortName":"Pulmonic Regurg","category":"Diastolic Murmurs","defaultBpm":78,"recommendedSide":"diaphragm","bestZone":"pulmonic","radiationZones":["erbs"],"timingLabel":"Early Diastolic (2nd–3rd LICS)","pitchLabel":"High-Pitched Blowing (~520 Hz)","shapeLabel":"Decrescendo (Graham Steell)","briefExplanation":"Dilated pulmonary artery ring (often from severe pulmonary hypertension) prevents complete pulmonic cusp coaptation during diastole.","whatYouHear":"High-pitched blowing early diastolic decrescendo murmur starting with an accentuated P2 along the 2nd–3rd LICS.","mechanism":"Elevated pulmonary arterial diastolic pressure drives regurgitant flow backward into the right ventricle immediately after P2.","bedsideTip":"Unlike Aortic Regurgitation, PR intensifies during inspiration and stays tightly confined to the left upper sternal border.","zoneWeights":{"aortic":0.25,"pulmonic":1,"erbs":0.82,"tricuspid":0.35,"mitral":0.1,"carotid":0.05,"axilla":0.05},"acoustic":{"s1Amp":0.85,"s2Amp":1.05,"s2SplitMs":22,"s3Amp":0,"s4Amp":0,"openingSnapAmp":0,"midSystolicClickAmp":0,"ejectionClickAmp":0,"murmurTiming":"early_diastolic","murmurAmp":0.78,"murmurCenterHz":520,"murmurQ":2}},{"id":"tricuspid_stenosis","name":"Tricuspid Stenosis (TS)","shortName":"Tricuspid Stenosis","category":"Diastolic Murmurs","defaultBpm":74,"recommendedSide":"bell","bestZone":"tricuspid","radiationZones":["erbs"],"timingLabel":"Mid-Diastolic Rumble (4th LICS)","pitchLabel":"Low Rumbling (~120 Hz)","shapeLabel":"Opening Snap + Diastolic Rumble","briefExplanation":"Restricted tricuspid leaflet opening impedes right atrial emptying during diastole (commonly coexisting with rheumatic mitral disease or carcinoid heart disease).","whatYouHear":"Low-pitched rumbling diastolic murmur at the 4th LICS that becomes distinctly louder with slow deep inspiration.","mechanism":"Elevated right atrial pressure forces diastolic blood through a narrowed tricuspid orifice; inspiratory preload boosts flow gradient.","bedsideTip":"Distinguished from Mitral Stenosis by location (4th LICS vs Apex) and inspiratory augmentation (Carvallo sign).","zoneWeights":{"aortic":0.12,"pulmonic":0.18,"erbs":0.45,"tricuspid":1,"mitral":0.28,"carotid":0.05,"axilla":0.06},"acoustic":{"s1Amp":0.95,"s2Amp":0.85,"s2SplitMs":12,"s3Amp":0,"s4Amp":0,"openingSnapAmp":0.55,"midSystolicClickAmp":0,"ejectionClickAmp":0,"murmurTiming":"mid_diastolic_rumble","murmurAmp":0.78,"murmurCenterHz":120,"murmurQ":1.5}},{"id":"vsd","name":"Ventricular Septal Defect (VSD)","shortName":"VSD","category":"Congenital & Pericardial","defaultBpm":92,"recommendedSide":"diaphragm","bestZone":"tricuspid","radiationZones":["erbs","mitral"],"timingLabel":"Holosystolic (Harsh 3rd–4th LICS)","pitchLabel":"Loud Harsh Pansystolic (~410 Hz)","shapeLabel":"High-Amplitude Plateau","briefExplanation":"An opening in the interventricular septum creates a high-velocity left-to-right systolic shunt from the high-pressure LV into the lower-pressure RV.","whatYouHear":"Very loud, harsh, uniform holosystolic murmur spanning S1 to S2, maximal over the 3rd–4th LICS parasternal border (often with a palpable thrill).","mechanism":"Smaller restrictive VSDs maintain a massive LV-to-RV pressure difference throughout systole, paradoxically producing louder turbulence than huge defects.","bedsideTip":"Maximal intensity is medially at the 4th LICS rather than the Apex, and unlike MR it does not radiate into the left axilla.","zoneWeights":{"aortic":0.32,"pulmonic":0.44,"erbs":0.88,"tricuspid":1,"mitral":0.52,"carotid":0.08,"axilla":0.12},"acoustic":{"s1Amp":0.82,"s2Amp":0.86,"s2SplitMs":18,"s3Amp":0,"s4Amp":0,"openingSnapAmp":0,"midSystolicClickAmp":0,"ejectionClickAmp":0,"murmurTiming":"holosystolic","murmurAmp":1,"murmurCenterHz":420,"murmurQ":1.4}},{"id":"asd","name":"Atrial Septal Defect (ASD)","shortName":"ASD (Fixed Split S2)","category":"Congenital & Pericardial","defaultBpm":80,"recommendedSide":"diaphragm","bestZone":"pulmonic","radiationZones":["erbs","tricuspid"],"timingLabel":"Wide Fixed Split S2 + Flow Murmur","pitchLabel":"Crisp Split S2 + Soft Systolic Flow","shapeLabel":"Wide Fixed A2–P2 (60 ms) + Mild Diamond","briefExplanation":"Interatrial left-to-right shunting chronically volume-overloads the right heart, equalizing respiratory pressure shifts and delaying pulmonic closure across both inspiration and expiration.","whatYouHear":"Hallmark wide, unchanging \"Lub — Ta-Dub\" split S2 at the 2nd LICS paired with a gentle pulmonic systolic ejection flow murmur.","mechanism":"The atrial communication buffers respiratory changes in RV stroke volume, fixing RV ejection prolongation and P2 delay permanently.","bedsideTip":"Focus on the Pulmonic Area (2nd LICS): S2 splits cleanly into two distinct beats (\"Ta-Dub\") on every single cardiac cycle.","zoneWeights":{"aortic":0.48,"pulmonic":1,"erbs":0.72,"tricuspid":0.48,"mitral":0.25,"carotid":0.08,"axilla":0.08},"acoustic":{"s1Amp":0.9,"s2Amp":1,"s2SplitMs":62,"s3Amp":0,"s4Amp":0,"openingSnapAmp":0,"midSystolicClickAmp":0,"ejectionClickAmp":0,"murmurTiming":"systolic_ejection","murmurAmp":0.48,"murmurCenterHz":250,"murmurQ":1.8}},{"id":"pda","name":"Patent Ductus Arteriosus (PDA)","shortName":"PDA (Machinery)","category":"Congenital & Pericardial","defaultBpm":94,"recommendedSide":"diaphragm","bestZone":"pulmonic","radiationZones":["aortic","erbs"],"timingLabel":"Continuous (Systole + Diastole)","pitchLabel":"Harsh Rolling \"Machinery\" (~360 Hz)","shapeLabel":"Continuous Peaking Around S2","briefExplanation":"Persistent fetal ductus arteriosus connects the aorta directly to the pulmonary artery; because aortic pressure exceeds pulmonary pressure in both systole and diastole, blood flows continuously.","whatYouHear":"Unbroken, rumbling \"machinery\" murmur roaring across systole, peaking right over S2, and trailing through diastole at the 2nd LICS.","mechanism":"Continuous aorta-to-pulmonary pressure gradient sustains turbulent high-velocity shunting throughout the entire cardiac cycle.","bedsideTip":"Listen just below the left clavicle and at the 2nd LICS—if it crosses S2 without stopping, think PDA!","zoneWeights":{"aortic":0.56,"pulmonic":1,"erbs":0.74,"tricuspid":0.28,"mitral":0.18,"carotid":0.22,"axilla":0.14},"acoustic":{"s1Amp":0.72,"s2Amp":0.75,"s2SplitMs":0,"s3Amp":0,"s4Amp":0,"openingSnapAmp":0,"midSystolicClickAmp":0,"ejectionClickAmp":0,"murmurTiming":"continuous","murmurAmp":0.94,"murmurCenterHz":360,"murmurQ":1.35}},{"id":"pericardial_rub","name":"Acute Pericarditis (Friction Rub)","shortName":"Pericardial Rub","category":"Congenital & Pericardial","defaultBpm":90,"recommendedSide":"diaphragm","bestZone":"erbs","radiationZones":["tricuspid","mitral"],"timingLabel":"Triphasic Scratchy (Superficial)","pitchLabel":"High Scratchy / Leathery (~680 Hz)","shapeLabel":"3 Scratch Bursts per Beat","briefExplanation":"Inflamed visceral and parietal pericardial layers scrape directly against each other with every atrial contraction, ventricular contraction, and rapid ventricular relaxation.","whatYouHear":"A crisp, superficial, squeaky \"creaking leather\" sound with 3 scratch bursts per heartbeat—often sounding closer to the ear than S1/S2.","mechanism":"Fibrinous pericardial exudate eliminates normal serous lubrication, causing high-frequency mechanical friction during cardiac motion.","bedsideTip":"Press the Diaphragm firmly at Erb’s Point / LLSB while leaning forward; persists even when the patient holds their breath (unlike pleural rub).","zoneWeights":{"aortic":0.38,"pulmonic":0.45,"erbs":1,"tricuspid":0.9,"mitral":0.62,"carotid":0.04,"axilla":0.12},"acoustic":{"s1Amp":0.85,"s2Amp":0.85,"s2SplitMs":12,"s3Amp":0,"s4Amp":0,"openingSnapAmp":0,"midSystolicClickAmp":0,"ejectionClickAmp":0,"murmurTiming":"friction_rub","murmurAmp":0.95,"murmurCenterHz":680,"murmurQ":1.2}},{"id":"sinus_bradycardia","name":"Sinus Bradycardia","shortName":"Sinus Bradycardia","category":"Arrhythmias","rhythmPattern":"regular","defaultBpm":44,"recommendedSide":"diaphragm","bestZone":"mitral","radiationZones":[],"timingLabel":"Regular Slow (\u003c60 bpm)","pitchLabel":"Clean S1–S2 + Long Diastole","shapeLabel":"Even Slow Lub-Dub","briefExplanation":"Slowed SA node firing (\u003c60 bpm) with intact 1:1 AV conduction; physiologic in endurance athletes or sleep, or pathologic in hypothyroidism, increased ICP, or beta-blocker toxicity.","whatYouHear":"Clean, unhurried \"Lub-Dub ...... Lub-Dub\" with a noticeably prolonged silent diastolic filling pause between beats.","mechanism":"High vagal (parasympathetic) tone or intrinsic SA node automaticity suppression slows Phase 4 pacemaker depolarization.","bedsideTip":"Verify steady cadence and normal S1/S2 intensity—unlike Complete AV Block, S1 loudness stays completely constant from beat to beat.","zoneWeights":{"aortic":0.9,"pulmonic":0.9,"erbs":0.85,"tricuspid":0.92,"mitral":1,"carotid":0.2,"axilla":0.22},"acoustic":{"s1Amp":0.95,"s2Amp":0.92,"s2SplitMs":14,"s3Amp":0,"s4Amp":0,"openingSnapAmp":0,"midSystolicClickAmp":0,"ejectionClickAmp":0,"murmurTiming":"none","murmurAmp":0,"murmurCenterHz":220,"murmurQ":1.4}},{"id":"sinus_tachycardia","name":"Sinus Tachycardia","shortName":"Sinus Tachycardia","category":"Arrhythmias","rhythmPattern":"regular","defaultBpm":128,"recommendedSide":"diaphragm","bestZone":"mitral","radiationZones":[],"timingLabel":"Regular Rapid (100–150 bpm)","pitchLabel":"Brisk Snappy S1–S2","shapeLabel":"Shortened Diastole","briefExplanation":"Accelerated SA node impulse generation (>100 bpm) in response to sympathetic surge, fever, hypovolemia, pain, anemia, or hyperthyroidism.","whatYouHear":"Rapid, regular \"Lub-Dub · Lub-Dub · Lub-Dub\" where diastolic pause shrinks nearly down to the duration of systole.","mechanism":"Catecholamine stimulation accelerates SA node funny-channel depolarization while shortening ventricular diastolic filling time.","bedsideTip":"Unlike SVT, sinus tachycardia ramps up and slows down gradually rather than starting or terminating abruptly.","zoneWeights":{"aortic":0.92,"pulmonic":0.92,"erbs":0.88,"tricuspid":0.92,"mitral":1,"carotid":0.22,"axilla":0.25},"acoustic":{"s1Amp":1.05,"s2Amp":0.95,"s2SplitMs":10,"s3Amp":0,"s4Amp":0,"openingSnapAmp":0,"midSystolicClickAmp":0,"ejectionClickAmp":0,"murmurTiming":"none","murmurAmp":0,"murmurCenterHz":220,"murmurQ":1.4}},{"id":"respiratory_sinus_arrhythmia","name":"Respiratory Sinus Arrhythmia","shortName":"Sinus Arrhythmia","category":"Arrhythmias","rhythmPattern":"sinus_arrhythmia","defaultBpm":72,"recommendedSide":"diaphragm","bestZone":"pulmonic","radiationZones":["mitral"],"timingLabel":"Phasic Cyclical Variation","pitchLabel":"Normal S1–S2 + Respiratory Drift","shapeLabel":"Speeds on Inspiration · Slows on Expiration","briefExplanation":"Benign physiological beat-to-beat heart rate modulation coupled to breathing—accelerating during inspiration and slowing smoothly during expiration.","whatYouHear":"A smooth rhythmic wave: beats gradually crowd closer together for 2–3 seconds, then stretch apart evenly without sudden skipped beats.","mechanism":"Inspiration suppresses vagal efferent outflow (Bainbridge & baroreceptor reflexes), temporarily raising SA node rate; expiration restores vagal braking.","bedsideTip":"Common and reassuringly healthy in children and young adults; disappears cleanly during breath-holding (distinguishing it from AFib!).","zoneWeights":{"aortic":0.9,"pulmonic":1,"erbs":0.88,"tricuspid":0.9,"mitral":0.95,"carotid":0.2,"axilla":0.2},"acoustic":{"s1Amp":0.95,"s2Amp":0.94,"s2SplitMs":26,"s3Amp":0,"s4Amp":0,"openingSnapAmp":0,"midSystolicClickAmp":0,"ejectionClickAmp":0,"murmurTiming":"none","murmurAmp":0,"murmurCenterHz":220,"murmurQ":1.4}},{"id":"pac","name":"Premature Atrial Contraction (PAC)","shortName":"PAC (Early Atrial)","category":"Arrhythmias","rhythmPattern":"pac","defaultBpm":74,"recommendedSide":"diaphragm","bestZone":"mitral","radiationZones":[],"timingLabel":"Regular + Intermittent Early Beat","pitchLabel":"Crisp Early S1–S2 + Short Pause","shapeLabel":"Interrupted Regular Cadence","briefExplanation":"An irritable ectopic atrial focus fires early before the next expected SA node beat, resetting the sinus node and producing a brief non-compensatory pause.","whatYouHear":"\"Lub-Dub ... Lub-Dub ... Lub-Dub-lub-dub ... [brief pause] ... Lub-Dub\" — an unexpected early beat sneaking in ahead of schedule.","mechanism":"Early atrial depolarization conducts rapidly down normal His-Purkinje pathways (narrow QRS) and resets the SA node pacemaker clock.","bedsideTip":"Unlike a PVC, the pause after a PAC is incomplete (\u003c2 normal R-R intervals) because the ectopic impulse resets the sinus node.","zoneWeights":{"aortic":0.9,"pulmonic":0.9,"erbs":0.88,"tricuspid":0.92,"mitral":1,"carotid":0.2,"axilla":0.22},"acoustic":{"s1Amp":0.95,"s2Amp":0.92,"s2SplitMs":14,"s3Amp":0,"s4Amp":0,"openingSnapAmp":0,"midSystolicClickAmp":0,"ejectionClickAmp":0,"murmurTiming":"none","murmurAmp":0,"murmurCenterHz":220,"murmurQ":1.4}},{"id":"pvc","name":"Premature Ventricular Contraction (PVC)","shortName":"PVC (Ectopic Beat)","category":"Arrhythmias","rhythmPattern":"pvc","defaultBpm":74,"recommendedSide":"diaphragm","bestZone":"mitral","radiationZones":["tricuspid"],"timingLabel":"Early Weak Beat + Compensatory Pause","pitchLabel":"Soft Split Early S1 + Booming Rebound S1","shapeLabel":"Early Beat -> Long Pause -> Strong Beat","briefExplanation":"An ectopic ventricular focus depolarizes prematurely before adequate diastolic filling, yielding a weak early heartbeat followed by a full compensatory pause and a forceful post-pause beat.","whatYouHear":"\"Lub-Dub ... lub-dub ... [long silent pause] ... LUB-DUB!\" — patients often feel the big post-pause thump as a \"skipped heart flip\".","mechanism":"Premature contraction reduces preload (weak early stroke volume/S2), while the SA node stays undisturbed, forcing a full compensatory wait before the next large-preload beat.","bedsideTip":"Check the radial pulse simultaneously: the early PVC often fails to produce a palpable peripheral pulse (\"pulse deficit\").","zoneWeights":{"aortic":0.85,"pulmonic":0.85,"erbs":0.88,"tricuspid":0.95,"mitral":1,"carotid":0.18,"axilla":0.2},"acoustic":{"s1Amp":0.96,"s2Amp":0.92,"s2SplitMs":16,"s3Amp":0,"s4Amp":0,"openingSnapAmp":0,"midSystolicClickAmp":0,"ejectionClickAmp":0,"murmurTiming":"none","murmurAmp":0,"murmurCenterHz":220,"murmurQ":1.4}},{"id":"ventricular_bigeminy","name":"Ventricular Bigeminy","shortName":"Bigeminy (PVC Pair)","category":"Arrhythmias","rhythmPattern":"bigeminy","defaultBpm":76,"recommendedSide":"diaphragm","bestZone":"mitral","radiationZones":["tricuspid"],"timingLabel":"Alternating Sinus + PVC Couple","pitchLabel":"Coupled Cadence (\"Lub-Dub · lub-dub ... pause\")","shapeLabel":"1:1 Paired Beats with Pause","briefExplanation":"Every normal sinus beat is immediately coupled to a premature ventricular contraction, creating an unmistakable paired rhythm separated by compensatory pauses.","whatYouHear":"Recurring rhythmic couplets: strong \"LUB-DUB\" followed quickly by soft \"lub-dub\", then a distinct pause—repeating every pair.","mechanism":"Re-entry or triggered activity (often ischemia, electrolyte imbalance, or digoxin toxicity) fires consistently at a fixed coupling interval after each sinus beat.","bedsideTip":"Can cause apparent bradycardia on peripheral palpation if every second weak PVC beat fails to open the aortic valve cleanly.","zoneWeights":{"aortic":0.85,"pulmonic":0.85,"erbs":0.9,"tricuspid":0.95,"mitral":1,"carotid":0.18,"axilla":0.2},"acoustic":{"s1Amp":0.96,"s2Amp":0.92,"s2SplitMs":16,"s3Amp":0,"s4Amp":0,"openingSnapAmp":0,"midSystolicClickAmp":0,"ejectionClickAmp":0,"murmurTiming":"none","murmurAmp":0,"murmurCenterHz":220,"murmurQ":1.4}},{"id":"atrial_fibrillation","name":"Atrial Fibrillation (AFib)","shortName":"Atrial Fibrillation","category":"Arrhythmias","rhythmPattern":"afib","defaultBpm":98,"recommendedSide":"diaphragm","bestZone":"mitral","radiationZones":["tricuspid","aortic"],"timingLabel":"Irregularly Irregular (Chaotic R–R)","pitchLabel":"Varying S1 Intensity · Absent S4","shapeLabel":"Unpredictable Cadence","briefExplanation":"Chaotic rapid atrial electrical wavelets (350–600/min) bombard the AV node randomly, producing totally unpredictable ventricular beats and eliminating organized atrial kick.","whatYouHear":"Completely irregular, unpredictable \"Lub-Dub\" timing where S1 loudness shifts beat-to-beat (loud after short pauses, softer after long ones) and S4 never occurs.","mechanism":"Random AV nodal refractoriness passes irregular impulses; short R-R beats catch mitral leaflets wide open (loud S1), while absent atrial contraction abolishes S4.","bedsideTip":"Compare apical heart rate with radial pulse: rapid AFib often creates an apical-radial pulse deficit (>10 bpm difference).","zoneWeights":{"aortic":0.88,"pulmonic":0.88,"erbs":0.9,"tricuspid":0.95,"mitral":1,"carotid":0.2,"axilla":0.22},"acoustic":{"s1Amp":0.98,"s2Amp":0.9,"s2SplitMs":14,"s3Amp":0,"s4Amp":0,"openingSnapAmp":0,"midSystolicClickAmp":0,"ejectionClickAmp":0,"murmurTiming":"none","murmurAmp":0,"murmurCenterHz":220,"murmurQ":1.4}},{"id":"atrial_flutter","name":"Atrial Flutter (2:1 / 4:1 Sawtooth)","shortName":"Atrial Flutter","category":"Arrhythmias","rhythmPattern":"aflutter","defaultBpm":75,"recommendedSide":"diaphragm","bestZone":"mitral","radiationZones":["tricuspid"],"timingLabel":"Regular or Grouped (300 bpm Atria)","pitchLabel":"Rapid Atrial Sawtooth · Steady S1–S2","shapeLabel":"Sawtooth Baseline + Conducted Beats","briefExplanation":"A macro-reentrant circuit spinning around the tricuspid annulus at ~300/min drives characteristic \"sawtooth\" flutter waves, conducted through the AV node in 2:1 (150 bpm) or 4:1 (75 bpm) ratios.","whatYouHear":"Crisp ventricular \"Lub-Dub\" cadence at classic fixed divisors of 300 (like 150 or 75 bpm), occasionally shifting cleanly between 2:1 and 4:1 blocks.","mechanism":"Cavotricuspid isthmus macro-reentry fires continuously while AV nodal refractory periods gate every 2nd, 3rd, or 4th impulse.","bedsideTip":"Always suspect Atrial Flutter with 2:1 block whenever a patient sits steadily right near 150 bpm!","zoneWeights":{"aortic":0.88,"pulmonic":0.88,"erbs":0.9,"tricuspid":0.96,"mitral":1,"carotid":0.2,"axilla":0.2},"acoustic":{"s1Amp":0.95,"s2Amp":0.92,"s2SplitMs":14,"s3Amp":0,"s4Amp":0,"openingSnapAmp":0,"midSystolicClickAmp":0,"ejectionClickAmp":0,"murmurTiming":"none","murmurAmp":0,"murmurCenterHz":220,"murmurQ":1.4}},{"id":"svt","name":"Supraventricular Tachycardia (SVT / AVNRT)","shortName":"SVT (168 bpm)","category":"Arrhythmias","rhythmPattern":"svt","defaultBpm":168,"recommendedSide":"diaphragm","bestZone":"mitral","radiationZones":["aortic"],"timingLabel":"Clockwork Fast (150–220 bpm)","pitchLabel":"Rapid Tic-Toc Equidistant S1/S2","shapeLabel":"Machine-Like Uniform Rapid Beats","briefExplanation":"Abrupt paroxysmal re-entry looping inside the AV node (AVNRT) or accessory pathway drives a rock-steady narrow-complex tachycardia between 150 and 220 bpm.","whatYouHear":"A strikingly fast, metronomic \"tic-toc-tic-toc-tic-toc\" where S1 and S2 blur into near-equal spacing with zero beat-to-beat variability.","mechanism":"Dual AV nodal pathways (fast + slow) trap an electrical impulse in a continuous micro-reentrant loop.","bedsideTip":"Vagal maneuvers (Valsalva or carotid sinus massage) or IV adenosine often terminate SVT abruptly back to normal sinus rhythm.","zoneWeights":{"aortic":0.92,"pulmonic":0.92,"erbs":0.9,"tricuspid":0.94,"mitral":1,"carotid":0.25,"axilla":0.22},"acoustic":{"s1Amp":1,"s2Amp":0.95,"s2SplitMs":0,"s3Amp":0,"s4Amp":0,"openingSnapAmp":0,"midSystolicClickAmp":0,"ejectionClickAmp":0,"murmurTiming":"none","murmurAmp":0,"murmurCenterHz":220,"murmurQ":1.4}},{"id":"vtach","name":"Ventricular Tachycardia (VTach)","shortName":"Ventricular Tach","category":"Arrhythmias","rhythmPattern":"vtach","defaultBpm":156,"recommendedSide":"diaphragm","bestZone":"mitral","radiationZones":["tricuspid"],"timingLabel":"Rapid Wide-Complex + AV Dissociation","pitchLabel":"Rapid + Varying S1 / Split Sounds","shapeLabel":"Fast Beats + Intermittent Cannon S1","briefExplanation":"Life-threatening rapid ectopic ventricular rhythm (>100–200 bpm) originating below the His bundle; the atria continue beating independently (AV dissociation).","whatYouHear":"Rapid thumping cadence (~155 bpm) with subtly changing S1 intensity, wide split valve closure, and intermittent sudden booming \"Cannon\" S1 beats.","mechanism":"Ventricular scar re-entry drives rapid asynchronous ventricular depolarization while independent sinus P-waves drift in and out of phase with systole.","bedsideTip":"Unlike SVT, VTach shows beat-to-beat variation in S1 loudness and jugular cannon \"a\" waves on neck exam.","zoneWeights":{"aortic":0.85,"pulmonic":0.85,"erbs":0.9,"tricuspid":0.96,"mitral":1,"carotid":0.16,"axilla":0.2},"acoustic":{"s1Amp":0.98,"s2Amp":0.86,"s2SplitMs":36,"s3Amp":0,"s4Amp":0,"openingSnapAmp":0,"midSystolicClickAmp":0,"ejectionClickAmp":0,"murmurTiming":"none","murmurAmp":0,"murmurCenterHz":220,"murmurQ":1.4}},{"id":"av_block_1","name":"First-Degree AV Block","shortName":"1st-Degree AV Block","category":"Arrhythmias","rhythmPattern":"av_block_1","defaultBpm":68,"recommendedSide":"diaphragm","bestZone":"mitral","radiationZones":[],"timingLabel":"Regular Rhythm · PR > 200 ms","pitchLabel":"Noticeably Soft / Muffled S1","shapeLabel":"Even Cadence with Diminished \"Lub\"","briefExplanation":"Every atrial impulse conducts to the ventricles, but conduction through the AV node is delayed (>200 ms PR interval), allowing AV valve leaflets to float nearly shut before systole.","whatYouHear":"Regular rhythm where S1 (\"lub\") sounds distinctly softer and duller than S2 (\"DUB\"), even at the Mitral Apex.","mechanism":"Prolonged AV pause allows mitral and tricuspid leaflets to drift almost back into apposition passively before ventricular contraction snaps them shut.","bedsideTip":"Look at the green ECG trace: every P-wave sits abnormally far left of the QRS complex, yet zero beats are ever dropped.","zoneWeights":{"aortic":0.9,"pulmonic":0.9,"erbs":0.88,"tricuspid":0.95,"mitral":1,"carotid":0.18,"axilla":0.2},"acoustic":{"s1Amp":0.44,"s2Amp":0.95,"s2SplitMs":14,"s3Amp":0,"s4Amp":0,"openingSnapAmp":0,"midSystolicClickAmp":0,"ejectionClickAmp":0,"murmurTiming":"none","murmurAmp":0,"murmurCenterHz":220,"murmurQ":1.4}},{"id":"wenckebach","name":"2nd-Degree AV Block — Mobitz I (Wenckebach)","shortName":"Mobitz I (Wenckebach)","category":"Arrhythmias","rhythmPattern":"wenckebach","defaultBpm":72,"recommendedSide":"diaphragm","bestZone":"mitral","radiationZones":[],"timingLabel":"Grouped Beating · Progressive PR -> Drop","pitchLabel":"Softening S1 -> Silent Dropped Beat","shapeLabel":"3–4 Beats -> Pause -> Repeat","briefExplanation":"Progressive AV nodal fatigue causes the PR interval to lengthen beat-by-beat (\"going, going, gone!\") until an atrial impulse is completely blocked, dropping one ventricular beat.","whatYouHear":"Grouped triplets or quadruplets (\"Lub-Dub · lub-Dub · lub-Dub ... [silent missed beat] ... Lub-Dub\"), with S1 growing slightly softer right before the pause.","mechanism":"Decremental conduction inside the AV node accumulates refractoriness with each beat until one P-wave hits absolute refractoriness, allowing the node to recover during the pause.","bedsideTip":"Generally benign and vagally mediated (often inferior MI or athletes); watch the P-QRS spacing stretch on the ECG before each dropped QRS.","zoneWeights":{"aortic":0.9,"pulmonic":0.9,"erbs":0.88,"tricuspid":0.94,"mitral":1,"carotid":0.18,"axilla":0.2},"acoustic":{"s1Amp":0.92,"s2Amp":0.92,"s2SplitMs":14,"s3Amp":0,"s4Amp":0,"openingSnapAmp":0,"midSystolicClickAmp":0,"ejectionClickAmp":0,"murmurTiming":"none","murmurAmp":0,"murmurCenterHz":220,"murmurQ":1.4}},{"id":"mobitz_2","name":"2nd-Degree AV Block — Mobitz Type II","shortName":"Mobitz II AV Block","category":"Arrhythmias","rhythmPattern":"mobitz_2","defaultBpm":72,"recommendedSide":"diaphragm","bestZone":"mitral","radiationZones":[],"timingLabel":"Fixed PR · Sudden Dropped Beats","pitchLabel":"Steady S1–S2 -> Sudden Silent Gap","shapeLabel":"Regular Beats + Unannounced Pause","briefExplanation":"Infranodal His-Purkinje disease causes sudden all-or-nothing conduction failure without warning—conducted beats retain a constant PR interval, then a beat abruptly drops out.","whatYouHear":"Steady uniform \"Lub-Dub · Lub-Dub · Lub-Dub\" abruptly interrupted by an exact double-length silence where a heartbeat simply disappears.","mechanism":"Structural fibrosis in the His bundle or bilateral bundle branches exhibits non-decremental conduction: impulses either pass at normal speed or fail completely.","bedsideTip":"High clinical risk of progressing abruptly to Complete (3rd-Degree) Heart Block and Stokes-Adams syncope—typically requires a pacemaker.","zoneWeights":{"aortic":0.9,"pulmonic":0.9,"erbs":0.88,"tricuspid":0.94,"mitral":1,"carotid":0.18,"axilla":0.2},"acoustic":{"s1Amp":0.95,"s2Amp":0.92,"s2SplitMs":14,"s3Amp":0,"s4Amp":0,"openingSnapAmp":0,"midSystolicClickAmp":0,"ejectionClickAmp":0,"murmurTiming":"none","murmurAmp":0,"murmurCenterHz":220,"murmurQ":1.4}},{"id":"av_block_3","name":"Third-Degree (Complete) AV Block","shortName":"Complete AV Block","category":"Arrhythmias","rhythmPattern":"av_block_3","defaultBpm":38,"recommendedSide":"diaphragm","bestZone":"mitral","radiationZones":["tricuspid"],"timingLabel":"Slow Escape (~38 bpm) + AV Dissociation","pitchLabel":"Booming Intermittent \"Cannon\" S1","shapeLabel":"Slow Beats + Dramatic Loud S1 Peaks","briefExplanation":"Zero atrial impulses reach the ventricles. Atria march along independently (~80 bpm) while a slow junctional or ventricular escape pacemaker (~35–42 bpm) keeps the ventricles pumping.","whatYouHear":"Slow, heavy \"Lub-Dub ...... Lub-Dub\" where certain beats suddenly explode with a loud booming \"CANNON S1\" (\"Bruit de Canon\") whenever atrial kick aligns with systole.","mechanism":"Complete AV dissociation causes random PR timing; when a P-wave precedes QRS by 60–110 ms, wide-open AV valves slam shut forcefully for a Cannon S1.","bedsideTip":"Look for intermittent giant neck pulsations (cannon \"a\" waves) and independent P-waves marching steadily across the ECG strip.","zoneWeights":{"aortic":0.88,"pulmonic":0.88,"erbs":0.9,"tricuspid":0.96,"mitral":1,"carotid":0.2,"axilla":0.22},"acoustic":{"s1Amp":0.98,"s2Amp":0.9,"s2SplitMs":16,"s3Amp":0,"s4Amp":0,"openingSnapAmp":0,"midSystolicClickAmp":0,"ejectionClickAmp":0,"murmurTiming":"none","murmurAmp":0,"murmurCenterHz":220,"murmurQ":1.4}},{"id":"sick_sinus","name":"Sick Sinus Syndrome (Tachy-Brady)","shortName":"Sick Sinus (Tachy-Brady)","category":"Arrhythmias","rhythmPattern":"sick_sinus","defaultBpm":76,"recommendedSide":"diaphragm","bestZone":"mitral","radiationZones":[],"timingLabel":"Rapid Bursts -> Sinus Arrest Pause","pitchLabel":"Fast Run -> Sudden Prolonged Silence","shapeLabel":"Tachycardia Run + Sinus Exit Pause","briefExplanation":"Degenerative SA node fibrosis alternates between bursts of rapid atrial tachycardia/AFib and sudden prolonged sinus pauses when the SA node fails to recover on time.","whatYouHear":"A rapid cluster of quick \"Lub-Dub\" beats abruptly halting into an eerie 1.6-second silent sinus pause before slow recovery beats resume.","mechanism":"Overdrive suppression from rapid atrial tachyarrhythmias transiently silences a diseased, fibrotic sinoatrial pacemaker.","bedsideTip":"Classic cause of dizziness or syncope right after palpitations stop (\"post-conversion pause\").","zoneWeights":{"aortic":0.88,"pulmonic":0.88,"erbs":0.9,"tricuspid":0.94,"mitral":1,"carotid":0.18,"axilla":0.2},"acoustic":{"s1Amp":0.95,"s2Amp":0.92,"s2SplitMs":14,"s3Amp":0,"s4Amp":0,"openingSnapAmp":0,"midSystolicClickAmp":0,"ejectionClickAmp":0,"murmurTiming":"none","murmurAmp":0,"murmurCenterHz":220,"murmurQ":1.4}}];
+  const CATEGORIES = ["Normal & Innocent","Extra Gallops","Systolic Murmurs","Diastolic Murmurs","Congenital & Pericardial","Arrhythmias"];
+
+  const state = {
+    condition: CONDITIONS[0],
+    bpm: CONDITIONS[0].defaultBpm,
+    stethMode: CONDITIONS[0].recommendedSide,
+    activeZoneId: 'mitral',
+    spatialIntensity: 1.0,
+    isPinned: false,
+    audioEnabled: true,
+    audioRunning: false,
+    selectedCategory: 'All',
+    stethPos: { x: 438, y: 416 },
+    targetPos: { x: 438, y: 416 },
+  };
+
+  let ctx = null, noiseBuf = null, filterA = null, filterB = null, masterGain = null;
+  let schedTimer = null, beats = [], beatIdx = 0, nextBeatTime = 0;
+
+  function pseudoRand(n) {
+    const x = Math.sin(n * 12.9898 + 78.233) * 43758.5453;
+    return x - Math.floor(x);
+  }
+
+  function buildBeat(index, startTime, bpm, pattern) {
+    const baseDur = 60 / Math.max(32, Math.min(185, bpm));
+    const b = {
+      index, startTime, duration: baseDur,
+      isDropped: false, isPvc: false, isPac: false, isWideQrs: false,
+      hasPWave: true, prDelaySec: 0.14, s1Scale: 1, s2Scale: 1, audioScheduled: false,
+    };
+    if (pattern === 'sinus_arrhythmia') {
+      b.duration = baseDur * (1 + 0.25 * Math.sin(index * 0.95));
+    } else if (pattern === 'pac') {
+      const m = index % 4;
+      if (m === 1) b.duration = baseDur * 0.58;
+      else if (m === 2) { b.isPac = true; b.s1Scale = 0.88; b.s2Scale = 0.82; b.duration = baseDur * 1.16; }
+    } else if (pattern === 'pvc') {
+      const m = index % 4;
+      if (m === 1) b.duration = baseDur * 0.56;
+      else if (m === 2) { b.isPvc = true; b.isWideQrs = true; b.hasPWave = false; b.s1Scale = 0.64; b.s2Scale = 0.42; b.duration = baseDur * 1.44; }
+      else if (m === 3) { b.s1Scale = 1.24; b.s2Scale = 1.15; }
+    } else if (pattern === 'bigeminy') {
+      if (index % 2 === 0) { b.duration = baseDur * 0.58; b.s1Scale = 1.16; b.s2Scale = 1.08; }
+      else { b.isPvc = true; b.isWideQrs = true; b.hasPWave = false; b.s1Scale = 0.62; b.s2Scale = 0.4; b.duration = baseDur * 1.42; }
+    } else if (pattern === 'afib') {
+      const r = pseudoRand(index + 17), r2 = pseudoRand(index + 93);
+      b.hasPWave = false; b.duration = baseDur * (0.54 + r * 1.02); b.s1Scale = 1.24 - r2 * 0.48; b.s2Scale = 0.72 + r * 0.35;
+    } else if (pattern === 'aflutter') {
+      b.hasPWave = false; b.duration = index % 6 === 4 ? baseDur * 0.56 : baseDur;
+    } else if (pattern === 'svt') {
+      b.hasPWave = false;
+    } else if (pattern === 'vtach') {
+      b.isWideQrs = true; b.hasPWave = false;
+      const cw = Math.sin(index * 1.15);
+      b.s1Scale = cw > 0.78 ? 1.42 : 0.78 + (cw + 1) * 0.16; b.s2Scale = 0.85;
+    } else if (pattern === 'av_block_1') {
+      b.prDelaySec = 0.28;
+    } else if (pattern === 'wenckebach') {
+      const k = index % 4;
+      if (k === 0) { b.prDelaySec = 0.14; b.s1Scale = 1.02; }
+      else if (k === 1) { b.prDelaySec = 0.23; b.s1Scale = 0.84; }
+      else if (k === 2) { b.prDelaySec = 0.32; b.s1Scale = 0.66; }
+      else { b.prDelaySec = 0.16; b.isDropped = true; }
+    } else if (pattern === 'mobitz_2') {
+      if (index % 4 === 3) b.isDropped = true;
+    } else if (pattern === 'av_block_3') {
+      b.hasPWave = false; b.isWideQrs = true;
+      const ap = (startTime % 0.74) / 0.74;
+      b.s1Scale = (ap > 0.78 || ap < 0.08) ? 1.52 : 0.88;
+    } else if (pattern === 'sick_sinus') {
+      const k = index % 7;
+      if (k < 5) { b.duration = baseDur * 0.56; b.s1Scale = 1.02; }
+      else if (k === 5) { b.duration = baseDur * 2.15; b.s1Scale = 0.92; }
+      else b.duration = baseDur * 1.15;
+    }
+    return b;
+  }
+
+  function nowSec(fallbackMs) {
+    return (ctx && ctx.state === 'running') ? ctx.currentTime : (fallbackMs / 1000);
+  }
+
+  function ensureBeats(horizon, now) {
+    if (!beats.length || Math.abs(now - nextBeatTime) > 4.0) {
+      beats = []; beatIdx = 0; nextBeatTime = now - 4.2;
+    }
+    const pat = state.condition.rhythmPattern || 'regular';
+    while (nextBeatTime < horizon) {
+      const b = buildBeat(beatIdx++, nextBeatTime, state.bpm, pat);
+      if (b.startTime < now - 0.04) b.audioScheduled = true;
+      beats.push(b);
+      nextBeatTime += b.duration;
+    }
+    while (beats.length && beats[0].startTime + beats[0].duration < now - 7.5) beats.shift();
+  }
+
+  function schedTick() {
+    if (!ctx || ctx.state !== 'running') return;
+    const now = ctx.currentTime;
+    ensureBeats(now + 0.4, now);
+    if (!state.audioEnabled || state.spatialIntensity <= 0.01) return;
+    for (let i = 0; i < beats.length; i++) {
+      const b = beats[i];
+      if (b.audioScheduled) continue;
+      if (b.startTime < now - 0.04) { b.audioScheduled = true; continue; }
+      if (b.startTime <= now + 0.22) {
+        b.audioScheduled = true;
+        if (!b.isDropped) scheduleCycle(b);
+      }
+    }
+  }
+
+  function buildNoiseBuffer(audioCtx) {
+    const sr = audioCtx.sampleRate, len = Math.floor(sr * 2.5);
+    const buf = audioCtx.createBuffer(1, len, sr);
+    const d = buf.getChannelData(0);
+    let b0=0,b1=0,b2=0,b3=0,b4=0,b5=0,b6=0;
+    for (let i=0;i<len;i++) {
+      const w = Math.random()*2 - 1;
+      b0 = 0.99886*b0 + w*0.0555179; b1 = 0.99332*b1 + w*0.0750759; b2 = 0.96900*b2 + w*0.1538520;
+      b3 = 0.86650*b3 + w*0.3104856; b4 = 0.55000*b4 + w*0.5329522; b5 = -0.7616*b5 - w*0.0168980;
+      d[i] = (b0+b1+b2+b3+b4+b5+b6+w*0.5362)*0.11; b6 = w*0.115926;
+    }
+    return buf;
+  }
+
+  function applyAudioFilter() {
+    if (!ctx || !filterA || !filterB || !masterGain) return;
+    const now = ctx.currentTime;
+    if (state.stethMode === 'bell') {
+      filterA.type = 'lowpass'; filterA.frequency.setTargetAtTime(220, now, 0.03); filterA.Q.setTargetAtTime(0.9, now, 0.03);
+      filterB.type = 'lowshelf'; filterB.frequency.setTargetAtTime(95, now, 0.03); filterB.gain.setTargetAtTime(6.5, now, 0.03);
+    } else {
+      filterA.type = 'lowpass'; filterA.frequency.setTargetAtTime(1450, now, 0.03); filterA.Q.setTargetAtTime(0.7, now, 0.03);
+      filterB.type = 'highpass'; filterB.frequency.setTargetAtTime(52, now, 0.03); filterB.Q.setTargetAtTime(0.7, now, 0.03);
+    }
+    const g = state.audioEnabled && state.spatialIntensity > 0.01 ? Math.min(1.15, state.spatialIntensity * 0.95) : 0;
+    masterGain.gain.setTargetAtTime(g, now, 0.04);
+  }
+
+  function triggerThump(when, amp, fStart, fEnd, dur, cutoff) {
+    const t = Math.max(ctx.currentTime + 0.002, when), sa = Math.max(0.0005, amp);
+    const osc = ctx.createOscillator(), og = ctx.createGain();
+    osc.type = 'sine'; osc.frequency.setValueAtTime(fStart, t); osc.frequency.exponentialRampToValueAtTime(Math.max(20, fEnd), t + dur);
+    og.gain.setValueAtTime(0.0001, t); og.gain.linearRampToValueAtTime(sa * 0.72, t + 0.009); og.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    osc.connect(og); og.connect(filterA); osc.start(t); osc.stop(t + dur + 0.015);
+    const src = ctx.createBufferSource(); src.buffer = noiseBuf;
+    const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.setValueAtTime(cutoff, t); lp.Q.value = 1.4;
+    const ng = ctx.createGain(); ng.gain.setValueAtTime(0.0001, t); ng.gain.linearRampToValueAtTime(sa * 0.55, t + 0.007); ng.gain.exponentialRampToValueAtTime(0.0001, t + dur * 0.85);
+    src.connect(lp); lp.connect(ng); ng.connect(filterA); src.start(t, Math.random() * 0.8, dur + 0.02);
+  }
+
+  function triggerClick(when, amp, hz) {
+    const t = Math.max(ctx.currentTime + 0.002, when), sa = Math.max(0.0005, amp);
+    const src = ctx.createBufferSource(); src.buffer = noiseBuf;
+    const bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.setValueAtTime(hz, t); bp.Q.value = 2.6;
+    const g = ctx.createGain(); g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(sa * 0.85, t + 0.003); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.022);
+    src.connect(bp); bp.connect(g); g.connect(filterA); src.start(t, Math.random() * 0.8, 0.03);
+  }
+
+  function triggerMurmur(start, dur, hz, q, pts) {
+    const t = Math.max(ctx.currentTime + 0.002, start);
+    const src = ctx.createBufferSource(); src.buffer = noiseBuf; src.loop = true;
+    const bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.setValueAtTime(hz, t); bp.Q.value = q;
+    const g = ctx.createGain(); g.gain.setValueAtTime(Math.max(0.0001, pts[0] ?? 0.0001), t);
+    const seg = dur / Math.max(1, pts.length - 1);
+    for (let i=1;i<pts.length;i++) g.gain.linearRampToValueAtTime(Math.max(0.0001, pts[i]), t + i * seg);
+    src.connect(bp); bp.connect(g); g.connect(filterA); src.start(t, Math.random() * 1.2); src.stop(t + dur + 0.02);
+  }
+
+  function scheduleCycle(beat) {
+    const cond = state.condition, ac = cond.acoustic, z = state.activeZoneId;
+    const zw = z ? (cond.zoneWeights[z] ?? 0.12) : 0.12;
+    const t0 = beat.startTime, beatDur = beat.duration;
+    const sysDur = Math.min(0.36, Math.max(0.19, beatDur * 0.36));
+    const tS1 = t0, tS2 = t0 + sysDur;
+
+    const s1B = (z === 'mitral' || z === 'tricuspid') ? 1.15 : (z === 'aortic' || z === 'pulmonic') ? 0.72 : (z === 'carotid' || z === 'axilla') ? 0.45 : 0.92;
+    const s2B = (z === 'aortic' || z === 'pulmonic') ? 1.18 : (z === 'mitral' || z === 'tricuspid') ? 0.74 : (z === 'carotid' || z === 'axilla') ? 0.48 : 0.92;
+
+    if (ac.s1Amp > 0) {
+      if (beat.isPvc || beat.isWideQrs) {
+        triggerThump(tS1, ac.s1Amp * s1B * beat.s1Scale * 0.72, 92, 36, 0.068, 125);
+        triggerThump(tS1 + 0.028, ac.s1Amp * s1B * beat.s1Scale * 0.5, 84, 34, 0.06, 110);
+      } else {
+        triggerThump(tS1, ac.s1Amp * s1B * beat.s1Scale * 0.9, 96, 38, 0.075, 130);
+      }
+    }
+    if (ac.ejectionClickAmp > 0 && zw > 0.25) triggerClick(tS1 + 0.048, ac.ejectionClickAmp * zw * 0.55, 760);
+    if (ac.midSystolicClickAmp > 0 && zw > 0.2) triggerClick(tS1 + sysDur * 0.52, ac.midSystolicClickAmp * zw * 0.75, 920);
+
+    if (ac.s2Amp > 0) {
+      let sp = ac.s2SplitMs / 1000;
+      if ((cond.id === 'normal' || cond.rhythmPattern === 'sinus_arrhythmia') && z === 'pulmonic') sp = 0.01 + (0.5 + 0.5 * Math.sin(t0 * 1.35)) * 0.032;
+      if (sp > 0.022 && (z === 'pulmonic' || z === 'erbs' || cond.id === 'asd' || cond.id === 'pulmonic_stenosis' || beat.isWideQrs)) {
+        triggerThump(tS2, ac.s2Amp * s2B * beat.s2Scale * 0.68, 150, 64, 0.046, 220);
+        triggerThump(tS2 + sp, ac.s2Amp * s2B * beat.s2Scale * 0.58, 138, 58, 0.044, 200);
+      } else {
+        triggerThump(tS2, ac.s2Amp * s2B * beat.s2Scale * 0.85, 148, 62, 0.05, 220);
+      }
+    }
+
+    if (ac.openingSnapAmp > 0 && zw > 0.22) triggerClick(tS2 + 0.072, ac.openingSnapAmp * zw * 0.65, 860);
+    if (ac.s3Amp > 0 && zw > 0.2) triggerThump(tS2 + 0.14, ac.s3Amp * zw * (state.stethMode === 'bell' ? 1.35 : 0.72) * 0.65, 58, 28, 0.085, 85);
+    if (ac.s4Amp > 0 && zw > 0.2) triggerThump(Math.max(tS2 + 0.18, t0 + beatDur - 0.078), ac.s4Amp * zw * (state.stethMode === 'bell' ? 1.35 : 0.72) * 0.62, 54, 26, 0.08, 80);
+
+    if (ac.murmurTiming !== 'none' && ac.murmurAmp > 0 && zw > 0.06) {
+      const mg = ac.murmurAmp * zw, dStart = tS2 + 0.016, dEnd = t0 + beatDur - 0.02, dDur = Math.max(0.18, dEnd - dStart);
+      if (ac.murmurTiming === 'systolic_ejection') triggerMurmur(tS1 + 0.045, Math.max(0.12, sysDur - 0.065), ac.murmurCenterHz, ac.murmurQ, [0.01, mg*0.72, mg*0.08]);
+      else if (ac.murmurTiming === 'holosystolic') triggerMurmur(tS1 + 0.015, Math.max(0.16, sysDur - 0.015), ac.murmurCenterHz, ac.murmurQ, [mg*0.56, mg*0.62, mg*0.54, mg*0.04]);
+      else if (ac.murmurTiming === 'late_systolic') triggerMurmur(tS1 + sysDur * 0.52, Math.max(0.08, sysDur * 0.46), ac.murmurCenterHz, ac.murmurQ, [0.02, mg*0.65, mg*0.04]);
+      else if (ac.murmurTiming === 'early_diastolic') triggerMurmur(dStart, Math.min(0.42, dDur * 0.78), ac.murmurCenterHz, ac.murmurQ, [mg*0.68, mg*0.34, mg*0.08, 0.001]);
+      else if (ac.murmurTiming === 'mid_diastolic_rumble') {
+        const bb = state.stethMode === 'bell' ? 1.35 : 0.85, s = tS2 + 0.088;
+        triggerMurmur(s, Math.max(0.14, dEnd - s), ac.murmurCenterHz, ac.murmurQ, [0.02, mg*0.48*bb, mg*0.26*bb, mg*0.62*bb, 0.02]);
+      } else if (ac.murmurTiming === 'continuous') {
+        triggerMurmur(tS1 + 0.03, Math.max(0.35, beatDur - 0.05), ac.murmurCenterHz, ac.murmurQ, [mg*0.16, mg*0.48, mg*0.72, mg*0.36, mg*0.14]);
+      } else if (ac.murmurTiming === 'friction_rub') {
+        triggerMurmur(tS1 + sysDur * 0.35, 0.095, ac.murmurCenterHz, 1.1, [0.01, mg*0.58, 0.005]);
+        triggerMurmur(tS2 + 0.09, 0.085, ac.murmurCenterHz * 1.06, 1.1, [0.01, mg*0.5, 0.005]);
+        triggerMurmur(Math.max(tS2 + 0.2, t0 + beatDur - 0.085), 0.072, ac.murmurCenterHz * 0.94, 1.1, [0.01, mg*0.48, 0.005]);
+      }
+    }
+  }
+
+  async function ensureAudio() {
+    if (!ctx) {
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return;
+      ctx = new AC();
+      noiseBuf = buildNoiseBuffer(ctx);
+      filterA = ctx.createBiquadFilter();
+      filterB = ctx.createBiquadFilter();
+      masterGain = ctx.createGain(); masterGain.gain.value = 0;
+      const comp = ctx.createDynamicsCompressor();
+      comp.threshold.value = -10; comp.ratio.value = 4;
+      filterA.connect(filterB); filterB.connect(masterGain); masterGain.connect(comp); comp.connect(ctx.destination);
+    }
+    if (ctx.state === 'suspended') await ctx.resume();
+    if (!schedTimer) {
+      const baseDur = 60 / Math.max(32, Math.min(185, state.bpm));
+      beats = []; beatIdx = 0; nextBeatTime = ctx.currentTime - 4 * baseDur + 0.02;
+      schedTimer = setInterval(schedTick, 25);
+    }
+    applyAudioFilter();
+    schedTick();
+    state.audioRunning = ctx.state === 'running';
+    renderControls();
+  }
+
+  function updateSpatialFromPoint(sx, sy) {
+    let nearest = null, bestD = Infinity;
+    for (const z of ZONES) {
+      const d = Math.hypot(sx - z.x, sy - z.y);
+      if (d < bestD) { bestD = d; nearest = z; }
+    }
+    if (nearest && bestD <= nearest.radius * 2.15) {
+      const t = Math.max(0, 1 - bestD / (nearest.radius * 2.15));
+      const prox = bestD <= nearest.radius * 0.85 ? 1.0 : Math.pow(t, 1.15);
+      const cw = state.condition.zoneWeights[nearest.id] ?? 0.25;
+      const floor = nearest.isRadiation ? 0.08 : 0.28;
+      state.activeZoneId = bestD <= nearest.radius * 1.45 ? nearest.id : null;
+      state.spatialIntensity = Math.min(1, prox * (floor + (1 - floor) * cw));
+    } else {
+      state.activeZoneId = null;
+      state.spatialIntensity = (sx >= 190 && sx <= 455 && sy >= 175 && sy <= 480) ? 0.14 : 0;
+    }
+    applyAudioFilter();
+    renderHudAndZones();
+  }
+
+  function clientToSvg(cx, cy) {
+    const rect = document.getElementById('chestSvg').getBoundingClientRect();
+    const sc = Math.min(rect.width / 640, rect.height / 680);
+    const ox = rect.left + (rect.width - 640 * sc) * 0.5;
+    const oy = rect.top + (rect.height - 680 * sc) * 0.5;
+    return { x: Math.max(24, Math.min(616, (cx - ox) / sc)), y: Math.max(24, Math.min(656, (cy - oy) / sc)) };
+  }
+
+  function svgEl(tag, attrs) {
+    const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+    for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, String(v));
+    return el;
+  }
+
+  function renderHudAndZones() {
+    const cond = state.condition;
+    const activeZ = ZONES.find(z => z.id === state.activeZoneId) || null;
+    const bestZ = ZONES.find(z => z.id === cond.bestZone);
+
+    document.getElementById('hudZoneName').textContent = activeZ ? activeZ.name : 'Hover Chest Landmarks';
+    document.getElementById('hudSignal').textContent = Math.round(state.spatialIntensity * 100) + '% Signal';
+    document.getElementById('hudLandmark').textContent = activeZ ? activeZ.landmark : 'Move stethoscope over A2, P2, Erb, T1, M1, Carotid, or Axilla.';
+    document.getElementById('hudBest').textContent = 'Best site: ' + bestZ.name + ' (' + (cond.recommendedSide === 'bell' ? 'Bell' : 'Diaphragm') + ')';
+    document.getElementById('pcgBadge').textContent = (activeZ ? activeZ.shortCode : 'Chest') + ' · ' + Math.round(state.spatialIntensity * 100) + '%';
+    document.getElementById('siteTitle').textContent = 'Stethoscope Site: ' + (activeZ ? activeZ.name : 'Between Landmarks');
+    document.getElementById('siteBest').textContent = 'Best: ' + bestZ.shortCode + ' (' + bestZ.name + ')';
+    document.getElementById('siteNote').textContent = activeZ ? activeZ.normalNote : 'Place the stethoscope over any cardiac landmark to hear localized acoustics.';
+
+    const radLayer = document.getElementById('radiationLayer');
+    radLayer.innerHTML = '';
+    for (const rId of cond.radiationZones) {
+      const rz = ZONES.find(z => z.id === rId);
+      if (rz) radLayer.appendChild(svgEl('line', { x1: bestZ.x, y1: bestZ.y, x2: rz.x, y2: rz.y, stroke: '#f59e0b', 'stroke-width': 2, 'stroke-opacity': 0.6, 'stroke-dasharray': '6 5' }));
+    }
+
+    const zLayer = document.getElementById('zonesLayer');
+    zLayer.innerHTML = '';
+    for (const z of ZONES) {
+      const isAct = state.activeZoneId === z.id, isBest = cond.bestZone === z.id, isRad = cond.radiationZones.includes(z.id);
+      const col = isAct ? '#22d3ee' : isBest ? '#fbbf24' : isRad ? '#fb923c' : '#64748b';
+      const g = svgEl('g', {});
+      if (isBest) g.appendChild(svgEl('circle', { cx: z.x, cy: z.y, r: z.radius + 7, fill: 'none', stroke: '#fbbf24', 'stroke-width': 1.5, 'stroke-dasharray': '4 4', 'stroke-opacity': 0.72 }));
+      g.appendChild(svgEl('circle', { cx: z.x, cy: z.y, r: z.isRadiation ? 19 : 23, fill: isAct ? '#22d3ee' : col, 'fill-opacity': isAct ? 0.2 : isBest ? 0.14 : 0.07, stroke: col, 'stroke-width': isAct ? 2.4 : isBest ? 1.8 : 1.2 }));
+      const t1 = svgEl('text', { x: z.x, y: z.y + 4, 'text-anchor': 'middle', fill: isAct ? '#ecfeff' : isBest ? '#fef3c7' : '#cbd5e1', 'font-size': 11.5, 'font-weight': 600, 'font-family': 'var(--mono)' });
+      t1.textContent = z.shortCode; g.appendChild(t1);
+      const leftSide = z.id === 'aortic' || z.id === 'carotid';
+      const t2 = svgEl('text', { x: leftSide ? z.x - 32 : z.x + 30, y: z.y + 4, 'text-anchor': leftSide ? 'end' : 'start', fill: isAct ? '#67e8f9' : isBest ? '#fcd34d' : '#94a3b8', 'font-size': 10.5, 'font-weight': isAct || isBest ? 600 : 400 });
+      t2.textContent = z.name.replace(' Area', '').replace(' Artery', ''); g.appendChild(t2);
+      zLayer.appendChild(g);
+    }
+
+    const dockRow = document.getElementById('zoneDockRow');
+    dockRow.innerHTML = '<span class="mono muted" style="font-size:11px; margin-right:4px; white-space:nowrap;">Jump Stethoscope:</span>';
+    for (const z of ZONES) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'chip-btn' + (state.activeZoneId === z.id ? ' active' : cond.bestZone === z.id ? ' best' : '');
+      btn.innerHTML = '<span class="mono" style="margin-right:4px; opacity:0.8;">' + z.shortCode + '</span>' + z.name.replace(' Area', '').replace(' Artery', '');
+      btn.onclick = () => { ensureAudio(); state.targetPos = { x: z.x, y: z.y }; updateSpatialFromPoint(z.x, z.y); };
+      dockRow.appendChild(btn);
+    }
+  }
+
+  function renderConditionDetails() {
+    const c = state.condition;
+    document.getElementById('condMeta').textContent = c.category + ' · ' + state.bpm + ' bpm · ' + (state.stethMode === 'bell' ? 'Bell Mode' : 'Diaphragm Mode');
+    document.getElementById('condTitle').textContent = c.name;
+    document.getElementById('mTiming').textContent = c.timingLabel;
+    document.getElementById('mPitch').textContent = c.pitchLabel;
+    document.getElementById('mShape').textContent = c.shapeLabel;
+    document.getElementById('briefExp').textContent = c.briefExplanation;
+    document.getElementById('whatYouHear').textContent = c.whatYouHear;
+    document.getElementById('mechText').textContent = c.mechanism;
+    document.getElementById('tipText').textContent = c.bedsideTip;
+
+    const list = state.selectedCategory === 'All' ? CONDITIONS : CONDITIONS.filter(x => x.category === state.selectedCategory);
+    const grid = document.getElementById('condGrid');
+    grid.innerHTML = '';
+    for (const item of list) {
+      const bestS = ZONES.find(z => z.id === item.bestZone).shortCode;
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'cond-btn' + (item.id === c.id ? ' active' : '');
+      b.innerHTML = '<span class="cond-name">' + item.shortName + '</span><span class="mono muted" style="font-size:10.5px;">' + bestS + '</span>';
+      b.onclick = () => {
+        state.condition = item; state.bpm = item.defaultBpm; state.stethMode = item.recommendedSide;
+        const baseDur = 60 / Math.max(32, Math.min(185, state.bpm));
+        beats = []; beatIdx = 0; nextBeatTime = nowSec(performance.now()) - 4 * baseDur + 0.02;
+        ensureAudio();
+        updateSpatialFromPoint(state.targetPos.x, state.targetPos.y);
+        renderControls(); renderConditionDetails();
+      };
+      grid.appendChild(b);
+    }
+  }
+
+  function renderControls() {
+    document.getElementById('modeDiaBtn').className = 'seg-btn' + (state.stethMode === 'diaphragm' ? ' active' : '');
+    document.getElementById('modeBellBtn').className = 'seg-btn' + (state.stethMode === 'bell' ? ' active' : '');
+    document.getElementById('stethMem').setAttribute('r', state.stethMode === 'bell' ? '14' : '19');
+    document.getElementById('pinBtn').textContent = state.isPinned ? 'Pinned (Click to Follow Mouse)' : 'Follow Mouse';
+    document.getElementById('chestStage').className = 'chest-stage' + (state.isPinned ? ' pinned' : '');
+    document.getElementById('hudHint').textContent = state.isPinned ? 'Stethoscope pinned · Click chest to move' : 'Move mouse to auscultate · Click chest to pin';
+    document.getElementById('muteBtn').textContent = state.audioEnabled ? 'Sound On' : 'Muted';
+    document.getElementById('topAudioBtn').textContent = !state.audioRunning ? 'Enable Sound' : state.audioEnabled ? 'Mute Audio' : 'Unmute Audio';
+    document.getElementById('hudAudioPrompt').style.display = state.audioRunning ? 'none' : 'inline-block';
+    document.getElementById('bpmSlider').value = String(state.bpm);
+    document.getElementById('bpmValue').textContent = state.bpm + ' bpm';
+
+    const cats = ['All', ...CATEGORIES];
+    const catWrap = document.getElementById('catFilters');
+    catWrap.innerHTML = '';
+    for (const cat of cats) {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'chip-btn' + (state.selectedCategory === cat ? ' active' : '');
+      b.textContent = cat === 'All' ? 'All (' + CONDITIONS.length + ')' : cat;
+      b.onclick = () => { state.selectedCategory = cat; renderControls(); renderConditionDetails(); };
+      catWrap.appendChild(b);
+    }
+
+    const topCats = [
+      { id: 'All', label: 'All Sounds' },
+      { id: 'Normal & Innocent', label: 'Normal' },
+      { id: 'Systolic Murmurs', label: 'Systolic' },
+      { id: 'Diastolic Murmurs', label: 'Diastolic' },
+      { id: 'Arrhythmias', label: 'Arrhythmias' },
+    ];
+    const navWrap = document.getElementById('topNav');
+    navWrap.innerHTML = '';
+    for (const tc of topCats) {
+      const nb = document.createElement('button');
+      nb.type = 'button';
+      nb.className = 'nav-btn' + (state.selectedCategory === tc.id ? ' active' : '');
+      nb.textContent = tc.label;
+      nb.onclick = () => { state.selectedCategory = tc.id; renderControls(); renderConditionDetails(); };
+      navWrap.appendChild(nb);
+    }
+  }
+
+  const chestStage = document.getElementById('chestStage');
+  chestStage.addEventListener('pointermove', (ev) => {
+    if (state.isPinned) return;
+    const pt = clientToSvg(ev.clientX, ev.clientY);
+    state.targetPos = pt;
+    updateSpatialFromPoint(pt.x, pt.y);
+  });
+  chestStage.addEventListener('click', (ev) => {
+    const wasStopped = !state.audioRunning;
+    ensureAudio();
+    const pt = clientToSvg(ev.clientX, ev.clientY);
+    state.targetPos = pt;
+    updateSpatialFromPoint(pt.x, pt.y);
+    if (!wasStopped && !state.isPinned) { state.isPinned = true; renderControls(); }
+  });
+
+  document.getElementById('hudAudioPrompt').onclick = (e) => { e.stopPropagation(); ensureAudio(); };
+  document.getElementById('topAudioBtn').onclick = () => {
+    if (!state.audioRunning) { state.audioEnabled = true; ensureAudio(); }
+    else { state.audioEnabled = !state.audioEnabled; applyAudioFilter(); renderControls(); }
+  };
+  document.getElementById('muteBtn').onclick = () => {
+    if (!state.audioRunning) { state.audioEnabled = true; ensureAudio(); }
+    else { state.audioEnabled = !state.audioEnabled; applyAudioFilter(); renderControls(); }
+  };
+  document.getElementById('pinBtn').onclick = () => { state.isPinned = !state.isPinned; renderControls(); };
+  document.getElementById('modeDiaBtn').onclick = () => { state.stethMode = 'diaphragm'; applyAudioFilter(); renderControls(); renderConditionDetails(); };
+  document.getElementById('modeBellBtn').onclick = () => { state.stethMode = 'bell'; applyAudioFilter(); renderControls(); renderConditionDetails(); };
+  document.getElementById('bpmSlider').oninput = (e) => { state.bpm = Number(e.target.value); renderControls(); renderConditionDetails(); };
+
+  function sampleBeatPcg(t, b, cond, zw) {
+    if (b.isDropped) return 0;
+    const ac = cond.acoustic, el = t - b.startTime;
+    if (el < 0 || el > b.duration) return 0;
+    const sysDur = Math.min(0.36, Math.max(0.19, b.duration * 0.36));
+    let env = 0;
+    const d1 = Math.abs(el - 0.022);
+    if (d1 < 0.032) env = Math.max(env, ac.s1Amp * b.s1Scale * Math.cos((d1 / 0.032) * Math.PI * 0.5));
+    if (ac.ejectionClickAmp > 0 && Math.abs(el - 0.055) < 0.012) env = Math.max(env, ac.ejectionClickAmp * zw * 0.85);
+    if (ac.midSystolicClickAmp > 0 && Math.abs(el - sysDur * 0.52) < 0.012) env = Math.max(env, ac.midSystolicClickAmp * zw * 0.95);
+    const spF = ac.s2SplitMs > 22 || b.isWideQrs ? Math.max(0.03, ac.s2SplitMs / 1000) : 0;
+    const d2 = Math.abs(el - sysDur);
+    if (d2 < 0.022) env = Math.max(env, ac.s2Amp * b.s2Scale * (spF > 0 ? 0.78 : 0.95) * Math.cos((d2 / 0.022) * Math.PI * 0.5));
+    if (spF > 0) {
+      const dp = Math.abs(el - (sysDur + spF));
+      if (dp < 0.02) env = Math.max(env, ac.s2Amp * b.s2Scale * 0.72 * Math.cos((dp / 0.02) * Math.PI * 0.5));
+    }
+    if (ac.openingSnapAmp > 0 && Math.abs(el - (sysDur + 0.072)) < 0.012) env = Math.max(env, ac.openingSnapAmp * zw * 0.88);
+    if (ac.s3Amp > 0 && Math.abs(el - (sysDur + 0.14)) < 0.03) env = Math.max(env, ac.s3Amp * zw * 0.62 * Math.cos((Math.abs(el - (sysDur + 0.14)) / 0.03) * Math.PI * 0.5));
+    if (ac.s4Amp > 0) {
+      const t4 = Math.max(sysDur + 0.18, b.duration - 0.078);
+      if (Math.abs(el - t4) < 0.03) env = Math.max(env, ac.s4Amp * zw * 0.62 * Math.cos((Math.abs(el - t4) / 0.03) * Math.PI * 0.5));
+    }
+    if (ac.murmurAmp > 0 && zw > 0.05) {
+      const m = ac.murmurAmp * zw, dEnd = b.duration - 0.02;
+      if (ac.murmurTiming === 'systolic_ejection' && el > 0.045 && el < sysDur - 0.015) env = Math.max(env, m * 0.68 * Math.sin(((el - 0.045) / Math.max(0.06, sysDur - 0.06)) * Math.PI));
+      else if (ac.murmurTiming === 'holosystolic' && el >= 0.02 && el <= sysDur) env = Math.max(env, m * 0.54);
+      else if (ac.murmurTiming === 'late_systolic' && el >= sysDur * 0.52 && el <= sysDur) env = Math.max(env, m * 0.58 * ((el - sysDur * 0.52) / Math.max(0.05, sysDur * 0.48)));
+      else if (ac.murmurTiming === 'early_diastolic' && el >= sysDur + 0.015 && el <= sysDur + 0.42) env = Math.max(env, m * 0.66 * Math.pow(Math.max(0, 1 - (el - sysDur - 0.015) / 0.405), 1.5));
+      else if (ac.murmurTiming === 'mid_diastolic_rumble' && el >= sysDur + 0.088 && el <= dEnd) {
+        const u = (el - sysDur - 0.088) / Math.max(0.08, dEnd - sysDur - 0.088);
+        env = Math.max(env, m * (u < 0.65 ? Math.sin((u / 0.65) * Math.PI) * 0.42 : 0.22 + ((u - 0.65) / 0.35) * 0.45));
+      } else if (ac.murmurTiming === 'continuous') {
+        const dS2 = Math.abs(el - sysDur);
+        env = Math.max(env, m * Math.max(0.18, 0.72 * Math.exp(-(dS2 * dS2) / 0.045)));
+      } else if (ac.murmurTiming === 'friction_rub') {
+        const b1 = Math.exp(-Math.pow((el - sysDur * 0.42) / 0.028, 2)), b2 = Math.exp(-Math.pow((el - (sysDur + 0.11)) / 0.028, 2)), b3 = Math.exp(-Math.pow((el - (b.duration - 0.08)) / 0.026, 2));
+        env = Math.max(env, m * 0.55 * Math.max(b1, b2, b3));
+      }
+    }
+    return Math.min(1.45, env);
+  }
+
+  function sampleEcgAt(t, pat) {
+    let v = 0;
+    if (pat === 'afib') v += Math.sin(t * 39) * 0.035 + Math.sin(t * 63 + 1.2) * 0.025 + Math.cos(t * 91) * 0.015;
+    else if (pat === 'aflutter') {
+      const u = (((t % 0.2) + 0.2) % 0.2) / 0.2;
+      v += u < 0.78 ? -0.18 * (1 - u / 0.78) + 0.07 : 0.07 - ((u - 0.78) / 0.22) * 0.25;
+    } else if (pat === 'av_block_3') {
+      const ph = ((t % 0.74) + 0.74) % 0.74;
+      v += Math.exp(-Math.pow((ph - 0.37) / 0.024, 2)) * 0.2;
+    }
+    for (let i=0;i<beats.length;i++) {
+      const b = beats[i];
+      if (t < b.startTime - 0.45 || t > b.startTime + b.duration + 0.2) continue;
+      if (b.hasPWave) v += Math.exp(-Math.pow((t - (b.startTime - b.prDelaySec)) / 0.023, 2)) * (b.isPac ? 0.14 : 0.19);
+      if (b.isDropped) continue;
+      const sysDur = Math.min(0.36, Math.max(0.19, b.duration * 0.36));
+      if (b.isWideQrs) {
+        const qc = b.startTime + 0.032;
+        v += Math.exp(-Math.pow((t - qc) / 0.024, 2)) * (b.isPvc ? 1.05 : 0.92) - Math.exp(-Math.pow((t - (qc + 0.036)) / 0.024, 2)) * 0.48 - Math.exp(-Math.pow((t - (b.startTime + sysDur * 0.78)) / 0.05, 2)) * 0.28;
+      } else {
+        v += -Math.exp(-Math.pow((t - (b.startTime + 0.004)) / 0.007, 2)) * 0.15 + Math.exp(-Math.pow((t - (b.startTime + 0.02)) / 0.009, 2)) * 0.95 - Math.exp(-Math.pow((t - (b.startTime + 0.038)) / 0.009, 2)) * 0.24 + Math.exp(-Math.pow((t - (b.startTime + sysDur * 0.74)) / 0.042, 2)) * 0.3;
+      }
+    }
+    return v;
+  }
+
+  function loop(nowMs) {
+    const tNow = nowSec(nowMs);
+    ensureBeats(tNow + 0.35, tNow);
+
+    state.stethPos.x += (state.targetPos.x - state.stethPos.x) * 0.34;
+    state.stethPos.y += (state.targetPos.y - state.stethPos.y) * 0.34;
+    const x = state.stethPos.x, y = state.stethPos.y;
+    document.getElementById('stethSprite').setAttribute('transform', 'translate(' + x.toFixed(1) + ',' + y.toFixed(1) + ')');
+    document.getElementById('stethTube').setAttribute('d', 'M ' + (x+12).toFixed(1) + ' ' + (y+22).toFixed(1) + ' C ' + (x+58).toFixed(1) + ' ' + (y+110).toFixed(1) + ', ' + Math.min(600, x+135).toFixed(1) + ' 585, ' + Math.min(620, x+165).toFixed(1) + ' 690');
+
+    let ph = 0;
+    for (let i=beats.length-1; i>=0; i--) {
+      if (tNow >= beats[i].startTime) {
+        ph = beats[i].isDropped ? 0.95 : Math.max(0, Math.min(0.999, (tNow - beats[i].startTime) / beats[i].duration));
+        break;
+      }
+    }
+    const pulse = ph < 0.35 ? Math.sin((ph / 0.35) * Math.PI) : -Math.sin(((ph - 0.35) / 0.65) * Math.PI) * 0.18;
+    document.getElementById('heartGroup').setAttribute('transform', 'translate(342,336) scale(' + (1 - pulse * 0.045).toFixed(4) + ') translate(-342,-336)');
+
+    const ws = 1 + ((ph * 2) % 1) * 0.65, wo = state.spatialIntensity > 0.2 ? (1 - ((ph * 2) % 1)) * state.spatialIntensity * 0.75 : 0;
+    const ring = document.getElementById('waveRing');
+    ring.setAttribute('r', (26 * ws).toFixed(1));
+    ring.setAttribute('opacity', wo.toFixed(2));
+
+    const c = document.getElementById('pcgCanvas'), g = c.getContext('2d');
+    const dpr = Math.min(window.devicePixelRatio || 1, 2), cw = c.clientWidth || 420, ch = c.clientHeight || 136;
+    if (c.width !== Math.floor(cw * dpr) || c.height !== Math.floor(ch * dpr)) { c.width = Math.floor(cw * dpr); c.height = Math.floor(ch * dpr); }
+    g.save(); g.scale(dpr, dpr);
+    g.fillStyle = '#090d14'; g.fillRect(0, 0, cw, ch);
+
+    const WIN = 4.2, pxPerSec = cw / WIN, tStart = tNow - WIN;
+    g.strokeStyle = 'rgba(51,65,85,0.25)'; g.lineWidth = 1;
+    for (let gt = Math.ceil(tStart / 0.2) * 0.2; gt <= tNow; gt += 0.2) {
+      const gx = (gt - tStart) * pxPerSec;
+      g.beginPath(); g.moveTo(gx, 0); g.lineTo(gx, ch); g.stroke();
+    }
+    g.beginPath(); g.moveTo(0, 36); g.lineTo(cw, 36); g.moveTo(0, 96); g.lineTo(cw, 96); g.stroke();
+
+    const pat = state.condition.rhythmPattern || 'regular';
+    g.strokeStyle = '#10b981'; g.lineWidth = 1.5; g.beginPath();
+    for (let px = 0; px <= cw; px += 1.5) {
+      const py = 37 - sampleEcgAt(tStart + (px / cw) * WIN, pat) * 22;
+      if (px === 0) g.moveTo(px, py); else g.lineTo(px, py);
+    }
+    g.stroke();
+
+    const zw = state.activeZoneId ? (state.condition.zoneWeights[state.activeZoneId] ?? 0.12) : 0.12;
+    const ampScale = Math.max(0.22, state.spatialIntensity);
+    g.strokeStyle = state.condition.category === 'Arrhythmias' ? '#38bdf8' : state.condition.id === 'normal' ? '#22d3ee' : '#fbbf24';
+    g.lineWidth = 1.4; g.beginPath();
+    let bi = 0;
+    for (let px = 0; px <= cw; px += 1.5) {
+      const t = tStart + (px / cw) * WIN;
+      while (bi < beats.length - 1 && t >= beats[bi].startTime + beats[bi].duration) bi++;
+      const env = beats[bi] ? sampleBeatPcg(t, beats[bi], state.condition, zw) * ampScale : 0;
+      const car = Math.sin(t * 165) * 0.65 + Math.sin(t * 340) * 0.35;
+      const py = 96 + car * env * 27;
+      if (px === 0) g.moveTo(px, py); else g.lineTo(px, py);
+    }
+    g.stroke();
+
+    g.font = '9.5px monospace';
+    for (let i=0;i<beats.length;i++) {
+      const b = beats[i];
+      if (b.startTime < tStart - 0.1 || b.startTime > tNow) continue;
+      const bx = (b.startTime - tStart) * pxPerSec;
+      if (b.isDropped) { g.fillStyle = '#fb7185'; g.fillText('DROP', bx - 8, ch - 6); }
+      else if (b.isPvc) { g.fillStyle = '#fbbf24'; g.fillText('PVC', bx - 6, ch - 6); }
+      else if (b.isPac) { g.fillStyle = '#38bdf8'; g.fillText('PAC', bx - 6, ch - 6); }
+      else if (b.s1Scale >= 1.35) { g.fillStyle = '#fb7185'; g.fillText('CANNON', bx - 10, ch - 6); }
+    }
+    g.fillStyle = '#94a3b8'; g.font = '10px monospace';
+    g.fillText('ECG (4.2s Live)', 8, 13); g.fillText('PCG', 8, 66);
+    g.restore();
+
+    requestAnimationFrame(loop);
+  }
+
+  renderControls();
+  renderHudAndZones();
+  renderConditionDetails();
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

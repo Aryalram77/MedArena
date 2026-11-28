@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MedArena Atlas</title>
-  <meta name="description" content="Interactive MedArena anatomy atlas cards: Circle of Willis and Nephron.">
+  <meta name="description" content="Interactive MedArena atlas cards: Circle of Willis, Nephron, ECG, and Cardiology Auscultation.">
   <script>window.MA_API_BASE = "https://medarena-api.medarena-ram.workers.dev";</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -156,17 +156,17 @@
       .card-tabs { width: 100%; }
       .atlas-tab { flex: 1; padding: 8px 10px; font-size: 12px; }
     }
-      .atlas-copyright {
-        flex-shrink: 0;
-        padding: 6px 12px;
-        border-top: 1px solid var(--border-subtle);
-        background-color: var(--bg-surface);
-        color: var(--text-muted);
-        font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-        font-size: 10.5px;
-        letter-spacing: 0.02em;
-        text-align: center;
-      }
+    .atlas-copyright {
+      flex-shrink: 0;
+      padding: 6px 12px;
+      border-top: 1px solid var(--border-subtle);
+      background-color: var(--bg-surface);
+      color: var(--text-muted);
+      font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 10.5px;
+      letter-spacing: 0.02em;
+      text-align: center;
+    }
 
 </style>
 </head>
@@ -180,14 +180,16 @@
         <button type="button" class="atlas-tab" id="atlas-tab-circle" role="tab" aria-selected="true" aria-controls="atlas-frame-circle" tabindex="0" data-card="circle">🧠 Circle of Willis</button>
         <button type="button" class="atlas-tab" id="atlas-tab-nephron" role="tab" aria-selected="false" aria-controls="atlas-frame-nephron" tabindex="-1" data-card="nephron">🫘 Nephron</button>
         <button type="button" class="atlas-tab" id="atlas-tab-ecg" role="tab" aria-selected="false" aria-controls="atlas-frame-ecg" tabindex="-1" data-card="ecg">🫀 ECG</button>
+        <button type="button" class="atlas-tab" id="atlas-tab-auscultation" role="tab" aria-selected="false" aria-controls="atlas-frame-auscultation" tabindex="-1" data-card="auscultation">🩺 Cardiology Auscultation</button>
       </nav>
     </div>
   </header>
 
   <main class="atlas-stage">
-    <iframe id="atlas-frame-circle" class="atlas-frame active" role="tabpanel" aria-labelledby="atlas-tab-circle" title="Circle of Willis interactive atlas" src="circle-of-willis-atlas.html?embed=1&amp;v=6"></iframe>
-    <iframe id="atlas-frame-nephron" class="atlas-frame" role="tabpanel" aria-labelledby="atlas-tab-nephron" title="Nephron interactive atlas" src="nephron-atlas.html?embed=1&amp;v=6"></iframe>
-    <iframe id="atlas-frame-ecg" class="atlas-frame" role="tabpanel" aria-labelledby="atlas-tab-ecg" title="ECG interactive atlas" src="ecg-atlas.html?embed=1&amp;v=6"></iframe>
+    <iframe id="atlas-frame-circle" class="atlas-frame active" role="tabpanel" aria-labelledby="atlas-tab-circle" title="Circle of Willis interactive atlas" src="circle-of-willis-atlas.html?embed=1&amp;v=7"></iframe>
+    <iframe id="atlas-frame-nephron" class="atlas-frame" role="tabpanel" aria-labelledby="atlas-tab-nephron" title="Nephron interactive atlas" src="nephron-atlas.html?embed=1&amp;v=7"></iframe>
+    <iframe id="atlas-frame-ecg" class="atlas-frame" role="tabpanel" aria-labelledby="atlas-tab-ecg" title="ECG interactive atlas" src="ecg-atlas.html?embed=1&amp;v=7"></iframe>
+    <iframe id="atlas-frame-auscultation" class="atlas-frame" role="tabpanel" aria-labelledby="atlas-tab-auscultation" title="Cardiology Auscultation interactive atlas" src="cardiology-auscultation-atlas.html?embed=1&amp;v=7"></iframe>
   </main>
 
   <footer class="atlas-copyright">© Dr. Ram Aryal · MedArena Atlas</footer>
@@ -236,7 +238,7 @@
   </script>
 
   <script>
-    /* Count one visit when the Atlas shell opens. The two iframe cards are
+    /* Count one visit when the Atlas shell opens. The four iframe cards are
        deliberately not tracked: switching cards is not a new page visit. */
     (function () {
       'use strict';
